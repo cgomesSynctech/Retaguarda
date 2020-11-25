@@ -1,0 +1,297 @@
+unit Frm_RomaneioSeparacao;
+
+interface
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, FRM_PADRAO, dxExEdtr, dxCntner, dxEditor, dxDBEdtr, dxDBELib,
+  TS_DBLookupComboBox, Placemnt, BTOdeum, FormComponent, ImgList, Menus,
+  TS_PopupMenu, TS_LastDataObject, DlgMsg, StdCtrls, TS_Label, ExtCtrls,
+  TS_Image, dxfLabel, TS_MaxPanel, dxfProgressBar, dxTLClms, dxTL,
+  dxDBCtrl, dxDBGrid, TS_QDBGrid, TS_Bevel, Buttons, TS_SpeedButton,
+  teCtrls, TS_EffectsPanel, dxEdLib, TS_DBEditNumber, TS_DBEditDate,
+  TS_DBEdit, dxDBTLCl, dxGrClms, TS_ButtonEdit, DB, IBCustomDataSet,
+  IBQuery, ppCtrls, ppBands, ppClass, ppPrnabl, ppStrtch, ppRegion, ppDB,
+  ppDBPipe, ppCache, ppComm, ppRelatv, ppProd, ppReport, DBClient,
+  Provider, TS_CheckBox, TS_DBCurrencyEdit, ZRCtrls, ZReport, ppVar;
+
+type
+  TFrmRomaneioSeparacao = class(TFrmPadrao)
+    edData: TTS_DBEditDate;
+    TS_Label1: TTS_Label;
+    lblFicha: TTS_Label;
+    dfFicha: TTS_DBEdit;
+    TS_Panel1: TTS_Panel;
+    GridROMANEIO: TdxDBGridMaskColumn;
+    GridDATA: TdxDBGridDateColumn;
+    GridOBSERVACAO: TdxDBGridMaskColumn;
+    GridTOTALPESO: TdxDBGridCurrencyColumn;
+    GridcmbUsuario: TdxDBGridLookupColumn;
+    GridcmbVeiculos: TdxDBGridLookupColumn;
+    TS_Label6: TTS_Label;
+    dfSaida: TTS_ButtonEdit;
+    Q_Aux: TIBQuery;
+    dbgItens: TTS_QDBGrid;
+    Q_Separacao: TIBQuery;
+    Q_SeparacaoDs: TDataSource;
+    C_ManifestoDS: TDataSource;
+    ppmGridRomaneioSeparacao: TTS_PopupMenu;
+    ppDBSeparacao: TppDBPipeline;
+    ppSeparacao: TppReport;
+    ppDetailBand1: TppDetailBand;
+    ppFooterBand1: TppFooterBand;
+    ppTitleBand1: TppTitleBand;
+    ppGroup1: TppGroup;
+    ppGroupHeaderBand1: TppGroupHeaderBand;
+    ppGroupFooterBand1: TppGroupFooterBand;
+    ppGroup5: TppGroup;
+    ppGroupHeaderBand5: TppGroupHeaderBand;
+    ppGroupFooterBand5: TppGroupFooterBand;
+    ppLabel1: TppLabel;
+    ppDBText1: TppDBText;
+    ppLabel2: TppLabel;
+    ppDBText2: TppDBText;
+    ppLine1: TppLine;
+    ppLabel3: TppLabel;
+    ppLabel4: TppLabel;
+    ppLabel5: TppLabel;
+    ppLabel6: TppLabel;
+    ppLabel7: TppLabel;
+    ppLabel8: TppLabel;
+    ppDBText3: TppDBText;
+    ppDBText4: TppDBText;
+    ppDBText5: TppDBText;
+    ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
+    ppDBText8: TppDBText;
+    ppDBCalc1: TppDBCalc;
+    ppLabel9: TppLabel;
+    ppRegion2: TppRegion;
+    ppLabel30: TppLabel;
+    ppDBText25: TppDBText;
+    ppLabel32: TppLabel;
+    ppDBText26: TppDBText;
+    ppLabel35: TppLabel;
+    ppLabel36: TppLabel;
+    ppDBText29: TppDBText;
+    ppLine9: TppLine;
+    ppLine10: TppLine;
+    ppSystemVariable1: TppSystemVariable;
+    dbgItensNUMERO: TdxDBGridMaskColumn;
+    dbgItensDATA: TdxDBGridDateColumn;
+    dbgItensNOME: TdxDBGridMaskColumn;
+    dbgItensTOTAL: TdxDBGridCurrencyColumn;
+    Q_SeparacaoLOTESEPARACAO: TIntegerField;
+    Q_SeparacaoDATA: TDateField;
+    Q_SeparacaoLOCALIZACAO: TIBStringField;
+    Q_SeparacaoDESCRICAOGRUPO: TIBStringField;
+    Q_SeparacaoITEM: TIBStringField;
+    Q_SeparacaoFATOR: TFloatField;
+    Q_SeparacaoUNIDADE: TIBStringField;
+    Q_SeparacaoREFERENCIA: TIBStringField;
+    Q_SeparacaoQTDEMBALAGEM: TFloatField;
+    Q_SeparacaoCODIGO: TIBStringField;
+    Q_SeparacaoDESCRICAO: TIBStringField;
+    ppLabel10: TppLabel;
+    ppDBText9: TppDBText;
+    Q_SeparacaocQtdEmb: TFloatField;
+    ppLine2: TppLine;
+    Q_SeparacaoQTDITEM: TFloatField;
+    procedure dfSaidaKeyPress(Sender: TObject; var Key: Char);
+    procedure dfSaidaButtonClick(Sender: TObject; AbsoluteIndex: Integer);
+    procedure btComando1Click(Sender: TObject);
+    procedure FormComponentGravou(Sender: TObject);
+    procedure zrLabelBeforePrint(Sender: TObject;
+      var DoPrint: Boolean);
+    procedure Q_SeparacaoCalcFields(DataSet: TDataSet);
+  private
+    { Private declarations }
+    procedure IncluirRomaneioSeparacaoSaidas;
+    procedure GeraCabecalho(zrNome, zrEnd, zrCid, zrFone, zrLin1, zrLin2, zrLin3, zrLin4 : TZRLabel);
+    procedure ImprimirRomaneioSeparacao;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmRomaneioSeparacao: TFrmRomaneioSeparacao;
+
+implementation
+
+uses DM_Projeto, DM_RomaneioSeparacao, Form_RichEdit, funcoes, TDM_Projeto;
+
+{$R *.dfm}
+
+procedure TFrmRomaneioSeparacao.dfSaidaKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if Key = #13 then begin
+    IncluirRomaneioSeparacaoSaidas;
+  end;
+end;
+
+procedure TFrmRomaneioSeparacao.IncluirRomaneioSeparacaoSaidas;
+Begin
+End;
+
+
+
+procedure TFrmRomaneioSeparacao.dfSaidaButtonClick(Sender: TObject;
+  AbsoluteIndex: Integer);
+Var
+  nOP: Integer;
+  sSaidas: String;
+begin
+ inherited;
+ sSaidas := '';
+ nOP := DMProjeto.CriarForm('DlgEscolherSaidaRomaneio',self,true);
+ if DMProjeto.QtdParametrosForm > 0 then
+   sSaidas := DMProjeto.GetParametrosForm(0);
+ if trim(sSaidas) <> '' then begin
+   with Q_Aux do begin
+     Close;
+     Sql.Text := 'SELECT s.SAIDA FROM SAIDAS s WHERE s.SAIDA In ('+ sSaidas+') ';
+     Sql.Text := Sql.Text + ' and s.saida not in (select r.saida from romaneiosaidas r WHERE r.SAIDA In ('+ sSaidas+') ) ';
+     Open;
+     while (not Q_Aux.Eof) do begin
+       DMRomaneioSeparacao.C_Detalhe.Append;
+       DMRomaneioSeparacao.C_DetalheSaida.Value := Q_Aux.FieldByName('SAIDA').Value;
+       DMRomaneioSeparacao.C_DetalheLOTESEPARACAO.Value := DMRomaneioSeparacao.C_TabelaLOTESEPARACAO.Value;
+       DMRomaneioSeparacao.C_Detalhe.Post;
+       Q_Aux.Next;
+     end;
+   end;
+   btGravarClick(Sender);
+   UltimoGravado1Click(Sender);
+   dfSaida.SetFocus;
+
+ end;
+end;
+
+procedure TFrmRomaneioSeparacao.btComando1Click(Sender: TObject);
+begin
+  inherited;
+  ImprimirRomaneioSeparacao;
+end;
+
+procedure TFrmRomaneioSeparacao.GeraCabecalho(zrNome, zrEnd, zrCid, zrFone, zrLin1, zrLin2, zrLin3, zrLin4 : TZRLabel);
+var sLinha, sLadoEsquerdo, sLadoDireito: string;
+    i: integer;
+begin
+    with DMProjeto.q_sql do
+    begin
+        close;
+        sql.text := 'select esquerdo, direito from cabecalho';
+        open;
+        sLadoEsquerdo := fields[0].asString;
+        sLadoDireito := fields[1].asString;
+    end;
+
+    FormRichEdit := TFormRichEdit.Create(self);
+    DMProjeto.Interpreta(sLadoEsquerdo);
+    DMProjeto.Interpreta(sLadoDireito);
+    sLadoEsquerdo := DMProjeto.FormataCabecalho(FormRichEdit.RichEdit, sLadoEsquerdo);
+    sLadoDireito := DMProjeto.FormataCabecalho(FormRichEdit.RichEdit, sLadoDireito);
+    FormRichEdit.Free;
+
+    {Lado Esquerdo}
+    zrNome.Caption := '';
+    zrEnd.Caption := '';
+    zrCid.Caption := '';
+    zrFone.Caption := '';
+    i := 1;
+    while i <= ContaStrings(sLadoEsquerdo, ';') do
+    begin
+        sLinha := SeparaStrings(SeparaStrings(sLadoEsquerdo, ';', i), '|', 2);
+        while (sLinha = SeparaStrings(SeparaStrings(sLadoEsquerdo, ';', i), '|', 2)) and
+            (i <= ContaStrings(sLadoEsquerdo, ';')) do
+        begin
+            if sLinha = '0' then
+                zrNome.Caption := zrNome.Caption + SeparaStrings(SeparaStrings(sLadoEsquerdo, ';', i), '|', 1)
+            else if sLinha = '1' then
+                zrEnd.Caption := zrEnd.Caption + SeparaStrings(SeparaStrings(sLadoEsquerdo, ';', i), '|', 1)
+            else if sLinha = '2' then
+                zrCid.Caption := zrCid.Caption + SeparaStrings(SeparaStrings(sLadoEsquerdo, ';', i), '|', 1)
+            else if sLinha = '3' then
+                zrFone.Caption := zrFone.Caption + SeparaStrings(SeparaStrings(sLadoEsquerdo, ';', i), '|', 1)
+            else
+                i := 1000;
+            inc(i);
+        end;
+    end;
+    zrNome.BeforePrint := ZRLabelBeforePrint;
+    zrEnd.BeforePrint := ZRLabelBeforePrint;
+    zrCid.BeforePrint := ZRLabelBeforePrint;
+    zrFone.BeforePrint := ZRLabelBeforePrint;
+
+    {Lado Direito}
+    if zrLin1 <> nil then
+    begin
+        zrLin1.Caption := '';
+        zrLin2.Caption := '';
+        zrLin3.Caption := '';
+        zrLin4.Caption := '';
+        i := 1;
+        while i <= ContaStrings(sLadoDireito, ';') do
+        begin
+            sLinha := SeparaStrings(SeparaStrings(sLadoDireito, ';', i), '|', 2);
+            while (sLinha = SeparaStrings(SeparaStrings(sLadoDireito, ';', i), '|', 2)) and
+                (i <= ContaStrings(sLadoDireito, ';')) do
+            begin
+                if sLinha = '0' then
+                    zrLin1.Caption := zrLin1.Caption + Trim(SeparaStrings(SeparaStrings(sLadoDireito, ';', i), '|', 1))
+                else if sLinha = '1' then
+                    zrLin2.Caption := zrLin2.Caption + Trim(SeparaStrings(SeparaStrings(sLadoDireito, ';', i), '|', 1))
+                else if sLinha = '2' then
+                    zrLin3.Caption := zrLin3.Caption + Trim(SeparaStrings(SeparaStrings(sLadoDireito, ';', i), '|', 1))
+                else if sLinha = '3' then
+                    zrLin4.Caption := zrLin4.Caption + Trim(SeparaStrings(SeparaStrings(sLadoDireito, ';', i), '|', 1))
+                else
+                    i := 1000;
+                inc(i);
+            end;
+        end;
+        zrLin1.BeforePrint := ZRLabelBeforePrint;
+        zrLin2.BeforePrint := ZRLabelBeforePrint;
+        zrLin3.BeforePrint := ZRLabelBeforePrint;
+        zrLin4.BeforePrint := ZRLabelBeforePrint;
+    end;
+end;
+
+
+procedure TFrmRomaneioSeparacao.FormComponentGravou(Sender: TObject);
+begin
+  inherited;
+  if (not DMRomaneioSeparacao.bAlteracao) then ImprimirRomaneioSeparacao;
+end;
+
+procedure TFrmRomaneioSeparacao.ZRLabelBeforePrint(Sender: TObject;
+  var DoPrint: Boolean);
+begin
+ TZrLabel(Sender).Caption := Replace(TZrLabel(Sender).Caption,'<NumeroPagina>',IntToStr(TZrLabel(Sender).Report.PageCount));
+ TZrLabel(Sender).Caption := Replace(TZrLabel(Sender).Caption,'<TotalPaginas>',IntToStr(TZrLabel(Sender).Report.PageCount));
+end;
+
+procedure TFrmRomaneioSeparacao.ImprimirRomaneioSeparacao;
+begin
+  try
+      with Q_Separacao do Begin
+         Close;
+         ParamByName('LOTESEPARACAO').Value := DMRomaneioSeparacao.C_TabelaLOTESEPARACAO.Value;
+         Open;
+      End;
+      DMProjeto.ImprimirCabecalho( ppRegion2 );
+      ppSeparacao.Print;
+  finally
+  end;
+end;
+
+
+procedure TFrmRomaneioSeparacao.Q_SeparacaoCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  DataSet.FieldByName('cQtdEmb').AsFloat :=
+      DataSet.FieldByName('QtdItem').AsFloat *
+      DataSet.FieldByName('QtdEmbalagem').AsFloat;
+end;
+
+end.

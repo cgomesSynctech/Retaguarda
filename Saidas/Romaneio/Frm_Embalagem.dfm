@@ -1,0 +1,74 @@
+inherited FrmEmbalagem: TFrmEmbalagem
+  Left = 340
+  Top = 135
+  Caption = 'FrmEmbalagem'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnDados: TTS_Panel
+    inherited Grid: TTS_QDBGrid
+      Filter.Criteria = {00000000}
+    end
+    inherited sbDados: TTS_Panel
+      object TS_Label1: TTS_Label
+        Left = 24
+        Top = 40
+        Width = 81
+        Caption = 'Numero Pedido :'
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object TS_Label2: TTS_Label
+        Left = 104
+        Top = 72
+        Width = 65
+        Caption = 'TS_Label2'
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object TS_Label3: TTS_Label
+        Left = 112
+        Top = 96
+        Width = 65
+        Caption = 'TS_Label3'
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object TS_Edit1: TTS_Edit
+        Left = 110
+        Top = 37
+        Width = 121
+        TabOrder = 0
+        OnKeyPress = TS_Edit1KeyPress
+        Height = 19
+      end
+      object TS_DBEdit2: TTS_DBEdit
+        Left = 248
+        Top = 32
+        Width = 121
+        TabOrder = 1
+        DataField = 'EMBALAGENS'
+        DataSource = DMEmbalagem.C_TabelaDS
+        DistinctEditOn = False
+        Height = 19
+      end
+      object TS_DBEdit1: TTS_DBEdit
+        Left = 96
+        Top = 120
+        Width = 121
+        TabOrder = 2
+        DataField = 'SAIDA'
+        DataSource = DMEmbalagem.C_TabelaDS
+        DistinctEditOn = False
+        Height = 19
+      end
+    end
+  end
+  inherited Beep: TBTBeeper
+    Left = 216
+    Top = 352
+  end
+  inherited FormStorage: TFormStorage
+    Left = 56
+    Top = 344
+  end
+end

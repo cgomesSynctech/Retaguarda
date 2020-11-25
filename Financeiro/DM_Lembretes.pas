@@ -1,0 +1,291 @@
+unit DM_Lembretes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Db, IBCustomDataSet, IBQuery, Provider, DBClient, IBUpdateSQL;
+
+type
+  TDMLembretes = class(TDataModule)
+    Q_ChequesImprimirDetDS: TDataSource;
+    Q_ChequesImprimirDet: TIBQuery;
+    IBBCDField5: TIBBCDField;
+    Q_ChequesImprimirDetNOME: TIBStringField;
+    Q_ChequesImprimirDetVENCIMENTO: TDateField;
+    Q_ChequesImprimirDetIDFALSO: TIntegerField;
+    Q_ChequesImprimirDetIDDOC: TIntegerField;
+    Q_ChequesImprimirDS: TDataSource;
+    Q_ChequesImprimir: TIBQuery;
+    Q_ChequesImprimirDESCRICAO: TIBStringField;
+    Q_ChequesImprimirVALOR: TIBBCDField;
+    Q_ChequesImprimirIDFALSO: TIntegerField;
+    Q_ChequesACompensar: TIBQuery;
+    Q_ChequesACompensarVALOR: TIBBCDField;
+    Q_ChequesACompensarIDFALSO: TIntegerField;
+    Q_ContasAPagar: TIBQuery;
+    Q_ContasAPagarVALOR: TIBBCDField;
+    Q_ContasAPagarIDFALSO: TIntegerField;
+    Q_ChequesDepositar: TIBQuery;
+    Q_ChequesDepositarVALOR: TIBBCDField;
+    Q_ChequesDepositarIDFALSO: TIntegerField;
+    Q_ParcelasAReceber: TIBQuery;
+    Q_ParcelasAReceberDs: TDataSource;
+    Q_ParcelasAReceberDet: TIBQuery;
+    IBBCDField1: TIBBCDField;
+    Q_ParcelasAReceberDetNOME: TIBStringField;
+    Q_ParcelasAReceberDetVENCIMENTO: TDateField;
+    Q_ParcelasAReceberDetIDFALSO: TIntegerField;
+    Q_ParcelasAReceberDetID: TIntegerField;
+    Q_ParcelasAReceberDetDS: TDataSource;
+    Q_ChequesDepositarDetDS: TDataSource;
+    Q_ChequesDepositarDet: TIBQuery;
+    IBBCDField2: TIBBCDField;
+    Q_ChequesDepositarDetIDDOC: TIntegerField;
+    Q_ChequesDepositarDetNOME: TIBStringField;
+    Q_ChequesDepositarDetVENCIMENTO: TDateField;
+    Q_ChequesDepositarDetNOMEBANCO: TIBStringField;
+    Q_ChequesDepositarDetIDFALSO: TIntegerField;
+    Q_ChequesDepositarDetDATA: TDateField;
+    Q_ChequesDepositarDetPREDATADO: TIntegerField;
+    Q_ChequesDepositarDS: TDataSource;
+    Q_ContasAPagarDS: TDataSource;
+    Q_ContasAPagarDet: TIBQuery;
+    IBBCDField3: TIBBCDField;
+    Q_ContasAPagarDetID: TIntegerField;
+    Q_ContasAPagarDetNOME: TIBStringField;
+    Q_ContasAPagarDetVENCIMENTO: TDateField;
+    Q_ContasAPagarDetIDFALSO: TIntegerField;
+    Q_ContasAPagarDetDS: TDataSource;
+    Q_ChequesACompensacaoDetDS: TDataSource;
+    Q_ChequesACompensarDet: TIBQuery;
+    IBBCDField4: TIBBCDField;
+    Q_ChequesACompensarDetIDDOC: TIntegerField;
+    Q_ChequesACompensarDetNOME: TIBStringField;
+    Q_ChequesACompensarDetVENCIMENTO: TDateField;
+    Q_ChequesACompensarDetIDFALSO: TIntegerField;
+    Q_ChequesACompensarDS: TDataSource;
+    Q_SaldoContas: TIBQuery;
+    C_SaldoContas: TClientDataSet;
+    P_SaldoContas: TDataSetProvider;
+    C_SaldoContasCONTA: TIntegerField;
+    C_SaldoContasDESCRICAO: TStringField;
+    Q_SaldoDetalhes: TIBQuery;
+    Q_SaldoDetalhesFORMAPAGAMENTO: TIntegerField;
+    Q_SaldoDetalhesDESCRICAO: TIBStringField;
+    Q_SaldoDetalhesVALOR: TIBBCDField;
+    C_SaldoContasSaldo: TFloatField;
+    Q_PosicaoCaixas: TIBQuery;
+    Q_PosicaoCaixasDet: TIBQuery;
+    Q_PosicaoCaixasFORMAPAGAMENTO: TIntegerField;
+    Q_PosicaoCaixasDESCRICAO: TIBStringField;
+    Q_PosicaoCaixasVALOR: TIBBCDField;
+    Q_PosicaoCaixasDetCONTA: TIntegerField;
+    Q_PosicaoCaixasDetDESCRICAO: TIBStringField;
+    Q_PosicaoCaixasDetVALOR: TIBBCDField;
+    Q_FluxoCaixa: TIBQuery;
+    Q_FluxoCaixaSEMANA: TIBStringField;
+    Q_FluxoCaixaARECEBER: TIBBCDField;
+    Q_FluxoCaixaAPAGAR: TIBBCDField;
+    Q_VendasPorVendedor: TIBQuery;
+    Q_VendasPorVendedorNOME: TIBStringField;
+    Q_VendasGraf: TIBQuery;
+    Q_CompromissosDS: TDataSource;
+    Q_Compromissos: TIBQuery;
+    Q_CompromissosDet: TIBQuery;
+    Q_CompromissosDetDS: TDataSource;
+    Q_CompromissosQUANT: TIntegerField;
+    Q_CompromissosIDFALSO: TIntegerField;
+    Q_RecadosDS: TDataSource;
+    Q_Recados: TIBQuery;
+    Q_RecadosDet: TIBQuery;
+    Q_RecadosDetDS: TDataSource;
+    Q_RecadosCAPTION: TIBStringField;
+    Q_RecadosQUANT: TIntegerField;
+    Q_RecadosIDFALSO: TIntegerField;
+    Q_CompromissosDetCOMPROMISSO: TIntegerField;
+    Q_CompromissosDetASSUNTO: TIBStringField;
+    Q_CompromissosDetDE: TIBStringField;
+    Q_CompromissosDetCOR: TIBStringField;
+    Q_CompromissosDetCOR_FONTE: TIBStringField;
+    Q_CompromissosDetHORARIO: TIntegerField;
+    Q_CompromissosDetHORARIO_FINAL: TIntegerField;
+    Q_CompromissosDetIDFALSO: TIntegerField;
+    Q_CompromissosDetSHORARIO: TIBStringField;
+    Q_VendasGrafDATA: TDateField;
+    Q_ChequesACompensarDetDESCCONTA: TIBStringField;
+    Q_ChequesACompensarDetCONTA: TIntegerField;
+    Q_ChequesImprimirDetDESCCONTA: TIBStringField;
+    Q_ChequesImprimirDetCONTA: TIntegerField;
+    Q_RecadosDetDATA: TDateField;
+    Q_RecadosDetHORARIO: TIntegerField;
+    Q_RecadosDetDE: TIBStringField;
+    Q_RecadosDetIDFALSO: TIntegerField;
+    Q_RecadosDetDESCRICAO: TIBStringField;
+    Q_RecadosDetRECADO: TIntegerField;
+    Q_ContasAgendadas: TIBQuery;
+    DataSource1: TDataSource;
+    Q_ContasAgendadasDet: TIBQuery;
+    DataSource2: TDataSource;
+    Q_ContasAgendadasIDFALSO: TIntegerField;
+    Q_ContasAgendadasVALOR: TIBBCDField;
+    Q_ContasAgendadasDetID: TIntegerField;
+    Q_ContasAgendadasDetNOME: TIBStringField;
+    Q_ContasAgendadasDetVENCIMENTO: TDateField;
+    Q_ContasAgendadasDetIDFALSO: TIntegerField;
+    Q_ContasAgendadasDetVALOR: TIBBCDField;
+    Q_ParcelasAReceberIDFALSO: TIntegerField;
+    Q_ParcelasAReceberVALOR: TIBBCDField;
+    C_LembretesDS: TDataSource;
+    Q_LembretesProvider: TDataSetProvider;
+    U_Lembretes: TIBUpdateSQL;
+    Q_Lembretes: TIBQuery;
+    C_Lembretes: TClientDataSet;
+    C_LembretesLEMBRETE: TIntegerField;
+    C_LembretesDATAINICIAL: TDateField;
+    C_LembretesOBS: TStringField;
+    C_LembretesSITUACAO: TStringField;
+    C_LembretesDOMINGO: TStringField;
+    C_LembretesSEGUNDA: TStringField;
+    C_LembretesTERCA: TStringField;
+    C_LembretesQUARTA: TStringField;
+    C_LembretesQUINTA: TStringField;
+    C_LembretesSEXTA: TStringField;
+    C_LembretesSABADO: TStringField;
+    C_LembretesTIPO: TIntegerField;
+    Q_Memorizacao: TIBQuery;
+    C_Memorizacao: TClientDataSet;
+    C_MemorizacaoMEMORIZACAO: TIntegerField;
+    C_MemorizacaoDATA: TDateField;
+    C_MemorizacaoORIGEM: TIntegerField;
+    C_MemorizacaoIDGERADOR: TIntegerField;
+    C_MemorizacaoDESCRICAO: TStringField;
+    C_MemorizacaoNUMERO: TStringField;
+    C_MemorizacaoTIPO: TStringField;
+    C_MemorizacaoFORMNAME: TStringField;
+    Q_MemorizacaoProvider: TDataSetProvider;
+    C_MemorizacaoDS: TDataSource;
+    C_MemorizacaoNOME: TStringField;
+    Q_LembretesMaster: TIBQuery;
+    Q_LembretesMasterDESCRICAO: TIBStringField;
+    Q_LembretesMasterIDFALSO: TIntegerField;
+    Q_LembretesMasterQTDE: TIntegerField;
+    C_LembretesIDFALSO: TIntegerField;
+    Q_LembretesMasterDS: TDataSource;
+    Q_MemorizacaoMaster: TIBQuery;
+    Q_MemorizacaoMasterIDFALSO: TIntegerField;
+    Q_MemorizacaoMasterDESCRICAO: TIBStringField;
+    Q_MemorizacaoMasterQUANT: TIntegerField;
+    Q_MemorizacaoMasterDS: TDataSource;
+    C_MemorizacaoIDFALSO: TIntegerField;
+    Q_ParcelasAReceberDESCRICAO: TIBStringField;
+    Q_ContasAPagarDESCRICAO: TIBStringField;
+    Q_ChequesDepositarDESCRICAO: TIBStringField;
+    Q_ChequesACompensarDESCRICAO: TIBStringField;
+    Q_CompromissosDetDATA: TDateField;
+    Q_Vendas: TIBQuery;
+    Q_VendasDet: TIBQuery;
+    Q_VendasIDFALSO: TIntegerField;
+    Q_VendasDetIDFALSO: TIntegerField;
+    Q_VendasDetDATA: TDateField;
+    Q_VendasDetDESCRICAO: TIBStringField;
+    Q_VendasDS: TDataSource;
+    Q_VendasDetDS: TDataSource;
+    Q_VendasDetSAIDAITEM: TIntegerField;
+    Q_VendasDESCRICAO: TIBStringField;
+    Q_ContasAgendadasDESCRICAO: TIBStringField;
+    Q_CompromissosCAPTION: TIBStringField;
+    Q_ParcelasAReceberDetTITULO: TIBStringField;
+    Q_ContasAPagarDetTITULO: TIBStringField;
+    Q_ItensEstoqueMinimo: TIBQuery;
+    Q_ItensEstoqueMinimoIDFALSO: TIntegerField;
+    Q_ItensEstoqueMinimoDESCRICAO: TIBStringField;
+    Q_ItensEstoqueMinimoQUANT: TIntegerField;
+    Q_ItensEstoqueMinimoDS: TDataSource;
+    Q_ItensEstoqueMinimoDet: TIBQuery;
+    Q_ItensEstoqueMinimoDetDS: TDataSource;
+    Q_ItensEstoqueMinimoDetIDFALSO: TIntegerField;
+    Q_ItensEstoqueMinimoDetITEM: TIntegerField;
+    Q_ItensEstoqueMinimoDetCODIGO: TIBStringField;
+    Q_ItensEstoqueMinimoDetDESCRICAO: TIBStringField;
+    Q_ItensEstoqueMinimoDetESTOQUE: TFloatField;
+    Q_ItensEstoqueMinimoDetMINIMO: TFloatField;
+    Q_ItensEstoquePP: TIBQuery;
+    Q_ItensEstoquePPDS: TDataSource;
+    Q_ItensEstoquePPDet: TIBQuery;
+    Q_ItensEstoquePPDetDS: TDataSource;
+    Q_ItensEstoquePPIDFALSO: TIntegerField;
+    Q_ItensEstoquePPDESCRICAO: TIBStringField;
+    Q_ItensEstoquePPQUANT: TIntegerField;
+    Q_ItensEstoquePPDetIDFALSO: TIntegerField;
+    Q_ItensEstoquePPDetITEM: TIntegerField;
+    Q_ItensEstoquePPDetCODIGO: TIBStringField;
+    Q_ItensEstoquePPDetDESCRICAO: TIBStringField;
+    Q_ItensEstoquePPDetESTOQUE: TFloatField;
+    Q_ItensEstoquePPDetPONTOPEDIDO: TFloatField;
+    Q_VendasDetSAIDA: TIntegerField;
+    Q_VendasDetITEM: TIntegerField;
+    Q_VendasDetTIPOPADRAO: TIntegerField;
+    Q_VendasDetTIPOORIGEM: TIntegerField;
+    Q_VendasPorVendedorTOTAL: TFloatField;
+    Q_VendasGrafTOTAL: TFloatField;
+    Q_VendasTOTAL: TFloatField;
+    Q_VendasDetQUANTIDADE: TFloatField;
+    Q_VendasDetSUBTOTALITEM: TFloatField;
+    procedure Q_CompromissosDetSHORARIOGetText(Sender: TField;
+      var Text: String; DisplayText: Boolean);
+    procedure C_SaldoContasFilterRecord(DataSet: TDataSet;
+      var Accept: Boolean);
+    procedure Q_RecadosDetHORARIOGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+    procedure Q_ChequesDepositarVALORGetText(Sender: TField;
+      var Text: String; DisplayText: Boolean);
+    procedure Q_CompromissosQUANTGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMLembretes: TDMLembretes;
+
+implementation
+
+uses DM_Projeto, DM_Financeiro, funcoes;
+
+{$R *.DFM}
+
+
+procedure TDMLembretes.Q_CompromissosDetSHORARIOGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  Text := IntegerToHora(Q_CompromissosDetHORARIO.Value)+' às '+IntegerToHora(Q_CompromissosDetHORARIO_FINAL.Value);
+end;
+
+procedure TDMLembretes.C_SaldoContasFilterRecord(DataSet: TDataSet;
+  var Accept: Boolean);
+begin
+	Accept := C_SaldoContasSaldo.AsFloat > 0;
+end;
+
+procedure TDMLembretes.Q_RecadosDetHORARIOGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  Text := IntegerToHora(Sender.AsInteger,DMProjeto.bFormatoAMPM);
+end;
+
+procedure TDMLembretes.Q_ChequesDepositarVALORGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  Text := formatfloat('###,##0.00',Sender.AsCurrency);
+end;
+
+procedure TDMLembretes.Q_CompromissosQUANTGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  Text := IntToStr(Sender.AsInteger);
+end;
+
+end.

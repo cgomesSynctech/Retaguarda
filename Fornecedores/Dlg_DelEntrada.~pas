@@ -1,0 +1,59 @@
+unit Dlg_DelEntrada;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DlgMsg, FRM_MODELOCADASTROS, FormsComponent, Placemnt, BTOdeum, Menus,
+  TS_PopupMenu, TS_LastDataObject, dxfLabel, StdCtrls, TS_Label,
+  ExtCtrls, TS_Image, TS_MaxPanel, TS_Bevel, Buttons, TS_SpeedButton,
+  teCtrls, TS_EffectsPanel, TS_BitBtn, dxCntner, dxEditor, dxEdLib, TS_Edit;
+
+type
+  TDlgDelEntrada = class(TFrmModeloCadastros)
+    TS_Label1: TTS_Label;
+    TS_Label2: TTS_Label;
+    chave: TTS_Edit;
+    procedure TS_BitBtn1Click(Sender: TObject);
+    procedure btGravarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DlgDelEntrada: TDlgDelEntrada;
+
+implementation
+
+uses DM_Projeto, Funcoes;
+
+{$R *.dfm}
+
+procedure TDlgDelEntrada.TS_BitBtn1Click(Sender: TObject);
+begin
+  inherited;
+       exit ;
+end;
+
+procedure TDlgDelEntrada.btGravarClick(Sender: TObject);
+begin
+  inherited;
+      DlgMsg.ShowMsg(8088);
+   if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
+      DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
+   With DMProjeto.StoreProcedure do Begin
+      StoredProcName := 'APAGARENTRADASISTEMA';
+      ParamByName('CHAVENF').Value := chave.Text ;
+      ParamByName('USUARIOLOG').Value := DMProjeto.nFuncionarioLogado ;
+      ParamByName('DT').Value := DMProjeto.dDataSistemaAtual ;
+
+      ExecProc;
+   End;
+   DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+   MessageDlg('Comando Realizado Com Êxito!', mtInformation, [mbOK], 0);
+
+end;
+
+end.

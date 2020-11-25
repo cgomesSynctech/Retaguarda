@@ -1,0 +1,311 @@
+unit Frm_FaturarPedidos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, FRM_MODELOCADASTROS, FormsComponent, Placemnt, BTOdeum, Menus,
+  TS_PopupMenu, TS_LastDataObject, DlgMsg, dxfLabel, StdCtrls, TS_Label,
+  ExtCtrls, TS_Image, TS_MaxPanel, TS_Bevel, Buttons, TS_SpeedButton,
+  teCtrls, TS_EffectsPanel, dxExEdtr, dxCntner, dxTL, dxDBCtrl, dxDBGrid,
+  TS_QDBGrid, dxDBTLCl, dxGrClms, DB, DBClient, Provider, IBCustomDataSet,
+  IBQuery, IBUpdateSQL, dxEditor, dxEdLib, TS_DateTimePicker, ComCtrls;
+
+type
+  TFrmFaturarPedidos = class(TFrmModeloCadastros)
+    GridMovs: TTS_QDBGrid;
+    GridMovsSAIDA: TdxDBGridMaskColumn;
+    GridMovsNUMERO: TdxDBGridMaskColumn;
+    GridMovsDATA: TdxDBGridDateColumn;
+    GridMovsCLIENTE: TdxDBGridMaskColumn;
+    GridMovsVENDEDOR: TdxDBGridMaskColumn;
+    GridMovsSTATUS: TdxDBGridMaskColumn;
+    GridMovsTOTAL: TdxDBGridCurrencyColumn;
+    GridMovsOBS: TdxDBGridMaskColumn;
+    Q_Movimentos: TIBQuery;
+    P_Movimentos: TDataSetProvider;
+    C_Movimentos: TClientDataSet;
+    C_Movimentos_icSelecionado: TIntegerField;
+    C_MovimentosDS: TDataSource;
+    Q_MovimentosDS: TDataSource;
+    C_MovimentosSAIDA: TIntegerField;
+    C_MovimentosNUMERO: TStringField;
+    C_MovimentosDATA: TDateField;
+    C_MovimentosCLIENTE: TStringField;
+    C_MovimentosVENDEDOR: TStringField;
+    C_MovimentosSTATUS: TStringField;
+    C_MovimentosTOTAL: TBCDField;
+    C_MovimentosOBS: TStringField;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label3: TLabel;
+    dfDataInicial: TTS_DateTimePicker;
+    dfDataFinal: TTS_DateTimePicker;
+    Q_Sql: TIBQuery;
+    C_MovimentosPDV: TIntegerField;
+    Q_SaidasItens: TIBQuery;
+    Q_SaidasItensDs: TDataSource;
+    P_SaidasItens: TDataSetProvider;
+    C_SaidasItens: TClientDataSet;
+    Q_Titulos: TIBQuery;
+    P_Titulos: TDataSetProvider;
+    C_Titulos: TClientDataSet;
+    Q_TitulosDs: TDataSource;
+    pbFaturamento: TProgressBar;
+    procedure btLimparClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btGravarClick(Sender: TObject);
+  private
+    { Private declarations }
+
+    Function CriarSaidaItem(saida, saidaitem, pdv: integer): integer;
+    Function CriarSaida(saida, pdv: integer): integer;
+    Function CriarTituloAReceber(titulo, pdv, saida_nova: integer): integer;
+
+
+
+    procedure Pesquisar();
+    procedure Faturar(saida, pdv: integer);
+    procedure JoinItensMescla(SAIDAITEM, SAIDAITEM_NOVA, PDV, SAIDA: integer);
+
+
+    procedure ModificarPedido(saida, pdv: integer);
+    procedure ModificarPedidosItens(saida, pdv: integer);
+    procedure ExecSQL(comando: string);
+
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmFaturarPedidos: TFrmFaturarPedidos;
+
+implementation
+
+uses DM_Projeto, Funcoes;
+
+{$R *.dfm}
+
+Function TFrmFaturarPedidos.CriarTituloAReceber(titulo, pdv, saida_nova: integer): integer;
+Var comando: string;
+ id: integer;
+Begin
+   id := DMProjeto.NextIDGlobal;
+   comando := 'INSERT INTO TITULOSARECEBER (EMPRESA, ID, PDV, TITULO, PARCELA, VALOR, VENCIMENTO, COMPETENCIA, VALORPAGO, DATAPAGO, OBS, '+
+                'VENDA, CLIENTE, NUMBOLETO, BANCO, NOTAFISCAL, STATUS, VENDEDOR, DATAANTECIPACAO, VALORDESCANTECIPADO, PERCENTUALMULTA, '+
+                'PERCENTUALMORA, JUROSPLANO, USUARIO, IDCOMISSAO, DESCONTOS, JUROSRECEBIDOS, DATAATRASADO, VALORJUROSMORA, VALORMULTA, '+
+                'CREDITOUTILIZADO, DATACANCELAMENTO, FUNCCANCELAMENTO, OPENBALANCE, CREDITOGERADO, FALTARECEBER, DOC_GARANTIA, IMPORTACAO, '+
+                'ORIGEM_ARECEBER, IDGERADOR_ARECEBER, CONTAARECEBER, TIPOCOBRANCA, DATAPRORROGACAO, CARTEIRA, ROMANEIO, REMESSA, ORIGEMREPLIC, '+
+                'NOSSONUMERO, DIGITONOSSONUMERO) '+
+                'SELECT EMPRESA, '+IntToStr(id)+', PDV, TITULO, PARCELA, VALOR, VENCIMENTO, COMPETENCIA, VALORPAGO, DATAPAGO, OBS, ' +
+                IntToStr(saida_nova)+', CLIENTE, NUMBOLETO, BANCO, NOTAFISCAL, STATUS, VENDEDOR, DATAANTECIPACAO, VALORDESCANTECIPADO, '+
+                'PERCENTUALMULTA, PERCENTUALMORA, JUROSPLANO, USUARIO, IDCOMISSAO, DESCONTOS, JUROSRECEBIDOS, DATAATRASADO, VALORJUROSMORA, '+
+                'VALORMULTA, CREDITOUTILIZADO, DATACANCELAMENTO, FUNCCANCELAMENTO, OPENBALANCE, CREDITOGERADO, FALTARECEBER, DOC_GARANTIA, '+
+                'IMPORTACAO, ORIGEM_ARECEBER, IDGERADOR_ARECEBER, CONTAARECEBER, TIPOCOBRANCA, DATAPRORROGACAO, CARTEIRA, ROMANEIO, REMESSA, '+
+                'ORIGEMREPLIC, NOSSONUMERO, DIGITONOSSONUMERO FROM TITULOSARECEBER WHERE Id = '+IntToStr(titulo)+' AND PDV = '+IntToStr(pdv);
+   ExecSql(comando);
+   result := id;
+End;
+
+procedure TFrmFaturarPedidos.JoinItensMescla(SAIDAITEM, SAIDAITEM_NOVA, PDV, SAIDA: integer);
+Var comando: string;
+Begin
+   comando := 'INSERT INTO SAIDASITENSMESCLA (EMPERSA, PDV, SAIDAITEM_ORIGINAL, SAIDAITEM, QUANTIDADE, QTDMAXIMA, SAIDA_ORIGINAL, FECHAR_ORIGINAL, UNIDADE, FATOR, IMPORTACAO, ORIGEMREPLIC) '+
+              'SELECT EMPRESA, PDV, SAIDAITEM, '+IntToStr( SAIDAITEM_NOVA )+', QUANTIDADE, QUANTIDADE, '+IntToStr( SAIDA )+', ''S'', UNIDADE, FATOR, 0, ''R'' '+
+              'FROM SAIDASITENS WHERE SAIDAITEM = '+IntToStr( SAIDAITEM_NOVA )+' and PDV = '+IntToStr( PDV );
+   ExecSql(comando);
+End;
+
+
+Function TFrmFaturarPedidos.CriarSaida(saida, pdv: integer): integer;
+Var sNumeroGerado, comando: string;
+    IDSaida: integer;
+Begin
+   //Criando Saidas
+   sNumeroGerado := AdicionarStr(IntToStr(DMProjeto.NextID('NOTAFISCAL')), '0', 7);
+   IDSaida := DMProjeto.NextIDGlobal;
+   comando := 'INSERT INTO SAIDAS (EMPRESA, SAIDA, PDV, NUMERO, DATA, FAVORECIDO, OBS, TAX, PERCENTUALTAX, DESCONTO, PLANOPAGAMENTO, '+
+                'VENDEDOR,FRETE, TOTAL, TIPOENTREGA, DATAENTREGA, IMPORTACAO, SITUACAO, TIPOMOVIMENTO, PEDIDO_CLIENTE, OUTRASDESPESAS, '+
+                'JUROS, POSSUITAX, BAIXAESTOQUE, CALCCOMISSAO, POSSUIENTREGA, CAMPO01, CAMPO02, CAMPO03, CAMPO04, IMPRESSO, '+
+                'IMPOSTO, IMPOSTO_INCLUSO, PCOMISSAO, CAIXA, LOCALENTREGA, TABELAPADRAO, TIPOPADRAO, DATACANCELAMENTO, '+
+                'FUNCCANCELAMENTO, MOTIVOCANCELAMENTO, PJUROS, VALORCOMISSAO, TOTALITENS, VALIDADE, CONDICOESPGTO, '+
+                'DATAENTREGUE, STATUS, TOTALITENS123, BASEIMPOSTO, BASEINCLUSO, DESCONTOITENS, TIPOIMPRESSAO, TOTALPGTOS, '+
+                'STATUSANTERIOR, REDUCOESBASE, ACRESCIMOSBASE, DTMODIFICACAO, VOLUMES, TERMOCONTRATO, ALMOXPADRAO, CFOPNOTA, '+
+                'SERIENOTA, UFDESTINO, BASECALCICMS, VALORICMS, VALORISS, VALORIPI, BASECALCSUBST, VALORICMSSUBST, VALORSEGURO, '+
+                'TIPOFRETE, TRANSPORTADORA, PESOBRUTO, PESOLIQUIDO, ALIQICMSVENDA, VALORISENTAS, TOTALSERVICOS, DESCESPECIE, '+
+                'DESCMARCA, DESCNUMERO, INDICADOPELOFAV, POSSUIICMS, POSSUIIPI, POSSUIISS, CONTABILIZAICMS, MODELO, '+
+                'VALOROUTRASICMS, VALORISENTASIPI, VALOROUTRASIPI, FONTE, PLACAVEIC, ATRATAR, INTRODUCAO, PRAZOENTREGA, '+
+                'GARANTIA, SEESTOQUE, PROCESSO, CARTACONVITE, TOMADAPRECOS, DATAABERTURA, EXPLICACOES, LICITACAOICMS, SUBSTTRIB, '+
+                'PJUROSNEGOCIADO, CONDICOESPAGTO, TOTALPRODUTOS, VALORIPIITENS, BASECALCICMSITENS, VALORICMSITENS, '+
+                'BASECALCSUBSTITENS, COBRANCA, CARTEIRA, MEDICO, NF_CUPOM, DEVOLUCAO, BAIXAESTOQUEFISCAL, HORA, MENSAGEMITEM, '+
+                'NUMEROSERIEECF, NUMEROECF, CCF, CRZ, DETALHEIMPORTACAO, MD5, ORIGEMREPLIC) '+
+              'select EMPRESA, '+IntToStr(IDSaida)+',  PDV, '''+sNumeroGerado+''', CURRENT_DATE , FAVORECIDO, OBS, TAX, PERCENTUALTAX, DESCONTO, '+
+                'PLANOPAGAMENTO, VENDEDOR, FRETE, TOTAL, '+
+                'TIPOENTREGA, DATAENTREGA, IMPORTACAO, SITUACAO, 1, PEDIDO_CLIENTE, OUTRASDESPESAS, JUROS, POSSUITAX, BAIXAESTOQUE, CALCCOMISSAO, '+
+                'POSSUIENTREGA, CAMPO01, CAMPO02, CAMPO03, CAMPO04, IMPRESSO, IMPOSTO, IMPOSTO_INCLUSO, PCOMISSAO, CAIXA, LOCALENTREGA, '+
+                'TABELAPADRAO, 1, DATACANCELAMENTO, FUNCCANCELAMENTO, MOTIVOCANCELAMENTO, PJUROS, VALORCOMISSAO, TOTALITENS, VALIDADE, '+
+                'CONDICOESPGTO, DATAENTREGUE, STATUS, TOTALITENS123, BASEIMPOSTO, BASEINCLUSO, DESCONTOITENS, TIPOIMPRESSAO, TOTALPGTOS, '+
+                'STATUSANTERIOR, REDUCOESBASE, ACRESCIMOSBASE, DTMODIFICACAO, VOLUMES, TERMOCONTRATO, ALMOXPADRAO, CFOPNOTA, SERIENOTA, '+
+                'UFDESTINO, BASECALCICMS, VALORICMS, VALORISS, VALORIPI, BASECALCSUBST, VALORICMSSUBST, VALORSEGURO, TIPOFRETE, TRANSPORTADORA, '+
+                'PESOBRUTO, PESOLIQUIDO, ALIQICMSVENDA, VALORISENTAS, TOTALSERVICOS, DESCESPECIE, DESCMARCA, DESCNUMERO, INDICADOPELOFAV, '+
+                'POSSUIICMS, POSSUIIPI, POSSUIISS, CONTABILIZAICMS, MODELO, VALOROUTRASICMS, VALORISENTASIPI, VALOROUTRASIPI, FONTE, PLACAVEIC, '+
+                'ATRATAR, INTRODUCAO, PRAZOENTREGA, GARANTIA, SEESTOQUE, PROCESSO, CARTACONVITE, TOMADAPRECOS, DATAABERTURA, EXPLICACOES, '+
+                'LICITACAOICMS, SUBSTTRIB, PJUROSNEGOCIADO, CONDICOESPAGTO, TOTALPRODUTOS, VALORIPIITENS, BASECALCICMSITENS, VALORICMSITENS, '+
+                'BASECALCSUBSTITENS, COBRANCA, CARTEIRA, MEDICO, NF_CUPOM, DEVOLUCAO, BAIXAESTOQUEFISCAL, HORA, MENSAGEMITEM, NUMEROSERIEECF, '+
+                'NUMEROECF, CCF, CRZ, DETALHEIMPORTACAO, MD5, ORIGEMREPLIC ' +
+              'From saidas s where tipopadrao = 2 and  saida = '+InttoStr(saida)+' and pdv = '+IntToStr(pdv);
+    ExecSql(comando);
+    result := IDSaida;
+End;
+
+Function TFrmFaturarPedidos.CriarSaidaItem(saida, saidaitem, pdv: integer): integer;
+Var comando: string;
+    IDSaidaItem: integer;
+Begin
+   IDSaidaItem := DMProjeto.NextIDGlobal;
+   comando := 'INSERT INTO SAIDASITENS '+
+                '(EMPRESA, SAIDA, SAIDAITEM, PDV, SEQUENCIA, ITEM, DESCRICAO, QUANTIDADE, PRECO, TAXAVEL, IMPORTACAO, CONTAVENDA, '+
+                'TABELAPRECO, PRECOTABELA, USOTIPOITEM, SUBTOTALITEM, ORDEM, CUSTOMEDIO, CUSTOCONTABIL, RATEIODESCONTO, HASCHILDREN, '+
+                'PRODUCAO, FUNCPRODUCAO, COLUNA1, COLUNA2, COLUNA3, COLUNA4, MAXDESCONTO, DESPESA, ENTRADAITEM, CONTRATOREF, QTDFATURADA, '+
+                'MESCLADO, STATUS, QTDMONTAGEM, NUMEROLOTE, UNIDADE, FATOR, N_USOTIPOITEM, DESCONTO, DESCRICAOCOMPLEMENTAR, PROMOCAO, '+
+                'PRECOSEMPROMOCAO, BAIXAESTOQUE, ALMOXARIFADO, ORDEMMONTAGEM, BASECALCICMSPROD, IPI, ALIQICMS, CST, REDUCAOCST, SITUACAOECF, '+
+                'CFOPNOTA, BASECALCSUBSTPROD, VALORIPIPROD, TVA, NUMEROITEM, REGISTRO, VALORICMSPROD, VALORISENTASPROD, VALORICMSSUBSTPROD, '+
+                'PDESCONTO, QTDDEVOLVIDO, QTDACERTADO, DATACONTATO, CFOPCST, IDCFOPCST, BAIXAESTOQUEFISCAL, IDTRIBFEDERAL, QUANTIDADEVOLUME, '+
+                'CSTPISCOFINS, ALIQPIS, ALIQCOFINS, CSTIPI, ALIQIPI, VALORPISPROD, VALORCOFINSPROD, ULTIMOPRECOCOMPRA, V_BCII, V_DESPADUII, '+
+                'V_II, V_IOFII, PCOMISSAO, SITUACAO, MD5, ACRESCIMO, RATEIODESPESAS, RATEIOFRETE, RATEIOSEGURO, ORIGEMREPLIC, PRECOCUSTOLICITACAO) '+
+              'SELECT '+
+                'EMPRESA, '+IntToStr(saida)+', '+IntToStr(IDSaidaItem)+', PDV, SEQUENCIA, ITEM, DESCRICAO, QUANTIDADE, PRECO, TAXAVEL, IMPORTACAO, CONTAVENDA, '+
+                'TABELAPRECO, PRECOTABELA, USOTIPOITEM, SUBTOTALITEM, ORDEM, CUSTOMEDIO, CUSTOCONTABIL, RATEIODESCONTO, HASCHILDREN, '+
+                'PRODUCAO, FUNCPRODUCAO, COLUNA1, COLUNA2, COLUNA3, COLUNA4, MAXDESCONTO, DESPESA, ENTRADAITEM, CONTRATOREF, QTDFATURADA, '+
+                'MESCLADO, STATUS, QTDMONTAGEM, NUMEROLOTE, UNIDADE, FATOR, N_USOTIPOITEM, DESCONTO, DESCRICAOCOMPLEMENTAR, PROMOCAO, '+
+                'PRECOSEMPROMOCAO, BAIXAESTOQUE, ALMOXARIFADO, ORDEMMONTAGEM, BASECALCICMSPROD, IPI, ALIQICMS, CST, REDUCAOCST, SITUACAOECF, '+
+                'CFOPNOTA, BASECALCSUBSTPROD, VALORIPIPROD, TVA, NUMEROITEM, REGISTRO, VALORICMSPROD, VALORISENTASPROD, VALORICMSSUBSTPROD, '+
+                'PDESCONTO, QTDDEVOLVIDO, QTDACERTADO, DATACONTATO, CFOPCST, IDCFOPCST, BAIXAESTOQUEFISCAL, IDTRIBFEDERAL, QUANTIDADEVOLUME, '+
+                'CSTPISCOFINS, ALIQPIS, ALIQCOFINS, CSTIPI, ALIQIPI, VALORPISPROD, VALORCOFINSPROD, ULTIMOPRECOCOMPRA, V_BCII, V_DESPADUII, '+
+                'V_II, V_IOFII, PCOMISSAO, SITUACAO, MD5, ACRESCIMO, RATEIODESPESAS, RATEIOFRETE, RATEIOSEGURO, ORIGEMREPLIC, PRECOCUSTOLICITACAO '+
+              'FROM saidasitens where saidaitem = '+IntToStr(saidaitem)+' and pdv = '+IntToStr(pdv);
+      ExecSql(comando);
+      result := IDSaidaItem;
+End;
+
+
+procedure TFrmFaturarPedidos.ModificarPedido(saida, pdv: integer);
+var comando : string;
+Begin
+   comando := 'Update saidas set status = ''F'' where saida = '+InttoStr(saida)+' and pdv = '+IntToStr(pdv);
+   ExecSQL(comando);
+End;
+
+procedure TFrmFaturarPedidos.ModificarPedidosItens(saida, pdv: integer);
+Var comando: string;
+Begin
+   comando := 'Update saidasitens set qtdfaturada = quantidade where saida = '+InttoStr(saida)+' and pdv = '+IntToStr(pdv);
+   ExecSQL(comando);
+End;
+
+
+procedure TFrmFaturarPedidos.ExecSQL(comando: string);
+Begin
+  With Q_Sql do Begin
+    Close;
+    SQL.Text := comando;
+    ExecSQL;
+  End;
+End;
+
+procedure TFrmFaturarPedidos.Faturar(saida, pdv: integer);
+var saidaitem_Novo, saida_nova, saidaitem, IdTitulo: Integer  ;
+Begin
+  ModificarPedido(saida, pdv);
+  ModificarPedidosItens(saida, pdv);
+  saida_nova := CriarSaida(saida, pdv);
+
+  With C_SaidasItens do Begin
+     Q_SaidasItens.close;
+     Q_SaidasItens.SQL.Clear;
+     Q_SaidasItens.SQL.Text := 'SELECT * FROM SAIDASITENS WHERE SAIDA = '+InttoStr(saida)+' AND PDV = '+InttoStr(pdv);
+     Open;
+     First;
+     While not Eof do begin
+       saidaitem := FieldByName('saidaitem').Value;
+       saidaitem_Novo := CriarSaidaItem(saida_nova, saidaitem, pdv);
+       JoinItensMescla(saidaitem, saidaitem_Novo, pdv, saida);
+       Next;
+     End;
+  End;
+
+ With C_Titulos do Begin
+     Q_Titulos.close;
+     Q_Titulos.SQL.Clear;
+     Q_Titulos.SQL.Text := 'SELECT * FROM TITULOSARECEBER WHERE VENDA = '+InttoStr(saida)+' AND PDV = '+InttoStr(pdv);
+     Open;
+     First;
+     While not Eof do begin
+       IdTitulo := FieldByName('Id').Value;
+       CriarTituloAReceber(IdTitulo,pdv,saida_nova);
+       Next;
+     End;
+  End;
+
+End;
+
+
+procedure TFrmFaturarPedidos.Pesquisar();
+Begin
+  With C_Movimentos do Begin
+     Close;
+     Q_Movimentos.close;
+     Q_Movimentos.ParamByName('DataInicial').Value := dfDataInicial.Date;
+     Q_Movimentos.ParamByName('DataFinal').Value := dfDataFinal.Date;
+     Open;
+  End;
+End;
+
+procedure TFrmFaturarPedidos.btLimparClick(Sender: TObject);
+begin
+  inherited;
+  Pesquisar();
+end;
+
+procedure TFrmFaturarPedidos.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dfDataInicial.Date := Date;
+  dfDataFinal.Date := Date;
+end;
+
+procedure TFrmFaturarPedidos.btGravarClick(Sender: TObject);
+Var i: Integer;
+begin
+  inherited;
+  Try
+    if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
+      DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
+
+    C_Movimentos.DisableControls;
+    pbFaturamento.Visible := true;
+    pbFaturamento.Max := C_Movimentos.RecordCount;
+    pbFaturamento.Position := 0;
+    while not C_Movimentos.eof do begin
+      pbFaturamento.Position := pbFaturamento.Position + 1;    
+      if C_Movimentos.FieldByName('_icSelecionado').asInteger = 1 then begin
+         Faturar(C_Movimentos.FieldByName('Saida').AsInteger, C_Movimentos.FieldByName('PDV').AsInteger);
+      End;
+      C_Movimentos.Next;
+    End;
+    DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+    ShowMessage('Processamento realizado com êxito!');
+    pbFaturamento.Visible := false;
+    pbFaturamento.Max := 0;
+    pbFaturamento.Position := 0;
+    C_Movimentos.EnableControls;
+    Pesquisar();
+  Except
+   on E : Exception do begin
+     DMProjeto.DB_Projeto.DefaultTransaction.Rollback;
+     ShowMessage('Ocorreu erro ao se tentar faturar os pedidos, favor enviar este erro para o suporte: '#13#10+e.Message);
+   End;
+  End;
+end;
+
+end.

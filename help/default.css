@@ -1,0 +1,23 @@
+A:link    {text-decoration: none; FONT-SIZE: 12px; FONT-FAMILY: Tahoma; COLOR: #339966; }
+A:visited {text-decoration: none; FONT-SIZE: 12px; FONT-FAMILY: Tahoma; COLOR: #339966; }
+A:hover   {text-decoration: underline; FONT-SIZE: 12px; FONT-FAMILY: Tahoma; COLOR: #406AA4; }
+A:active  {text-decoration: underline; FONT-SIZE: 12px; FONT-FAMILY: Tahoma; COLOR: #406AA4; }
+
+OL {
+	FONT-FAMILY: Verdana, Arial; FONT-SIZE: 12px; LIST-STYLE: decimal
+}
+
+.subtitulo {
+	COLOR: #00639c; FONT-FAMILY: Tahoma; FONT-SIZE: 13px; FONT-WEIGHT: bold
+}
+
+.explicativo {
+	FONT-FAMILY: Tahoma; FONT-SIZE: 12px
+}
+
+.fundotabela {
+	background-color: #000000;
+}
+.linkImagem {
+
+}

@@ -1,0 +1,83 @@
+unit Frm_MontagensProduto;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, FRM_PADRAO, dxExEdtr, Placemnt, BTOdeum, FormComponent, ImgList,
+  Menus, TS_PopupMenu, TS_LastDataObject, DlgMsg, StdCtrls, TS_Label,
+  ExtCtrls, TS_Image, dxfLabel, TS_MaxPanel, dxfProgressBar, dxTLClms,
+  dxTL, dxCntner, dxDBCtrl, dxDBGrid, TS_QDBGrid, TS_Bevel, Buttons,
+  TS_SpeedButton, teCtrls, TS_EffectsPanel, dxDBTLCl, dxGrClms;
+
+type
+  TFrmMontagensProduto = class(TFrmPadrao)
+    dbgSubItens: TTS_QDBGrid;
+    dbgSubItensMONTAGEMFILHO: TdxDBGridMaskColumn;
+    dbgSubItensMONTAGEM: TdxDBGridMaskColumn;
+    dbgSubItensITEM: TdxDBGridMaskColumn;
+    dbgSubItensQUANTIDADE: TdxDBGridCurrencyColumn;
+    dbgSubItensUNIDADE: TdxDBGridMaskColumn;
+    dbgSubItensFATOR: TdxDBGridMaskColumn;
+    dbgSubItensQTDE: TdxDBGridCurrencyColumn;
+    dbgSubItensEMPRESA: TdxDBGridMaskColumn;
+    dbgSubItensORIGEMREPLIC: TdxDBGridMaskColumn;
+    dbgSubItensCODIGO: TdxDBGridButtonColumn;
+    dbgSubItensDESCRICAO: TdxDBGridButtonColumn;
+    procedure FormComponentBeforeClearParams(Sender: TObject);
+    procedure dbgSubItensTS_AfterNewRecord(Sender: TObject);
+    procedure dbgSubItensTS_AposLocalizar(Sender: TObject);
+    procedure dbgSubItensTS_BeforeLocalizar(Sender: TObject; var Campo,
+      Conteudo: String);
+  private
+    { Private declarations }
+        LastItemColumn : String;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMontagensProduto: TFrmMontagensProduto;
+
+implementation
+
+uses DM_Projeto, DM_MontagensProduto, Form_Padrao, funcoes;
+
+{$R *.dfm}
+
+procedure TFrmMontagensProduto.FormComponentBeforeClearParams(
+  Sender: TObject);
+begin
+  inherited;
+    DMMontagensProduto.idMontagem := IIF(DMProjeto.GetParametrosForm(0) <> null, DMProjeto.GetParametrosForm(0), 1);
+end;
+
+procedure TFrmMontagensProduto.dbgSubItensTS_AfterNewRecord(
+  Sender: TObject);
+begin
+  inherited;
+  dbgSubItens.TS_SelectedColumn := LastItemColumn;
+end;
+
+procedure TFrmMontagensProduto.dbgSubItensTS_AposLocalizar(
+  Sender: TObject);
+begin
+  inherited;
+  DMMontagensProduto.C_TabelaItem.AsInteger := DMProjeto.C_LocalizarItensItem.Value;
+  dbgSubItens.TS_SelectedColumn := 'QUANTIDADE';
+  dbgSubItens.ShowEditor;
+end;
+
+procedure TFrmMontagensProduto.dbgSubItensTS_BeforeLocalizar(
+  Sender: TObject; var Campo, Conteudo: String);
+begin
+  inherited;
+  if pos('CODIGO', Campo) > 0 then
+    LastItemColumn := 'CODIGO'
+  else if pos('REF', Campo) > 0 then
+    LastItemColumn := 'Referencia'
+  else
+    LastItemColumn := 'DESCRICAO';
+end;
+
+end.

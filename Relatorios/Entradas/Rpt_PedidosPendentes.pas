@@ -1,0 +1,90 @@
+unit Rpt_PedidosPendentes;
+                                     
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RPT_PADRAO, dxExEdtr, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg,
+  dxBkgnd, dxWrap, dxPrnDev, dxPSCore, dxPSdxTLLnk, dxPSdxDBCtrlLnk,
+  dxPSdxDBGrLnk, FormsComponent, DBClient, Provider, DB, IBCustomDataSet,
+  IBQuery, Placemnt, BTOdeum, Menus, TS_PopupMenu, TS_LastDataObject,
+  DlgMsg, dxCntner, dxTL, dxDBCtrl, dxDBGrid, TS_QDBGrid, teCtrls,
+  TS_EffectsPanel, StdCtrls, ComCtrls, ExtCtrls, TS_Label, Buttons,
+  TS_SpeedButton, dxfLabel, TS_MaxPanel, dxDBTLCl, dxGrClms, dxEdLib,
+  TS_CheckBox;
+
+type
+  TRptPedidosPendentes = class(TRptPadrao)
+    C_ConsultaFAVORECIDO: TIntegerField;
+    C_ConsultaF_NOME: TStringField;
+    C_ConsultaENTRADA: TIntegerField;
+    C_ConsultaDATA: TDateField;
+    C_ConsultaNUMERO: TStringField;
+    C_ConsultaPREVISAOENTREGA: TDateField;
+    C_ConsultaS_STATUS: TStringField;
+    dbgConsultaFAVORECIDO: TdxDBGridMaskColumn;
+    dbgConsultaF_NOME: TdxDBGridMaskColumn;
+    dbgConsultaENTRADA: TdxDBGridMaskColumn;
+    dbgConsultaDATA: TdxDBGridDateColumn;
+    dbgConsultaTOTAL: TdxDBGridCurrencyColumn;
+    dbgConsultaNUMERO: TdxDBGridMaskColumn;
+    dbgConsultaPREVISAOENTREGA: TdxDBGridDateColumn;
+    dbgConsultaS_STATUS: TdxDBGridMaskColumn;
+    C_ConsultaTOTAL: TFloatField;
+    procedure btAtualizarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure dbgConsultaDblClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure AtualizaConsulta;
+  public
+    { Public declarations }
+  end;
+
+var
+  RptPedidosPendentes: TRptPedidosPendentes;
+
+implementation
+
+uses DM_Projeto;
+
+{$R *.dfm}
+
+procedure TRptPedidosPendentes.AtualizaConsulta;
+begin
+  C_Consulta.Open;
+end;
+
+procedure TRptPedidosPendentes.btAtualizarClick(Sender: TObject);
+begin
+  inherited;
+  AtualizaConsulta;
+end;
+
+procedure TRptPedidosPendentes.FormShow(Sender: TObject);
+begin
+  inherited;
+  AtualizaConsulta;
+end;
+
+procedure TRptPedidosPendentes.dbgConsultaDblClick(Sender: TObject);
+var nId: integer;
+begin
+  inherited;
+  if (dbgConsulta.FocusedField.FieldName = 'NUMERO') or (dbgConsulta.FocusedField.FieldName = 'DATA')
+     or (dbgConsulta.FocusedField.FieldName = 'TOTAL') or (dbgConsulta.FocusedField.FieldName = 'PREVISAOENTREGA')
+     or (dbgConsulta.FocusedField.FieldName = 'S_STATUS') then begin
+       nId := dbgConsulta.GetFieldValue(dbgConsulta.FocusedNode,'ENTRADA',0);
+       DMProjeto.SetParametrosForm([nId]);
+       DMProjeto.CriarForm('FrmPedidosCompra',Self,True);
+  end
+  else begin
+    if (dbgConsulta.FocusedField.FieldName = 'F_NOME') then begin
+      nId := dbgConsulta.GetFieldValue(dbgConsulta.FocusedNode,'FAVORECIDO',0);
+      DMProjeto.SetParametrosForm([nId]);
+      DMProjeto.CriarForm('FrmFornecedores',Self,True);
+    end;
+  end;
+end;
+
+end.

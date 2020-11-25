@@ -1,0 +1,2837 @@
+inherited DlgRepasseEntreEmpresas: TDlgRepasseEntreEmpresas
+  Left = 152
+  Top = 149
+  Width = 775
+  Height = 457
+  HelpContext = 0
+  Caption = 'Financeiro'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnDados: TTS_Panel
+    Width = 649
+    Height = 384
+    Color = 15724519
+    object TS_Shape9: TTS_Shape
+      Left = 12
+      Top = 42
+      Width = 632
+      Height = 20
+      Brush.Color = 14078909
+      Pen.Style = psClear
+      Transparent = False
+    end
+    object TS_Shape11: TTS_Shape
+      Left = 12
+      Top = 60
+      Width = 630
+      Height = 40
+      Brush.Style = bsClear
+      Pen.Color = 14078909
+      Transparent = False
+    end
+    object TS_Shape10: TTS_Shape
+      Left = 12
+      Top = 106
+      Width = 633
+      Height = 19
+      Brush.Color = 14078909
+      Pen.Style = psClear
+      Transparent = False
+    end
+    object TS_Label1: TTS_Label
+      Left = 27
+      Top = 65
+      Width = 53
+      Caption = 'No Caixa:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label2: TTS_Label
+      Left = 146
+      Top = 67
+      Width = 77
+      Alignment = taLeftJustify
+      Caption = 'Ficarei com:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label3: TTS_Label
+      Left = 373
+      Top = 65
+      Width = 77
+      Alignment = taLeftJustify
+      Caption = 'Transferir:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Shape12: TTS_Shape
+      Left = 12
+      Top = 135
+      Width = 285
+      Height = 207
+      Brush.Style = bsClear
+      Pen.Color = 14078909
+      Transparent = False
+    end
+    object TS_Shape1: TTS_Shape
+      Left = 366
+      Top = 135
+      Width = 280
+      Height = 207
+      Brush.Style = bsClear
+      Pen.Color = 14078909
+      Transparent = False
+    end
+    object TS_SpeedButton1: TTS_SpeedButton
+      Left = 347
+      Top = 200
+      Width = 20
+      Height = 20
+      Hint = 'Repassar para o Caixa Principal os Selecionados'
+      Caption = '>'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = TS_SpeedButton1Click
+      RepeatedClick = False
+      Border = True
+    end
+    object TS_SpeedButton2: TTS_SpeedButton
+      Left = 347
+      Top = 222
+      Width = 20
+      Height = 20
+      Hint = 'N'#227'o repassar para o Caixa Principal os Selecionados'
+      Caption = '<'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = TS_SpeedButton2Click
+      RepeatedClick = False
+      Border = True
+    end
+    object TS_SpeedButton3: TTS_SpeedButton
+      Left = 347
+      Top = 255
+      Width = 20
+      Height = 20
+      Hint = 'Repassar todos os cheques'
+      Caption = '>>'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = TS_SpeedButton3Click
+      RepeatedClick = False
+      Border = True
+    end
+    object TS_SpeedButton4: TTS_SpeedButton
+      Left = 347
+      Top = 277
+      Width = 20
+      Height = 20
+      Hint = 'N'#227'o repassar nenhum cheque'
+      Caption = '<<'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = TS_SpeedButton4Click
+      RepeatedClick = False
+      Border = True
+    end
+    object TS_Label4: TTS_Label
+      Left = 19
+      Top = 44
+      Width = 94
+      Alignment = taLeftJustify
+      Caption = 'Dinheiro no Caixa:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label5: TTS_Label
+      Left = 373
+      Top = 44
+      Width = 265
+      Alignment = taLeftJustify
+      Caption = 'Transferir dinheiro para a Empresa Destino'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label6: TTS_Label
+      Left = 20
+      Top = 108
+      Width = 97
+      Alignment = taLeftJustify
+      Caption = 'Cheques no Caixa:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label7: TTS_Label
+      Left = 374
+      Top = 108
+      Width = 266
+      Alignment = taLeftJustify
+      Caption = 'Transferir cheques para a Empresa Destino'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label8: TTS_Label
+      Left = 130
+      Top = 344
+      Width = 145
+      Caption = 'Total de Cheques no Caixa:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label9: TTS_Label
+      Left = 344
+      Top = 344
+      Width = 181
+      Caption = 'Total de Cheques para Transferir:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lbCaixa: TTS_Label
+      Left = 113
+      Top = 44
+      Width = 184
+      Alignment = taLeftJustify
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lbCaixa2: TTS_Label
+      Left = 116
+      Top = 108
+      Width = 181
+      Alignment = taLeftJustify
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Image1: TTS_Image
+      Left = 346
+      Top = 41
+      Width = 21
+      Height = 19
+      Picture.Data = {
+        07544269746D6170C6050000424DC60500000000000036040000280000001400
+        0000140000000100080000000000900100000000000000000000000100000001
+        000000000000000080000080000000808000800000008000800080800000C0C0
+        C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+        FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+        FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+        96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+        FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+        FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+        96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+        FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+        FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+        96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+        AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+        C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+        31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+        2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+        B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+        00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+        2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+        B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+        00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+        2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+        B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DAB00003196
+        00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+        250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+        C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+        31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+        AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+        FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+        96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+        B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+        56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+        A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+        FF00010101010101010101010101010101010101010101010101010101010101
+        0101010101010101010101010101010101010101010101010101010101010101
+        0101E7EEEEE7010101E7EEEEE7010101010101010101EE0000EEE70101EE0000
+        EEE70101010101010101EE00BD00EEE701EE00BD00EEE7010101E7EEEEEEEE00
+        AFBD00EEEEEE00AFBD00EEE70101EE0000000000AFAFBD00000000AFAFBD00EE
+        E701EE00BAAFAFAFAFAFAFBD00BDAFAFAFAFBD00EEE7EE00BAAFAFAFAFAFAFAF
+        BD00AFAFAFAFAFBD00EEEE00BAAFAFAFAFAFAFAEBA00AFAFAFAFAEBA00F0EE00
+        BABABABAAEAFAEBA00BABAAEAFAEBA00F0E7EE0000000000AEAEBA00000000AE
+        AEBA00F0E701E7EEEEEEEE00AEBA00F0EEEE00AEBA00F0E7010101010101EE00
+        BA00F0E701EE00BA00F0E701010101010101EE0000F0E70101EE0000F0E70101
+        010101010101E7EEF0E7010101E7EEF0E7010101010101010101010101010101
+        0101010101010101010101010101010101010101010101010101010101010101
+        010101010101010101010101010101010101}
+      Transparent = True
+    end
+    object TS_Image2: TTS_Image
+      Left = 346
+      Top = 105
+      Width = 21
+      Height = 19
+      Picture.Data = {
+        07544269746D6170C6050000424DC60500000000000036040000280000001400
+        0000140000000100080000000000900100000000000000000000000100000001
+        000000000000000080000080000000808000800000008000800080800000C0C0
+        C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+        FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+        FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+        96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+        FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+        FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+        96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+        FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+        FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+        96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+        AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+        C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+        31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+        2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+        B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+        00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+        2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+        B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+        00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+        2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+        B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DAB00003196
+        00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+        250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+        C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+        31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+        AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+        FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+        96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+        B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+        56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+        A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+        FF00010101010101010101010101010101010101010101010101010101010101
+        0101010101010101010101010101010101010101010101010101010101010101
+        0101E7EEEEE7010101E7EEEEE7010101010101010101EE0000EEE70101EE0000
+        EEE70101010101010101EE00BD00EEE701EE00BD00EEE7010101E7EEEEEEEE00
+        AFBD00EEEEEE00AFBD00EEE70101EE0000000000AFAFBD00000000AFAFBD00EE
+        E701EE00BAAFAFAFAFAFAFBD00BDAFAFAFAFBD00EEE7EE00BAAFAFAFAFAFAFAF
+        BD00AFAFAFAFAFBD00EEEE00BAAFAFAFAFAFAFAEBA00AFAFAFAFAEBA00F0EE00
+        BABABABAAEAFAEBA00BABAAEAFAEBA00F0E7EE0000000000AEAEBA00000000AE
+        AEBA00F0E701E7EEEEEEEE00AEBA00F0EEEE00AEBA00F0E7010101010101EE00
+        BA00F0E701EE00BA00F0E701010101010101EE0000F0E70101EE0000F0E70101
+        010101010101E7EEF0E7010101E7EEF0E7010101010101010101010101010101
+        0101010101010101010101010101010101010101010101010101010101010101
+        010101010101010101010101010101010101}
+      Transparent = True
+    end
+    object TS_Label10: TTS_Label
+      Left = 17
+      Top = 6
+      Width = 86
+      Alignment = taLeftJustify
+      Caption = 'Empresa Origem:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lbEmpresaOrigem: TTS_Label
+      Left = 16
+      Top = 20
+      Width = 277
+      Alignment = taLeftJustify
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Image3: TTS_Image
+      Left = 347
+      Top = 17
+      Width = 21
+      Height = 19
+      Picture.Data = {
+        07544269746D6170C6050000424DC60500000000000036040000280000001400
+        0000140000000100080000000000900100000000000000000000000100000001
+        000000000000000080000080000000808000800000008000800080800000C0C0
+        C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+        FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+        FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+        96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+        FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+        FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+        96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+        FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+        FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+        96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+        AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+        C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+        31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+        2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+        B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+        00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+        2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+        B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+        00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+        2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+        B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DAB00003196
+        00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+        250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+        C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+        31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+        AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+        FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+        96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+        B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+        56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+        A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+        FF00010101010101010101010101010101010101010101010101010101010101
+        0101010101010101010101010101010101010101010101010101010101010101
+        0101E7EEEEE7010101E7EEEEE7010101010101010101EE0000EEE70101EE0000
+        EEE70101010101010101EE00BD00EEE701EE00BD00EEE7010101E7EEEEEEEE00
+        AFBD00EEEEEE00AFBD00EEE70101EE0000000000AFAFBD00000000AFAFBD00EE
+        E701EE00BAAFAFAFAFAFAFBD00BDAFAFAFAFBD00EEE7EE00BAAFAFAFAFAFAFAF
+        BD00AFAFAFAFAFBD00EEEE00BAAFAFAFAFAFAFAEBA00AFAFAFAFAEBA00F0EE00
+        BABABABAAEAFAEBA00BABAAEAFAEBA00F0E7EE0000000000AEAEBA00000000AE
+        AEBA00F0E701E7EEEEEEEE00AEBA00F0EEEE00AEBA00F0E7010101010101EE00
+        BA00F0E701EE00BA00F0E701010101010101EE0000F0E70101EE0000F0E70101
+        010101010101E7EEF0E7010101E7EEF0E7010101010101010101010101010101
+        0101010101010101010101010101010101010101010101010101010101010101
+        010101010101010101010101010101010101}
+      Transparent = True
+    end
+    object TS_Label12: TTS_Label
+      Left = 375
+      Top = 6
+      Width = 86
+      Alignment = taLeftJustify
+      Caption = '&Empresa Destino:'
+      FocusControl = cmbEmpresa
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lbCaixaDin: TStaticText
+      Left = 32
+      Top = 80
+      Width = 81
+      Height = 17
+      Alignment = taRightJustify
+      AutoSize = False
+      BorderStyle = sbsSunken
+      Caption = '0.00'
+      Color = 14408667
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 2
+    end
+    object DBCheques: TTS_QDBGrid
+      Left = 13
+      Top = 123
+      Width = 333
+      Height = 218
+      Hint = 'Selecione e arraste com o mouse'
+      Bands = <
+        item
+        end>
+      DefaultLayout = True
+      HeaderPanelRowCount = 1
+      KeyField = 'IDDOC'
+      SummaryGroups = <
+        item
+          DefaultGroup = True
+          SummaryItems = <
+            item
+              SummaryField = 'Valor'
+              SummaryFormat = '>Valor=###,###,##0.00'
+              SummaryType = cstSum
+            end>
+          Name = 'Default'
+        end>
+      SummarySeparator = ', '
+      BorderStyle = bsNone
+      DragMode = dmAutomatic
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnDblClick = DBChequesDblClick
+      OnDragDrop = DBChequesDragDrop
+      OnDragOver = DBChequesDragOver
+      OnMouseDown = DBChequesMouseDown
+      AutoSearchColor = 6611199
+      AutoSearchTextColor = clBlue
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'MS Sans Serif'
+      BandFont.Style = []
+      DataSource = C_ChequesDS
+      Filter.Criteria = {00000000}
+      GroupPanelColor = 15461355
+      HeaderColor = 15461355
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Tahoma'
+      HeaderFont.Style = []
+      HideFocusRect = True
+      HideSelection = True
+      OptionsBehavior = [edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoEnterThrough, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
+      OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoUseBookmarks]
+      OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoUseBitmap]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clBlue
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'MS Sans Serif'
+      PreviewFont.Style = []
+      TS_PermitirQuantidade = False
+      TS_DescriptionCanChange = False
+      TS_AppendOnEnter = False
+      RowFooterNodeFont.Charset = DEFAULT_CHARSET
+      RowFooterNodeFont.Color = clWindowText
+      RowFooterNodeFont.Height = -11
+      RowFooterNodeFont.Name = 'Tahoma'
+      RowFooterNodeFont.Style = [fsBold]
+      TS_AccountFooterStyle = False
+      TS_HideGroupHeader = False
+      TS_AnotherColor = clWindow
+      TS_ReportHeaderStyle = False
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Tahoma'
+      GroupNodeFont.Style = []
+      TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterFont.Color = clWindowText
+      TS_SummaryFooterFont.Height = -11
+      TS_SummaryFooterFont.Name = 'Tahoma'
+      TS_SummaryFooterFont.Style = [fsBold]
+      TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterSelFont.Color = clWindowText
+      TS_SummaryFooterSelFont.Height = -11
+      TS_SummaryFooterSelFont.Name = 'Tahoma'
+      TS_SummaryFooterSelFont.Style = [fsBold]
+      TS_ShowSelectionColumn = True
+      TS_LikeString = False
+      TS_SelectionColor = 12054783
+      TS_SelectionFont.Charset = DEFAULT_CHARSET
+      TS_SelectionFont.Color = clWindowText
+      TS_SelectionFont.Height = -11
+      TS_SelectionFont.Name = 'Tahoma'
+      TS_SelectionFont.Style = []
+      TS_SelectedColumn = '_icSelecionado'
+      TS_ID = 0
+      TS_TipoDescricao = tdVenda
+      TS_SummaryFields.Strings = (
+        'Valor;Sum')
+      TS_SummaryFooterQtdText = 'Qtd. Geral:'
+      TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
+      object DBChequesNUMCHEQUE: TdxDBGridMaskColumn
+        Width = 54
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NUMCHEQUE'
+      end
+      object DBChequesFORMAPAGAMENTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 54
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FORMAPAGAMENTO'
+      end
+      object DBChequesNOME: TdxDBGridMaskColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 136
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOME'
+      end
+      object DBChequesDESCRICAO: TdxDBGridMaskColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Visible = False
+        Width = 224
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCRICAO'
+      end
+      object DBChequesVENCIMENTO: TdxDBGridDateColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 68
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VENCIMENTO'
+      end
+      object DBChequesVALOR: TdxDBGridMaskColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 79
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALOR'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '###,###,##0.00'
+      end
+      object DBChequesCONTAATUAL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 66
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CONTAATUAL'
+      end
+      object DBChequesIDDOC: TdxDBGridMaskColumn
+        Visible = False
+        Width = 54
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IDDOC'
+      end
+    end
+    object edFicarei: TTS_CalcEdit
+      Left = 143
+      Top = 79
+      Width = 93
+      TabOrder = 0
+      StyleController = DMProjeto.esFinanceiro
+      Text = '0'
+      OnChange = edFicareiChange
+      ButtonGlyph.Data = {
+        AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+        0800000000007800000000000000000000000001000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A6000020400000206000002080000020A0000020C0000020E000004000000040
+        20000040400000406000004080000040A0000040C0000040E000006000000060
+        20000060400000606000006080000060A0000060C0000060E000008000000080
+        20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+        200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+        200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+        200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+        20004000400040006000400080004000A0004000C0004000E000402000004020
+        20004020400040206000402080004020A0004020C0004020E000404000004040
+        20004040400040406000404080004040A0004040C0004040E000406000004060
+        20004060400040606000406080004060A0004060C0004060E000408000004080
+        20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+        200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+        200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+        200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+        20008000400080006000800080008000A0008000C0008000E000802000008020
+        20008020400080206000802080008020A0008020C0008020E000804000008040
+        20008040400080406000804080008040A0008040C0008040E000806000008060
+        20008060400080606000806080008060A0008060C0008060E000808000008080
+        20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+        200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+        200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+        200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+        2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+        2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+        2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+        2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+        2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+        2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+        2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+        000000FD000006060404040404040400000006FF0606060606060400000006FE
+        0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+        000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+        FEFF06000000FD0606060606060606FD0000}
+      DisplayFormat = '###,###,##0.00'
+      Height = 19
+      StoredValues = 1
+    end
+    object edRepassar: TTS_CalcEdit
+      Left = 371
+      Top = 78
+      Width = 93
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      StyleController = DMProjeto.esFinanceiro
+      Text = '0'
+      OnChange = edRepassarChange
+      ButtonGlyph.Data = {
+        AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+        0800000000007800000000000000000000000001000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A6000020400000206000002080000020A0000020C0000020E000004000000040
+        20000040400000406000004080000040A0000040C0000040E000006000000060
+        20000060400000606000006080000060A0000060C0000060E000008000000080
+        20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+        200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+        200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+        200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+        20004000400040006000400080004000A0004000C0004000E000402000004020
+        20004020400040206000402080004020A0004020C0004020E000404000004040
+        20004040400040406000404080004040A0004040C0004040E000406000004060
+        20004060400040606000406080004060A0004060C0004060E000408000004080
+        20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+        200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+        200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+        200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+        20008000400080006000800080008000A0008000C0008000E000802000008020
+        20008020400080206000802080008020A0008020C0008020E000804000008040
+        20008040400080406000804080008040A0008040C0008040E000806000008060
+        20008060400080606000806080008060A0008060C0008060E000808000008080
+        20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+        200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+        200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+        200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+        2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+        2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+        2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+        2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+        2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+        2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+        2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+        000000FD000006060404040404040400000006FF0606060606060400000006FE
+        0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+        000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+        FEFF06000000FD0606060606060606FD0000}
+      DisplayFormat = '###,###,##0.00'
+      Height = 19
+      StoredValues = 1
+    end
+    object DBChequesParaRepassar: TTS_QDBGrid
+      Left = 367
+      Top = 123
+      Width = 278
+      Height = 218
+      Hint = 'Selecione e arraste com o mouse'
+      Bands = <
+        item
+        end>
+      DefaultLayout = True
+      HeaderPanelRowCount = 1
+      KeyField = 'IDDOC'
+      SummaryGroups = <
+        item
+          DefaultGroup = True
+          SummaryItems = <
+            item
+              SummaryField = 'Valor'
+              SummaryFormat = '>Valor='
+              SummaryType = cstSum
+            end>
+          Name = 'Default'
+        end>
+      SummarySeparator = ', '
+      BorderStyle = bsNone
+      DragMode = dmAutomatic
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      OnDblClick = DBChequesParaRepassarDblClick
+      OnDragDrop = DBChequesDragDrop
+      OnDragOver = DBChequesDragOver
+      OnMouseDown = DBChequesParaRepassarMouseDown
+      AutoSearchColor = 6611199
+      AutoSearchTextColor = clBlue
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'MS Sans Serif'
+      BandFont.Style = []
+      DataSource = C_ChequesRepassarDS
+      Filter.Criteria = {00000000}
+      GroupPanelColor = 15461355
+      HeaderColor = 15461355
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Tahoma'
+      HeaderFont.Style = []
+      HideFocusRect = True
+      HideSelection = True
+      OptionsBehavior = [edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoEnterThrough, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
+      OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoUseBookmarks]
+      OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoUseBitmap]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clBlue
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'MS Sans Serif'
+      PreviewFont.Style = []
+      TS_PermitirQuantidade = False
+      TS_DescriptionCanChange = False
+      TS_AppendOnEnter = False
+      RowFooterNodeFont.Charset = DEFAULT_CHARSET
+      RowFooterNodeFont.Color = clWindowText
+      RowFooterNodeFont.Height = -11
+      RowFooterNodeFont.Name = 'Tahoma'
+      RowFooterNodeFont.Style = [fsBold]
+      TS_AccountFooterStyle = False
+      TS_HideGroupHeader = False
+      TS_AnotherColor = clWindow
+      TS_ReportHeaderStyle = False
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Tahoma'
+      GroupNodeFont.Style = []
+      TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterFont.Color = clWindowText
+      TS_SummaryFooterFont.Height = -11
+      TS_SummaryFooterFont.Name = 'Tahoma'
+      TS_SummaryFooterFont.Style = [fsBold]
+      TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterSelFont.Color = clWindowText
+      TS_SummaryFooterSelFont.Height = -11
+      TS_SummaryFooterSelFont.Name = 'Tahoma'
+      TS_SummaryFooterSelFont.Style = [fsBold]
+      TS_ShowSelectionColumn = True
+      TS_LikeString = False
+      TS_SelectionColor = 12054783
+      TS_SelectionFont.Charset = DEFAULT_CHARSET
+      TS_SelectionFont.Color = clWindowText
+      TS_SelectionFont.Height = -11
+      TS_SelectionFont.Name = 'Tahoma'
+      TS_SelectionFont.Style = []
+      TS_SelectedColumn = '_icSelecionado'
+      TS_ID = 0
+      TS_TipoDescricao = tdVenda
+      TS_SummaryFields.Strings = (
+        'Valor;Sum')
+      TS_SummaryFooterQtdText = 'Qtd. Geral:'
+      TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
+      object dxDBGridMaskColumn1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 48
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NUMCHEQUE'
+      end
+      object dxDBGridMaskColumn2: TdxDBGridMaskColumn
+        Visible = False
+        Width = 48
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FORMAPAGAMENTO'
+      end
+      object dxDBGridMaskColumn3: TdxDBGridMaskColumn
+        Caption = 'Cliente'
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 155
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOME'
+      end
+      object dxDBGridMaskColumn4: TdxDBGridMaskColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Visible = False
+        Width = 197
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCRICAO'
+      end
+      object dxDBGridDateColumn1: TdxDBGridDateColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VENCIMENTO'
+      end
+      object dxDBGridMaskColumn5: TdxDBGridMaskColumn
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALOR'
+        SummaryFooterType = cstSum
+      end
+      object dxDBGridMaskColumn6: TdxDBGridMaskColumn
+        Visible = False
+        Width = 58
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CONTAATUAL'
+      end
+      object dxDBGridMaskColumn7: TdxDBGridMaskColumn
+        Visible = False
+        Width = 48
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IDDOC'
+      end
+    end
+    object lbChequesNoCaixa: TStaticText
+      Left = 278
+      Top = 343
+      Width = 69
+      Height = 17
+      Alignment = taRightJustify
+      AutoSize = False
+      BorderStyle = sbsSunken
+      Caption = '0'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 5
+    end
+    object lbChequesParaRepassar: TStaticText
+      Left = 577
+      Top = 343
+      Width = 69
+      Height = 17
+      Alignment = taRightJustify
+      AutoSize = False
+      BorderStyle = sbsSunken
+      Caption = '0'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 6
+    end
+    object ckbImprimir: TTS_CheckBox
+      Left = 9
+      Top = 356
+      Width = 160
+      Style.BorderStyle = xbsNone
+      Style.ButtonStyle = btsSimple
+      Style.HotTrack = False
+      TabOrder = 7
+      Visible = False
+      Caption = 'Imprimir Transfer'#234'ncia'
+      State = cbsChecked
+      DisableEdit = False
+      Height = 21
+    end
+    object cmbEmpresa: TTS_LookupComboBox
+      Left = 373
+      Top = 20
+      Width = 269
+      TabOrder = 8
+      StyleController = DMProjeto.esFinanceiro
+      ClearKey = 32
+      ListFieldName = 'NOME'
+      KeyFieldName = 'FAVORECIDO'
+      ListSource = DMProjeto.C_EmpresasDS
+      LookupKeyValue = Null
+      Height = 19
+    end
+  end
+  inherited pnNavigator: TTS_Panel
+    Left = 649
+    Height = 384
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 350
+      Caption = 'Fechar'
+      Glyph.Data = {
+        0E100000424D0E100000000000003600000028000000340000001A0000000100
+        180000000000D80F0000120B0000120B00000000000000000000FF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0A000A
+        0A000AFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDD5B5B5B5B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0A000A0A000A0A
+        000A0A000A0A000AFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDD5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0A000A45B25245B25245B2
+        520A000A0A000A0A000A0A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDD5B5B5BD9D9D9D9D9D9D9D9D95B5B5B5B5B5B5B5B5B5B5B5BDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00FF0A000AFF00FFFF
+        00FFFF00FF0A000A0A000A0A000A0A000A181F1845B25245B25245B25245B252
+        45B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDD5B5B5BDDDDDDDDDDDDDDDDDD5B5B5B5B5B5B5B5B5B5B5B5B72
+        7272D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00FF0A000A0A000AFF00FFFF00
+        FF0A000AFFFFFFFFFFFFFFFFFF181D1745B25245B25245B25245B25245B25245
+        B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDD5B5B5B5B5B5BDDDDDDDDDDDD5B5B5BFFFFFFFFFFFFFFFFFF717171D9D9
+        D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDFF00FFFF00FFFF00FFFF00FFFF00FF0A000A0A000A0A000AFF00FF0A000A
+        FFFFFFFFFFFFFFFFFF181F1845B25245B25245B25245B25245B25245B2520A00
+        0AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B
+        5B5B5B5B5B5B5B5BDDDDDD5B5B5BFFFFFFFFFFFFFFFFFF727272D9D9D9D9D9D9
+        D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00
+        FFFF00FFFF00FFFF00FFFF00FF0A000A41EDF23315330000000A000AFFFFFFFF
+        FFFFFFFFFF19201845B25245B25245B25245B25245B25245B2520A000AFF00FF
+        FF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B5B5BF9F9
+        F97C7C7C5555555B5B5BFFFFFFFFFFFFFFFFFF737373D9D9D9D9D9D9D9D9D9D9
+        D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FF
+        FF00FFFF00FFFF00FF0A000A41EDF241EDF20A000A0A000AFFFFFFFFFFFFFFFF
+        FF19231945B25245B25245B25245B25245B25245B2520A000AFF00FFFF00FFFF
+        00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B5B5BF9F9F9F9F9F9
+        5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF757575D9D9D9D9D9D9D9D9D9D9D9D9D9D9
+        D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FF0A000A0A000A0A
+        000A0A000A0A000A41EDF241EDF241EDF2000000161513FFFFFFFFFFFF1A251A
+        45B25245B25245B25245B25245B25245B2520A000AFF00FFFF00FFFF00FFFF00
+        FFFF00FFDDDDDD5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BF9F9F9F9F9F9F9F9F955
+        55556B6B6BFFFFFFFFFFFF767676D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9
+        5B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FF0A000A41EDF241EDF241ED
+        F241EDF241EDF241EDF241EDF241EDF2161513161513FFFFFF1C2A1C45B25245
+        B25245B25245B25245B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FF
+        DDDDDD5B5B5BF9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F96B6B
+        6B6B6B6BFFFFFF7B7B7BD9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FF0A000A41EDF241EDF241EDF241EDF2
+        41EDF241EDF241EDF241EDF241EDF21615131615131D2D1D45B25245B25245B2
+        5245B25245B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDD5B
+        5B5BF9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F96B6B6B
+        6B6B6B7D7D7DD9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDFF00FF0A000A41EDF241EDF241EDF241EDF241EDF241
+        EDF241EDF241EDF241EDF241EDF230302F1D311F45B25216151345B25245B252
+        45B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDD5B5B5BF9F9
+        F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F98888887F
+        7F7FD9D9D96B6B6BD9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDFF00FF0A000A41EDF241EDF241EDF241EDF241EDF241EDF241ED
+        F241EDF241EDF241EDF20A000A1F342145B25216151345B25245B25245B25245
+        B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDD5B5B5BF9F9F9F9F9F9
+        F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F95B5B5B818181D9D9
+        D96B6B6BD9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDFF00FF0A000A41EDF241EDF241EDF241EDF241EDF241EDF241EDF241EDF2
+        41EDF241EDF2161513203A2245B25216151345B25245B25245B25245B2520A00
+        0AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDD5B5B5BF9F9F9F9F9F9F9F9F9F9
+        F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F96B6B6B858585D9D9D96B6B6B
+        D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00
+        FF0A000A41EDF241EDF241EDF241EDF241EDF241EDF241EDF241EDF241EDF216
+        1513161513223F2545B252203A2245B25245B25245B25245B2520A000AFF00FF
+        FF00FFFF00FFFF00FFFF00FFDDDDDD5B5B5BF9F9F9F9F9F9F9F9F9F9F9F9F9F9
+        F9F9F9F9F9F9F9F9F9F9F9F9F96B6B6B6B6B6B898989D9D9D9858585D9D9D9D9
+        D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FF0A000A
+        41EDF241EDF241EDF241EDF241EDF241EDF241EDF241EDF2161513161513FFFF
+        FF23422645B25245B25245B25245B25245B25245B2520A000AFF00FFFF00FFFF
+        00FFFF00FFFF00FFDDDDDD5B5B5BF9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9F9
+        F9F9F9F9F9F96B6B6B6B6B6BFFFFFF8B8B8BD9D9D9D9D9D9D9D9D9D9D9D9D9D9
+        D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FF0A000A0A000A0A
+        000A0A000A00000041EDF241EDF241EDF2000000161513FFFFFFFFFFFF0A000A
+        45B25245B25245B25245B25245B25245B2520A000AFF00FFFF00FFFF00FFFF00
+        FFFF00FFDDDDDD5B5B5B5B5B5B5B5B5B5B5B5B555555F9F9F9F9F9F9F9F9F955
+        55556B6B6BFFFFFFFFFFFF5B5B5BD9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9
+        5B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00
+        FF0A000A41EDF241EDF2222120161513FFFFFFFFFFFFFFFFFF0A000A45B25245
+        B25245B25245B25245B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FF
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B5B5BF9F9F9F9F9F97979796B6B6BFFFF
+        FFFFFFFFFFFFFF5B5B5BD9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00FF0A000A
+        41EDF24E4D4B1615130A000AFFFFFFFFFFFFFFFFFF0A000A45B25245B25245B2
+        5245B25245B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDD5B5B5BF9F9F9A7A7A76B6B6B5B5B5BFFFFFFFFFFFF
+        FFFFFF5B5B5BD9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00FF0A000A0A000A0A
+        000AFF00FF0A000AFFFFFFFFFFFFFFFFFF0A000A45B25245B25245B25245B252
+        45B25245B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDD5B5B5B5B5B5B5B5B5BDDDDDD5B5B5BFFFFFFFFFFFFFFFFFF5B
+        5B5BD9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDFF00FFFF00FFFF00FFFF00FFFF00FF30132D0A000AFF00FFFF00
+        FF0A000A0A000A0A000A0A000A0A000A45B25245B25245B25245B25245B25245
+        B2520A000AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDD7979795B5B5BDDDDDDDDDDDD5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BD9D9
+        D9D9D9D9D9D9D9D9D9D9D9D9D9D9D9D95B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDFF00FFFF00FFFF00FFFF00FFFF00FF0A000AFF00FFFF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FF0A000A45B25245B25245B2520A000A0A000A0A000A0A00
+        0AFF00FFFF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B
+        5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B5B5BD9D9D9D9D9D9
+        D9D9D95B5B5B5B5B5B5B5B5B5B5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00
+        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FF0A000A0A000A0A000A0A000A0A000AFF00FFFF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B5B5B5B5B5B5B5B5B5B5B5B5B
+        5B5BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FF0A000A0A000AFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD5B5B5B5B5B5BDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+        FFFF00FFDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+        DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD}
+    end
+    inherited btComando2: TTS_SpeedButton
+      Top = 139
+    end
+    inherited btComando1: TTS_SpeedButton
+      Caption = '&Hist'#243'rico'
+      Glyph.Data = {
+        0E070000424D0E0700000000000036040000280000001A0000001A0000000100
+        080000000000D8020000C30E0000C30E00000001000000000000000000004000
+        00006000000080000000A0000000C0000000E0000000FF000000008000004080
+        00006080000080800000A0800000C0800000E0800000FF80000000C0000040C0
+        000060C0000080C00000A0C00000C0C00000E0C00000FFC0000000FF000040FF
+        000060FF000080FF0000A0FF0000C0FF0000E0FF0000FFFF0000000040004000
+        40006000400080004000A0004000C0004000E0004000FF004000008040004080
+        40006080400080804000A0804000C0804000E0804000FF80400000C0400040C0
+        400060C0400080C04000A0C04000C0C04000E0C04000FFC0400000FF400040FF
+        400060FF400080FF4000A0FF4000C0FF4000E0FF4000FFFF4000000060004000
+        60006000600080006000A0006000C0006000E0006000FF006000008060004080
+        60006080600080806000A0806000C0806000E0806000FF80600000C0600040C0
+        600060C0600080C06000A0C06000C0C06000E0C06000FFC0600000FF600040FF
+        600060FF600080FF6000A0FF6000C0FF6000E0FF6000FFFF6000000080004000
+        80006000800080008000A0008000C0008000E0008000FF008000008080004080
+        80006080800080808000A0808000C0808000E0808000FF80800000C0800040C0
+        800060C0800080C08000A0C08000C0C08000E0C08000FFC0800000FF800040FF
+        800060FF800080FF8000A0FF8000C0FF8000E0FF8000FFFF80000000A0004000
+        A0006000A0008000A000A000A000C000A000E000A000FF00A0000080A0004080
+        A0006080A0008080A000A080A000C080A000E080A000FF80A00000C0A00040C0
+        A00060C0A00080C0A000A0C0A000C0C0A000E0C0A000FFC0A00000FFA00040FF
+        A00060FFA00080FFA000A0FFA000C0FFA000E0FFA000FFFFA0000000C0004000
+        C0006000C0008000C000A000C000C000C000E000C000FF00C0000080C0004080
+        C0006080C0008080C000A080C000C080C000E080C000FF80C00000C0C00040C0
+        C00060C0C00080C0C000A0C0C000C0C0C000E0C0C000FFC0C00000FFC00040FF
+        C00060FFC00080FFC000A0FFC000C0FFC000E0FFC000FFFFC0000000E0004000
+        E0006000E0008000E000A000E000C000E000E000E000FF00E0000080E0004080
+        E0006080E0008080E000A080E000C080E000E080E000FF80E00000C0E00040C0
+        E00060C0E00080C0E000A0C0E000C0C0E000E0C0E000FFC0E00000FFE00040FF
+        E00060FFE00080FFE000A0FFE000C0FFE000E0FFE000FFFFE0000000FF004000
+        FF006000FF008000FF00A000FF00C000FF00E000FF00FF00FF000080FF004080
+        FF006080FF008080FF00A080FF00C080FF00E080FF00FF80FF0000C0FF0040C0
+        FF0060C0FF0080C0FF00A0C0FF00C0C0FF00E0C0FF00FFC0FF0000FFFF0040FF
+        FF0060FFFF0080FFFF00A0FFFF00C0FFFF00E0FFFF00FFFFFF00B5B5B5B5B5B5
+        B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5B5B5B5
+        B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5B5B5B5B5B5B5B5
+        B5B5B5B5B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5B5B5949494949494949494
+        949494B5B5B5B5B50000B5B5B5B5B5B5B5B50000000000000000000000949494
+        B5B5B5B50000B5B5B5B5B5B5B500808080808080808080008400949494B5B5B5
+        0000B5B5B5B5B5B5B50080808080808080808000840094949494B5B50000B5B5
+        B5B5B5B5008080808080808080800000848400949494B5B50000B5B5B5B5B5B5
+        008080808080808080800084848400B5B5B5B5B50000B5B5B5B5B50080808080
+        808080808000000000848400B5B5B5B50000B5B5B5B5B5008080808080808080
+        8000F8F80084848400B5B5B50000B5B5B5B50080808080808080808000F8F8F8
+        0000000000B5B5B50000B5B5B5B500000000000000000000000707F800B5B5B5
+        B5B5B5B50000B5B5B5B5B500F8F8F8F8F8F8F8F8F8F8F8F800B5B5B5B5B5B5B5
+        0000B5B5B5B5B500F807070707070707070707F800B5B5B5B5B5B5B50000B5B5
+        B5B5B500F8F8F8F8F8F8F8F8F8F8F8F800B5B5B5B5B5B5B50000B5B5B5B5B500
+        F8070707F80000000000000000B5B5B5B5B5B5B50000B5B5B5B5B5B500F8F8F8
+        00B5B5B5B5B5B5B5B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5000000B5B51F04
+        040494B5B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5B5B5B5B5B51F04040494B5
+        B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5B5B5B51F1F1F04040494949494B5B5
+        B5B5B5B50000B5B5B5B5B5B5B5B5B5B504040404040404040494B5B5B5B5B5B5
+        0000B5B5B5B5B5B5B5B5B5B5B50404040404040494B5B5B5B5B5B5B50000B5B5
+        B5B5B5B5B5B5B5B5B5B5040404040494B5B5B5B5B5B5B5B50000B5B5B5B5B5B5
+        B5B5B5B5B5B5B504040494B5B5B5B5B5B5B5B5B50000B5B5B5B5B5B5B5B5B5B5
+        B5B5B5B504B5B5B5B5B5B5B5B5B5B5B50000}
+      Visible = True
+      OnClick = btComando1Click
+    end
+    inherited btLimpar: TTS_SpeedButton
+      Visible = False
+    end
+    inherited btGravar: TTS_SpeedButton
+      Caption = 'Transferir'
+      Glyph.Data = {
+        76060000424D7606000000000000360400002800000018000000180000000100
+        08000000000040020000220B0000220B00000001000000010000009C0000089C
+        0800109C0800109C100031A5210039A5210039A5290031AD290039AD290039AD
+        3100EFA5390039AD390039B539006BB542006BB54A00EFA55200FFB552008484
+        5A0094BD5A0073C66300E7AD6B00F7BD6B0073C66B00AD7B7300AD847300B584
+        7300A5C67300AD7B7B009C847B00A5847B00AD847B00B58C7B00C6C67B007BCE
+        7B00B5848400BD848400B58C8400BD8C8400BD948400C6948400C69C8400DEA5
+        8400E7B58400CE9C8C00CEA58C00D6A58C00DEAD8C00EFC68C00F7C68C00BDCE
+        8C00C6CE8C00B5AD9400E7CE9400EFCE9400B5AD9C00EFCE9C00F7CE9C00CED6
+        9C00F7D69C009CDE9C00BDB5A500DEC6A500EFCEA500ADD6A500E7D6A500F7D6
+        A500CEBDAD00D6C6AD00C6D6AD00E7D6AD00EFD6AD00F7D6AD00F7D6B500CEDE
+        B500EFDEB500F7DEB500CEDEBD00EFDEBD00F7DEBD00E7CEC600E7DEC600EFDE
+        C600F7DEC600EFE7C600F7E7C600FFE7C600E7D6CE00F7DECE00EFE7CE00F7E7
+        CE00FFE7CE00CEEFCE00D6EFCE00E7D6D600F7E7D600FFE7D600EFEFD600FFEF
+        D600EFDEDE00F7E7DE00EFEFDE00F7EFDE00FFEFDE00F7EFE700FFEFE700FFF7
+        E700F7EFEF00FFF7EF00FFF7F700F7FFF700FFFFF700FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF006F6F6F1B2222
+        222222222222222222222222222222226F6F6F6F6F1B51544E4B484641373735
+        353535353535351F6F6F6F6F6F1B5154524E3140403E3737353535353535351F
+        6F6F6F6F6F1B575952523900400E06060E2034353535351F6F6F6F6F6F1B585E
+        59524A0003000000000012343535351F6F6F6F6F6F1B5E655E594D0000000000
+        000000203535351F6F6F6F6F6F1E63655E59500000000932320E00063535351F
+        6F6F6F6F6F1E6767655E53000000044540401A023735351F6F6F6F6F6F1F676B
+        67655800000000004546463E2137351F6F6F6F6F6F246A6B6767585850504D4A
+        454846462137351F6F6F6F6F6F256C6E6B2167655E53504D4A454540463E371F
+        6F6F6F6F6F266C706C216767655800000000004546463E1F6F6F6F6F6F276C70
+        706C033F605858070000004548463E1F6F6F6F6F6F286C7070700B001649490B
+        0000004A4E48461F6F6F6F6F6F286C7070705B00000000000000004D4E4D3D1C
+        6F6F6F6F6F2B6C7070706D3B00000000000300504D42331C6F6F6F6F6F2C6C70
+        7070706D5B160B0B13580044423C361C6F6F6F6F6F2D6C707070707070706C6B
+        69501811171717186F6F6F6F6F2E6C707070707070706E6C6B4F192A140F0A22
+        6F6F6F6F6F2E6C7070707070707070706E4F192F1510226F6F6F6F6F6F2E6C70
+        70707070707070707056192F15226F6F6F6F6F6F6F2E70707070707070707070
+        705D192F226F6F6F6F6F6F6F6F2929292929292929292929292919226F6F6F6F
+        6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F}
+      NumGlyphs = 1
+    end
+    object btContabilidade: TTS_SpeedButton
+      Left = 1
+      Top = 106
+      Width = 116
+      Caption = 'Contabilidade'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Margin = 8
+      NumGlyphs = 2
+      ParentFont = False
+      Visible = False
+      OnClick = btContabilidadeClick
+      RepeatedClick = False
+      Border = True
+      Align = alTop
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 767
+    Gradient.ColorStart = 13223591
+    inherited imgModulo: TTS_Image
+      Width = 50
+      Height = 39
+    end
+    inherited lbEstadoForm: TTS_Label
+      Width = 327
+      Caption = 
+        'Repasse de dinheiro e/ou cheque para o caixa principal da empres' +
+        'a.'
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 736
+      Top = 9
+    end
+    inherited lbUpperHint: TTS_Label
+      Left = 720
+    end
+    inherited lbCaption: TdxfLabel
+      Width = 426
+      AutoSize = True
+      Caption = 'Transferir Dinheiro/Cheques entre Empresas'
+      Effect3D.ShadowedColor = 13223591
+    end
+  end
+  inherited DlgMsg: TDlgMsg
+    Left = 490
+    Top = 190
+  end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 520
+    Top = 223
+  end
+  inherited ppmPadrao: TTS_PopupMenu
+    Left = 429
+    Top = 189
+  end
+  inherited Beep: TBTBeeper
+    Left = 259
+    Top = 58
+  end
+  inherited FormStorage: TFormStorage
+    Left = 182
+    Top = 47
+  end
+  inherited FormsComponent: TFormsComponent
+    BeforeClearParams = FormsComponentBeforeClearParams
+    ModuloStyle = DMProjeto.msFinanceiro
+    BarEndColor = 13223591
+    CaptionShadow = 13223591
+    FormColor = 15724519
+    Modulo = 'Financeiro'
+    Caption = 'Transferir Dinheiro/Cheques entre Empresas'
+    OnRefresh = FormsComponentRefresh
+    FirstEditField = edRepassar
+    Left = 78
+    Top = 254
+  end
+  inherited ppmHelp: TTS_PopupMenu
+    inherited Ajuda1: TMenuItem
+      HelpContext = 357
+    end
+  end
+  object Q_Cheques: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = True
+    SQL.Strings = (
+      
+        'Select dd.IDDoc, dd.NumCheque, dd.FormaPagamento, fp.Descricao, ' +
+        'dd.Vencimento, dd.Valor, f.Nome, dd.ContaAtual, d.favorecido'
+      'From  DepositosDoc dd '
+      '         inner join Depositos d on d.deposito = dd.deposito'
+      '         inner join favorecidos f on d.Favorecido = f.favorecido'
+      
+        '         inner join FormasPagamento fp on dd.formapagamento = fp' +
+        '.formapagamento'
+      'Where dd.ContaAtual = 1 and fp.Especie = 1 '
+      'Order by dd.FormaPagamento'
+      '         '
+      '')
+    Left = 108
+    Top = 184
+  end
+  object C_ChequesDS: TDataSource
+    DataSet = C_Cheques
+    Left = 168
+    Top = 184
+  end
+  object C_Cheques: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_Cheques'
+    Left = 44
+    Top = 184
+    object C_ChequesNUMCHEQUE: TIntegerField
+      DisplayLabel = '# Cheque'
+      FieldName = 'NUMCHEQUE'
+    end
+    object C_ChequesFORMAPAGAMENTO: TIntegerField
+      DisplayLabel = 'Forma Pag.'
+      FieldName = 'FORMAPAGAMENTO'
+    end
+    object C_ChequesDESCRICAO: TStringField
+      DisplayLabel = 'Forma Pag.'
+      FieldName = 'DESCRICAO'
+      Required = True
+      Size = 50
+    end
+    object C_ChequesVENCIMENTO: TDateField
+      DisplayLabel = 'Vencimento'
+      FieldName = 'VENCIMENTO'
+    end
+    object C_ChequesVALOR: TBCDField
+      DisplayLabel = 'Valor'
+      FieldName = 'VALOR'
+      DisplayFormat = '###,###,##0.00'
+      Precision = 18
+      Size = 2
+    end
+    object C_ChequesNOME: TStringField
+      DisplayLabel = 'Cliente'
+      FieldName = 'NOME'
+      Size = 50
+    end
+    object C_ChequesCONTAATUAL: TIntegerField
+      FieldName = 'CONTAATUAL'
+    end
+    object C_ChequesIDDOC: TIntegerField
+      FieldName = 'IDDOC'
+      Required = True
+    end
+    object C_Cheques_icSelecionado: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_ChequesFAVORECIDO: TIntegerField
+      FieldName = 'FAVORECIDO'
+    end
+  end
+  object P_Cheques: TDataSetProvider
+    DataSet = Q_Cheques
+    Constraints = True
+    Left = 236
+    Top = 184
+  end
+  object C_ChequesParaRepassar: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 379
+    Top = 237
+    object C_ChequesParaRepassarNumCheque: TIntegerField
+      FieldName = 'NumCheque'
+    end
+    object C_ChequesParaRepassarFormaPagamento: TIntegerField
+      FieldName = 'FormaPagamento'
+    end
+    object C_ChequesParaRepassarDescricao: TStringField
+      FieldName = 'Descricao'
+    end
+    object C_ChequesParaRepassarVencimento: TDateField
+      FieldName = 'Vencimento'
+    end
+    object C_ChequesParaRepassarValor: TCurrencyField
+      FieldName = 'Valor'
+    end
+    object C_ChequesParaRepassarNome: TStringField
+      FieldName = 'Nome'
+    end
+    object C_ChequesParaRepassarContaAtual: TIntegerField
+      FieldName = 'ContaAtual'
+    end
+    object C_ChequesParaRepassarIDDoc: TIntegerField
+      FieldName = 'IDDoc'
+    end
+    object C_ChequesParaRepassar_icSelecionado: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_ChequesParaRepassarFavorecido: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = 'Favorecido'
+    end
+  end
+  object C_ChequesRepassarDS: TDataSource
+    DataSet = C_ChequesParaRepassar
+    Left = 488
+    Top = 251
+  end
+  object ppRepasse: TppReport
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    DeviceType = 'Screen'
+    Left = 192
+    Top = 275
+    Version = '6.02'
+    mmColumnWidth = 0
+    object ppHeaderBand1: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 70644
+      mmPrintPosition = 0
+      object ppShape12: TppShape
+        UserName = 'Shape12'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 16404
+        mmLeft = 136790
+        mmTop = 51858
+        mmWidth = 44979
+        BandType = 0
+      end
+      object ppShape11: TppShape
+        UserName = 'Shape101'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 16404
+        mmLeft = 73554
+        mmTop = 51858
+        mmWidth = 44979
+        BandType = 0
+      end
+      object ppShape10: TppShape
+        UserName = 'Shape10'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 16404
+        mmLeft = 11906
+        mmTop = 51858
+        mmWidth = 44979
+        BandType = 0
+      end
+      object ppShape3: TppShape
+        UserName = 'Shape3'
+        Brush.Color = 15461355
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 10583
+        mmTop = 50536
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape2: TppShape
+        UserName = 'Shape2'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 10583
+        mmTop = 56092
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape1: TppShape
+        UserName = 'Shape1'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 10583
+        mmTop = 61648
+        mmWidth = 45508
+        BandType = 0
+      end
+      object regCab: TppRegion
+        UserName = 'regCab'
+        Caption = 'regCab'
+        Pen.Style = psClear
+        mmHeight = 27252
+        mmLeft = 529
+        mmTop = 529
+        mmWidth = 196321
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppLabel1: TppLabel
+        UserName = 'Label1'
+        Caption = 'Transfer'#234'ncia de Dinheiro/Cheques entre Empresas'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 5821
+        mmLeft = 32279
+        mmTop = 30692
+        mmWidth = 128588
+        BandType = 0
+      end
+      object ppLabel2: TppLabel
+        UserName = 'Label2'
+        OnGetText = ppLabel2GetText
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clMaroon
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 89429
+        mmTop = 37306
+        mmWidth = 14288
+        BandType = 0
+      end
+      object ppLabel3: TppLabel
+        UserName = 'Label3'
+        OnGetText = ppLabel3GetText
+        Caption = 'Label3'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clMaroon
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 90488
+        mmTop = 42863
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLabel4: TppLabel
+        UserName = 'Label4'
+        Caption = 'Antes da Transfer'#234'ncia'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 13387
+        mmTop = 51329
+        mmWidth = 40852
+        BandType = 0
+      end
+      object ppLabel6: TppLabel
+        UserName = 'Label6'
+        OnGetText = ppLabel6GetText
+        AutoSize = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 34925
+        mmTop = 57150
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLabel24: TppLabel
+        UserName = 'Label24'
+        Caption = 'Dinheiro'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 15081
+        mmTop = 57150
+        mmWidth = 12965
+        BandType = 0
+      end
+      object ppLabel25: TppLabel
+        UserName = 'Label25'
+        Caption = 'Cheques'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 15081
+        mmTop = 62442
+        mmWidth = 13229
+        BandType = 0
+      end
+      object ppLabel26: TppLabel
+        UserName = 'Label26'
+        OnGetText = ppLabel26GetText
+        AutoSize = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 34925
+        mmTop = 62442
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLine17: TppLine
+        UserName = 'Line17'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 11113
+        mmLeft = 32544
+        mmTop = 56356
+        mmWidth = 1588
+        BandType = 0
+      end
+      object ppShape4: TppShape
+        UserName = 'Shape4'
+        Brush.Color = 15461355
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 72231
+        mmTop = 50536
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape5: TppShape
+        UserName = 'Shape5'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 72231
+        mmTop = 56092
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape6: TppShape
+        UserName = 'Shape6'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 72231
+        mmTop = 61648
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppLabel5: TppLabel
+        UserName = 'Label5'
+        Caption = 'Transferido'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 84660
+        mmTop = 51329
+        mmWidth = 20391
+        BandType = 0
+      end
+      object ppLabel7: TppLabel
+        UserName = 'Label7'
+        OnGetText = ppLabel7GetText
+        AutoSize = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 96573
+        mmTop = 57150
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLabel8: TppLabel
+        UserName = 'Label8'
+        Caption = 'Dinheiro'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 76729
+        mmTop = 57150
+        mmWidth = 12965
+        BandType = 0
+      end
+      object ppLabel9: TppLabel
+        UserName = 'Label9'
+        Caption = 'Cheques'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 76729
+        mmTop = 62442
+        mmWidth = 13229
+        BandType = 0
+      end
+      object ppLabel10: TppLabel
+        UserName = 'Label10'
+        OnGetText = ppLabel10GetText
+        AutoSize = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 96573
+        mmTop = 62442
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLine18: TppLine
+        UserName = 'Line18'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 11113
+        mmLeft = 94192
+        mmTop = 56356
+        mmWidth = 1588
+        BandType = 0
+      end
+      object ppShape7: TppShape
+        UserName = 'Shape7'
+        Brush.Color = 15461355
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 135467
+        mmTop = 50536
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape8: TppShape
+        UserName = 'Shape8'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 135467
+        mmTop = 56092
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape9: TppShape
+        UserName = 'Shape9'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 135467
+        mmTop = 61648
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppLabel11: TppLabel
+        UserName = 'Label11'
+        Caption = 'Ap'#243's a Transfer'#234'ncia'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 140759
+        mmTop = 51329
+        mmWidth = 37183
+        BandType = 0
+      end
+      object ppLabel12: TppLabel
+        UserName = 'Label12'
+        OnGetText = ppLabel12GetText
+        AutoSize = False
+        Caption = 'Label12'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 159809
+        mmTop = 57150
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLabel13: TppLabel
+        UserName = 'Label13'
+        Caption = 'Dinheiro'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 139965
+        mmTop = 57150
+        mmWidth = 12965
+        BandType = 0
+      end
+      object ppLabel27: TppLabel
+        UserName = 'Label27'
+        Caption = 'Cheques'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 139965
+        mmTop = 62442
+        mmWidth = 13229
+        BandType = 0
+      end
+      object ppLabel28: TppLabel
+        UserName = 'Label101'
+        OnGetText = ppLabel28GetText
+        AutoSize = False
+        Caption = 'Label101'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 159809
+        mmTop = 62442
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLine19: TppLine
+        UserName = 'Line19'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 11113
+        mmLeft = 157427
+        mmTop = 56356
+        mmWidth = 1588
+        BandType = 0
+      end
+    end
+    object ppDetailBand1: TppDetailBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 12700
+      mmPrintPosition = 0
+      object ppSubReport1: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        ParentWidth = False
+        TraverseAllData = False
+        DataPipelineName = 'dbNaoRepassados'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 1058
+        mmWidth = 96573
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport3: TppChildReport
+          AutoStop = False
+          DataPipeline = dbNaoRepassados
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 297000
+          PrinterSetup.mmPaperWidth = 210000
+          PrinterSetup.PaperSize = 9
+          Left = 360
+          Top = 208
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbNaoRepassados'
+          object ppTitleBand1: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 15875
+            mmPrintPosition = 0
+            object ppLabel29: TppLabel
+              UserName = 'Label29'
+              Caption = 'Cheques n'#227'o Transferidos'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Name = 'Tahoma'
+              Font.Size = 10
+              Font.Style = [fsBold, fsUnderline]
+              Transparent = True
+              mmHeight = 4233
+              mmLeft = 3440
+              mmTop = 3704
+              mmWidth = 46002
+              BandType = 1
+            end
+            object ppLabel30: TppLabel
+              UserName = 'Label30'
+              Caption = '# Cheque'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 2910
+              mmTop = 11377
+              mmWidth = 12435
+              BandType = 1
+            end
+            object ppLabel31: TppLabel
+              UserName = 'Label31'
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 63500
+              mmTop = 11377
+              mmWidth = 14288
+              BandType = 1
+            end
+            object ppLabel32: TppLabel
+              UserName = 'Label32'
+              Caption = 'Nome'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 17727
+              mmTop = 11377
+              mmWidth = 7144
+              BandType = 1
+            end
+            object ppLabel33: TppLabel
+              UserName = 'Label33'
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 84667
+              mmTop = 11377
+              mmWidth = 6350
+              BandType = 1
+            end
+            object ppLine20: TppLine
+              UserName = 'Line20'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 2910
+              mmTop = 15346
+              mmWidth = 13229
+              BandType = 1
+            end
+            object ppLine21: TppLine
+              UserName = 'Line21'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 17727
+              mmTop = 15346
+              mmWidth = 44186
+              BandType = 1
+            end
+            object ppLine22: TppLine
+              UserName = 'Line22'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 63236
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine23: TppLine
+              UserName = 'Line23'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 80433
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine24: TppLine
+              UserName = 'Line24'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 16140
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine25: TppLine
+              UserName = 'Line25'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 61913
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine26: TppLine
+              UserName = 'Line26'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 79111
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine27: TppLine
+              UserName = 'Line27'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 96044
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+          end
+          object ppDetailBand4: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 3969
+            mmPrintPosition = 0
+            object ppDBText9: TppDBText
+              UserName = 'DBText9'
+              DataField = 'NUMCHEQUE'
+              DataPipeline = dbNaoRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 2381
+              mmTop = 265
+              mmWidth = 13758
+              BandType = 4
+            end
+            object ppDBText10: TppDBText
+              UserName = 'DBText10'
+              DataField = 'NOME'
+              DataPipeline = dbNaoRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 17198
+              mmTop = 265
+              mmWidth = 44979
+              BandType = 4
+            end
+            object ppDBText11: TppDBText
+              UserName = 'DBText11'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbNaoRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 62706
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+            object ppDBText12: TppDBText
+              UserName = 'DBText12'
+              DataField = 'VALOR'
+              DataPipeline = dbNaoRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 79904
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+          end
+          object ppSummaryBand1: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 5292
+            mmPrintPosition = 0
+            object ppDBCalc5: TppDBCalc
+              UserName = 'DBCalc5'
+              DataField = 'VALOR'
+              DataPipeline = dbNaoRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 79375
+              mmTop = 529
+              mmWidth = 17198
+              BandType = 7
+            end
+            object ppDBCalc6: TppDBCalc
+              UserName = 'DBCalc6'
+              DataPipeline = dbNaoRepassados
+              DisplayFormat = '#,### cheque(s)'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              Transparent = True
+              DBCalcType = dcCount
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 2910
+              mmTop = 529
+              mmWidth = 42333
+              BandType = 7
+            end
+          end
+        end
+      end
+      object ppSubReport2: TppSubReport
+        UserName = 'SubReport2'
+        ExpandAll = False
+        NewPrintJob = False
+        ParentWidth = False
+        ShiftRelativeTo = ppSubReport1
+        TraverseAllData = False
+        DataPipelineName = 'dbRepassados'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 6879
+        mmWidth = 96309
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport4: TppChildReport
+          AutoStop = False
+          DataPipeline = dbRepassados
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 297000
+          PrinterSetup.mmPaperWidth = 210000
+          PrinterSetup.PaperSize = 9
+          Left = 400
+          Top = 248
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbRepassados'
+          object ppTitleBand2: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 15875
+            mmPrintPosition = 0
+            object ppLabel14: TppLabel
+              UserName = 'Label1'
+              Caption = 'Cheques Transferidos'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clNavy
+              Font.Name = 'Tahoma'
+              Font.Size = 10
+              Font.Style = [fsBold, fsUnderline]
+              Transparent = True
+              mmHeight = 4233
+              mmLeft = 794
+              mmTop = 3704
+              mmWidth = 38382
+              BandType = 1
+            end
+            object ppLabel15: TppLabel
+              UserName = 'Label2'
+              Caption = '# Cheque'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 265
+              mmTop = 11377
+              mmWidth = 12700
+              BandType = 1
+            end
+            object ppLabel16: TppLabel
+              UserName = 'Label3'
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 60854
+              mmTop = 11377
+              mmWidth = 14288
+              BandType = 1
+            end
+            object ppLabel17: TppLabel
+              UserName = 'Label4'
+              Caption = 'Nome'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 15081
+              mmTop = 11377
+              mmWidth = 7144
+              BandType = 1
+            end
+            object ppLabel18: TppLabel
+              UserName = 'Label5'
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 82021
+              mmTop = 11377
+              mmWidth = 6350
+              BandType = 1
+            end
+            object ppLine1: TppLine
+              UserName = 'Line1'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 265
+              mmTop = 15346
+              mmWidth = 13229
+              BandType = 1
+            end
+            object ppLine2: TppLine
+              UserName = 'Line2'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 15081
+              mmTop = 15346
+              mmWidth = 44186
+              BandType = 1
+            end
+            object ppLine3: TppLine
+              UserName = 'Line3'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 60590
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine4: TppLine
+              UserName = 'Line4'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 77788
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine5: TppLine
+              UserName = 'Line5'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 13494
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine6: TppLine
+              UserName = 'Line6'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 59267
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine7: TppLine
+              UserName = 'Line7'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 76465
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine8: TppLine
+              UserName = 'Line8'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 93398
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+          end
+          object ppDetailBand2: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 3969
+            mmPrintPosition = 0
+            object ppDBText1: TppDBText
+              UserName = 'DBText1'
+              DataField = 'NUMCHEQUE'
+              DataPipeline = dbRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 265
+              mmTop = 265
+              mmWidth = 13758
+              BandType = 4
+            end
+            object ppDBText2: TppDBText
+              UserName = 'DBText2'
+              DataField = 'Nome'
+              DataPipeline = dbRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 15081
+              mmTop = 265
+              mmWidth = 44979
+              BandType = 4
+            end
+            object ppDBText3: TppDBText
+              UserName = 'DBText3'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 60590
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+            object ppDBText4: TppDBText
+              UserName = 'DBText4'
+              DataField = 'VALOR'
+              DataPipeline = dbRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 77788
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+          end
+          object ppSummaryBand2: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBCalc1: TppDBCalc
+              UserName = 'DBCalc1'
+              DataField = 'VALOR'
+              DataPipeline = dbRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 76994
+              mmTop = 529
+              mmWidth = 17198
+              BandType = 7
+            end
+            object ppDBCalc2: TppDBCalc
+              UserName = 'DBCalc2'
+              DataField = 'IDDoc'
+              DataPipeline = dbRepassados
+              DisplayFormat = '#,### cheque(s)'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              Transparent = True
+              DBCalcType = dcCount
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 529
+              mmTop = 529
+              mmWidth = 42333
+              BandType = 7
+            end
+          end
+        end
+      end
+    end
+    object ppFooterBand1: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 8202
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand3: TppSummaryBand
+      mmBottomOffset = 0
+      mmHeight = 23813
+      mmPrintPosition = 0
+      object ppLabel19: TppLabel
+        UserName = 'Label14'
+        Caption = 'Gerente'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 44979
+        mmTop = 17463
+        mmWidth = 12171
+        BandType = 7
+      end
+      object ppLabel20: TppLabel
+        UserName = 'Label20'
+        OnGetText = ppLabel20GetText
+        Caption = 'Label20'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 133615
+        mmTop = 17463
+        mmWidth = 12171
+        BandType = 7
+      end
+      object ppLine9: TppLine
+        UserName = 'Line9'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 21960
+        mmTop = 16669
+        mmWidth = 60325
+        BandType = 7
+      end
+      object ppLine10: TppLine
+        UserName = 'Line10'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 109009
+        mmTop = 16669
+        mmWidth = 60325
+        BandType = 7
+      end
+    end
+  end
+  object dbNaoRepassados: TppDBPipeline
+    DataSource = C_ChequesDS
+    UserName = 'dbNaoRepassados'
+    Left = 192
+    Top = 323
+    object dbNaoRepassadosppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'NUMCHEQUE'
+      FieldName = 'NUMCHEQUE'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 0
+      Position = 0
+    end
+    object dbNaoRepassadosppField2: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FORMAPAGAMENTO'
+      FieldName = 'FORMAPAGAMENTO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 1
+    end
+    object dbNaoRepassadosppField3: TppField
+      FieldAlias = 'DESCRICAO'
+      FieldName = 'DESCRICAO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 2
+    end
+    object dbNaoRepassadosppField4: TppField
+      FieldAlias = 'VENCIMENTO'
+      FieldName = 'VENCIMENTO'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 3
+    end
+    object dbNaoRepassadosppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALOR'
+      FieldName = 'VALOR'
+      FieldLength = 2
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 4
+    end
+    object dbNaoRepassadosppField6: TppField
+      FieldAlias = 'NOME'
+      FieldName = 'NOME'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 5
+    end
+    object dbNaoRepassadosppField7: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CONTAATUAL'
+      FieldName = 'CONTAATUAL'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 6
+    end
+    object dbNaoRepassadosppField8: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'IDDOC'
+      FieldName = 'IDDOC'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 7
+    end
+    object dbNaoRepassadosppField9: TppField
+      Alignment = taRightJustify
+      FieldAlias = '_icSelecionado'
+      FieldName = '_icSelecionado'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 8
+    end
+    object dbNaoRepassadosppField10: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FAVORECIDO'
+      FieldName = 'FAVORECIDO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 9
+    end
+  end
+  object dbRepassados: TppDBPipeline
+    DataSource = C_ChequesRepassarDS
+    UserName = 'dbRepassados'
+    Left = 376
+    Top = 323
+    object dbRepassadosppField1: TppField
+      FieldAlias = 'NumCheque'
+      FieldName = 'NumCheque'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField2: TppField
+      FieldAlias = 'FormaPagamento'
+      FieldName = 'FormaPagamento'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField3: TppField
+      FieldAlias = 'Descricao'
+      FieldName = 'Descricao'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField4: TppField
+      FieldAlias = 'Vencimento'
+      FieldName = 'Vencimento'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField5: TppField
+      FieldAlias = 'Valor'
+      FieldName = 'Valor'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField6: TppField
+      FieldAlias = 'Nome'
+      FieldName = 'Nome'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField7: TppField
+      FieldAlias = 'ContaAtual'
+      FieldName = 'ContaAtual'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField8: TppField
+      FieldAlias = 'IDDoc'
+      FieldName = 'IDDoc'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField9: TppField
+      FieldAlias = '_icSelecionado'
+      FieldName = '_icSelecionado'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object dbRepassadosppField10: TppField
+      FieldAlias = 'Favorecido'
+      FieldName = 'Favorecido'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 9
+      Searchable = False
+      Sortable = False
+    end
+  end
+end

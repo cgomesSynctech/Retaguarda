@@ -1,0 +1,1204 @@
+inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
+  Left = 75
+  Top = 136
+  Width = 1216
+  Height = 506
+  Caption = 'Fornecedores / Compras'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnNavigator: TTS_Panel
+    Left = 1082
+    Top = 57
+    Height = 411
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 377
+    end
+    inherited btComando2: TTS_SpeedButton
+      Top = 107
+      Caption = 'Op'#231#245'es'
+      Glyph.Data = {
+        C2080000424DB60C000000000000360800002800000018000000180000000100
+        1000030000008004000000000000000000000001000000000000007C0000E003
+        00001F000000A1400000C0480000E058000023160B001C1C1C00111131006040
+        3100584838000B2A40006A504000032A48001138500038485000164860006A6A
+        6000736A60006A6A6A00847B73003150840084848400F4988F00E0C0A1001C23
+        AB0073A1B600FFB6B600068FCA00CACACA002A8FD400FFD4D4000006E000F4EA
+        E0001684EA001658F4002AE0F400FF00FF0050B6FF0073F4FF00FFFFFF000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000001F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1401140114011401
+        1401140114011401140114011401140114011401140114011401140114011401
+        140114011F7C1F7C14017E467E467E467E467E467E467E467E467E467E467E46
+        7E467E467E467E467E467E467E467E467E4614011F7C1F7C3801DF5ADF5ADF5A
+        DF5AAD35DF5ADF5ADF5ADF5ADF5AAD35DF5ADF5ADF5ADF5ADF5AAD35DF5ADF5A
+        DF5A38011F7C1F7C7C015F6BAD355F6B5F6BAD355F6B5F6BAD355F6B5F6BAD35
+        5F6B5F6BAD355F6B5F6BAD355F6B5F6BAD357C011F7C1F7C7C017C017C017C01
+        7C017C017C017C017C017C017C017C017C017C017C017C017C017C017C017C01
+        7C017C011F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C14011401
+        14011401140114011401140114011401140114011401140114011F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C14015F6B7E467E467E467E467E467E467E467E46
+        7E467E467E4614011F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C14015F6B
+        DF5ADF5ADF5ADF5A630C27291042DF5ADF5A7E4614011F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C14015F6BDF5A1401140114010C19440422312729
+        7E4614011F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C14015F6B
+        DF5A38011F7C140139678E5ACE7F6279E2281F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C14015F6BDF5A38011401DF5ADF5ACA7ECE7F6279
+        6279A0241F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C14015F6B
+        DF5A1401DF5ADF5ADF5AAD352066857B62796279E2281F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C14015F6BDF5ADF5ADF5ADF5A7E4614011F7C2066
+        857B62796279A1201F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C14015F6B
+        DF5ADF5ADF5A7E4614011F7C1F7C1F7C2066857B62796279E2281F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C14015F6BDF5ADF5A7E4614011F7C1F7C1F7C1F7C
+        1F7C2066857B62796279A0241F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C14015F6B
+        DF5A7E4614011F7C1F7C1F7C1F7C1F7C1F7C1F7C2066857B62798354630C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C14015F6B7E4614011F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C2066256AAE31AD31630C1F7C1F7C1F7C1F7C1F7C1F7C14015F6B
+        14011F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C4D21FF7FBE732B1D
+        42181F7C1F7C1F7C1F7C1F7C140114011F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7CF0391C532231627983541F7C1F7C1F7C1F7C14011F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C46410276
+        627983541F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C007000701F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C}
+      PopupMenu = ppmOpcoesPlano
+      Visible = True
+      OnClick = btComando2Click
+    end
+    inherited btComando1: TTS_SpeedButton
+      Top = 145
+      Caption = 'Imprimir'
+      Glyph.Data = {
+        C2080000424DB60C000000000000360800002800000018000000180000000100
+        1000030000008004000000000000000000000001000000000000007C0000E003
+        00001F00000011111100111116001616160016161C001C1C1C00232323002A2A
+        2A00313131003838380040404000484048004848480050505000606060006A6A
+        6A00736A6A006AB66A0073737300847B8400848484008F8484008F848F008F8F
+        8F00988F8F00F4A18F00FFAB8F00988F980098989800A198980098A19800E0A1
+        9800FFB69800A198A100A1A1A100ABA1A100D4A1A100E0ABA100F4ABA100FFB6
+        A100FFC0A100ABA1AB00ABABAB00B6ABAB00E0ABAB00E0B6AB00FFC0AB00FFCA
+        AB00B6ABB600B6B6B600C0B6B600E0B6B600E0C0B600FFCAB600B6B6C000C0B6
+        C000C0C0C000CAC0C000EAC0C000EACAC000FFD4C000CAC0CA00CACACA00D4CA
+        CA00F4D4CA00FFD4CA00FFE0CA00CAF4CA00CACAD400CAD4D400D4D4D400E0D4
+        D400EAD4D400D4E0D400E0E0D400FFE0D400FFEAD400E0E0E000EAE0E000FFEA
+        E000EAEAEA00FFF4EA00F4F4F400FFF4F400FF00FF00FFFFFF00000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000001F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C734ED862734E10421F7C1F7C734E39673A67B556734E1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C734ED65ADE7BDE7BB556734E0821
+        2925AD35734ED85A5C6B9C73396794521F7C1F7C1F7C1F7C1F7C1F7C1F7C734E
+        95529C73FF7FFF7FBD779552744EC6184208630CA5142925AD35734E18639C73
+        5A6B33461F7C1F7C1F7C1F7C734E5A6BFF7FDF7BDE7BDF7BBD7794529452F041
+        4A29C618630C4208630CA5142925CE3931461F7C1F7C1F7C31461863DE7BDE7B
+        DE7BDE7B9C73D65A734E10423146734E9452744E10428C31082184104208A514
+        11421F7C1F7C1F7C3146BD77DE7BBD775A6BB556334694523967945231461142
+        104211423346945294523146AD354A2911421F7C1F7C1F7C31469C733A679552
+        3146955239675A6B9C739C733967D65A9552734E3146114210423146734E9452
+        31461F7C1F7C1F7C3146744E3146B55639675A6B396739679D73DE7BDE7BBD77
+        9C7339671863B556945233463146114210421F7C1F7C1F7C3146B55639673967
+        3967396739679C73DE7BD65AB65A18635A6B9C739C735A6B39671863D65AB556
+        31461F7C1F7C1F7C3146396739673967396739675A6BDE7BB556934ECD369452
+        734E734EB556D65A39675A6B5A6B3967734E1F7C1F7C1F7C1F7CB5565A6B3967
+        39679C739C739452B556BD77D967BD779C73BE52B556744E3346734EB556B556
+        94521F7C1F7C1F7C1F7C1F7C9452D65A3967D65A734ED85ADE7BDE7BDE7BBD77
+        9C739C739C735A6B39671863334631461F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1142B5565A6B1863734ED65A5A6B9C739C739C739C739C735A6BD65A95521F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C734EDE7BDE7B5A6BB556B556D65A3967
+        396739673967D65A734E95521F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C5D6B9F6B9F675F675E675E675E675D6B5C6B5A6BD65A1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7CDC569F6B5F675F633F5B1F57DF52
+        DF52DF4E1D631F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7CDC569F6B5F675F633F5B1F57DF52DF4E9E461F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1C5B9F6B5F675F633F5B1F57DF52
+        DF4E9E461F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1C5B9F6B5F675F633F5B1F57DF52DF4EBE521F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1C5B9F6B5F675F633F5B1F57DF52
+        BE52BE521F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        DC5ABF739F6B5F675F633F5B1F571F53BE521F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1C5BDF779F6B9F675F633F5B3F5BBE52
+        BE521F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C9A52
+        1C5BDC5ADC56DC56BC52BC529C4EBE521F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C}
+      Visible = True
+      OnClick = btComando1Click
+    end
+    inherited btLimpar: TTS_SpeedButton
+      GroupIndex = 1
+      Caption = #218'lt. 12 Meses'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000120B0000120B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        33333FFFFFFFFFFFFFFF000000000000000077777777777777770FF7FF7FF7FF
+        7FF07FF7FF7FF7F37F3709F79F79F7FF7FF077F77F77F7FF7FF7077777777777
+        777077777777777777770FF7FF7FF7FF7FF07FF7FF7FF7FF7FF709F79F79F79F
+        79F077F77F77F77F77F7077777777777777077777777777777770FF7FF7FF7FF
+        7FF07FF7FF7FF7FF7FF709F79F79F79F79F077F77F77F77F77F7077777777777
+        777077777777777777770FFFFF7FF7FF7FF07F33337FF7FF7FF70FFFFF79F79F
+        79F07FFFFF77F77F77F700000000000000007777777777777777CCCCCC8888CC
+        CCCC777777FFFF777777CCCCCCCCCCCCCCCC7777777777777777}
+      Spacing = 6
+    end
+    inherited btGravar: TTS_SpeedButton
+      GroupIndex = 1
+      Caption = 'M'#234's Atual'
+      Glyph.Data = {
+        82020000424DB602000000000000B60000002800000010000000100000000100
+        1000030000000002000000000000000000001000000000000000007C0000E003
+        00001F0000000000000000008000008000000080800080000000800080008080
+        0000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF
+        0000FFFFFF00E003E00310421042104210421042104210421042104218631863
+        E003E003E003E003000000000000000000000000000000000000104210421863
+        E003E003E003E003FF7FFF7FFF7FFF7FFF7FFF7F104200000000000010421042
+        1863E003E003E003FF7FFF7FFF7FFF7FFF7FFF7F104218630000000000001042
+        10421863E003E003FF7FFF7FFF7F007C007C007C104218631863000000001042
+        10421863E003E003FF7FFF7F007C007CFF7FFF7F104210421042104200001042
+        10421863E003E003FF7FFF7F007C007CFF7FFF7F007C007CFF7FFF7F00001042
+        10421863E003E003FF7FFF7FFF7FFF7FFF7FFF7F007C007CFF7FFF7F00001042
+        10421863E003E003FF7FFF7FFF7FFF7F007C007C007CFF7FFF7FFF7F00001042
+        10421863E003E003FF7FFF7FFF7FFF7FFF7FFF7F007C007CFF7FFF7F00001042
+        10421863E003E003FF7FFF7F007C007CFF7FFF7F007C007CFF7FFF7F00001042
+        10421863E003E003FF7FFF7F007C007CFF7FFF7F007C007CFF7FFF7F00001042
+        10421863E003E003FF7FFF7FFF7F007C007C007C007CFF7FFF7FFF7F00001042
+        1863E003E003E003FF7F1042FF7FFF7FFF7FFF7FFF7FFF7F1042FF7F00001863
+        1863E003E003E00310420000E003E003E003E003E003E003000010421863E003
+        E003E003E003E003E0030000E003E003E003E003E003E0030000E003E003E003
+        E003E003E003}
+      NumGlyphs = 1
+    end
+    inherited TS_Bevel1: TTS_Bevel
+      Top = 102
+    end
+    object TS_Bevel2: TTS_Bevel
+      Left = 1
+      Top = 140
+      Width = 116
+      Height = 5
+      Align = alTop
+      Versoes = 'S,P,E'
+    end
+    object btPeriodo: TTS_SpeedButton
+      Left = 1
+      Top = 68
+      Width = 116
+      Height = 34
+      GroupIndex = 1
+      Caption = 'No Per'#237'odo'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00300000000000
+        003337777777777777F330FFFFFFFFFFF03337F3333FFF3337F330FFFF000FFF
+        F03337F33377733337F330FFFFF0FFFFF03337F33337F33337F330FFFF00FFFF
+        F03337F33377F33337F330FFFFF0FFFFF03337F33337333337F330FFFFFFFFFF
+        F03337FFF3F3F3F3F7F33000F0F0F0F0F0333777F7F7F7F7F7F330F0F000F070
+        F03337F7F777F777F7F330F0F0F0F070F03337F7F7373777F7F330F0FF0FF0F0
+        F03337F733733737F7F330FFFFFFFF00003337F33333337777F330FFFFFFFF0F
+        F03337FFFFFFFF7F373330999999990F033337777777777F733330FFFFFFFF00
+        333337FFFFFFFF77333330000000000333333777777777733333}
+      NumGlyphs = 2
+      OnClick = btPeriodoClick
+      Versoes = 'S,P,E'
+      RepeatedClick = False
+      Border = True
+      Align = alTop
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 1200
+    Height = 57
+    Gradient.ColorStart = 11775972
+    inherited lbEstadoForm: TTS_Label
+      Width = 246
+      Caption = 'Rela'#231#227'o de despesas, contabilizadas por categoria.'
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 1172
+    end
+    inherited lbCaption: TdxfLabel
+      Width = 177
+      AutoSize = True
+      Caption = 'Plano de Despesas'
+      Effect3D.ShadowedColor = 11775972
+    end
+    object lbDtI: TTS_Label
+      Left = 306
+      Top = 25
+      Width = 41
+      Caption = 'Entre:'
+      Visible = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lbDtF: TTS_Label
+      Left = 426
+      Top = 25
+      Width = 13
+      Caption = 'e'
+      Visible = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object gbTipoDespesas: TGroupBox
+      Left = 647
+      Top = 7
+      Width = 260
+      Height = 47
+      Caption = ' Tipo Despesa '
+      TabOrder = 3
+    end
+    object edDtI: TTS_DateTimePicker
+      Left = 350
+      Top = 23
+      Width = 75
+      TabOrder = 0
+      Visible = False
+      AutoSize = False
+      StyleController = DMProjeto.esFornecedores
+      OnChange = edDtIChange
+      ButtonGlyph.Data = {
+        AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+        0800000000007800000000000000000000000001000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A6000020400000206000002080000020A0000020C0000020E000004000000040
+        20000040400000406000004080000040A0000040C0000040E000006000000060
+        20000060400000606000006080000060A0000060C0000060E000008000000080
+        20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+        200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+        200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+        200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+        20004000400040006000400080004000A0004000C0004000E000402000004020
+        20004020400040206000402080004020A0004020C0004020E000404000004040
+        20004040400040406000404080004040A0004040C0004040E000406000004060
+        20004060400040606000406080004060A0004060C0004060E000408000004080
+        20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+        200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+        200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+        200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+        20008000400080006000800080008000A0008000C0008000E000802000008020
+        20008020400080206000802080008020A0008020C0008020E000804000008040
+        20008040400080406000804080008040A0008040C0008040E000806000008060
+        20008060400080606000806080008060A0008060C0008060E000808000008080
+        20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+        200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+        200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+        200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+        2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+        2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+        2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+        2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+        2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+        2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+        2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FDA4A4A4A4A4
+        A4A4A4FD0000A4FFFFFFFFFFFFFFFFA40000A4FFFF01FF070107FFA40000A4FF
+        FF01FF01FF01FFA40000A4FFFF01FFFFFF01FFA40000A4FFFF01FF010107FFA4
+        0000A4FF0101FF01FFFFFFA40000A4FFFF01FF010101FFA40000A4FFFFFFFFFF
+        FFFFFFA40000FDA4A4A4A4A4A4A4A4FD0000}
+      Date = 42370
+      UseEditMask = True
+      Height = 19
+      StoredValues = 4
+    end
+    object edDtF: TTS_DateTimePicker
+      Left = 446
+      Top = 23
+      Width = 75
+      TabOrder = 1
+      Visible = False
+      AutoSize = False
+      StyleController = DMProjeto.esFornecedores
+      OnChange = edDtFChange
+      ButtonGlyph.Data = {
+        AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+        0800000000007800000000000000000000000001000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A6000020400000206000002080000020A0000020C0000020E000004000000040
+        20000040400000406000004080000040A0000040C0000040E000006000000060
+        20000060400000606000006080000060A0000060C0000060E000008000000080
+        20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+        200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+        200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+        200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+        20004000400040006000400080004000A0004000C0004000E000402000004020
+        20004020400040206000402080004020A0004020C0004020E000404000004040
+        20004040400040406000404080004040A0004040C0004040E000406000004060
+        20004060400040606000406080004060A0004060C0004060E000408000004080
+        20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+        200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+        200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+        200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+        20008000400080006000800080008000A0008000C0008000E000802000008020
+        20008020400080206000802080008020A0008020C0008020E000804000008040
+        20008040400080406000804080008040A0008040C0008040E000806000008060
+        20008060400080606000806080008060A0008060C0008060E000808000008080
+        20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+        200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+        200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+        200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+        2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+        2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+        2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+        2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+        2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+        2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+        2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FDA4A4A4A4A4
+        A4A4A4FD0000A4FFFFFFFFFFFFFFFFA40000A4FFFF01FF070107FFA40000A4FF
+        FF01FF01FF01FFA40000A4FFFF01FFFFFF01FFA40000A4FFFF01FF010107FFA4
+        0000A4FF0101FF01FFFFFFA40000A4FFFF01FF010101FFA40000A4FFFFFFFFFF
+        FFFFFFA40000FDA4A4A4A4A4A4A4A4FD0000}
+      Date = 42370
+      UseEditMask = True
+      Height = 19
+      StoredValues = 4
+    end
+    object rbTodas: TTS_RadioButton
+      Left = 666
+      Top = 25
+      Width = 57
+      Height = 17
+      Caption = 'Todas'
+      Checked = True
+      Color = 15724519
+      ParentColor = False
+      TabOrder = 2
+      TabStop = True
+      Transparent = True
+    end
+    object rbFixas: TTS_RadioButton
+      Left = 745
+      Top = 25
+      Width = 57
+      Height = 17
+      Caption = 'Fixas'
+      Color = 15724519
+      ParentColor = False
+      TabOrder = 4
+      Transparent = True
+    end
+    object rbVariaveis: TTS_RadioButton
+      Left = 825
+      Top = 25
+      Width = 73
+      Height = 17
+      Caption = 'Vari'#225'veis'
+      Color = 15724519
+      ParentColor = False
+      TabOrder = 5
+      Transparent = True
+    end
+  end
+  inherited pnDados: TTS_Panel
+    Top = 57
+    Width = 1082
+    Height = 411
+    Color = 15196656
+    object pcDespesas: TTS_PageControl
+      Left = 1
+      Top = 1
+      Width = 1080
+      Height = 391
+      ActivePage = tsMesAtual
+      Align = alClient
+      OwnerDraw = True
+      TabOrder = 0
+      ActivePageIndex = 0
+      BorderInvisible = True
+      Transparent = False
+      TabFont.Charset = DEFAULT_CHARSET
+      TabFont.Color = clWindowText
+      TabFont.Height = -11
+      TabFont.Name = 'MS Sans Serif'
+      TabFont.Style = []
+      TabFontActive.Charset = DEFAULT_CHARSET
+      TabFontActive.Color = clWindowText
+      TabFontActive.Height = -11
+      TabFontActive.Name = 'MS Sans Serif'
+      TabFontActive.Style = []
+      object tsMesAtual: TTS_TabSheet
+        Caption = 'tsMesAtual'
+        TabVisible = False
+        TabColor = clBtnFace
+        TabFontColor = clBlack
+        BevelInner = bvRaised
+        BevelOuter = bvLowered
+        object DBMesAtual: TdxDBTreeList
+          Left = 0
+          Top = 0
+          Width = 1080
+          Height = 389
+          Bands = <
+            item
+              Caption = 'Plano de Despesas - M'#234's Atual'
+            end>
+          DefaultLayout = False
+          HeaderPanelRowCount = 1
+          KeyField = 'CONTA'
+          ParentField = 'CONTAPAI'
+          Align = alClient
+          DragMode = dmAutomatic
+          TabOrder = 0
+          DataSource = C_MesAtualDS
+          LookAndFeel = lfUltraFlat
+          OptionsDB = [etoAutoCalcKeyValue, etoCancelOnExit, etoCanNavigation, etoCheckHasChildren, etoConfirmDelete, etoLoadAllRecords]
+          OptionsView = [etoAutoWidth, etoBandHeaderWidth, etoRowSelect, etoUseBitmap, etoUseImageIndexForSelected]
+          ScrollBars = ssVertical
+          ShowBands = True
+          ShowFooter = True
+          TreeLineColor = clGrayText
+          object DBMesAtualDESCRICAO: TdxDBTreeListMaskColumn
+            Caption = 'Descri'#231#227'o da Conta'
+            HeaderAlignment = taCenter
+            Width = 100
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'DESCRICAO'
+          end
+          object DBMesAtualicValor: TdxDBTreeListCurrencyColumn
+            Alignment = taRightJustify
+            Caption = 'Valor R$'
+            HeaderAlignment = taRightJustify
+            Width = 30
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icValor'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalValor'
+            SummaryFooterFormat = '#,###,##0.00'
+            DisplayFormat = '#,###,##0.00'
+            Nullable = False
+          end
+          object DBMesAtualicPercentual: TdxDBTreeListColumn
+            Caption = 'Perc.%'
+            HeaderAlignment = taRightJustify
+            Width = 20
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icPercentual'
+          end
+        end
+      end
+      object tsUltimos12Meses: TTS_TabSheet
+        Caption = 'tsUltimos12Meses'
+        TabVisible = False
+        TabColor = clBtnFace
+        TabFontColor = clBlack
+        BevelInner = bvRaised
+        BevelOuter = bvLowered
+        object DBUlt12Meses: TdxDBTreeList
+          Left = 0
+          Top = 0
+          Width = 1080
+          Height = 389
+          Bands = <
+            item
+              Caption = 'Plano de Despesas - '#218'ltimos 12 Meses'
+            end>
+          DefaultLayout = False
+          HeaderPanelRowCount = 1
+          KeyField = 'CONTA'
+          ParentField = 'CONTAPAI'
+          Align = alClient
+          DragMode = dmAutomatic
+          TabOrder = 0
+          DataSource = C_12MesesDS
+          LookAndFeel = lfUltraFlat
+          OptionsDB = [etoAutoCalcKeyValue, etoCancelOnExit, etoCanNavigation, etoCheckHasChildren, etoConfirmDelete, etoLoadAllRecords]
+          ShowBands = True
+          ShowFooter = True
+          TreeLineColor = clGrayText
+          object DBUlt12MesesDESCRICAO: TdxDBTreeListMaskColumn
+            Caption = 'Descri'#231#227'o da Conta'
+            HeaderAlignment = taCenter
+            Width = 300
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'DESCRICAO'
+          end
+          object DBUlt12MesesicMes1: TdxDBTreeListColumn
+            Caption = 'M'#234's 1'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes1'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes01'
+          end
+          object DBUlt12MesesicMes2: TdxDBTreeListColumn
+            Caption = 'M'#234's 2'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes2'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes02'
+          end
+          object DBUlt12MesesicMes3: TdxDBTreeListColumn
+            Caption = 'M'#234's 3'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes3'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes03'
+          end
+          object DBUlt12MesesicMes4: TdxDBTreeListColumn
+            Caption = 'M'#234's 4'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes4'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes04'
+          end
+          object DBUlt12MesesicMes5: TdxDBTreeListColumn
+            Caption = 'M'#234's 5'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes5'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes05'
+          end
+          object DBUlt12MesesicMes6: TdxDBTreeListColumn
+            Caption = 'M'#234's 6'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes6'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes06'
+          end
+          object DBUlt12MesesicMes7: TdxDBTreeListColumn
+            Caption = 'M'#234's 7'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes7'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes07'
+          end
+          object DBUlt12MesesicMes8: TdxDBTreeListColumn
+            Caption = 'M'#234's 8'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes8'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes08'
+          end
+          object DBUlt12MesesicMes9: TdxDBTreeListColumn
+            Caption = 'M'#234's 9'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes9'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes09'
+          end
+          object DBUlt12MesesicMes10: TdxDBTreeListColumn
+            Caption = 'M'#234's 10'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes10'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes10'
+          end
+          object DBUlt12MesesicMes11: TdxDBTreeListColumn
+            Caption = 'M'#234's 11'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes11'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes11'
+          end
+          object DBUlt12MesesicMes12: TdxDBTreeListColumn
+            Caption = 'M'#234's 12'
+            HeaderAlignment = taCenter
+            Width = 70
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'icMes12'
+            SummaryFooterType = cstSum
+            SummaryFooterField = 'icTotalMes12'
+          end
+        end
+      end
+      object tsVazio: TTS_TabSheet
+        Caption = 'tsVazio'
+        TabVisible = False
+        TabColor = clBtnFace
+        TabFontColor = clBlack
+        BevelInner = bvRaised
+        BevelOuter = bvLowered
+        object TS_Label1: TTS_Label
+          Left = 80
+          Top = 198
+          Width = 489
+          Height = 41
+          Alignment = taCenter
+          Caption = 'Clique numa das op'#231#245'es ao lado para visualizar o plano.'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          FormatoTabela = False
+          LinkToResult = 0
+        end
+        object RichEdit: TRichEdit
+          Left = 13
+          Top = 274
+          Width = 588
+          Height = 137
+          BorderStyle = bsNone
+          Ctl3D = False
+          Lines.Strings = (
+            'Texto')
+          ParentCtl3D = False
+          TabOrder = 0
+          Visible = False
+        end
+      end
+    end
+    object TS_PanelCorner1: TTS_PanelCorner
+      Left = 1
+      Top = 392
+      Width = 1080
+      Height = 18
+      Align = alBottom
+      Color = 15196656
+      Enabled = False
+      TabOrder = 1
+      Visible = False
+      BoxWithShadow = False
+      DesignSize = (
+        1080
+        18)
+      object lbValorTotal: TTS_Label
+        Left = 851
+        Top = 0
+        Width = 128
+        Height = 19
+        Anchors = [akRight, akBottom]
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+    end
+  end
+  inherited DlgMsg: TDlgMsg
+    Left = 638
+    Top = 398
+  end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 620
+    Top = 357
+  end
+  inherited ppmPadrao: TTS_PopupMenu
+    Left = 624
+    Top = 282
+  end
+  inherited Beep: TBTBeeper
+    Left = 680
+    Top = 360
+  end
+  inherited FormStorage: TFormStorage
+    Left = 680
+    Top = 216
+  end
+  inherited FormsComponent: TFormsComponent
+    BeforeClearParams = FormsComponentBeforeClearParams
+    ModuloStyle = DMProjeto.msFornecedores
+    BarEndColor = 11775972
+    CaptionShadow = 11775972
+    FormColor = 15196656
+    Modulo = 'Fornecedores / Compras'
+    Caption = 'Plano de Despesas'
+    Left = 682
+    Top = 274
+  end
+  inherited ppmHelp: TTS_PopupMenu
+    Left = 631
+    Top = 218
+  end
+  object Q_MesAtual: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select c.conta, c.contapai, c.descricao'
+      
+        'from contas c inner join tiposcontas t on t.tipoconta = c.tipoco' +
+        'nta'
+      'where t.tipo = '#39'D'#39
+      'order by c.descricao'
+      '')
+    Left = 66
+    Top = 146
+  end
+  object P_MesAtual: TDataSetProvider
+    DataSet = Q_MesAtual
+    Constraints = True
+    Left = 66
+    Top = 202
+  end
+  object C_MesAtual: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_MesAtual'
+    OnCalcFields = C_MesAtualCalcFields
+    Left = 62
+    Top = 256
+    object C_MesAtualCONTA: TIntegerField
+      FieldName = 'CONTA'
+      Origin = 'CONTAS.CONTA'
+      Required = True
+    end
+    object C_MesAtualCONTAPAI: TIntegerField
+      FieldName = 'CONTAPAI'
+      Origin = 'CONTAS.CONTAPAI'
+    end
+    object C_MesAtualDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'CONTAS.DESCRICAO'
+      Size = 50
+    end
+    object C_MesAtualicValor: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icValor'
+    end
+    object C_MesAtualicPercentual: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'icPercentual'
+      DisplayFormat = '##0.000'
+      EditFormat = '##0.000'
+    end
+    object C_MesAtualicTotalValor: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalValor'
+    end
+  end
+  object C_MesAtualDS: TDataSource
+    DataSet = C_MesAtual
+    Left = 56
+    Top = 336
+  end
+  object dxPrinterDespesas: TdxComponentPrinter
+    CurrentLink = dxPrinterDespesasLink12Meses
+    PreviewOptions.Caption = 'Visualizar Impress'#227'o'
+    PreviewOptions.WindowState = wsMaximized
+    Version = 0
+    OnStartGenerateReport = dxPrinterDespesasStartGenerateReport
+    Left = 664
+    Top = 216
+    object dxPrinterDespesasLinkMesAtual: TdxDBTreeListReportLink
+      Active = True
+      Caption = 'New Report'
+      Component = DBMesAtual
+      DateTime = 42592.665259456
+      DesignerHelpContext = 0
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 250
+      PrinterPage.Header = 250
+      PrinterPage.Margins.Bottom = 10000
+      PrinterPage.Margins.Left = 6350
+      PrinterPage.Margins.Right = 6350
+      PrinterPage.Margins.Top = 28400
+      PrinterPage.PageFooter.Font.Charset = DEFAULT_CHARSET
+      PrinterPage.PageFooter.Font.Color = clWindowText
+      PrinterPage.PageFooter.Font.Height = -11
+      PrinterPage.PageFooter.Font.Name = 'Tahoma'
+      PrinterPage.PageFooter.Font.Style = []
+      PrinterPage.PageHeader.Font.Charset = DEFAULT_CHARSET
+      PrinterPage.PageHeader.Font.Color = clWindowText
+      PrinterPage.PageHeader.Font.Height = -11
+      PrinterPage.PageHeader.Font.Name = 'Tahoma'
+      PrinterPage.PageHeader.Font.Style = []
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportTitle.Font.Charset = DEFAULT_CHARSET
+      ReportTitle.Font.Color = clWindowText
+      ReportTitle.Font.Height = -19
+      ReportTitle.Font.Name = 'Times New Roman'
+      ReportTitle.Font.Style = [fsBold]
+      OnCustomDrawPageHeader = dxPrinterDespesasLinkMesAtualCustomDrawPageHeader
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'Times New Roman'
+      BandFont.Style = []
+      EvenFont.Charset = DEFAULT_CHARSET
+      EvenFont.Color = clWindowText
+      EvenFont.Height = -11
+      EvenFont.Name = 'Times New Roman'
+      EvenFont.Style = []
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      FooterFont.Charset = DEFAULT_CHARSET
+      FooterFont.Color = clWindowText
+      FooterFont.Height = -11
+      FooterFont.Name = 'Times New Roman'
+      FooterFont.Style = []
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Times New Roman'
+      GroupNodeFont.Style = []
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Times New Roman'
+      HeaderFont.Style = []
+      OddFont.Charset = DEFAULT_CHARSET
+      OddFont.Color = clWindowText
+      OddFont.Height = -11
+      OddFont.Name = 'Times New Roman'
+      OddFont.Style = []
+      Options = [tlpoBands, tlpoHeaders, tlpoFooters, tlpoRowFooters, tlpoPreview, tlpoPreviewGrid, tlpoGrid, tlpoFlatCheckMarks, tlpoSoft3D, tlpoRowFooterGrid]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clWindowText
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'Times New Roman'
+      PreviewFont.Style = []
+      RowFooterFont.Charset = DEFAULT_CHARSET
+      RowFooterFont.Color = clWindowText
+      RowFooterFont.Height = -11
+      RowFooterFont.Name = 'Times New Roman'
+      RowFooterFont.Style = []
+      BuiltInReportLink = True
+    end
+    object dxPrinterDespesasLink12Meses: TdxDBTreeListReportLink
+      Active = True
+      Caption = 'New Report'
+      Component = DBUlt12Meses
+      DateTime = 42592.6652594792
+      DesignerHelpContext = 0
+      PrinterPage.DMPaper = 9
+      PrinterPage.Footer = 250
+      PrinterPage.Header = 250
+      PrinterPage.Margins.Bottom = 10000
+      PrinterPage.Margins.Left = 6350
+      PrinterPage.Margins.Right = 6350
+      PrinterPage.Margins.Top = 28400
+      PrinterPage.PageFooter.Font.Charset = DEFAULT_CHARSET
+      PrinterPage.PageFooter.Font.Color = clWindowText
+      PrinterPage.PageFooter.Font.Height = -11
+      PrinterPage.PageFooter.Font.Name = 'Tahoma'
+      PrinterPage.PageFooter.Font.Style = []
+      PrinterPage.PageHeader.Font.Charset = DEFAULT_CHARSET
+      PrinterPage.PageHeader.Font.Color = clWindowText
+      PrinterPage.PageHeader.Font.Height = -11
+      PrinterPage.PageHeader.Font.Name = 'Tahoma'
+      PrinterPage.PageHeader.Font.Style = []
+      PrinterPage.PageSize.X = 210000
+      PrinterPage.PageSize.Y = 297000
+      PrinterPage._dxMeasurementUnits_ = 0
+      PrinterPage._dxLastMU_ = 2
+      ReportTitle.Font.Charset = DEFAULT_CHARSET
+      ReportTitle.Font.Color = clWindowText
+      ReportTitle.Font.Height = -19
+      ReportTitle.Font.Name = 'Times New Roman'
+      ReportTitle.Font.Style = [fsBold]
+      OnCustomDrawPageHeader = dxPrinterDespesasLinkMesAtualCustomDrawPageHeader
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'Times New Roman'
+      BandFont.Style = []
+      EvenFont.Charset = DEFAULT_CHARSET
+      EvenFont.Color = clWindowText
+      EvenFont.Height = -11
+      EvenFont.Name = 'Times New Roman'
+      EvenFont.Style = []
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Times New Roman'
+      Font.Style = []
+      FooterFont.Charset = DEFAULT_CHARSET
+      FooterFont.Color = clWindowText
+      FooterFont.Height = -11
+      FooterFont.Name = 'Times New Roman'
+      FooterFont.Style = []
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Times New Roman'
+      GroupNodeFont.Style = []
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Times New Roman'
+      HeaderFont.Style = []
+      OddFont.Charset = DEFAULT_CHARSET
+      OddFont.Color = clWindowText
+      OddFont.Height = -11
+      OddFont.Name = 'Times New Roman'
+      OddFont.Style = []
+      Options = [tlpoBands, tlpoHeaders, tlpoFooters, tlpoRowFooters, tlpoPreview, tlpoPreviewGrid, tlpoGrid, tlpoFlatCheckMarks, tlpoSoft3D, tlpoRowFooterGrid]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clWindowText
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'Times New Roman'
+      PreviewFont.Style = []
+      RowFooterFont.Charset = DEFAULT_CHARSET
+      RowFooterFont.Color = clWindowText
+      RowFooterFont.Height = -11
+      RowFooterFont.Name = 'Times New Roman'
+      RowFooterFont.Style = []
+      BuiltInReportLink = True
+    end
+  end
+  object ppmOpcoesPlano: TTS_PopupMenu
+    Left = 584
+    Top = 192
+    object JuntarTodos1: TMenuItem
+      Caption = 'Juntar Todos'
+      OnClick = JuntarTodos1Click
+    end
+    object ExpandirTodos1: TMenuItem
+      Caption = 'Expandir Todos'
+      OnClick = ExpandirTodos1Click
+    end
+    object LinhasdeGrade: TMenuItem
+      AutoCheck = True
+      Caption = 'Linhas de Grade'
+      Checked = True
+      OnClick = LinhasdeGradeClick
+    end
+  end
+  object Q_SQL: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Left = 152
+    Top = 344
+  end
+  object Q_12Meses: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select c.conta, c.contapai, c.descricao'
+      
+        'from contas c inner join tiposcontas t on t.tipoconta = c.tipoco' +
+        'nta'
+      'where t.tipo = '#39'D'#39
+      'order by c.descricao'
+      '')
+    Left = 352
+    Top = 176
+  end
+  object P_12Meses: TDataSetProvider
+    DataSet = Q_12Meses
+    Constraints = True
+    Left = 352
+    Top = 224
+  end
+  object C_12Meses: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_12Meses'
+    OnCalcFields = C_12MesesCalcFields
+    Left = 354
+    Top = 280
+    object C_12MesesCONTA: TIntegerField
+      FieldName = 'CONTA'
+      Required = True
+    end
+    object C_12MesesCONTAPAI: TIntegerField
+      FieldName = 'CONTAPAI'
+    end
+    object C_12MesesDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 50
+    end
+    object C_12MesesicMes1: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes1'
+    end
+    object C_12MesesicMes2: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes2'
+    end
+    object C_12MesesicMes3: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes3'
+    end
+    object C_12MesesicMes4: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes4'
+    end
+    object C_12MesesicMes5: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes5'
+    end
+    object C_12MesesicMes6: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes6'
+    end
+    object C_12MesesicMes7: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes7'
+    end
+    object C_12MesesicMes8: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes8'
+    end
+    object C_12MesesicMes9: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes9'
+    end
+    object C_12MesesicMes10: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes10'
+    end
+    object C_12MesesicMes11: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes11'
+    end
+    object C_12MesesicMes12: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icMes12'
+    end
+    object C_12MesesicTotalMes01: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes01'
+    end
+    object C_12MesesicTotalMes02: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes02'
+    end
+    object C_12MesesicTotalMes03: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes03'
+    end
+    object C_12MesesicTotalMes04: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes04'
+    end
+    object C_12MesesicTotalMes05: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes05'
+    end
+    object C_12MesesicTotalMes06: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes06'
+    end
+    object C_12MesesicTotalMes07: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes07'
+    end
+    object C_12MesesicTotalMes08: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes08'
+    end
+    object C_12MesesicTotalMes0: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes09'
+    end
+    object C_12MesesicTotalMes10: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes10'
+    end
+    object C_12MesesicTotalMes11: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes11'
+    end
+    object C_12MesesicTotalMes12: TCurrencyField
+      FieldKind = fkInternalCalc
+      FieldName = 'icTotalMes12'
+    end
+  end
+  object C_12MesesDS: TDataSource
+    DataSet = C_12Meses
+    Left = 352
+    Top = 336
+  end
+  object StoreProcedure: TIBStoredProc
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    Left = 221
+    Top = 120
+  end
+end

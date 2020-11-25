@@ -1,0 +1,290 @@
+inherited DMMontagensProduto: TDMMontagensProduto
+  Left = 717
+  Top = 101
+  Height = 421
+  Width = 540
+  inherited Q_Tabela: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    SQL.Strings = (
+      'SELECT  * FROM MONTAGENS')
+  end
+  inherited Q_MasterDS: TDataSource
+    Left = 129
+    Top = 25
+  end
+  inherited U_Tabela: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      'from montagensfilhos '
+      'where'
+      '  MONTAGEMFILHO = :MONTAGEMFILHO')
+    ModifySQL.Strings = (
+      'update montagensfilhos'
+      'set'
+      '  MONTAGEM = :MONTAGEM,'
+      '  ITEM = :ITEM,'
+      '  QUANTIDADE = :QUANTIDADE,'
+      '  UNIDADE = :UNIDADE,'
+      '  FATOR = :FATOR,'
+      '  QTDE = :QTDE,'
+      '  EMPRESA = :EMPRESA,'
+      '  ORIGEMREPLIC = :ORIGEMREPLIC,'
+      '  CODIGO = :CODIGO,'
+      '  DESCRICAO = :DESCRICAO'
+      'where'
+      '  MONTAGEMFILHO = :OLD_MONTAGEMFILHO')
+    InsertSQL.Strings = (
+      'insert into montagensfilhos'
+      '  (MONTAGEM, ITEM, QUANTIDADE, UNIDADE, FATOR, QTDE, EMPRESA, '
+      'ORIGEMREPLIC, '
+      '   CODIGO, DESCRICAO)'
+      'values'
+      
+        '  (:MONTAGEM, :ITEM, :QUANTIDADE, :UNIDADE, :FATOR, :QTDE, :EMPR' +
+        'ESA, '
+      ':ORIGEMREPLIC, '
+      '   :CODIGO, :DESCRICAO)')
+    DeleteSQL.Strings = (
+      'delete from montagensfilhos'
+      'where'
+      '  MONTAGEMFILHO = :OLD_MONTAGEMFILHO')
+  end
+  inherited DMComponent: TDMComponent
+    AntesDeIniciar = DMComponentAntesDeIniciar
+    Pesquisar1_Iniciar = DMComponentPesquisar1_Iniciar
+    Tabela_Nome = 'MONTAGENS'
+    Tabela_Chave = 'MONTAGEM'
+    Tabela_ChaveAlias = 'MONTAGEM'
+    Left = 34
+    Top = 272
+  end
+  inherited C_Tabela: TClientDataSet
+    Active = True
+    Top = 148
+    object C_TabelaQ_ItensFilhos: TDataSetField
+      FieldName = 'Q_ItensFilhos'
+    end
+    object C_TabelaMONTAGEM: TIntegerField
+      FieldName = 'MONTAGEM'
+      Origin = 'MONTAGENS.MONTAGEM'
+      Required = True
+    end
+    object C_TabelaDATA: TDateField
+      FieldName = 'DATA'
+      Origin = 'MONTAGENS.DATA'
+    end
+    object C_TabelaMONTADOR: TIntegerField
+      FieldName = 'MONTADOR'
+      Origin = 'MONTAGENS.MONTADOR'
+    end
+    object C_TabelaITEM: TIntegerField
+      FieldName = 'ITEM'
+      Origin = 'MONTAGENS.ITEM'
+    end
+    object C_TabelaQTDESOLIC: TBCDField
+      FieldName = 'QTDESOLIC'
+      Origin = 'MONTAGENS.QTDESOLIC'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaQTDEPRODUZIDO: TBCDField
+      FieldName = 'QTDEPRODUZIDO'
+      Origin = 'MONTAGENS.QTDEPRODUZIDO'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaSTATUS: TIntegerField
+      FieldName = 'STATUS'
+      Origin = 'MONTAGENS.STATUS'
+    end
+    object C_TabelaOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'MONTAGENS.OBS'
+      Size = 255
+    end
+    object C_TabelaDATACONCLUSAO: TDateField
+      FieldName = 'DATACONCLUSAO'
+      Origin = 'MONTAGENS.DATACONCLUSAO'
+    end
+    object C_TabelaHORACONCLUSAO: TStringField
+      FieldName = 'HORACONCLUSAO'
+      Origin = 'MONTAGENS.HORACONCLUSAO'
+      Size = 5
+    end
+    object C_TabelaPREVISAOCONCLUSAO: TDateField
+      FieldName = 'PREVISAOCONCLUSAO'
+      Origin = 'MONTAGENS.PREVISAOCONCLUSAO'
+    end
+    object C_TabelaDATAENTREGA: TDateField
+      FieldName = 'DATAENTREGA'
+      Origin = 'MONTAGENS.DATAENTREGA'
+    end
+    object C_TabelaTIPO: TStringField
+      FieldName = 'TIPO'
+      Origin = 'MONTAGENS.TIPO'
+      Size = 1
+    end
+    object C_TabelaURGENTE: TStringField
+      FieldName = 'URGENTE'
+      Origin = 'MONTAGENS.URGENTE'
+      Size = 1
+    end
+    object C_TabelaNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'MONTAGENS.NUMERO'
+      Size = 10
+    end
+    object C_TabelaUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Origin = 'MONTAGENS.UNIDADE'
+      Size = 6
+    end
+    object C_TabelaFATOR: TFloatField
+      FieldName = 'FATOR'
+      Origin = 'MONTAGENS.FATOR'
+    end
+    object C_TabelaSAIDAITEM: TIntegerField
+      FieldName = 'SAIDAITEM'
+      Origin = 'MONTAGENS.SAIDAITEM'
+    end
+    object C_TabelaEMPRESA: TIntegerField
+      FieldName = 'EMPRESA'
+      Origin = 'MONTAGENS.EMPRESA'
+      Required = True
+    end
+    object C_TabelaORIGEMREPLIC: TStringField
+      FieldName = 'ORIGEMREPLIC'
+      Origin = 'MONTAGENS.ORIGEMREPLIC'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  inherited ResultSet: TClientDataSet
+    Left = 124
+    Top = 102
+  end
+  object C_ItensFilhosDS: TDataSource
+    DataSet = C_ItensFilhos
+    Left = 225
+    Top = 114
+  end
+  object C_ItensFilhos: TClientDataSet
+    Aggregates = <>
+    DataSetField = C_TabelaQ_ItensFilhos
+    Params = <>
+    ProviderName = 'P_ItensFilhos'
+    OnNewRecord = C_ItensFilhosNewRecord
+    Left = 226
+    Top = 58
+    object C_ItensFilhos_icSelecionado: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_ItensFilhosMONTAGEMFILHO: TIntegerField
+      FieldName = 'MONTAGEMFILHO'
+      Required = True
+    end
+    object C_ItensFilhosMONTAGEM: TIntegerField
+      FieldName = 'MONTAGEM'
+    end
+    object C_ItensFilhosITEM: TIntegerField
+      FieldName = 'ITEM'
+      OnChange = C_ItensFilhosITEMChange
+    end
+    object C_ItensFilhosQUANTIDADE: TBCDField
+      FieldName = 'QUANTIDADE'
+      Precision = 18
+      Size = 2
+    end
+    object C_ItensFilhosUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Size = 6
+    end
+    object C_ItensFilhosFATOR: TFloatField
+      FieldName = 'FATOR'
+    end
+    object C_ItensFilhosQTDE: TBCDField
+      FieldName = 'QTDE'
+      Precision = 18
+      Size = 3
+    end
+    object C_ItensFilhosEMPRESA: TIntegerField
+      FieldName = 'EMPRESA'
+      Required = True
+    end
+    object C_ItensFilhosORIGEMREPLIC: TStringField
+      FieldName = 'ORIGEMREPLIC'
+      FixedChar = True
+      Size = 1
+    end
+    object C_ItensFilhosCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Size = 14
+    end
+    object C_ItensFilhosDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 50
+    end
+  end
+  object Q_ItensFilhos: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = Q_MasterDS
+    SQL.Strings = (
+      'select mf.*, ii.codigo, ii.descricao'
+      'from montagensfilhos mf inner join itens ii on mf.item = ii.item'
+      'where mf.montagem = :montagem')
+    UniDirectional = True
+    UpdateObject = U_ItensFilhos
+    Left = 223
+    Top = 9
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'MONTAGEM'
+        ParamType = ptUnknown
+        Size = 4
+      end>
+  end
+  object U_ItensFilhos: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      'from montagensfilhos '
+      'where'
+      '  MONTAGEMFILHO = :MONTAGEMFILHO')
+    ModifySQL.Strings = (
+      'update montagensfilhos'
+      'set'
+      '  MONTAGEMFILHO = :MONTAGEMFILHO,'
+      '  MONTAGEM = :MONTAGEM,'
+      '  ITEM = :ITEM,'
+      '  QUANTIDADE = :QUANTIDADE,'
+      '  UNIDADE = :UNIDADE,'
+      '  FATOR = :FATOR,'
+      '  QTDE = :QTDE,'
+      '  EMPRESA = :EMPRESA,'
+      '  ORIGEMREPLIC = :ORIGEMREPLIC'
+      'where'
+      '  MONTAGEMFILHO = :OLD_MONTAGEMFILHO')
+    InsertSQL.Strings = (
+      'insert into montagensfilhos'
+      '  (MONTAGEMFILHO, MONTAGEM, ITEM, QUANTIDADE, UNIDADE, FATOR, '
+      'QTDE, EMPRESA, '
+      '   ORIGEMREPLIC)'
+      'values'
+      
+        '  (:MONTAGEMFILHO, :MONTAGEM, :ITEM, :QUANTIDADE, :UNIDADE, :FAT' +
+        'OR, '
+      ':QTDE, '
+      '   :EMPRESA, :ORIGEMREPLIC)')
+    DeleteSQL.Strings = (
+      'delete from montagensfilhos'
+      'where'
+      '  MONTAGEMFILHO = :OLD_MONTAGEMFILHO')
+    Left = 225
+    Top = 177
+  end
+end

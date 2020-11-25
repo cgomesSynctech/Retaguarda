@@ -1,0 +1,82 @@
+unit Frm_Embalagem;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, FRM_PADRAO, dxExEdtr, Placemnt, BTOdeum, FormComponent, ImgList,
+  Menus, TS_PopupMenu, TS_LastDataObject, DlgMsg, StdCtrls, TS_Label,
+  ExtCtrls, TS_Image, dxfLabel, TS_MaxPanel, dxfProgressBar, dxTLClms,
+  dxTL, dxCntner, dxDBCtrl, dxDBGrid, TS_QDBGrid, TS_Bevel, Buttons,
+  TS_SpeedButton, teCtrls, TS_EffectsPanel, dxEditor, dxEdLib, TS_Edit,
+  dxDBELib, TS_DBEdit;
+
+type
+  TFrmEmbalagem = class(TFrmPadrao)
+    TS_Label1: TTS_Label;
+    TS_Edit1: TTS_Edit;
+    TS_Label2: TTS_Label;
+    TS_Label3: TTS_Label;
+    TS_DBEdit2: TTS_DBEdit;
+    procedure btPesquisarClick(Sender: TObject);
+    procedure TS_Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure TS_Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure TS_DBEdit1KeyPress(Sender: TObject; var Key: Char);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmEmbalagem: TFrmEmbalagem;
+
+implementation
+uses DM_Embalagem ;
+{$R *.dfm}
+
+
+
+procedure TFrmEmbalagem.btPesquisarClick(Sender: TObject);
+begin
+  inherited;
+  DMEmbalagem.DadosSaida(TS_Edit1.Text);
+//  DMEmbalagem.DadosSaida(TS_DBEdit1.Text);
+  TS_Label1.Caption := CurrToStr(DMEmbalagem.TotalConsulta);
+  TS_Label3.Caption := DMEmbalagem.NomeConsulta ;
+
+end;
+
+procedure TFrmEmbalagem.TS_Edit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+    if key = #13 then begin
+    btPesquisar.Action ;
+
+//     TFrmEmbalagem.btPesquisarClick ;
+     TS_DBEdit2.SetFocus ;
+    end;
+end;
+
+procedure TFrmEmbalagem.TS_Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+    if key = #13 then begin
+     btGravar.Action ; 
+    end;
+
+end;
+
+procedure TFrmEmbalagem.TS_DBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+    if key = #13 then begin
+    btPesquisar.Action ;
+//     TFrmEmbalagem.btPesquisarClick ;
+    TS_DBEdit2.SetFocus ;
+    end;
+
+end;
+
+end.

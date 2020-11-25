@@ -1,0 +1,265 @@
+unit DM_Montagens;
+
+interface
+
+uses
+    Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+    TDM_MANUTENCAO, Db, DBClient, Provider, DlgMsg, DMComponent,
+    IBCustomDataSet, IBUpdateSQL, IBQuery;
+
+type
+    TDMMontagens = class(TDMManutencao)
+        C_TabelaMONTAGEM: TIntegerField;
+        C_TabelaDATA: TDateField;
+        C_TabelaMONTADOR: TIntegerField;
+        C_TabelaITEM: TIntegerField;
+        C_TabelaQTDESOLIC: TBCDField;
+        C_TabelaQTDEPRODUZIDO: TBCDField;
+        C_TabelaSTATUS: TIntegerField;
+        C_TabelaOBS: TStringField;
+        C_TabelaDATACONCLUSAO: TDateField;
+        C_TabelaHORACONCLUSAO: TStringField;
+        C_TabelaPREVISAOCONCLUSAO: TDateField;
+        C_TabelaDATAENTREGA: TDateField;
+        Q_Operadores: TIBQuery;
+        P_Operadores: TDataSetProvider;
+        C_Operadores: TClientDataSet;
+        C_TabelalkMontador: TStringField;
+        C_TabelaCODIGO: TStringField;
+        C_TabelaDESCRICAO: TStringField;
+        C_MontagensFilhos: TClientDataSet;
+        Q_MontagensFilhos: TIBQuery;
+        C_TabelaQ_MontagensFilhos: TDataSetField;
+        C_MontagensFilhosMONTAGEMFILHO: TIntegerField;
+        C_MontagensFilhosMONTAGEM: TIntegerField;
+        C_MontagensFilhosITEM: TIntegerField;
+        Q_Aux: TIBQuery;
+        C_MontagensFilhosDS: TDataSource;
+        U_MontagensFilhos: TIBUpdateSQL;
+        C_MontagensFilhosCODIGO: TStringField;
+        C_MontagensFilhosDESCRICAO: TStringField;
+        C_TabelaURGENTE: TStringField;
+        C_TabelaTIPO: TStringField;
+        C_OperadoresOPERADOR: TIntegerField;
+        C_OperadoresNOME: TStringField;
+        Q_Status: TIBQuery;
+        P_Status: TDataSetProvider;
+        C_Status: TClientDataSet;
+        C_StatusSTATUS: TIntegerField;
+        C_StatusDESCRICAO: TStringField;
+        C_TabelalkStatus: TStringField;
+        C_TabelaNUMERO: TStringField;
+        C_TabelaUNIDADE: TStringField;
+        C_TabelaFATOR: TFloatField;
+        C_MontagensFilhosUNIDADE: TStringField;
+        C_MontagensFilhosFATOR: TFloatField;
+        C_MontagensFilhosESTOQUEATUAL: TFloatField;
+        C_MontagensFilhosQTDE: TBCDField;
+        Q_AuxSub: TIBQuery;
+        C_TabelaEMPRESA: TIntegerField;
+        C_MontagensFilhosEMPRESA: TIntegerField;
+        C_TabelaFORNECPREFERENCIA: TIntegerField;
+        C_MontagensFilhosFORNECPREFERENCIA: TIntegerField;
+        C_MontagensFilhosQUANTIDADE: TBCDField;
+        C_MontagensFilhosQTDPRODUCAO: TBCDField;
+        C_MontagensFilhosQUANTIDADETOTAL: TBCDField;
+        C_MontagensFilhosFABRICANTE: TStringField;
+        procedure DataModuleCreate(Sender: TObject);
+        procedure C_TabelaNewRecord(DataSet: TDataSet);
+        procedure C_TabelaITEMChange(Sender: TField);
+        procedure C_MontagensFilhosNewRecord(DataSet: TDataSet);
+        procedure C_MontagensFilhosITEMChange(Sender: TField);
+        procedure DMComponentGravar3_AposApply(Sender: TObject);
+        procedure DMComponentGravar2_AposIDS_Tabela(Sender: TObject);
+        procedure DMComponentGravar1_Iniciar(Sender: TObject;
+            var bSkip: Boolean);
+        procedure C_TabelaQTDESOLICChange(Sender: TField);
+    private
+        bPopulando: boolean;
+
+    public
+        { Public declarations }
+    end;
+
+var
+    DMMontagens: TDMMontagens;
+
+implementation
+uses DM_Projeto, Frm_Montagens;
+
+{$R *.DFM}
+
+procedure TDMMontagens.DataModuleCreate(Sender: TObject);
+begin
+    inherited;
+    DMMontagens := self;
+end;
+
+procedure TDMMontagens.C_TabelaNewRecord(DataSet: TDataSet);
+begin
+    inherited;
+    C_TabelaData.value := DMProjeto.dDataSistema;
+    C_TabelaQtdeSolic.value := 0;
+    C_TabelaUrgente.value := 'N';
+    C_TabelaStatus.value := 1;
+    C_TabelaTipo.value := 'F';
+    C_TabelaEMPRESA.Value := DMProjeto.nEmpresaLogada;
+    C_TabelaFORNECPREFERENCIA.value := -9;
+end;
+
+procedure TDMMontagens.C_TabelaITEMChange(Sender: TField);
+begin
+    inherited;
+    C_Tabeladescricao.value := DMProjeto.C_LocalizarItens.FieldByName('descricao').Asstring;
+    C_TabelaUnidade.value := DMProjeto.C_LocalizarItens.FieldByName('unidade').Asstring;
+    C_TabelaFator.value := DMProjeto.C_LocalizarItens.FieldByName('fatorundvenda').Asfloat;
+
+    C_MontagensFilhos.first;
+    while not C_MontagensFilhos.eof do
+        C_MontagensFilhos.delete;
+
+    Q_Aux.close;
+    Q_Aux.params[0].asinteger := C_TabelaItem.value;
+    Q_Aux.open;
+    bPopulando := true;
+    while not Q_Aux.eof do
+        begin
+            C_MontagensFilhos.Append;
+            C_MontagensFilhosItem.value := Q_Aux.FieldByName('subitem').asinteger;
+            C_MontagensFilhosQuantidade.value := Q_Aux.FieldByName('quantidade').asfloat;
+            C_MontagensFilhosCodigo.value := Q_Aux.FieldByName('codigo').asstring;
+            C_MontagensFilhosDescricao.value := Q_Aux.FieldByName('descricao').asstring;
+            C_MontagensFilhosFator.value := Q_Aux.FieldByName('fator').asfloat;
+            C_MontagensFilhosUnidade.value := Q_Aux.FieldByName('unidade').asstring;
+            C_MontagensFilhosEstoqueatual.value := Q_Aux.FieldByName('estoque').asfloat / Q_Aux.FieldByName('fator').asfloat;
+            C_MontagensFilhos.Post;
+            if (Q_Aux.FieldByName('haschildren').AsString = 'S') then
+                begin
+                    Q_AuxSub.close;
+                    Q_AuxSub.params[0].asinteger := Q_Aux.FieldByName('subitem').asinteger;
+                    Q_AuxSub.open;
+                    while not Q_AuxSub.eof do
+                        begin
+                            C_MontagensFilhos.Append;
+                            C_MontagensFilhosItem.value := Q_AuxSub.FieldByName('subitem').asinteger;
+                            C_MontagensFilhosQuantidade.value := Q_AuxSub.FieldByName('quantidade').asfloat;
+                            C_MontagensFilhosCodigo.value := Q_AuxSub.FieldByName('codigo').asstring;
+                            C_MontagensFilhosDescricao.value := Q_AuxSub.FieldByName('descricao').asstring;
+                            C_MontagensFilhosFator.value := Q_AuxSub.FieldByName('fator').asfloat;
+                            C_MontagensFilhosUnidade.value := Q_AuxSub.FieldByName('unidade').asstring;
+                            C_MontagensFilhosEstoqueatual.value := Q_AuxSub.FieldByName('estoque').asfloat / Q_AuxSub.FieldByName('fator').asfloat;
+                            C_MontagensFilhos.Post;
+                            Q_AuxSub.Next;
+                        end;
+                end;
+            Q_Aux.next;
+        end;
+    bPopulando := false;
+end;
+
+procedure TDMMontagens.C_MontagensFilhosNewRecord(DataSet: TDataSet);
+begin
+    inherited;
+    C_MontagensFilhosMontagemFilho.value := -1;
+    C_MontagensFilhosQtde.value := C_TabelaQtdeSolic.value;
+    C_MontagensFilhosEMPRESA.Value := DMProjeto.nEmpresaLogada;
+    C_MontagensFilhosFORNECPREFERENCIA.Value := -9;
+    //  C_MontagensFilhosULTIMOFORNECEDOR.Value := -9;
+end;
+
+procedure TDMMontagens.C_MontagensFilhosITEMChange(Sender: TField);
+begin
+    inherited;
+    if not bPopulando then
+        begin
+            C_MontagensFilhoscodigo.value := DMProjeto.C_LocalizarItens.FieldByName('codigo').Asstring;
+            C_MontagensFilhosdescricao.value := DMProjeto.C_LocalizarItens.FieldByName('descricao').Asstring;
+            C_MontagensFilhosEmpresa.value := DMProjeto.C_LocalizarItens.FieldByName('Empresa').AsInteger;
+            C_MontagensFilhosFORNECPREFERENCIA.value := DMProjeto.C_LocalizarItens.FieldByName('fornecedor').AsInteger;
+        end;
+end;
+
+procedure TDMMontagens.DMComponentGravar3_AposApply(Sender: TObject);
+begin
+    inherited;
+    // trigger
+  {  C_MontagensFilhos.first;
+    while not C_MontagensFilhos.eof do begin
+      DMProjeto.BaixaEstoque(C_MontagensFilhosItem.value,'-',C_TabelaQtdeSolic.value * C_MontagensFilhosQuantidade.value);
+      C_MontagensFilhos.next;
+    end;}
+end;
+
+procedure TDMMontagens.DMComponentGravar2_AposIDS_Tabela(Sender: TObject);
+begin
+    inherited;
+    // trigger
+  {  if bAlteracao then begin
+      Q_Aux.close;
+      Q_Aux.SQL.text := 'select qtdesolic from montagens where montagem = '+C_TabelaMontagem.AsString;
+      Q_Aux.open;
+      nQtde := Q_Aux.FieldByName('qtdesolic').asFloat;
+
+      Q_Aux.close;
+      Q_Aux.SQL.text := 'select item,quantidade from montagensfilhos where montagem = '+C_TabelaMontagem.AsString;
+      Q_Aux.open;
+      while not Q_Aux.eof do begin
+        DMProjeto.BaixaEstoque(Q_Aux.FieldByName('item').AsInteger,'+',nQtde * Q_Aux.FieldByName('quantidade').AsFloat);
+        Q_Aux.next;
+      end;
+    end;}
+end;
+
+procedure TDMMontagens.DMComponentGravar1_Iniciar(Sender: TObject;
+    var bSkip: Boolean);
+var bEstoqInsuf: boolean;
+begin
+    inherited;
+    if C_TabelaStatus.value <> 1 then
+        begin
+            DlgMsg.ShowMsg(3138);
+            bSkip := true;
+            exit;
+        end;
+
+    if ((C_TabelaITEM.Value <= 0) or (C_TabelaQTDESOLIC.Value <= 0) or (C_TabelaNUMERO.IsNull) or (C_TabelaNUMERO.Value = '')) then
+        begin
+            DlgMsg.ShowMsg(50, ['Não é possível salvar a operação. Verifique se os seguintes campos estão preenchidos: ' + #13#13 + '* Número' + #13 + '* Item (Produto)' + #13 + '* Quant. Solicitada']);
+            bSkip := True;
+            Exit;
+        end;
+
+    bEstoqInsuf := false;
+
+    C_MontagensFilhos.first;
+    while not C_MontagensFilhos.eof do
+        begin
+            if (C_TabelaQtdeSolic.value * C_MontagensFilhosQuantidade.value) > C_MontagensFilhosEstoqueAtual.value then
+                bEstoqInsuf := true;
+
+            C_MontagensFilhos.next;
+        end;
+
+    if bEstoqInsuf then
+        begin
+            if DlgMsg.ShowMsg(6043) <> 100 then
+                bSkip := true;
+        end;
+end;
+
+procedure TDMMontagens.C_TabelaQTDESOLICChange(Sender: TField);
+begin
+    inherited;
+    C_MontagensFilhos.disablecontrols;
+    C_MontagensFilhos.first;
+    while not C_MontagensFilhos.eof do
+        begin
+            C_MontagensFilhos.edit;
+            C_MontagensFilhosQtde.value := C_TabelaQtdeSolic.value;
+            C_MontagensFilhos.next;
+        end;
+    C_MontagensFilhos.enablecontrols;
+end;
+
+end.
+

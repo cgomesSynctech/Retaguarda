@@ -1,0 +1,91 @@
+unit DM_OutrasSaidas;
+                  
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  DM_Saidas, Db, DBClient, Provider, DlgMsg, DMComponent, IBCustomDataSet,
+  IBUpdateSQL, IBQuery, IBEvents, BTOdeum;
+
+type
+  TDMOutrasSaidas = class(TDMSaidas)
+    C_TabelaSTATUSNFE: TIntegerField;
+    C_ItenslkCST: TStringField;
+    C_TabelaOBSVOLUMES: TStringField;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DMComponentPesquisar1_Iniciar(Sender: TObject; var Select,
+      Where: String; var bSkip: Boolean);
+    procedure C_ItensNewRecord(DataSet: TDataSet);
+    procedure C_ItensSTATUSValidate(Sender: TField);
+    procedure C_TabelaSTATUSChange(Sender: TField);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMOutrasSaidas: TDMOutrasSaidas;
+
+implementation
+  uses DM_Projeto, Funcoes;
+
+{$R *.DFM}
+
+procedure TDMOutrasSaidas.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  DMOutrasSaidas := self;
+end;
+
+procedure TDMOutrasSaidas.DMComponentPesquisar1_Iniciar(Sender: TObject;
+  var Select, Where: String; var bSkip: Boolean);
+begin
+  inherited;
+
+//  Where := replace(Uppercase(Where), 'WHERE', ' where t.TipoPadrao = 8 and ');
+  Where := replace(Uppercase(Where), 'WHERE', ' where t.TipoPadrao in (5, 40) and ');
+  Where := replace(Uppercase(Where), 'TIPOMOVIMENTO', 'T.TIPOMOVIMENTO');
+end;
+
+procedure TDMOutrasSaidas.C_ItensNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  if C_ItensStatus.Value = 'P' then
+    C_ItensStatus.Value := 'E';
+end;
+
+procedure TDMOutrasSaidas.C_ItensSTATUSValidate(Sender: TField);
+begin
+  inherited;
+  if (sender.asString = 'M') and (C_ItensHasChildren.Value <> 'S') then begin
+    DlgMsg.ShowMsg(2403);
+    raise exception.create('@@');
+  end;
+end;
+
+procedure TDMOutrasSaidas.C_TabelaSTATUSChange(Sender: TField);
+begin
+  inherited;
+  if C_Itens.RecordCount > 0 then begin
+    try
+      bDisableItensAfterPost := true;
+      C_Itens.DisableControls;
+      C_Itens.First;
+      while not C_Itens.EOF do begin
+        if (C_ItensStatus.Value <> 'M') and (C_ItensI_TipoItem.Value in [1,2]) then begin
+          C_Itens.Edit;
+          C_ItensStatus.Value := Sender.asString;
+          C_Itens.Post;
+        end;
+        C_Itens.Next;
+      end;
+      C_Itens.First;
+    finally
+      bDisableItensAfterPost := false;
+      C_Itens.EnableControls;
+    end;
+  end;
+end;
+
+end.

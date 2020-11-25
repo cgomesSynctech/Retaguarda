@@ -1,0 +1,266 @@
+inherited FrmMontagensProduto: TFrmMontagensProduto
+  Left = 192
+  Top = 177
+  Width = 907
+  Height = 355
+  Caption = 'Montagem de Produto'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnNavigator: TTS_Panel
+    Left = 776
+    Height = 273
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 239
+    end
+  end
+  inherited pnDados: TTS_Panel
+    Width = 776
+    Height = 273
+    inherited Grid: TTS_QDBGrid
+      Width = 774
+      Height = 271
+      Filter.Criteria = {00000000}
+    end
+    inherited dxTreeListCampos: TdxTreeList
+      Width = 774
+      Height = 271
+    end
+    inherited sbDados: TTS_Panel
+      Width = 774
+      Height = 271
+      object dbgSubItens: TTS_QDBGrid
+        Left = 0
+        Top = 0
+        Width = 774
+        Height = 271
+        Bands = <
+          item
+          end>
+        DefaultLayout = True
+        HeaderPanelRowCount = 1
+        KeyField = 'MONTAGEMFILHO'
+        ShowSummaryFooter = True
+        SummaryGroups = <
+          item
+            DefaultGroup = True
+            SummaryItems = <
+              item
+                SummaryField = 'CODIGO'
+                SummaryFormat = '>CODIGO=###0'
+                SummaryType = cstCount
+              end>
+            Name = 'Default'
+          end>
+        SummarySeparator = '|'
+        Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        AutoSearchColor = clYellow
+        AutoSearchTextColor = clNavy
+        BandFont.Charset = DEFAULT_CHARSET
+        BandFont.Color = clWindowText
+        BandFont.Height = -11
+        BandFont.Name = 'MS Sans Serif'
+        BandFont.Style = []
+        DataSource = DMMontagensProduto.C_ItensFilhosDS
+        Filter.Criteria = {00000000}
+        GroupPanelColor = 15461355
+        HeaderColor = 15461355
+        HeaderFont.Charset = DEFAULT_CHARSET
+        HeaderFont.Color = clWindowText
+        HeaderFont.Height = -11
+        HeaderFont.Name = 'Tahoma'
+        HeaderFont.Style = []
+        HideFocusRect = True
+        HideSelection = True
+        OptionsBehavior = [edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
+        OptionsDB = [edgoCanAppend, edgoCancelOnExit, edgoCanDelete, edgoCanInsert, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoUseBookmarks]
+        OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoShowButtonAlways, edgoUseBitmap]
+        PreviewFieldName = 'CODIGO'
+        PreviewFont.Charset = DEFAULT_CHARSET
+        PreviewFont.Color = clBlue
+        PreviewFont.Height = -11
+        PreviewFont.Name = 'MS Sans Serif'
+        PreviewFont.Style = []
+        TS_PermitirQuantidade = False
+        TS_DescriptionCanChange = False
+        TS_AppendOnEnter = True
+        RowFooterNodeFont.Charset = DEFAULT_CHARSET
+        RowFooterNodeFont.Color = clWindowText
+        RowFooterNodeFont.Height = -11
+        RowFooterNodeFont.Name = 'Tahoma'
+        RowFooterNodeFont.Style = [fsBold]
+        TS_AccountFooterStyle = False
+        TS_HideGroupHeader = False
+        TS_AnotherColor = clWindow
+        TS_ReportHeaderStyle = False
+        GroupNodeFont.Charset = DEFAULT_CHARSET
+        GroupNodeFont.Color = clWindowText
+        GroupNodeFont.Height = -11
+        GroupNodeFont.Name = 'Tahoma'
+        GroupNodeFont.Style = [fsBold]
+        TS_BeforeLocalizar = dbgSubItensTS_BeforeLocalizar
+        TS_AposLocalizar = dbgSubItensTS_AposLocalizar
+        TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
+        TS_SummaryFooterFont.Color = clRed
+        TS_SummaryFooterFont.Height = -11
+        TS_SummaryFooterFont.Name = 'Tahoma'
+        TS_SummaryFooterFont.Style = [fsBold]
+        TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
+        TS_SummaryFooterSelFont.Color = clWindowText
+        TS_SummaryFooterSelFont.Height = -11
+        TS_SummaryFooterSelFont.Name = 'Tahoma'
+        TS_SummaryFooterSelFont.Style = [fsBold]
+        TS_AfterNewRecord = dbgSubItensTS_AfterNewRecord
+        TS_LikeString = False
+        TS_SelectionColor = 12054783
+        TS_SelectionFont.Charset = DEFAULT_CHARSET
+        TS_SelectionFont.Color = clWindowText
+        TS_SelectionFont.Height = -11
+        TS_SelectionFont.Name = 'Tahoma'
+        TS_SelectionFont.Style = []
+        TS_SelectedColumn = '_icSelecionado'
+        TS_ID = 0
+        TS_ChaveEstrangeira = 'ITEM'
+        TS_TipoItem = '1'
+        TS_C_Localizar = DMProjeto.C_LocalizarItens
+        TS_ItemColumns = 'Codigo;Descricao'
+        TS_TipoDescricao = tdVenda
+        TS_SummaryFields.Strings = (
+          'CODIGO;COUNT')
+        TS_SummaryFooterQtdText = 'Qtd. Geral:'
+        TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
+        object dbgSubItensCODIGO: TdxDBGridButtonColumn
+          Caption = 'C'#243'digo'
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'CODIGO'
+          SummaryFooterType = cstCount
+          SummaryFooterFormat = '###0'
+          Buttons = <
+            item
+              Default = True
+            end>
+        end
+        object dbgSubItensDESCRICAO: TdxDBGridButtonColumn
+          Caption = 'Descri'#231#227'o'
+          Sorted = csUp
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'DESCRICAO'
+          Buttons = <
+            item
+              Default = True
+            end>
+        end
+        object dbgSubItensQUANTIDADE: TdxDBGridCurrencyColumn
+          Caption = 'Quantidade'
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'QUANTIDADE'
+          DisplayFormat = '0.00'
+          Nullable = False
+        end
+        object dbgSubItensUNIDADE: TdxDBGridMaskColumn
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'UNIDADE'
+        end
+        object dbgSubItensFATOR: TdxDBGridMaskColumn
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'FATOR'
+        end
+        object dbgSubItensMONTAGEMFILHO: TdxDBGridMaskColumn
+          Visible = False
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'MONTAGEMFILHO'
+        end
+        object dbgSubItensMONTAGEM: TdxDBGridMaskColumn
+          Visible = False
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'MONTAGEM'
+        end
+        object dbgSubItensITEM: TdxDBGridMaskColumn
+          Visible = False
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'ITEM'
+        end
+        object dbgSubItensQTDE: TdxDBGridCurrencyColumn
+          Visible = False
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'QTDE'
+          Nullable = False
+        end
+        object dbgSubItensEMPRESA: TdxDBGridMaskColumn
+          Visible = False
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'EMPRESA'
+        end
+        object dbgSubItensORIGEMREPLIC: TdxDBGridMaskColumn
+          Visible = False
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'ORIGEMREPLIC'
+        end
+      end
+    end
+    inherited dxF9Bar: TdxfProgressBar
+      Width = 774
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 891
+    inherited lbCaption: TdxfLabel
+      Width = 222
+      Caption = 'Montagem de Produtos'
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 860
+    end
+  end
+  inherited DlgMsg: TDlgMsg
+    Left = 383
+    Top = 332
+  end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 286
+    Top = 187
+  end
+  inherited ppmPadrao: TTS_PopupMenu
+    Left = 490
+    Top = 331
+  end
+  inherited ImgPadrao: TImageList
+    Left = 186
+    Top = 317
+  end
+  inherited FormComponent: TFormComponent
+    BeforeClearParams = FormComponentBeforeClearParams
+    Caption = 'Montagem de Produtos'
+    Left = 512
+    Top = 88
+  end
+  inherited ppmHelp: TTS_PopupMenu
+    Left = 611
+    Top = 332
+  end
+  inherited ppmGridPadrao: TTS_PopupMenu
+    Left = 555
+    Top = 333
+  end
+  inherited ppmIR_Para: TTS_PopupMenu
+    Left = 666
+    Top = 332
+  end
+end

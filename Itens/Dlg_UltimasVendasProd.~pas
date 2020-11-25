@@ -1,0 +1,132 @@
+unit Dlg_UltimasVendasProd;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  FRM_MODELOCADASTROS, DlgMsg, Menus, TS_PopupMenu, StdCtrls, Buttons, TS_BitBtn, Db,
+  IBCustomDataSet, IBQuery, Provider, DBClient,
+  TS_LastDataObject, TS_Label, DBCtrls, TS_DBText, ExtCtrls,
+  TS_Bevel, TS_SpeedButton, FormsComponent, TS_Image,
+  dxfLabel, TS_MaxPanel, dxDBTLCl, dxGrClms, dxTL, dxDBCtrl, dxDBGrid,
+  dxCntner, TS_QDBGrid, teCtrls, TS_EffectsPanel, dxEditor, dxExEdtr,
+  dxEdLib, TS_ButtonEdit, TS_EditItem, Placemnt, BTOdeum;
+
+type
+  TDlgUltimasVendasProd = class(TFrmModeloCadastros)
+    Q_Vendas: TIBQuery;
+    C_Vendas: TClientDataSet;
+    Q_VendasProvider: TDataSetProvider;
+    Q_VendasDS: TDataSource;
+    C_VendasDATA: TDateField;
+    C_VendasFRETE: TBCDField;
+    C_VendasNOME: TStringField;
+    C_VendasTAXAVEL: TStringField;
+    C_VendasNUMERO: TStringField;
+    C_VendasQUANTIDADE: TBCDField;
+    TS_Label1: TTS_Label;
+    dbtQtde: TTS_DBText;
+    dbtValor: TTS_DBText;
+    C_VendasSubTotal: TIBBCDField;
+    dbgConsulta: TTS_QDBGrid;
+    dbgConsultaNUMERO: TdxDBGridMaskColumn;
+    dbgConsultaDATA: TdxDBGridDateColumn;
+    dbgConsultaNOME: TdxDBGridMaskColumn;
+    dbgConsultaQUANTIDADE: TdxDBGridMaskColumn;
+    dbgConsultaPRECO: TdxDBGridMaskColumn;
+    C_VendasPRECO: TFloatField;
+    dbgConsultaColumn8: TdxDBGridColumn;
+    C_VendasTIPOFAVORECIDO: TIntegerField;
+    C_VendasFAVORECIDO: TIntegerField;
+    dbgConsultaTipoFavorecido: TdxDBGridColumn;
+    dbgConsultaFavorecido: TdxDBGridColumn;
+    dbgConsultaSaida: TdxDBGridColumn;
+    C_VendasSAIDA: TIntegerField;
+    TS_Panel1: TTS_Panel;
+    dfItem: TTS_EditItem;
+    Label8: TTS_Label;
+    procedure FormCreate(Sender: TObject);
+    procedure C_VendasCalcFields(DataSet: TDataSet);
+    procedure dbgConsultaDblClick(Sender: TObject);
+    procedure dfItemSelecionou(Sender: TObject);
+    procedure btGravarClick(Sender: TObject);
+  private
+    nProduto: integer;
+    sDescricao: string;
+    procedure MostraConsulta;
+  public
+    Constructor Create(AOwner: TComponent; xProduto: integer;xDescricao: string);
+  end;
+
+var
+  DlgUltimasVendasProd: TDlgUltimasVendasProd;
+
+implementation
+uses DM_Projeto;
+
+{$R *.DFM}
+
+constructor TDlgUltimasVendasProd.Create;
+begin
+  nProduto := xProduto;
+  sDescricao := xDescricao;
+  inherited Create(AOwner);
+end;
+
+procedure TDlgUltimasVendasProd.MostraConsulta;
+begin
+  C_Vendas.close;
+  C_Vendas.FetchParams;
+  C_Vendas.params[0].asinteger := nProduto;
+  C_Vendas.open;
+end;
+
+
+procedure TDlgUltimasVendasProd.FormCreate(Sender: TObject);
+begin
+  inherited;
+  //caption := caption + ' '+sDescricao;
+  dfItem.ID := nProduto;
+  ShowModal;
+end;
+
+procedure TDlgUltimasVendasProd.C_VendasCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  C_VendasSubTotal.value := C_VendasQuantidade.value * C_VendasPreco.value;
+end;
+
+procedure TDlgUltimasVendasProd.dbgConsultaDblClick(Sender: TObject);
+var nID:integer;
+begin
+  inherited;
+  if dbgConsulta.TS_SelectedColumn = 'NOME' then begin
+		with DMProjeto do begin
+      nID := dbgConsulta.GetFieldValue(dbgConsulta.FocusedNode,'Favorecido',0);
+      DMProjeto.SetParametrosForm([nID]);
+      DMProjeto.CriarForm(DMProjeto.FormFav(dbgConsulta.GetFieldValue(dbgConsulta.FocusedNode,'tipofavorecido',0)), Self, true);
+  	end;
+  end
+  else begin
+    with DMProjeto do begin
+      nId := dbgConsulta.GetFieldValue(dbgConsulta.focusednode,'Saida',0);
+      SetParametrosForm([nId]);
+      CriarForm('FrmInvoices',self,true);
+    end;
+  end;
+end;
+
+procedure TDlgUltimasVendasProd.dfItemSelecionou(Sender: TObject);
+begin
+  inherited;
+  nProduto := dfItem.ID;
+  MostraConsulta;
+end;
+
+procedure TDlgUltimasVendasProd.btGravarClick(Sender: TObject);
+begin
+  inherited;
+  dbgConsultaDblClick(dbgConsulta);
+end;
+
+end.

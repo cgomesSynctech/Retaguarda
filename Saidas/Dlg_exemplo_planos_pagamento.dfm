@@ -1,0 +1,371 @@
+inherited DlgExemplo_planos_pagamento: TDlgExemplo_planos_pagamento
+  Left = 366
+  Top = 369
+  Width = 424
+  Height = 311
+  Caption = 'Cadastros Gerais'
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnDados: TTS_Panel
+    Width = 298
+    Height = 234
+    Color = 14542583
+    object TS_Label5: TTS_Label
+      Left = 16
+      Top = 12
+      Width = 87
+      Height = 13
+      Alignment = taLeftJustify
+      Caption = 'Valor da Venda:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label1: TTS_Label
+      Left = 17
+      Top = 41
+      Width = 120
+      Alignment = taLeftJustify
+      Caption = 'Parcelas:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object dfValor: TTS_CurrencyEdit
+      Left = 108
+      Top = 9
+      Width = 86
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnKeyPress = dfValorKeyPress
+      StyleController = DMProjeto.esGeral
+      DisplayFormat = '0.00;-0.00'
+      Value = 1000
+      Height = 21
+      StoredValues = 0
+    end
+    object dxDBGrid1: TTS_QDBGrid
+      Left = 16
+      Top = 56
+      Width = 264
+      Height = 169
+      Bands = <
+        item
+        end>
+      DefaultLayout = True
+      HeaderPanelRowCount = 1
+      ShowSummaryFooter = True
+      SummaryGroups = <
+        item
+          DefaultGroup = True
+          SummaryItems = <
+            item
+              SummaryField = 'Valor'
+              SummaryFormat = '>Valor=#,###,##0.00'
+              SummaryType = cstSum
+            end>
+          Name = 'Default'
+        end>
+      SummarySeparator = ', '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      AutoSearchColor = 6611199
+      AutoSearchTextColor = clBlue
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'MS Sans Serif'
+      BandFont.Style = []
+      DataSource = C_ExemploDS
+      Filter.Criteria = {00000000}
+      GroupPanelColor = 15461355
+      HeaderColor = 15461355
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Tahoma'
+      HeaderFont.Style = []
+      HideFocusRect = True
+      HideSelection = True
+      OptionsBehavior = [edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoEnterThrough, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
+      OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoUseBookmarks]
+      OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoUseBitmap]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clBlue
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'MS Sans Serif'
+      PreviewFont.Style = []
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      TS_PermitirQuantidade = False
+      TS_DescriptionCanChange = False
+      TS_AppendOnEnter = False
+      RowFooterNodeFont.Charset = DEFAULT_CHARSET
+      RowFooterNodeFont.Color = clWindowText
+      RowFooterNodeFont.Height = -11
+      RowFooterNodeFont.Name = 'Tahoma'
+      RowFooterNodeFont.Style = [fsBold]
+      TS_AccountFooterStyle = False
+      TS_HideGroupHeader = False
+      TS_AnotherColor = clWindow
+      TS_ReportHeaderStyle = False
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Tahoma'
+      GroupNodeFont.Style = []
+      TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterFont.Color = clWindowText
+      TS_SummaryFooterFont.Height = -11
+      TS_SummaryFooterFont.Name = 'Tahoma'
+      TS_SummaryFooterFont.Style = [fsBold]
+      TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterSelFont.Color = clWindowText
+      TS_SummaryFooterSelFont.Height = -11
+      TS_SummaryFooterSelFont.Name = 'Tahoma'
+      TS_SummaryFooterSelFont.Style = [fsBold]
+      TS_LikeString = False
+      TS_SelectionColor = 12054783
+      TS_SelectionFont.Charset = DEFAULT_CHARSET
+      TS_SelectionFont.Color = clWindowText
+      TS_SelectionFont.Height = -11
+      TS_SelectionFont.Name = 'Tahoma'
+      TS_SelectionFont.Style = []
+      TS_SelectedColumn = 'Parcela'
+      TS_ID = 0
+      TS_TipoDescricao = tdVenda
+      TS_SummaryFields.Strings = (
+        'Valor;Sum;')
+      TS_SummaryFooterQtdText = 'Qtd. Geral:'
+      TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
+      object dxDBGrid1Column1: TdxDBGridColumn
+        Caption = '# Parcela'
+        HeaderAlignment = taCenter
+        ReadOnly = True
+        Width = 58
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'Parcela'
+      end
+      object dxDBGrid1Column2: TdxDBGridDateColumn
+        HeaderAlignment = taCenter
+        ReadOnly = True
+        Width = 103
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'Vencimento'
+      end
+      object dxDBGrid1Column3: TdxDBGridCurrencyColumn
+        HeaderAlignment = taCenter
+        ReadOnly = True
+        Width = 79
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'Valor'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+        Nullable = False
+      end
+    end
+  end
+  inherited pnNavigator: TTS_Panel
+    Left = 298
+    Height = 234
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 200
+    end
+    inherited btLimpar: TTS_SpeedButton
+      Visible = False
+    end
+    inherited btGravar: TTS_SpeedButton
+      Hint = 'Calcular as parcelas'
+      Caption = 'Calcular'
+      Glyph.Data = {
+        360C0000424D360C000000000000360000002800000020000000200000000100
+        180000000000000C000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000FFFFFFFFFFFF000000
+        7F7F007F00007F00007F00007F00007F00007F00007F00007F00007F00007F00
+        007F00007F00007F00007F00007F00007F00007F00007F00007F00007F00007F
+        00007F00007F00007F00007F00007F00007F00007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F
+        007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F000000000000000000007F7F000000000000000000007F7F
+        000000000000000000007F7F000000000000000000007F7F0000000000000000
+        00000000000000000000000000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF0000007F7F
+        00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF0000007F7F00FFFFFFBFBFBFBF
+        BFBFBFBFBFBFBFBFBFBFBF0000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F00BFBFBF0000007F7F00FFFFFFBFBFBF0000007F7F
+        00FFFFFFBFBFBF0000007F7F00FFFFFFBFBFBF0000007F7F00FFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF0000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F
+        007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F000000000000000000007F7F000000000000000000007F7F
+        000000000000000000007F7F000000000000000000007F7F0000000000000000
+        00007F7F000000000000000000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF0000007F7F
+        00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF00
+        00007F7F00BFBFBFBFBFBF0000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F00BFBFBF0000007F7F00FFFFFFBFBFBF0000007F7F
+        00FFFFFFBFBFBF0000007F7F00FFFFFFBFBFBF0000007F7F00FFFFFFBFBFBF00
+        00007F7F00FFFFFFBFBFBF0000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F
+        007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F000000000000000000007F7F000000000000000000007F7F
+        000000000000000000007F7F000000000000000000007F7F0000000000000000
+        00007F7F000000000000000000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF0000007F7F
+        00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF0000007F7F00BFBFBFBFBFBF00
+        00007F7F00BFBFBFBFBFBF0000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F00BFBFBF0000007F7F00FFFFFFBFBFBF0000007F7F
+        00FFFFFFBFBFBF0000007F7F00FFFFFFBFBFBF0000007F7F00FFFFFFBFBFBF00
+        00007F7F00FFFFFFBFBFBF0000007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F
+        007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F00000000FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F00000000BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF
+        BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFFFFF007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF007F7F007F7F000000000000000000000000000000000000000000000000
+        000000000000000000000000000000000000000000007F7F007F7F007F7F007F
+        7F007F7F007F7F007F7F007F7F007F7F007F7F007F0000000000FFFFFF000000
+        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF007F7F00000000FFFFFFFFFFFF
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      NumGlyphs = 1
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 416
+    Gradient.ColorStart = 11911142
+    inherited lbCaption: TdxfLabel
+      Width = 152
+      Caption = 'Visualizar Plano'
+      Effect3D.ShadowedColor = 11911142
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 438
+    end
+    inherited lbUpperHint: TTS_Label
+      Left = 398
+    end
+  end
+  inherited DlgMsg: TDlgMsg
+    Left = 291
+    Top = 374
+  end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 304
+    Top = 384
+  end
+  inherited ppmPadrao: TTS_PopupMenu
+    Left = 309
+    Top = 382
+  end
+  inherited FormsComponent: TFormsComponent
+    ModuloStyle = DMProjeto.msGeral
+    BarEndColor = 11911142
+    CaptionShadow = 11911142
+    FormColor = 14542583
+    Modulo = 'Cadastros Gerais'
+    Caption = 'Visualizar Plano'
+    Left = 347
+    Top = 190
+  end
+  inherited ppmHelp: TTS_PopupMenu
+    Left = 277
+    Top = 375
+  end
+  inherited FormStorage: TFormStorage
+    Left = 120
+    Top = 214
+  end
+  object C_Exemplo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 179
+    Top = 165
+    object C_ExemploParcela: TIntegerField
+      FieldName = 'Parcela'
+    end
+    object C_ExemploVencimento: TDateTimeField
+      FieldName = 'Vencimento'
+      EditMask = '!99/99/9999;1; '
+    end
+    object C_ExemploValor: TCurrencyField
+      FieldName = 'Valor'
+    end
+  end
+  object C_ExemploDS: TDataSource
+    DataSet = C_Exemplo
+    Left = 98
+    Top = 164
+  end
+end

@@ -1,0 +1,108 @@
+unit DM_MontagensProduto;
+
+interface
+
+uses
+    Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+    Dialogs, TDM_MANUTENCAO, DB, DBClient, Provider, DlgMsg, DMComponent,
+    IBCustomDataSet, IBUpdateSQL, IBQuery;
+
+type
+    TDMMontagensProduto = class(TDMManutencao)
+    C_ItensFilhosDS: TDataSource;
+    C_ItensFilhos: TClientDataSet;
+    Q_ItensFilhos: TIBQuery;
+    C_TabelaQ_ItensFilhos: TDataSetField;
+    C_TabelaMONTAGEM: TIntegerField;
+    C_TabelaDATA: TDateField;
+    C_TabelaMONTADOR: TIntegerField;
+    C_TabelaITEM: TIntegerField;
+    C_TabelaQTDESOLIC: TBCDField;
+    C_TabelaQTDEPRODUZIDO: TBCDField;
+    C_TabelaSTATUS: TIntegerField;
+    C_TabelaOBS: TStringField;
+    C_TabelaDATACONCLUSAO: TDateField;
+    C_TabelaHORACONCLUSAO: TStringField;
+    C_TabelaPREVISAOCONCLUSAO: TDateField;
+    C_TabelaDATAENTREGA: TDateField;
+    C_TabelaTIPO: TStringField;
+    C_TabelaURGENTE: TStringField;
+    C_TabelaNUMERO: TStringField;
+    C_TabelaUNIDADE: TStringField;
+    C_TabelaFATOR: TFloatField;
+    C_TabelaSAIDAITEM: TIntegerField;
+    C_TabelaEMPRESA: TIntegerField;
+    C_TabelaORIGEMREPLIC: TStringField;
+    C_ItensFilhosMONTAGEMFILHO: TIntegerField;
+    C_ItensFilhosMONTAGEM: TIntegerField;
+    C_ItensFilhosITEM: TIntegerField;
+    C_ItensFilhosQUANTIDADE: TBCDField;
+    C_ItensFilhosUNIDADE: TStringField;
+    C_ItensFilhosFATOR: TFloatField;
+    C_ItensFilhosQTDE: TBCDField;
+    C_ItensFilhosEMPRESA: TIntegerField;
+    C_ItensFilhosORIGEMREPLIC: TStringField;
+    C_ItensFilhosCODIGO: TStringField;
+    C_ItensFilhosDESCRICAO: TStringField;
+    C_ItensFilhos_icSelecionado: TIntegerField;
+    U_ItensFilhos: TIBUpdateSQL;
+        //function SelectPesquisa(idMontagem: integer): string;
+        procedure DMComponentAntesDeIniciar(Sender: TObject);
+        procedure DataModuleCreate(Sender: TObject);
+        procedure DMComponentPesquisar1_Iniciar(Sender: TObject; var Select,
+            Where: string; var bSkip: Boolean);
+    procedure C_ItensFilhosITEMChange(Sender: TField);
+    procedure C_ItensFilhosNewRecord(DataSet: TDataSet);
+    private
+        { Private declarations }
+    public
+        idMontagem: integer;
+        { Public declarations }
+    end;
+
+var
+    DMMontagensProduto: TDMMontagensProduto;
+
+implementation
+
+uses DM_Projeto, funcoes;
+
+{$R *.dfm}
+
+procedure TDMMontagensProduto.DMComponentAntesDeIniciar(Sender: TObject);
+begin
+    inherited;
+    idMontagem := 0;
+end;
+
+procedure TDMMontagensProduto.DataModuleCreate(Sender: TObject);
+begin
+    inherited;
+    DMMontagensProduto := Self;
+end;
+
+procedure TDMMontagensProduto.DMComponentPesquisar1_Iniciar(
+    Sender: TObject; var Select, Where: string; var bSkip: Boolean);
+begin
+    inherited;
+    //Where := replace(Uppercase(Where), 'montagemfilho', 'montagem');
+end;
+
+procedure TDMMontagensProduto.C_ItensFilhosITEMChange(Sender: TField);
+begin
+  inherited;
+  C_ItensFilhosCodigo.value     := DMProjeto.C_LocalizarItens.FieldByName('codigo').asstring;
+  C_ItensFilhosDescricao.value := DMProjeto.C_LocalizarItens.FieldByName('descricao').asstring;
+  C_ItensFilhosUnidade.value := DMProjeto.C_LocalizarItens.FieldByName('unidade').asstring;
+end;
+
+procedure TDMMontagensProduto.C_ItensFilhosNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+    C_ItensFilhosMONTAGEMFILHO.Value := DMProjeto.NextID('IDGLOBAL', 1);
+    C_ItensFilhosEMPRESA.Value := -1;
+end;
+
+end.
+
+ 

@@ -1,0 +1,76 @@
+unit DM_RomaneioSeparacao;
+
+interface
+ 
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, TDM_MANUTENCAO, DB, DBClient, Provider, DlgMsg, DMComponent,
+  IBCustomDataSet, IBUpdateSQL, IBQuery;
+
+type
+  TDMRomaneioSeparacao = class(TDMManutencao)
+    C_TabelaLOTESEPARACAO: TIntegerField;
+    C_TabelaDATA: TDateField;
+    Q_Detalhe: TIBQuery;
+    U_Detalhe: TIBUpdateSQL;
+    P_Detalhe: TDataSetProvider;
+    C_Detalhe: TClientDataSet;
+    IntegerField1: TIntegerField;
+    C_DetalheDs: TDataSource;
+    C_DetalheNUMERO: TStringField;
+    C_DetalheDATA: TDateField;
+    C_DetalheNOME: TStringField;
+    C_DetalheTOTAL: TBCDField;
+    C_DetalheLOTESEPARACAO: TIntegerField;
+    C_DetalheSAIDA: TIntegerField;
+    C_DetalheLOTESEPARACAOSAIDA: TIntegerField;
+    C_TabelaQ_Detalhe: TDataSetField;
+    procedure C_TabelaNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
+    procedure C_TabelaAfterOpen(DataSet: TDataSet);
+    procedure C_DetalheNewRecord(DataSet: TDataSet);
+  private
+    { Private declarations }
+    nIdRomaneioSeparacaoSaida: Integer;
+  public
+    { Public declarations }
+  end;
+
+var
+  DMRomaneioSeparacao: TDMRomaneioSeparacao;
+
+implementation
+
+uses DM_Projeto, TDM_Projeto;
+
+{$R *.dfm}
+
+procedure TDMRomaneioSeparacao.C_TabelaNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  DMRomaneioSeparacao.C_TabelaLOTESEPARACAO.Value := DMPRojeto.NextID('LOTESEPARACAO');
+  C_TabelaDATA.Value := DMPRojeto.getDataServidor;
+end;
+
+procedure TDMRomaneioSeparacao.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  DMRomaneioSeparacao := Self;
+  nIdRomaneioSeparacaoSaida := -1000;
+end;
+
+procedure TDMRomaneioSeparacao.C_TabelaAfterOpen(DataSet: TDataSet);
+begin
+  inherited;
+  If Not C_Detalhe.Active Then
+    C_Detalhe.Active := True;
+end;
+
+procedure TDMRomaneioSeparacao.C_DetalheNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  C_Detalhe.FieldByName('LOTESEPARACAOSAIDA').Value := nIdRomaneioSeparacaoSaida;
+  dec(nIdRomaneioSeparacaoSaida);
+end;
+
+end.

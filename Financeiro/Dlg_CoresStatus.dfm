@@ -1,0 +1,407 @@
+object DlgCoresStatus: TDlgCoresStatus
+  Left = 251
+  Top = 183
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Cores do Status do Documento'
+  ClientHeight = 316
+  ClientWidth = 275
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TS_Shape1: TTS_Shape
+    Left = 0
+    Top = 0
+    Width = 275
+    Height = 316
+    Align = alClient
+    Pen.Color = clGray
+    Transparent = False
+  end
+  object TS_Shape2: TTS_Shape
+    Tag = 1
+    Left = 8
+    Top = 8
+    Width = 18
+    Height = 17
+    Brush.Color = clGreen
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Label1: TTS_Label
+    Tag = 1
+    Left = 32
+    Top = 9
+    Width = 97
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Aguardando Crédito'
+    Color = clNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGreen
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label2: TTS_Label
+    Tag = 2
+    Left = 32
+    Top = 33
+    Width = 62
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Apresentado'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clPurple
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label3: TTS_Label
+    Tag = 3
+    Left = 32
+    Top = 57
+    Width = 129
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Aguardando Compensação'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clTeal
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label4: TTS_Label
+    Tag = 4
+    Left = 32
+    Top = 81
+    Width = 47
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Devolvido'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label5: TTS_Label
+    Tag = 5
+    Left = 32
+    Top = 105
+    Width = 63
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Em Cobrança'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 4227327
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label6: TTS_Label
+    Tag = 50
+    Left = 32
+    Top = 129
+    Width = 45
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Liquidado'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Shape3: TTS_Shape
+    Tag = 2
+    Left = 8
+    Top = 32
+    Width = 18
+    Height = 17
+    Brush.Color = clPurple
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape4: TTS_Shape
+    Tag = 3
+    Left = 8
+    Top = 56
+    Width = 18
+    Height = 17
+    Brush.Color = clTeal
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape5: TTS_Shape
+    Tag = 4
+    Left = 8
+    Top = 80
+    Width = 18
+    Height = 17
+    Brush.Color = clRed
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape6: TTS_Shape
+    Tag = 5
+    Left = 8
+    Top = 104
+    Width = 18
+    Height = 17
+    Brush.Color = 4227327
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape7: TTS_Shape
+    Tag = 50
+    Left = 8
+    Top = 128
+    Width = 18
+    Height = 17
+    Brush.Color = clBlue
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape8: TTS_Shape
+    Tag = 55
+    Left = 8
+    Top = 152
+    Width = 18
+    Height = 17
+    Brush.Color = 12615680
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape9: TTS_Shape
+    Tag = 70
+    Left = 8
+    Top = 176
+    Width = 18
+    Height = 17
+    Brush.Color = clRed
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Shape10: TTS_Shape
+    Tag = 80
+    Left = 8
+    Top = 200
+    Width = 18
+    Height = 17
+    Brush.Color = clOlive
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Label7: TTS_Label
+    Tag = 70
+    Left = 32
+    Top = 177
+    Width = 50
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Cancelado'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsStrikeOut]
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label8: TTS_Label
+    Tag = 55
+    Left = 32
+    Top = 153
+    Width = 112
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Liquidado por Factoring'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 12615680
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label9: TTS_Label
+    Tag = 80
+    Left = 32
+    Top = 202
+    Width = 92
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Sem Fundo/Crédito'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Shape11: TTS_Shape
+    Tag = 71
+    Left = 8
+    Top = 224
+    Width = 18
+    Height = 17
+    Brush.Color = clOlive
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Label10: TTS_Label
+    Tag = 71
+    Left = 32
+    Top = 226
+    Width = 92
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Sem Fundo/Crédito'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label11: TTS_Label
+    Tag = 7
+    Left = 32
+    Top = 251
+    Width = 92
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Sem Fundo/Crédito'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Shape12: TTS_Shape
+    Tag = 7
+    Left = 8
+    Top = 248
+    Width = 18
+    Height = 17
+    Brush.Color = clOlive
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Label12: TTS_Label
+    Tag = 60
+    Left = 32
+    Top = 274
+    Width = 92
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Sem Fundo/Crédito'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Shape13: TTS_Shape
+    Tag = 60
+    Left = 8
+    Top = 271
+    Width = 18
+    Height = 17
+    Brush.Color = clOlive
+    Pen.Style = psClear
+    Transparent = False
+  end
+  object TS_Label13: TTS_Label
+    Tag = 61
+    Left = 32
+    Top = 295
+    Width = 92
+    Height = 13
+    Alignment = taLeftJustify
+    AutoSize = True
+    Caption = 'Sem Fundo/Crédito'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    WordWrap = False
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Shape14: TTS_Shape
+    Tag = 61
+    Left = 8
+    Top = 293
+    Width = 18
+    Height = 17
+    Brush.Color = clOlive
+    Pen.Style = psClear
+    Transparent = False
+  end
+end

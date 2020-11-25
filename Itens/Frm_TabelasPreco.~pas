@@ -1,0 +1,113 @@
+unit Frm_TabelasPreco;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  FRM_PADRAO, FormComponent, ImgList, TS_LastDataObject,
+  DlgMsg, Menus, TS_PopupMenu, TS_ScrollBox, ComCtrls,
+  StdCtrls, Buttons, TS_BitBtn, TS_SpeedButton, ExtCtrls,
+  Mask, DBCtrls, TS_DBEdit, TS_DBCheckBox, TS_Label, TS_Bevel,
+  TS_MaxPanel, CheckLst, TS_CheckListBox, dxEditor, dxEdLib, dxDBELib,
+  dxCntner, dxExEdtr, TS_Image, dxfLabel, dxTL, dxDBCtrl, dxDBGrid,
+  TS_QDBGrid, teCtrls, TS_EffectsPanel, dxTLClms, BTOdeum, Placemnt,
+  TS_DBRadioGroup, TS_DBMaskEdit, dxfProgressBar;
+
+type
+  TFrmTabelasPreco = class(TFrmPadrao)
+    TS_Label1: TTS_Label;
+    dfPerc: TTS_DBEdit;
+    TS_DBEdit2: TTS_DBEdit;
+    Grid_icSelecionado: TdxDBGridColumn;
+    GridTABELAPRECO: TdxDBGridMaskColumn;
+    GridDESCRICAO: TdxDBGridMaskColumn;
+    GridPERCENTUAL: TdxDBGridMaskColumn;
+    GridDESATIVADO: TdxDBGridMaskColumn;
+    GridBASEADA: TdxDBGridMaskColumn;
+    dbgBaseada: TTS_DBRadioGroup;
+    st1: TStaticText;
+    st2: TStaticText;
+    btAtualizaManuais: TTS_SpeedButton;
+    TS_Label2: TTS_Label;
+    dfComissao: TTS_DBMaskEdit;
+    TS_DBCheckBox1: TTS_DBCheckBox;
+    procedure FormComponentEstado_Inicial(Sender: TObject;
+      var bSkip: Boolean);
+    procedure FormComponentAfterScroll(Sender: TObject);
+    procedure dbgBaseadaChange(Sender: TObject);
+    procedure FormComponentEstado_Navegacao(Sender: TObject;
+      var bSkip: Boolean);
+    procedure btAtualizaManuaisClick(Sender: TObject);
+    procedure btComando1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmTabelasPreco: TFrmTabelasPreco;
+
+implementation
+uses DM_TabelasPreco, DM_Projeto;
+
+{$R *.DFM}
+
+procedure TFrmTabelasPreco.FormComponentEstado_Inicial(Sender: TObject;
+  var bSkip: Boolean);
+begin
+  inherited;
+  dbgBaseada.Enabled := true;
+  st1.Enabled := true;
+  st2.Enabled := true;
+
+  dfPerc.visible := true;
+  btAtualizaManuais.Enabled := false;
+end;
+
+procedure TFrmTabelasPreco.FormComponentAfterScroll(Sender: TObject);
+begin
+  inherited;
+  if DMTabelasPreco.C_TabelaTabelaPreco.value = 0 then begin
+    dfPerc.visible    := false;
+    end
+  else begin
+    dfPerc.visible    := true;
+  end;
+
+  if DMTabelasPreco.C_TabelaBaseada.Value = 'N' then
+    btAtualizaManuais.Enabled := false
+  else if DMTabelasPreco.bAlteracao then
+    btAtualizaManuais.Enabled := true;
+
+end;
+
+procedure TFrmTabelasPreco.dbgBaseadaChange(Sender: TObject);
+begin
+  inherited;
+  dfPerc.SetReadOnly(dbgBaseada.Value = 'N');
+end;
+
+procedure TFrmTabelasPreco.FormComponentEstado_Navegacao(Sender: TObject;
+  var bSkip: Boolean);
+begin
+  inherited;
+  dbgBaseada.Enabled := false;
+  st1.Enabled := false;
+  st2.Enabled := false;
+end;
+
+procedure TFrmTabelasPreco.btAtualizaManuaisClick(Sender: TObject);
+begin
+  inherited;
+  if DlgMsg.ShowMsg(1001,[DMTabelasPreco.C_TabelaDescricao.asstring]) = 100 then
+    DMTabelasPreco.AtualizarPrecosManuais;
+end;
+
+procedure TFrmTabelasPreco.btComando1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('FrmPerfisTabelaPrecos',self,true);
+end;
+
+end.

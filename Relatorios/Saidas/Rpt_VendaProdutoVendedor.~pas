@@ -1,0 +1,381 @@
+unit Rpt_VendaProdutoVendedor;
+
+interface
+
+uses
+    Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+    Dialogs, RPT_PADRAO, dxExEdtr, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg,
+    dxBkgnd, dxWrap, dxPrnDev, FormsComponent, dxPSCore, dxPSdxTLLnk,
+    dxPSdxDBCtrlLnk, dxPSdxDBGrLnk, DBClient, Provider, DB, IBCustomDataSet,
+    IBQuery, Placemnt, BTOdeum, Menus, TS_PopupMenu, TS_LastDataObject,
+    DlgMsg, dxCntner, dxEdLib, TS_CheckBox, dxTL, dxDBCtrl, dxDBGrid,
+    TS_QDBGrid, teCtrls, TS_EffectsPanel, StdCtrls, ComCtrls, ExtCtrls,
+    TS_Label, Buttons, TS_SpeedButton, dxfLabel, TS_MaxPanel, dxEditor,
+    dxDBEdtr, dxDBELib, TS_LookupComboBox, dxDBTLCl, dxGrClms, DateUtils,
+    TS_PopupEdit, TS_PopupFiltrarItens, TS_ButtonEdit, TS_EditFavorecido,
+    CheckLst, TS_CheckListBox, TeEngine, TeeTools, TeePageNumTool, Series,
+    TeeProcs, Chart;
+
+type
+    TRptVendaProdutoVendedor = class(TRptPadrao)
+        C_ConsultaCODIGO: TStringField;
+        C_ConsultaDESCRICAO: TStringField;
+        FiltroItens: TTS_PopupFiltrarItens;
+        TS_Label1: TTS_Label;
+        dfFavorecido: TTS_EditFavorecido;
+        Aanime: TAnimate;
+        C_ConsultaITEM: TIntegerField;
+        peTipoOperacao: TTS_PopupEdit;
+        TS_Label3: TTS_Label;
+        clbTipoOperacao: TTS_CheckListBox;
+        Q_TiposMovimentos: TIBQuery;
+        Q_TiposMovimentosTIPOMOVIMENTO: TIntegerField;
+        Q_TiposMovimentosDESCRICAO: TIBStringField;
+        P_TiposMovimentos: TDataSetProvider;
+        C_TiposMovimentos: TClientDataSet;
+        C_TiposMovimentosTIPOMOVIMENTO: TIntegerField;
+        C_TiposMovimentosDESCRICAO: TStringField;
+        C_TipoMovimentoDS: TDataSource;
+        grafico: TChart;
+        TS_Label2: TTS_Label;
+        TS_Label4: TTS_Label;
+        Series1: TFastLineSeries;
+        ChartTool1: TPageNumTool;
+        C_ConsultaMES_01: TCurrencyField;
+        C_ConsultaMES_02: TCurrencyField;
+        C_ConsultaMES_03: TCurrencyField;
+        C_ConsultaMES_04: TCurrencyField;
+        C_ConsultaMES_05: TCurrencyField;
+        C_ConsultaMES_06: TCurrencyField;
+        C_ConsultaMES_07: TCurrencyField;
+        C_ConsultaMES_08: TCurrencyField;
+        C_ConsultaMES_09: TCurrencyField;
+        C_ConsultaMES_10: TCurrencyField;
+        C_ConsultaMES_11: TCurrencyField;
+        C_ConsultaMES_12: TCurrencyField;
+        C_ConsultaQtd_01: TStringField;
+        C_ConsultaQtd_02: TStringField;
+        C_ConsultaQtd_03: TStringField;
+        C_ConsultaQtd_04: TStringField;
+        C_ConsultaQtd_05: TStringField;
+        C_ConsultaPed_01: TStringField;
+        C_ConsultaPed_02: TStringField;
+        C_ConsultaPed_03: TStringField;
+        C_ConsultaPed_04: TStringField;
+        C_ConsultaPed_05: TStringField;
+        C_ConsultaFABRICANTE: TStringField;
+        dbgConsultaCODIGO: TdxDBGridMaskColumn;
+        dbgConsultaDESCRICAO: TdxDBGridMaskColumn;
+        dbgConsultaFABRICANTE: TdxDBGridMaskColumn;
+        dbgConsultaITEM: TdxDBGridMaskColumn;
+        dbgConsultaMES_01: TdxDBGridColumn;
+        dbgConsultaMES_02: TdxDBGridColumn;
+        dbgConsultaMES_03: TdxDBGridColumn;
+        dbgConsultaMES_04: TdxDBGridColumn;
+        dbgConsultaMES_05: TdxDBGridColumn;
+        dbgConsultaMES_06: TdxDBGridColumn;
+        dbgConsultaMES_07: TdxDBGridColumn;
+        dbgConsultaMES_08: TdxDBGridColumn;
+        dbgConsultaMES_09: TdxDBGridColumn;
+        dbgConsultaMES_10: TdxDBGridColumn;
+        dbgConsultaMES_11: TdxDBGridColumn;
+        dbgConsultaMES_12: TdxDBGridColumn;
+        dbgConsultaTOTAL: TdxDBGridColumn;
+        dbgConsultaQtd_01: TdxDBGridColumn;
+        dbgConsultaQtd_02: TdxDBGridColumn;
+        dbgConsultaQtd_03: TdxDBGridColumn;
+        dbgConsultaQtd_04: TdxDBGridColumn;
+        dbgConsultaQtd_05: TdxDBGridColumn;
+        dbgConsultaPed_01: TdxDBGridColumn;
+        dbgConsultaPed_02: TdxDBGridColumn;
+        dbgConsultaPed_03: TdxDBGridColumn;
+        dbgConsultaPed_04: TdxDBGridColumn;
+        dbgConsultaPed_05: TdxDBGridColumn;
+    C_ConsultaTOTAL: TFloatField;
+        procedure FormsComponentBeforeClearParams(Sender: TObject);
+        procedure btAtualizarClick(Sender: TObject);
+        procedure dfFavorecidoSelecionou(Sender: TObject);
+        procedure C_ConsultaAfterGetRecords(Sender: TObject;
+            var OwnerData: OleVariant);
+        procedure dbgConsultaDblClick(Sender: TObject);
+        procedure TS_Label4Click(Sender: TObject);
+        procedure TS_Label2Click(Sender: TObject);
+        procedure C_ConsultaCalcFields(DataSet: TDataSet);
+    private
+        { Private declarations }
+        procedure Atualizar;
+    public
+        { Public declarations }
+    end;
+
+var
+    RptVendaProdutoVendedor: TRptVendaProdutoVendedor;
+
+implementation
+
+uses DM_Projeto, Funcoes;
+
+{$R *.dfm}
+
+procedure TRptVendaProdutoVendedor.Atualizar;
+var sCriterio, sTipoMov: string;
+begin
+    Aanime.Active := True;
+    Aanime.Visible := True;
+    Q_Consulta.Close;
+    C_Consulta.Close;
+    sCriterio := FiltroItens.getSQL;
+    sTipoMov := '''*' + Funcoes.Replace(clbTipoOperacao.Selecionados, ',', '*') + '*''';
+    if Pos('and ((i.desativado = ''N'') Or (i.desativado is Null))', sCriterio) > 0 then
+        sCriterio := Replace(sCriterio, 'and ((i.desativado = ''N'') Or (i.desativado is Null))', '')
+    else
+        sCriterio := Replace(sCriterio, '((i.desativado = ''N'') Or (i.desativado is Null))', '');
+    if sCriterio <> ' ' then
+        sCriterio := ' and ' + sCriterio;
+    Q_Consulta.Close;
+    Q_Consulta.Sql.Text := 'select i.item,i.codigo,i.descricao, f.Descricao as Fabricante, sum(w.total) as Total' +
+        'from itens i ' +
+        'inner join saidasitens z on z.item = i.item ' +
+        'inner join saidas w on w.empresa = z.empresa and w.pdv = z.pdv and w.saida = z.saida ' +
+        'inner join fabricantes f on f.fabricante = i.fabricante ' +
+        'where tipopadrao = 1 and w.data >= addmonth(current_date,-11) ' +
+        'and w.favorecido = :Cliente ' + sCriterio + ' group by i.item,i.codigo,i.descricao, f.Descricao order by 5 desc';
+    Q_Consulta.ParambyName('Cliente').AsInteger := dfFavorecido.ID;
+    C_Consulta.FetchParams;
+    C_Consulta.Open;
+end;
+
+procedure TRptVendaProdutoVendedor.FormsComponentBeforeClearParams(
+    Sender: TObject);
+begin
+    inherited;
+    Aanime.Visible := False;
+    dbgConsultaMES_01.Caption := Copy(MesExtenso(Date), 1, 4) + '/' + IntToStr(YearOf(Date));
+    dbgConsultaMES_02.Caption := Copy(MesExtenso(DateAdd('MM', -1, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -1, Date)));
+    dbgConsultaMES_03.Caption := Copy(MesExtenso(DateAdd('MM', -2, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -2, Date)));
+    dbgConsultaMES_04.Caption := Copy(MesExtenso(DateAdd('MM', -3, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -3, Date)));
+    dbgConsultaMES_05.Caption := Copy(MesExtenso(DateAdd('MM', -4, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -4, Date)));
+    dbgConsultaMES_06.Caption := Copy(MesExtenso(DateAdd('MM', -5, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -5, Date)));
+    dbgConsultaMES_07.Caption := Copy(MesExtenso(DateAdd('MM', -6, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -6, Date)));
+    dbgConsultaMES_08.Caption := Copy(MesExtenso(DateAdd('MM', -7, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -7, Date)));
+    dbgConsultaMES_09.Caption := Copy(MesExtenso(DateAdd('MM', -8, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -8, Date)));
+    dbgConsultaMES_10.Caption := Copy(MesExtenso(DateAdd('MM', -9, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -9, Date)));
+    dbgConsultaMES_11.Caption := Copy(MesExtenso(DateAdd('MM', -10, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -10, Date)));
+    dbgConsultaMES_12.Caption := Copy(MesExtenso(DateAdd('MM', -11, Date)), 1, 4) + '/' + IntToStr(YearOf(DateAdd('MM', -11, Date)));
+    C_TiposMovimentos.close;
+    C_TiposMovimentos.open;
+    clbTipoOperacao.SetDataSet(C_TiposMovimentos);
+    clbTipoOperacao.SetSelecionados('1,7');
+end;
+
+procedure TRptVendaProdutoVendedor.btAtualizarClick(Sender: TObject);
+begin
+    inherited;
+    Atualizar;
+end;
+
+procedure TRptVendaProdutoVendedor.dfFavorecidoSelecionou(
+    Sender: TObject);
+var Tempo: tTime;
+begin
+    inherited;
+    FormsComponent.Caption := dfFavorecido.Text + ' - Ultimos 12 Meses ';
+    lbDescricaoRelatorio.Caption := '';
+    Tempo := Time;
+    Atualizar;
+    lbDescricaoRelatorio.Caption := 'Tempo para Consulta: ' + TimeToStr(Time - Tempo);
+end;
+
+procedure TRptVendaProdutoVendedor.C_ConsultaAfterGetRecords(
+    Sender: TObject; var OwnerData: OleVariant);
+begin
+    inherited;
+    Aanime.Active := False;
+    Aanime.Visible := False;
+end;
+
+procedure TRptVendaProdutoVendedor.dbgConsultaDblClick(Sender: TObject);
+begin
+    inherited;
+    if ((dbgConsulta.TS_SelectedColumn = 'DESCRICAO') or (dbgConsulta.TS_SelectedColumn = 'CODIGO')) then
+        begin
+            DMProjeto.SetParametrosForm([C_Consulta.FieldByName('Item').Value]);
+            DMProjeto.CriarForm('FrmItens', Self, true);
+        end;
+    if (dbgConsulta.TS_SelectedColumn = 'TOTAL') then
+        begin
+            PainelFullSelect.Visible := True;
+            grafico.Series[0].Clear;
+            grafico.Title.Text.Clear;
+            grafico.Title.Text.Add('Estatistica de Vendas, ' + C_Consulta.FieldByName('DESCRICAO').AsString);
+            grafico.Series[0].Add(iif(dbgConsultaMES_01.Field.IsNull, 0, dbgConsultaMES_01.Field.Value), dbgConsultaMES_01.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_02.Field.IsNull, 0, dbgConsultaMES_02.Field.Value), dbgConsultaMES_02.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_03.Field.IsNull, 0, dbgConsultaMES_03.Field.Value), dbgConsultaMES_03.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_04.Field.IsNull, 0, dbgConsultaMES_04.Field.Value), dbgConsultaMES_04.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_05.Field.IsNull, 0, dbgConsultaMES_05.Field.Value), dbgConsultaMES_05.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_06.Field.IsNull, 0, dbgConsultaMES_06.Field.Value), dbgConsultaMES_06.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_07.Field.IsNull, 0, dbgConsultaMES_07.Field.Value), dbgConsultaMES_07.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_08.Field.IsNull, 0, dbgConsultaMES_08.Field.Value), dbgConsultaMES_08.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_09.Field.IsNull, 0, dbgConsultaMES_09.Field.Value), dbgConsultaMES_09.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_10.Field.IsNull, 0, dbgConsultaMES_10.Field.Value), dbgConsultaMES_10.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_11.Field.IsNull, 0, dbgConsultaMES_11.Field.Value), dbgConsultaMES_11.Caption);
+            grafico.Series[0].Add(iif(dbgConsultaMES_12.Field.IsNull, 0, dbgConsultaMES_12.Field.Value), dbgConsultaMES_12.Caption);
+        end;
+end;
+
+procedure TRptVendaProdutoVendedor.TS_Label4Click(Sender: TObject);
+begin
+    inherited;
+    grafico.Series[0].Clear;
+    grafico.Title.Text.Clear;
+    grafico.Title.Text.Add('Estatistica de Vendas, ' + dfFavorecido.Text);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_01'), dbgConsultaMES_01.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_02'), dbgConsultaMES_02.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_03'), dbgConsultaMES_03.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_04'), dbgConsultaMES_04.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_05'), dbgConsultaMES_05.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_06'), dbgConsultaMES_06.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_07'), dbgConsultaMES_07.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_08'), dbgConsultaMES_08.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_09'), dbgConsultaMES_09.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_10'), dbgConsultaMES_10.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_11'), dbgConsultaMES_11.Caption);
+    grafico.Series[0].Add(dbgConsulta.ValorTotal('MES_12'), dbgConsultaMES_12.Caption);
+end;
+
+procedure TRptVendaProdutoVendedor.TS_Label2Click(Sender: TObject);
+begin
+    inherited;
+    PainelFullSelect.Visible := False;
+end;
+
+procedure TRptVendaProdutoVendedor.C_ConsultaCalcFields(DataSet: TDataSet);
+var
+    sTipoMov: string;
+begin
+    inherited;
+    sTipoMov := '''*' + Funcoes.Replace(clbTipoOperacao.Selecionados, ',', '*') + '*''';
+    with DMProjeto.StoreProcedure do
+        begin
+            Close;
+            StoredProcName := 'PP_TOTAL_SAIDA_CLIENTE';
+            ParamByName('ANO').AsInteger := YearOf(Date);
+            ParamByName('MES').AsInteger := MonthOf(Date);
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_01').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -1, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -1, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_02').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -2, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -2, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_03').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -3, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -3, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_04').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -4, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -4, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_05').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -5, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -5, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_06').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -6, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -6, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_07').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -7, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -7, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_08').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -8, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -8, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_09').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -9, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -9, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_10').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -10, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -10, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_11').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            ParamByName('ANO').AsInteger := YearOf(DateAdd('MM', -11, Date));
+            ParamByName('MES').AsInteger := MonthOf(DateAdd('MM', -11, Date));
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('MES_12').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+            //Total
+            ParamByName('ANO').AsInteger := 9999;
+            ParamByName('MES').AsInteger := 0;
+            ParamByName('CLIENTE').AsInteger := dfFavorecido.Id;
+            ParamByName('ITEM').AsInteger := C_Consulta.FieldByName('Item').AsInteger;
+            ParamByName('TIPOMOVIMENTO').AsString := sTipoMov;
+            ExecProc;
+            DataSet.FieldByName('TOTAL').Value := ParamByName('VALOR').AsCurrency;
+            Close;
+        end;
+    DataSet.FieldByName('QTD_01').Value := '______';
+    DataSet.FieldByName('QTD_02').Value := '______';
+    DataSet.FieldByName('QTD_03').Value := '______';
+    DataSet.FieldByName('QTD_04').Value := '______';
+    DataSet.FieldByName('QTD_05').Value := '______';
+    DataSet.FieldByName('PED_01').Value := '______';
+    DataSet.FieldByName('PED_02').Value := '______';
+    DataSet.FieldByName('PED_03').Value := '______';
+    DataSet.FieldByName('PED_04').Value := '______';
+    DataSet.FieldByName('PED_05').Value := '______';
+end;
+
+end.
+

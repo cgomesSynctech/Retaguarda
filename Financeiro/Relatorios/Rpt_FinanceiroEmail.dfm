@@ -1,0 +1,514 @@
+inherited RptFinanceiroEmail: TRptFinanceiroEmail
+  Left = 285
+  Top = 128
+  Width = 557
+  Height = 398
+  Caption = 'Financeiro'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnNavigator: TTS_Panel
+    Left = 423
+    Height = 317
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 283
+    end
+    inherited btLimpar: TTS_SpeedButton
+      Glyph.Data = {00000000}
+      Visible = False
+    end
+    inherited btGravar: TTS_SpeedButton
+      Caption = '  OK'
+      Glyph.Data = {
+        C6050000424DC605000000000000360400002800000014000000140000000100
+        0800000000009001000000000000000000000001000000010000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A600D4F0FF00B1E2F8008ED4DF006BC9D10048B8C30025AABD0000AAC5000092
+        AF00007A930000626200004A4A0000323200D4E3FF00B1C7FF008EABFF006B8F
+        FF004873FF002557FF000055FF000049DC00003DB90000319600002573000019
+        5000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525FF000000FE000000
+        DC000000B900000096000000730000005000E3D4FF00C7B1FF00AB8EFF008F6B
+        FF007348FF005725FF005500FF004900DC003D00B90031009600250073001900
+        5000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25FF00AA00FF009200
+        DC007A00B900620096004A00730032005000FFD4FF00FFB1FF00FF8EFF00FF6B
+        FF00FF48FF00FF25FF00FE00FE00DC00DC00B900B90096009600730073005000
+        5000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25AA00FF00AA00DC00
+        9200B9007A009600620073004A0050003200FFD4E300FFB1C700FF8EAB00FF6B
+        8F00FF487300FF255700FF005500DC004900B9003D0096003100730025005000
+        1900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF252500FE000000DC00
+        0000B9000000960000007300000050000000FFE3D400FFC7B100FFAB8E00FF8F
+        6B00FF734800FF572500FF550000DC490000B93D000096310000732500005019
+        0000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA2500FFAA0000DC92
+        0000B97A000096620000734A000050320000FFFFD400FFFFB100FFFF8E00FFFF
+        6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B9000096960000737300005050
+        0000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF2500AAFF000092DC
+        00007AB90000629600004A73000032500000E3FFD400C7FFB100ABFF8E008FFF
+        6B0073FF480057FF250055FF000049DC00003DB9000031960000257300001950
+        0000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF250000FE000000DC
+        000000B90000009600000073000000500000D4FFE300B1FFC7008EFFAB006BFF
+        8F0048FF730025FF570000FF550000DC490000B93D0000963100007325000050
+        1900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FFAA0000FFAA0000DC
+        920000B97A000096620000734A0000503200D4FFFF00B1FFFF008EFFFF006BFF
+        FF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B90000969600007373000050
+        5000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6B600AAAAAA009E9E
+        9E0092929200868686007A7A7A006E6E6E0062626200565656004A4A4A003E3E
+        3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00E8EEEEEEEEEE
+        EEEEEEEEEEEEEEEEEEEEEEEEEEE8EE0000000000000000000000000000000000
+        00EEEE001412110F0E0E0E0E0E0E0E0E0F11121400EEEE000D1412110F0E0E0E
+        0E0E0E0F1112140D00EEEE000D0D1412110F0E0E0E0E0F1112140D0D00EEEE00
+        0E0D0D1412110F0E0E0F1112140D0D0E00EEEE000E0E0E0D1412110F0F111214
+        0D0E0E0E00EEEE000E0E0E0D0D1412111112140D0E0E0E0E00EEEE000E0F0F0E
+        13001413131400130E0F0F0E00EEEE000F0F0F1300EEE5E7E7E5ED00130F0F0F
+        00EEEE000F0F1300EEFF23E4E4E2E5ED00130F0F00EEEE00121300EEFF23E491
+        E4E3E3E5ED00131200EEEB000000EEFF2391E4E491E3E3E3E500000000EB01EE
+        00EEFF23E4E491E3E38FE3E5EE00EE010101EBF2EFFF23E491E4E38FE3E3E5EE
+        00EE01010101EE00EFE7E3E3FF91E3E3E3E5EE00EE010101010101EE0000EEE7
+        E3FF8FE3E5EE00EE0101010101010101EBEE0000EEE7E5E5EE00EE0101010101
+        010101010101EBEE0000EEEE00EE0101010101010101010101010101EBEE0000
+        EE010101010101010101}
+      NumGlyphs = 1
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 541
+    Gradient.ColorStart = 13223591
+    inherited imgModulo: TTS_Image
+      Height = 39
+    end
+    inherited lbEstadoForm: TTS_Label
+      Width = 115
+      Caption = 'Envia relat'#243'rio por email'
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 513
+    end
+    inherited lbCaption: TdxfLabel
+      Width = 352
+      AutoSize = True
+      Caption = 'Enviar Relat'#243'rio Financeiro via Email'
+      Effect3D.ShadowedColor = 13223591
+    end
+  end
+  inherited pnDados: TTS_Panel
+    Width = 423
+    Height = 317
+    Color = 15724519
+    object Label1: TLabel
+      Left = 98
+      Top = 52
+      Width = 40
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Per'#237'odo:'
+    end
+    object Label2: TLabel
+      Left = 230
+      Top = 53
+      Width = 6
+      Height = 13
+      Caption = 'a'
+    end
+    object lbEmail: TLabel
+      Left = 7
+      Top = 167
+      Width = 86
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Enviar Email para:'
+    end
+    object TS_Label1: TTS_Label
+      Left = 97
+      Top = 76
+      Width = 175
+      Caption = 'Os Clientes com Maiores Compras:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object TS_Label2: TTS_Label
+      Left = 141
+      Top = 98
+      Width = 131
+      Caption = 'Os Itens mais Vendidos:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lblGruposVendidos: TTS_Label
+      Left = 381
+      Top = 232
+      Width = 131
+      Caption = 'Os Grupos mais Vendidos:'
+      Visible = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lblGrupos: TTS_Label
+      Left = 97
+      Top = 120
+      Width = 72
+      Caption = 'Grupos:'
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object DataI: TTS_DateTimePicker
+      Left = 139
+      Top = 51
+      Width = 83
+      TabOrder = 0
+      AutoSize = False
+      StyleController = DMProjeto.esFinanceiro
+      ButtonGlyph.Data = {
+        AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+        0800000000007800000000000000000000000001000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A6000020400000206000002080000020A0000020C0000020E000004000000040
+        20000040400000406000004080000040A0000040C0000040E000006000000060
+        20000060400000606000006080000060A0000060C0000060E000008000000080
+        20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+        200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+        200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+        200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+        20004000400040006000400080004000A0004000C0004000E000402000004020
+        20004020400040206000402080004020A0004020C0004020E000404000004040
+        20004040400040406000404080004040A0004040C0004040E000406000004060
+        20004060400040606000406080004060A0004060C0004060E000408000004080
+        20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+        200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+        200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+        200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+        20008000400080006000800080008000A0008000C0008000E000802000008020
+        20008020400080206000802080008020A0008020C0008020E000804000008040
+        20008040400080406000804080008040A0008040C0008040E000806000008060
+        20008060400080606000806080008060A0008060C0008060E000808000008080
+        20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+        200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+        200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+        200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+        2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+        2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+        2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+        2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+        2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+        2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+        2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FDA4A4A4A4A4
+        A4A4A4FD0000A4FFFFFFFFFFFFFFFFA40000A4FFFF01FF070107FFA40000A4FF
+        FF01FF01FF01FFA40000A4FFFF01FFFFFF01FFA40000A4FFFF01FF010107FFA4
+        0000A4FF0101FF01FFFFFFA40000A4FFFF01FF010101FFA40000A4FFFFFFFFFF
+        FFFFFFA40000FDA4A4A4A4A4A4A4A4FD0000}
+      Date = -700000
+      UseEditMask = True
+      Height = 19
+      StoredValues = 4
+    end
+    object DataF: TTS_DateTimePicker
+      Left = 243
+      Top = 51
+      Width = 83
+      TabOrder = 1
+      AutoSize = False
+      StyleController = DMProjeto.esFinanceiro
+      ButtonGlyph.Data = {
+        AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+        0800000000007800000000000000000000000001000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+        A6000020400000206000002080000020A0000020C0000020E000004000000040
+        20000040400000406000004080000040A0000040C0000040E000006000000060
+        20000060400000606000006080000060A0000060C0000060E000008000000080
+        20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+        200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+        200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+        200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+        20004000400040006000400080004000A0004000C0004000E000402000004020
+        20004020400040206000402080004020A0004020C0004020E000404000004040
+        20004040400040406000404080004040A0004040C0004040E000406000004060
+        20004060400040606000406080004060A0004060C0004060E000408000004080
+        20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+        200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+        200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+        200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+        20008000400080006000800080008000A0008000C0008000E000802000008020
+        20008020400080206000802080008020A0008020C0008020E000804000008040
+        20008040400080406000804080008040A0008040C0008040E000806000008060
+        20008060400080606000806080008060A0008060C0008060E000808000008080
+        20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+        200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+        200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+        200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+        2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+        2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+        2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+        2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+        2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+        2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+        2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FDA4A4A4A4A4
+        A4A4A4FD0000A4FFFFFFFFFFFFFFFFA40000A4FFFF01FF070107FFA40000A4FF
+        FF01FF01FF01FFA40000A4FFFF01FFFFFF01FFA40000A4FFFF01FF010107FFA4
+        0000A4FF0101FF01FFFFFFA40000A4FFFF01FF010101FFA40000A4FFFFFFFFFF
+        FFFFFFA40000FDA4A4A4A4A4A4A4A4FD0000}
+      Date = -700000
+      UseEditMask = True
+      Height = 19
+      StoredValues = 4
+    end
+    object dfEmail: TTS_MaskEdit
+      Left = 94
+      Top = 219
+      Width = 233
+      TabOrder = 2
+      IgnoreMaskBlank = False
+      StyleController = DMProjeto.esFinanceiro
+      Height = 19
+    end
+    object Barra: TdxfProgressBar
+      Left = 1
+      Top = 302
+      Width = 421
+      Height = 14
+      Align = alBottom
+      BarBevelOuter = bvRaised
+      BeginColor = clWhite
+      BevelOuter = bvNone
+      EndColor = 4737279
+      Max = 100
+      Min = 0
+      Orientation = orHorizontal
+      Position = 0
+      ShowText = True
+      ShowTextStyle = stsPercent
+      Step = 1
+      Style = sExSolid
+      TabOrder = 3
+      TransparentGlyph = True
+      Visible = False
+    end
+    object rgEnviar: TTS_RadioButton
+      Left = 96
+      Top = 24
+      Width = 57
+      Height = 17
+      Caption = 'Enviar'
+      Checked = True
+      TabOrder = 4
+      TabStop = True
+      OnClick = rgEnviarClick
+      Transparent = False
+    end
+    object rgVisualizar: TTS_RadioButton
+      Left = 161
+      Top = 24
+      Width = 113
+      Height = 17
+      Caption = 'Visualizar'
+      TabOrder = 5
+      OnClick = rgEnviarClick
+      Transparent = False
+    end
+    object seClientesMais: TTS_SpinEdit
+      Left = 277
+      Top = 72
+      Width = 50
+      TabOrder = 6
+      StyleController = DMProjeto.esFinanceiro
+      Value = 10
+      Height = 19
+    end
+    object seItensMais: TTS_SpinEdit
+      Left = 277
+      Top = 95
+      Width = 50
+      TabOrder = 7
+      StyleController = DMProjeto.esFinanceiro
+      Value = 10
+      Height = 19
+    end
+    object seGruposMais: TTS_SpinEdit
+      Left = 517
+      Top = 230
+      Width = 50
+      TabOrder = 8
+      Visible = False
+      StyleController = DMProjeto.esFinanceiro
+      Value = 10
+      Height = 19
+    end
+    object chkImprimir: TTS_CheckBox
+      Left = 145
+      Top = 139
+      Width = 183
+      Hint = 
+        'Marcar essa op'#231#227'o se deseja visualizar os detalhes (itens) de ca' +
+        'da grupo selecionado.'
+      Style.BorderStyle = xbsNone
+      Style.ButtonStyle = btsSimple
+      Style.HotTrack = False
+      TabOrder = 9
+      Alignment = taRightJustify
+      Caption = 'Imprimir detalhes do grupo'
+      StyleController = DMProjeto.esItens
+      DisableEdit = False
+      Height = 23
+      StoredValues = 1
+    end
+    object ppeGrupo: TTS_PopupEdit
+      Left = 176
+      Top = 117
+      Width = 151
+      Hint = 'Selecione o(s) grupo(s) que deseja visualizar no relat'#243'rio.'
+      TabOrder = 10
+      AutoSelect = False
+      StyleController = DMProjeto.esFinanceiro
+      HideEditCursor = True
+      PopupControl = clbGrupo
+      PopupFormBorderStyle = pbsSysPanel
+      OnCloseUp = ppeGrupoCloseUp
+      LookupKeyValue = 0
+      Height = 19
+    end
+    object clbGrupo: TTS_CheckListBox
+      Left = 408
+      Top = 117
+      Width = 201
+      Height = 123
+      Hint = 'Selecione o(s) grupo(s) que deseja visualizar no relat'#243'rio.'
+      BorderStyle = bsNone
+      Ctl3D = False
+      ItemHeight = 13
+      ParentCtl3D = False
+      TabOrder = 11
+      Visible = False
+      KeyField = 'GRUPO'
+      ListField = 'DESCRICAOGRUPO'
+      Transparent = False
+    end
+    object chkImprimirConferencia: TTS_CheckBox
+      Left = 145
+      Top = 159
+      Width = 183
+      Hint = 
+        'Marcar essa op'#231#227'o se deseja visualizar o relat'#243'rio para confer'#234'n' +
+        'cia de caixa. Nesse tipo de impress'#227'o ser'#227'o exibidos apenas os d' +
+        'ados necess'#225'rios.'
+      Style.BorderStyle = xbsNone
+      Style.ButtonStyle = btsSimple
+      Style.HotTrack = False
+      TabOrder = 12
+      Alignment = taRightJustify
+      Caption = 'Imprimir para Confer'#234'ncia'
+      StyleController = DMProjeto.esItens
+      DisableEdit = False
+      Height = 23
+      StoredValues = 1
+    end
+    object chkImprimirCancelamentos: TTS_CheckBox
+      Left = 145
+      Top = 180
+      Width = 183
+      Hint = 
+        'Marcar essa op'#231#227'o se deseja visualizar as opera'#231#245'es do Tipo Padr' +
+        #227'o 1 (Vendas) que foram canceladas.'
+      Style.BorderStyle = xbsNone
+      Style.ButtonStyle = btsSimple
+      Style.HotTrack = False
+      TabOrder = 13
+      Alignment = taRightJustify
+      Caption = 'Imprimir Cancelamentos'
+      StyleController = DMProjeto.esItens
+      DisableEdit = False
+      Height = 23
+      StoredValues = 1
+    end
+  end
+  inherited DlgMsg: TDlgMsg
+    Left = 6
+  end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 26
+    Top = 47
+  end
+  inherited ppmPadrao: TTS_PopupMenu
+    Left = 22
+    Top = 160
+  end
+  inherited Beep: TBTBeeper
+    Left = 268
+    Top = 28
+  end
+  inherited FormStorage: TFormStorage
+    Left = 312
+    Top = 56
+  end
+  inherited FormsComponent: TFormsComponent
+    BeforeClearParams = FormsComponentBeforeClearParams
+    ModuloStyle = DMProjeto.msFinanceiro
+    BarEndColor = 13223591
+    CaptionShadow = 13223591
+    FormColor = 15724519
+    Modulo = 'Financeiro'
+    Caption = 'Enviar Relat'#243'rio Financeiro via Email'
+    Left = 66
+  end
+  inherited ppmHelp: TTS_PopupMenu
+    Left = 23
+    Top = 109
+  end
+  object Q_Grupos: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'select g.grupo, g.descricaogrupo from grupos g where g.desativad' +
+        'o <> '#39'S'#39)
+    Left = 488
+    Top = 55
+  end
+  object P_Grupos: TDataSetProvider
+    DataSet = Q_Grupos
+    Constraints = True
+    Left = 488
+    Top = 112
+  end
+  object C_Grupos: TClientDataSet
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'GRUPO'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'DESCRICAOGRUPO'
+        Attributes = [faRequired]
+        DataType = ftString
+        Size = 30
+      end>
+    IndexDefs = <
+      item
+        Name = 'DEFAULT_ORDER'
+      end
+      item
+        Name = 'CHANGEINDEX'
+      end>
+    Params = <>
+    ProviderName = 'P_Grupos'
+    StoreDefs = True
+    Left = 488
+    Top = 168
+    object C_GruposGRUPO: TIntegerField
+      FieldName = 'GRUPO'
+      Required = True
+    end
+    object C_GruposDESCRICAOGRUPO: TStringField
+      FieldName = 'DESCRICAOGRUPO'
+      Required = True
+      Size = 30
+    end
+  end
+  object C_GruposDS: TDataSource
+    DataSet = C_Grupos
+    Left = 488
+    Top = 224
+  end
+end

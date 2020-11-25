@@ -1,0 +1,100 @@
+[FileVersion]
+Version=6.0
+[Compiler]
+A=8
+B=0
+C=1
+D=1
+E=0
+F=0
+G=1
+H=1
+I=1
+J=0
+K=0
+L=1
+M=0
+N=1
+O=1
+P=1
+Q=0
+R=0
+S=0
+T=0
+U=0
+V=1
+W=0
+X=1
+Y=1
+Z=1
+ShowHints=1
+ShowWarnings=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Linker]
+MapFile=0
+OutputObjs=0
+ConsoleApp=1
+DebugInfo=0
+RemoteSymbols=0
+MinStackSize=16384
+MaxStackSize=1048576
+ImageBase=4194304
+ExeDescription=
+[Directories]
+OutputDir=E:\TEMP
+UnitOutputDir=E:\TEMP\DCU\
+PackageDLLOutputDir=
+PackageDCPOutputDir=
+SearchPath=
+Packages=rbCIDE66;rbIDE66;rbRCL66;rbBDE66;rbRIDE66;rbRAP66;rbDBDE66;rbDAD66;rbDIDE66;rbUSER66;rbDB66;rbADO66;adortl;rbDBE66;dbxcds;dbexpress;rbIBE66;ibxpress;vcl;rtl;vclx;VclSmp;vclshlctrls;dbrtl;vcldb;bdertl;vcldbx;dsnap;cds;bdecds;inet;inetdb;nmfast;vclie;indy;dclOffice2k;xtradev;dxEdtrD6;dxELibD6;dxcomnd6;EQTLD6;ECQDBCD6;EQDBTLD6;EQGridD6;dxGrEdD6;dxExELD6;dxMasterViewD6;dxPSCoreD6;dxPSLnksD6;dxPSTLLnkD6;dxPSdxDBTLLnkD6;dxPSdxDBCtrlLnkD6;dxPSdxDBGrLnkD6;dxPSdxDBTVLnkD6;dxdbtrD6;dxPSdxMVLnkD6;dxDBEdD6;dxInsD6;dxExRwD6;dxmdsd6;dxtrmdD6;Components3P;RxCtl6;dxForumLibD6;Flash6;ZRpt6;BE3;TradeSoft;TeeUI;Tee;TeeDB;TeeLanguage;TeePro;TeeGL;TeeQR;CPortLib6;AndreTwain;PDBDataManD6;qrpt;gbCob6;PDF
+Conditionals=
+DebugSourceDirs=
+UsePackages=0
+[Parameters]
+RunParams=
+HostApplication=
+Launcher=
+UseLauncher=0
+DebugCWD=
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=C:\Program Files (x86)\Borland\Delphi6\Bin\
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=6
+MinorVer=65
+Release=1703
+Build=16
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1046
+CodePage=1252
+[Version Info Keys]
+CompanyName=SYNCTECH SOLUCOES EM INFORMATICA
+FileDescription=SYNCRETAGUARDA
+FileVersion=6.65.1703.16
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=6.0.2.42
+Comments=
+[Excluded Packages]
+c:\program files\borland\delphi6\Bin\designdgm60.bpl=Borland Module Diagram Editview
+C:\Program Files\Borland\Delphi6\Bin\clxdesigner60.bpl=CLX Form designer and property and component editors
+c:\program files\borland\delphi6\Bin\dclqrt60.bpl=QuickReport Components
+c:\program files\borland\delphi6\Bin\dcltee60.bpl=TeeChart Components
+c:\program files\borland\delphi6\Bin\dcltqr60.bpl=TeeChart for QuickReport Components
+c:\program files\borland\delphi6\Bin\dclnet60.bpl=Borland Internet Components
+c:\program files\borland\delphi6\Bin\dclaxserver60.bpl=Microsoft Office 97 Sample Automation Server Wrapper Components
+c:\program files\borland\delphi6\Bin\dclsoap60.bpl=Borland SOAP Components
+C:\Program Files\borland\delphi6\RBuilder\Lib\dclRBC61.bpl=ReportBuilder TeeChart 5.0 Components
+K:\ClassesIB6\Trunk\extradev6\xtradev6.bpl=ExtraDev 6
+K:\ClassesIB6\TradeSoft\Boleto\gbCob.bpl=Boleto 1.0 - Componentes para boleto bancário
+C:\Program Files (x86)\Borland\Delphi6\Lib\dclusr60.bpl=Borland User Components

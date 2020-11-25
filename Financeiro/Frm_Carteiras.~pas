@@ -1,0 +1,127 @@
+unit Frm_Carteiras;
+
+interface
+
+uses
+    Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+    Dialogs, FRM_PADRAO, dxExEdtr, Placemnt, BTOdeum, FormComponent, ImgList,
+    Menus, TS_PopupMenu, TS_LastDataObject, DlgMsg, StdCtrls, TS_Label,
+    ExtCtrls, TS_Image, dxfLabel, TS_MaxPanel, dxfProgressBar, dxTLClms,
+    dxTL, dxCntner, dxDBCtrl, dxDBGrid, TS_QDBGrid, TS_Bevel, Buttons,
+    TS_SpeedButton, teCtrls, TS_EffectsPanel, dxEditor, dxDBEdtr, dxDBELib,
+    TS_DBLookupComboBox, dxEdLib, TS_DBMemo, TS_DBEdit, TS_DBEditNumber,
+    TS_DBCheckBox, dxDBTLCl, dxGrClms, TS_DBMaskEdit, TS_DBImageEdit,
+    TS_DBLookupTipoFav, TS_DBButtonEdit, TS_DBEditFavorecido;
+
+type
+    TFrmCarteiras = class(TFrmPadrao)
+        TS_Label1: TTS_Label;
+        TS_Label3: TTS_Label;
+        TS_Label4: TTS_Label;
+        TS_Label5: TTS_Label;
+        TS_Label6: TTS_Label;
+        TS_Label7: TTS_Label;
+        TS_Label8: TTS_Label;
+        TS_Label9: TTS_Label;
+        TS_Label10: TTS_Label;
+        TS_Label11: TTS_Label;
+        dfCarteira: TTS_DBEdit;
+        dfAgencia: TTS_DBEdit;
+        dfAceite: TTS_DBEdit;
+        dfCodigo: TTS_DBEdit;
+        dfNossoNumero: TTS_DBEdit;
+        dfQuantidade: TTS_DBEdit;
+        dfLocalPag: TTS_DBEdit;
+        dfInstrucoes: TTS_DBMemo;
+        TS_Label12: TTS_Label;
+        cmbBanco: TTS_DBLookupComboBox;
+        TS_Label2: TTS_Label;
+        dfJurosInstrucoes: TTS_DBEditNumber;
+        cbCobrarEmissao: TTS_DBCheckBox;
+        edTarifaEmissao: TTS_DBEditNumber;
+        ckbPreImpresso: TTS_DBCheckBox;
+        TS_Label13: TTS_Label;
+        dfDigitoCodigo: TTS_DBEdit;
+        TS_Label14: TTS_Label;
+        GridCARTEIRA: TdxDBGridMaskColumn;
+        GridNUMEROCARTEIRA: TdxDBGridMaskColumn;
+        GridLOCALDEPAGAMENTO: TdxDBGridMaskColumn;
+        GridESPECIE: TdxDBGridMaskColumn;
+        GridESPECIEDOC: TdxDBGridMaskColumn;
+        GridACEITE: TdxDBGridMaskColumn;
+        GridAGENCIA: TdxDBGridMaskColumn;
+        GridCODIGO: TdxDBGridMaskColumn;
+        GridNOSSONUMERO: TdxDBGridMaskColumn;
+        GridQUANTIDADE: TdxDBGridMaskColumn;
+        GridINSTRUCOES: TdxDBGridMaskColumn;
+        GridDescConta: TdxDBGridLookupColumn;
+        GridCOBRAREMISSAO: TdxDBGridCheckColumn;
+        GridTARIFAEMISSAO: TdxDBGridCurrencyColumn;
+        GridDIGITOCODIGO: TdxDBGridMaskColumn;
+        GridPREIMPRESSO: TdxDBGridCheckColumn;
+        TS_Label15: TTS_Label;
+        TS_DBMaskEdit1: TTS_DBMaskEdit;
+    dfEspecieDoc: TTS_DBImageEdit;
+    DfTipoDocumento: TTS_DBImageEdit;
+        TS_Label16: TTS_Label;
+        TS_Label17: TTS_Label;
+        TS_DBEdit1: TTS_DBEdit;
+        TS_DBEdit2: TTS_DBEdit;
+        TS_Label18: TTS_Label;
+        dfFavorecido: TTS_DBEditFavorecido;
+        cmbTipoFav: TTS_DBLookupTipoFav;
+        TS_Label19: TTS_Label;
+        TS_Label20: TTS_Label;
+        TS_Label21: TTS_Label;
+        TS_DBEditFavorecido1: TTS_DBEditFavorecido;
+        TS_Label22: TTS_Label;
+        TS_DBLookupTipoFav1: TTS_DBLookupTipoFav;
+        TS_Label23: TTS_Label;
+        TS_Label24: TTS_Label;
+    TS_DBCheckBox1: TTS_DBCheckBox;
+    DFTipoCarteira: TTS_DBImageEdit;
+        procedure TS_Label12SetParametrosForm(Sender: TObject);
+        procedure cbCobrarEmissaoChange(Sender: TObject);
+        procedure dfCarteiraExit(Sender: TObject);
+        procedure DfTipoDocumentoChange(Sender: TObject);
+    private
+        { Private declarations }
+    public
+        { Public declarations }
+    end;
+
+var
+    FrmCarteiras: TFrmCarteiras;
+
+implementation
+
+uses DM_Carteiras, DM_Projeto;
+
+{$R *.dfm}
+
+procedure TFrmCarteiras.TS_Label12SetParametrosForm(Sender: TObject);
+begin
+    inherited;
+    DMProjeto.SetParametrosForm([DMCarteiras.C_TabelaConta.AsVariant, 2]);
+end;
+
+procedure TFrmCarteiras.cbCobrarEmissaoChange(Sender: TObject);
+begin
+    inherited;
+    edTarifaEmissao.Enabled := cbCobrarEmissao.Checked;
+end;
+
+procedure TFrmCarteiras.dfCarteiraExit(Sender: TObject);
+begin
+    inherited;
+    //TS_DBImageEdit1.Refresh;
+end;
+
+procedure TFrmCarteiras.DfTipoDocumentoChange(Sender: TObject);
+begin
+    inherited;
+    dfCarteira.Refresh;
+end;
+
+end.
+

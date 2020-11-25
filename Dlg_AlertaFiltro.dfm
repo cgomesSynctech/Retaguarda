@@ -1,0 +1,343 @@
+inherited DlgAlertaFiltro: TDlgAlertaFiltro
+  Left = 81
+  Width = 542
+  Caption = 'Clientes / Vendas'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnDados: TTS_Panel
+    Width = 434
+    Color = 16116702
+    object GridAlertaFiltro: TTS_QDBGrid
+      Left = 1
+      Top = 1
+      Width = 432
+      Height = 246
+      Bands = <
+        item
+        end>
+      DefaultLayout = True
+      HeaderPanelRowCount = 1
+      KeyField = 'CHAVE'
+      SummaryGroups = <>
+      SummarySeparator = '|'
+      Align = alClient
+      BorderStyle = bsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      PopupMenu = ppmGridAFiltro
+      TabOrder = 0
+      AutoSearchColor = 6611199
+      AutoSearchTextColor = clBlue
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'MS Sans Serif'
+      BandFont.Style = []
+      DataSource = C_AlertaDS
+      Filter.Criteria = {00000000}
+      HeaderColor = 15461355
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Tahoma'
+      HeaderFont.Style = []
+      HideFocusRect = True
+      HideSelection = True
+      OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoEnterThrough, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
+      OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoUseBookmarks]
+      OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoShowButtonAlways, edgoUseBitmap]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clBlue
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'MS Sans Serif'
+      PreviewFont.Style = []
+      TS_DescriptionCanChange = False
+      TS_AppendOnEnter = False
+      RowFooterNodeFont.Charset = DEFAULT_CHARSET
+      RowFooterNodeFont.Color = clWindowText
+      RowFooterNodeFont.Height = -11
+      RowFooterNodeFont.Name = 'Tahoma'
+      RowFooterNodeFont.Style = [fsBold]
+      TS_AccountFooterStyle = False
+      TS_TipoLocalizar = tlFavorecidos
+      TS_HideGroupHeader = False
+      TS_AnotherColor = clWindow
+      TS_ReportHeaderStyle = False
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Tahoma'
+      GroupNodeFont.Style = []
+      TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterFont.Color = clWindowText
+      TS_SummaryFooterFont.Height = -11
+      TS_SummaryFooterFont.Name = 'Tahoma'
+      TS_SummaryFooterFont.Style = [fsBold]
+      TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterSelFont.Color = clWindowText
+      TS_SummaryFooterSelFont.Height = -11
+      TS_SummaryFooterSelFont.Name = 'Tahoma'
+      TS_SummaryFooterSelFont.Style = [fsBold]
+      TS_ShowSelectionColumn = True
+      TS_LikeString = False
+      TS_SelectionColor = 12054783
+      TS_SelectionFont.Charset = DEFAULT_CHARSET
+      TS_SelectionFont.Color = clWindowText
+      TS_SelectionFont.Height = -11
+      TS_SelectionFont.Name = 'Tahoma'
+      TS_SelectionFont.Style = []
+      TS_SelectedColumn = '_icSelecionado'
+      TS_ID = 0
+      TS_TipoDescricao = tdVenda
+      TS_SummaryFooterQtdText = 'Qtd. Geral:'
+      TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
+      object GridAlertaFiltroFAVORECIDO: TdxDBGridMaskColumn
+        DisableEditor = True
+        Visible = False
+        Width = 69
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FAVORECIDO'
+      end
+      object GridAlertaFiltroCodigo: TdxDBGridColumn
+        Caption = 'C'#243'digo'
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 79
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CODIGO'
+      end
+      object GridAlertaFiltroNOME: TdxDBGridMaskColumn
+        Caption = 'Nome'
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 315
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOME'
+      end
+      object GridAlertaFiltroTIPOFAVORECIDO: TdxDBGridMaskColumn
+        DisableEditor = True
+        Visible = False
+        Width = 91
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOFAVORECIDO'
+      end
+    end
+  end
+  inherited pnNavigator: TTS_Panel
+    Left = 434
+    Width = 100
+    inherited btFecharCadastro: TTS_SpeedButton
+      Width = 98
+    end
+    inherited btComando2: TTS_SpeedButton
+      Top = 72
+      Width = 98
+    end
+    inherited btComando1: TTS_SpeedButton
+      Top = 1
+      Width = 98
+      Caption = '&Ok'
+      Glyph.Data = {
+        D20A0000424DD20A0000000000004200000028000000340000001A0000000100
+        100003000000900A000000000000000000000000000000000000007C0000E003
+        00001F0000001F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C0000000000000000000000001F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F4A294A294A294A294A294A297B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7CE4040000A404C701C701
+        C701C701C701000063081F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6FEF3D4A29CE39524A524A524A524A524A4A29AD357B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C00000000C701
+        E40442084601C701C701C701C701C701C701E50400001F7C1F7C1F7C1F7C1F7C
+        1F7C7B6F7B6F7B6F7B6F7B6F7B6F4A294A29524AEF3DAD351042524A524A524A
+        524A524A524AEF3D4A297B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C
+        0000E815E8156611C618FF7FC40CE815E815E815E815E815E815E815250D0000
+        1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F4A29B556B556524A3146FF7F
+        EF3DB556B556B556B556B556B556B55631464A297B6F7B6F7B6F7B6F7B6F1F7C
+        1F7C1F7C1F7C000000000822E81D4208FF7FFF7F630CC71D2822282228222822
+        28222822282200001F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F4A294A29F75E
+        D65AAD35FF7FFF7FCE39D65A18631863186318631863186318634A297B6F7B6F
+        7B6F7B6F7B6F1F7C1F7C1F7C1F7C630C082208224519FF7FFF7FFF7FFF7F861D
+        492E492E492E492E492E492E492E692E00001F7C1F7C1F7C1F7C7B6F7B6F7B6F
+        7B6FCE39F75EF75E734EFF7FFF7FFF7FFF7F9452396739673967396739673967
+        396739674A297B6F7B6F7B6F7B6F1F7C1F7C1F7C0000082208220000FF7FFF7F
+        FF7FFF7FFF7F4208492E692E692E692E692E692E692E692E00001F7C1F7C1F7C
+        1F7C7B6F7B6F7B6F4A29F75EF75E4A29FF7FFF7FFF7FFF7FFF7FAD3539673967
+        3967396739673967396739674A297B6F7B6F7B6F7B6F1F7C1F7C1F7C0000A93E
+        0000FF7FFF7FFF7FFF7FFF7FFF7FFF7F25196932693269326932693269326932
+        893600001F7C1F7C1F7C7B6F7B6F7B6F4A297B6F4A29FF7FFF7FFF7FFF7FFF7F
+        FF7FFF7F524A5A6B5A6B5A6B5A6B5A6B5A6B5A6B5A6B4A297B6F7B6F7B6F1F7C
+        1F7C1F7C0000A93E840CFF7FFF7FFF7FFF7FFF7FFF7FFF7FC614082A89368936
+        8936893689368936893600001F7C1F7C1F7C7B6F7B6F7B6F4A297B6FCE39FF7F
+        FF7FFF7FFF7FFF7FFF7FFF7F1042F75E5A6B5A6B5A6B5A6B5A6B5A6B5A6B4A29
+        7B6F7B6F7B6F1F7C1F7C1F7C0000A93E840CFF7FFF7FFF7F630CFF7FFF7FFF7F
+        FF7FE71C893A893A893A893A893A893A893A00001F7C1F7C1F7C7B6F7B6F7B6F
+        4A297B6FCE39FF7FFF7FFF7FCE39FF7FFF7FFF7FFF7F524A5A6B5A6B5A6B5A6B
+        5A6B5A6B5A6B4A297B6F7B6F7B6F1F7C1F7C1F7C0000A93E840CFF7FFF7F640C
+        08324208FF7FFF7FFF7FFF7FE71CA93AA93AA93AA93AA93AA93A00001F7C1F7C
+        1F7C7B6F7B6F7B6F4A297B6FCE39FF7FFF7FCE391863AD35FF7FFF7FFF7FFF7F
+        524A7B6F7B6F7B6F7B6F7B6F7B6F4A297B6F7B6F7B6F1F7C1F7C1F7C0000A93E
+        66216B2D8410A625A93E28324208FF7FFF7FFF7FFF7FE71C693AA93EA93EA93E
+        A93E00001F7C1F7C1F7C7B6F7B6F7B6F4A297B6F734ED65AEF3DB5567B6F1863
+        AD35FF7FFF7FFF7FFF7F524A5A6B7B6F7B6F7B6F7B6F4A297B6F7B6F7B6F1F7C
+        1F7C1F7C00000A4B4836C4142832CA3ECA3ECA3E4836E71CFF7FFF7FFF7FFF7F
+        E71CCA3ECA3ECA3EA93E00001F7C1F7C1F7C7B6F7B6F7B6F4A29BD7739671042
+        18637B6F7B6F7B6F3967524AFF7FFF7FFF7FFF7F524A7B6F7B6F7B6F7B6F4A29
+        7B6F7B6F7B6F1F7C1F7C1F7C1F7C0000A93ECA42CA42CA42CA42CA42A93EA93E
+        8410FF7FFF7FFF7FFF7FE71CCA42CA42A4101F7C1F7C1F7C1F7C7B6F7B6F7B6F
+        7B6F4A297B6F9C739C739C739C739C735A6B7B6FEF3DFF7FFF7FFF7FFF7F524A
+        9C739C73EF3D7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C00000A4BEA46EA46EA46
+        EA46EA46EA46EA46EA4642084208FF7FFF7FFF7F0000CA42A4101F7C1F7C1F7C
+        1F7C7B6F7B6F7B6F7B6F4A29BD779C739C739C739C739C739C739C739C73AD35
+        AD35FF7FFF7FFF7F4A299C73EF3D7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C
+        00000A4B0A4B0A4B0A4B0A4B0A4B0A4B0A4B0A4B0A4B4208420800000A4BA410
+        1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F4A299C739C739C73BD779C73
+        9C739C739C739C739C73AD35AD354A29BD77EF3D7B6F7B6F7B6F7B6F7B6F1F7C
+        1F7C1F7C1F7C1F7C00000A4B0A4B0A4BDA73B86F976B9667966BB86FDA730A4B
+        0A4BC946C946A4101F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F4A29BD77
+        BD77BD77FF7FFF7FFF7FFF7FFF7FFF7FFF7FBD77BD777B6F7B6FEF3D7B6F7B6F
+        7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C000000000A4B2A4F966BFF7FFF7F
+        FF7F966B2A4F2A4F0A4B0000A4101F7C1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F
+        7B6F7B6F7B6F4A294A29BD77BD77FF7FFF7FFF7FFF7FFF7FBD77BD77BD774A29
+        EF3D7B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7CA414
+        00000A4B4D57505B4D572A4F2A4F000000001F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6FEF3D4A29BD77FF7FFF7FFF7FBD77
+        BD774A294A297B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C0000000000000000000000001F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F4A29
+        4A294A294A294A294A297B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C1F7C
+        1F7C7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F
+        7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F7B6F}
+      NumGlyphs = 2
+      Visible = True
+      OnClick = btGravarClick
+    end
+    inherited btLimpar: TTS_SpeedButton
+      Top = 34
+      Width = 98
+      Visible = False
+    end
+    inherited btGravar: TTS_SpeedButton
+      Top = 105
+      Width = 98
+      Caption = '&Ok'
+      Visible = False
+    end
+    inherited TS_Bevel1: TTS_Bevel
+      Top = 67
+      Width = 98
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 534
+    Gradient.ColorStart = 14859922
+    inherited lbCaption: TdxfLabel
+      Width = 128
+      Caption = 'Alerta - Filtro'
+      Effect3D.ShadowedColor = 14859922
+    end
+    inherited lbUpperHint: TTS_Label
+      Left = 526
+    end
+  end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 194
+  end
+  inherited FormsComponent: TFormsComponent
+    BeforeLoadKey = FormsComponentBeforeLoadKey
+    ModuloStyle = DMProjeto.msClientes
+    BarEndColor = 14859922
+    CaptionShadow = 14859922
+    FormColor = 16116702
+    Modulo = 'Clientes / Vendas'
+    Caption = 'Alerta - Filtro'
+    Left = 144
+    Top = 224
+  end
+  object C_Alerta: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'Q_AlertaProvider'
+    Left = 302
+    Top = 103
+    object C_AlertaNOME: TStringField
+      FieldName = 'NOME'
+      Size = 50
+    end
+    object C_Alerta_icSelecionado: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_AlertaCODIGO: TStringField
+      FieldName = 'CODIGO'
+    end
+    object C_AlertaCHAVE: TIntegerField
+      FieldName = 'CHAVE'
+      Required = True
+    end
+  end
+  object Q_Alerta: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select FAVORECIDO AS CHAVE, CODIGO, NOME'
+      'from FAVORECIDOS'
+      'where TIPOFAVORECIDO = :tipo and'
+      'desativado = '#39'N'#39
+      'order by nome')
+    Left = 302
+    Top = 65
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'tipo'
+        ParamType = ptUnknown
+      end>
+  end
+  object C_AlertaDS: TDataSource
+    DataSet = C_Alerta
+    Left = 340
+    Top = 65
+  end
+  object Q_AlertaProvider: TDataSetProvider
+    DataSet = Q_Alerta
+    Constraints = True
+    Left = 338
+    Top = 103
+  end
+  object ppmGridAFiltro: TTS_PopupMenu
+    Left = 202
+    Top = 99
+    object Selecionar1: TMenuItem
+      Caption = 'Selecionar/ Desselecionar'
+      OnClick = Selecionar1Click
+    end
+  end
+end
