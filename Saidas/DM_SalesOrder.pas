@@ -4,7 +4,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   DM_Saidas, Db, DBClient, Provider, DlgMsg, DMComponent, IBCustomDataSet,
-  IBUpdateSQL, IBQuery, IBEvents, BTOdeum;
+  IBUpdateSQL, IBQuery, IBEvents, BTOdeum, IBStoredProc, ActnList;
 
 type
   TDMSalesOrder = class(TDMSaidas)

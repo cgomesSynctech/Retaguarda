@@ -1,5 +1,5 @@
 inherited DlgRepasse: TDlgRepasse
-  Left = 257
+  Left = 286
   Top = 91
   Width = 777
   Height = 431
@@ -8,10 +8,10 @@ inherited DlgRepasse: TDlgRepasse
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 643
-    Height = 350
+    Left = 651
+    Height = 361
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 316
+      Top = 327
       Caption = 'Fechar'
       Glyph.Data = {
         0E100000424D0E100000000000003600000028000000340000001A0000000100
@@ -425,7 +425,7 @@ inherited DlgRepasse: TDlgRepasse
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 761
+    Width = 769
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
       Width = 327
@@ -447,8 +447,8 @@ inherited DlgRepasse: TDlgRepasse
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 643
-    Height = 350
+    Width = 651
+    Height = 361
     Color = 15724519
     object TS_Shape9: TTS_Shape
       Left = 12
@@ -1476,7 +1476,7 @@ inherited DlgRepasse: TDlgRepasse
   object ppRepasse: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1484,7 +1484,7 @@ inherited DlgRepasse: TDlgRepasse
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 192
     Top = 275
@@ -1979,7 +1979,7 @@ inherited DlgRepasse: TDlgRepasse
           DataPipeline = dbNaoRepassados
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -1987,7 +1987,7 @@ inherited DlgRepasse: TDlgRepasse
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 9
+          PrinterSetup.PaperSize = 256
           Left = 360
           Top = 208
           Version = '6.02'
@@ -2299,7 +2299,7 @@ inherited DlgRepasse: TDlgRepasse
           DataPipeline = dbRepassados
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -2307,7 +2307,7 @@ inherited DlgRepasse: TDlgRepasse
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 9
+          PrinterSetup.PaperSize = 256
           Left = 400
           Top = 248
           Version = '6.02'
@@ -2858,6 +2858,930 @@ inherited DlgRepasse: TDlgRepasse
       Position = 9
       Searchable = False
       Sortable = False
+    end
+  end
+  object ppRepasseSemSaldo: TppReport
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 256
+    DeviceType = 'Screen'
+    Left = 248
+    Top = 251
+    Version = '6.02'
+    mmColumnWidth = 0
+    object ppHeaderBand2: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 70644
+      mmPrintPosition = 0
+      object ppShape14: TppShape
+        UserName = 'Shape101'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 16404
+        mmLeft = 73554
+        mmTop = 51858
+        mmWidth = 44979
+        BandType = 0
+      end
+      object ppRegion1: TppRegion
+        UserName = 'regCab'
+        Caption = 'regCab'
+        Pen.Style = psClear
+        mmHeight = 27252
+        mmLeft = 529
+        mmTop = 529
+        mmWidth = 196321
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppLabel21: TppLabel
+        UserName = 'Label1'
+        Caption = 'Repasse'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 87842
+        mmTop = 31750
+        mmWidth = 17727
+        BandType = 0
+      end
+      object ppLabel22: TppLabel
+        UserName = 'Label2'
+        OnGetText = ppLabel2GetText
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clMaroon
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 89429
+        mmTop = 37306
+        mmWidth = 14288
+        BandType = 0
+      end
+      object ppLabel23: TppLabel
+        UserName = 'Label3'
+        OnGetText = ppLabel3GetText
+        Caption = 'Label3'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clMaroon
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 90488
+        mmTop = 42863
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppShape19: TppShape
+        UserName = 'Shape4'
+        Brush.Color = 15461355
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 72231
+        mmTop = 50536
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape20: TppShape
+        UserName = 'Shape5'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 72231
+        mmTop = 56092
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppShape21: TppShape
+        UserName = 'Shape6'
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 72231
+        mmTop = 61648
+        mmWidth = 45508
+        BandType = 0
+      end
+      object ppLabel39: TppLabel
+        UserName = 'Label5'
+        Caption = 'Repassado'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 73819
+        mmTop = 51329
+        mmWidth = 42069
+        BandType = 0
+      end
+      object ppLabel40: TppLabel
+        UserName = 'Label7'
+        OnGetText = ppLabel7GetText
+        AutoSize = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 96573
+        mmTop = 57150
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLabel41: TppLabel
+        UserName = 'Label8'
+        Caption = 'Dinheiro'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 76729
+        mmTop = 57150
+        mmWidth = 12965
+        BandType = 0
+      end
+      object ppLabel42: TppLabel
+        UserName = 'Label9'
+        Caption = 'Cheques'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 76729
+        mmTop = 62442
+        mmWidth = 13229
+        BandType = 0
+      end
+      object ppLabel43: TppLabel
+        UserName = 'Label10'
+        OnGetText = ppLabel10GetText
+        AutoSize = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 96573
+        mmTop = 62442
+        mmWidth = 19579
+        BandType = 0
+      end
+      object ppLine12: TppLine
+        UserName = 'Line18'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 11113
+        mmLeft = 94192
+        mmTop = 56356
+        mmWidth = 1588
+        BandType = 0
+      end
+    end
+    object ppDetailBand3: TppDetailBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 12700
+      mmPrintPosition = 0
+      object ppSubReport3: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        ParentWidth = False
+        TraverseAllData = False
+        DataPipelineName = 'dbNaoRepassados'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 1058
+        mmWidth = 96573
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport1: TppChildReport
+          AutoStop = False
+          DataPipeline = dbNaoRepassados
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 297000
+          PrinterSetup.mmPaperWidth = 210000
+          PrinterSetup.PaperSize = 256
+          Left = 360
+          Top = 208
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbNaoRepassados'
+          object ppTitleBand3: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 15875
+            mmPrintPosition = 0
+            object ppLabel49: TppLabel
+              UserName = 'Label29'
+              Caption = 'Cheques n'#227'o Repassados'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clMaroon
+              Font.Name = 'Tahoma'
+              Font.Size = 10
+              Font.Style = [fsBold, fsUnderline]
+              Transparent = True
+              mmHeight = 4233
+              mmLeft = 3440
+              mmTop = 3704
+              mmWidth = 44873
+              BandType = 1
+            end
+            object ppLabel50: TppLabel
+              UserName = 'Label30'
+              Caption = '# Cheque'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 2910
+              mmTop = 11377
+              mmWidth = 12435
+              BandType = 1
+            end
+            object ppLabel51: TppLabel
+              UserName = 'Label31'
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 63500
+              mmTop = 11377
+              mmWidth = 14288
+              BandType = 1
+            end
+            object ppLabel52: TppLabel
+              UserName = 'Label32'
+              Caption = 'Nome'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 17727
+              mmTop = 11377
+              mmWidth = 7144
+              BandType = 1
+            end
+            object ppLabel53: TppLabel
+              UserName = 'Label33'
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 84667
+              mmTop = 11377
+              mmWidth = 6350
+              BandType = 1
+            end
+            object ppLine14: TppLine
+              UserName = 'Line20'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 2910
+              mmTop = 15346
+              mmWidth = 13229
+              BandType = 1
+            end
+            object ppLine15: TppLine
+              UserName = 'Line21'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 17727
+              mmTop = 15346
+              mmWidth = 44186
+              BandType = 1
+            end
+            object ppLine16: TppLine
+              UserName = 'Line22'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 63236
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine28: TppLine
+              UserName = 'Line23'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 80433
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine29: TppLine
+              UserName = 'Line24'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 16140
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine30: TppLine
+              UserName = 'Line25'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 61913
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine31: TppLine
+              UserName = 'Line26'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 79111
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine32: TppLine
+              UserName = 'Line27'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 96044
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+          end
+          object ppDetailBand5: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 3969
+            mmPrintPosition = 0
+            object ppDBText5: TppDBText
+              UserName = 'DBText9'
+              DataField = 'NUMCHEQUE'
+              DataPipeline = dbNaoRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 2381
+              mmTop = 265
+              mmWidth = 13758
+              BandType = 4
+            end
+            object ppDBText6: TppDBText
+              UserName = 'DBText10'
+              DataField = 'NOME'
+              DataPipeline = dbNaoRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 17198
+              mmTop = 265
+              mmWidth = 44979
+              BandType = 4
+            end
+            object ppDBText7: TppDBText
+              UserName = 'DBText11'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbNaoRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 62706
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+            object ppDBText8: TppDBText
+              UserName = 'DBText12'
+              DataField = 'VALOR'
+              DataPipeline = dbNaoRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 79904
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+          end
+          object ppSummaryBand4: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 5292
+            mmPrintPosition = 0
+            object ppDBCalc3: TppDBCalc
+              UserName = 'DBCalc5'
+              DataField = 'VALOR'
+              DataPipeline = dbNaoRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 79375
+              mmTop = 529
+              mmWidth = 17198
+              BandType = 7
+            end
+            object ppDBCalc4: TppDBCalc
+              UserName = 'DBCalc6'
+              DataPipeline = dbNaoRepassados
+              DisplayFormat = '#,### cheque(s)'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              Transparent = True
+              DBCalcType = dcCount
+              DataPipelineName = 'dbNaoRepassados'
+              mmHeight = 3440
+              mmLeft = 2910
+              mmTop = 529
+              mmWidth = 42333
+              BandType = 7
+            end
+          end
+        end
+      end
+      object ppSubReport4: TppSubReport
+        UserName = 'SubReport2'
+        ExpandAll = False
+        NewPrintJob = False
+        ParentWidth = False
+        ShiftRelativeTo = ppSubReport3
+        TraverseAllData = False
+        DataPipelineName = 'dbRepassados'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 6879
+        mmWidth = 96309
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport2: TppChildReport
+          AutoStop = False
+          DataPipeline = dbRepassados
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 297000
+          PrinterSetup.mmPaperWidth = 210000
+          PrinterSetup.PaperSize = 256
+          Left = 400
+          Top = 248
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbRepassados'
+          object ppTitleBand4: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 15875
+            mmPrintPosition = 0
+            object ppLabel54: TppLabel
+              UserName = 'Label1'
+              Caption = 'Cheques Repassados'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clNavy
+              Font.Name = 'Tahoma'
+              Font.Size = 10
+              Font.Style = [fsBold, fsUnderline]
+              Transparent = True
+              mmHeight = 4233
+              mmLeft = 794
+              mmTop = 3704
+              mmWidth = 37253
+              BandType = 1
+            end
+            object ppLabel55: TppLabel
+              UserName = 'Label2'
+              Caption = '# Cheque'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 265
+              mmTop = 11377
+              mmWidth = 12700
+              BandType = 1
+            end
+            object ppLabel56: TppLabel
+              UserName = 'Label3'
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 60854
+              mmTop = 11377
+              mmWidth = 14288
+              BandType = 1
+            end
+            object ppLabel57: TppLabel
+              UserName = 'Label4'
+              Caption = 'Nome'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 15081
+              mmTop = 11377
+              mmWidth = 7144
+              BandType = 1
+            end
+            object ppLabel58: TppLabel
+              UserName = 'Label5'
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3440
+              mmLeft = 82021
+              mmTop = 11377
+              mmWidth = 6350
+              BandType = 1
+            end
+            object ppLine33: TppLine
+              UserName = 'Line1'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 265
+              mmTop = 15346
+              mmWidth = 13229
+              BandType = 1
+            end
+            object ppLine34: TppLine
+              UserName = 'Line2'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 15081
+              mmTop = 15346
+              mmWidth = 44186
+              BandType = 1
+            end
+            object ppLine35: TppLine
+              UserName = 'Line3'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 60590
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine36: TppLine
+              UserName = 'Line4'
+              Pen.Color = clGray
+              Weight = 0.75
+              mmHeight = 529
+              mmLeft = 77788
+              mmTop = 15346
+              mmWidth = 15875
+              BandType = 1
+            end
+            object ppLine37: TppLine
+              UserName = 'Line5'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 13494
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine38: TppLine
+              UserName = 'Line6'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 59267
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine39: TppLine
+              UserName = 'Line7'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 76465
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+            object ppLine40: TppLine
+              UserName = 'Line8'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 3969
+              mmLeft = 93398
+              mmTop = 11642
+              mmWidth = 1852
+              BandType = 1
+            end
+          end
+          object ppDetailBand6: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 3969
+            mmPrintPosition = 0
+            object ppDBText13: TppDBText
+              UserName = 'DBText1'
+              DataField = 'NUMCHEQUE'
+              DataPipeline = dbRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 265
+              mmTop = 265
+              mmWidth = 13758
+              BandType = 4
+            end
+            object ppDBText14: TppDBText
+              UserName = 'DBText2'
+              DataField = 'Nome'
+              DataPipeline = dbRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 15081
+              mmTop = 265
+              mmWidth = 44979
+              BandType = 4
+            end
+            object ppDBText15: TppDBText
+              UserName = 'DBText3'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbRepassados
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 60590
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+            object ppDBText16: TppDBText
+              UserName = 'DBText4'
+              DataField = 'VALOR'
+              DataPipeline = dbRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 77788
+              mmTop = 265
+              mmWidth = 16404
+              BandType = 4
+            end
+          end
+          object ppSummaryBand5: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBCalc7: TppDBCalc
+              UserName = 'DBCalc1'
+              DataField = 'VALOR'
+              DataPipeline = dbRepassados
+              DisplayFormat = '###,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 76994
+              mmTop = 529
+              mmWidth = 17198
+              BandType = 7
+            end
+            object ppDBCalc8: TppDBCalc
+              UserName = 'DBCalc2'
+              DataField = 'IDDoc'
+              DataPipeline = dbRepassados
+              DisplayFormat = '#,### cheque(s)'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = [fsBold]
+              Transparent = True
+              DBCalcType = dcCount
+              DataPipelineName = 'dbRepassados'
+              mmHeight = 3440
+              mmLeft = 529
+              mmTop = 529
+              mmWidth = 42333
+              BandType = 7
+            end
+          end
+        end
+      end
+    end
+    object ppFooterBand2: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 8202
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand6: TppSummaryBand
+      mmBottomOffset = 0
+      mmHeight = 23813
+      mmPrintPosition = 0
+      object ppLabel59: TppLabel
+        UserName = 'Label14'
+        Caption = 'Gerente Financeiro'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 37042
+        mmTop = 17463
+        mmWidth = 29633
+        BandType = 7
+      end
+      object ppLabel60: TppLabel
+        UserName = 'Label20'
+        OnGetText = ppLabel20GetText
+        Caption = 'Label20'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 133615
+        mmTop = 17463
+        mmWidth = 12171
+        BandType = 7
+      end
+      object ppLine41: TppLine
+        UserName = 'Line9'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 21960
+        mmTop = 16669
+        mmWidth = 60325
+        BandType = 7
+      end
+      object ppLine42: TppLine
+        UserName = 'Line10'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 109009
+        mmTop = 16669
+        mmWidth = 60325
+        BandType = 7
+      end
     end
   end
 end

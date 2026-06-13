@@ -47,6 +47,9 @@ end;
 procedure TFrmFlexdocs.FormShow(Sender: TObject);
 begin
   inherited;
+  DMFlexdocs.Q_Tabela.Close;
+  DMFlexdocs.C_TabelaFAVORECIDO.Value := -1 ;
+  DMFlexdocs.Q_Tabela.Open;
 
   btPesquisar.Click;
 //    ExecuteAction(btPesquisarClick.Action);

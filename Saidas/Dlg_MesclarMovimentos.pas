@@ -204,7 +204,7 @@ var
   DlgMesclarMovimentos: TDlgMesclarMovimentos;
 
 implementation
-  uses DM_Projeto, Funcoes, Data;
+  uses DM_Projeto, Funcoes, Data, DM_ItensMovimento;
 
 {$R *.DFM}
 
@@ -270,9 +270,9 @@ begin
   {Substituindo Tipo Padrao e Favorecido}
   if not DM.bAlteracao then Begin
     If sSaida <> '' Then
-      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'') And (s.NUMERO = '''+sSaida+''')')
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'', ''Z'') And (s.NUMERO = '''+sSaida+''')')
     Else
-      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'')')
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'', ''Z'')')
   End else begin
     sSaidasOriginais := '';
     with DM.Q_SQL do begin
@@ -289,11 +289,11 @@ begin
 
     end;
     If sSaida <> '' Then
-      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'') And (s.NUMERO = '''+sSaida+''')')
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'', ''Z'') And (s.NUMERO = '''+sSaida+''')')
     Else if sSaidasOriginais <> '' then
-      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' (s.Status in (''P'', ''L'', ''V'', ''X'') or s.Saida in ('+sSaidasOriginais+') ) ')
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' (s.Status in (''P'', ''L'', ''V'', ''X'', ''Z'') or s.Saida in ('+sSaidasOriginais+') ) ')
     else
-      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'') ');
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' s.Status in (''P'', ''L'', ''V'', ''X'', ''Z'') ');
 
   end;
 
@@ -683,8 +683,9 @@ procedure TDlgMesclarMovimentos.JoinItemToOperation;
 
     DM.C_ItensDescricaoComplementar.asVariant := C_ItensDescricaoComplementar.asVariant;
 
-    DM.C_ItensAlmoxarifado.Value   := C_ItensAlmoxarifado.Value;
-
+ //   DM.C_ItensAlmoxarifado.Value   := C_ItensAlmoxarifado.Value;
+  // comentado por Cesar 14-03-2023, motivo = ao comentar a linha, o sistema ficou pegando o almoxarifado padrão do movimento para qual esta sendo mesclado o pedido
+  // antes o sistema pegava o almoxarifado origem do movimento ! 
 
     {Copiando os Filhos}
     if (DM.C_ItensHASCHILDREN.VAlue = 'S') and (Q_Filhos.Active) then begin

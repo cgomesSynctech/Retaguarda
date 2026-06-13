@@ -23,14 +23,17 @@ inherited DMMetasFaturamento: TDMMetasFaturamento
       '  DATAINICIAL = :DATAINICIAL,'
       '  DATAFINAL = :DATAFINAL,'
       '  METAPERIODO = :METAPERIODO,'
-      '  METADIARIA = :METADIARIA'
+      '  METADIARIA = :METADIARIA,'
+      '  TITULO = :TITULO'
       'where'
       '  ID = :OLD_ID')
     InsertSQL.Strings = (
       'insert into metasfaturamento'
-      '  (ID, DATAINICIAL, DATAFINAL, METAPERIODO, METADIARIA)'
+      '  (ID, DATAINICIAL, DATAFINAL, METAPERIODO, METADIARIA, :TITULO)'
       'values'
-      '  (:ID, :DATAINICIAL, :DATAFINAL, :METAPERIODO, :METADIARIA)')
+      
+        '  (:ID, :DATAINICIAL, :DATAFINAL, :METAPERIODO, :METADIARIA, :TI' +
+        'TULO)')
     DeleteSQL.Strings = (
       'delete from metasfaturamento'
       'where'
@@ -40,7 +43,6 @@ inherited DMMetasFaturamento: TDMMetasFaturamento
   inherited DMComponent: TDMComponent
     ModoInclusao1_Iniciar = DMComponentModoInclusao1_Iniciar
     ModoInclusao2_Terminar = DMComponentModoInclusao2_Terminar
-    Gravar1_Iniciar = DMComponentGravar1_Iniciar
     KeyForIDs = 'METASFATURAMENTO'
     Tabela_Nome = 'METASFATURAMENTO'
     Tabela_Chave = 'ID'
@@ -52,7 +54,6 @@ inherited DMMetasFaturamento: TDMMetasFaturamento
     Top = 269
   end
   inherited C_Tabela: TClientDataSet
-    Active = False
     Left = 35
     object C_TabelaID: TIntegerField
       FieldName = 'ID'
@@ -81,6 +82,10 @@ inherited DMMetasFaturamento: TDMMetasFaturamento
     end
     object C_TabelaQ_Detalhe: TDataSetField
       FieldName = 'Q_Detalhe'
+    end
+    object C_TabelaTITULO: TStringField
+      FieldName = 'TITULO'
+      Size = 10
     end
   end
   inherited C_TabelaDS: TDataSource
@@ -136,7 +141,6 @@ inherited DMMetasFaturamento: TDMMetasFaturamento
     Top = 56
   end
   object C_Detalhe: TClientDataSet
-    Active = False
     Aggregates = <>
     DataSetField = C_TabelaQ_Detalhe
     Params = <

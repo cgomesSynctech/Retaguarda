@@ -5,6 +5,57 @@ inherited FrmRegistros: TFrmRegistros
   Caption = 'Contabilidade'
   PixelsPerInch = 96
   TextHeight = 13
+  inherited pnNavigator: TTS_Panel
+    Left = 579
+    Width = 96
+    inherited btFecharCadastro: TTS_SpeedButton
+      Width = 94
+    end
+    inherited btComando2: TTS_SpeedButton
+      Width = 94
+    end
+    inherited btComando1: TTS_SpeedButton
+      Width = 94
+      AllowAllUp = True
+      Caption = 'Contra-Partida'
+      Glyph.Data = {
+        42010000424D4201000000000000760000002800000011000000110000000100
+        040000000000CC00000000000000000000001000000010000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        7777700000007777770000000000700000007777770FFFFFFFF0700000007777
+        770FFFFFFFF0700000007777770FFFFFFFF07000000077700000000000007000
+        00007770FF07CCCCCCC0700000007770FF0000000000700000007770FFFFFFFF
+        07777000000070000000000007777000000070F07CCCCCCC07777000000070F0
+        0000000007777000000070FFFFFFFF0777777000000070000000000777777000
+        0000707CCCCCCC07777770000000700000000007777770000000777777777777
+        777770000000}
+      Visible = True
+      OnClick = btComando1Click
+    end
+    inherited btLimpar: TTS_SpeedButton
+      Width = 94
+    end
+    inherited btGravar: TTS_SpeedButton
+      Width = 94
+    end
+    inherited TS_Bevel1: TTS_Bevel
+      Width = 94
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 675
+    Gradient.ColorStart = 12689345
+    inherited lbUpperHint: TTS_Label
+      Left = 667
+    end
+    inherited lbCaption: TdxfLabel
+      Width = 91
+      AutoSize = True
+      Caption = 'Registros'
+      Effect3D.ShadowedColor = 12689345
+    end
+  end
   inherited pnDados: TTS_Panel
     Width = 579
     Color = 14733792
@@ -43,12 +94,14 @@ inherited FrmRegistros: TFrmRegistros
       BandFont.Style = []
       DataSource = C_RegistrosDS
       Filter.Criteria = {00000000}
+      GroupPanelColor = 15461355
       HeaderColor = 15461355
       HeaderFont.Charset = DEFAULT_CHARSET
       HeaderFont.Color = clWindowText
       HeaderFont.Height = -11
       HeaderFont.Name = 'Tahoma'
       HeaderFont.Style = []
+      HideFocusRect = True
       HideSelection = True
       HighlightColor = clInfoBk
       HighlightTextColor = clWindowText
@@ -63,6 +116,8 @@ inherited FrmRegistros: TFrmRegistros
       OnChangeNode = dbgRegistrosChangeNode
       OnCustomDrawCell = dbgRegistrosCustomDrawCell
       OnEdited = dbgRegistrosEdited
+      TS_PermitirQuantidade = False
+      TS_DescriptionCanChange = False
       TS_AppendOnEnter = False
       RowFooterNodeFont.Charset = DEFAULT_CHARSET
       RowFooterNodeFont.Color = clWindowText
@@ -112,7 +167,7 @@ inherited FrmRegistros: TFrmRegistros
         FieldName = 'LANCAMENTO'
       end
       object dbgRegistrosCODIGOREDUZIDO: TdxDBGridMaskColumn
-        Caption = 'Código'
+        Caption = 'C'#243'digo'
         Visible = False
         Width = 27
         BandIndex = 0
@@ -198,7 +253,7 @@ inherited FrmRegistros: TFrmRegistros
         SummaryFooterFormat = '###,##0.00'
       end
       object dbgRegistrosHISTORICO: TdxDBGridMaskColumn
-        Caption = 'Histórico'
+        Caption = 'Hist'#243'rico'
         Width = 240
         BandIndex = 0
         RowIndex = 0
@@ -270,12 +325,14 @@ inherited FrmRegistros: TFrmRegistros
         BandFont.Style = []
         DataSource = C_ContraPartidaDS
         Filter.Criteria = {00000000}
+        GroupPanelColor = 15461355
         HeaderColor = 15461355
         HeaderFont.Charset = DEFAULT_CHARSET
         HeaderFont.Color = clWindowText
         HeaderFont.Height = -11
         HeaderFont.Name = 'Tahoma'
         HeaderFont.Style = []
+        HideFocusRect = True
         HideSelection = True
         HighlightColor = clInfoBk
         HighlightTextColor = clWindowText
@@ -288,6 +345,8 @@ inherited FrmRegistros: TFrmRegistros
         PreviewFont.Name = 'MS Sans Serif'
         PreviewFont.Style = []
         OnCustomDrawCell = dbgLancamentosCustomDrawCell
+        TS_PermitirQuantidade = False
+        TS_DescriptionCanChange = False
         TS_AppendOnEnter = False
         RowFooterNodeFont.Charset = DEFAULT_CHARSET
         RowFooterNodeFont.Color = clWindowText
@@ -348,7 +407,7 @@ inherited FrmRegistros: TFrmRegistros
           ListFieldName = 'descricao;desctipo'
         end
         object dbgLancamentosColumn5: TdxDBGridColumn
-          Caption = 'Histórico'
+          Caption = 'Hist'#243'rico'
           Width = 262
           BandIndex = 0
           RowIndex = 0
@@ -365,56 +424,6 @@ inherited FrmRegistros: TFrmRegistros
           SummaryFooterType = cstSum
         end
       end
-    end
-  end
-  inherited pnNavigator: TTS_Panel
-    Left = 579
-    Width = 96
-    inherited btFecharCadastro: TTS_SpeedButton
-      Width = 94
-    end
-    inherited btComando2: TTS_SpeedButton
-      Width = 94
-    end
-    inherited btComando1: TTS_SpeedButton
-      Width = 94
-      AllowAllUp = True
-      Caption = 'Contra-Partida'
-      Glyph.Data = {
-        42010000424D4201000000000000760000002800000011000000110000000100
-        040000000000CC00000000000000000000001000000010000000000000000000
-        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
-        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
-        7777700000007777770000000000700000007777770FFFFFFFF0700000007777
-        770FFFFFFFF0700000007777770FFFFFFFF07000000077700000000000007000
-        00007770FF07CCCCCCC0700000007770FF0000000000700000007770FFFFFFFF
-        07777000000070000000000007777000000070F07CCCCCCC07777000000070F0
-        0000000007777000000070FFFFFFFF0777777000000070000000000777777000
-        0000707CCCCCCC07777770000000700000000007777770000000777777777777
-        777770000000}
-      Visible = True
-      OnClick = btComando1Click
-    end
-    inherited btLimpar: TTS_SpeedButton
-      Width = 94
-    end
-    inherited btGravar: TTS_SpeedButton
-      Width = 94
-    end
-    inherited TS_Bevel1: TTS_Bevel
-      Width = 94
-    end
-  end
-  inherited pnTitulo: TTS_MaxPanel
-    Width = 675
-    Gradient.ColorStart = 12689345
-    inherited lbCaption: TdxfLabel
-      Width = 91
-      Caption = 'Registros'
-      Effect3D.ShadowedColor = 12689345
-    end
-    inherited lbUpperHint: TTS_Label
-      Left = 667
     end
   end
   inherited FormsComponent: TFormsComponent

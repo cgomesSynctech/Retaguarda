@@ -7,7 +7,8 @@ uses
     TDM_MANUTENCAO, Db, IBCustomDataSet, DlgMsg, DMComponent, IBUpdateSQL,
     IBQuery, DBClient, Provider, Variants, IBDatabase, IBEvents, ppMemo,
     ppCtrls, ppBands, ppPrnabl, ppClass, ppStrtch, ppRegion, ppCache, ppProd,
-    ppReport, ppDB, ppComm, ppRelatv, ppDBPipe;
+    ppReport, ppDB, ppComm, ppRelatv, ppDBPipe, IdBaseComponent,
+  IdComponent, IdTCPConnection, IdTCPClient, IdHTTP,  NMHTTP, NMURL, MSXML2_TLB;
 
 type
     TDMClientes = class(TDMManutencao)
@@ -556,6 +557,7 @@ type
     C_TabelaPERMITIRCHEQUE: TStringField;
     C_TabelaPERMITIRFIADO: TStringField;
     C_TabelaEMAIL: TStringField;
+    IdHTTP1: TIdHTTP;
         procedure DataModuleCreate(Sender: TObject);
         procedure DMComponentModoInclusao2_Terminar(Sender: TObject);
         procedure C_TabelaCalcFields(DataSet: TDataSet);
@@ -609,6 +611,7 @@ type
         { Public declarations }
         procedure GeraCodigo;
         procedure SetCEP(cep:string);
+        procedure SetCEP2(cep:string);
     end;
 
 var
@@ -654,6 +657,64 @@ Begin
 
   C_Tabela.UpdateRecord;
 End;
+
+procedure TDMClientes.SetCEP2(cep:string);
+var
+  IdHTTP: TIdHTTP;
+  ResponseXML: string;
+  XMLDoc: IXMLDOMDocument;
+  RootNode: IXMLDOMNode;
+    loHTTP : TNMHTTP;
+  loURL : TNMURL;
+  lista: TStringList;
+begin
+  //IdHTTP := TIdHTTP.Create(nil);
+  XMLDoc := CoDOMDocument.Create;  // Cria a instância do documento XML
+  try
+    loHTTP := TNMHTTP.Create(Application);
+    loURL := TNMURL.Create(Application);
+    lista:=TStringList.Create;
+
+    loHTTP.Get('http://viacep.com.br/ws/'+CEP+'/xml');
+    loURL.InputString := loHTTP.Body;
+
+    ResponseXML := loHTTP.Body;
+    XMLDoc.loadXML(ResponseXML);
+
+    if XMLDoc.parseError.errorCode <> 0 then
+    begin
+  //    ShowMessage('Erro ao carregar XML: ' + XMLDoc.parseError.reason);
+      ShowMessage('Cep invalido ou não encontrado');
+      Exit;
+    end;
+    // Pega o nó raiz do XML
+    RootNode := XMLDoc.documentElement;
+    if not (C_Tabela.State in [dsEdit, dsInsert]) then
+        C_Tabela.Edit;
+
+    C_TabelaUF.Value       := RootNode.selectSingleNode('uf').text;
+    if ( Length(RootNode.selectSingleNode('logradouro').text)  > 0)  then
+    C_TabelaEndereco.Value := TrataCEP(RootNode.selectSingleNode('logradouro').text) ;
+    if ( Length(RootNode.selectSingleNode('bairro').text)  > 0)  then
+    C_TabelaBairro.Value   := TrataCEP(RootNode.selectSingleNode('bairro').text);
+    if ( Length(RootNode.selectSingleNode('localidade').text) > 0 )then
+    C_TabelaCidade.Value   := TrataCEP(RootNode.selectSingleNode('localidade').text);
+    C_TabelaMUNICIPIO.Value := StrToInt(RootNode.selectSingleNode('ibge').text);
+
+  C_Tabela.UpdateRecord;
+
+
+
+  except
+    on E: Exception do
+      ShowMessage('Erro ao processar o XML: ' + E.Message);
+  end;
+  IdHTTP.Free;
+        loHTTP.Free;
+      loURL.Free;
+
+end;
+
 
 
 procedure TDMClientes.DataModuleCreate(Sender: TObject);

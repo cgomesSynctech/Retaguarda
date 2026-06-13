@@ -10,7 +10,9 @@ uses
     ComCtrls, TS_PageControl, FormsComponent, Placemnt, BTOdeum, Menus,
     TS_PopupMenu, TS_LastDataObject, DlgMsg, dxfLabel, StdCtrls, TS_Label,
     ExtCtrls, TS_Image, TS_MaxPanel, TS_Bevel, Buttons, TS_SpeedButton,
-    teCtrls, TS_EffectsPanel, dxEdLib, TS_DateTimePicker;
+    teCtrls, TS_EffectsPanel, dxEdLib, TS_DateTimePicker, TS_LookupComboBox,
+  ppDB, ppDBPipe, ppCtrls, ppBands, ppReport, ppSubRpt, ppPrnabl, ppClass,
+  ppStrtch, ppRegion, ppCache, ppComm, ppRelatv, ppProd;
 
 type
     TDlgConferenciaCaixa = class(TFrmModeloCadastros)
@@ -70,6 +72,77 @@ type
         Q_SQL: TIBQuery;
         C_ConsultaFUNCIONARIO: TIntegerField;
         C_ConsultaNOME: TStringField;
+    C_Caixas: TClientDataSet;
+    C_CaixasCONTA: TIntegerField;
+    C_CaixasDESCRICAO: TStringField;
+    Q_Caixas: TIBQuery;
+    C_CaixaDS: TDataSource;
+    Label1: TLabel;
+    P_Caixas: TDataSetProvider;
+    cmbConta: TTS_LookupComboBox;
+    ppReport1: TppReport;
+    ppHeaderBand2: TppHeaderBand;
+    ppRegion1: TppRegion;
+    ppLabel4: TppLabel;
+    ppDBText9: TppDBText;
+    ppDBText10: TppDBText;
+    ppLabel6: TppLabel;
+    ppLabel11: TppLabel;
+    ppLabel31: TppLabel;
+    ppLabel32: TppLabel;
+    ppDetailBand3: TppDetailBand;
+    ppDBText15: TppDBText;
+    ppDBText14: TppDBText;
+    ppDBText16: TppDBText;
+    ppDBText11: TppDBText;
+    ppFooterBand2: TppFooterBand;
+    ppSummaryBand4: TppSummaryBand;
+    ppLabel29: TppLabel;
+    ppLabel30: TppLabel;
+    ppLine21: TppLine;
+    ppLine22: TppLine;
+    ppSubReport1: TppSubReport;
+    ppChildReport1: TppChildReport;
+    ppTitleBand1: TppTitleBand;
+    ppLabel24: TppLabel;
+    ppLabel25: TppLabel;
+    ppLabel26: TppLabel;
+    ppLabel27: TppLabel;
+    ppLabel28: TppLabel;
+    ppLine12: TppLine;
+    ppLine13: TppLine;
+    ppLine14: TppLine;
+    ppLine15: TppLine;
+    ppLine16: TppLine;
+    ppLine17: TppLine;
+    ppLine19: TppLine;
+    ppLine20: TppLine;
+    ppDetailBand4: TppDetailBand;
+    ppDBText5: TppDBText;
+    ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
+    ppDBText8: TppDBText;
+    ppSummaryBand1: TppSummaryBand;
+    ppDBCalc3: TppDBCalc;
+    ppDBCalc4: TppDBCalc;
+    ppLabel33: TppLabel;
+    ppDBConferencia: TppDBPipeline;
+    ppDBConferenciappField1: TppField;
+    ppDBConferenciappField2: TppField;
+    ppDBConferenciappField3: TppField;
+    ppDBConferenciappField4: TppField;
+    ppDBConferenciappField5: TppField;
+    ppDBConferenciappField6: TppField;
+    Q_Conferencia: TIBQuery;
+    P_Conferencia: TDataSetProvider;
+    C_Conferencia: TClientDataSet;
+    C_ConferenciaDATAFECHAMENTO: TDateField;
+    C_ConferenciaVALORDIGITADO: TBCDField;
+    C_ConferenciaVALORAPURADO: TBCDField;
+    C_ConferenciaSALDO: TBCDField;
+    C_ConferenciaDESCRICAO: TStringField;
+    C_ConferenciaCAIXA: TStringField;
+    C_ConferenciaDS: TDataSource;
         procedure btComando1Click(Sender: TObject);
         procedure dbgConsultaDblClick(Sender: TObject);
         procedure FormsComponentBeforeClearParams(Sender: TObject);
@@ -80,6 +153,7 @@ type
         procedure btnLancarSobraClick(Sender: TObject);
         procedure btnGerarTituloClick(Sender: TObject);
         procedure btnIgnorarClick(Sender: TObject);
+    procedure btComando2Click(Sender: TObject);
     private
         { Private declarations }
     public
@@ -110,7 +184,7 @@ begin
         'sum(f.valordigitado) as digitado, sum(f.valorapurado) as apurado, sum(f.saldo) as saldo ' +
         'from fechamentocaixa f inner join contas c on f.conta = c.conta ' +
         'inner join usuarios u on c.usuariocaixa = u.usuario ' +
-        'inner join favorecidos fa on u.funcionario = fa.favorecido ' +
+        'left join favorecidos fa on u.funcionario = fa.favorecido ' +
         'where (f.datafechamento >= :datai and f.datafechamento <= :dataf) and upper(f.status) = ''A'' and c.usuariocaixa is not null ' +
         'group by 1, 2, 3, 4, 5 order by f.datafechamento asc ';
 
@@ -151,12 +225,15 @@ begin
     if (pcFechamento.ActivePageIndex = 1) then
         begin
             btComando1.Enabled := False;
-            btnLancarSobra.Visible := C_ConsultaSALDO.AsCurrency > 0;
-            btnGerarTitulo.Visible := C_ConsultaSALDO.AsCurrency < 0;
+            btComando2.Enabled := True;
+
+           // btnLancarSobra.Visible := C_ConsultaSALDO.AsCurrency > 0;
+           // btnGerarTitulo.Visible := C_ConsultaSALDO.AsCurrency < 0;
         end
     else
         begin
             btComando1.Enabled := True;
+            btComando2.Enabled := False;
         end;
 end;
 
@@ -164,6 +241,7 @@ procedure TDlgConferenciaCaixa.FormsComponentBeforeClearParams(
     Sender: TObject);
 begin
     inherited;
+    C_Caixas.Open; 
     btLimpar.Visible := False;
     btGravar.Visible := False;
 
@@ -202,7 +280,7 @@ begin
                         'CREDITOGERADO) VALUES (:deposito, :pdv, :conta, :data, :valor, -1, :historico, :usuario, ''N'', 2, :creditogerado)';
                     ParamByName('deposito').AsInteger := idDeposito;
                     ParamByName('pdv').AsInteger := DMProjeto.nPDV;
-                    ParamByName('conta').AsInteger := -8; // Conta Sobra de Caixa
+                    ParamByName('conta').AsInteger := cmbConta.LookupKeyValue; // Conta Sobra de Caixa
                     ParamByName('data').AsDateTime := DMProjeto.dDataSistema;
                     ParamByName('valor').AsCurrency := C_ConsultaSALDO.AsCurrency;
                     ParamByName('historico').AsString := 'Sobra de Caixa gerado pela Conferência de Caixa';
@@ -234,7 +312,7 @@ begin
                     ParamByName('deposito').AsInteger := idDeposito;
                     ParamByName('valor').AsCurrency := C_ConsultaSALDO.AsCurrency;
                     ParamByName('vencimento').AsDateTime := DMProjeto.dDataSistema;
-                    ParamByName('contaatual').AsInteger := -8; // Conta Sobra de Caixa
+                    ParamByName('contaatual').AsInteger := cmbConta.LookUpKeyValue; // Conta Sobra de Caixa
 
                     repeat
                         try
@@ -251,16 +329,22 @@ begin
 
                     Close;
                     SQL.Text := 'INSERT INTO TRANSACOES (ID, PDV, CONTA, DATA, VALOR, TIPOTRANSACAO, FORMAPAGAMENTO, HISTORICO, FAVORECIDO, IDGERADOR, IDDOC, ' +
-                        'TIPOOPERACAO, USUARIO, CONCILIADO) VALUES (:id, :pdv, :conta, :data, :valor, ''C'', 1, :historico, -1, :idgerador, :iddoc, ' +
+                        'TIPOOPERACAO, USUARIO, CONCILIADO) VALUES (:id, :pdv, :conta, :data, :valor, :TIPOTRANSACAO, 1, :historico, -1, :idgerador, :iddoc, ' +
                         '8, :usuario, ''N'')';
                     ParamByName('pdv').AsInteger := DMProjeto.nPDV;
-                    ParamByName('conta').AsInteger := -8; // Conta Sobra de Caixa
+                    ParamByName('conta').AsInteger := cmbConta.LookUpKeyValue; // Conta Sobra de Caixa
                     ParamByName('data').AsDateTime := DMProjeto.dDataSistema;
                     ParamByName('valor').AsCurrency := C_ConsultaSALDO.AsCurrency;
                     ParamByName('historico').AsString := 'Sobra de Caixa gerado pela Conferência de Caixa';
                     ParamByName('idgerador').AsInteger := idDeposito;
                     ParamByName('iddoc').AsInteger := idDoc;
                     ParamByName('usuario').AsInteger := DMProjeto.nFuncionario;
+                    if ( C_ConsultaSALDO.Value > 0) then
+                        ParamByName('TIPOTRANSACAO').AsString := 'C'
+                    else
+                        ParamByName('TIPOTRANSACAO').AsString := 'D';
+
+
 
                     repeat
                         try
@@ -435,6 +519,23 @@ begin
 
             DlgMsg.ShowMsg(50, ['Operação realizada com Sucesso!']);
         end;
+end;
+
+procedure TDlgConferenciaCaixa.btComando2Click(Sender: TObject);
+begin
+  inherited;
+       with Q_Conferencia do
+        begin
+            Close;
+            SQL.Text := 'select f.datafechamento, f.valordigitado, f.valorapurado, f.saldo,  e.descricao, c.descricao as Caixa  from fechamentocaixa f '+
+                        ' inner join especiestitulos e on e.especie = f.especie inner join contas c on c.conta = f.conta '+
+                        ' where f.fechamento =  :id ' ;
+                        //Params.ParamByName('dia').AsString := dia ;
+                        Params.ParamByName('id').AsInteger := C_ConsultaFECHAMENTO.AsInteger;
+                       // Params.ParamByName('conta').AsInteger := C_ConsultaCAIXA.AsInteger;
+                        open;
+        end;
+        ppReport1.Print;
 end;
 
 end.

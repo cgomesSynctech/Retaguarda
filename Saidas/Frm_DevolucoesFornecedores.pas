@@ -146,7 +146,6 @@ end;
 procedure TFrmDevolucoesFornecedores.btComando1Click(Sender: TObject);
 begin
     //  inherited;
-    //  inherited;
     if DMDevolucoesFornecedores.C_TabelaSituacao.Value = 'C' then
         exit;
 

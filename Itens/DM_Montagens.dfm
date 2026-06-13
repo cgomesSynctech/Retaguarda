@@ -90,8 +90,7 @@ inherited DMMontagens: TDMMontagens
     Top = 278
   end
   inherited C_Tabela: TClientDataSet
-    Active = True
-    Top = 166
+    Top = 168
     object C_TabelaMONTAGEM: TIntegerField
       FieldName = 'MONTAGEM'
       Origin = 'MONTAGENS.MONTAGEM'
@@ -114,12 +113,6 @@ inherited DMMontagens: TDMMontagens
       FieldName = 'QTDESOLIC'
       Origin = 'MONTAGENS.QTDESOLIC'
       OnChange = C_TabelaQTDESOLICChange
-      Precision = 18
-      Size = 2
-    end
-    object C_TabelaQTDEPRODUZIDO: TBCDField
-      FieldName = 'QTDEPRODUZIDO'
-      Origin = 'MONTAGENS.QTDEPRODUZIDO'
       Precision = 18
       Size = 2
     end
@@ -215,6 +208,11 @@ inherited DMMontagens: TDMMontagens
       Origin = 'ITENS.FORNECPREFERENCIA'
       Required = True
     end
+    object C_TabelaQTDEPRODUZIDO: TBCDField
+      FieldName = 'QTDEPRODUZIDO'
+      Precision = 18
+      Size = 3
+    end
   end
   inherited ResultSet: TClientDataSet
     Left = 122
@@ -254,7 +252,6 @@ inherited DMMontagens: TDMMontagens
     end
   end
   object C_MontagensFilhos: TClientDataSet
-    Active = True
     Aggregates = <>
     DataSetField = C_TabelaQ_MontagensFilhos
     Params = <>
@@ -313,17 +310,11 @@ inherited DMMontagens: TDMMontagens
       Origin = 'ITENS.FORNECPREFERENCIA'
       Required = True
     end
-    object C_MontagensFilhosQUANTIDADE: TBCDField
-      FieldName = 'QUANTIDADE'
-      Origin = 'MONTAGENSFILHOS.QUANTIDADE'
-      Precision = 18
-      Size = 2
-    end
     object C_MontagensFilhosQTDPRODUCAO: TBCDField
       FieldName = 'QTDPRODUCAO'
       Origin = 'MONTAGENSFILHOS.QTDPRODUCAO'
       Precision = 18
-      Size = 2
+      Size = 3
     end
     object C_MontagensFilhosQUANTIDADETOTAL: TBCDField
       FieldName = 'QUANTIDADETOTAL'
@@ -335,6 +326,11 @@ inherited DMMontagens: TDMMontagens
       FieldName = 'FABRICANTE'
       Origin = 'FABRICANTES.FABRICANTE'
       Size = 30
+    end
+    object C_MontagensFilhosQUANTIDADE: TBCDField
+      FieldName = 'QUANTIDADE'
+      Precision = 18
+      Size = 3
     end
   end
   object Q_MontagensFilhos: TIBQuery

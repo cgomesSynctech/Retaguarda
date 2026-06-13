@@ -1,10 +1,15 @@
 inherited DMSalesOrder: TDMSalesOrder
-  Left = 217
-  Top = 9
+  Left = 431
+  Top = 118
   Height = 579
   inherited Q_Tabela: TIBQuery
     SQL.Strings = (
-      'Select '#9't.Saida'#9#9'as IDMESTRE,'
+      'Select '
+      't.profissional ,'
+      't.REDUCOESBASESUBST as REDUCOESBASESUBST ,'
+      'T.ICMSDESONERADO  AS ICMSDESONERADO ,'#9
+      'T.CUBAGEMTOTAL,'
+      't.Saida'#9#9'as IDMESTRE,'
       #9't.Favorecido'#9'as Favorecido,'
       #9't.Numero'#9'as Numero,'
       #9't.Data'#9#9'as Data,'
@@ -192,7 +197,9 @@ inherited DMSalesOrder: TDMSalesOrder
   inherited U_Tabela: TIBUpdateSQL
     ModifySQL.Strings = (
       'update SAIDAS'
-      'set'
+      'set '
+      'ICMSDESONERADO = :ICMSDESONERADO ,'
+      '  CUBAGEMTOTAL = :CUBAGEMTOTAL,'
       '  NUMERO = :NUMERO,'
       '  DATA = :DATA,'
       '  FAVORECIDO = :FAVORECIDO,'
@@ -312,6 +319,8 @@ inherited DMSalesOrder: TDMSalesOrder
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      ' T.CUSTOMANUAL,'
+      'T.CUBAGEMTOTALITEM, '
       't.SaidaItem as IDITEM,'
       't.Saida as IDMestre,'
       't.Sequencia as Sequencia,'
@@ -449,7 +458,9 @@ inherited DMSalesOrder: TDMSalesOrder
       't.RATEIODESPESAS,'
       't.RATEIOFRETE,'
       'T.RATEIOSEGURO,'
-      'T.PRECOCUSTOLICITACAO  '
+      'T.PRECOCUSTOLICITACAO , '
+      't.cstibs, '
+      't.classtrib'
       'from(((SAIDASITENS t  LEFT JOIN  ITENS I on I.ITEM = t.ITEM)'
       'left join UNIDADES u on I.Unidade = u.Unidade)'
       'left join GRUPOS g on g.Grupo = i.Grupo)'
@@ -482,6 +493,8 @@ inherited DMSalesOrder: TDMSalesOrder
     ModifySQL.Strings = (
       'update SAIDASITENS'
       'set'
+      ' CUSTOMANUAL = :CUSTOMANUAL,'
+      ' CUBAGEMTOTALITEM = :CUBAGEMTOTALITEM,'
       '  SEQUENCIA = :SEQUENCIA,'
       '  DESCRICAO = :DESCRICAO,'
       '  QUANTIDADE = :QUANTIDADE,'
@@ -549,7 +562,9 @@ inherited DMSalesOrder: TDMSalesOrder
       '  RATEIODESPESAS = :RATEIODESPESAS,'
       '  RATEIOFRETE = :RATEIOFRETE ,'
       '  RATEIOSEGURO = :RATEIOSEGURO,'
-      '  PRECOCUSTOLICITACAO = :PRECOCUSTOLICITACAO'
+      '  PRECOCUSTOLICITACAO = :PRECOCUSTOLICITACAO, '
+      ' CSTIBS = :CSTIBS, '
+      ' CLASSTRIB = :CLASSTRIB'
       'where'
       
         ' SaidaItem = :OLD_IDITEM and SAIDA = :OLD_IDMESTRE and EMPRESA =' +
@@ -577,7 +592,8 @@ inherited DMSalesOrder: TDMSalesOrder
       '  CSTPISCOFINS,   ALIQPIS,   ALIQCOFINS,   CSTIPI,  PDESCONTO,'
       'PDV, IMPORTACAO, PCOMISSAO,   EMPRESA, SITUACAO,VALORPISPROD,'
       '  VALORCOFINSPROD,RATEIODESPESAS,RATEIOFRETE,RATEIOSEGURO, '
-      'PRECOCUSTOLICITACAO, QUANTIDADEVOLUME )'
+      'PRECOCUSTOLICITACAO, QUANTIDADEVOLUME , CUBAGEMTOTALITEM, '
+      'CUSTOMANUAL,  CSTIBS ,  CLASSTRIB )'
       'values'
       '  (:IDITEM, :IDMESTRE, :SEQUENCIA, :DESCRICAO, :QUANTIDADE,'
       '   :PRECO, :ITEM, :USOTIPOITEM, :SUBTOTALITEM, :ORDEM,'
@@ -603,7 +619,8 @@ inherited DMSalesOrder: TDMSalesOrder
       ':PDV, :IMPORTACAO, :PCOMISSAO,  :EMPRESA, '
       ':SITUACAO,:VALORPISPROD,:VALORCOFINSPROD,:RATEIODESPESAS,'
       ':RATEIOFRETE,:RATEIOSEGURO, :PRECOCUSTOLICITACAO, '
-      ':QUANTIDADEVOLUME)')
+      ':QUANTIDADEVOLUME, :CUBAGEMTOTALITEM, :CUSTOMANUAL,  :CSTIBS,  '
+      ':CLASSTRIB )')
     DeleteSQL.Strings = (
       'delete from SAIDASITENS'
       'where  '
@@ -722,6 +739,9 @@ inherited DMSalesOrder: TDMSalesOrder
   inherited C_TiposCobrancaDS: TDataSource
     Left = 277
     Top = 454
+  end
+  inherited C_Carteiras: TClientDataSet
+    Active = True
   end
   inherited C_CarteirasDS: TDataSource
     Left = 617

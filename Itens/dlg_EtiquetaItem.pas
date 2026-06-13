@@ -459,72 +459,16 @@ type
     ppDBText135: TppDBText;
     ppColumnFooterBand26: TppColumnFooterBand;
     ppDBText134: TppDBText;
-    ppReport1: TppReport;
-    ppDetailBand37: TppDetailBand;
-    ppDBText133: TppDBText;
-    ppLabel26: TppLabel;
-    ppDBBarCode13: TppDBBarCode;
-    ppColumnHeaderBand27: TppColumnHeaderBand;
-    ppColumnFooterBand27: TppColumnFooterBand;
-    ppReport2: TppReport;
-    ppDetailBand38: TppDetailBand;
-    ppDBText137: TppDBText;
-    ppDBBarCode14: TppDBBarCode;
-    ppColumnHeaderBand28: TppColumnHeaderBand;
-    ppColumnFooterBand28: TppColumnFooterBand;
-    ppReport3: TppReport;
-    ppColumnHeaderBand29: TppColumnHeaderBand;
-    ppDetailBand39: TppDetailBand;
-    ppDBText139: TppDBText;
-    ppDBText141: TppDBText;
-    ppLabel27: TppLabel;
-    ppColumnFooterBand29: TppColumnFooterBand;
-    raCodeModule6: TraCodeModule;
-    ppReport4: TppReport;
-    ppColumnHeaderBand30: TppColumnHeaderBand;
-    ppDetailBand40: TppDetailBand;
-    ppDBText136: TppDBText;
-    ppDBText138: TppDBText;
-    ppLabel28: TppLabel;
-    ppColumnFooterBand30: TppColumnFooterBand;
-    raCodeModule7: TraCodeModule;
-    ppReport5: TppReport;
+    pp2ColunasElginL42: TppReport;
     ppDetailBand41: TppDetailBand;
     ppDBText142: TppDBText;
     ppDBText140: TppDBText;
-    ppReport6: TppReport;
-    ppColumnHeaderBand32: TppColumnHeaderBand;
-    ppDetailBand42: TppDetailBand;
-    ppDBText144: TppDBText;
-    ppDBText145: TppDBText;
-    ppDBText146: TppDBText;
-    ppColumnFooterBand32: TppColumnFooterBand;
     ppColumnHeaderBand31: TppColumnHeaderBand;
     ppColumnFooterBand31: TppColumnFooterBand;
-    ppReport7: TppReport;
-    ppColumnHeaderBand33: TppColumnHeaderBand;
-    ppDetailBand43: TppDetailBand;
-    ppDBText147: TppDBText;
-    ppDBText148: TppDBText;
-    ppDBText149: TppDBText;
-    ppColumnFooterBand33: TppColumnFooterBand;
     ppDBText150: TppDBText;
-    ppReport8: TppReport;
-    ppColumnHeaderBand34: TppColumnHeaderBand;
-    ppDetailBand44: TppDetailBand;
-    ppDBText143: TppDBText;
-    ppDBText151: TppDBText;
-    ppDBText152: TppDBText;
-    ppColumnFooterBand34: TppColumnFooterBand;
     ppDBText153: TppDBText;
     ppLabel29: TppLabel;
-    ppReport9: TppReport;
-    ppDetailBand45: TppDetailBand;
-    ppDBText154: TppDBText;
-    ppLabel30: TppLabel;
-    ppImage6: TppImage;
-    ppDBBarCode15: TppDBBarCode;
-    ppReport10: TppReport;
+    ppEtiquetaJoia303012: TppReport;
     ppDetailBand46: TppDetailBand;
     ppDBText155: TppDBText;
     ppLabel31: TppLabel;
@@ -543,8 +487,170 @@ type
     ppDBText164: TppDBText;
     ppDBEtiquetasppField25: TppField;
     Q_EtiquetasPRECODESCONTO: TFloatField;
-    ppLabel33: TppLabel;
+    ppEtiquetas33X21_3Col_Elgin: TppReport;
+    ppDetailBand49: TppDetailBand;
+    ppDBText166: TppDBText;
+    ppDBText167: TppDBText;
+    ppDBBarCode18: TppDBBarCode;
+    ppColumnHeaderBand35: TppColumnHeaderBand;
+    ppColumnFooterBand35: TppColumnFooterBand;
+    ppEtiquetaJoiaJatoTinta2: TppReport;
+    ppColumnHeaderBand36: TppColumnHeaderBand;
+    ppDetailBand48: TppDetailBand;
+    ppDBText162: TppDBText;
+    ppDBText163: TppDBText;
+    ppDBText165: TppDBText;
+    ppLabel34: TppLabel;
+    ppColumnFooterBand36: TppColumnFooterBand;
+    ppGondolaPequenaModelo2: TppReport;
+    ppDetailBand50: TppDetailBand;
+    ppDBText168: TppDBText;
+    ppDBText169: TppDBText;                
+    ppDBBarCode17: TppDBBarCode;
+    ppLabel35: TppLabel;
+    ppDBText172: TppDBText;
+    ppLabel36: TppLabel;
+    ppGondolaHorizontalLote: TppReport;
+    ppDetailBand51: TppDetailBand;
+    ppDBText170: TppDBText;
+    ppDBBarCode19: TppDBBarCode;
+    Label3: TLabel;
+    Label4: TLabel;
+    TS_Validade: TTS_Edit;
+    TS_Lote: TTS_Edit;
+    ppDBEtiquetasppField26: TppField;
+    ppDBEtiquetasppField27: TppField;
+    ppLabel37: TppLabel;
+    ppLabel38: TppLabel;
+    ppLabel40: TppLabel;
+    ppLabel41: TppLabel;
     ppDBText112: TppDBText;
+    ppLoja: TppReport;
+    ppColumnHeaderBand37: TppColumnHeaderBand;
+    ppDetailBand52: TppDetailBand;
+    ppDBText171: TppDBText;
+    ppDBText173: TppDBText;
+    ppDBText174: TppDBText;
+    ppColumnFooterBand37: TppColumnFooterBand;
+    ppDBText175: TppDBText;
+    ppEtiquetas33X21_3Col_DataEntrada: TppReport;
+    ppColumnHeaderBand38: TppColumnHeaderBand;
+    ppDetailBand53: TppDetailBand;
+    ppDBText176: TppDBText;
+    ppDBText177: TppDBText;
+    ppDBBarCode20: TppDBBarCode;
+    ppDBText178: TppDBText;
+    ppColumnFooterBand38: TppColumnFooterBand;
+    ppDBEtiquetasppField28: TppField;
+    Q_Etiquetasultimacompra: TDateField;
+    ppGondolaPequenaModelo3: TppReport;
+    ppDetailBand54: TppDetailBand;
+    ppDBText179: TppDBText;
+    ppDBText180: TppDBText;
+    ppDBBarCode21: TppDBBarCode;
+    ppLabel33: TppLabel;
+    ppLabel39: TppLabel;
+    TS_Edit2: TTS_Edit;
+    Label5: TLabel;
+    ppLabel42: TppLabel;
+    ppDBText183: TppDBText;
+    ppDBText181: TppDBText;
+    ppEtiquetaA1sempreco: TppReport;
+    ppColumnHeaderBand39: TppColumnHeaderBand;
+    ppDetailBand55: TppDetailBand;
+    ppDBText182: TppDBText;
+    ppDBBarCode22: TppDBBarCode;
+    ppDBText186: TppDBText;
+    ppColumnFooterBand39: TppColumnFooterBand;
+    ppEtiquetas33X21_3Col_Elgin_Sem_Preco: TppReport;
+    ppColumnHeaderBand40: TppColumnHeaderBand;
+    ppDetailBand56: TppDetailBand;
+    ppDBText184: TppDBText;
+    ppDBBarCode23: TppDBBarCode;
+    ppColumnFooterBand40: TppColumnFooterBand;
+    ppPimaco3Colunas: TppReport;
+    ppColumnHeaderBand41: TppColumnHeaderBand;
+    ppDetailBand57: TppDetailBand;
+    ppDBText185: TppDBText;
+    ppDBText187: TppDBText;
+    ppDBBarCode24: TppDBBarCode;
+    ppColumnFooterBand41: TppColumnFooterBand;
+    ppDBText188: TppDBText;
+    ppPimaco3ColunasLogo: TppReport;
+    ppColumnHeaderBand42: TppColumnHeaderBand;
+    ppDetailBand58: TppDetailBand;
+    ppDBText189: TppDBText;
+    ppDBBarCode25: TppDBBarCode;
+    ppColumnFooterBand42: TppColumnFooterBand;
+    ppImage7: TppImage;
+    ppLabel43: TppLabel;
+    ppDBText190: TppDBText;
+    pp3ColunasLogo: TppReport;
+    ppColumnHeaderBand43: TppColumnHeaderBand;
+    ppDetailBand59: TppDetailBand;
+    ppDBText191: TppDBText;
+    ppDBBarCode26: TppDBBarCode;
+    ppImage8: TppImage;
+    ppLabel44: TppLabel;
+    ppDBText192: TppDBText;
+    ppColumnFooterBand43: TppColumnFooterBand;
+    ppGondolaHorizontalElgin: TppReport;
+    ppDetailBand60: TppDetailBand;
+    ppDBText193: TppDBText;
+    ppDBText194: TppDBText;
+    ppDBBarCode27: TppDBBarCode;
+    ppDBText195: TppDBText;
+    Label6: TLabel;
+    Label7: TLabel;
+    TS_Edit3: TTS_Edit;
+    TS_Edit4: TTS_Edit;
+    ppReport11: TppReport;
+    ppDetailBand61: TppDetailBand;
+    ppDBBarCode28: TppDBBarCode;
+    ppLabel45: TppLabel;
+    ppLabel46: TppLabel;
+    ppGondolaPequenaElgin: TppReport;
+    ppDetailBand62: TppDetailBand;
+    ppDBText196: TppDBText;
+    ppDBText197: TppDBText;
+    ppDBBarCode29: TppDBBarCode;
+    ppLabel47: TppLabel;
+    ppDBText198: TppDBText;
+    ppLabel48: TppLabel;
+    ppGondolaComLogo: TppReport;
+    ppColumnHeaderBand44: TppColumnHeaderBand;
+    ppDetailBand63: TppDetailBand;
+    ppDBText199: TppDBText;
+    ppDBBarCode30: TppDBBarCode;
+    ppImage9: TppImage;
+    ppDBText200: TppDBText;
+    ppColumnFooterBand44: TppColumnFooterBand;
+    ppLabel50: TppLabel;
+    ppGondolaAtacado: TppReport;
+    ppDetailBand64: TppDetailBand;
+    ppDBText201: TppDBText;
+    ppDBText202: TppDBText;
+    ppDBBarCode31: TppDBBarCode;
+    ppDBText203: TppDBText;
+    ppLabel49: TppLabel;
+    ppDBText204: TppDBText;
+    ppDBText205: TppDBText;
+    ppLabel51: TppLabel;
+    ppLabel52: TppLabel;
+    ppDBText206: TppDBText;
+    ppDuascol42x24ribon: TppReport;
+    ppColumnHeaderBand27: TppColumnHeaderBand;
+    ppDetailBand37: TppDetailBand;
+    ppDBText133: TppDBText;
+    ppDBText136: TppDBText;
+    ppDBBarCode13: TppDBBarCode;
+    ppColumnFooterBand27: TppColumnFooterBand;
+    pp40x40: TppReport;
+    ppDetailBand38: TppDetailBand;
+    ppDBText137: TppDBText;
+    ppDBText138: TppDBText;
+    ppDBBarCode14: TppDBBarCode;
+    ppDBText139: TppDBText;
         procedure FormsComponentBeforeClearParams(Sender: TObject);
         procedure PopupFiltroItensSelecionou(Sender: TObject);
         procedure btGravarClick(Sender: TObject);
@@ -720,12 +826,15 @@ begin
             'i.percentual, i.fatorundvenda, p.preco as precotemp, '+
 //            'i.percentual, i.fatorundvenda, cast(p.preco - ((p.preco *  cast((:DESCONTO) as numeric(15,3)) ))/100 as numeric(15,3)) as precotemp, '+
             'cast(p.preco - ((p.preco *  cast((:DESCONTO) as numeric(15,3)) ))/100 as numeric(15,3))as PRECOPROMOCAO, ' +
+            'cast(p.preco - ((p.preco *  cast((:ATACADO) as numeric(15,3)) ))/100 as float)as PRECODESCONTO, ' +
 //            'cast(p.preco - cast((:DESCONTO) as numeric(15,3)) AS numeric(15,3))as PRECOPROMOCAO, ' +
             'iu.percentual as percund, iu.precomanual as precomanund, iu.unidade, ' +
             'i.unidade as undvenda, pr.preco as preconormal, iu.fator as FatorItemUnd, ' +
             'i.indexador,iu.qtdembalagem, ' +
-            'cast((P.PRECO) as float) AS PRECODESCONTO, '+
-            '(select Max(px.preco) from produtospreco px where px.item = i.item and px.Unidade = iu.Unidade and px.tabelapreco > 0 ) as Preco2 ' +
+            //'cast((P.PRECO) as float) AS PRECODESCONTO, '+
+            '(select Max(px.preco) from produtospreco px where px.item = i.item and px.Unidade = iu.Unidade and px.tabelapreco > 0 ) as Preco2,  ' +
+//            ' :lote as Lote, :Validade as Validade '+
+            ' i.ultimacompra '+
             'from etiquetasitens e ' +
             'inner join itens i on i.item = e.item ' +
             'inner join itensunidades iu on iu.item = i.item ' +
@@ -736,6 +845,10 @@ begin
             'Order by ' + Inttostr(rgOrdem.ItemIndex + 1);
         Q_Etiquetas.ParamByName('MAQUINA').AsString := DMProjeto.Maquina;
         Q_Etiquetas.ParamByName('DESCONTO').AsCurrency := StrToCurr( TS_Edit1.Text);
+        Q_Etiquetas.ParamByName('ATACADO').AsCurrency := StrToCurr( TS_Edit2.Text);
+  //      Q_Etiquetas.ParamByName('lote').AsString :=  TS_lote.Text ;
+    //    Q_Etiquetas.ParamByName('Validade').AsString := TS_Validade.Text;
+
         try
         Q_Etiquetas.Open;
     except on E: Exception do
@@ -760,6 +873,9 @@ begin
                 ppDBText46.Visible := True;
                 ppDBText69.Visible := True;
                 ppDBText72.Visible := True;
+                ppDBText67.Visible := True;
+                ppDBText136.Visible := True ;
+
             end
         else
             begin
@@ -780,6 +896,8 @@ begin
                 ppDBText46.Visible := False;
                 ppDBText69.Visible := False;
                 ppDBText72.Visible := False;
+                ppDBText67.Visible := False;
+                ppDBText136.Visible := False;
             end;
 
         case cbTipoEtiqueta.ItemIndex of
@@ -843,6 +961,7 @@ begin
                     ppShape1.Visible := False;
                     if cbBorda.Checked then
                         ppShape1.Visible := True;
+                    ppDBBarCode1.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
                     ppEtiquetas33X21_3Col.Print;
                 end;
             10:
@@ -887,10 +1006,12 @@ begin
             19:
                 begin  // K - 03.3 Cm X 02.1 3 Colunas (Ribon - Argox)
                     ppShape1.Visible := False;
+
                     if cbBorda.Checked then
                         ppShape1.Visible := True;
                     ppEtiquetas33X21_3Col_Argox.Print;
                 end;
+
             20:
                 begin // L - ETIQUETAS ROUPAS 2 COLUNAS
                     ppEtiquetasRoupa2Col.Print;
@@ -971,7 +1092,7 @@ begin
                     ppEtiquetaA1.Print;
                 end;
             35:
-               begin // A.1 - 03.3 Cm X 02.1 3 Colunas (Ribon)
+               begin //C2 - Etiqueta Ribon Duas Colunas
                     ppShape1.Visible := False;
                     if cbBorda.Checked then
                         ppShape1.Visible := True;
@@ -982,14 +1103,14 @@ begin
 
             36:
                begin // L2 - Etiqueta Duas Colunas Elgin L42
-                     ppReport5.Print;
+                     pp2ColunasElginL42.Print;
                 end;
 
             37:
                 begin // E2 - ETIQUETA JOIA - 30X30X12 ( logo )
 //                   if FileExists(DMProjeto.ImgPath + 'etiqueta.jpg') then
 //                   ppImage7.Picture.LoadFromFile(DMProjeto.ImgPath + 'etiqueta.jpg');
-                   ppReport10.Print;
+                   ppEtiquetaJoia303012.Print;
                 end;
 
             38:
@@ -1001,7 +1122,125 @@ begin
  //                  ppLabel33.Text := CurrToStr(c2);
                    ppGondolaPequena.Print;
 
+
                 end;
+            39:
+                begin // G2 - Etiqueta Gondola ( 7cm x 3cm )  - Modelo 2
+                   ppGondolaPequenaModelo2.Print;
+                end;
+
+            40:
+                begin  // K1 - 03.3 Cm X 02.1 3 Colunas (Ribon - Elgin)
+                    ppDBBarCode18.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
+                    ppShape1.Visible := False;
+                    if cbBorda.Checked then
+                        ppShape1.Visible := True;
+                    ppEtiquetas33X21_3Col_Elgin.Print;
+                end;
+
+            41:
+                Begin // Z - Etiqueta Joia Imp Jato de Tinta -->
+                ppEtiquetaJoiaJatoTinta2.MainReport.PrinterSetup.MarginTop := 1.3 + (StrToInt(LInhaInicial.Text)*12.7);
+                ppEtiquetaJoiaJatoTinta2.Print;
+                end ;
+            42 : // Q1 - Gondola Horizontal - Lote e Validade
+                Begin
+                   ppLabel40.Caption := TS_Lote.Text ;
+                   ppLabel41.Caption := TS_Validade.Text ;
+                   ppGondolaHorizontalLote.Print;
+                end ;
+            43:
+                begin // A1 - Colunas loja
+                    ppShape1.Visible := False;
+                    if cbBorda.Checked then
+                        ppShape1.Visible := True;
+                    ppLoja.Print;
+                end;
+            44:
+                begin // A2 - 03.3 Cm X 02.1 3 Colunas Com Data de entrada
+                    ppShape1.Visible := False;
+                    if cbBorda.Checked then
+                        ppShape1.Visible := True;
+                    ppEtiquetas33X21_3Col_DataEntrada.Print;
+                end;
+            45:
+                begin // G3 - Etiqueta Gondola ( 7cm x 3cm )  - Modelo 3
+                   ppGondolaPequenaModelo3.Print;
+                end;
+
+            46:
+               begin // A.2 - 03.3 Cm X 02.1 3 Colunas (Ribon) ( sem Preco)
+                    ppShape1.Visible := False;
+                    if cbBorda.Checked then
+                        ppShape1.Visible := True;
+                    ppEtiquetaA1sempreco.Print;
+                end;
+             47:
+               begin  // K2 - 03.3 Cm X 02.1 3 Colunas sem Preco (Ribon - Elgin)
+                    ppShape1.Visible := False;
+                    if cbBorda.Checked then
+                        ppShape1.Visible := True;
+                    ppEtiquetas33X21_3Col_Elgin_Sem_Preco.Print;
+                end;
+               48:
+                begin // S1 - ETIQUETAS PIMACO A4255 3 COLUNAS
+                    //i := rgCodigoImpressao.ItemIndex;
+                    ppPimaco3Colunas.MainReport.PrinterSetup.MarginTop := 14 + (StrToInt(LInhaInicial.Text)*25.1)- 25.1;
+//                    ppDBBarCode7.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
+                    ppPimaco3Colunas.Print;
+                end;
+               49:
+                begin // S2 - ETIQUETAS PIMACO A4255 3 COLUNAS Com Logo
+                    //i := rgCodigoImpressao.ItemIndex;
+                    if FileExists(DMProjeto.ImgPath + 'etiqueta.jpg') then
+                        ppImage7.Picture.LoadFromFile(DMProjeto.ImgPath + 'etiqueta.jpg');
+                    ppPimaco3ColunasLogo.MainReport.PrinterSetup.MarginTop := 14 + (StrToInt(LInhaInicial.Text)*25.1)- 25.1;
+//                    ppDBBarCode7.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
+                    ppPimaco3ColunasLogo.Print;
+                end;
+                50:
+                begin // S3 - ETIQUETAS 3 COLUNAS Com Logo
+                    //i := rgCodigoImpressao.ItemIndex;
+                    if FileExists(DMProjeto.ImgPath + 'etiqueta.jpg') then
+                        ppImage8.Picture.LoadFromFile(DMProjeto.ImgPath + 'etiqueta.jpg');
+                    pp3ColunasLogo.MainReport.PrinterSetup.MarginTop := 12 + (StrToInt(LInhaInicial.Text)*30.1)- 30.1;
+//                    ppDBBarCode7.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
+                    pp3ColunasLogo.Print;
+                end;
+                51:
+                begin // M - Gondolas Horizontal (11 X 2.8 CM)
+                    ppGondolaHorizontalElgin.Print;
+                end;
+                52:
+                begin // G3- Etiqueta Gondola ( 7cm x 3cm )  - Elgin
+                   ppGondolaPequenaElgin.Print;
+                end;
+                53:
+                begin // G4 - Gondolas 2 Colunas com Logo
+                    //i := rgCodigoImpressao.ItemIndex;
+                    ppDBBarCode30.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
+                    if FileExists(DMProjeto.ImgPath + 'etiqueta.jpg') then
+                        ppImage9.Picture.LoadFromFile(DMProjeto.ImgPath + 'etiqueta.jpg');
+                    ppGondolaComLogo.MainReport.PrinterSetup.MarginTop := 12 + (StrToInt(LInhaInicial.Text)*30.1)- 30.1;
+//                    ppDBBarCode7.DataField := RetornaCampoImpressao(rgCodigoImpressao.ItemIndex);
+                    ppGondolaComLogo.Print;
+                end;
+                54:
+                begin // G5 - Gondolas 10x5x Atacado
+                    ppGondolaAtacado.Print;
+                end;
+                55:
+                begin // G5 - Gondolas 10x5x Atacado
+                    ppDuascol42x24ribon.Print;
+                end;
+
+                56:
+                begin // G5 - Gondolas 10x5x Atacado
+                    pp40x40.Print;
+                end;
+
+
+
 
         end;
         Q_Itens.EnableControls;
@@ -1163,6 +1402,13 @@ begin
                     cbLogo.Visible := True;
                     cbLogo.Checked := False;
                 end;
+        end;
+    if cbTipoEtiqueta.ItemIndex in [52] then
+        begin
+            Label6.Visible := True;
+            Label7.Visible := True;
+            TS_Edit3.Visible := True;
+            TS_Edit4.Visible := True;
         end;
 end;
 

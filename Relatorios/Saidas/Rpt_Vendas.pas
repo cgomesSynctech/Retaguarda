@@ -68,6 +68,7 @@ type
         rbCustoManual: TTS_RadioButton;
     C_ConsultaVENDATABELATOTAL: TBCDField;
     C_ConsultaCUSTO: TBCDField;
+    cbServicos: TTS_CheckBox;
         procedure btClientesClick(Sender: TObject);
         procedure btVendedorClick(Sender: TObject);
         procedure btAtualizarClick(Sender: TObject);
@@ -77,6 +78,7 @@ type
         procedure DataFDateChange(Sender: TObject);
         procedure TS_PopupEdit1CloseUp(Sender: TObject; var Text: string;
             var Accept: Boolean);
+    procedure cbServicosChange(Sender: TObject);
     private
         sClientes, sNomesClientes, sVendedores, sNomesVendedores: string;
         procedure Atualizar;
@@ -129,8 +131,9 @@ begin
                         'inner join saidasitens si on s.saida = si.saida and s.pdv = si.pdv and s.empresa = si.empresa ' +
                         'inner join favorecidos f on s.favorecido = f.favorecido ' +
                         'inner join planospagamento pg on s.planopagamento = pg.planopagamento ' +
+                        'inner join itens i on i.item = si.item ' +
                         //'--left join favorecidos v on s.vendedor = v.favorecido ' +
-                        'Where (s.data >= :datai and s.data <= :dataf) and s.tipopadrao = 1 and s.situacao = ''N''  ';
+                        'Where (s.data >= :datai and s.data <= :dataf) and s.tipopadrao in(1,2) and s.situacao = ''N''  ';
                 end;
 
             if (rbCustoMedio.Checked) then
@@ -160,8 +163,9 @@ begin
                         'inner join saidasitens si on s.saida = si.saida and s.pdv = si.pdv and s.empresa = si.empresa ' +
                         'inner join favorecidos f on s.favorecido = f.favorecido ' +
                         'inner join planospagamento pg on s.planopagamento = pg.planopagamento ' +
+                        'inner join itens i on i.item = si.item ' +
                         //'--left join favorecidos v on s.vendedor = v.favorecido ' +
-                        'Where (s.data >= :datai and s.data <= :dataf) and s.tipopadrao = 1 and s.situacao = ''N''  ';
+                        'Where (s.data >= :datai and s.data <= :dataf) and s.tipopadrao in (1,2) and s.situacao = ''N''  ';
                 end;
 
             if (rbCustoManual.Checked) then
@@ -193,8 +197,13 @@ begin
                         'inner join favorecidos f on s.favorecido = f.favorecido ' +
                         'inner join planospagamento pg on s.planopagamento = pg.planopagamento ' +
                         //'--left join favorecidos v on s.vendedor = v.favorecido ' +
-                        'Where (s.data >= :datai and s.data <= :dataf) and s.tipopadrao = 1 and s.situacao = ''N''  ';
+                        'Where (s.data >= :datai and s.data <= :dataf) and s.tipopadrao in (1,2) and s.situacao = ''N''  ';
                 end;
+
+            if not cbServicos.Checked then
+            begin
+               CommandText := CommandText + ' and i.tipoitem = 1  ';
+            end;
 
             if sClientes <> '' then
                 begin
@@ -328,6 +337,12 @@ begin
     Text := clbTipoOperacao.Selecionados(true);
     Accept := true;
     //Atualizar;
+end;
+
+procedure TRptVendas.cbServicosChange(Sender: TObject);
+begin
+  inherited;
+  Atualizar;
 end;
 
 end.

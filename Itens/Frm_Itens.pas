@@ -1,6 +1,6 @@
 unit Frm_Itens;
 
-interface
+interface                                      
 
 uses
     Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
@@ -14,7 +14,8 @@ uses
     TS_LookupComboBox, TS_DBButtonEdit, TS_DBEditFavorecido, TS_DBEdit,
     TS_CheckBox, dxDBEdtr, TS_DBLookupComboBox, dxEditor, TS_DBEditNumber,
     TS_Shape, ComCtrls, TS_PageControl, DBText, TS_DBTextEffect, DB, ExtDlgs,
-    Dlg_PopupContas;
+    Dlg_PopupContas, TS_CurrencyEdit, DBClient, Provider, IBCustomDataSet,
+  IBUpdateSQL, IBQuery, TS_DBMaskEdit;
 
 type
     TFrmItens = class(TFrmPadrao)
@@ -130,17 +131,11 @@ type
         dfReducaoBase: TTS_DBEditNumber;
         tsCalcPreco1: TTS_TabSheet;
         pnCalcPreco: TTS_Panel;
-        TS_Label86: TTS_Label;
-        lbComissaoAplicada: TTS_Label;
-        TS_Label77: TTS_Label;
         TS_Shape15: TTS_Shape;
         TS_Shape33: TTS_Shape;
         TS_Shape32: TTS_Shape;
-        lbCustoAdicional: TTS_Label;
-        lbLucro: TTS_Label;
         TS_Label29: TTS_Label;
         TS_Label46: TTS_Label;
-        lbICMSAplicado: TTS_Label;
         TS_Label32: TTS_Label;
         TS_Label45: TTS_Label;
         TS_DBText8: TTS_DBText;
@@ -152,17 +147,14 @@ type
         TS_DBText21: TTS_DBText;
         dxfLabel1: TdxfLabel;
         dxfLabel2: TdxfLabel;
-        TS_Label43: TTS_Label;
         lbUltPrecoCompra: TTS_Label;
         TS_Label49: TTS_Label;
         TS_Label7: TTS_Label;
         TS_Label13: TTS_Label;
         TS_DBText1: TTS_DBText;
         TS_DBText2: TTS_DBText;
-        TS_Label51: TTS_Label;
         TS_Label52: TTS_Label;
         TS_SpeedButton1: TTS_SpeedButton;
-        lbIPIAplicado: TTS_Label;
         TS_DBEditNumber7: TTS_DBEditNumber;
         TS_DBEditNumber6: TTS_DBEditNumber;
         TS_DBEditNumber5: TTS_DBEditNumber;
@@ -610,10 +602,7 @@ type
         TS_DBEdit7: TTS_DBEdit;
         cbPesavel: TTS_DBCheckBox;
         pnItensCodigos: TTS_Panel;
-    dbgItensCodigos: TTS_QDBGrid;
-        dbgCodigoCodigoBarras: TdxDBGridCalcColumn;
         TS_Label83: TTS_Label;
-    dbgItensCodigosUnidade: TdxDBGridLookupColumn;
         lbMVA: TTS_Label;
         lcbMVA: TTS_DBLookupComboBox;
         TS_SpeedButton2: TTS_SpeedButton;
@@ -644,6 +633,81 @@ type
     TS_DBCheckBox2: TTS_DBCheckBox;
     TS_DBEditNumber10: TTS_DBEditNumber;
     TS_Label87: TTS_Label;
+    TS_DBEditNumber11: TTS_DBEditNumber;
+    TS_Label88: TTS_Label;
+    dbgItensCodigos: TTS_QDBGrid;
+    dbgCodigoCodigoBarras: TdxDBGridCalcColumn;
+    dbgItensCodigosUnidade: TdxDBGridLookupColumn;
+    TS_DBCheckBox4: TTS_DBCheckBox;
+    TS_DBEditNumber12: TTS_DBEditNumber;
+    TS_Label89: TTS_Label;
+    TS_DBEditNumber27: TTS_DBEditNumber;
+    TS_Label90: TTS_Label;
+    TS_DBEditNumber28: TTS_DBEditNumber;
+    lbICMSVenda: TTS_Label;
+    dbFC_ICMSvenda: TTS_DBEditNumber;
+    TS_Label93: TTS_Label;
+    TS_DBEditNumber31: TTS_DBEditNumber;
+    TS_Label94: TTS_Label;
+    TS_Label95: TTS_Label;
+    TS_DBEditNumber32: TTS_DBEditNumber;
+    TS_DBEditNumber33: TTS_DBEditNumber;
+    TS_Label96: TTS_Label;
+    TS_DBEditNumber34: TTS_DBEditNumber;
+    TS_Label97: TTS_Label;
+    TS_DBEditNumber35: TTS_DBEditNumber;
+    lbImpostosFederal: TTS_Label;
+    TS_DBEditNumber36: TTS_DBEditNumber;
+    TS_Label99: TTS_Label;
+    TS_DBEditNumber37: TTS_DBEditNumber;
+    TS_Label101: TTS_Label;
+    TS_DBEditNumber39: TTS_DBEditNumber;
+    lbTributacao: TTS_Label;
+    TS_DBEdit9: TTS_DBEdit;
+    TS_Label43: TTS_Label;
+    TS_CurrencyEdit1: TTS_CurrencyEdit;
+    TS_DBEditNumber15: TTS_DBEditNumber;
+    TS_DBEditNumber16: TTS_DBEditNumber;
+    Q_Tabela: TIBQuery;
+    U_Tabela: TIBUpdateSQL;
+    P_Tabela: TDataSetProvider;
+    C_Tabela: TClientDataSet;
+    C_Tabela_icSelecionado: TIntegerField;
+    C_Tabelainicio: TStringField;
+    C_Tabelavalorfinal: TCurrencyField;
+    C_Tabelafim: TStringField;
+    C_TabelaDS: TDataSource;
+    TS_Shape23: TTS_Shape;
+    TS_Label51: TTS_Label;
+    lb_Periodo: TTS_Label;
+    lb_testo: TTS_Label;
+    TS_Label77: TTS_Label;
+    TS_Label92: TTS_Label;
+    TS_Label98: TTS_Label;
+    TS_Label102: TTS_Label;
+    TS_Label103: TTS_Label;
+    TS_Label104: TTS_Label;
+    TS_Label106: TTS_Label;
+    TS_Label107: TTS_Label;
+    TS_Label108: TTS_Label;
+    TS_Label111: TTS_Label;
+    TS_Label91: TTS_Label;
+    TS_DBMaskEdit1: TTS_DBMaskEdit;
+    lb_FatPeriodo: TTS_Label;
+    lb_VLFatMesInicial: TTS_Label;
+    lb_FatMesAtual: TTS_Label;
+    lb_AcProxMes: TTS_Label;
+    lb_Variacao: TTS_Label;
+    cb_tipoItemSped: TTS_DBLookupComboBox;
+    TS_Label86: TTS_Label;
+    lbTipoItemSped: TTS_Label;
+    TS_Shape24: TTS_Shape;
+    dxfLabel3: TdxfLabel;
+    TS_DBCheckBox6: TTS_DBCheckBox;
+    TS_Label100: TTS_Label;
+    TS_DBLookupComboBox6: TTS_DBLookupComboBox;
+    TS_Label105: TTS_Label;
+    TS_DBLookupComboBox7: TTS_DBLookupComboBox;
         procedure lbPrecoVenda1Click(Sender: TObject);
         procedure DBEdit14Change(Sender: TObject);
         procedure cmbCSTChange(Sender: TObject);
@@ -786,6 +850,7 @@ type
         procedure dbgItensCodigosEditing(Sender: TObject;
             Node: TdxTreeListNode; var Allow: Boolean);
         procedure dfCodigoVendaKeyPress(Sender: TObject; var Key: Char);
+    procedure btPesquisarClick(Sender: TObject);
     private
         { Private declarations }
         texto: string;
@@ -804,6 +869,7 @@ type
         procedure PopulaCampo(obj: TTS_DBComboBox; nCampo: integer);
         procedure SincronizarLucroItem(nPrecoDig: Currency);
         procedure AtualizarPreco();
+        procedure Configuracamposformacao();
     public
         { Public declarations }
     end;
@@ -934,15 +1000,15 @@ begin
             lbComissao3.Font.Color := lbComissao1.Font.Color;
             lbComissao3.Hint := lbComissao1.Hint;
 
-            lbComissaoAplicada.Font.Color := lbComissao1.Font.Color;
+   //         lbComissaoAplicada.Font.Color := lbComissao1.Font.Color;
 
-            lbCustoAdicional.Font.Color := IIF((C_TabelaicCustoDespesas.Value > 0) and (C_TabelaCustoDespesas.Value = -999),
-                clGreen,
-                clWindowText);
+  //          lbCustoAdicional.Font.Color := IIF((C_TabelaicCustoDespesas.Value > 0) and (C_TabelaCustoDespesas.Value = -999),
+  //              clGreen,
+  //             clWindowText);
 
-            lbLucro.Font.Color := IIF((C_TabelaicFatorLucro.Value > 0) and (C_TabelaFatorLucro.Value >= 0), clWindowText,
-                IIF((C_TabelaGrupo.Value > 0) and (C_GruposFatorLucro.Value >= 0), clGreen,
-                clTeal));
+ //           lbLucro.Font.Color := IIF((C_TabelaicFatorLucro.Value > 0) and (C_TabelaFatorLucro.Value >= 0), clWindowText,
+ //               IIF((C_TabelaGrupo.Value > 0) and (C_GruposFatorLucro.Value >= 0), clGreen,
+ //               clTeal));
 
             lbTipoTributacao.Font.Color := IIF((C_TabelaicSituacaoECF.Value <> '') and (C_TabelaSituacaoECF.Value = ''),
                 clGreen, clWindowText);
@@ -1098,6 +1164,7 @@ end;
 procedure TFrmItens.DBEdit1Change(Sender: TObject);
 begin
     inherited;
+
     with DMItens do
         begin
             pnAtualizarPreco.Visible := ABS(C_TabelaicPrecoCalc.Value - C_TabelaPRECO.Value) > 0.01;
@@ -2603,8 +2670,53 @@ begin
 end;
 
 procedure TFrmItens.FormShow(Sender: TObject);
+var i, x: Currency ;
 begin
     inherited;
+    with DMItens do begin
+        C_Fat.close ;
+        C_Fat.open;
+        lb_Periodo.Caption := C_FatINICIO.AsString + ' à ' + C_FatFIM.AsString ;
+        lb_VLFatMesInicial.Caption := FormatCurr('#,###,##0.00',C_FatVALORMESINICIAL.Value ) ;
+        lb_FatMesAtual.Caption := FormatCurr('#,###,##0.00',C_FatVALORACUMULADOMES.Value );
+        lb_AcProxMes.Caption := FormatCurr('#,###,##0.00',C_FaticPrevisaoFatProxPeriodo.Value );
+        lb_Variacao.Caption := FormatCurr('#,###,##0.00',C_FaticVariacao.Value );
+        lb_FatPeriodo.Caption := FormatCurr('#,###,##0.00',C_FatVALORFINAL.Value );
+        if ( C_FaticVariacao.Value < 0 ) then
+          lb_Variacao.Font.Color := clBlue 
+        else
+          lb_Variacao.Font.Color := clRed ;
+//        TS_DBEditNumber18.Value = Format Curr('#,###,##0.00',)
+//        lb_inicio.Caption := C_FatINICIO.Value ;
+//        lb_Final.Caption := C_FatFIM.Value ;
+//        lb_ValorFinal.Caption := C_FatVALORFINAL.AsString ;
+//        lb_valormesinicial.Caption := C_FatVALORMESINICIAL.AsString ;
+//        lb_ValorMesAtual.Caption := C_FatVALORACUMULADOMES.AsString ;
+//        i := C_FatVALORFINAL.Value - C_FatVALORMESINICIAL.Value + C_FatVALORACUMULADOMES.Value ;
+
+//        lb_ProximoPeriodo.Caption := 'R$ '+ CurrToStr(i) ;
+//        x := C_FatVALORFINAL.Value - C_FatVALORMESINICIAL.Value + C_FatVALORACUMULADOMES.Value - C_FatVALORFINAL.Value ;
+//        lb_Variacao.Caption := 'R$ ' + CurrToStr(x);
+
+    end;
+
+    if DMProjeto.sTipoTributEmpresa = 'N' then
+    begin
+        lbTributacao.Caption := 'Simples Nacional';
+        lbICMSVenda.Font.Color := cl3DLight ;
+        dbFC_ICMSvenda.Color := cl3DLight;
+        lbImpostosFederal.Caption := 'Tabela Simples (%):';
+    end ;
+    if DMProjeto.sTipoTributEmpresa = 'A' then lbTributacao.Caption := 'Lucro Arbitrado';
+    if DMProjeto.sTipoTributEmpresa = 'P' then lbTributacao.Caption := 'Lucro Presumido';
+    if DMProjeto.sTipoTributEmpresa = 'R' then lbTributacao.Caption := 'Lucro Real';
+
+    if DMProjeto.Parametro('EspecificaTipo') = 'S' then
+    begin
+         lbTipoItemSped.Visible := True;
+         cb_tipoItemSped.Visible := True;
+
+    end ;
 
     if (DMItens.bMedicamentos) then
         begin
@@ -3288,7 +3400,7 @@ begin
         raise Exception.Create('@@');
 
     if (dfCodBarras.Text = '') then
-        raise Exception.Create('@@');
+         raise Exception.Create('@@');
 
     if DMProjeto.VerificaExistenciaItensCodigos(dfCodBarras.Text) then
         begin
@@ -3352,6 +3464,9 @@ begin
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := False
     else
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := true;
+
+Configuracamposformacao();
+
 end;
 
 procedure TFrmItens.btUltimoRegClick(Sender: TObject);
@@ -3361,6 +3476,8 @@ begin
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := False
     else
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := true;
+
+    Configuracamposformacao();
 end;
 
 procedure TFrmItens.btPrevRegClick(Sender: TObject);
@@ -3370,6 +3487,7 @@ begin
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := False
     else
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := true;
+        Configuracamposformacao();
 end;
 
 procedure TFrmItens.btPrimeiroRegClick(Sender: TObject);
@@ -3379,6 +3497,7 @@ begin
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := False
     else
         DMItens.C_TabelaCODIGOBARRAS.ReadOnly := true;
+        Configuracamposformacao();
 end;
 
 procedure TFrmItens.TS_Label83Click(Sender: TObject);
@@ -3448,6 +3567,35 @@ begin
     if not (key in ['0'..'9']) then
         key := #0;
 end;
+
+procedure TFrmItens.btPesquisarClick(Sender: TObject);
+begin
+  inherited;
+    Configuracamposformacao();
+end;
+
+procedure TFrmItens.Configuracamposformacao();
+begin
+
+      if (dmItens.C_TabelaSITUACAOECF.Value = 'T') then
+       begin
+//         TS_Label93.Visible := True ;
+       end
+       else if (dmItens.C_TabelaSITUACAOECF.Value = 'F') then
+       begin
+//            TS_Label93.Visible := false ;
+       end
+       else if (dmItens.C_TabelaSITUACAOECF.Value = 'I') then
+       begin
+  //          TS_Label93.Visible := false ;
+       end
+       else if (dmItens.C_TabelaSITUACAOECF.Value = 'N') then
+       begin
+    //        TS_Label93.Visible := false ;
+       end
+
+end;
+
 
 end.
 

@@ -1,6 +1,6 @@
 inherited DMOutrasEntradas: TDMOutrasEntradas
-  Left = 216
-  Top = 71
+  Left = 143
+  Top = 84
   Height = 633
   Width = 1122
   inherited Q_Tabela: TIBQuery
@@ -250,7 +250,8 @@ inherited DMOutrasEntradas: TDMOutrasEntradas
       '  PDV = :PDV,  '
       '  CHAVENFE = :CHAVENFE,'
       'PLACAVEIC = :PLACAVEIC,'
-      'TRANSPORTADORA = :TRANSPORTADORA'
+      'TRANSPORTADORA = :TRANSPORTADORA,'
+      'DETALHEIMPORTACAO = :DETALHEIMPORTACAO'
       'where'
       '  ENTRADA = :OLD_IDMESTRE')
     InsertSQL.Strings = (
@@ -281,7 +282,8 @@ inherited DMOutrasEntradas: TDMOutrasEntradas
         '  POSSUIICMS,  POSSUIIPI,  CONTABILIZAICMS,  CIF_FOB,  DATANOTA,' +
         ' '
       'NOTAORIGEM, FRETEEXTERNO, INDEXADOR, FONTE, BAIXAESTOQUEFISCAL, '
-      'VENDEDOR, ESPECIE, PDV,  CHAVENFE, PLACAVEIC, TRANSPORTADORA )'
+      'VENDEDOR, ESPECIE, PDV,  CHAVENFE, PLACAVEIC, TRANSPORTADORA, '
+      'DETALHEIMPORTACAO )'
       'values'
       
         '  (:IDMESTRE, :FAVORECIDO, :NUMERO, :DATA, :TOTAL, :SITUACAO, :O' +
@@ -315,12 +317,13 @@ inherited DMOutrasEntradas: TDMOutrasEntradas
         'NOTA, '
       ':NOTAORIGEM, :FRETEEXTERNO, :INDEXADOR, :FONTE, '
       ':BAIXAESTOQUEFISCAL, :VENDEDOR, :ESPECIE, :PDV,  :CHAVENFE, '
-      ':PLACAVEIC, :TRANSPORTADORA )')
+      ':PLACAVEIC, :TRANSPORTADORA, :DETALHEIMPORTACAO )')
   end
   inherited DMComponent: TDMComponent
     Gravar5_Terminar = DMComponentGravar5_Terminar
   end
   inherited C_Tabela: TClientDataSet
+    Active = False
     inherited C_TabelaCALCCOMISSAO: TStringField
       KeyFields = '_icSelecionado'
     end
@@ -360,7 +363,13 @@ inherited DMOutrasEntradas: TDMOutrasEntradas
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select '
+      'T.CSTIBS,'
+      'T.CLASSTRIB,'
+      'T.COMPENSACAOCUSTOMOEDA,'
+      't.clasfiscal,'
+      't.customanual,'
+      't.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -614,7 +623,10 @@ inherited DMOutrasEntradas: TDMOutrasEntradas
       '  RATEIOSEGURO  = :RATEIOSEGURO,'
       '  FRETE = :FRETE,'
       '  SEGURO  = :SEGURO,'
-      '  OUTRASDESPESAS = :OUTRASDESPESAS'
+      '  OUTRASDESPESAS = :OUTRASDESPESAS,'
+      '  CSTIBS =:CSTIBS,  '
+      '  CLASSTRIB =:CLASSTRIB'
+      ''
       'where'
       '  ENTRADAITEM = :OLD_IDITEM')
   end
@@ -653,12 +665,36 @@ inherited DMOutrasEntradas: TDMOutrasEntradas
   inherited C_TiposMovimento: TClientDataSet
     Top = 104
   end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
+  end
   inherited Q_Status: TIBQuery
     Top = 7
+  end
+  inherited C_Unidades: TClientDataSet
+    Active = True
+  end
+  inherited C_CFOPs_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_SitECF: TClientDataSet
+    Active = True
   end
   inherited Q_Almoxarifado: TIBQuery
     Left = 782
     Top = 14
+  end
+  inherited C_Almoxarifado: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_IPI: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_PisCofins: TClientDataSet
+    Active = True
   end
   object Q_DI: TIBQuery
     Database = DMProjeto.DB_Projeto

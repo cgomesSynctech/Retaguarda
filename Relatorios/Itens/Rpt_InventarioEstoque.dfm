@@ -7,11 +7,11 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 362
+    Left = 370
     Width = 107
-    Height = 429
+    Height = 440
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 395
+      Top = 406
       Width = 105
     end
     inherited btComando2: TTS_SpeedButton
@@ -205,7 +205,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 469
+    Width = 477
     Gradient.ColorStart = 9027548
     inherited btHelp: TTS_SpeedButton
       Left = 441
@@ -218,8 +218,8 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 362
-    Height = 429
+    Width = 370
+    Height = 440
     Color = 14019327
     object TS_Label1: TTS_Label
       Left = 132
@@ -453,15 +453,16 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     end
     object RG_TipoCusto: TTS_RadioGroup
       Left = 17
-      Top = 360
+      Top = 363
       Width = 345
-      Height = 63
+      Height = 73
       Caption = 'Tipo de Custo '
       ItemIndex = 0
       Items.Strings = (
         'Custo contabil'
         'Custo Medio '
-        'Ultimo Pre'#231'o de Compra ')
+        'Ultimo Pre'#231'o de Compra '
+        'CustoCompra')
       TabOrder = 9
       Transparent = True
     end
@@ -534,7 +535,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 15000
     PrinterSetup.mmMarginLeft = 10000
@@ -542,7 +543,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PrinterSetup.mmMarginTop = 10000
     PrinterSetup.mmPaperHeight = 278999
     PrinterSetup.mmPaperWidth = 215999
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 
       'J:\Fontes_BR\MaxShop43\Relatorios\Inventario\rpt_InventarioDetal' +
       'he.rtm'
@@ -1059,7 +1060,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
             DataPipeline = ppDBSaidas
             PrinterSetup.BinName = 'Default'
             PrinterSetup.DocumentName = 'Report'
-            PrinterSetup.PaperName = 'Carta'
+            PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
             PrinterSetup.PrinterName = 'Default'
             PrinterSetup.mmMarginBottom = 15000
             PrinterSetup.mmMarginLeft = 10000
@@ -1067,7 +1068,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
             PrinterSetup.mmMarginTop = 10000
             PrinterSetup.mmPaperHeight = 278999
             PrinterSetup.mmPaperWidth = 215999
-            PrinterSetup.PaperSize = 1
+            PrinterSetup.PaperSize = 256
             Template.FileName = 
               'G:\Desenv\MaxShop\Relatorios\Inventario\rpt_InventarioDetalhe.rt' +
               'm'
@@ -1358,7 +1359,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
             DataPipeline = ppDBEntradas
             PrinterSetup.BinName = 'Default'
             PrinterSetup.DocumentName = 'Report'
-            PrinterSetup.PaperName = 'Carta'
+            PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
             PrinterSetup.PrinterName = 'Default'
             PrinterSetup.mmMarginBottom = 15000
             PrinterSetup.mmMarginLeft = 10000
@@ -1366,7 +1367,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
             PrinterSetup.mmMarginTop = 10000
             PrinterSetup.mmPaperHeight = 278999
             PrinterSetup.mmPaperWidth = 215999
-            PrinterSetup.PaperSize = 1
+            PrinterSetup.PaperSize = 256
             Template.FileName = 
               'G:\Desenv\MaxShop\Relatorios\Inventario\rpt_InventarioDetalhe.rt' +
               'm'
@@ -1665,7 +1666,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
           PrinterSetup.mmMarginTop = 10000
           PrinterSetup.mmPaperHeight = 180000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 172
+          PrinterSetup.PaperSize = 256
           Template.FileName = 'G:\Desenv\MaxShop\Relatorios\Inventario\rpt_InventarioTPG.rtm'
           Units = utMillimeters
           Left = 132
@@ -2669,7 +2670,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 15000
     PrinterSetup.mmMarginLeft = 10000
@@ -2677,7 +2678,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PrinterSetup.mmMarginTop = 10000
     PrinterSetup.mmPaperHeight = 278999
     PrinterSetup.mmPaperWidth = 215999
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 
       'J:\Fontes_BR\MaxShop43\Relatorios\Inventario\rpt_InventarioDetal' +
       'heSimples.rtm'
@@ -3087,7 +3088,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
           PrinterSetup.mmMarginTop = 10000
           PrinterSetup.mmPaperHeight = 180000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 172
+          PrinterSetup.PaperSize = 256
           Template.FileName = 'G:\Desenv\MaxShop\Relatorios\Inventario\rpt_InventarioTPG.rtm'
           Units = utMillimeters
           Left = 132
@@ -3885,7 +3886,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     DataPipeline = ppDBMaster
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 15000
     PrinterSetup.mmMarginLeft = 10000
@@ -3893,7 +3894,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PrinterSetup.mmMarginTop = 10000
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 
       'J:\Fontes_BR\MaxShop43\Relatorios\Inventario\rpt_InventarioPadra' +
       'o.rtm'
@@ -4325,6 +4326,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
         Font.Style = [fsBold]
         TextAlignment = taRightJustified
         Transparent = True
+        Visible = False
         mmHeight = 4149
         mmLeft = 147722
         mmTop = 7144
@@ -4351,6 +4353,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
         Font.Style = [fsBold]
         TextAlignment = taRightJustified
         Transparent = True
+        Visible = False
         mmHeight = 4106
         mmLeft = 177091
         mmTop = 7144
@@ -4394,7 +4397,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
           PrinterSetup.mmMarginTop = 10000
           PrinterSetup.mmPaperHeight = 180000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 172
+          PrinterSetup.PaperSize = 256
           Template.FileName = 'G:\Desenv\MaxShop\Relatorios\Inventario\rpt_InventarioTPG.rtm'
           Units = utMillimeters
           Left = 132
@@ -4753,7 +4756,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
             DataPipeline = ppResumoCST
             PrinterSetup.BinName = 'Default'
             PrinterSetup.DocumentName = 'Report'
-            PrinterSetup.PaperName = 'Carta'
+            PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
             PrinterSetup.PrinterName = 'Default'
             PrinterSetup.mmMarginBottom = 15000
             PrinterSetup.mmMarginLeft = 10000
@@ -4761,7 +4764,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
             PrinterSetup.mmMarginTop = 10000
             PrinterSetup.mmPaperHeight = 279401
             PrinterSetup.mmPaperWidth = 215900
-            PrinterSetup.PaperSize = 1
+            PrinterSetup.PaperSize = 256
             Version = '6.02'
             mmColumnWidth = 0
             DataPipelineName = 'ppResumoCST'
@@ -5139,7 +5142,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 15000
     PrinterSetup.mmMarginLeft = 10000
@@ -5147,7 +5150,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
     PrinterSetup.mmMarginTop = 10000
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 
       'J:\Fontes_BR\MaxShop43\Relatorios\Inventario\rpt_InventarioTPG.r' +
       'tm'
@@ -5443,7 +5446,7 @@ inherited RptInventarioEstoque: TRptInventarioEstoque
           PrinterSetup.mmMarginTop = 10000
           PrinterSetup.mmPaperHeight = 180000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 172
+          PrinterSetup.PaperSize = 256
           Template.FileName = 'G:\Desenv\MaxShop\Relatorios\Inventario\rpt_InventarioTPG.rtm'
           Units = utMillimeters
           Left = 132

@@ -1,6 +1,6 @@
 inherited FrmEntradas: TFrmEntradas
-  Left = 192
-  Top = 115
+  Left = 462
+  Top = 179
   Width = 942
   Height = 500
   Caption = 'Fornecedores / Compras'
@@ -10,7 +10,7 @@ inherited FrmEntradas: TFrmEntradas
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 819
-    Height = 430
+    Height = 429
     inherited btComando1: TTS_SpeedButton
       Top = 238
       Hint = 
@@ -363,7 +363,7 @@ inherited FrmEntradas: TFrmEntradas
       Align = alTop
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 396
+      Top = 395
     end
     object btOutros: TTS_SpeedButton [10]
       Left = 1
@@ -435,11 +435,11 @@ inherited FrmEntradas: TFrmEntradas
   end
   inherited pnDados: TTS_Panel
     Width = 819
-    Height = 430
+    Height = 429
     ParentCtl3D = False
     inherited Grid: TTS_QDBGrid
       Width = 817
-      Height = 428
+      Height = 427
       KeyField = 'IDMESTRE'
       Filter.Criteria = {00000000}
       TS_MultiSelection = False
@@ -604,17 +604,17 @@ inherited FrmEntradas: TFrmEntradas
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 817
-      Height = 428
+      Height = 427
     end
     inherited sbDados: TTS_Panel
       Tag = -1
       Width = 817
-      Height = 428
+      Height = 427
       HelpContext = -1
       Color = 15196656
       DesignSize = (
         817
-        428)
+        427)
       object TS_Shape1: TTS_Shape [0]
         Left = 0
         Top = 0
@@ -1570,13 +1570,10 @@ inherited FrmEntradas: TFrmEntradas
         Width = 810
         Height = 254
         HelpContext = -1
-        ActivePage = tsEntrega
         Anchors = [akLeft, akTop, akRight, akBottom]
-        TabIndex = 2
         TabOrder = 4
         OnChange = pgItensChange
         OnChangingToTab = pgItensChangingToTab
-        ActivePageIndex = 2
         TabColor = 15196656
         TabColorActive = 11775972
         inherited tsItens: TTS_TabSheet
@@ -2001,14 +1998,6 @@ inherited FrmEntradas: TFrmEntradas
               RowIndex = 0
               FieldName = 'PDESCONTO'
             end
-            object dbgItensCOMPENSACAOCUSTO: TdxDBGridMaskColumn
-              Caption = '% Compensa'#231#227'o'
-              HeaderAlignment = taCenter
-              Width = 87
-              BandIndex = 0
-              RowIndex = 0
-              FieldName = 'COMPENSACAOCUSTO'
-            end
             object dbgItenslkAlmoxarifado: TdxDBGridLookupColumn
               Caption = 'Almoxarifado'
               Visible = False
@@ -2067,7 +2056,6 @@ inherited FrmEntradas: TFrmEntradas
             object dbgItensI_NCM: TdxDBGridColumn
               Caption = 'NCM'
               HeaderAlignment = taCenter
-              ReadOnly = True
               BandIndex = 0
               RowIndex = 0
               FieldName = 'I_NCM'
@@ -2107,6 +2095,33 @@ inherited FrmEntradas: TFrmEntradas
               BandIndex = 0
               RowIndex = 0
               FieldName = 'outrasdespesas'
+            end
+            object dbgItensCOMPENSACAOCUSTO: TdxDBGridMaskColumn
+              Caption = '% Compensa'#231#227'o'
+              HeaderAlignment = taCenter
+              Width = 87
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'COMPENSACAOCUSTO'
+            end
+            object dbgItensCOMPENSACAOCUSTOMOEDA: TdxDBGridMaskColumn
+              Caption = '$ Compensa'#231#227'o'
+              HeaderAlignment = taCenter
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'COMPENSACAOCUSTOMOEDA'
+            end
+            object dbgItensCSTIBS: TdxDBGridMaskColumn
+              Caption = 'CST IBS'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CSTIBS'
+            end
+            object dbgItensCLASSTRIB: TdxDBGridMaskColumn
+              Caption = 'Class Tributaria'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CLASSTRIB'
             end
           end
         end
@@ -2152,7 +2167,7 @@ inherited FrmEntradas: TFrmEntradas
               Tag = -2
               Left = 1
               Top = 21
-              Width = 214
+              Width = 208
               HelpContext = -2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -2165,13 +2180,13 @@ inherited FrmEntradas: TFrmEntradas
               DataField = 'OBS'
               DataSource = DMEntradas.C_TabelaDS
               StyleController = esVendas
-              Height = 0
+              Height = -6
             end
             object dfMensagem: TTS_PopupEdit
               Tag = -2
               Left = -2
               Top = -2
-              Width = 222
+              Width = 216
               HelpContext = -2
               Color = 11775972
               Style.BorderStyle = xbsNone
@@ -3041,7 +3056,7 @@ inherited FrmEntradas: TFrmEntradas
               Tag = -2
               Left = 1
               Top = 17
-              Width = 216
+              Width = 210
               HelpContext = -2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText

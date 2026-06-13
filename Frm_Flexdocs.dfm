@@ -9,27 +9,27 @@ inherited FrmFlexdocs: TFrmFlexdocs
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 380
-    Height = 364
+    Left = 388
+    Height = 374
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 330
+      Top = 340
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 380
-    Height = 364
+    Width = 388
+    Height = 374
     inherited Grid: TTS_QDBGrid
-      Width = 378
-      Height = 362
+      Width = 386
+      Height = 372
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 378
-      Height = 362
+      Width = 386
+      Height = 372
     end
     inherited sbDados: TTS_Panel
-      Width = 378
-      Height = 362
+      Width = 386
+      Height = 372
       Color = 14608375
       object lblCSC: TTS_Label
         Left = 40
@@ -96,11 +96,11 @@ inherited FrmFlexdocs: TFrmFlexdocs
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 378
+      Width = 386
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 495
+    Width = 503
     Gradient.ColorStart = 11388903
     inherited lbCaption: TdxfLabel
       Width = 148

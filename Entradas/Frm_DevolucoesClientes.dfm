@@ -1576,6 +1576,7 @@ inherited FrmDevolucoesClientes: TFrmDevolucoesClientes
         Style.BorderColor = clNavy
         DataSource = DMDevolucoesClientes.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMDevolucoesClientes.C_TiposMovimentoDS
         Height = 19
       end
@@ -1616,9 +1617,6 @@ inherited FrmDevolucoesClientes: TFrmDevolucoesClientes
         Top = 159
         Width = 786
         Height = 278
-        ActivePage = tsItens
-        TabIndex = 0
-        ActivePageIndex = 0
         TabColor = 16116702
         TabColorActive = 14859922
         inherited tsItens: TTS_TabSheet

@@ -27,6 +27,7 @@ type
       var bSkip: Boolean);
     procedure dfFavorecidoSelecionou(Sender: TObject);
     procedure btEstimatesClick(Sender: TObject);
+    procedure dbgItensPRECOChange(Sender: TObject);
   private                                               
     { Private declarations }
   protected
@@ -113,6 +114,12 @@ begin
 
   PostMessage(Handle, PM_Foco, 0, 0);
 
+end;
+
+procedure TFrmSaidasConsignadas.dbgItensPRECOChange(Sender: TObject);
+var permitir: Boolean;
+begin
+  inherited;
 end;
 
 end.

@@ -6,7 +6,8 @@ interface
 uses
     Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
     DM_Saidas, Db, DBClient, Provider, DlgMsg, DMComponent, IBCustomDataSet,
-    IBUpdateSQL, IBQuery, IBEvents, TS_QDBGrid, Variants, Math, BTOdeum;
+    IBUpdateSQL, IBQuery, IBEvents, TS_QDBGrid, Variants, Math, BTOdeum,
+  IBStoredProc, ActnList;
 
 type
     TEmAlteracao = procedure(sNum: string) of object;
@@ -19,7 +20,6 @@ type
         C_ParcelasValorAReceber: TCurrencyField;
         C_ParcelasPagamento: TCurrencyField;
         C_ParcelasJuros: TCurrencyField;
-        C_ParcelasVENDA: TIntegerField;
         C_PlanosPagamentoicResumo: TStringField;
         C_TabelaicNomeTabelaPadrao: TStringField;
         C_ItensDescricaoGrupo: TStringField;

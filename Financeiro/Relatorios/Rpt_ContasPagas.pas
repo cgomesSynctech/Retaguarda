@@ -85,6 +85,8 @@ type
     Q_SQL: TIBQuery;
     C_ConsultaCONTADESPESA: TStringField;
     dbgConsultaContaDespesa: TdxDBGridColumn;
+    C_ConsultaCONTACAIXA: TStringField;
+    dbgConsultaCONTACAIXA: TdxDBGridColumn;
     procedure btAtualizarClick(Sender: TObject);
     procedure edFavorecidoSelecionou(Sender: TObject);
     procedure DataIDateChange(Sender: TObject);

@@ -7,7 +7,7 @@ inherited RptExtratoCompleto: TRptExtratoCompleto
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 867
+    Width = 875
     Gradient.ColorStart = 9027548
     inherited lbCaption: TdxfLabel
       Width = 168
@@ -25,10 +25,10 @@ inherited RptExtratoCompleto: TRptExtratoCompleto
     end
   end
   inherited pnGrid: TPanel
-    Width = 814
-    Height = 392
+    Width = 822
+    Height = 403
     inherited pnDados: TTS_Panel
-      Width = 814
+      Width = 822
       Color = 14019327
       object TS_Label1: TTS_Label
         Left = 8
@@ -193,8 +193,8 @@ inherited RptExtratoCompleto: TRptExtratoCompleto
       end
     end
     inherited dbgConsulta: TTS_QDBGrid
-      Width = 814
-      Height = 351
+      Width = 822
+      Height = 362
       KeyField = 'TRANSACAOESTOQUE'
       SummaryGroups = <
         item
@@ -325,7 +325,7 @@ inherited RptExtratoCompleto: TRptExtratoCompleto
         Width = 60
         BandIndex = 0
         RowIndex = 0
-        FieldName = 'cfESTOQUE'
+        FieldName = 'cfEstoque'
         SummaryFooterFormat = '##,###,##0.###'
       end
       object dbgConsultaUnidVenda: TdxDBGridColumn
@@ -485,8 +485,8 @@ inherited RptExtratoCompleto: TRptExtratoCompleto
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 373
-      Width = 814
+      Top = 384
+      Width = 822
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -494,9 +494,9 @@ inherited RptExtratoCompleto: TRptExtratoCompleto
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 392
+    Height = 403
     inherited btSair: TTS_SpeedButton
-      Top = 347
+      Top = 358
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick

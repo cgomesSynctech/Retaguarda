@@ -205,7 +205,7 @@ begin
                       '0|||'+
                       CurrToStr(C_DuplicatasDESCONTOS.AsCurrency);
             Deposito := DMFinanceiro.ReceberTitulos( 0, sItens, C_DuplicatasCLIENTE.Value, cmbContas.LookupKeyValue,
-                        DMProjeto.dDataSistema , 0, 0, 'Título Antecipados ' + C_DuplicatasTITULO.AsString );
+                        DMProjeto.dDataSistema , 0, 0, 'Título Antecipados ' + C_DuplicatasTITULO.AsString,0 );
             DMFinanceiro.ReceberDoc( 0, 1, Deposito, 20, C_DuplicatasVALOR.AsCurrency, DMProjeto.dDataSistema,
                                   'Título Antecipados ' + C_DuplicatasTITULO.AsString,0,0,'', cmbContas.LookupKeyValue );
             DMFinanceiro.BaixarTitulo( C_DuplicatasID.AsString, DMProjeto.dDataSistema );

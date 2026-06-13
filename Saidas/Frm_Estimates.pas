@@ -134,6 +134,14 @@ begin
     inherited;
     DMSaida.C_Tabela.Edit;
     DMSaida.C_TabelaTIPOMOVIMENTO.Value := DMProjeto.TipoPadraoInicial(3, 'S', DMSaida.nTipoMovimento);
+//    TS_DBEditDate1.Visible := false ;
+if ( Dmprojeto.Parametro('AlterarValidade') = 'N' ) then begin
+    TS_DBEditDate1.ReadOnly := true ;
+    TS_DBEditDate1.Color := clSilver ;
+    TS_Shape14.Brush.Color := clSilver;
+    end; 
+
+
 end;
 
 procedure TFrmEstimates.dfObsValidate(Sender: TObject;

@@ -1,16 +1,24 @@
 inherited RptItensConsigSaida: TRptItensConsigSaida
   Left = 230
   Top = 133
+  Width = 980
   Height = 461
   Caption = 'M'#243'dulo de Itens'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
+    Width = 972
     Gradient.ColorStart = 9027548
     inherited lbCaption: TdxfLabel
       Width = 307
       Caption = 'Itens Consignados com Clientes'
       Effect3D.ShadowedColor = 9027548
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 930
+    end
+    inherited btTemplates: TTS_SpeedButton
+      Left = 903
     end
     inherited lbDescricaoRelatorio: TTS_Label
       Left = 9
@@ -22,8 +30,10 @@ inherited RptItensConsigSaida: TRptItensConsigSaida
     end
   end
   inherited pnGrid: TPanel
+    Width = 919
     Height = 396
     inherited pnDados: TTS_Panel
+      Width = 919
       Color = 14019327
       object TS_Label1: TTS_Label
         Left = 309
@@ -175,121 +185,83 @@ inherited RptItensConsigSaida: TRptItensConsigSaida
       end
     end
     inherited dbgConsulta: TTS_QDBGrid
+      Width = 919
       Height = 355
       KeyField = 'ITEM'
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'CODIGO'
       object dbgConsultaTIPOMOVIMENTO: TdxDBGridMaskColumn
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
         Visible = False
-        Width = 79
         BandIndex = 0
         RowIndex = 0
         FieldName = 'TIPOMOVIMENTO'
       end
       object dbgConsultaITEM: TdxDBGridMaskColumn
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
         Visible = False
-        Width = 53
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ITEM'
       end
       object dbgConsultaCODIGO: TdxDBGridMaskColumn
         Caption = 'C'#243'digo'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 82
         BandIndex = 0
         RowIndex = 0
         FieldName = 'CODIGO'
       end
       object dbgConsultaDESCRICAO: TdxDBGridMaskColumn
-        Caption = 'Item'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Sorted = csUp
-        Width = 295
+        Caption = 'Descri'#231#227'o'
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DESCRICAO'
       end
       object dbgConsultaUNIDADE: TdxDBGridMaskColumn
-        Caption = 'Und'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 40
+        Caption = 'Und.'
         BandIndex = 0
         RowIndex = 0
         FieldName = 'UNIDADE'
       end
       object dbgConsultaREFERENCIA: TdxDBGridMaskColumn
-        Caption = 'Ref.'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 73
+        Caption = 'Refer.'
         BandIndex = 0
         RowIndex = 0
         FieldName = 'REFERENCIA'
       end
-      object dbgConsultaQTD: TdxDBGridCurrencyColumn
+      object dbgConsultaQTD: TdxDBGridMaskColumn
         Caption = 'Qtd Consignada'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 97
         BandIndex = 0
         RowIndex = 0
         FieldName = 'QTD'
-        DisplayFormat = '0.00;-0.00'
-        Nullable = False
       end
       object dbgConsultaESTOQUE: TdxDBGridCurrencyColumn
         Caption = 'Estoque'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 58
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ESTOQUE'
-        DisplayFormat = '0.00;-0.00'
         Nullable = False
       end
       object dbgConsultaESTOQUECONSIGSAIDA: TdxDBGridCurrencyColumn
-        Caption = 'Estoque Consignado'
-        HeaderAlignment = taCenter
+        Caption = 'Est. Consignado'
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ESTOQUECONSIGSAIDA'
-        DisplayFormat = ',0.00;-,0.00'
         Nullable = False
       end
-      object dbgConsultaQTDDEV: TdxDBGridCurrencyColumn
+      object dbgConsultaQTDDEV: TdxDBGridMaskColumn
         Caption = 'Qtd devolvida'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 88
         BandIndex = 0
         RowIndex = 0
         FieldName = 'QTDDEV'
-        DisplayFormat = '0.00;-0.00'
-        Nullable = False
       end
-      object dbgConsultaQTDACERT: TdxDBGridCurrencyColumn
+      object dbgConsultaQTDACERT: TdxDBGridMaskColumn
         Caption = 'Qtd acertada'
-        DisableCustomizing = True
-        HeaderAlignment = taCenter
-        Width = 88
         BandIndex = 0
         RowIndex = 0
         FieldName = 'QTDACERT'
-        DisplayFormat = '0.00;-0.00'
-        Nullable = False
       end
     end
     inherited PainelFullSelect: TTS_Panel
       Top = 377
+      Width = 919
       TabOrder = 4
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
@@ -349,7 +321,7 @@ inherited RptItensConsigSaida: TRptItensConsigSaida
     end
     object C_ConsultaCODIGO: TStringField
       FieldName = 'CODIGO'
-      Size = 13
+      Size = 14
     end
     object C_ConsultaDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
@@ -361,31 +333,35 @@ inherited RptItensConsigSaida: TRptItensConsigSaida
     end
     object C_ConsultaREFERENCIA: TStringField
       FieldName = 'REFERENCIA'
+      Size = 25
+    end
+    object C_ConsultaESTOQUECONSIGSAIDA: TBCDField
+      FieldName = 'ESTOQUECONSIGSAIDA'
+      Precision = 18
+      Size = 3
     end
     object C_ConsultaESTOQUE: TBCDField
       FieldName = 'ESTOQUE'
       Precision = 18
       Size = 3
     end
-    object C_ConsultaQTD: TBCDField
+    object C_ConsultaQTD: TFloatField
       FieldName = 'QTD'
-      Precision = 18
-      Size = 3
     end
-    object C_ConsultaQTDDEV: TBCDField
+    object C_ConsultaQTDDEV: TFloatField
       FieldName = 'QTDDEV'
-      Precision = 18
-      Size = 3
     end
-    object C_ConsultaQTDACERT: TBCDField
+    object C_ConsultaQTDACERT: TFloatField
       FieldName = 'QTDACERT'
-      Precision = 18
-      Size = 3
     end
-    object C_ConsultaESTOQUECONSIGSAIDA: TBCDField
-      FieldName = 'ESTOQUECONSIGSAIDA'
-      Precision = 18
-      Size = 3
+  end
+  inherited GridPrinter: TdxComponentPrinter
+    PreviewOptions.PreviewBoundsRect = {00000000000000000000000000000000}
+    inherited GridPrinterLink: TdxDBGridReportLink
+      DateTime = 37552.5867859838
+      PrinterPage._dxMeasurementUnits_ = 2
+      PrinterPage._dxLastMU_ = 2
+      BuiltInReportLink = True
     end
   end
   inherited FormsComponent: TFormsComponent
@@ -396,15 +372,6 @@ inherited RptItensConsigSaida: TRptItensConsigSaida
     FormColor = 14019327
     Modulo = 'M'#243'dulo de Itens'
     Caption = 'Itens Consignados com Clientes'
-  end
-  inherited GridPrinter: TdxComponentPrinter
-    PreviewOptions.PreviewBoundsRect = {00000000000000000000000000000000}
-    inherited GridPrinterLink: TdxDBGridReportLink
-      DateTime = 37552.5867859838
-      PrinterPage._dxMeasurementUnits_ = 2
-      PrinterPage._dxLastMU_ = 2
-      BuiltInReportLink = True
-    end
   end
   object Q_Status: TIBQuery
     Database = DMProjeto.DB_Projeto

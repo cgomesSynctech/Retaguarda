@@ -14,7 +14,7 @@ uses
     dxEditor, dxDBEdtr, TS_Image, dxfLabel, dxDBGrid, TS_QDBGrid,
     dxDBTLCl, dxGrClms, teCtrls, TS_EffectsPanel,
     dxTLClms, Dlg_PopupContas, TS_DBPopupEdit, TS_DBButtonEdit, Variants,
-    BTOdeum, TS_DBEditNumber, Placemnt, dxfProgressBar;
+    BTOdeum, TS_DBEditNumber, Placemnt, dxfProgressBar, TS_DBRadioGroup;
 
 type
     TFrmContas = class(TFrmPadrao)
@@ -90,7 +90,8 @@ type
         dbTreeContasSaldo: TdxDBTreeListColumn;
         dfSaldo: TTS_DBEditNumber;
         TS_Label9: TTS_Label;
-        chkDespesaFixa: TTS_DBCheckBox;
+    TS_DBRadioGroup2: TTS_DBRadioGroup;
+    TS_DBCheckBox3: TTS_DBCheckBox;
         procedure FormClose(Sender: TObject; var Action: TCloseAction);
         procedure btLimparClick(Sender: TObject);
         procedure FormComponentAfterScroll(Sender: TObject);
@@ -196,24 +197,24 @@ begin
     if DMContas.C_TabelaConta.value = 1 then
         begin
             pcContas.ActivePage := nil;
-            chkDespesaFixa.Visible := False;
+            TS_DBRadioGroup2.Visible := False;
         end
     else if DMContas.C_TabelaTipoConta.value = 1 then
         begin
             pcContas.ActivePage := tsCaixas;
-            chkDespesaFixa.Visible := False;
+            TS_DBRadioGroup2.Visible := False;
         end
     else if DMContas.C_TabelaTipoConta.value = 2 then
         begin
             pcContas.ActivePage := tsBancos;
-            chkDespesaFixa.Visible := False;
+            TS_DBRadioGroup2.Visible := False;
         end
     else if DMContas.C_TabelaTIPOCONTA.Value = 15 then
-        chkDespesaFixa.Visible := True
+        TS_DBRadioGroup2.Visible := True
     else
         begin
             pcContas.ActivePage := tsContabilidade;
-            chkDespesaFixa.Visible := False;
+            TS_DBRadioGroup2.Visible := False;
         end;
 end;
 

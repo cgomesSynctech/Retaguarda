@@ -198,7 +198,11 @@ inherited DMTiposMovEntrada: TDMTiposMovEntrada
       '  LIVROFISCAL = :LIVROFISCAL,'
       '  CB_CSTPADRAO = :CB_CSTPADRAO,'
       '  CST_PADRAO = :CST_PADRAO,  '
-      '  CALCULAPISCOFINS = :CALCULAPISCOFINS'
+      '  CALCULAPISCOFINS = :CALCULAPISCOFINS,'
+      ' CST_PIS_COFINS_MOVIMENTO = :CST_PIS_COFINS_MOVIMENTO, '
+      '  CB_CSTPISCOFINSPADRAO = :CB_CSTPISCOFINSPADRAO,'
+      '  CB_CSTIPIPADRAO = :CB_CSTIPIPADRAO,'
+      '  CST_IPI_PADRAO = :CST_IPI_PADRAO'
       'where'
       '  TIPOMOVIMENTO = :OLD_TIPOMOVIMENTO')
     InsertSQL.Strings = (
@@ -278,7 +282,8 @@ inherited DMTiposMovEntrada: TDMTiposMovEntrada
       'CB_DESCONTOITEM, CB_COMPENSACAO, CB_COMPENSACAONOCUSTO, '
       'CB_ENTRADAPRECOVENDA, '
       'BAIXAESTOQUEFISCAL, LIVROFISCAL, CB_CSTPADRAO, CST_PADRAO, '
-      'CALCULAPISCOFINS)'
+      'CALCULAPISCOFINS, CST_PIS_COFINS_MOVIMENTO, '
+      'CB_CSTPISCOFINSPADRAO, CB_CSTIPIPADRAO, CST_IPI_PADRAO)'
       'values'
       
         '  (:TIPOMOVIMENTO,:DESCRICAO, :TIPO, :BAIXAESTOQUE, :CALCCOMISSA' +
@@ -364,7 +369,9 @@ inherited DMTiposMovEntrada: TDMTiposMovEntrada
       '   :CB_IMPDOC, :CB_DESCONTOITEM, :CB_COMPENSACAO, '
       ':CB_COMPENSACAONOCUSTO, '
       '   :CB_ENTRADAPRECOVENDA, :BAIXAESTOQUEFISCAL, :LIVROFISCAL, '
-      ':CB_CSTPADRAO, :CST_PADRAO, :CALCULAPISCOFINS)')
+      ':CB_CSTPADRAO, :CST_PADRAO, :CALCULAPISCOFINS, '
+      ':CST_PIS_COFINS_MOVIMENTO, :CB_CSTPISCOFINSPADRAO, '
+      ':CB_CSTIPIPADRAO, :CST_IPI_PADRAO)')
     DeleteSQL.Strings = (
       'delete from TiposMovimento'
       'where'
@@ -1187,6 +1194,40 @@ inherited DMTiposMovEntrada: TDMTiposMovEntrada
       Size = 100
       Lookup = True
     end
+    object C_TabelaCST_PIS_COFINS_MOVIMENTO: TStringField
+      FieldName = 'CST_PIS_COFINS_MOVIMENTO'
+      Size = 2
+    end
+    object C_TabelalkCST_PisCofinsPadrao: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCST_PisCofinsPadrao'
+      LookupDataSet = C_CSTPISCONFINS
+      LookupKeyFields = 'CSTPISCOFINS'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CST_PIS_COFINS_MOVIMENTO'
+      Lookup = True
+    end
+    object C_TabelaCB_CSTPISCOFINSPADRAO: TStringField
+      FieldName = 'CB_CSTPISCOFINSPADRAO'
+      Size = 1
+    end
+    object C_TabelaCB_CSTIPIPADRAO: TStringField
+      FieldName = 'CB_CSTIPIPADRAO'
+      Size = 1
+    end
+    object C_TabelaCST_IPI_PADRAO: TStringField
+      FieldName = 'CST_IPI_PADRAO'
+      Size = 2
+    end
+    object C_TabelalcCSTIPI: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCSTIPI'
+      LookupDataSet = C_CSTIPI
+      LookupKeyFields = 'CSTIPI'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CST_IPI_PADRAO'
+      Lookup = True
+    end
   end
   object Q_TiposPadrao: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -1585,5 +1626,85 @@ inherited DMTiposMovEntrada: TDMTiposMovEntrada
     DataSet = C_TiposImpressao
     Left = 713
     Top = 169
+  end
+  object Q_CSTPISCONFINS: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT C.cstpiscofins,C.cstpiscofins ||'#39' - '#39'|| C.descricao as de' +
+        'scricao  FROM cstspiscofins C')
+    Left = 811
+    Top = 19
+  end
+  object P_CSTPISCONFINS: TDataSetProvider
+    DataSet = Q_CSTPISCONFINS
+    Constraints = True
+    Left = 811
+    Top = 78
+  end
+  object C_CSTPISCONFINS: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_CSTPISCONFINS'
+    Left = 813
+    Top = 128
+    object C_CSTPISCONFINSCSTPISCOFINS: TStringField
+      FieldName = 'CSTPISCOFINS'
+      Required = True
+      Size = 2
+    end
+    object C_CSTPISCONFINSDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 505
+    end
+  end
+  object C_CSTPISCONFINSDs: TDataSource
+    Tag = 100
+    DataSet = C_CSTPISCONFINS
+    Left = 810
+    Top = 186
+  end
+  object Q_CSTIPI: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT C.cstipi,C.cstipi ||'#39' - '#39'|| C.descricao as descricao  FRO' +
+        'M cstsipi C')
+    Left = 883
+    Top = 11
+  end
+  object P_CSTIPI: TDataSetProvider
+    DataSet = Q_CSTIPI
+    Constraints = True
+    Left = 883
+    Top = 70
+  end
+  object C_CSTIPI: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_CSTIPI'
+    Left = 885
+    Top = 120
+    object C_CSTIPICSTIPI: TStringField
+      FieldName = 'CSTIPI'
+      Required = True
+      Size = 2
+    end
+    object C_CSTIPIDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 65
+    end
+  end
+  object C_CSTIPIDS: TDataSource
+    Tag = 100
+    DataSet = C_CSTIPI
+    Left = 882
+    Top = 178
   end
 end

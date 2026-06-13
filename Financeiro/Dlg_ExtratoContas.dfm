@@ -1,5 +1,5 @@
 inherited DlgExtratoContas: TDlgExtratoContas
-  Left = 418
+  Left = 464
   Top = 65
   Width = 544
   Height = 395
@@ -8,10 +8,10 @@ inherited DlgExtratoContas: TDlgExtratoContas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 410
-    Height = 314
+    Left = 418
+    Height = 324
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 280
+      Top = 290
     end
     inherited btComando2: TTS_SpeedButton
       Top = 75
@@ -80,7 +80,7 @@ inherited DlgExtratoContas: TDlgExtratoContas
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 528
+    Width = 536
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
       Top = 25
@@ -101,23 +101,23 @@ inherited DlgExtratoContas: TDlgExtratoContas
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 410
-    Height = 314
+    Width = 418
+    Height = 324
     Color = 15724519
     object TS_Panel1: TTS_Panel
       Tag = -1
       Left = 1
       Top = 1
-      Width = 408
-      Height = 312
+      Width = 416
+      Height = 322
       HelpContext = -1
       Align = alClient
       BevelOuter = bvNone
       Color = 15724519
       TabOrder = 0
       DesignSize = (
-        408
-        312)
+        416
+        322)
       object TS_Label1: TTS_Label
         Left = 9
         Top = 11
@@ -479,8 +479,8 @@ inherited DlgExtratoContas: TDlgExtratoContas
       end
       object TS_Panel2: TTS_Panel
         Left = 0
-        Top = 285
-        Width = 408
+        Top = 295
+        Width = 416
         Height = 27
         Align = alBottom
         BevelOuter = bvNone

@@ -10,7 +10,7 @@ uses
   TS_Label, ExtCtrls, TS_Image, dxfLabel, TS_MaxPanel, dxTLClms, dxTL,
   dxDBCtrl, dxDBGrid, TS_QDBGrid, TS_Bevel, Buttons, TS_SpeedButton,
   teCtrls, TS_EffectsPanel, TS_DBSpinEdit, dxfProgressBar, dxDBTLCl,
-  dxGrClms, TS_Shape, DB;
+  dxGrClms, TS_Shape, DB, TS_DBEdit;
 
 type
   TFrmMetasFaturamento = class(TFrmPadrao)
@@ -40,6 +40,8 @@ type
     dbgFuncMETADIARIA: TdxDBGridCurrencyColumn;
     dbgFuncNOME: TdxDBGridButtonColumn;
     ppmGridFunc: TTS_PopupMenu;
+    TS_DBEdit1: TTS_DBEdit;
+    TS_Label7: TTS_Label;
     procedure odososRegistros1Click(Sender: TObject);
     procedure dbgFuncNOMEButtonClick(Sender: TObject;
       AbsoluteIndex: Integer);

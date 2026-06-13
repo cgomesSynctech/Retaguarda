@@ -243,6 +243,8 @@ begin
                         C_ItensFilhos.EnableControls;
                         C_TabelaCustoMedio.Value := nCustoTotal / IIF(C_TabelaFatorUndVenda.Value > 0, C_TabelaFatorUndVenda.Value, 1);
                         C_TabelaPrecoCompra.Value := C_TabelaCustoMedio.Value;
+                        C_TabelaCUSTOCONTABIL.Value := C_TabelaCustoMedio.Value;
+                        C_TabelaCUSTOPRODUTO.Value := C_TabelaCustoMedio.Value;
                     end
                 else
                     C_TabelaHasChildren.Value := 'N';

@@ -23,11 +23,12 @@ type
     GridINICIALIZACAO: TdxDBGridMaskColumn;
     TS_Label2: TTS_Label;
     dfPerfil: TTS_DBLookupComboBox;
+    TS_Label3: TTS_Label;
+    TS_Label4: TTS_Label;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormComponentAfterScroll(Sender: TObject);
     procedure FormComponentEstado_Inicial(Sender: TObject;
       var bSkip: Boolean);
-    procedure btGravarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,12 +61,6 @@ procedure TFrmCadPerfis.FormComponentEstado_Inicial(Sender: TObject;
 begin
   inherited;
 	dfPerfil.Enabled := true;
-end;
-
-procedure TFrmCadPerfis.btGravarClick(Sender: TObject);
-begin
- // inherited;
-
 end;
 
 end.

@@ -9,9 +9,9 @@ inherited DlgComparacaoContagens: TDlgComparacaoContagens
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 614
-    Height = 326
+    Height = 325
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 292
+      Top = 291
     end
     inherited btComando2: TTS_SpeedButton
       Hint = 'Permite cancelar uma ficha de balan'#231'o'
@@ -263,7 +263,7 @@ inherited DlgComparacaoContagens: TDlgComparacaoContagens
   end
   inherited pnDados: TTS_Panel
     Width = 614
-    Height = 326
+    Height = 325
     Color = 14019327
     object TS_Label1: TTS_Label
       Left = 6

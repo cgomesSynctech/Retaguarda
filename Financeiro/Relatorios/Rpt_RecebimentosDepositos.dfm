@@ -1,12 +1,12 @@
 inherited RptRecebimentosDepositos: TRptRecebimentosDepositos
-  Left = 402
-  Top = 105
+  Left = 578
+  Top = 187
   Width = 736
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 720
+    Width = 728
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 244
@@ -21,12 +21,12 @@ inherited RptRecebimentosDepositos: TRptRecebimentosDepositos
     end
   end
   inherited pnGrid: TPanel
-    Width = 667
+    Width = 675
     inherited RichEdit: TRichEdit
       Top = 248
     end
     inherited pnDados: TTS_Panel
-      Width = 667
+      Width = 675
       Height = 23
       Color = 16116702
       object lbPeriodo: TTS_Label
@@ -284,8 +284,8 @@ inherited RptRecebimentosDepositos: TRptRecebimentosDepositos
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 23
-      Width = 667
-      Height = 355
+      Width = 675
+      Height = 376
       KeyField = 'IDDOC'
       SummaryGroups = <
         item
@@ -500,7 +500,7 @@ inherited RptRecebimentosDepositos: TRptRecebimentosDepositos
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Width = 667
+      Width = 675
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19

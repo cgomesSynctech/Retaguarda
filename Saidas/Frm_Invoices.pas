@@ -43,7 +43,6 @@ type
         dfBaseCalcSubst: TTS_DBEditNumber;
         pnValorFrete: TTS_Panel;
         TS_Shape20: TTS_Shape;
-        TS_Label5: TTS_Label;
         dfValorFrete: TTS_DBEditNumber;
         pnValorSeguro: TTS_Panel;
         TS_Shape21: TTS_Shape;
@@ -107,10 +106,6 @@ type
         TS_Label28: TTS_Label;
         TS_Label26: TTS_Label;
         TS_DBText2: TTS_DBText;
-        TS_Panel3: TTS_Panel;
-        TS_Shape7: TTS_Shape;
-        TS_Label29: TTS_Label;
-        TS_DBText8: TTS_DBText;
         btConsig: TTS_SpeedButton;
         ppmConsig: TTS_PopupMenu;
         Itens1: TMenuItem;
@@ -122,6 +117,14 @@ type
         dbgItenslkCFOPs: TdxDBGridLookupColumn;
         btnOficina: TTS_SpeedButton;
     dbgItensQUANTIDADEVOLUME: TdxDBGridMaskColumn;
+    TS_Panel3: TTS_Panel;
+    TS_Label5: TTS_Label;
+    TS_DBDesoneracao: TTS_DBText;
+    TS_Label29: TTS_Label;
+    TS_Indicacao: TTS_Panel;
+    TS_Label30: TTS_Label;
+    TS_DBLookupComboBox1: TTS_DBLookupComboBox;
+    ReferenciarNotas1: TMenuItem;
         procedure FormCreate(Sender: TObject);
         procedure lbOperacaoSetParametrosForm(Sender: TObject);
         procedure FormComponentEstado_Inicial(Sender: TObject;
@@ -149,6 +152,8 @@ type
             var Accept: Boolean);
         procedure btnOficinaClick(Sender: TObject);
     procedure dfDescontoExit(Sender: TObject);
+    procedure ReferenciarNotas1Click(Sender: TObject);
+    procedure UltimoGravado1Click(Sender: TObject);
     private
         DlgCFOPs, DlgCFOPs2: TDlgCFOPs;
     protected
@@ -287,6 +292,8 @@ begin
 end;
 
 procedure TFrmInvoices.MescConsig(tipo: integer);
+var
+  resultado: TModalResult;
 begin
     if DMInvoices.C_TabelaSituacao.Value = 'C' then
         exit;
@@ -296,6 +303,12 @@ begin
             DlgMsg.ShowMsg(543);
             exit;
         end;
+
+    if DMInvoices.C_TabelaVENDEDOR.Value = 0 then
+      begin
+       DlgMsg.ShowMsg(929, ['o vendedor!']);
+       exit;
+      end;
 
     DlgMescAcertSaida := TDlgMescAcertSaida.Create(self);
     DlgMescAcertSaida.sTipos := '4';
@@ -311,7 +324,7 @@ begin
             DlgMescAcertSaida.GridAcerto.Visible := False;
             DlgMescAcertSaida.GridMovs.Visible := True;
         end;
-    DlgMescAcertSaida.ShowModal;
+    resultado := DlgMescAcertSaida.ShowModal;
     DlgMescAcertSaida.Release;
 
     //Para Atualizar Ordem de digitação e sequencial;
@@ -328,6 +341,10 @@ begin
     pgItens.ActivePageIndex := 0;
 
     ActiveControl := nil;
+    if resultado = mrOk then
+     begin
+       dxBarUltimoClick(Self);
+     end;
 
     PostMessage(Handle, PM_Foco, 0, 0);
 end;
@@ -400,7 +417,10 @@ begin
     a novo valor do Volume no seu campo. (25/08/2015) }
     if (DMInvoices.C_TabelaVOLUMES.Value > 0) then
         DMSaida.volumeEdit := DMInvoices.C_TabelaVOLUMES.Value;
-
+    if (DMInvoices.C_Tabela.FieldByName('IDMESTRE').Value <= 0) then
+        ReferenciarNotas1.Visible := False
+    else
+        ReferenciarNotas1.Visible := True;
 end;
 
 procedure TFrmInvoices.btGravarClick(Sender: TObject);
@@ -427,6 +447,8 @@ begin
     DMSaida.C_Tabela.Edit;
     DMSaida.C_TabelaTIPOMOVIMENTO.value := DMProjeto.TipoPadraoInicial(1, 'S', DMSaida.nTipoMovimento);
     btnOficina.Visible := DMProjeto.bPermitirOficina;
+        if DMProjeto.Parametro('IndicacaoVendas') = 'S' then
+                TS_Indicacao.Visible := True ;
 end;
 
 procedure TFrmInvoices.dfObsKeyPress(Sender: TObject; var Key: Char);
@@ -483,18 +505,59 @@ begin
 end;
 
 procedure TFrmInvoices.dfDescontoExit(Sender: TObject);
+    var SomaRateio: Currency;
 begin
   inherited;
+  SomaRateio := 0.00;
+    if (DMsaida.C_TabelaDesconto.Value <= 0) then
+        begin
+            DMSaida.C_Itens.DisableControls;
+            DMsaida.C_Itens.First;
+            while not DMSaida.C_Itens.EOF do
+                begin
+                    DMSaida.C_Itens.Edit;
+                    DMSaida.C_ItensRATEIODESCONTO.Value := Truncar(Abs((DMSaida.C_TabelaDesconto.Value * (DMSaida.C_ItensSubTotalItem.Value / DMSaida.C_TabelaTOTALITENS123.Value))), 2);
+                    SomaRateio := SomaRateio + Abs(DMSaida.C_ItensRATEIODESCONTO.Value);
+                    DMSaida.C_Itens.Post;
+                    DMSaida.C_Itens.Next;
+                end;
+            SomaRateio := (Abs(DMSaida.C_TabelaDesconto.Value) - SomaRateio);
+            DMSaida.C_Itens.First;
+            DMSaida.C_Itens.Edit;
+            DMSaida.C_ItensRATEIODESCONTO.Value := Abs((DMSaida.C_ItensRATEIODESCONTO.Value + SomaRateio));
+            DMSaida.C_Itens.Post;
+            DMSaida.C_Itens.EnableControls;
+        end;
             while not DMSaida.C_Itens.EOF do
                 begin
                     DMSaida.C_Itens.Edit;
 //                    C_ItensRATEIODESCONTO.Value := Truncar(Abs((C_TabelaDesconto.Value * (C_ItensSubTotalItem.Value / C_TabelaTOTALITENS123.Value))), 2);
 //                    SomaRateio := SomaRateio + Abs(C_ItensRATEIODESCONTO.Value);
-                    DMSaida.C_ItensBASECALCICMSPROD.Value := DMSaida.C_ItensBASECALCICMSPROD.Value - DMSaida.C_ItensRATEIODESCONTO.Value ;
-                    DMSaida.C_ItensVALORICMSPROD.Value := DMSaida.C_ItensBASECALCICMSPROD.Value * (DMSaida.C_ItensALIQICMS.Value/100 );
+                    if ( DMSaida.C_ItensBASECALCICMSPROD.Value > 0 ) then
+                    begin
+                        DMSaida.C_ItensBASECALCICMSPROD.Value := DMSaida.C_ItensBASECALCICMSPROD.Value - DMSaida.C_ItensRATEIODESCONTO.Value ;
+                        DMSaida.C_ItensVALORICMSPROD.Value := DMSaida.C_ItensBASECALCICMSPROD.Value * (DMSaida.C_ItensALIQICMS.Value/100 );
+                    end;
+                    if ( DMSaida.C_ItensBASECALCICMSPROD.Value < 0 ) then
+                        DMSaida.C_ItensBASECALCICMSPROD.Value :=0 ;
+
+                    DMSaida.C_ItensVALORIPIPROD.value := (DmSaida.C_ItensSUBTOTALITEM.Value - DMSaida.C_ItensRATEIODESCONTO.Value) * (DMSaida.C_ItensALIQIPI.Value/100);
                     DMSaida.C_Itens.Post;
                     DMSaida.C_Itens.Next;
                 end;
+end;
+
+procedure TFrmInvoices.ReferenciarNotas1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.SetParametrosForm([DMInvoices.C_Tabela.FieldByName('IDMESTRE').Value, DMInvoices.C_Tabela.FieldByName('EMPRESA').Value, DMInvoices.C_Tabela.FieldByName('PDV').Value]);
+    Dmprojeto.CriarForm('FrmSaidasReferenciadas', Self, True);
+end;
+
+procedure TFrmInvoices.UltimoGravado1Click(Sender: TObject);
+begin
+  inherited;
+lcbLocaisEntrega.SelText := DMSaida.C_LocaisEntregaDESCRICAO.Value ;
 end;
 
 end.

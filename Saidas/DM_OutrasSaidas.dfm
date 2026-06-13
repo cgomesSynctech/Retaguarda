@@ -1,10 +1,15 @@
 inherited DMOutrasSaidas: TDMOutrasSaidas
-  Left = 279
-  Top = 77
+  Left = 156
+  Top = 159
   inherited Q_Tabela: TIBQuery
     SQL.Strings = (
-      'Select '#9#9#9#9't.Saida'#9#9#9#9#9#9#9#9'as IDMESTRE,'
-      #9#9#9#9't.Favorecido'#9#9#9#9'as Favorecido,'
+      'Select '#9
+      't.profissional ,'
+      't.REDUCOESBASESUBST as REDUCOESBASESUBST ,'
+      'T.ICMSDESONERADO AS ICMSDESONERADO ,'#9#9#9
+      'T.CUBAGEMTOTAL,'
+      't.Saida'#9'as IDMESTRE,'
+      #9#9#9't.Favorecido'#9#9#9#9'as Favorecido,'
       #9#9#9#9't.Numero'#9#9#9#9'as Numero,'
       #9#9#9#9't.Data'#9#9#9#9#9#9#9#9'as Data,'
       #9#9#9#9't.Total'#9#9#9#9#9#9#9#9'as Total,'
@@ -401,6 +406,10 @@ inherited DMOutrasSaidas: TDMOutrasSaidas
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.cstibs, '
+      't.classtrib,'
+      'T.CUSTOMANUAL,'
+      't.CUBAGEMTOTALITEM,'
       't.SaidaItem    as IDITEM,'
       't.Saida as IDMestre,'
       't.Sequencia    as Sequencia,'
@@ -546,6 +555,7 @@ inherited DMOutrasSaidas: TDMOutrasSaidas
     ModifySQL.Strings = (
       'update SAIDASITENS'
       'set'
+      'CUSTOMANUAL = :CUSTOMANUAL,'
       '  SEQUENCIA = :SEQUENCIA,'
       '  DESCRICAO = :DESCRICAO,'
       '  QUANTIDADE = :QUANTIDADE,'

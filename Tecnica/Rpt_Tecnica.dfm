@@ -18,6 +18,107 @@ object RptTecnica: TRptTecnica
     UserName = 'ppDBOrcamento'
     Left = 192
     Top = 270
+    object ppDBOrcamentoppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = '_icSelecionado'
+      FieldName = '_icSelecionado'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object ppDBOrcamentoppField2: TppField
+      FieldAlias = 'DESCRICAOITEM'
+      FieldName = 'DESCRICAOITEM'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 1
+    end
+    object ppDBOrcamentoppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'ITEM'
+      FieldName = 'ITEM'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object ppDBOrcamentoppField4: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'QUANTIDADE'
+      FieldName = 'QUANTIDADE'
+      FieldLength = 3
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 3
+    end
+    object ppDBOrcamentoppField5: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SERVICO'
+      FieldName = 'SERVICO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 4
+    end
+    object ppDBOrcamentoppField6: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SERVICODET'
+      FieldName = 'SERVICODET'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 5
+    end
+    object ppDBOrcamentoppField7: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALOR'
+      FieldName = 'VALOR'
+      FieldLength = 3
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 6
+    end
+    object ppDBOrcamentoppField8: TppField
+      FieldAlias = 'CODIGO'
+      FieldName = 'CODIGO'
+      FieldLength = 13
+      DisplayWidth = 13
+      Position = 7
+    end
+    object ppDBOrcamentoppField9: TppField
+      FieldAlias = 'DESCRICAO'
+      FieldName = 'DESCRICAO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 8
+    end
+    object ppDBOrcamentoppField10: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PRECO'
+      FieldName = 'PRECO'
+      FieldLength = 3
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 9
+    end
+    object ppDBOrcamentoppField11: TppField
+      FieldAlias = 'SUBTOTAL'
+      FieldName = 'SUBTOTAL'
+      FieldLength = 0
+      DataType = dtCurrency
+      DisplayWidth = 10
+      Position = 10
+    end
+    object ppDBOrcamentoppField12: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'ESTOQUE'
+      FieldName = 'ESTOQUE'
+      FieldLength = 3
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 11
+    end
   end
   object _ppEntradaAssistencia: TppReport
     AutoStop = False
@@ -33,7 +134,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 59
@@ -250,10 +351,10 @@ object RptTecnica: TRptTecnica
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
+        mmHeight = 4129
         mmLeft = 64294
         mmTop = 47001
-        mmWidth = 11783
+        mmWidth = 11762
         BandType = 0
       end
       object ppLabel21: TppLabel
@@ -514,10 +615,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 171503
+        mmHeight = 4129
+        mmLeft = 171715
         mmTop = 29104
-        mmWidth = 25612
+        mmWidth = 25400
         BandType = 0
       end
       object ppDBText24: TppDBText
@@ -533,10 +634,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 170163
+        mmHeight = 4129
+        mmLeft = 170339
         mmTop = 34396
-        mmWidth = 26952
+        mmWidth = 26776
         BandType = 0
       end
       object lbEntrega: TppLabel
@@ -623,10 +724,10 @@ object RptTecnica: TRptTecnica
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
+        mmHeight = 4129
         mmLeft = 64558
         mmTop = 47361
-        mmWidth = 11783
+        mmWidth = 11762
         BandType = 8
       end
       object ppLabel7: TppLabel
@@ -1022,10 +1123,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 170180
+        mmHeight = 4129
+        mmLeft = 170392
         mmTop = 29898
-        mmWidth = 25612
+        mmWidth = 25400
         BandType = 8
       end
       object ppDBText26: TppDBText
@@ -1041,10 +1142,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 168840
+        mmHeight = 4129
+        mmLeft = 169016
         mmTop = 34660
-        mmWidth = 26952
+        mmWidth = 26776
         BandType = 8
       end
     end
@@ -1063,11 +1164,11 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
-    Left = 57
-    Top = 90
+    Left = 169
+    Top = 322
     Version = '6.02'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBOrcamento'
@@ -1287,10 +1388,10 @@ object RptTecnica: TRptTecnica
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
+        mmHeight = 4129
         mmLeft = 64294
         mmTop = 47096
-        mmWidth = 11783
+        mmWidth = 11762
         BandType = 0
       end
       object ppLabel33: TppLabel
@@ -1484,10 +1585,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 171503
+        mmHeight = 4129
+        mmLeft = 171715
         mmTop = 29104
-        mmWidth = 25612
+        mmWidth = 25400
         BandType = 0
       end
       object ppDBText39: TppDBText
@@ -1504,10 +1605,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 170163
+        mmHeight = 4129
+        mmLeft = 170339
         mmTop = 34396
-        mmWidth = 26952
+        mmWidth = 26776
         BandType = 0
       end
       object ppDBMemo5: TppDBMemo
@@ -1813,10 +1914,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBOrcamento'
-        mmHeight = 4304
-        mmLeft = 164800
+        mmHeight = 4254
+        mmLeft = 165209
         mmTop = 1058
-        mmWidth = 32315
+        mmWidth = 31906
         BandType = 7
       end
       object ppRichText1: TppRichText
@@ -1855,6 +1956,546 @@ object RptTecnica: TRptTecnica
     UserName = 'DBEntradaAssistencia2'
     Left = 738
     Top = 324
+    object ppDBEntradaAssistencia2ppField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SERVICO'
+      FieldName = 'SERVICO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 0
+    end
+    object ppDBEntradaAssistencia2ppField2: TppField
+      FieldAlias = 'OSNUMERO'
+      FieldName = 'OSNUMERO'
+      FieldLength = 8
+      DisplayWidth = 8
+      Position = 1
+    end
+    object ppDBEntradaAssistencia2ppField3: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'CLIENTE'
+      FieldName = 'CLIENTE'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 2
+    end
+    object ppDBEntradaAssistencia2ppField4: TppField
+      FieldAlias = 'DATAENTRADA'
+      FieldName = 'DATAENTRADA'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 3
+    end
+    object ppDBEntradaAssistencia2ppField5: TppField
+      FieldAlias = 'HORAENTRADA'
+      FieldName = 'HORAENTRADA'
+      FieldLength = 0
+      DataType = dtTime
+      DisplayWidth = 10
+      Position = 4
+    end
+    object ppDBEntradaAssistencia2ppField6: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'EQUIPAMENTO'
+      FieldName = 'EQUIPAMENTO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 5
+    end
+    object ppDBEntradaAssistencia2ppField7: TppField
+      FieldAlias = 'PARTESAGRAGADAS'
+      FieldName = 'PARTESAGRAGADAS'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 6
+    end
+    object ppDBEntradaAssistencia2ppField8: TppField
+      FieldAlias = 'DEFEITOALEGADO'
+      FieldName = 'DEFEITOALEGADO'
+      FieldLength = 255
+      DisplayWidth = 255
+      Position = 7
+    end
+    object ppDBEntradaAssistencia2ppField9: TppField
+      FieldAlias = 'DEFEITOENCONTRADO'
+      FieldName = 'DEFEITOENCONTRADO'
+      FieldLength = 255
+      DisplayWidth = 255
+      Position = 8
+    end
+    object ppDBEntradaAssistencia2ppField10: TppField
+      FieldAlias = 'OBSERVACAO'
+      FieldName = 'OBSERVACAO'
+      FieldLength = 255
+      DisplayWidth = 255
+      Position = 9
+    end
+    object ppDBEntradaAssistencia2ppField11: TppField
+      FieldAlias = 'DATASAIDA'
+      FieldName = 'DATASAIDA'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 10
+    end
+    object ppDBEntradaAssistencia2ppField12: TppField
+      FieldAlias = 'HORASAIDA'
+      FieldName = 'HORASAIDA'
+      FieldLength = 0
+      DataType = dtTime
+      DisplayWidth = 10
+      Position = 11
+    end
+    object ppDBEntradaAssistencia2ppField13: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FUNCENTRADA'
+      FieldName = 'FUNCENTRADA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 12
+    end
+    object ppDBEntradaAssistencia2ppField14: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TECNICO'
+      FieldName = 'TECNICO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 13
+    end
+    object ppDBEntradaAssistencia2ppField15: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FUNCSAIDA'
+      FieldName = 'FUNCSAIDA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 14
+    end
+    object ppDBEntradaAssistencia2ppField16: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'STATUSSERVICO'
+      FieldName = 'STATUSSERVICO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 15
+    end
+    object ppDBEntradaAssistencia2ppField17: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'LOCALIZACAO'
+      FieldName = 'LOCALIZACAO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 16
+    end
+    object ppDBEntradaAssistencia2ppField18: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TIPOSERVICO'
+      FieldName = 'TIPOSERVICO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 17
+    end
+    object ppDBEntradaAssistencia2ppField19: TppField
+      FieldAlias = 'AVARIA'
+      FieldName = 'AVARIA'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 18
+    end
+    object ppDBEntradaAssistencia2ppField20: TppField
+      FieldAlias = 'COMACESSORIO'
+      FieldName = 'COMACESSORIO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 19
+    end
+    object ppDBEntradaAssistencia2ppField21: TppField
+      FieldAlias = 'COMACESSORIOOBS'
+      FieldName = 'COMACESSORIOOBS'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 20
+    end
+    object ppDBEntradaAssistencia2ppField22: TppField
+      FieldAlias = 'ESTADOPRODMANCHADO'
+      FieldName = 'ESTADOPRODMANCHADO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 21
+    end
+    object ppDBEntradaAssistencia2ppField23: TppField
+      FieldAlias = 'ESTADOPRODARRANHADO'
+      FieldName = 'ESTADOPRODARRANHADO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 22
+    end
+    object ppDBEntradaAssistencia2ppField24: TppField
+      FieldAlias = 'ESTADOPRODSUJO'
+      FieldName = 'ESTADOPRODSUJO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 23
+    end
+    object ppDBEntradaAssistencia2ppField25: TppField
+      FieldAlias = 'ESTADOPRODCABOELETRICO'
+      FieldName = 'ESTADOPRODCABOELETRICO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 24
+    end
+    object ppDBEntradaAssistencia2ppField26: TppField
+      FieldAlias = 'ESTADOPRODQUEBRADO'
+      FieldName = 'ESTADOPRODQUEBRADO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 25
+    end
+    object ppDBEntradaAssistencia2ppField27: TppField
+      FieldAlias = 'EMBALAGEMPAPELAO'
+      FieldName = 'EMBALAGEMPAPELAO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 26
+    end
+    object ppDBEntradaAssistencia2ppField28: TppField
+      FieldAlias = 'EMBALAGEMPLASTICO'
+      FieldName = 'EMBALAGEMPLASTICO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 27
+    end
+    object ppDBEntradaAssistencia2ppField29: TppField
+      FieldAlias = 'GARANTIAFABRICA'
+      FieldName = 'GARANTIAFABRICA'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 28
+    end
+    object ppDBEntradaAssistencia2ppField30: TppField
+      FieldAlias = 'FORAGARANTIA'
+      FieldName = 'FORAGARANTIA'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 29
+    end
+    object ppDBEntradaAssistencia2ppField31: TppField
+      FieldAlias = 'RETORNO'
+      FieldName = 'RETORNO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 30
+    end
+    object ppDBEntradaAssistencia2ppField32: TppField
+      FieldAlias = 'ORCAMENTOACEITO'
+      FieldName = 'ORCAMENTOACEITO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 31
+    end
+    object ppDBEntradaAssistencia2ppField33: TppField
+      FieldAlias = 'ORCAMENTOCOMUNICADO'
+      FieldName = 'ORCAMENTOCOMUNICADO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 32
+    end
+    object ppDBEntradaAssistencia2ppField34: TppField
+      FieldAlias = 'SEMEMBALAGEM'
+      FieldName = 'SEMEMBALAGEM'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 33
+    end
+    object ppDBEntradaAssistencia2ppField35: TppField
+      FieldAlias = 'OBSAVARIA'
+      FieldName = 'OBSAVARIA'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 34
+    end
+    object ppDBEntradaAssistencia2ppField36: TppField
+      FieldAlias = 'NUMEROSERIE'
+      FieldName = 'NUMEROSERIE'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 35
+    end
+    object ppDBEntradaAssistencia2ppField37: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'MODELO'
+      FieldName = 'MODELO'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 36
+    end
+    object ppDBEntradaAssistencia2ppField38: TppField
+      FieldAlias = 'DATACOMPRA'
+      FieldName = 'DATACOMPRA'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 37
+    end
+    object ppDBEntradaAssistencia2ppField39: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'DIASGARANTIA'
+      FieldName = 'DIASGARANTIA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 38
+    end
+    object ppDBEntradaAssistencia2ppField40: TppField
+      FieldAlias = 'NOTAFISCAL'
+      FieldName = 'NOTAFISCAL'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 39
+    end
+    object ppDBEntradaAssistencia2ppField41: TppField
+      FieldAlias = 'REVENDEDOR'
+      FieldName = 'REVENDEDOR'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 40
+    end
+    object ppDBEntradaAssistencia2ppField42: TppField
+      FieldAlias = 'CARACTERISTICA'
+      FieldName = 'CARACTERISTICA'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 41
+    end
+    object ppDBEntradaAssistencia2ppField43: TppField
+      FieldAlias = 'NRO'
+      FieldName = 'NRO'
+      FieldLength = 4
+      DisplayWidth = 4
+      Position = 42
+    end
+    object ppDBEntradaAssistencia2ppField44: TppField
+      FieldAlias = 'NOME'
+      FieldName = 'NOME'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 43
+    end
+    object ppDBEntradaAssistencia2ppField45: TppField
+      FieldAlias = 'ENDERECO'
+      FieldName = 'ENDERECO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 44
+    end
+    object ppDBEntradaAssistencia2ppField46: TppField
+      FieldAlias = 'BAIRRO'
+      FieldName = 'BAIRRO'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 45
+    end
+    object ppDBEntradaAssistencia2ppField47: TppField
+      FieldAlias = 'CIDADE'
+      FieldName = 'CIDADE'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 46
+    end
+    object ppDBEntradaAssistencia2ppField48: TppField
+      FieldAlias = 'CEP'
+      FieldName = 'CEP'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 47
+    end
+    object ppDBEntradaAssistencia2ppField49: TppField
+      FieldAlias = 'FONE1'
+      FieldName = 'FONE1'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 48
+    end
+    object ppDBEntradaAssistencia2ppField50: TppField
+      FieldAlias = 'FONE2'
+      FieldName = 'FONE2'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 49
+    end
+    object ppDBEntradaAssistencia2ppField51: TppField
+      FieldAlias = 'CPF_CNPJ'
+      FieldName = 'CPF_CNPJ'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 50
+    end
+    object ppDBEntradaAssistencia2ppField52: TppField
+      FieldAlias = 'CODIGO'
+      FieldName = 'CODIGO'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 51
+    end
+    object ppDBEntradaAssistencia2ppField53: TppField
+      FieldAlias = 'DESCMODELO'
+      FieldName = 'DESCMODELO'
+      FieldLength = 60
+      DisplayWidth = 60
+      Position = 52
+    end
+    object ppDBEntradaAssistencia2ppField54: TppField
+      FieldAlias = 'DESCSTATUS'
+      FieldName = 'DESCSTATUS'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 53
+    end
+    object ppDBEntradaAssistencia2ppField55: TppField
+      FieldAlias = 'NOMETECNICO'
+      FieldName = 'NOMETECNICO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 54
+    end
+    object ppDBEntradaAssistencia2ppField56: TppField
+      FieldAlias = 'DESCLOCAL'
+      FieldName = 'DESCLOCAL'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 55
+    end
+    object ppDBEntradaAssistencia2ppField57: TppField
+      FieldAlias = 'DESCTIPOSERV'
+      FieldName = 'DESCTIPOSERV'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 56
+    end
+    object ppDBEntradaAssistencia2ppField58: TppField
+      FieldAlias = 'DESCTIPOEQUIP'
+      FieldName = 'DESCTIPOEQUIP'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 57
+    end
+    object ppDBEntradaAssistencia2ppField59: TppField
+      FieldAlias = 'DESCMARCA'
+      FieldName = 'DESCMARCA'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 58
+    end
+    object ppDBEntradaAssistencia2ppField60: TppField
+      FieldAlias = 'DESCFABRICANTE'
+      FieldName = 'DESCFABRICANTE'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 59
+    end
+    object ppDBEntradaAssistencia2ppField61: TppField
+      FieldAlias = 'Q_ServicosDet'
+      FieldName = 'Q_ServicosDet'
+      FieldLength = 0
+      DisplayWidth = 10
+      Position = 60
+    end
+    object ppDBEntradaAssistencia2ppField62: TppField
+      FieldAlias = 'ATENDENTE'
+      FieldName = 'ATENDENTE'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 61
+    end
+    object ppDBEntradaAssistencia2ppField63: TppField
+      FieldAlias = 'OBSORCACEITO'
+      FieldName = 'OBSORCACEITO'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 62
+    end
+    object ppDBEntradaAssistencia2ppField64: TppField
+      FieldAlias = 'OBSORCCOMUNICADO'
+      FieldName = 'OBSORCCOMUNICADO'
+      FieldLength = 100
+      DisplayWidth = 100
+      Position = 63
+    end
+    object ppDBEntradaAssistencia2ppField65: TppField
+      FieldAlias = 'DESCRICAO'
+      FieldName = 'DESCRICAO'
+      FieldLength = 60
+      DisplayWidth = 60
+      Position = 64
+    end
+    object ppDBEntradaAssistencia2ppField66: TppField
+      FieldAlias = 'COR'
+      FieldName = 'COR'
+      FieldLength = 15
+      DisplayWidth = 15
+      Position = 65
+    end
+    object ppDBEntradaAssistencia2ppField67: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TECNICODAOS'
+      FieldName = 'TECNICODAOS'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 66
+    end
+    object ppDBEntradaAssistencia2ppField68: TppField
+      FieldAlias = 'CELULAR'
+      FieldName = 'CELULAR'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 67
+    end
+    object ppDBEntradaAssistencia2ppField69: TppField
+      FieldAlias = 'CPFCNPJ_EQUIP'
+      FieldName = 'CPFCNPJ_EQUIP'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 68
+    end
+    object ppDBEntradaAssistencia2ppField70: TppField
+      FieldAlias = 'UF'
+      FieldName = 'UF'
+      FieldLength = 2
+      DisplayWidth = 2
+      Position = 69
+    end
+    object ppDBEntradaAssistencia2ppField71: TppField
+      FieldAlias = 'MARCA'
+      FieldName = 'MARCA'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 70
+    end
+    object ppDBEntradaAssistencia2ppField72: TppField
+      FieldAlias = 'TIPO'
+      FieldName = 'TIPO'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 71
+    end
+    object ppDBEntradaAssistencia2ppField73: TppField
+      FieldAlias = 'USUARIO'
+      FieldName = 'USUARIO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 72
+    end
   end
   object Q_Servicos: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -1976,6 +2617,7 @@ object RptTecnica: TRptTecnica
   end
   object C_Servicos: TClientDataSet
     Tag = 100
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Servicos'
@@ -2283,7 +2925,7 @@ object RptTecnica: TRptTecnica
     end
     object C_ServicosATENDENTE: TStringField
       FieldName = 'ATENDENTE'
-      Origin = 'SERVICOS.ATENDENTE'
+      Origin = 'FAVORECIDOS.ATENDENTE'
     end
     object C_ServicosOBSORCACEITO: TStringField
       FieldName = 'OBSORCACEITO'
@@ -2351,6 +2993,7 @@ object RptTecnica: TRptTecnica
   end
   object C_ServicosDet: TClientDataSet
     Tag = 100
+    Active = True
     Aggregates = <>
     DataSetField = C_ServicosQ_ServicosDet
     Params = <>
@@ -2801,7 +3444,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 56
@@ -3510,7 +4153,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 210079
     PrinterSetup.mmPaperWidth = 297127
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     BeforePrint = ppEntradaAssistenciaBeforePrint
     DeviceType = 'Screen'
@@ -3767,10 +4410,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 3246
-        mmLeft = 63201
+        mmHeight = 3253
+        mmLeft = 63229
         mmTop = 37042
-        mmWidth = 20673
+        mmWidth = 20645
         BandType = 0
       end
       object ppDBText68: TppDBText
@@ -3786,17 +4429,15 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 3246
-        mmLeft = 114001
+        mmHeight = 3253
+        mmLeft = 113961
         mmTop = 37042
-        mmWidth = 21731
+        mmWidth = 21771
         BandType = 0
       end
       object ppLabel79: TppLabel
         UserName = 'lbEntrega'
-        Caption = 
-          'HOR'#193'RIO DE  FUNCIONAMENTO: SEG/SEX 08:00 '#192'S 17:00 S'#193'B 08:00 '#192'S 1' +
-          '2:00'
+        Caption = 'HOR'#193'RIO DE FUNCIONAMENTO: SEG/SEX 08:00 '#192'S 17:00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -3804,10 +4445,10 @@ object RptTecnica: TRptTecnica
         Font.Style = [fsBold]
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 3387
-        mmLeft = 20767
+        mmHeight = 3503
+        mmLeft = 34236
         mmTop = 33073
-        mmWidth = 106892
+        mmWidth = 79954
         BandType = 0
       end
       object ppLabel80: TppLabel
@@ -5164,8 +5805,8 @@ object RptTecnica: TRptTecnica
             'armazenamento. O prazo  de  perman'#234'ncia  do   produto   na   Ass' +
             'ist'#234'ncia  ap'#243's  execu'#231#227'o do servi'#231'o  '#233'  de  60'
           
-            '(sessenta dias),  passado  este  per'#237'odo,  a  J Carvalho  poder'#225 +
-            '   retirar   as  pe'#231'as substitu'#237'das e sucatear o'
+            '(sessenta dias),  passado  este  per'#237'odo,  a Assistencia Tecnica' +
+            '  poder'#225'   retirar   as  pe'#231'as substitu'#237'das e sucatear o'
           
             'produto  ou  vender para cobrir as despesas com conserto e armaz' +
             'enamento. Sobre a garantia, ser'#225' de 90  (noventa'
@@ -5403,10 +6044,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 3246
-        mmLeft = 210838
+        mmHeight = 3253
+        mmLeft = 210866
         mmTop = 37042
-        mmWidth = 20673
+        mmWidth = 20645
         BandType = 0
       end
       object ppDBText78: TppDBText
@@ -5422,17 +6063,15 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 3246
-        mmLeft = 261638
+        mmHeight = 3253
+        mmLeft = 261598
         mmTop = 37042
-        mmWidth = 21731
+        mmWidth = 21771
         BandType = 0
       end
       object ppLabel93: TppLabel
         UserName = 'lbEntrega1'
-        Caption = 
-          'HOR'#193'RIO DE  FUNCIONAMENTO: SEG/SEX 08:00 '#192'S 17:00 S'#193'B 08:00 '#192'S 1' +
-          '2:00'
+        Caption = 'HOR'#193'RIO DE FUNCIONAMENTO: SEG/SEX 08:00 '#192'S 17:00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -5440,10 +6079,10 @@ object RptTecnica: TRptTecnica
         Font.Style = [fsBold]
         TextAlignment = taCentered
         Transparent = True
-        mmHeight = 3387
-        mmLeft = 168275
+        mmHeight = 3503
+        mmLeft = 181744
         mmTop = 33073
-        mmWidth = 106892
+        mmWidth = 79954
         BandType = 0
       end
       object ppLabel94: TppLabel
@@ -6583,8 +7222,8 @@ object RptTecnica: TRptTecnica
             'armazenamento. O prazo  de  perman'#234'ncia  do   produto   na   Ass' +
             'ist'#234'ncia  ap'#243's  execu'#231#227'o do servi'#231'o  '#233'  de  60'
           
-            '(sessenta dias),  passado  este  per'#237'odo,  a  J Carvalho  poder'#225 +
-            '   retirar   as  pe'#231'as substitu'#237'das e sucatear o'
+            '(sessenta dias),  passado  este  per'#237'odo,  a  Assistencia Tecnic' +
+            'a  poder'#225'   retirar   as  pe'#231'as substitu'#237'das e sucatear o'
           
             'produto  ou  vender para cobrir as despesas com conserto e armaz' +
             'enamento. Sobre a garantia, ser'#225' de 90  (noventa'
@@ -6967,7 +7606,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 54
@@ -8739,7 +9378,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     BeforePrint = ppOrdemdeServicoBeforePrint
     DeviceType = 'Screen'
@@ -8900,17 +9539,15 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 175472
+        mmHeight = 4129
+        mmLeft = 175684
         mmTop = 44450
-        mmWidth = 25612
+        mmWidth = 25400
         BandType = 0
       end
       object ppLabel157: TppLabel
         UserName = 'lbEntrega'
-        Caption = 
-          'COMPROVANTE - HOR'#193'RIO DE  FUNCIONAMENTO: SEG/SEX 08:00 '#192'S 18:00 ' +
-          'S'#193'B 08:00 '#192'S 12:00'
+        Caption = 'COMPROVANTE - HOR'#193'RIO DE FUNCIONAMENTO: SEG/SEX 08:00 '#192'S 17:00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8919,10 +9556,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taCentered
         Transparent = True
         Visible = False
-        mmHeight = 4233
-        mmLeft = 25532
+        mmHeight = 4254
+        mmLeft = 40266
         mmTop = 39952
-        mmWidth = 158221
+        mmWidth = 128752
         BandType = 0
       end
       object ppLabel160: TppLabel
@@ -9548,10 +10185,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 193623
+        mmHeight = 4129
+        mmLeft = 193563
         mmTop = 64558
-        mmWidth = 7197
+        mmWidth = 7257
         BandType = 0
       end
       object ppLabel283: TppLabel
@@ -10013,10 +10650,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBOrcamento'
-        mmHeight = 4304
-        mmLeft = 171679
+        mmHeight = 4254
+        mmLeft = 172088
         mmTop = 529
-        mmWidth = 32315
+        mmWidth = 31906
         BandType = 8
       end
       object ppLabel191: TppLabel
@@ -10275,7 +10912,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 191
@@ -11263,7 +11900,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 56
@@ -11543,7 +12180,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 295
@@ -11823,7 +12460,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 407
@@ -12137,11 +12774,11 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
-    Left = 192
-    Top = 332
+    Left = 624
+    Top = 388
     Version = '6.02'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBERelatorioGeral'
@@ -12949,7 +13586,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 911
@@ -13311,10 +13948,10 @@ object RptTecnica: TRptTecnica
         Transparent = True
         DBCalcType = dcCount
         DataPipelineName = 'ppDBRelatorioPorMarcas'
-        mmHeight = 4233
-        mmLeft = 187590
+        mmHeight = 4254
+        mmLeft = 187252
         mmTop = 529
-        mmWidth = 14552
+        mmWidth = 14890
         BandType = 8
       end
       object ppLine106: TppLine
@@ -14166,7 +14803,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 400
     PrinterSetup.mmPaperHeight = 297127
     PrinterSetup.mmPaperWidth = 210079
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 1055
@@ -14533,7 +15170,7 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
     Left = 123
@@ -14750,10 +15387,10 @@ object RptTecnica: TRptTecnica
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
+        mmHeight = 4129
         mmLeft = 125677
         mmTop = 33338
-        mmWidth = 11783
+        mmWidth = 11762
         BandType = 0
       end
       object ppLabel427: TppLabel
@@ -15015,10 +15652,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 122819
+        mmHeight = 4129
+        mmLeft = 122781
         mmTop = 27781
-        mmWidth = 25612
+        mmWidth = 25650
         BandType = 0
       end
       object ppDBText261: TppDBText
@@ -15034,10 +15671,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 164871
+        mmHeight = 4129
+        mmLeft = 164921
         mmTop = 27781
-        mmWidth = 26952
+        mmWidth = 26902
         BandType = 0
       end
       object ppLabel434: TppLabel
@@ -15362,10 +15999,10 @@ object RptTecnica: TRptTecnica
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
+        mmHeight = 4129
         mmLeft = 127265
         mmTop = 156634
-        mmWidth = 11783
+        mmWidth = 11762
         BandType = 0
       end
       object ppLabel464: TppLabel
@@ -15823,10 +16460,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 11959
+        mmHeight = 4129
+        mmLeft = 11921
         mmTop = 205317
-        mmWidth = 25612
+        mmWidth = 25650
         BandType = 0
       end
       object ppLabel473: TppLabel
@@ -15857,10 +16494,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 36019
+        mmHeight = 4129
+        mmLeft = 36069
         mmTop = 205052
-        mmWidth = 26952
+        mmWidth = 26902
         BandType = 0
       end
       object ppLabel435: TppLabel
@@ -16142,11 +16779,11 @@ object RptTecnica: TRptTecnica
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
     DeviceType = 'Screen'
-    Left = 131
-    Top = 252
+    Left = 555
+    Top = 324
     Version = '6.02'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBOrcamento'
@@ -16366,10 +17003,10 @@ object RptTecnica: TRptTecnica
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
+        mmHeight = 4129
         mmLeft = 125677
         mmTop = 33338
-        mmWidth = 11783
+        mmWidth = 11762
         BandType = 0
       end
       object ppLabel320: TppLabel
@@ -16537,10 +17174,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 122819
+        mmHeight = 4129
+        mmLeft = 123031
         mmTop = 27781
-        mmWidth = 25612
+        mmWidth = 25400
         BandType = 0
       end
       object ppDBText204: TppDBText
@@ -16557,10 +17194,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEntradaAssistencia2'
-        mmHeight = 4163
-        mmLeft = 164871
+        mmHeight = 4129
+        mmLeft = 165047
         mmTop = 27781
-        mmWidth = 26952
+        mmWidth = 26776
         BandType = 0
       end
       object ppLabel327: TppLabel
@@ -17217,10 +17854,10 @@ object RptTecnica: TRptTecnica
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBOrcamento'
-        mmHeight = 4304
-        mmLeft = 168504
+        mmHeight = 4254
+        mmLeft = 168913
         mmTop = 0
-        mmWidth = 32315
+        mmWidth = 31906
         BandType = 8
       end
       object ppLabel337: TppLabel
@@ -17238,6 +17875,823 @@ object RptTecnica: TRptTecnica
         mmTop = 265
         mmWidth = 34396
         BandType = 8
+      end
+    end
+  end
+  object ppReport1: TppReport
+    AutoStop = False
+    DataPipeline = ppDBOrcamento
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.Copies = 2
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 256
+    Template.FileName = 'C:\Desenv\Fontes_BR\SyncLoja\rptEntradas.rtm'
+    DeviceType = 'Screen'
+    Left = 257
+    Top = 314
+    Version = '6.02'
+    mmColumnWidth = 0
+    DataPipelineName = 'ppDBOrcamento'
+    object ppHeaderBand16: TppHeaderBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 91811
+      mmPrintPosition = 0
+      object ppLabel321: TppLabel
+        UserName = 'Label1'
+        Caption = 'OS N'#186':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 6350
+        mmTop = 29104
+        mmWidth = 11113
+        BandType = 0
+      end
+      object ppDBText200: TppDBText
+        UserName = 'DBText1'
+        DataField = 'OSNUMERO'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 17992
+        mmTop = 29104
+        mmWidth = 23548
+        BandType = 0
+      end
+      object ppLabel322: TppLabel
+        UserName = 'Label2'
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 5292
+        mmTop = 34396
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLabel323: TppLabel
+        UserName = 'Label3'
+        Caption = 'Endere'#231'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 1323
+        mmTop = 38629
+        mmWidth = 16087
+        BandType = 0
+      end
+      object ppLabel358: TppLabel
+        UserName = 'Label4'
+        Caption = 'Bairro:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 6879
+        mmTop = 42863
+        mmWidth = 10583
+        BandType = 0
+      end
+      object ppLabel359: TppLabel
+        UserName = 'Label5'
+        Caption = 'Cidade:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 50800
+        mmTop = 42863
+        mmWidth = 12192
+        BandType = 0
+      end
+      object ppLabel360: TppLabel
+        UserName = 'Label6'
+        Caption = 'CEP:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 9260
+        mmTop = 47096
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppDBText201: TppDBText
+        UserName = 'DBText2'
+        DataField = 'NOME'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 17992
+        mmTop = 34396
+        mmWidth = 78846
+        BandType = 0
+      end
+      object ppDBText202: TppDBText
+        UserName = 'DBText3'
+        DataField = 'ENDERECO'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 17992
+        mmTop = 38629
+        mmWidth = 78846
+        BandType = 0
+      end
+      object ppDBText221: TppDBText
+        UserName = 'DBText4'
+        DataField = 'BAIRRO'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 17992
+        mmTop = 42863
+        mmWidth = 28310
+        BandType = 0
+      end
+      object ppDBText222: TppDBText
+        UserName = 'DBText5'
+        DataField = 'CIDADE'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 64029
+        mmTop = 42863
+        mmWidth = 32808
+        BandType = 0
+      end
+      object ppDBText223: TppDBText
+        UserName = 'DBText6'
+        DataField = 'CEP'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 17992
+        mmTop = 47096
+        mmWidth = 28310
+        BandType = 0
+      end
+      object ppDBText224: TppDBText
+        UserName = 'DBText7'
+        AutoSize = True
+        DataField = 'FONE1'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 4129
+        mmLeft = 64294
+        mmTop = 47096
+        mmWidth = 11762
+        BandType = 0
+      end
+      object ppLabel361: TppLabel
+        UserName = 'Label7'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 53975
+        mmTop = 47096
+        mmWidth = 8996
+        BandType = 0
+      end
+      object ppLine128: TppLine
+        UserName = 'Line2'
+        Pen.Width = 2
+        Weight = 1.5
+        mmHeight = 1323
+        mmLeft = 0
+        mmTop = 51329
+        mmWidth = 196850
+        BandType = 0
+      end
+      object ppLabel362: TppLabel
+        UserName = 'Label8'
+        Caption = 'Equipamento:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 1323
+        mmTop = 53181
+        mmWidth = 21960
+        BandType = 0
+      end
+      object ppDBText225: TppDBText
+        UserName = 'DBText8'
+        DataField = 'NUMEROSERIE'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 24871
+        mmTop = 53181
+        mmWidth = 38100
+        BandType = 0
+      end
+      object ppDBText226: TppDBText
+        UserName = 'DBText10'
+        DataField = 'DESCMODELO'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 125677
+        mmTop = 53181
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppDBText227: TppDBText
+        UserName = 'DBText11'
+        DataField = 'DESCTIPOEQUIP'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 3969
+        mmLeft = 75671
+        mmTop = 53181
+        mmWidth = 33073
+        BandType = 0
+      end
+      object ppLabel363: TppLabel
+        UserName = 'Label9'
+        Caption = 'Tipo:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 66675
+        mmTop = 53181
+        mmWidth = 7938
+        BandType = 0
+      end
+      object ppLabel364: TppLabel
+        UserName = 'Label11'
+        Caption = 'Modelo:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 111919
+        mmTop = 53181
+        mmWidth = 12700
+        BandType = 0
+      end
+      object ppLabel365: TppLabel
+        UserName = 'Label13'
+        Caption = 'Def. Alegado:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 1852
+        mmTop = 58208
+        mmWidth = 21378
+        BandType = 0
+      end
+      object ppDBMemo23: TppDBMemo
+        UserName = 'DBDEFEITOALEGADO'
+        CharWrap = False
+        DataField = 'DEFEITOALEGADO'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 10583
+        mmLeft = 24606
+        mmTop = 58208
+        mmWidth = 172509
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmLeading = 0
+      end
+      object ppRegion14: TppRegion
+        UserName = 'ppRegion3'
+        Brush.Style = bsClear
+        Caption = 'ppRegion3'
+        Pen.Style = psClear
+        Transparent = True
+        mmHeight = 21167
+        mmLeft = 1588
+        mmTop = 0
+        mmWidth = 197115
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppDBText228: TppDBText
+        UserName = 'DBText22'
+        AutoSize = True
+        DataField = 'DATAENTRADA'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 4129
+        mmLeft = 171465
+        mmTop = 29104
+        mmWidth = 25650
+        BandType = 0
+      end
+      object ppDBText229: TppDBText
+        UserName = 'DBText23'
+        AutoSize = True
+        DataField = 'HORAENTRADA'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 4129
+        mmLeft = 170213
+        mmTop = 34396
+        mmWidth = 26902
+        BandType = 0
+      end
+      object ppDBMemo24: TppDBMemo
+        UserName = 'DBDEFEITOALEGADO2'
+        CharWrap = False
+        DataField = 'DEFEITOENCONTRADO'
+        DataPipeline = ppDBEntradaAssistencia2
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBEntradaAssistencia2'
+        mmHeight = 10583
+        mmLeft = 24606
+        mmTop = 69586
+        mmWidth = 172509
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmLeading = 0
+      end
+      object ppLabel366: TppLabel
+        UserName = 'Label38'
+        Caption = 'Encontrado:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 4233
+        mmTop = 69056
+        mmWidth = 18838
+        BandType = 0
+      end
+      object ppLine130: TppLine
+        UserName = 'Line3'
+        Pen.Width = 2
+        Weight = 1.5
+        mmHeight = 1323
+        mmLeft = 794
+        mmTop = 80698
+        mmWidth = 196850
+        BandType = 0
+      end
+      object ppLabel367: TppLabel
+        UserName = 'Label18'
+        Caption = 'Pe'#231'as/Servi'#231'os.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 82021
+        mmWidth = 25400
+        BandType = 0
+      end
+      object ppLabel368: TppLabel
+        UserName = 'Label14'
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 529
+        mmTop = 87577
+        mmWidth = 11176
+        BandType = 0
+      end
+      object ppLabel369: TppLabel
+        UserName = 'Label15'
+        Caption = 'Descri'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 26723
+        mmTop = 87577
+        mmWidth = 15663
+        BandType = 0
+      end
+      object ppLabel370: TppLabel
+        UserName = 'Label16'
+        Caption = 'Quantidade'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 118269
+        mmTop = 87577
+        mmWidth = 18256
+        BandType = 0
+      end
+      object ppLabel371: TppLabel
+        UserName = 'Label19'
+        Caption = 'Vl. Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 156898
+        mmTop = 87577
+        mmWidth = 12700
+        BandType = 0
+      end
+      object ppLabel372: TppLabel
+        UserName = 'Label17'
+        Caption = 'Sub Total'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 181769
+        mmTop = 87577
+        mmWidth = 15346
+        BandType = 0
+      end
+      object ppLabel373: TppLabel
+        UserName = 'Label41'
+        Caption = 'Dt Entrada:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4064
+        mmLeft = 149225
+        mmTop = 29104
+        mmWidth = 17949
+        BandType = 0
+      end
+      object ppLabel374: TppLabel
+        UserName = 'Label42'
+        Caption = 'Hr. Entrada:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 148167
+        mmTop = 34396
+        mmWidth = 19050
+        BandType = 0
+      end
+      object ppLabel376: TppLabel
+        UserName = 'Label376'
+        Caption = 'OR'#199'AMENTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5856
+        mmLeft = 84138
+        mmTop = 26988
+        mmWidth = 35719
+        BandType = 0
+      end
+    end
+    object ppDetailBand16: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 3969
+      mmPrintPosition = 0
+      object ppDBText230: TppDBText
+        UserName = 'DBText40'
+        DataField = 'CODIGO'
+        DataPipeline = ppDBOrcamento
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBOrcamento'
+        mmHeight = 4064
+        mmLeft = 265
+        mmTop = 0
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText231: TppDBText
+        UserName = 'DBText41'
+        DataField = 'DESCRICAOITEM'
+        DataPipeline = ppDBOrcamento
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBOrcamento'
+        mmHeight = 3969
+        mmLeft = 26723
+        mmTop = 0
+        mmWidth = 89429
+        BandType = 4
+      end
+      object ppDBText232: TppDBText
+        UserName = 'DBText42'
+        DataField = 'QUANTIDADE'
+        DataPipeline = ppDBOrcamento
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBOrcamento'
+        mmHeight = 3969
+        mmLeft = 119327
+        mmTop = 0
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText233: TppDBText
+        UserName = 'DBText43'
+        DataField = 'VALOR'
+        DataPipeline = ppDBOrcamento
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBOrcamento'
+        mmHeight = 3969
+        mmLeft = 152400
+        mmTop = 0
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText234: TppDBText
+        UserName = 'DBText44'
+        DataField = 'SUBTOTAL'
+        DataPipeline = ppDBOrcamento
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBOrcamento'
+        mmHeight = 3969
+        mmLeft = 179917
+        mmTop = 0
+        mmWidth = 17198
+        BandType = 4
+      end
+    end
+    object ppSummaryBand2: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 39952
+      mmPrintPosition = 0
+      object ppLine131: TppLine
+        UserName = 'Line1'
+        Pen.Width = 2
+        Weight = 1.5
+        mmHeight = 1323
+        mmLeft = 265
+        mmTop = 6085
+        mmWidth = 196850
+        BandType = 7
+      end
+      object ppDBCalc6: TppDBCalc
+        UserName = 'DBCalc1'
+        AutoSize = True
+        DataField = 'SUBTOTAL'
+        DataPipeline = ppDBOrcamento
+        DisplayFormat = '###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'ppDBOrcamento'
+        mmHeight = 4254
+        mmLeft = 165209
+        mmTop = 1058
+        mmWidth = 31906
+        BandType = 7
+      end
+      object ppRichText5: TppRichText
+        OnPrint = ppRichText1Print
+        UserName = 'RichText1'
+        Caption = 'RichText1'
+        mmHeight = 30956
+        mmLeft = 529
+        mmTop = 7938
+        mmWidth = 196321
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppLabel375: TppLabel
+        UserName = 'Label43'
+        Caption = 'Total Pe'#231'as/Servi'#231'os:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 128852
+        mmTop = 1323
+        mmWidth = 34396
+        BandType = 7
       end
     end
   end

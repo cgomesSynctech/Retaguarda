@@ -441,6 +441,7 @@ inherited DlgUsuariosPoderes: TDlgUsuariosPoderes
       Size = 30
     end
     object C_UsuariosQ_Poderes: TDataSetField
+      DisplayWidth = 1000
       FieldName = 'Q_Poderes'
     end
   end
@@ -488,12 +489,13 @@ inherited DlgUsuariosPoderes: TDlgUsuariosPoderes
       Size = 50
     end
     object C_PermissoesPERMISSAO: TIntegerField
+      DisplayWidth = 1000
       FieldName = 'PERMISSAO'
       Required = True
     end
     object C_PermissoesSIGLA: TStringField
       FieldName = 'SIGLA'
-      Size = 10
+      Size = 1000
     end
   end
   object C_PermissoesDs: TDataSource
@@ -505,7 +507,6 @@ inherited DlgUsuariosPoderes: TDlgUsuariosPoderes
     Aggregates = <>
     DataSetField = C_UsuariosQ_Poderes
     Params = <>
-    ProviderName = 'P_Poderes'
     Left = 328
     Top = 221
     object C_PoderesUSUARIOPODER: TIntegerField
@@ -517,7 +518,7 @@ inherited DlgUsuariosPoderes: TDlgUsuariosPoderes
     end
     object C_PoderesPERMISSAO: TStringField
       FieldName = 'PERMISSAO'
-      Size = 10
+      Size = 1000
     end
     object C_PodereslkpPermisao: TStringField
       FieldKind = fkLookup
@@ -526,7 +527,7 @@ inherited DlgUsuariosPoderes: TDlgUsuariosPoderes
       LookupKeyFields = 'SIGLA'
       LookupResultField = 'DESCRICAO'
       KeyFields = 'PERMISSAO'
-      Size = 50
+      Size = 1000
       Lookup = True
     end
   end

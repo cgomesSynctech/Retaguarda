@@ -1,13 +1,13 @@
 inherited RptContasPagas: TRptContasPagas
   Left = 179
   Top = 96
-  Width = 769
+  Width = 1060
   HelpContext = 500
   Caption = 'Fornecedores / Compras'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 761
+    Width = 1052
     Gradient.ColorStart = 11775972
     inherited lbCaption: TdxfLabel
       Width = 128
@@ -15,13 +15,16 @@ inherited RptContasPagas: TRptContasPagas
       Effect3D.ShadowedColor = 11775972
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 727
+      Left = 1018
+    end
+    inherited btTemplates: TTS_SpeedButton
+      Left = 966
     end
   end
   inherited pnGrid: TPanel
-    Width = 708
+    Width = 999
     inherited pnDados: TTS_Panel
-      Width = 708
+      Width = 999
       Height = 25
       Color = 15196656
       object TS_Label1: TTS_Label
@@ -282,8 +285,8 @@ inherited RptContasPagas: TRptContasPagas
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 25
-      Width = 708
-      Height = 364
+      Width = 999
+      Height = 375
       KeyField = 'ID'
       SummaryGroups = <
         item
@@ -553,9 +556,15 @@ inherited RptContasPagas: TRptContasPagas
         RowIndex = 0
         FieldName = 'CONTADESPESA'
       end
+      object dbgConsultaCONTACAIXA: TdxDBGridColumn
+        Caption = 'Caixa ( Majoritario / Total ) '
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CONTACAIXA'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Width = 708
+      Width = 999
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -582,7 +591,9 @@ inherited RptContasPagas: TRptContasPagas
         ' F.CIDADE, '
       'F.UF, F.FONE1, F.CEP, F.FAVORECIDO, D.COMPRA, F.TIPOFAVORECIDO,'
       'f.codigo, d.obs, TC.descricao AS DESCTIPOCOBRANCA, d.indexador, '
-      'idx.descricao as descindex, ct.descricao as ContaDespesa'
+      
+        'idx.descricao as descindex, ct.descricao as ContaDespesa, ct.des' +
+        'cricao as ContaCaixa'
       'from duplicatasapagar d '
       'INNER JOIN FAVORECIDOS F ON D.FORNECEDOR = F.FAVORECIDO'
       'INNER JOIN STATUSTITULOS S ON D.STATUS = S.STATUS  '
@@ -785,6 +796,10 @@ inherited RptContasPagas: TRptContasPagas
     end
     object C_ConsultaCONTADESPESA: TStringField
       FieldName = 'CONTADESPESA'
+      Size = 50
+    end
+    object C_ConsultaCONTACAIXA: TStringField
+      FieldName = 'CONTACAIXA'
       Size = 50
     end
   end

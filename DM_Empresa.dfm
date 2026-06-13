@@ -103,6 +103,7 @@ inherited DMEmpresa: TDMEmpresa
     Top = 104
   end
   inherited C_Tabela: TClientDataSet
+    Active = True
     Left = 31
     Top = 156
     object C_TabelacmbTipoBusiness: TStringField
@@ -320,6 +321,7 @@ inherited DMEmpresa: TDMEmpresa
     Top = 7
   end
   object C_TiposBusiness: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'Q_TiposBusinessProvider'
@@ -343,6 +345,7 @@ inherited DMEmpresa: TDMEmpresa
     Top = 58
   end
   object C_UF: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_UF'
@@ -560,6 +563,10 @@ inherited DMEmpresa: TDMEmpresa
       Origin = 'EMPRESAS.FLEXDOCS'
       Size = 255
     end
+    object C_EmpresasSENHA: TStringField
+      FieldName = 'SENHA'
+      Size = 50
+    end
   end
   object Q_Empresas: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -619,7 +626,8 @@ inherited DMEmpresa: TDMEmpresa
       '  CODIGODAREVENDA = :CODIGODAREVENDA,'
       '  ALIQCREDITOSN = :ALIQCREDITOSN, '
       '  CSC = :CSC,'
-      '  FLEXDOCS = :FLEXDOCS'
+      '  FLEXDOCS = :FLEXDOCS, '
+      '  SENHA = :SENHA'
       'where'
       '  FAVORECIDO = :OLD_FAVORECIDO')
     InsertSQL.Strings = (
@@ -637,7 +645,7 @@ inherited DMEmpresa: TDMEmpresa
       
         '   ESTACOES, REVENDA, CNAE, INSCRICAO_EST_SUB, MUN_IBGE_CONTADOR' +
         ', '
-      'CODIGODAREVENDA, ALIQCREDITOSN, CSC, FLEXDOCS)'
+      'CODIGODAREVENDA, ALIQCREDITOSN, CSC, FLEXDOCS, SENHA)'
       'values'
       '  (:NUMERO, :COMPLEMENTO, :DATAINICIO, :CPF_CNPJ_CONTADOR, '
       ':CRC_CONTADOR, '
@@ -652,7 +660,7 @@ inherited DMEmpresa: TDMEmpresa
       '   :CEP_RESPONSAVEL, :BAIRRO_RESPONSAVEL, :ESTACOES, :REVENDA, '
       ':CNAE, :INSCRICAO_EST_SUB, '
       '   :MUN_IBGE_CONTADOR, :CODIGODAREVENDA, :ALIQCREDITOSN, :CSC, '
-      ':FLEXDOCS)')
+      ':FLEXDOCS, :SENHA)')
     DeleteSQL.Strings = (
       'delete from empresas'
       'where'
@@ -683,7 +691,7 @@ inherited DMEmpresa: TDMEmpresa
     DataPipeline = ppDBC_TabelaDS
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1812,6 +1820,7 @@ inherited DMEmpresa: TDMEmpresa
     Top = 78
   end
   object C_Municipios: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Municipios'

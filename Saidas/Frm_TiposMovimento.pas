@@ -292,7 +292,6 @@ type
         TS_Shape9: TTS_Shape;
         TS_DBCheckBox38: TTS_DBCheckBox;
         TS_DBCheckBox39: TTS_DBCheckBox;
-        TS_DBCheckBox40: TTS_DBCheckBox;
         cmbCstPadrao: TTS_DBLookupComboBox;
         TS_DBCheckBox41: TTS_DBCheckBox;
         TS_DBCheckBox42: TTS_DBCheckBox;
@@ -302,6 +301,18 @@ type
         cmbTiposPapeis: TComboBox;
     TS_DBCheckBox43: TTS_DBCheckBox;
     TS_DBCheckBox44: TTS_DBCheckBox;
+    TS_DBCheckBox45: TTS_DBCheckBox;
+    cmbCstPISCOFINS: TTS_DBLookupComboBox;
+    TS_DBCheckBox40: TTS_DBCheckBox;
+    TS_DBCheckBox46: TTS_DBCheckBox;
+    TS_DBCheckBox47: TTS_DBCheckBox;
+    cmbCstIPI: TTS_DBLookupComboBox;
+    TS_DBCheckBox48: TTS_DBCheckBox;
+    cmbTipoDoc2: TTS_DBPopupEdit;
+    cbCSTRTCPadrao: TTS_DBCheckBox;
+    cbClassTribRTCPadrao: TTS_DBCheckBox;
+    cmbCSTRTCPadrao: TTS_DBLookupComboBox;
+    cmbClassTribRTCPadrao: TTS_DBLookupComboBox;
         procedure FormCreate(Sender: TObject);
         procedure btLimparClick(Sender: TObject);
         procedure TS_SpeedButton1Click(Sender: TObject);
@@ -326,17 +337,23 @@ type
         procedure btComando2Click(Sender: TObject);
         procedure cmbTipoDocCloseUp(Sender: TObject; var Text: string;
             var Accept: Boolean);
+        procedure cmbTipoDoc2CloseUp(Sender: TObject; var Text: string;
+            var Accept: Boolean);
+
         procedure dbgImpressaoDblClick(Sender: TObject);
         procedure FormShow(Sender: TObject);
         procedure FormComponentAfterScroll(Sender: TObject);
         procedure cmbTipoDocPopup(Sender: TObject; const EditText: string);
+        procedure cmbTipoDoc2Popup(Sender: TObject; const EditText: string);
         procedure cmbTipoNotaFiscalChange(Sender: TObject);
         procedure TS_Label6Click(Sender: TObject);
         procedure lbTemplateBolClick(Sender: TObject);
         procedure TS_Label23Click(Sender: TObject);
         procedure tsImpressaoShow(Sender: TObject);
         procedure cmbTipoDocChange(Sender: TObject);
+        procedure cmbTipoDoc2Change(Sender: TObject);
         procedure cmbTipoDocSelectionChange(Sender: TObject);
+        procedure cmbTipoDoc2SelectionChange(Sender: TObject);
         procedure cmbTipoCobChange(Sender: TObject);
         //procedure cb15Change(Sender: TObject);
         //procedure cb16Change(Sender: TObject);
@@ -346,6 +363,8 @@ type
         procedure GetPaperNames();
         procedure GetPrinterNames();
         procedure btGravarClick(Sender: TObject);
+    procedure cbCSTRTCPadraoChange(Sender: TObject);
+    procedure cbClassTribRTCPadraoChange(Sender: TObject);
     private
         procedure MostraModelo;
         { Private declarations }
@@ -720,6 +739,32 @@ begin
         end;
     MostraModelo;
 end;
+procedure TFrmTiposMovimento.cmbTipoDoc2CloseUp(Sender: TObject;
+    var Text: string; var Accept: Boolean);
+begin
+    inherited;
+    Accept := true;
+    if DMTiposMovimento.C_Tabela.State in [dsBrowse] then
+        DMTiposMovimento.C_Tabela.Edit;
+    DMTiposMovimento.C_TabelaTIPOIMPRESSAO_OP2.Value := DMTiposMovimento.C_TiposImpressaoTipo.asString;
+    Text := DMTiposMovimento.C_TiposImpressaoTitulo.asString;
+
+    if DMTiposMovimento.C_TabelaTIPOIMPRESSAO_OP2.AsString = 'PL' then
+        begin
+            cb13.Font.Color := clWindowText;
+            cb14.Font.Color := clWindowText;
+            cb13.DisableEdit := false;
+            cb14.DisableEdit := false;
+        end
+    else
+        begin
+            cb13.Font.Color := $00A2999D;
+            cb14.Font.Color := $00A2999D;
+            cb13.DisableEdit := true;
+            cb14.DisableEdit := true;
+        end;
+    MostraModelo;
+end;
 
 procedure TFrmTiposMovimento.dbgImpressaoDblClick(Sender: TObject);
 begin
@@ -746,6 +791,10 @@ begin
             ckbSolicitacaoAlmox.Visible := True;
         end;
     cmbCstPadrao.Visible := TS_DBCheckBox40.Checked;
+    cmbCstPISCOFINS.Visible := TS_DBCheckBox46.Checked;
+    cmbCstIPI.Visible :=  TS_DBCheckBox47.Checked;
+    cmbCSTRTCPadrao.Visible := cbCSTRTCPadrao.Checked;
+    cmbClassTribRTCPadrao.Visible := cbClassTribRTCPadrao.Checked; 
 end;
 
 procedure TFrmTiposMovimento.MostraModelo;
@@ -796,6 +845,14 @@ procedure TFrmTiposMovimento.cmbTipoDocPopup(Sender: TObject;
 begin
     inherited;
     if not DMTiposMovimento.C_TiposImpressao.Locate('TIPO', DMTiposMovimento.C_TabelaTipoImpressao_OP.value, []) then
+        DMTiposMovimento.C_TiposImpressao.first;
+end;
+
+procedure TFrmTiposMovimento.cmbTipoDoc2Popup(Sender: TObject;
+    const EditText: string);
+begin
+    inherited;
+    if not DMTiposMovimento.C_TiposImpressao.Locate('TIPO', DMTiposMovimento.C_TabelaTIPOIMPRESSAO_OP2.value, []) then
         DMTiposMovimento.C_TiposImpressao.first;
 end;
 
@@ -853,8 +910,18 @@ begin
     inherited;
     MostraModelo;
 end;
+procedure TFrmTiposMovimento.cmbTipoDoc2Change(Sender: TObject);
+begin
+    inherited;
+    MostraModelo;
+end;
 
 procedure TFrmTiposMovimento.cmbTipoDocSelectionChange(Sender: TObject);
+begin
+    inherited;
+    MostraModelo;
+end;
+procedure TFrmTiposMovimento.cmbTipoDoc2SelectionChange(Sender: TObject);
 begin
     inherited;
     MostraModelo;
@@ -866,6 +933,7 @@ begin
     lbCarteira.Visible := DMTiposMovimento.C_TabelaTIPOCOB_PADRAO.Value = 3;
     cmbCarteira.Visible := DMTiposMovimento.C_TabelaTIPOCOB_PADRAO.Value = 3;
 end;
+
 
 {   Felipe - Comentado para deixar os campos checkbox com a formatação normal
 
@@ -893,6 +961,8 @@ procedure TFrmTiposMovimento.TS_DBCheckBox40Change(Sender: TObject);
 begin
     inherited;
     cmbCstPadrao.Visible := TS_DBCheckBox40.Checked;
+    cmbCstPISCOFINS.Visible := TS_DBCheckBox46.Checked;
+    cmbCstIPI.Visible :=  TS_DBCheckBox47.Checked;
 end;
 
 {Felipe - 22/05/2015    Chamada os métodos para atribuir aos combobox as impressoras instaladas no windows e o tipo de papel da impressora padrão}
@@ -967,6 +1037,22 @@ begin
     DMTiposMovimento.C_TabelaNOMEIMPRESSORA.Value := cmbImpressoras.Text;
     DMTiposMovimento.C_TabelaPAPELIMPRESSORA.Value := cmbTiposPapeis.Text;
     inherited;
+end;
+
+procedure TFrmTiposMovimento.cbCSTRTCPadraoChange(Sender: TObject);
+begin
+  inherited;
+    cmbCSTRTCPadrao.Visible := cbCSTRTCPadrao.Checked;
+    if not (cbCSTRTCPadrao.Checked) then
+      DMTiposMovimento.C_TabelaCST_RTC_PADRAO.Value := '';
+end;
+
+procedure TFrmTiposMovimento.cbClassTribRTCPadraoChange(Sender: TObject);
+begin
+  inherited;
+     cmbClassTribRTCPadrao.Visible := cbClassTribRTCPadrao.Checked;
+     if not (cbClassTribRTCPadrao.Checked) then
+       DMTiposMovimento.C_TabelaCLASSTRIB_RTC_PADRAO.Value := '';
 end;
 
 end.

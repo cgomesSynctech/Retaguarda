@@ -20,7 +20,8 @@ uses
     TS_DBHyperLinkEdit, TS_DBButtonEdit, Dlg_PopupContas, TS_DBPopupEdit,
     dxTLClms, TS_PopupMenu, TS_Shape, TS_DBSpinEdit, TS_DBImageEdit, Variants,
     BTOdeum, Placemnt, DBText, TS_DBTextEffect, dxfProgressBar, ZReport,
-    ZRCtrls, DateUtils, DelphiTwain, jpeg, clipbrd;
+    ZRCtrls, DateUtils, DelphiTwain, jpeg, clipbrd, IdBaseComponent,
+  IdComponent, IdTCPConnection, IdTCPClient, IdHTTP,MSXML2_TLB;
 
 type
     TFrmClientes = class(TFrmPadrao)
@@ -639,6 +640,8 @@ type
     ZRLabel12: TZRLabel;
     ZRLabel13: TZRLabel;
     zrData: TZRLabel;
+    IdHTTP1: TIdHTTP;
+    gridLocaisBAIRROENTREGA: TdxDBGridMaskColumn;
         procedure FormClose(Sender: TObject; var Action: TCloseAction);
         procedure FormCreate(Sender: TObject);
         procedure InformaesdeCrdito1Click(Sender: TObject);
@@ -756,6 +759,7 @@ type
     procedure BuscaCEP1Click(Sender: TObject);
     procedure sbCEPClick(Sender: TObject);
     procedure SaldodeCrdito1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
 
     protected
         DlgPopup: TDlgPopupContas;
@@ -2470,8 +2474,9 @@ end;
 procedure TFrmClientes.sbCEPClick(Sender: TObject);
 begin
   inherited;
-  dmClientes.SetCEP(DF_CEP.Text);
+  dmClientes.SetCEP2(DF_CEP.Text);
 end;
+
 
 procedure TFrmClientes.SaldodeCrdito1Click(Sender: TObject);
 begin
@@ -2486,6 +2491,14 @@ begin
 
     zrSaldoCliente.Preview;
 end;
+
+procedure TFrmClientes.Button1Click(Sender: TObject);
+begin
+ dmClientes.SetCEP2(DF_CEP.Text);
+
+end;
+
+
 
 end.
 

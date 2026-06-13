@@ -1,6 +1,6 @@
 inherited DMSaidas: TDMSaidas
-  Left = 292
-  Top = 100
+  Left = 525
+  Top = 151
   Height = 659
   Width = 1024
   inherited OpenDialog: TOpenDialog
@@ -15,7 +15,12 @@ inherited DMSaidas: TDMSaidas
     Database = DMProjeto.DB_Projeto
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
-      'Select '#9't.Saida'#9#9'as IDMESTRE,'
+      'Select '
+      't.profissional ,'
+      't.REDUCOESBASESUBST as REDUCOESBASESUBST ,'
+      'T.ICMSDESONERADO AS ICMSDESONERADO,'
+      't.CUBAGEMTOTAL AS CUBAGEMTOTAL,'
+      #9't.Saida'#9#9'as IDMESTRE,'
       #9't.Favorecido'#9'as Favorecido,'
       #9't.Numero'#9'as Numero,'
       #9't.Data'#9#9'as Data,'
@@ -190,7 +195,7 @@ inherited DMSaidas: TDMSaidas
       #9't.CARTEIRA            as  CARTEIRA,'
       #9't.NF_CUPOM           as NF_CUPOM,'
       #9't.MEDICO                 as MEDICO,'
-      't.EMPRESA'
+      '                t.EMPRESA'
       
         'from '#9'(SAIDAS t  left join FAVORECIDOS f on t.FAVORECIDO = f.FAV' +
         'ORECIDO)'
@@ -243,6 +248,8 @@ inherited DMSaidas: TDMSaidas
     ModifySQL.Strings = (
       'update SAIDAS'
       'set'
+      ' ICMSDESONERADO = :ICMSDESONERADO ,'
+      ' CUBAGEMTOTAL = :CUBAGEMTOTAL,'
       '  NUMERO = :NUMERO,'
       '  DATA = :DATA,'
       '  FAVORECIDO = :FAVORECIDO,'
@@ -345,7 +352,8 @@ inherited DMSaidas: TDMSaidas
       '  MEDICO = :MEDICO,'
       '  BAIXAESTOQUEFISCAL = :BAIXAESTOQUEFISCAL,'
       '  mensagemitem = :mensagemitem,'
-      '  EMPRESA = :EMPRESA'
+      '  EMPRESA = :EMPRESA, '
+      ' Profissional = :Profissional'
       'where  '
       '  SAIDA = :OLD_IDMESTRE and EMPRESA = :OLD_EMPRESA and PDV = '
       '  :OLD_PDV')
@@ -384,7 +392,8 @@ inherited DMSaidas: TDMSaidas
       '   VALORIPIITENS, BASECALCICMSITENS,  VALORICMSITENS, '
       'BASECALCSUBSTITENS,'
       '   TOTALPRODUTOS, COBRANCA, CARTEIRA, NF_CUPOM, MEDICO, '
-      'BAIXAESTOQUEFISCAL, mensagemitem, IMPORTACAO, EMPRESA)'
+      'BAIXAESTOQUEFISCAL, mensagemitem, IMPORTACAO, EMPRESA, '
+      'CUBAGEMTOTAL, ICMSDESONERADO, PROFISSIONAL )'
       'values'
       '  (:IDMESTRE, :NUMERO, :DATA, :FAVORECIDO, :OBS, :DESCONTO,'
       '   :PLANOPAGAMENTO, :VENDEDOR, :FRETE, :TOTAL, :TIPOENTREGA,'
@@ -420,7 +429,8 @@ inherited DMSaidas: TDMSaidas
       '   :VALORIPIITENS, :BASECALCICMSITENS,  :VALORICMSITENS, '
       ':BASECALCSUBSTITENS,'
       '   :TOTALPRODUTOS, :COBRANCA, :CARTEIRA, :NF_CUPOM, :MEDICO ,'
-      ':BAIXAESTOQUEFISCAL , :mensagemitem, :IMPORTACAO, :EMPRESA)')
+      ':BAIXAESTOQUEFISCAL , :mensagemitem, :IMPORTACAO, :EMPRESA, '
+      ':CUBAGEMTOTAL, :ICMSDESONERADO, :PROFISSIONAL  )')
     DeleteSQL.Strings = (
       'delete from SAIDAS'
       'where'
@@ -686,6 +696,7 @@ inherited DMSaidas: TDMSaidas
     end
     object C_TabelaDESCNUMERO: TStringField [112]
       FieldName = 'DESCNUMERO'
+      LookupDataSet = DMDigitacaoItens.C_Itens
       Origin = 'SAIDAS.DESCNUMERO'
       Size = 10
     end
@@ -1076,6 +1087,43 @@ inherited DMSaidas: TDMSaidas
       Origin = 'FAVORECIDOS.F_PESSOA_FJ'
       Size = 1
     end
+    object C_TabelaCUBAGEMTOTAL: TBCDField
+      FieldName = 'CUBAGEMTOTAL'
+      Origin = 'SAIDAS.CUBAGEMTOTAL'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaICMSDESONERADO: TFloatField
+      FieldName = 'ICMSDESONERADO'
+      Origin = 'SAIDAS.ICMSDESONERADO'
+    end
+    object C_TabelaREDUCOESBASESUBST: TFloatField
+      FieldName = 'REDUCOESBASESUBST'
+      Origin = 'SAIDAS.REDUCOESBASESUBST'
+    end
+    object C_TabelaPROFISSIONAL: TIntegerField
+      FieldName = 'PROFISSIONAL'
+      Origin = 'SAIDAS.PROFISSIONAL'
+    end
+    object C_TabelalkProfissional: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkProfissional'
+      LookupDataSet = C_Profissional
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NOME'
+      KeyFields = 'PROFISSIONAL'
+      Size = 40
+      Lookup = True
+    end
+    object C_TabelalkEntrega: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkEntrega'
+      LookupDataSet = C_entrega
+      LookupKeyFields = 'DESCRICAO'
+      LookupResultField = 'ENTREGA'
+      KeyFields = 'LOCALENTREGA'
+      Lookup = True
+    end
   end
   inherited C_TabelaDS: TDataSource
     Left = 23
@@ -1090,6 +1138,8 @@ inherited DMSaidas: TDMSaidas
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
       'Select '
+      't.CUSTOMANUAL,'
+      'T.CUBAGEMTOTALITEM,'
       't.SaidaItem    as IDITEM,'
       't.Saida        as IDMestre,'
       't.Sequencia    as Sequencia,'
@@ -1224,7 +1274,9 @@ inherited DMSaidas: TDMSaidas
       't.RATEIOFRETE,'
       'T.RATEIOSEGURO,'
       'T.QUANTIDADEVOLUME,'
-      'T.PRECOCUSTOLICITACAO'
+      'T.PRECOCUSTOLICITACAO, '
+      't.cstibs, '
+      't.classtrib'
       'from    (((SAIDASITENS t  LEFT JOIN  ITENS I on I.ITEM = t.ITEM)'
       '    left join UNIDADES u on I.Unidade = u.Unidade)'
       '    left join GRUPOS g on g.Grupo = i.Grupo)'
@@ -1236,6 +1288,8 @@ inherited DMSaidas: TDMSaidas
     ModifySQL.Strings = (
       'update SAIDASITENS'
       'set'
+      'CUSTOMANUAL = :CUSTOMANUAL,'
+      ' CUBAGEMTOTALITEM = :CUBAGEMTOTALITEM,'
       '  SEQUENCIA = :SEQUENCIA,'
       '  DESCRICAO = :DESCRICAO,'
       '  QUANTIDADE = :QUANTIDADE,'
@@ -1310,7 +1364,9 @@ inherited DMSaidas: TDMSaidas
       '  RATEIODESPESAS = :RATEIODESPESAS,'
       '  RATEIOFRETE = :RATEIOFRETE ,'
       '  RATEIOSEGURO = :RATEIOSEGURO,'
-      '  QUANTIDADEVOLUME = :QUANTIDADEVOLUME'
+      '  QUANTIDADEVOLUME = :QUANTIDADEVOLUME, '
+      ' CSTIBS = :CSTIBS, '
+      ' CLASSTRIB = :CLASSTRIB'
       'Where'
       
         '  SaidaItem = :OLD_IDITEM and SAIDA = :OLD_IDMESTRE and EMPRESA ' +
@@ -1338,7 +1394,9 @@ inherited DMSaidas: TDMSaidas
       '  CSTPISCOFINS,   ALIQPIS,   ALIQCOFINS,   CSTIPI,   PDESCONTO, '
       'PDV, IMPORTACAO, PCOMISSAO,   EMPRESA, SITUACAO,VALORPISPROD,'
       '  VALORCOFINSPROD,RATEIODESPESAS,RATEIOFRETE,RATEIOSEGURO, '
-      'QUANTIDADEVOLUME )'
+      
+        'QUANTIDADEVOLUME, CUBAGEMTOTALITEM, CUSTOMANUAL,CSTIBS,  CLASSTR' +
+        'IB)'
       'values'
       '  (:IDITEM, :IDMESTRE, :SEQUENCIA, :DESCRICAO, :QUANTIDADE,'
       '   :PRECO, :ITEM, :USOTIPOITEM, :SUBTOTALITEM, :ORDEM,'
@@ -1365,7 +1423,8 @@ inherited DMSaidas: TDMSaidas
         ' '
       ':PDV, :IMPORTACAO, :PCOMISSAO,  :EMPRESA, '
       ':SITUACAO,:VALORPISPROD,:VALORCOFINSPROD,:RATEIODESPESAS,'
-      ':RATEIOFRETE,:RATEIOSEGURO, :QUANTIDADEVOLUME)')
+      ':RATEIOFRETE,:RATEIOSEGURO, :QUANTIDADEVOLUME, '
+      ':CUBAGEMTOTALITEM, :CUSTOMANUAL, :CSTIBS,  :CLASSTRIB)')
     DeleteSQL.Strings = (
       'delete from SAIDASITENS'
       'where'
@@ -1539,40 +1598,40 @@ inherited DMSaidas: TDMSaidas
     end
     inherited C_ItensHASCHILDREN: TStringField [54]
     end
-    object C_ItensTABELAPRECO: TIntegerField
+    object C_ItensTABELAPRECO: TIntegerField [55]
       FieldName = 'TABELAPRECO'
       Origin = 'SAIDASITENS.TABELAPRECO'
     end
-    object C_ItenscfBaixoEstoque: TFloatField
+    object C_ItenscfBaixoEstoque: TFloatField [56]
       FieldKind = fkInternalCalc
       FieldName = 'cfBaixoEstoque'
     end
-    object C_ItensCONTAVENDA: TIntegerField
+    object C_ItensCONTAVENDA: TIntegerField [57]
       FieldName = 'CONTAVENDA'
       Origin = 'SAIDASITENS.CONTAVENDA'
     end
-    object C_ItensTAXAVEL: TStringField
+    object C_ItensTAXAVEL: TStringField [58]
       FieldName = 'TAXAVEL'
       Origin = 'SAIDASITENS.TAXAVEL'
       Size = 1
     end
-    object C_ItensQ_SaidasItensFilhos: TDataSetField
+    object C_ItensQ_SaidasItensFilhos: TDataSetField [59]
       FieldName = 'Q_SaidasItensFilhos'
     end
-    object C_ItensOrdemMontagem: TStringField
+    object C_ItensOrdemMontagem: TStringField [60]
       FieldName = 'OrdemMontagem'
       Origin = 'SAIDASITENS.ORDEMMONTAGEM'
       Size = 1
     end
-    object C_ItensPRODUCAO: TIntegerField
+    object C_ItensPRODUCAO: TIntegerField [61]
       FieldName = 'PRODUCAO'
       Origin = 'SAIDASITENS.PRODUCAO'
     end
-    object C_ItensFUNCPRODUCAO: TIntegerField
+    object C_ItensFUNCPRODUCAO: TIntegerField [62]
       FieldName = 'FUNCPRODUCAO'
       Origin = 'SAIDASITENS.FUNCPRODUCAO'
     end
-    object C_ItenslkFuncProducao: TStringField
+    object C_ItenslkFuncProducao: TStringField [63]
       FieldKind = fkLookup
       FieldName = 'lkFuncProducao'
       LookupDataSet = C_Funcs
@@ -1582,146 +1641,146 @@ inherited DMSaidas: TDMSaidas
       Size = 25
       Lookup = True
     end
-    object C_ItensCHAVEPRODUCAOFUNC: TIntegerField
+    object C_ItensCHAVEPRODUCAOFUNC: TIntegerField [64]
       FieldName = 'CHAVEPRODUCAOFUNC'
       Origin = 'PRODUCOESFUNC.CHAVEPRODUCAOFUNC'
     end
-    object C_ItensCOLUNA1: TStringField
+    object C_ItensCOLUNA1: TStringField [65]
       FieldName = 'COLUNA1'
       Origin = 'SAIDASITENS.COLUNA1'
     end
-    object C_ItensCOLUNA2: TStringField
+    object C_ItensCOLUNA2: TStringField [66]
       FieldName = 'COLUNA2'
       Origin = 'SAIDASITENS.COLUNA2'
     end
-    object C_ItensCOLUNA3: TStringField
+    object C_ItensCOLUNA3: TStringField [67]
       FieldName = 'COLUNA3'
       Origin = 'SAIDASITENS.COLUNA3'
     end
-    object C_ItensCOLUNA4: TStringField
+    object C_ItensCOLUNA4: TStringField [68]
       FieldName = 'COLUNA4'
       Origin = 'SAIDASITENS.COLUNA4'
     end
-    object C_ItenscfValorMaxDesconto: TFloatField
+    object C_ItenscfValorMaxDesconto: TFloatField [69]
       FieldKind = fkInternalCalc
       FieldName = 'cfValorMaxDesconto'
     end
-    object C_ItensENTRADAITEM: TIntegerField
+    object C_ItensENTRADAITEM: TIntegerField [70]
       FieldName = 'ENTRADAITEM'
       Origin = 'SAIDASITENS.ENTRADAITEM'
     end
-    object C_ItensDESPESA: TIntegerField
+    object C_ItensDESPESA: TIntegerField [71]
       FieldName = 'DESPESA'
       Origin = 'SAIDASITENS.DESPESA'
     end
-    object C_ItensQ_Mesclagens: TDataSetField
+    object C_ItensQ_Mesclagens: TDataSetField [72]
       FieldName = 'Q_Mesclagens'
     end
-    object C_ItensMESCLADO: TStringField
+    object C_ItensMESCLADO: TStringField [73]
       FieldName = 'MESCLADO'
       Origin = 'SAIDASITENS.MESCLADO'
       Size = 1
     end
-    object C_ItensTrocouItem: TBooleanField
+    object C_ItensTrocouItem: TBooleanField [74]
       FieldKind = fkInternalCalc
       FieldName = 'TrocouItem'
     end
-    object C_ItensOLDITEM: TIntegerField
+    object C_ItensOLDITEM: TIntegerField [75]
       FieldName = 'OLDITEM'
       Origin = 'SAIDASITENS.OLDITEM'
     end
-    object C_ItensUltrapassouMesclagem: TBooleanField
+    object C_ItensUltrapassouMesclagem: TBooleanField [76]
       FieldKind = fkInternalCalc
       FieldName = 'UltrapassouMesclagem'
     end
-    object C_ItensFOTOGRUPO: TStringField
+    object C_ItensFOTOGRUPO: TStringField [77]
       FieldName = 'FOTOGRUPO'
       Origin = 'GRUPOS.FOTOGRUPO'
       Size = 255
     end
-    object C_ItensSTATUS: TStringField
+    object C_ItensSTATUS: TStringField [78]
       FieldName = 'STATUS'
       Origin = 'SAIDASITENS.STATUS'
       Size = 1
     end
-    object C_ItensSTATUSOLD: TStringField
+    object C_ItensSTATUSOLD: TStringField [79]
       FieldName = 'STATUSOLD'
       Origin = 'SAIDASITENS.STATUSOLD'
       Size = 1
     end
-    object C_ItensNUMEROLOTE: TStringField
+    object C_ItensNUMEROLOTE: TStringField [80]
       FieldName = 'NUMEROLOTE'
       Origin = 'SAIDASITENS.NUMEROLOTE'
       OnValidate = C_ItensNUMEROLOTEValidate
       Size = 12
     end
-    object C_ItensUNIDADE: TStringField
+    object C_ItensUNIDADE: TStringField [81]
       FieldName = 'UNIDADE'
       Origin = 'SAIDASITENS.UNIDADE'
       OnChange = C_ItensUNIDADEChange
       OnValidate = C_ItensUNIDADEValidate
       Size = 6
     end
-    object C_ItensPROMOCAO: TStringField
+    object C_ItensPROMOCAO: TStringField [82]
       FieldName = 'PROMOCAO'
       Origin = 'SAIDASITENS.PROMOCAO'
       Size = 1
     end
-    object C_ItensBAIXAESTOQUE: TStringField
+    object C_ItensBAIXAESTOQUE: TStringField [83]
       FieldName = 'BAIXAESTOQUE'
       Origin = 'SAIDASITENS.BAIXAESTOQUE'
       Size = 1
     end
-    object C_ItensALMOXARIFADO: TIntegerField
+    object C_ItensALMOXARIFADO: TIntegerField [84]
       FieldName = 'ALMOXARIFADO'
       Origin = 'SAIDASITENS.ALMOXARIFADO'
     end
-    object C_ItensDESCRICAOCOMPLEMENTAR: TStringField
+    object C_ItensDESCRICAOCOMPLEMENTAR: TStringField [85]
       FieldName = 'DESCRICAOCOMPLEMENTAR'
       Origin = 'SAIDASITENS.DESCRICAOCOMPLEMENTAR'
       Size = 255
     end
-    object C_ItensSITUACAOECF: TStringField
+    object C_ItensSITUACAOECF: TStringField [86]
       FieldName = 'SITUACAOECF'
       Origin = 'SAIDASITENS.SITUACAOECF'
       OnChange = C_ItensSITUACAOECFChange
       Size = 1
     end
-    object C_ItensNUMEROITEM: TStringField
+    object C_ItensNUMEROITEM: TStringField [87]
       FieldName = 'NUMEROITEM'
       Origin = 'SAIDASITENS.NUMEROITEM'
       Size = 5
     end
-    object C_ItensREGISTRO: TStringField
+    object C_ItensREGISTRO: TStringField [88]
       FieldName = 'REGISTRO'
       Origin = 'SAIDASITENS.REGISTRO'
       Size = 15
     end
-    object C_ItensCFOPNOTA: TStringField
+    object C_ItensCFOPNOTA: TStringField [89]
       FieldName = 'CFOPNOTA'
       Origin = 'SAIDASITENS.CFOPNOTA'
       Size = 4
     end
-    object C_ItensDATACONTATO: TDateField
+    object C_ItensDATACONTATO: TDateField [90]
       FieldName = 'DATACONTATO'
       Origin = 'SAIDASITENS.DATACONTATO'
     end
-    object C_ItensBAIXAESTOQUEFISCAL: TStringField
+    object C_ItensBAIXAESTOQUEFISCAL: TStringField [91]
       FieldName = 'BAIXAESTOQUEFISCAL'
       Origin = 'SAIDASITENS.BAIXAESTOQUEFISCAL'
       FixedChar = True
       Size = 1
     end
-    object C_ItensCFOPCST: TStringField
+    object C_ItensCFOPCST: TStringField [92]
       FieldName = 'CFOPCST'
       Origin = 'SAIDASITENS.CFOPCST'
       Size = 4
     end
-    object C_ItensIDTRIBFEDERAL: TIntegerField
+    object C_ItensIDTRIBFEDERAL: TIntegerField [93]
       FieldName = 'IDTRIBFEDERAL'
       Origin = 'SAIDASITENS.IDTRIBFEDERAL'
     end
-    object C_ItenslkUnidade: TStringField
+    object C_ItenslkUnidade: TStringField [94]
       FieldKind = fkLookup
       FieldName = 'lkUnidade'
       LookupDataSet = C_Unidades
@@ -1732,7 +1791,7 @@ inherited DMSaidas: TDMSaidas
       Size = 6
       Lookup = True
     end
-    object C_ItenslkAlmox: TStringField
+    object C_ItenslkAlmox: TStringField [95]
       FieldKind = fkLookup
       FieldName = 'lkAlmox'
       LookupDataSet = C_Almoxarifado
@@ -1742,7 +1801,7 @@ inherited DMSaidas: TDMSaidas
       Size = 30
       Lookup = True
     end
-    object C_ItenslkSitECF: TStringField
+    object C_ItenslkSitECF: TStringField [96]
       FieldKind = fkLookup
       FieldName = 'lkSitECF'
       LookupDataSet = C_SitECF
@@ -1751,7 +1810,7 @@ inherited DMSaidas: TDMSaidas
       KeyFields = 'SITUACAOECF'
       Lookup = True
     end
-    object C_ItenslkCFOP: TStringField
+    object C_ItenslkCFOP: TStringField [97]
       DisplayWidth = 4
       FieldKind = fkLookup
       FieldName = 'lkCFOP'
@@ -1762,252 +1821,252 @@ inherited DMSaidas: TDMSaidas
       Size = 3
       Lookup = True
     end
-    object C_ItensicPercComissao: TFloatField
+    object C_ItensicPercComissao: TFloatField [98]
       FieldKind = fkInternalCalc
       FieldName = 'icPercComissao'
     end
-    object C_ItensicFoto: TStringField
+    object C_ItensicFoto: TStringField [99]
       FieldKind = fkInternalCalc
       FieldName = 'icFoto'
       Size = 50
     end
-    object C_ItensicPercDesconto: TFloatField
+    object C_ItensicPercDesconto: TFloatField [100]
       FieldKind = fkInternalCalc
       FieldName = 'icPercDesconto'
     end
-    object C_ItensicGrupoDesconto: TStringField
+    object C_ItensicGrupoDesconto: TStringField [101]
       FieldKind = fkInternalCalc
       FieldName = 'icGrupoDesconto'
       Size = 5
     end
-    object C_ItensCSTPISCOFINS: TStringField
+    object C_ItensCSTPISCOFINS: TStringField [102]
       FieldName = 'CSTPISCOFINS'
       Origin = 'SAIDASITENS.CSTPISCOFINS'
       Size = 2
     end
-    object C_ItensI_CODIGOBARRAS: TStringField
+    object C_ItensI_CODIGOBARRAS: TStringField [103]
       FieldName = 'I_CODIGOBARRAS'
       Origin = 'ITENS.I_CODIGOBARRAS'
       Size = 13
     end
-    object C_ItensPDV: TIntegerField
+    object C_ItensPDV: TIntegerField [104]
       FieldName = 'PDV'
       Origin = 'SAIDASITENS.PDV'
       Required = True
     end
-    object C_ItensIMPORTACAO: TIntegerField
+    object C_ItensIMPORTACAO: TIntegerField [105]
       FieldName = 'IMPORTACAO'
       Origin = 'SAIDASITENS.IMPORTACAO'
       Required = True
     end
-    object C_ItensCST: TStringField
+    object C_ItensCST: TStringField [106]
       FieldName = 'CST'
       Origin = 'SAIDASITENS.CST'
       Size = 3
     end
-    object C_ItensEMPRESA: TIntegerField
+    object C_ItensEMPRESA: TIntegerField [107]
       FieldName = 'EMPRESA'
       Origin = 'SAIDASITENS.EMPRESA'
       Required = True
     end
-    object C_ItensSITUACAO: TStringField
+    object C_ItensSITUACAO: TStringField [108]
       FieldName = 'SITUACAO'
       Origin = 'SAIDASITENS.SITUACAO'
       Size = 32
     end
-    object C_ItensI_CLASFISCAL: TStringField
+    object C_ItensI_CLASFISCAL: TStringField [109]
       FieldName = 'I_CLASFISCAL'
       Origin = 'ITENS.I_CLASFISCAL'
       Size = 15
     end
-    object C_ItensI_IDENTIFICACAO: TStringField
+    object C_ItensI_IDENTIFICACAO: TStringField [110]
       FieldName = 'I_IDENTIFICACAO'
       Origin = 'ITENS.I_IDENTIFICACAO'
       Size = 1
     end
-    object C_ItensI_ITEM: TIntegerField
+    object C_ItensI_ITEM: TIntegerField [111]
       FieldName = 'I_ITEM'
       Origin = 'ITENS.I_ITEM'
     end
-    object C_ItensCalcSubTotalPrecoLicitacao: TFloatField
+    object C_ItensCalcSubTotalPrecoLicitacao: TFloatField [112]
       FieldKind = fkCalculated
       FieldName = 'CalcSubTotalPrecoLicitacao'
       Calculated = True
     end
-    object C_ItensDifSubTotalLicitacao: TFloatField
+    object C_ItensDifSubTotalLicitacao: TFloatField [113]
       FieldKind = fkCalculated
       FieldName = 'DifSubTotalLicitacao'
       Calculated = True
     end
-    object C_ItensPercLucroLicitacao: TStringField
+    object C_ItensPercLucroLicitacao: TStringField [114]
       FieldKind = fkCalculated
       FieldName = 'PercLucroLicitacao'
       EditMask = '###### %;1;'
       Size = 15
       Calculated = True
     end
-    object C_ItensSUBTOTALITEM: TFloatField
+    object C_ItensSUBTOTALITEM: TFloatField [115]
       FieldName = 'SUBTOTALITEM'
       Origin = 'SAIDASITENS.SUBTOTALITEM'
     end
-    object C_ItensPRECOTABELA: TFloatField
+    object C_ItensPRECOTABELA: TFloatField [116]
       FieldName = 'PRECOTABELA'
       Origin = 'SAIDASITENS.PRECOTABELA'
     end
-    object C_ItensRATEIODESCONTO: TFloatField
+    object C_ItensRATEIODESCONTO: TFloatField [117]
       FieldName = 'RATEIODESCONTO'
       Origin = 'SAIDASITENS.RATEIODESCONTO'
     end
-    object C_ItensCUSTOMEDIO: TFloatField
+    object C_ItensCUSTOMEDIO: TFloatField [118]
       FieldName = 'CUSTOMEDIO'
       Origin = 'SAIDASITENS.CUSTOMEDIO'
     end
-    object C_ItensMAXDESCONTO: TFloatField
+    object C_ItensMAXDESCONTO: TFloatField [119]
       FieldName = 'MAXDESCONTO'
       Origin = 'SAIDASITENS.MAXDESCONTO'
     end
-    object C_ItensOLDQUANTIDADE: TFloatField
+    object C_ItensOLDQUANTIDADE: TFloatField [120]
       FieldName = 'OLDQUANTIDADE'
       Origin = 'SAIDASITENS.OLDQUANTIDADE'
     end
-    object C_ItensCUSTOCONTABIL: TFloatField
+    object C_ItensCUSTOCONTABIL: TFloatField [121]
       FieldName = 'CUSTOCONTABIL'
       Origin = 'SAIDASITENS.CUSTOCONTABIL'
     end
-    object C_ItensQTDFATURADA: TFloatField
+    object C_ItensQTDFATURADA: TFloatField [122]
       FieldName = 'QTDFATURADA'
       Origin = 'SAIDASITENS.QTDFATURADA'
     end
-    object C_ItensQTDMONTAGEM: TFloatField
+    object C_ItensQTDMONTAGEM: TFloatField [123]
       FieldName = 'QTDMONTAGEM'
       Origin = 'SAIDASITENS.QTDMONTAGEM'
     end
-    object C_ItensFATOR: TFloatField
+    object C_ItensFATOR: TFloatField [124]
       FieldName = 'FATOR'
       Origin = 'SAIDASITENS.FATOR'
     end
-    object C_ItensOLDPRECO: TFloatField
+    object C_ItensOLDPRECO: TFloatField [125]
       FieldName = 'OLDPRECO'
       Origin = 'SAIDASITENS.OLDPRECO'
     end
-    object C_ItensOLDUNIDADE: TStringField
+    object C_ItensOLDUNIDADE: TStringField [126]
       FieldName = 'OLDUNIDADE'
       Origin = 'SAIDASITENS.OLDUNIDADE'
       Size = 6
     end
-    object C_ItensDESCONTO: TFloatField
+    object C_ItensDESCONTO: TFloatField [127]
       FieldName = 'DESCONTO'
       Origin = 'SAIDASITENS.DESCONTO'
     end
-    object C_ItensPDESCONTO: TFloatField
+    object C_ItensPDESCONTO: TFloatField [128]
       FieldName = 'PDESCONTO'
       Origin = 'SAIDASITENS.PDESCONTO'
       OnChange = C_ItensPDESCONTOChange
     end
-    object C_ItensPRECOSEMPROMOCAO: TFloatField
+    object C_ItensPRECOSEMPROMOCAO: TFloatField [129]
       FieldName = 'PRECOSEMPROMOCAO'
       Origin = 'SAIDASITENS.PRECOSEMPROMOCAO'
     end
-    object C_ItensBASECALCICMSPROD: TFloatField
+    object C_ItensBASECALCICMSPROD: TFloatField [130]
       FieldName = 'BASECALCICMSPROD'
       Origin = 'SAIDASITENS.BASECALCICMSPROD'
     end
-    object C_ItensIPI: TFloatField
+    object C_ItensIPI: TFloatField [131]
       FieldName = 'IPI'
       Origin = 'SAIDASITENS.IPI'
     end
-    object C_ItensALIQICMS: TFloatField
+    object C_ItensALIQICMS: TFloatField [132]
       FieldName = 'ALIQICMS'
       Origin = 'SAIDASITENS.ALIQICMS'
     end
-    object C_ItensREDUCAOCST: TFloatField
+    object C_ItensREDUCAOCST: TFloatField [133]
       FieldName = 'REDUCAOCST'
       Origin = 'SAIDASITENS.REDUCAOCST'
     end
-    object C_ItensBASECALCSUBSTPROD: TFloatField
+    object C_ItensBASECALCSUBSTPROD: TFloatField [134]
       FieldName = 'BASECALCSUBSTPROD'
       Origin = 'SAIDASITENS.BASECALCSUBSTPROD'
     end
-    object C_ItensVALORIPIPROD: TFloatField
+    object C_ItensVALORIPIPROD: TFloatField [135]
       FieldName = 'VALORIPIPROD'
       Origin = 'SAIDASITENS.VALORIPIPROD'
     end
-    object C_ItensVALORICMSPROD: TFloatField
+    object C_ItensVALORICMSPROD: TFloatField [136]
       FieldName = 'VALORICMSPROD'
       Origin = 'SAIDASITENS.VALORICMSPROD'
     end
-    object C_ItensVALORICMSSUBSTPROD: TFloatField
+    object C_ItensVALORICMSSUBSTPROD: TFloatField [137]
       FieldName = 'VALORICMSSUBSTPROD'
       Origin = 'SAIDASITENS.VALORICMSSUBSTPROD'
     end
-    object C_ItensVALORISENTASPROD: TFloatField
+    object C_ItensVALORISENTASPROD: TFloatField [138]
       FieldName = 'VALORISENTASPROD'
       Origin = 'SAIDASITENS.VALORISENTASPROD'
     end
-    object C_ItensALIQPIS: TFloatField
+    object C_ItensALIQPIS: TFloatField [139]
       FieldName = 'ALIQPIS'
       Origin = 'SAIDASITENS.ALIQPIS'
     end
-    object C_ItensALIQCOFINS: TFloatField
+    object C_ItensALIQCOFINS: TFloatField [140]
       FieldName = 'ALIQCOFINS'
       Origin = 'SAIDASITENS.ALIQCOFINS'
     end
-    object C_ItensCSTIPI: TStringField
+    object C_ItensCSTIPI: TStringField [141]
       FieldName = 'CSTIPI'
       Origin = 'SAIDASITENS.CSTIPI'
       Size = 2
     end
-    object C_ItensALIQIPI: TFloatField
+    object C_ItensALIQIPI: TFloatField [142]
       FieldName = 'ALIQIPI'
       Origin = 'SAIDASITENS.ALIQIPI'
     end
-    object C_ItensPCOMISSAO: TFloatField
+    object C_ItensPCOMISSAO: TFloatField [143]
       FieldName = 'PCOMISSAO'
       Origin = 'SAIDASITENS.PCOMISSAO'
     end
-    object C_ItensDESCONTOMAXIMOGRUPO: TBCDField
+    object C_ItensDESCONTOMAXIMOGRUPO: TBCDField [144]
       FieldName = 'DESCONTOMAXIMOGRUPO'
       Origin = 'GRUPOS.DESCONTOMAXIMOGRUPO'
       Precision = 18
       Size = 2
     end
-    object C_ItensVALORPISPROD: TFloatField
+    object C_ItensVALORPISPROD: TFloatField [145]
       FieldName = 'VALORPISPROD'
       Origin = 'SAIDASITENS.VALORPISPROD'
     end
-    object C_ItensVALORCOFINSPROD: TFloatField
+    object C_ItensVALORCOFINSPROD: TFloatField [146]
       FieldName = 'VALORCOFINSPROD'
       Origin = 'SAIDASITENS.VALORCOFINSPROD'
     end
-    object C_ItensRATEIODESPESAS: TFloatField
+    object C_ItensRATEIODESPESAS: TFloatField [147]
       FieldName = 'RATEIODESPESAS'
       Origin = 'SAIDASITENS.RATEIODESPESAS'
     end
-    object C_ItensRATEIOFRETE: TFloatField
+    object C_ItensRATEIOFRETE: TFloatField [148]
       FieldName = 'RATEIOFRETE'
       Origin = 'SAIDASITENS.RATEIOFRETE'
     end
-    object C_ItensRATEIOSEGURO: TFloatField
+    object C_ItensRATEIOSEGURO: TFloatField [149]
       FieldName = 'RATEIOSEGURO'
       Origin = 'SAIDASITENS.RATEIOSEGURO'
     end
-    object C_ItensQUANTIDADEVOLUME: TFloatField
+    object C_ItensQUANTIDADEVOLUME: TFloatField [150]
       FieldName = 'QUANTIDADEVOLUME'
       Origin = 'SAIDASITENS.QUANTIDADEVOLUME'
     end
-    object C_ItensPRECOCUSTOLICITACAO: TFloatField
+    object C_ItensPRECOCUSTOLICITACAO: TFloatField [151]
       FieldName = 'PRECOCUSTOLICITACAO'
       Origin = 'SAIDASITENS.PRECOCUSTOLICITACAO'
     end
-    object C_ItensN_USOTIPOITEM: TFloatField
+    object C_ItensN_USOTIPOITEM: TFloatField [152]
       FieldName = 'N_USOTIPOITEM'
       Origin = 'SAIDASITENS.N_USOTIPOITEM'
     end
-    object C_ItensTVA: TFloatField
+    object C_ItensTVA: TFloatField [153]
       FieldName = 'TVA'
       Origin = 'SAIDASITENS.TVA'
     end
-    object C_ItenslkCSTIPI: TStringField
+    object C_ItenslkCSTIPI: TStringField [154]
       FieldKind = fkLookup
       FieldName = 'lkCSTIPI'
       LookupDataSet = C_CSTIPI
@@ -2017,7 +2076,7 @@ inherited DMSaidas: TDMSaidas
       Size = 100
       Lookup = True
     end
-    object C_ItenslkCSTPisCofins: TStringField
+    object C_ItenslkCSTPisCofins: TStringField [155]
       FieldKind = fkLookup
       FieldName = 'lkCSTPisCofins'
       LookupDataSet = C_CST_PisCofins
@@ -2026,6 +2085,31 @@ inherited DMSaidas: TDMSaidas
       KeyFields = 'CSTPISCOFINS'
       Size = 100
       Lookup = True
+    end
+    object C_ItensicUltPrecoCliente: TCurrencyField [156]
+      FieldKind = fkInternalCalc
+      FieldName = 'icUltPrecoCliente'
+    end
+    object C_ItensCUBAGEMTOTALITEM: TBCDField [157]
+      FieldName = 'CUBAGEMTOTALITEM'
+      Origin = 'SAIDASITENS.CUBAGEMTOTALITEM'
+      Precision = 18
+      Size = 2
+    end
+    inherited C_ItensCUSTOMANUAL: TBCDField
+      Origin = 'SAIDASITENS.CUSTOMANUAL'
+    end
+    object C_ItensSubTotal_1: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'SubTotal_1'
+    end
+    object C_ItensCSTIBS: TStringField
+      FieldName = 'CSTIBS'
+      Size = 3
+    end
+    object C_ItensCLASSTRIB: TStringField
+      FieldName = 'CLASSTRIB'
+      Size = 6
     end
   end
   inherited C_ItensDS: TDataSource
@@ -2743,10 +2827,56 @@ inherited DMSaidas: TDMSaidas
       FixedChar = True
       Size = 1
     end
+    object C_TiposMovimentoCB_CSTPISCOFINSPADRAO: TStringField
+      FieldName = 'CB_CSTPISCOFINSPADRAO'
+      Origin = 'TIPOSMOVIMENTO.CB_CSTPISCOFINSPADRAO'
+      Size = 1
+    end
+    object C_TiposMovimentoCB_CSTIPIPADRAO: TStringField
+      FieldName = 'CB_CSTIPIPADRAO'
+      Origin = 'TIPOSMOVIMENTO.CB_CSTIPIPADRAO'
+      Size = 1
+    end
+    object C_TiposMovimentoCST_IPI_PADRAO: TStringField
+      FieldName = 'CST_IPI_PADRAO'
+      Origin = 'TIPOSMOVIMENTO.CST_IPI_PADRAO'
+      Size = 2
+    end
+    object C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO: TStringField
+      FieldName = 'CST_PIS_COFINS_MOVIMENTO'
+      Origin = 'TIPOSMOVIMENTO.CST_PIS_COFINS_MOVIMENTO'
+      Size = 2
+    end
+    object C_TiposMovimentoCST_RTC_PADRAO: TStringField
+      FieldName = 'CST_RTC_PADRAO'
+      Origin = 'TIPOSMOVIMENTO.CST_RTC_PADRAO'
+      Size = 3
+    end
+    object C_TiposMovimentoCB_CST_RTC_PADRAO: TStringField
+      FieldName = 'CB_CST_RTC_PADRAO'
+      Origin = 'TIPOSMOVIMENTO.CB_CST_RTC_PADRAO'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TiposMovimentoCB_CLASSTRIB_RTC_PADRAO: TStringField
+      FieldName = 'CB_CLASSTRIB_RTC_PADRAO'
+      Origin = 'TIPOSMOVIMENTO.CB_CLASSTRIB_RTC_PADRAO'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TiposMovimentoCLASSTRIB_RTC_PADRAO: TStringField
+      FieldName = 'CLASSTRIB_RTC_PADRAO'
+      Origin = 'TIPOSMOVIMENTO.CLASSTRIB_RTC_PADRAO'
+      Size = 6
+    end
   end
   inherited C_TiposMovimentoDS: TDataSource
     Left = 543
     Top = 147
+  end
+  inherited ActionList1: TActionList
+    Left = 200
+    Top = 80
   end
   object Q_PlanosPagamento: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -4617,5 +4747,139 @@ inherited DMSaidas: TDMSaidas
     DataSet = C_CST_PisCofins
     Left = 875
     Top = 291
+  end
+  object StoreProcedure: TIBStoredProc
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    StoredProcName = 'PP_ULTIMOPRECOCLIENTE'
+    Left = 743
+    Top = 50
+    ParamData = <
+      item
+        DataType = ftFloat
+        Name = 'VALOR'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'FAVORECIDO'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ITEM'
+        ParamType = ptInput
+      end>
+  end
+  object Q_Profissional: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      'Select * from Profissionais order by Nome')
+    UniDirectional = True
+    Left = 808
+    Top = 195
+  end
+  object P_Profissional: TDataSetProvider
+    DataSet = Q_Profissional
+    Constraints = True
+    Options = [poDisableInserts, poDisableEdits, poDisableDeletes]
+    Left = 808
+    Top = 247
+  end
+  object C_Profissional: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_Profissional'
+    Left = 816
+    Top = 298
+    object C_ProfissionalNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'PROFISSIONAIS.NOME'
+      Size = 40
+    end
+    object C_ProfissionalPROFISSAO: TStringField
+      FieldName = 'PROFISSAO'
+      Origin = 'PROFISSIONAIS.PROFISSAO'
+      Size = 40
+    end
+    object C_ProfissionalID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'PROFISSIONAIS.ID'
+    end
+    object C_ProfissionalEMAIL: TStringField
+      FieldName = 'E-MAIL'
+      Origin = 'PROFISSIONAIS.E-MAIL'
+      Size = 100
+    end
+    object C_ProfissionalFONE: TStringField
+      FieldName = 'FONE'
+      Origin = 'PROFISSIONAIS.FONE'
+      Size = 14
+    end
+  end
+  object Q_entrega: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      'Select  Entrega, Favorecido, Descricao'
+      'From FavorecidosEntrega'
+      'Where Favorecido = :FAVORECIDO'
+      'Order by Descricao')
+    UniDirectional = True
+    Left = 950
+    Top = 116
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'FAVORECIDO'
+        ParamType = ptUnknown
+      end>
+  end
+  object P_Entrega: TDataSetProvider
+    DataSet = Q_entrega
+    Constraints = True
+    Options = [poAllowMultiRecordUpdates, poDisableInserts, poDisableDeletes]
+    Left = 950
+    Top = 165
+  end
+  object C_entrega: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'FAVORECIDO'
+        ParamType = ptUnknown
+      end>
+    ProviderName = 'P_Entrega'
+    Left = 952
+    Top = 214
+    object C_entregaENTREGA: TIntegerField
+      FieldName = 'ENTREGA'
+      Origin = 'FAVORECIDOSENTREGA.ENTREGA'
+      Required = True
+    end
+    object C_entregaFAVORECIDO: TIntegerField
+      FieldName = 'FAVORECIDO'
+      Origin = 'FAVORECIDOSENTREGA.FAVORECIDO'
+      Required = True
+    end
+    object C_entregaDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'FAVORECIDOSENTREGA.DESCRICAO'
+      Size = 80
+    end
   end
 end

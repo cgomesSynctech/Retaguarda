@@ -13,8 +13,8 @@ uses
    Dlg_FluxoCaixa, Dlg_GrafAReceberAPagar, Dlg_ConveterPagamentosAgendados,
    Dlg_ChequesPendentesImpressao, DM_TimeCliente, Frm_TimeCliente,
    Dlg_LocalizarCheques, Rpt_ClientesHistoricoDevolucoes, Dlg_CriarEmpresa,
-   Rpt_RecebimentosDepositos, Rpt_PagamentosRetiradas, DM_PedidoRapido,
-   Dlg_Backup, Dlg_Restaurar, Dlg_RecalcularComissao, Frm_AcompanharItens,
+   Rpt_RecebimentosDepositos, Rpt_PagamentosRetiradas,
+   Dlg_Restaurar, Dlg_RecalcularComissao, Frm_AcompanharItens,
    Dlg_Opcoes, Rpt_ContasAPagar, Dlg_EscolherSaida, Dlg_Etiquetas,
    Dlg_PgtoInstantaneo,  Rpt_ChequesEmitidos, Dlg_ItensAlmox,
    DM_Entradas, Frm_Entradas, Dlg_CadastroCheques,  Dlg_Passos, Dlg_RelCaixa, Dlg_RelCaixaB,
@@ -24,7 +24,7 @@ uses
    DM_Bancos, DM_TiposMovEntrada, Frm_TiposMovEntrada, DM_Promocoes, Frm_Promocoes,
    DM_Clientes, DM_Contas, Dlg_RecalculoItensFail, rpt_payrollsporcliente,
    DM_MensagensOperacoes, Frm_MensagensOperacoes, DM_TermosContratos, Frm_TermosContratos,
-   DM_Empresa, DM_FormasPagamento, DM_Fornecedores, Frm_PedidoRapido,
+   DM_Empresa, DM_FormasPagamento, DM_Fornecedores,
    DM_Funcionarios, DM_Grupos, DM_Idiomas, Dlg_EscolherOperacao, Dlg_EscolherOperacaoEntrada,
    DM_Itens, DM_Paises, DM_Planos_Pagamento, DM_Requisicoes, Frm_Requisicoes,
    DM_TaxAgencias, DM_Taxs, Frm_AvaliandoEstimates, Frm_EstimatesAprovadas,
@@ -37,7 +37,7 @@ uses
    frm_FormasPagamento, Frm_Fornecedores, Frm_Funcionarios,
    Frm_Grupos, Frm_Idiomas, Frm_FactoryEmpresa, DM_FactoryEmpresa,
    Frm_Itens, Frm_Paises, Rpt_FactoryEmpresa, Rpt_Promocoes,
-   Frm_Planos_Pagamento, Frm_TaxAgencias, DM_Propagandas, Frm_Propagandas,
+   Frm_Planos_Pagamento, Frm_TaxAgencias, 
    Frm_Taxs, Frm_TiposBusiness, Frm_TiposEntrega,
    Frm_UFS, Frm_Unidades, DM_Mensagens, Frm_Mensagens,
    Frm_Usuarios, MDI_Projeto, Dlg_AgendDespesasFixas,
@@ -140,7 +140,7 @@ uses
    DM_NotasCupons, Frm_NotasCupons, DM_OutrasSaidas, Frm_OutrasSaidas, DM_OutrasEntradas, Frm_OutrasEntradas,
    DM_TiposLentes, Frm_TiposLentes, DM_TiposMaterial, Frm_TiposMaterial, DM_Cores, Frm_Cores,
    DM_AcertoConsigEnt, Frm_AcertoConsigEnt, DM_AcertoConsigSaid, Frm_AcertoConsigSaid, Rpt_EntradasConsig, Rpt_ItensConsignados,
-   Rpt_ItensECF, DM_Medicos, Frm_Medicos, DM_Checks, Frm_Checks, Dlg_MescSaidConsig, Dlg_MescAcertSaida, Rpt_ItensConsigSaida,
+    DM_Medicos, Frm_Medicos, DM_Checks, Frm_Checks, Dlg_MescSaidConsig, Dlg_MescAcertSaida, Rpt_ItensConsigSaida,
    Frm_CidadesBristol, DM_CidadesBristol,
    DM_InventarioEstoque, FRM_InventarioEstoque,
    DM_Veiculos, FRM_Veiculos,
@@ -222,12 +222,9 @@ uses
    Rpt_RelatorioMVAEntradas,
    Rpt_MovimentacaoItens,
    Rpt_ConsultarOS,
-   Frm_FuncionariosIndustria, DM_FuncionariosIndustria,
    Frm_TiposMaquinas, DM_TiposMaquinas,
-   Frm_MaquinasIndustria, DM_MaquinasIndustria,
-   Frm_MaodeObraIndustria, DM_MaodeObraIndustria,
    Frm_TiposInsumos, DM_TiposInsumos,
-   Frm_InsumosIndustria, DM_InsumosIndustria,
+   
    Frm_MateriasPrimasIndustria, DM_MateriasPrimasIndustria,
    Dlg_ConsultaOS,
    Frm_Producoes, DM_Producoes,
@@ -241,7 +238,14 @@ uses
    Dlg_MontagensProduto, Dlg_ConferenciaCaixa,
    Frm_Oficina, DM_Oficina,
    Rpt_Oficina, Rpt_ServicosOficina, Rpt_PedidoLucro, Rpt_VendasItens, DM_Flexdocs, Frm_Flexdocs, Dlg_ProjetoAccera,
-   dlg_ApagaEntrada, Dlg_DeletaEntrada, Dlg_DelEntrada, Frm_Embalagem, DM_Embalagem, Frm_Embalagem2, DM_Embalagem2, Frm_Embalagem3, DM_Embalagem3;
+   dlg_ApagaEntrada, Dlg_DeletaEntrada, Dlg_DelEntrada, Frm_Embalagem3, DM_Embalagem3,
+   DM_ModeloMarca, Frm_ModeloMarca, Rpt_DuplicatasPorCompetencia,
+   Rpt_Competencia, Rpt_PlanilhaContabil, Frm_FaturarEntrada, Dlg_TrocaVendaCliente, Dlg_Metas, Dlg_GraficoFaturamento, Dlg_GraficoFatComparativo,
+   DM_AjustesVolumesItens, Frm_AjustesVolumesItens, DM_Indicacao, Frm_Indicacao, Rpt_ReposicaoAvulsa, Rpt_InventarioEstoqueNovo, Rpt_EstoqueFisicoFiscal, Rpt_EntradaItem,
+   Rpt_ProdutosOrcamentos, dlg_AcompanhamentoMecanica, DM_MarcaModelo, Frm_MarcaModelo, Frm_EntradasMecanica, 
+   DM_EntradasMecanica, rpt_ProdutosComprasGrupoPai, Frm_TransfereReposicao, dlg_ValoresFechaCaixa, Rpt_InvoicesDoc2, Rpt_GerencialSaidas, Dlg_VipShop, Rpt_VendasItensSimples,
+   Rpt_VendasCartoesDocs, Rpt_ApuracaoTabela, Rpt_ItensMenosVendido;
+
 
 implementation
 
@@ -277,8 +281,6 @@ initialization
    RegisterClass(TDlgEscolherOperacao);
    RegisterClass(TDlgEscolherOperacaoEntrada);
    RegisterClass(TDlgRelatoriosImpressoras);
-   RegisterClass(TDMPropagandas);
-   RegisterClass(TFrmPropagandas);
    RegisterClass(TDlgCadastroCheques);
    RegisterClass(TRptDetalhePayroll);
    RegisterClass(TDlgTemplates);
@@ -293,8 +295,6 @@ initialization
    RegisterClass(TRptFabricantesMaisVendido);
    RegisterClass(TRptClientesPrestServ);
    RegisterClass(TRptOcorrencias);
-	 RegisterClass(TDMPedidoRapido);
-	 RegisterClass(TFrmPedidoRapido);
 	 RegisterClass(TFrmFactoryEmpresa);
    RegisterClass(TDMFactoryEmpresa);
    RegisterClass(TDMRequisicoes);
@@ -314,7 +314,6 @@ initialization
    RegisterClass(TDMDevolucoesClientes);
    RegisterClass(TDlgRelCaixa);
    RegisterClass(TDlgRelCaixaB);
-   RegisterClass(TDlgBackup);
    RegisterClass(TDMPayrolls);
    RegisterClass(TFrmPayrolls);
    RegisterClass(TDlgRestaurar);
@@ -633,7 +632,7 @@ initialization
    RegisterClass(TRptItensConsignados);
    RegisterClass(TRptParcelasChequesAReceber);
    RegisterClass(TRptContasChequesAPagar);
-   RegisterClass(TRptItensECF);
+
    RegisterClass(TDMMedicos);
    RegisterClass(TFrmMedicos);
    RegisterClass(TDlgBaixaTitulosBoletoBancario);
@@ -803,20 +802,10 @@ initialization
    RegisterClass(TRptRelatorioMVA);
    RegisterClass(TRptRelatorioMVAEntradas);
    RegisterClass(TRptConsultaOS);
-   RegisterClass(TFrmFuncionariosIndustria);
-   RegisterClass(TDMFuncionariosIndustria);
    RegisterClass(TFrmTiposMaquinas);
    RegisterClass(TDMTiposMaquinas);
-   RegisterClass(TFrmMaquinasIndustria);
-   RegisterClass(TDMMaquinasIndustria);
-   RegisterClass(TFrmMaodeObraIndustria);
-   RegisterClass(TDMMaodeObraIndustria);
    RegisterClass(TFrmTiposInsumos);
    RegisterClass(TDMTiposInsumos);
-   RegisterClass(TFrmInsumosIndustria);
-   RegisterClass(TDMInsumosIndustria);
-   RegisterClass(TFrmMateriasPrimasIndustria);
-   RegisterClass(TDMMateriasPrimasIndustria);
    RegisterClass(TDlgConsultaOS);
    RegisterClass(TFrmProducao);
    RegisterClass(TDMProducao);
@@ -847,19 +836,78 @@ initialization
    RegisterClass(TdlgApagaEntrada);
    RegisterClass(TDeletaEntrada);
    RegisterClass(TDlgDelEntrada);
-   RegisterClass(TFrmEmbalagem);
-   RegisterClass(TDMEmbalagem);
-   RegisterClass(TFrmEmbalagem2);
-   RegisterClass(TDMEmbalagem2);
    RegisterClass(TFrmEmbalagem3);
    RegisterClass(TDMEmbalagem3);
+   RegisterClass(TDMModeloMarca);
+   RegisterClass(TFrmModeloMarca);
+   RegisterClass(TRptDuplicatasPorCompetencia);
+   RegisterClass(TRptCompetencia);
+   RegisterClass(TRptPlanilhaContabil);
+   RegisterClass(TFrmFaturarEntrada);
+   RegisterClass(TDlgTrocaVendaCliente);
+   RegisterClass(TDlgMetas);
+   RegisterClass(TDlgGraficoFaturamento);
+   RegisterClass(TDlgGraficoFatComparativo);
+   RegisterClass(TDMAjustesVolumesItens);
+   RegisterClass(TFrmAjustesVolumesItens);
+   RegisterClass(TDMIndicacao);
+   RegisterClass(TFrmIndicacao);
+   RegisterClass(TRptReposicaoAvulsa);
+   RegisterClass(TRptInventarioEstoqueNovo);
+   RegisterClass(TRptEstoqueFisicoFiscal);
+   RegisterClass(TRptEntradaItem);
+   RegisterClass(TRptProdutosOrcamentos);
+   RegisterClass(TdlgAcompanhamentoMecanica);
+   RegisterClass(TDMMarcaModelo);
+   RegisterClass(TFrmMarcaModelo);
+   RegisterClass(TrptProdutosComprasGrupoPai);
+   RegisterClass(TFrmTransfereReposicao);
+   RegisterClass(TdlgValoresFechaCaixa);
+   RegisterClass(TRptInvoicesDoc2);
+   RegisterClass(TRptGerencialSaidas);
+   RegisterClass(TDlgVipShop);
+   RegisterClass(TRptVendasItensSimples);
+   RegisterClass(TRptVendasCartoesDocs);
+   RegisterClass(TRptApuracaoTabela);
+   RegisterClass(TRptItensMenosVendido);
+
    finalization
+   unRegisterClass(TRptItensMenosVendido);
+   unRegisterClass(TRptApuracaoTabela);
+   unRegisterClass(TRptVendasCartoesDocs);
+   unRegisterClass(TRptVendasItensSimples);
+   unRegisterClass(TDlgVipShop);
+   unRegisterClass(TRptGerencialSaidas);
+   unRegisterClass(TRptInvoicesDoc2);
+   unRegisterClass(TdlgValoresFechaCaixa);
+   unRegisterClass(TFrmTransfereReposicao);
+   unRegisterClass(TrptProdutosComprasGrupoPai);
+   unRegisterClass(TFrmEntradasMecanica);
+   unRegisterClass(TDMEntradasMecanica);
+   unRegisterClass(TFrmMarcaModelo);
+   unRegisterClass(TDMMarcaModelo);
+   unRegisterClass(TdlgAcompanhamentoMecanica);
+   unRegisterClass(TRptProdutosOrcamentos);
+   unRegisterClass(TRptEntradaItem);
+   unRegisterClass(TRptEstoqueFisicoFiscal);
+   unRegisterClass(TRptInventarioEstoqueNovo);
+   unRegisterClass(TRptReposicaoAvulsa);
+   unRegisterClass(TDMIndicacao);
+   unRegisterClass(TFrmIndicacao);
+   unRegisterClass(TDMAjustesVolumesItens);
+   unRegisterClass(TFrmAjustesVolumesItens);
+   unRegisterClass(TDlgGraficoFatComparativo);
+   unRegisterClass(TDlgGraficoFaturamento);
+   unRegisterClass(TDlgMetas);
+   unRegisterClass(TDlgTrocaVendaCliente);
+   unRegisterClass(TFrmFaturarEntrada);
+   unRegisterClass(TRptPlanilhaContabil);
+   unRegisterClass(TRptCompetencia);
+   unRegisterClass(TRptDuplicatasPorCompetencia);
+   unRegisterClass(TDMModeloMarca);
+   unRegisterClass(TFrmModeloMarca);
    unRegisterClass(TFrmEmbalagem3);
    unRegisterClass(TDMEmbalagem3);
-   unRegisterClass(TFrmEmbalagem2);
-   unRegisterClass(TDMEmbalagem2);
-   unRegisterClass(TFrmEmbalagem);
-   unRegisterClass(TDMEmbalagem);
    unRegisterClass(TDlgDelEntrada);
    unRegisterClass(TDeletaEntrada);
    unRegisterClass(TdlgApagaEntrada);
@@ -887,12 +935,9 @@ initialization
    unRegisterClass(TDlgPassos);
    unRegisterClass(TDlgEscolherOperacao);
    unRegisterClass(TDlgEscolherOperacaoEntrada);
-   unRegisterClass(TDMPropagandas);
-   unRegisterClass(TFrmPropagandas);
    unRegisterClass(TDlgCadastroCheques);
 	unRegisterClass(TRptDetalhePayroll);
-	unRegisterClass(TDMPedidoRapido);
-	unRegisterClass(TFrmPedidoRapido);
+
    unRegisterClass(TDMRequisicoes);
    unRegisterClass(TFrmRequisicoes);
    unRegisterClass(TDlgCriarEmpresa);
@@ -918,7 +963,6 @@ initialization
    unRegisterClass(TDlgEscolherSaida);
    unRegisterClass(TRptRecebimentosDepositos);
    unRegisterClass(TRptPagamentosRetiradas);
-   unRegisterClass(TDlgBackup);
    unRegisterClass(TDlgRestaurar);
    unRegisterClass(TFrmDevolucoesClientes);
    unRegisterClass(TDMDevolucoesClientes);
@@ -1257,7 +1301,7 @@ initialization
    unRegisterClass(TDlgRepasseEntreEmpresas);
    unRegisterClass(TRptParcelasChequesAReceber);
    unRegisterClass(TRptContasChequesAPagar);
-   unRegisterClass(TRptItensECF);
+
    unRegisterClass(TDMMedicos);
    unRegisterClass(TFrmMedicos);
    unRegisterClass(TDlgBaixaTitulosBoletoBancario);
@@ -1419,20 +1463,10 @@ initialization
    unRegisterClass(TRptRelatorioMVA);
    unRegisterClass(TRptRelatorioMVAEntradas);
    unRegisterClass(TRptConsultaOS);
-   unRegisterClass(TFrmFuncionariosIndustria);
-   unRegisterClass(TDMFuncionariosIndustria);
    unRegisterClass(TFrmTiposMaquinas);
    unRegisterClass(TDMTiposMaquinas);
-   unRegisterClass(TFrmMaquinasIndustria);
-   unRegisterClass(TDMMaquinasIndustria);
-   unRegisterClass(TFrmMaodeObraIndustria);
-   unRegisterClass(TDMMaodeObraIndustria);
    unRegisterClass(TFrmTiposInsumos);
    unRegisterClass(TDMTiposInsumos);
-   unRegisterClass(TFrmInsumosIndustria);
-   unRegisterClass(TDMInsumosIndustria);
-   unRegisterClass(TFrmMateriasPrimasIndustria);
-   unRegisterClass(TDMMateriasPrimasIndustria);
    unRegisterClass(TDlgConsultaOS);
    unRegisterClass(TFrmProducao);
    unRegisterClass(TDMProducao);
@@ -1455,5 +1489,6 @@ initialization
    unRegisterClass(TDMOficina);
    unRegisterClass(TRptOficina);
    unRegisterClass(TRptServicosOficina);
+   unRegisterClass(TFrmIndicacao);
 end.
 

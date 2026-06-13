@@ -310,6 +310,125 @@ type
     Q_TipoOperacaoTOTAL: TFloatField;
     Q_TipoOperacaoDetTOTAL: TFloatField;
     Q_TipoOperacaoDESCRICAO: TIBStringField;
+    Q_GeradasAbertas: TIBQuery;
+    IBBCDField1: TIBBCDField;
+    dbGeradasAbertas: TppDBPipeline;
+    Q_GeradasAbertasDS: TDataSource;
+    ppSubReport1: TppSubReport;
+    ppChildReport8: TppChildReport;
+    ppTitleBand9: TppTitleBand;
+    ppLabel3: TppLabel;
+    ppDetailBand9: TppDetailBand;
+    ppDBText24: TppDBText;
+    ppSummaryBand12: TppSummaryBand;
+    Q_RecebimentosParcelasanteriores: TIBQuery;
+    IBBCDField2: TIBBCDField;
+    dbRecebimentosParcelasanteriores: TppDBPipeline;
+    ppField1: TppField;
+    Q_RecebimentosParcelasanterioresDS: TDataSource;
+    Q_GeradasAbertasDet: TIBQuery;
+    dbGeradasAbertasDet: TppDBPipeline;
+    Q_GeradasAbertasDetDS: TDataSource;
+    subdbGeradasAbertasDet: TppSubReport;
+    ppChildReport12: TppChildReport;
+    ppTitleBand13: TppTitleBand;
+    ppDetailBand12: TppDetailBand;
+    ppSummaryBand8: TppSummaryBand;
+    ppDBText27: TppDBText;
+    ppDBText32: TppDBText;
+    Q_GeradasAbertasDetID: TIntegerField;
+    Q_GeradasAbertasDetRAZAO: TIBStringField;
+    Q_GeradasAbertasDetTITULO: TIBStringField;
+    Q_GeradasAbertasDetVALOR: TIBBCDField;
+    Q_GeradasAbertasDetVALORPAGO: TIBBCDField;
+    dbGeradasAbertasDetppField1: TppField;
+    dbGeradasAbertasDetppField2: TppField;
+    dbGeradasAbertasDetppField3: TppField;
+    dbGeradasAbertasDetppField4: TppField;
+    dbGeradasAbertasDetppField5: TppField;
+    ppDBText33: TppDBText;
+    Competenciaanteriores: TppSubReport;
+    ppChildReport13: TppChildReport;
+    ppTitleBand14: TppTitleBand;
+    ppDetailBand13: TppDetailBand;
+    ppLabel20: TppLabel;
+    ppDBText35: TppDBText;
+    ppSummaryBand14: TppSummaryBand;
+    subRecebimentosParcelasanterioresDet: TppSubReport;
+    ppChildReport14: TppChildReport;
+    ppTitleBand15: TppTitleBand;
+    ppDetailBand14: TppDetailBand;
+    ppSummaryBand13: TppSummaryBand;
+    Q_RecebimentosParcelasanterioresDet: TIBQuery;
+    dbRecebimentosParcelasanterioresDet: TppDBPipeline;
+    ppField2: TppField;
+    Q_RecebimentosParcelasanterioresDetDS: TDataSource;
+    dbRecebimentosParcelasanterioresDetppField1: TppField;
+    ppDBText22: TppDBText;
+    ppDBText36: TppDBText;
+    Q_RecebimentosParcelasanterioresDetRAZAO: TIBStringField;
+    Q_RecebimentosParcelasanterioresDetVALOR: TIBBCDField;
+    Q_RecebimentosParcelasanterioresDetVALORPARCELA: TIBBCDField;
+    dbRecebimentosParcelasanterioresDetppField3: TppField;
+    ppDBText37: TppDBText;
+    ppLabel9: TppLabel;
+    ppLabel11: TppLabel;
+    ppLabel23: TppLabel;
+    ppLabel39: TppLabel;
+    dbGeradasAbertasppField2: TppField;
+    ppDBText38: TppDBText;
+    ppLabel44: TppLabel;
+    ppLabel45: TppLabel;
+    ppLabel46: TppLabel;
+    ppLabel47: TppLabel;
+    Q_GeradasAbertasDetDATAPAGO: TDateField;
+    ppLabel48: TppLabel;
+    dbGeradasAbertasDetppField6: TppField;
+    ppDBText39: TppDBText;
+    Q_RecebimentosParcelasanterioresDetCOMPETENCIA: TDateField;
+    dbRecebimentosParcelasanterioresDetppField4: TppField;
+    ppLabel49: TppLabel;
+    ppDBText40: TppDBText;
+    Q_RepassesDet: TIBQuery;
+    dbRepassesDet: TppDBPipeline;
+    ppField3: TppField;
+    ppField4: TppField;
+    ppField5: TppField;
+    Q_RepassesDet_DS: TDataSource;
+    Q_Repasse: TIBQuery;
+    dbRepasse: TppDBPipeline;
+    Q_Repasse_DS: TDataSource;
+    dbRepasseppField1: TppField;
+    dbRepasseppField2: TppField;
+    dbRepasseppField3: TppField;
+    Repasses: TppSubReport;
+    ppChildReport15: TppChildReport;
+    ppTitleBand16: TppTitleBand;
+    ppLabel50: TppLabel;
+    ppDetailBand15: TppDetailBand;
+    ppDBText42: TppDBText;
+    RepassesDet: TppSubReport;
+    ppChildReport16: TppChildReport;
+    ppTitleBand17: TppTitleBand;
+    ppDetailBand16: TppDetailBand;
+    ppDBText43: TppDBText;
+    ppDBText44: TppDBText;
+    ppDBText45: TppDBText;
+    ppSummaryBand15: TppSummaryBand;
+    ppSummaryBand16: TppSummaryBand;
+    Q_RepassesDetNOME: TIBStringField;
+    Q_RepassesDetHISTORICO: TIBStringField;
+    Q_RepassesDetNUMCHEQUE: TIntegerField;
+    Q_RepassesDetIDGERADOR: TIntegerField;
+    Q_RepassesDetTIPOOPERACAO: TIntegerField;
+    Q_RecebimentosParcelasanterioresDetTITULO: TIBStringField;
+    dbRecebimentosParcelasanterioresDetppField2: TppField;
+    ppDBText34: TppDBText;
+    Q_RepassesDetFORMAPGTO: TIBStringField;
+    dbRepassesDetppField1: TppField;
+    Q_RepasseVALOR: TFloatField;
+    ppDBText41: TppDBText;
+    Q_RepassesDetVALOR: TFloatField;
     procedure Q_DisponivelCalcFields(DataSet: TDataSet);
     procedure btGravarClick(Sender: TObject);
     procedure Q_ResumoPreCalcFields(DataSet: TDataSet);
@@ -377,6 +496,12 @@ begin
     open;
   end;
 
+ // Select cast( substr( o.historico,1,50) as varchar(50)),        o.ValorOperacao,        cast(o.historico as varchar(80)),        0,        8,        o.Operacao,
+ //        cast('' as varchar(15)) From OperacoesFinanceiras o          inner join Contas co on o.contaorigem = co.conta           inner join Contas cd on o.contadestino= cd.conta
+ //          left join Usuarios u on o.usuario = u.usuario  Where o.Data = :Data and  (((o.TipoOperacao = (:formapagamento + 7)) )) and o.Situacao is null and cd.conta = :Conta  union
+
+ // esse trecho de codigo foi removido do Q_DisponivelDet, porque apartir de agora transferecia de dinheiro nao eh mais tratado como pagamento pelo relatorio   e sim como um repasse
+
   Barra.Position := Barra.Position + 1;
   with Q_DisponivelDet do begin
     close;
@@ -429,6 +554,68 @@ begin
     open;
   end;
   Barra.Position := Barra.Position + 1;
+  with Q_GeradasAbertas do begin
+    close;
+    parambyname('data').AsDateTime  := dtData.Date;
+    open;
+  end;
+  Barra.Position := Barra.Position + 1;
+  with Q_GeradasAbertasDet do begin
+    close;
+    parambyname('data').AsDateTime  := dtData.Date;
+    open;
+  end;
+    Barra.Position := Barra.Position + 1;
+    if DMProjeto.Parametro('GeraValorRecebRelatorio') <> 'N' then
+    begin
+        with Q_RecebimentosParcelasanteriores do begin
+           close;
+           parambyname('data').AsDateTime  := dtData.Date;
+           parambyname('Conta').AsInteger 	:= cmbConta.LookUpKeyValue;
+           open;
+        end;
+    end
+    else
+        with Q_RecebimentosParcelasanteriores do begin
+           close;
+           parambyname('data').AsDateTime  := 01/01/1900 ;
+           parambyname('Conta').AsInteger 	:= -999;
+           open;
+        end;
+
+    begin
+    end;
+  Barra.Position := Barra.Position + 1;
+  if DMProjeto.Parametro('GeraValorRecebRelatorio') <> 'N' then
+  begin
+        with Q_RecebimentosParcelasanterioresDet do begin
+                close;
+                parambyname('data').AsDateTime  := dtData.Date;
+                parambyname('Conta').AsInteger 	:= cmbConta.LookUpKeyValue;
+                open;
+        end;
+  end
+  else
+        with Q_RecebimentosParcelasanterioresDet do begin
+           close;
+           parambyname('data').AsDateTime  := 01/01/1900 ;
+           parambyname('Conta').AsInteger 	:= -999;
+           open;
+  end;    
+  Barra.Position := Barra.Position + 1;
+	with Q_Repasse do begin
+  	close;
+    parambyname('Conta').AsInteger 	:= cmbConta.LookUpKeyValue;
+    parambyname('data').AsDateTime  := dtData.Date;
+    open;
+  end;
+    Barra.Position := Barra.Position + 1;
+	with Q_RepassesDet do begin
+  	close;
+    parambyname('Conta').AsInteger 	:= cmbConta.LookUpKeyValue;
+    parambyname('data').AsDateTime  := dtData.Date;
+    open;
+  end;
 
   DMProjeto.ImprimirCabecalho( regCab );
   lbTitulo.Caption:= 'Relatório do Caixa: '+cmbConta.Text;
@@ -494,6 +681,7 @@ begin
   TppDrawCommand(aDrawCommand).Tag := Q_DisponivelDetIDGerador.AsInteger;
   TppDrawCommand(aDrawCommand).ExpansionKey := Q_DisponivelDetTipoOperacao.AsString;
 end;
+
 
 procedure TDlgRelCaixa.ppDBText20DrawCommandClick(Sender,
   aDrawCommand: TObject);

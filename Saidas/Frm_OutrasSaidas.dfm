@@ -114,6 +114,7 @@ inherited FrmOutrasSaidas: TFrmOutrasSaidas
         Left = 816
         DataSource = DMOutrasSaidas.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMOutrasSaidas.C_TiposMovimentoDS
         Height = 19
       end
@@ -2317,9 +2318,6 @@ inherited FrmOutrasSaidas: TFrmOutrasSaidas
         Top = 189
         Width = 1025
         Height = 226
-        ActivePage = tsTermos
-        TabIndex = 1
-        ActivePageIndex = 1
         inherited tsItens: TTS_TabSheet
           BevelInner = bvRaised
           BevelOuter = bvLowered
@@ -2808,7 +2806,6 @@ inherited FrmOutrasSaidas: TFrmOutrasSaidas
             inherited dfObs: TTS_DBMemo
               Width = 446
               DataSource = DMOutrasSaidas.C_TabelaDS
-              MaxLength = 8000
               OnValidate = dfObsValidate
               Height = 81
               StoredValues = 2
@@ -2941,6 +2938,10 @@ inherited FrmOutrasSaidas: TFrmOutrasSaidas
   inherited ppmOutros: TTS_PopupMenu
     Left = 646
     Top = 365
+    object ReferenciarNotas1: TMenuItem
+      Caption = 'Referenciar Notas'
+      OnClick = ReferenciarNotas1Click
+    end
   end
   inherited tmInvoice: TTimer
     Left = 703

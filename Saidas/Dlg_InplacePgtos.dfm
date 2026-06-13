@@ -2578,8 +2578,8 @@ inherited DlgInplacePgtos: TDlgInplacePgtos
     end
   end
   object ppmCheques: TTS_PopupMenu
-    Left = 484
-    Top = 71
+    Left = 564
+    Top = 103
     object IncluirNovoBanco1: TMenuItem
       Caption = 'Incluir Novo Banco'
       OnClick = IncluirNovoBanco1Click

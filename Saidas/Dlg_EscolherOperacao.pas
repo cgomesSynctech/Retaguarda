@@ -352,6 +352,21 @@ type
         C_ItensSubTotal: TFloatField;
         chkMontagem: TTS_CheckBox;
         chkPorCustoContabil: TTS_CheckBox;
+    C_SaidasCUBAGEMTOTAL: TBCDField;
+    Grid_icSelecionado: TdxDBGridColumn;
+    GridSAIDA: TdxDBGridMaskColumn;
+    GridColumn10: TdxDBGridMaskColumn;
+    GridColumn11: TdxDBGridDateColumn;
+    GridColumn12: TdxDBGridMaskColumn;
+    GridColumn13: TdxDBGridMaskColumn;
+    GridColumn14: TdxDBGridMaskColumn;
+    GridColumn15: TdxDBGridMaskColumn;
+    GridQ_Itens: TdxDBGridColumn;
+    GridEMPRESA: TdxDBGridMaskColumn;
+    GridPDV: TdxDBGridMaskColumn;
+    GridCUBAGEMTOTAL: TdxDBGridCurrencyColumn;
+    pnlSelecionados: TTS_Panel;
+    shpTitulos: TShape;
 
         procedure btFecharCadastroClick(Sender: TObject);
         procedure btGravarClick(Sender: TObject);

@@ -29,7 +29,6 @@ type
         C_MontagensMONTADOR: TIntegerField;
         C_MontagensITEM: TIntegerField;
         C_MontagensQTDESOLIC: TBCDField;
-        C_MontagensQTDEPRODUZIDO: TBCDField;
         C_MontagensSTATUS: TIntegerField;
         C_MontagensOBS: TStringField;
         C_MontagensDATACONCLUSAO: TDateField;
@@ -177,6 +176,7 @@ type
         clbTabelaPreco: TTS_CheckListBox;
         TS_PopupEdit1: TTS_PopupEdit;
         TS_Label8: TTS_Label;
+    C_MontagensQTDEPRODUZIDO: TBCDField;
         procedure C_MontagensCalcFields(DataSet: TDataSet);
         procedure btLimparClick(Sender: TObject);
         procedure btComando1Click(Sender: TObject);

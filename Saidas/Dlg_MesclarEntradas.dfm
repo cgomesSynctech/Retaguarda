@@ -7,10 +7,10 @@ inherited DlgMesclarEntradas: TDlgMesclarEntradas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 616
-    Height = 325
+    Left = 624
+    Height = 336
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 291
+      Top = 302
     end
     inherited btComando1: TTS_SpeedButton
       Top = 1
@@ -243,7 +243,7 @@ inherited DlgMesclarEntradas: TDlgMesclarEntradas
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 734
+    Width = 742
     Gradient.ColorStart = 11775972
     inherited lbEstadoForm: TTS_Label
       Top = 25
@@ -261,8 +261,8 @@ inherited DlgMesclarEntradas: TDlgMesclarEntradas
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 616
-    Height = 325
+    Width = 624
+    Height = 336
     Color = 15196656
     object dbtFornecedor: TTS_DBTextEffect
       Left = 0
@@ -297,8 +297,8 @@ inherited DlgMesclarEntradas: TDlgMesclarEntradas
     end
     object GridMovs: TTS_QDBGrid
       Left = 1
-      Top = 73
-      Width = 614
+      Top = 84
+      Width = 622
       Height = 251
       Bands = <
         item

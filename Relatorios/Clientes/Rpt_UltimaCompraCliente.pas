@@ -81,7 +81,7 @@ var
 
 implementation
 
-uses DM_Projeto, funcoes;
+uses DM_Projeto, funcoes, IBStoredProc;
 
 {$R *.DFM}
 
@@ -89,6 +89,9 @@ procedure TRptUltimaCompraCliente.AtualizaConsulta;
 var
    Ano, Mes, Dia : word;
 begin
+
+
+
   ActiveControl := nil;
   dDataUltCompra := DmProjeto.dDataSistema  - StrToInt(edDias.Text);
 

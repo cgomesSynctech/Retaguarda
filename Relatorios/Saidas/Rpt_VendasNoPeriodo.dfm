@@ -30,7 +30,7 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
   end
   inherited pnGrid: TPanel
     Width = 892
-    Height = 439
+    Height = 438
     object Label2: TLabel [0]
       Left = 264
       Top = 216
@@ -368,8 +368,8 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         Height = 19
       end
       object cbISENTOS: TTS_CheckBox
-        Left = 455
-        Top = 22
+        Left = 452
+        Top = 21
         Width = 179
         Style.BorderStyle = xbsNone
         Style.ButtonStyle = btsSimple
@@ -379,7 +379,7 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         StyleController = DMProjeto.esClientes
         NullStyle = nsUnchecked
         DisableEdit = False
-        Height = 16
+        Height = 24
       end
       object cbSemInscricao: TTS_CheckBox
         Left = 452
@@ -399,7 +399,7 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
     inherited dbgConsulta: TTS_QDBGrid
       Top = 45
       Width = 892
-      Height = 375
+      Height = 374
       KeyField = 'SAIDA'
       SummaryGroups = <
         item
@@ -436,6 +436,11 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
               SummaryType = cstSum
             end
             item
+              SummaryField = 'Imposto'
+              SummaryFormat = '>Imposto=#,###,##0.00'
+              SummaryType = cstSum
+            end
+            item
               SummaryField = 'valorcomissao'
               SummaryFormat = '>valorcomissao=#,###,##0.00'
               SummaryType = cstSum
@@ -461,9 +466,19 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
               SummaryType = cstSum
             end
             item
-              SummaryField = 'VENDEDOR'
-              SummaryFormat = '>NOMEVENDEDOR=###0'
-              SummaryType = cstCount
+              SummaryField = 'DescontosParcelas'
+              SummaryFormat = '>DescontosParcelas=#,###,##0.00'
+              SummaryType = cstSum
+            end
+            item
+              SummaryField = 'PgtoParcelas'
+              SummaryFormat = '>PgtoParcelas=#,###,##0.00'
+              SummaryType = cstSum
+            end
+            item
+              SummaryField = 'TOTALPGTOS'
+              SummaryFormat = '>TOTALPGTOS=#,###,##0.00'
+              SummaryType = cstSum
             end>
           Name = 'Default'
         end>
@@ -482,7 +497,10 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         'valoricms;Sum'
         'valoricmssubst;Sum'
         'basecalcicms;SUM'
-        'basecalcsubst;SUM')
+        'basecalcsubst;SUM'
+        'DescontosParcelas;SUM'
+        'PgtoParcelas;sum'
+        'TOTALPGTOS;SUM')
       object dbgConsultaSAIDA: TdxDBGridMaskColumn
         DisableCustomizing = True
         HeaderAlignment = taCenter
@@ -605,7 +623,6 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
       object dbgConsultaNOMEVENDEDOR: TdxDBGridMaskColumn
         Caption = 'Vendedor'
         HeaderAlignment = taCenter
-        Sorted = csUp
         Width = 81
         BandIndex = 0
         RowIndex = 0
@@ -835,12 +852,6 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         RowIndex = 0
         FieldName = 'CAMPO04'
       end
-      object dbgConsultaProfissional: TdxDBGridColumn
-        Caption = 'Profissional'
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'PROFISSIONAL'
-      end
       object dbgConsultaTIPOPESSOA: TdxDBGridMaskColumn
         Caption = 'Tipo Pessoa'
         HeaderAlignment = taCenter
@@ -860,9 +871,342 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         RowIndex = 0
         FieldName = 'CPF_CNPJ'
       end
+      object dbgConsultaColumn47: TdxDBGridColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ValorFinal'
+      end
+      object dbgConsultaColumn48: TdxDBGridColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'MesAno'
+      end
+      object dbgConsultaColumn49: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SAIDA'
+      end
+      object dbgConsultaColumn50: TdxDBGridDateColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DATA'
+      end
+      object dbgConsultaDTMODIFICACAO: TdxDBGridDateColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DTMODIFICACAO'
+      end
+      object dbgConsultaColumn52: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NUMERO'
+      end
+      object dbgConsultaColumn53: TdxDBGridDateColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DATAENTREGA'
+      end
+      object dbgConsultaColumn54: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'OBS'
+      end
+      object dbgConsultaVENDEDOR: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VENDEDOR'
+      end
+      object dbgConsultaColumn56: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FAVORECIDO'
+      end
+      object dbgConsultaTIPOMOVIMENTO: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOMOVIMENTO'
+      end
+      object dbgConsultaTIPOFAVORECIDO: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOFAVORECIDO'
+      end
+      object dbgConsultaColumn59: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOMECLIENTE'
+      end
+      object dbgConsultaCPF_CNPJ: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CPF_CNPJ'
+      end
+      object dbgConsultaColumn61: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CIDADE'
+      end
+      object dbgConsultaColumn62: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BAIRRO'
+      end
+      object dbgConsultaColumn63: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CEP'
+      end
+      object dbgConsultaColumn64: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ENDERECO'
+      end
+      object dbgConsultaColumn65: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'UF'
+      end
+      object dbgConsultaFONE1: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FONE1'
+      end
+      object dbgConsultaColumn67: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOMEVENDEDOR'
+      end
+      object dbgConsultaColumn68: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'GRUPOCLIENTE'
+      end
+      object dbgConsultaColumn69: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCPLANOPAGAMENTO'
+      end
+      object dbgConsultaColumn70: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCCAIXA'
+      end
+      object dbgConsultaColumn71: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCSTATUS'
+      end
+      object dbgConsultaDESCTABELAPRECO: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCTABELAPRECO'
+      end
+      object dbgConsultaColumn73: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCTIPOCOBRANCA'
+      end
+      object dbgConsultaColumn74: TdxDBGridTimeColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'HORA'
+      end
+      object dbgConsultaColumn75: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'INSCRICAO_EST'
+      end
+      object dbgConsultaColumn76: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'LOGINNAME'
+      end
+      object dbgConsultaColumn77: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'MOTIVOCANCELAMENTO'
+      end
+      object dbgConsultaColumn78: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO01'
+      end
+      object dbgConsultaColumn79: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO02'
+      end
+      object dbgConsultaColumn80: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO03'
+      end
+      object dbgConsultaColumn81: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO04'
+      end
+      object dbgConsultaTOTALITENS: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTALITENS'
+      end
+      object dbgConsultaColumn84: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DEVOLUCAO'
+      end
+      object dbgConsultaColumn85: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTAL'
+      end
+      object dbgConsultaIMPOSTO: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IMPOSTO'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaColumn87: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORCOMISSAO'
+      end
+      object dbgConsultaColumn88: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FRETE'
+      end
+      object dbgConsultaColumn89: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCONTO'
+      end
+      object dbgConsultaColumn90: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'JUROS'
+      end
+      object dbgConsultaColumn91: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMS'
+      end
+      object dbgConsultaVALORICMSSUBST: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMSSUBST'
+      end
+      object dbgConsultaColumn93: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCICMS'
+      end
+      object dbgConsultaBASECALCSUBST: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCSUBST'
+      end
+      object dbgConsultaSUBSTTRIB: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SUBSTTRIB'
+      end
+      object dbgConsultaColumn96: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOPESSOA'
+      end
+      object dbgConsultaColumn97: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NUMREMESSA'
+      end
+      object dbgConsultaNOME: TdxDBGridMaskColumn
+        Caption = 'Profissional'
+        Width = 88
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOME'
+      end
+      object dbgConsultaPGTOPARCELAS: TdxDBGridMaskColumn
+        Caption = 'Pgto Parcelas'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PGTOPARCELAS'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaDESCONTOSPARCELAS: TdxDBGridMaskColumn
+        Caption = 'Desconto Parcs'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCONTOSPARCELAS'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaTOTALPGTOS: TdxDBGridMaskColumn
+        Caption = 'TotalPgtos'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTALPGTOS'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 420
+      Top = 419
       Width = 892
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
@@ -872,7 +1216,7 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
     object clbTipoOperacao: TTS_CheckListBox
       Left = 64
       Top = 64
-      Width = 150
+      Width = 400
       Height = 123
       BorderStyle = bsNone
       Ctl3D = False
@@ -886,9 +1230,9 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 439
+    Height = 438
     inherited btSair: TTS_SpeedButton
-      Top = 394
+      Top = 393
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick
@@ -927,7 +1271,10 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         'ame, s.motivocancelamento,s.campo01, s.campo02, s.campo03, s.cam' +
         'po04, m.nome as Profissional, case when upper(f.pessoa_fj) = '#39'F'#39 +
         ' then '#39'F'#237'sica'#39' when upper(f.pessoa_fj) = '#39'J'#39' then '#39'Jur'#237'dica'#39' els' +
-        'e '#39'N'#227'o Definido'#39' end as tipopessoa, NumRemessa'
+        'e '#39'N'#227'o Definido'#39' end as tipopessoa, pf.nome, (select sum(t.valor' +
+        'pago) from titulosareceber t where t.venda = s.saida) as PgtoPar' +
+        'celas, (select sum(t.descontos) from titulosareceber t where t.v' +
+        'enda = s.saida) as DescontosParcelas, s.totalpgtos'
       'from saidas s'
       'inner join favorecidos f on f.favorecido = s.favorecido'
       'left join favorecidos v on v.favorecido = s.vendedor'
@@ -940,7 +1287,8 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
       'left join contas c on c.conta = s.caixa'
       'left join tabelaspreco tp on tp.tabelapreco = s.tabelapadrao'
       'left join tiposcobranca tc on tc.tipocobranca = s.cobranca'
-      'left join favorecidos m on m.favorecido = s.medico')
+      'left join favorecidos m on m.favorecido = s.medico '
+      'left join profissionais pf on pf.id = s.profissional')
     Left = 340
     Top = 113
   end
@@ -1138,6 +1486,23 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
     object C_ConsultaNUMREMESSA: TStringField
       FieldName = 'NUMREMESSA'
       Size = 10
+    end
+    object C_ConsultaNOME: TStringField
+      FieldName = 'NOME'
+      Size = 40
+    end
+    object C_ConsultaPGTOPARCELAS: TBCDField
+      FieldName = 'PGTOPARCELAS'
+      Precision = 18
+      Size = 2
+    end
+    object C_ConsultaDESCONTOSPARCELAS: TBCDField
+      FieldName = 'DESCONTOSPARCELAS'
+      Precision = 18
+      Size = 2
+    end
+    object C_ConsultaTOTALPGTOS: TFloatField
+      FieldName = 'TOTALPGTOS'
     end
   end
   inherited ppmDados: TTS_PopupMenu

@@ -1,5 +1,7 @@
 object DMFinanceiro: TDMFinanceiro
   OldCreateOrder = False
+  Left = 454
+  Top = 43
   Height = 676
   Width = 1024
   object Q_SQL2: TIBQuery
@@ -130,7 +132,7 @@ object DMFinanceiro: TDMFinanceiro
       
         'From Contas c left join TiposContas t on c.tipoconta = t.tipocon' +
         'ta'
-      'Where c.TipoConta = 2 and Desativado = '#39'N'#39
+      'Where c.TipoConta in (1,2) and Desativado = '#39'N'#39
       'Order by c.Descricao')
     Left = 320
     Top = 46

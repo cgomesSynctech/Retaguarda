@@ -321,6 +321,9 @@ begin
     with DMProjeto do begin
       nId := dbgConsulta.GetFieldValue(dbgConsulta.focusednode,'Saida',0);
       SetParametrosForm([nId]);
+      if C_VendasTIPOPADRAO.value = 2 then
+          CriarForm('FrmSalesOrder',self,true)
+      else
       CriarForm('FrmInvoices',self,true);
     end;
   end;

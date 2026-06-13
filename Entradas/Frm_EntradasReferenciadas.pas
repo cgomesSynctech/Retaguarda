@@ -15,13 +15,6 @@ type
     TFrmEntradasReferenciadas = class(TFrmPadrao)
         lb_ChaveAcesso: TTS_Label;
         df_ChaveAcesso: TTS_DBEdit;
-        df_Modelo: TTS_DBEdit;
-        df_ECF: TTS_DBEdit;
-        df_COO: TTS_DBEdit;
-        lb_Modelo: TTS_Label;
-        lb_ECF: TTS_Label;
-        TS_Label1: TTS_Label;
-        rdGroupTipoDoc: TTS_DBRadioGroup;
         Grid_icSelecionado: TdxDBGridColumn;
         GridENTRADAREFERENCIADA: TdxDBGridMaskColumn;
         GridEMPRESA: TdxDBGridMaskColumn;
@@ -32,6 +25,15 @@ type
         GridMODELO: TdxDBGridMaskColumn;
         GridECF: TdxDBGridMaskColumn;
         GridCOO: TdxDBGridMaskColumn;
+    TS_DBRadioGroup1: TTS_DBRadioGroup;
+    TS_Label2: TTS_Label;
+    TS_DBEdit1: TTS_DBEdit;
+    TS_Label3: TTS_Label;
+    TS_DBEdit2: TTS_DBEdit;
+    TS_Label4: TTS_Label;
+    TS_DBEdit3: TTS_DBEdit;
+    TS_DBEdit4: TTS_DBEdit;
+    TS_Label5: TTS_Label;
         procedure FormComponentBeforeClearParams(Sender: TObject);
         procedure df_ChaveAcessoKeyPress(Sender: TObject; var Key: Char);
         procedure df_COOKeyPress(Sender: TObject; var Key: Char);
@@ -94,28 +96,7 @@ var
     isValido: boolean;
 begin
     isValido := True;
-
-    if (DMEntradasReferenciadas.C_TabelaTIPODOCUMENTO.Value = 1) then
-        begin
-            if not ((Length(DMEntradasReferenciadas.C_TabelaMODELO.Value) = 2) and (Length(DMEntradasReferenciadas.C_TabelaECF.Value) = 3) and
-                (Length(DMEntradasReferenciadas.C_TabelaCOO.Value) = 6)) then
-                begin
-                    isValido := False;
-                    DlgMsg.ShowMsg(50, ['Para o tipo de documento "Cupom" deve-se informar o valor correto para os campos abaixo: ' + #13 +
-                        '* Modelo (02 caracteres)' + #13 +
-                            '* Número ECF (03 caracteres)' + #13 +
-                            '* Número COO (06 caracteres)']);
-                end;
-        end
-    else
-        begin
-            if not ((Length(DMEntradasReferenciadas.C_TabelaCHAVEACESSO.Value) = 44)) then
-                begin
-                    isValido := False;
-                    DlgMsg.ShowMsg(50, ['Para o tipo de documento "Nota Fiscal" deve-se informar o valor correto para os campos abaixo: ' + #13 +
-                        '* Chave Acesso (44 caracteres)']);
-                end;
-        end;
+        DMEntradasReferenciadas.AcharRereferencia(df_ChaveAcesso.Text);
 
     Result := isValido;
 

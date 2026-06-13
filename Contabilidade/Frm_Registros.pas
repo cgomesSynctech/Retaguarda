@@ -9,7 +9,8 @@ uses
   dxfLabel, TS_MaxPanel, TS_Bevel, Buttons, TS_SpeedButton, TS_BitBtn,
   IBCustomDataSet, IBQuery, Db, DBClient, Provider, dxCntner,
   dxTL, dxDBCtrl, dxDBGrid, TS_QDBGrid, dxDBTLCl, dxGrClms, dxGrClEx,
-  IBUpdateSQL, teCtrls, TS_EffectsPanel, Menus, TS_PopupMenu;
+  IBUpdateSQL, teCtrls, TS_EffectsPanel, Menus, TS_PopupMenu, dxExEdtr,
+  Placemnt, BTOdeum;
 
 type
   TFrmRegistros = class(TFrmModeloCadastros)
@@ -302,7 +303,7 @@ begin
       Q_AtualizaRegistros.ParamByName('referencia').asstring := C_RegistrosNumero.value
     else
       Q_AtualizaRegistros.ParamByName('referencia').asstring := C_RegistrosReferencia.value;
-      
+
     Q_AtualizaRegistros.ParamByName('usuario').asinteger := DMProjeto.nFuncionario;
     Q_AtualizaRegistros.ParamByName('data_audit').asdatetime := DMProjeto.dDataSistema;
     Q_AtualizaRegistros.ParamByName('hora_audit').asstring := copy(TimeToStr(time),1,5);

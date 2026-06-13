@@ -1,16 +1,16 @@
 inherited DlgMesclarMovimentos: TDlgMesclarMovimentos
   Left = 274
-  Top = 142
+  Top = 170
   Width = 750
   Height = 390
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 616
-    Height = 309
+    Left = 624
+    Height = 320
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 275
+      Top = 286
     end
     inherited btLimpar: TTS_SpeedButton
       Hint = 'Faz uma c'#243'pia do Movimento selecionado para a opera'#231#227'o corrente.'
@@ -205,7 +205,7 @@ inherited DlgMesclarMovimentos: TDlgMesclarMovimentos
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 734
+    Width = 742
     Gradient.ColorStart = 14859922
     inherited lbEstadoForm: TTS_Label
       Top = 25
@@ -223,8 +223,8 @@ inherited DlgMesclarMovimentos: TDlgMesclarMovimentos
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 616
-    Height = 309
+    Width = 624
+    Height = 320
     Color = 16116702
     object dbtCliente: TTS_DBTextEffect
       Left = 5
@@ -260,8 +260,8 @@ inherited DlgMesclarMovimentos: TDlgMesclarMovimentos
     end
     object GridMovs: TTS_QDBGrid
       Left = 1
-      Top = 49
-      Width = 614
+      Top = 60
+      Width = 622
       Height = 259
       Bands = <
         item

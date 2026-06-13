@@ -1,6 +1,6 @@
 inherited FrmEmpresa: TFrmEmpresa
-  Left = 124
-  Top = 109
+  Left = 90
+  Top = 113
   Width = 1179
   Height = 549
   Caption = 'Company'
@@ -8,20 +8,20 @@ inherited FrmEmpresa: TFrmEmpresa
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnDados: TTS_Panel [0]
-    Width = 1048
-    Height = 468
+    Width = 1056
+    Height = 478
     inherited Grid: TTS_QDBGrid
-      Width = 1046
-      Height = 466
+      Width = 1054
+      Height = 476
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 1046
-      Height = 466
+      Width = 1054
+      Height = 476
     end
     inherited sbDados: TTS_Panel
-      Width = 1046
-      Height = 466
+      Width = 1054
+      Height = 476
       Color = 14608375
       Font.Color = clBlack
       ParentFont = False
@@ -229,6 +229,16 @@ inherited FrmEmpresa: TFrmEmpresa
         Width = 75
         Height = 17
         Caption = 'Al'#237'q. Cr'#233'dito:'
+        FocusControl = TS_DBEdit1
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object TS_Label42: TTS_Label
+        Left = 0
+        Top = 277
+        Width = 101
+        Height = 17
+        Caption = 'Senha Certificado :'
         FocusControl = TS_DBEdit1
         FormatoTabela = False
         LinkToResult = 0
@@ -497,8 +507,8 @@ inherited FrmEmpresa: TFrmEmpresa
       end
       object TS_PageControl1: TTS_PageControl
         Left = 0
-        Top = 289
-        Width = 1046
+        Top = 299
+        Width = 1054
         Height = 177
         ActivePage = tsDiversos
         Align = alBottom
@@ -1206,14 +1216,25 @@ inherited FrmEmpresa: TFrmEmpresa
         Height = 19
         StoredValues = 4
       end
+      object TS_DBEdit5: TTS_DBEdit
+        Left = 102
+        Top = 277
+        Width = 126
+        TabOrder = 24
+        DataField = 'SENHA'
+        DataSource = DMEmpresa.C_EmpresasDs
+        StyleController = DMProjeto.esGeral
+        DistinctEditOn = False
+        Height = 19
+      end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 1046
+      Width = 1054
     end
   end
   inherited pnNavigator: TTS_Panel [1]
-    Left = 1048
-    Height = 468
+    Left = 1056
+    Height = 478
     inherited btPesquisar: TTS_SpeedButton
       Visible = False
     end
@@ -1237,7 +1258,7 @@ inherited FrmEmpresa: TFrmEmpresa
       Visible = False
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 434
+      Top = 444
     end
     inherited btIR_Para: TTS_SpeedButton
       Visible = False
@@ -1252,6 +1273,9 @@ inherited FrmEmpresa: TFrmEmpresa
       RepeatedClick = False
       Border = True
       Align = alTop
+    end
+    inherited pnInicioFim: TTS_Panel
+      Top = 271
     end
     inherited pnAvancaRecua: TTS_Panel
       inherited btPrevReg: TTS_SpeedButton
@@ -1269,7 +1293,7 @@ inherited FrmEmpresa: TFrmEmpresa
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 1163
+    Width = 1171
     Gradient.ColorStart = 11388903
     inherited lbCaption: TdxfLabel
       Width = 82

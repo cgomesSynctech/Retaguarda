@@ -176,6 +176,7 @@ type
         procedure CriaContabilidade;
         procedure Contabiliza;
         procedure MostraContabilidade;
+        procedure GeraCodigo;
         /////////////////////////////////
     end;
 
@@ -690,6 +691,32 @@ begin
     C_TabelaDiasEmAtraso.Value := Trunc(DMProjeto.dDataSistemaAtual - C_TabelaVENCIMENTO.Value);
     if C_TabelaDiasEmAtraso.Value < 0 then
         C_TabelaDiasEmAtraso.Value := 0;
+end;
+
+
+procedure TDMA_Receber.GeraCodigo;
+var xID, xCasas: integer;
+    sNomeDoCampo, sCodigo, xCodigo: string;
+begin
+    inherited;
+    sNomeDoCampo := 'IDPARCELARECEBER';
+    if not (C_Tabela.State in [dsEdit, dsInsert]) then
+        C_Tabela.Edit;
+    C_Tabela.UpdateRecord;
+
+    sCodigo := C_TabelaNOTAFISCAL.Value;
+    xCodigo := sCodigo;
+
+            xCasas := 6;
+            while (trim(xCodigo) = '')  do
+                begin
+                    xID := DMProjeto.NextID(sNomeDoCampo, 1);
+                    if Length(IntToStr(xID)) > 5 then
+                        xCasas := Length(IntToStr(xID));
+                    xCodigo := AdicionarStr(IntToStr(xID), '0', xCasas);
+                end;
+
+        C_TabelaNOTAFISCAL.Value := 'R-' + xCodigo;
 end;
 
 end.

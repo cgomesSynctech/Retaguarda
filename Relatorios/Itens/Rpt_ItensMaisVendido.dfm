@@ -1,19 +1,29 @@
 inherited RptItensMaisVendido: TRptItensMaisVendido
   Left = 138
   Top = 115
+  Width = 911
   Caption = 'M'#243'dulo de Itens'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
+    Width = 903
     Gradient.ColorStart = 9027548
     inherited lbCaption: TdxfLabel
       Width = 226
       Caption = 'Os Itens mais Vendidos'
       Effect3D.ShadowedColor = 9027548
     end
+    inherited btHelp: TTS_SpeedButton
+      Left = 861
+    end
+    inherited btTemplates: TTS_SpeedButton
+      Left = 834
+    end
   end
   inherited pnGrid: TPanel
+    Width = 850
     inherited pnDados: TTS_Panel
+      Width = 850
       Color = 14019327
       object TS_Label1: TTS_Label
         Left = 8
@@ -241,6 +251,7 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
       end
     end
     inherited dbgConsulta: TTS_QDBGrid
+      Width = 850
       Hint = 'Coluna Quantidade = quantidade * fator (tabela SaidasItens)'
       KeyField = 'ITEM'
       SummaryGroups = <
@@ -284,6 +295,12 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
         RowIndex = 0
         FieldName = 'DESCRICAO'
       end
+      object dbgConsultaREFERENCIA: TdxDBGridColumn
+        Caption = 'Refer'#234'ncia'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'REFERENCIA'
+      end
       object dbgConsultaDESCRICAOGRUPO: TdxDBGridMaskColumn
         Alignment = taLeftJustify
         Caption = 'Grupo'
@@ -322,6 +339,7 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
       end
     end
     inherited PainelFullSelect: TTS_Panel
+      Width = 850
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -330,7 +348,7 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
   end
   inherited TS_Panel1: TTS_Panel
     inherited btSair: TTS_SpeedButton
-      Top = 364
+      Top = 374
       Height = 44
     end
     inherited btAtualizar: TTS_SpeedButton
@@ -350,7 +368,9 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
       'select '
-      'first :quantos si.item, i.descricao, g.descricaogrupo, '
+      
+        'first :quantos si.item, i.descricao, g.descricaogrupo, i.referen' +
+        'cia,'
       
         'cast(sum(cast(si.quantidade as numeric (15, 4)) * cast(si.Fator ' +
         'as numeric (15, 4))) as numeric (15, 4)) as qtde,'
@@ -363,7 +383,7 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
       
         'where s.data >= :datai and s.data <= :dataf and (s.baixaestoque ' +
         '= '#39'S'#39') and s.situacao = '#39'N'#39' and si.situacao = '#39'N'#39
-      'group by si.item, i.descricao, g.descricaogrupo'
+      'group by si.item, i.descricao, g.descricaogrupo, i.referencia'
       'order by 4 desc')
     Left = 414
     Top = 114
@@ -417,6 +437,10 @@ inherited RptItensMaisVendido: TRptItensMaisVendido
       FieldKind = fkInternalCalc
       FieldName = 'PorCento'
       DisplayFormat = '##0.00 %'
+    end
+    object C_ConsultaREFERENCIA: TStringField
+      FieldName = 'REFERENCIA'
+      Size = 25
     end
   end
   inherited GridPrinter: TdxComponentPrinter

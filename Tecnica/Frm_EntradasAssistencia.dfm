@@ -1,6 +1,6 @@
 inherited FrmEntradasAssistencia: TFrmEntradasAssistencia
-  Left = 518
-  Top = 154
+  Left = 361
+  Top = 51
   HorzScrollBar.Range = 0
   VertScrollBar.Range = 0
   ActiveControl = cmbTipo

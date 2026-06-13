@@ -74,6 +74,13 @@ type
     C_BandeirasCartaoDESCRICAO: TStringField;
     C_BandeirasCartaoDESATIVADO: TStringField;
     C_TabelalkBandeirasCartao: TStringField;
+    C_TabelaTPAG: TStringField;
+    Q_pagamentosNFE: TIBQuery;
+    P_pagamentosNFE: TDataSetProvider;
+    C_pagamentosNFEDS: TClientDataSet;
+    C_pagamentosNFEDSID: TStringField;
+    C_pagamentosNFEDSDESCRICAO: TStringField;
+    C_TabelalkTipoPagamentoNFE: TStringField;
     procedure C_TabelaBeforePost(DataSet: TDataSet);
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);

@@ -1,6 +1,6 @@
 inherited DMEntradasConsignadas: TDMEntradasConsignadas
-  Left = 246
-  Top = 0
+  Left = 243
+  Top = 229
   Height = 728
   Width = 1120
   inherited OpenDialog: TOpenDialog
@@ -19,6 +19,7 @@ inherited DMEntradasConsignadas: TDMEntradasConsignadas
     Left = 23
   end
   inherited C_Tabela: TClientDataSet
+    Active = False
     Left = 24
   end
   inherited C_TabelaDS: TDataSource
@@ -26,7 +27,13 @@ inherited DMEntradasConsignadas: TDMEntradasConsignadas
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select '
+      't.cstibs, '
+      't.classtrib,'
+      'T.COMPENSACAOCUSTOMOEDA, '
+      't.clasfiscal,'
+      't.customanual,'
+      't.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -172,11 +179,11 @@ inherited DMEntradasConsignadas: TDMEntradasConsignadas
       't.ENTRADA = :IDMESTRE')
   end
   inherited C_Itens: TClientDataSet
-    inherited C_ItensQTDRECEBIDA: TBCDField
-      DisplayFormat = '##0.###'
-    end
     inherited C_ItensSTATUS: TStringField
       OnValidate = C_ItensSTATUSValidate
+    end
+    inherited C_ItensQTDRECEBIDA: TBCDField
+      DisplayFormat = '##0.###'
     end
   end
   inherited Q_TiposMovimento: TIBQuery
@@ -187,6 +194,9 @@ inherited DMEntradasConsignadas: TDMEntradasConsignadas
         'Where t.TipoPadrao = tp.TipoPadrao and t.Tipo = '#39'E'#39' and t.TipoPa' +
         'drao = 104'
       'Order by t.ordem, t.TipoPadrao, t.TipoMovimento')
+  end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
   end
   inherited Q_Mesclagens: TIBQuery
     Left = 250
@@ -206,5 +216,26 @@ inherited DMEntradasConsignadas: TDMEntradasConsignadas
       'Select  *  From StatusEntradas'
       'where status in ('#39'P'#39', '#39'L'#39', '#39'R'#39', '#39'H'#39')'
       'order by Ordem')
+  end
+  inherited C_Unidades: TClientDataSet
+    Active = True
+  end
+  inherited C_CFOPs_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_SitECF: TClientDataSet
+    Active = True
+  end
+  inherited C_Almoxarifado: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_IPI: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_PisCofins: TClientDataSet
+    Active = True
   end
 end

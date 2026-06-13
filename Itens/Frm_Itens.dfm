@@ -1,8 +1,8 @@
 inherited FrmItens: TFrmItens
-  Left = 340
-  Top = 53
+  Left = 525
+  Top = 145
   Width = 937
-  Height = 640
+  Height = 622
   Caption = 'M'#243'dulo de Itens'
   PixelsPerInch = 96
   TextHeight = 13
@@ -53,10 +53,44 @@ inherited FrmItens: TFrmItens
     Pen.Style = psClear
     Transparent = False
   end
+  object TS_Label77: TTS_Label [4]
+    Left = 499
+    Top = 177
+    Width = 94
+    Alignment = taLeftJustify
+    Caption = 'Tot. de Periodo R$:'
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label92: TTS_Label [5]
+    Left = 584
+    Top = 177
+    Width = 65
+    Caption = 'lb_inicio'
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label102: TTS_Label [6]
+    Left = 499
+    Top = 193
+    Width = 102
+    Alignment = taLeftJustify
+    Caption = 'Valor Mes Inicial R$:'
+    FormatoTabela = False
+    LinkToResult = 0
+  end
+  object TS_Label103: TTS_Label [7]
+    Left = 583
+    Top = 193
+    Width = 65
+    Caption = 'lb_inicio'
+    FormatoTabela = False
+    LinkToResult = 0
+  end
   inherited pnNavigator: TTS_Panel
     Left = 794
     Width = 135
-    Height = 570
+    Height = 551
     inherited btGravar: TTS_SpeedButton
       Width = 133
     end
@@ -88,7 +122,7 @@ inherited FrmItens: TFrmItens
       Width = 133
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 536
+      Top = 517
       Width = 133
     end
     inherited btIR_Para: TTS_SpeedButton
@@ -256,10 +290,10 @@ inherited FrmItens: TFrmItens
   end
   inherited pnDados: TTS_Panel
     Width = 794
-    Height = 570
+    Height = 551
     inherited Grid: TTS_QDBGrid
       Width = 792
-      Height = 568
+      Height = 549
       KeyField = 'ITEM'
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'CODIGO'
@@ -793,11 +827,11 @@ inherited FrmItens: TFrmItens
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 792
-      Height = 568
+      Height = 549
     end
     inherited sbDados: TTS_Panel
       Width = 792
-      Height = 568
+      Height = 549
       Color = 14019327
       object lbDescricaoVenda: TTS_Label
         Left = -2
@@ -1243,6 +1277,25 @@ inherited FrmItens: TFrmItens
         FormatoTabela = False
         LinkToResult = 0
       end
+      object TS_Label86: TTS_Label
+        Left = 19
+        Top = 147
+        Width = 101
+        Height = 15
+        Caption = 'Tipo do Item Sped'
+        Color = 14019327
+        FocusControl = cmbOrigem
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        Versoes = 'S,P,E'
+        FormatoTabela = False
+        LinkToResult = 0
+      end
       object pnDescricoes: TTS_Panel
         Left = 360
         Top = 136
@@ -1315,7 +1368,7 @@ inherited FrmItens: TFrmItens
         Left = 0
         Top = 138
         Width = 821
-        Height = 431
+        Height = 413
         HelpContext = -1
         ActivePage = tsProdutosInvent
         Anchors = [akLeft, akTop, akRight, akBottom]
@@ -1352,9 +1405,9 @@ inherited FrmItens: TFrmItens
           BevelOuter = bvLowered
           DesignSize = (
             821
-            429)
+            411)
           object lbPrincipioAtivo: TTS_Label
-            Left = 19
+            Left = 17
             Top = 2
             Width = 101
             Height = 15
@@ -1397,8 +1450,8 @@ inherited FrmItens: TFrmItens
             PenWidth = 1
           end
           object lbBalanco: TdxfLabel
-            Left = 540
-            Top = -1
+            Left = 652
+            Top = 15
             Width = 78
             Height = 19
             AutoSize = False
@@ -1418,21 +1471,40 @@ inherited FrmItens: TFrmItens
             Effect3D.ShadowedColor = clGray
             PenWidth = 1
           end
+          object lbTipoItemSped: TTS_Label
+            Left = 17
+            Top = 1
+            Width = 101
+            Height = 15
+            Cursor = crHandPoint
+            Caption = 'Tipo do Item Sped :'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsUnderline]
+            ParentFont = False
+            Visible = False
+            Versoes = 'S,P,E'
+            FormatoTabela = False
+            LinkTo = 'FrmPrincipioAtivo'
+            LinkToResult = 0
+          end
           object pcEstoque: TTS_PageControl
             Tag = -1
             Left = 123
             Top = 32
             Width = 667
-            Height = 422
+            Height = 404
             HelpContext = -1
-            ActivePage = tsEstoque
+            ActivePage = tsContabilidade1
             Anchors = [akLeft, akTop, akRight, akBottom]
             MultiLine = True
             OwnerDraw = True
             TabOrder = 0
             TabStop = False
             TabWidth = 167
-            ActivePageIndex = 1
+            ActivePageIndex = 5
             Transparent = False
             TabColor = 14019327
             TabColorActive = 9027548
@@ -1448,7 +1520,6 @@ inherited FrmItens: TFrmItens
             TabFontActive.Style = []
             object tsCaracteristicas1: TTS_TabSheet
               Hint = 'btCaracteristicas1'
-              Caption = #39
               Font.Charset = ANSI_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -1724,9 +1795,9 @@ inherited FrmItens: TFrmItens
               object TS_Label12: TTS_Label
                 Left = 261
                 Top = 181
-                Width = 141
+                Width = 92
                 Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
-                Caption = #218'ltimo Pre'#231'o de Compra:'
+                Caption = #218'lt Pre'#231'o Compra:'
                 FocusControl = dfUltPrecoCompra
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clWindowText
@@ -1914,6 +1985,23 @@ inherited FrmItens: TFrmItens
                 Height = 17
                 Caption = '% GNV :'
                 FocusControl = dfCodANP
+                Versoes = 'S,P,E'
+                FormatoTabela = False
+                LinkToResult = 0
+              end
+              object TS_Label88: TTS_Label
+                Left = 450
+                Top = 182
+                Width = 92
+                Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
+                Caption = #218'lt Custo Compra:'
+                FocusControl = dfUltPrecoCompra
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
                 Versoes = 'S,P,E'
                 FormatoTabela = False
                 LinkToResult = 0
@@ -2646,7 +2734,7 @@ inherited FrmItens: TFrmItens
               end
               object dfUltPrecoCompra: TTS_DBEditNumber
                 Tag = -2
-                Left = 405
+                Left = 355
                 Top = 179
                 Width = 91
                 HelpContext = -2
@@ -2967,9 +3055,9 @@ inherited FrmItens: TFrmItens
                 StoredValues = 64
               end
               object pnTabelaPreco: TTS_Panel
-                Left = 253
-                Top = 123
-                Width = 284
+                Left = 357
+                Top = 11
+                Width = 260
                 Height = 116
                 BevelOuter = bvNone
                 Color = 9552605
@@ -2977,7 +3065,7 @@ inherited FrmItens: TFrmItens
                 Visible = False
                 Versoes = 'P,E'
                 DesignSize = (
-                  284
+                  260
                   116)
                 object TS_Label55: TTS_Label
                   Left = 2
@@ -3013,7 +3101,7 @@ inherited FrmItens: TFrmItens
                   Tag = -2
                   Left = 3
                   Top = 19
-                  Width = 278
+                  Width = 262
                   Height = 95
                   HelpContext = -2
                   Bands = <
@@ -3103,8 +3191,9 @@ inherited FrmItens: TFrmItens
                     Caption = 'Tabela Pre'#231'o'
                     DisableEditor = True
                     HeaderAlignment = taCenter
+                    Sorted = csUp
                     TabStop = False
-                    Width = 73
+                    Width = 69
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'lkTabelaPreco'
@@ -3112,14 +3201,14 @@ inherited FrmItens: TFrmItens
                   object dbgTabelaPrecoPRECO: TdxDBGridCalcColumn
                     Caption = 'Pre'#231'o'
                     HeaderAlignment = taCenter
-                    Width = 54
+                    Width = 53
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'PRECO'
                   end
                   object dbgTabelaPrecoPRECOPROMOCAO: TdxDBGridColumn
                     Caption = 'Pre'#231'o Manual'
-                    Width = 78
+                    Width = 70
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'PRECOPROMOCAO'
@@ -3135,7 +3224,7 @@ inherited FrmItens: TFrmItens
                   object dbgTabelaPrecoTABELAPRECO: TdxDBGridColumn
                     HeaderAlignment = taCenter
                     Visible = False
-                    Width = 156
+                    Width = 157
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'TABELAPRECO'
@@ -3145,15 +3234,14 @@ inherited FrmItens: TFrmItens
                     DisableEditor = True
                     HeaderAlignment = taCenter
                     TabStop = False
-                    Width = 71
+                    Width = 68
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'icPrecoMinimo'
                   end
                   object dbgTabelaPrecoPERCENTUAL: TdxDBGridColumn
-                    Sorted = csUp
                     Visible = False
-                    Width = 117
+                    Width = 119
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'PERCENTUAL'
@@ -3553,6 +3641,66 @@ inherited FrmItens: TFrmItens
                 NullStyle = nsUnchecked
                 DisableEdit = False
                 Height = 22
+              end
+              object TS_DBEditNumber11: TTS_DBEditNumber
+                Tag = -2
+                Left = 544
+                Top = 179
+                Width = 91
+                HelpContext = -2
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clMaroon
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 35
+                DataField = 'CUSTOPRODUTO'
+                DataSource = DMItens.C_TabelaDS
+                ReadOnly = True
+                StyleController = DMProjeto.esItens
+                ButtonGlyph.Data = {
+                  AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                  0800000000007800000000000000000000000001000000000000000000000000
+                  80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                  A6000020400000206000002080000020A0000020C0000020E000004000000040
+                  20000040400000406000004080000040A0000040C0000040E000006000000060
+                  20000060400000606000006080000060A0000060C0000060E000008000000080
+                  20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                  200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                  200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                  200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                  20004000400040006000400080004000A0004000C0004000E000402000004020
+                  20004020400040206000402080004020A0004020C0004020E000404000004040
+                  20004040400040406000404080004040A0004040C0004040E000406000004060
+                  20004060400040606000406080004060A0004060C0004060E000408000004080
+                  20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                  200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                  200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                  200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                  20008000400080006000800080008000A0008000C0008000E000802000008020
+                  20008020400080206000802080008020A0008020C0008020E000804000008040
+                  20008040400080406000804080008040A0008040C0008040E000806000008060
+                  20008060400080606000806080008060A0008060C0008060E000808000008080
+                  20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                  200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                  200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                  200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                  2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                  2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                  2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                  2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                  2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                  2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                  2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                  FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                  000000FD000006060404040404040400000006FF0606060606060400000006FE
+                  0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                  000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                  FEFF06000000FD0606060606060606FD0000}
+                Versoes = 'S,P,E'
+                Height = 19
+                StoredValues = 65
               end
             end
             object tsEstoque: TTS_TabSheet
@@ -5487,7 +5635,7 @@ inherited FrmItens: TFrmItens
               object cmbModBaseCalc: TTS_DBLookupComboBox
                 Left = 135
                 Top = 54
-                Width = 365
+                Width = 210
                 HelpContext = -2
                 TabOrder = 2
                 DataField = 'lkModalidadeICMS'
@@ -6422,6 +6570,25 @@ inherited FrmItens: TFrmItens
                 DistinctEditOn = False
                 Height = 19
               end
+              object TS_DBCheckBox4: TTS_DBCheckBox
+                Left = 352
+                Top = 53
+                Width = 145
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsSimple
+                Style.HotTrack = False
+                TabOrder = 20
+                Caption = 'Passivel de Desonera'#231#227'o'
+                DataField = 'DESONERACAOICMS'
+                DataSource = DMItens.C_TabelaDS
+                StyleController = DMProjeto.esGeral
+                ValueChecked = 'S'
+                ValueGrayed = 'N'
+                ValueUnchecked = 'N'
+                NullStyle = nsUnchecked
+                DisableEdit = False
+                Height = 22
+              end
             end
             object tsCalcPreco1: TTS_TabSheet
               Hint = 'btCalcPreco1'
@@ -6438,68 +6605,14 @@ inherited FrmItens: TFrmItens
                 Left = 0
                 Top = 0
                 Width = 659
-                Height = 412
+                Height = 394
                 Align = alClient
                 BevelOuter = bvNone
                 Color = 14019327
                 TabOrder = 0
                 Versoes = 'P,E'
-                object TS_Label86: TTS_Label
-                  Left = -1
-                  Top = 124
-                  Width = 135
-                  Cursor = crHandPoint
-                  Caption = 'Encargos Cart'#245'es:'
-                  Color = 9027548
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = [fsUnderline]
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = TS_Label77Click
-                  FormatoTabela = False
-                  LinkTo = 'FrmFatoresCustos'
-                  LinkToResult = 0
-                end
-                object lbComissaoAplicada: TTS_Label
-                  Left = -2
-                  Top = 144
-                  Width = 136
-                  Caption = 'Comiss'#227'o Aplicada:'
-                  Color = 9027548
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  FormatoTabela = False
-                  LinkToResult = 0
-                end
-                object TS_Label77: TTS_Label
-                  Left = 21
-                  Top = 104
-                  Width = 113
-                  Cursor = crHandPoint
-                  Caption = 'Despesas Fixas:'
-                  Color = 9027548
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = [fsUnderline]
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = TS_Label77Click
-                  FormatoTabela = False
-                  LinkTo = 'FrmFatoresCustos'
-                  LinkToResult = 0
-                end
                 object TS_Shape15: TTS_Shape
-                  Left = 245
+                  Left = 238
                   Top = 24
                   Width = 240
                   Height = 137
@@ -6509,48 +6622,28 @@ inherited FrmItens: TFrmItens
                   Transparent = False
                 end
                 object TS_Shape33: TTS_Shape
-                  Left = 139
-                  Top = 229
+                  Left = 63
+                  Top = 290
                   Width = 88
                   Height = 17
                   Brush.Color = 14019327
                   Pen.Color = 9027548
+                  Visible = False
                   Transparent = False
                 end
                 object TS_Shape32: TTS_Shape
-                  Left = 139
-                  Top = 250
+                  Left = 215
+                  Top = 327
                   Width = 88
                   Height = 17
                   Brush.Color = 14019327
                   Pen.Color = 8421631
+                  Visible = False
                   Transparent = False
                 end
-                object lbCustoAdicional: TTS_Label
-                  Left = 31
-                  Top = 165
-                  Width = 103
-                  Caption = 'Custos Adicionais:'
-                  Color = 9027548
-                  FocusControl = dfCustoAdic
-                  ParentColor = False
-                  FormatoTabela = False
-                  LinkToResult = 0
-                end
-                object lbLucro: TTS_Label
-                  Left = 7
-                  Top = 185
-                  Width = 127
-                  Caption = 'Percentual de Lucro:'
-                  Color = 9027548
-                  FocusControl = dfLucro
-                  ParentColor = False
-                  FormatoTabela = False
-                  LinkToResult = 0
-                end
                 object TS_Label29: TTS_Label
-                  Left = -3
-                  Top = 4
+                  Left = 5
+                  Top = 348
                   Width = 137
                   Hint = 
                     'M'#233'dia ponderada do estoque do custo cont'#225'bil (Pre'#231'o de Compra + ' +
@@ -6562,12 +6655,13 @@ inherited FrmItens: TFrmItens
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
+                  Visible = False
                   FormatoTabela = False
                   LinkToResult = 0
                 end
                 object TS_Label46: TTS_Label
-                  Left = -12
-                  Top = 209
+                  Left = 12
+                  Top = 353
                   Width = 146
                   Caption = 'Pre'#231'o de Venda Calculado:'
                   Color = 9027548
@@ -6578,22 +6672,13 @@ inherited FrmItens: TFrmItens
                   Font.Style = []
                   ParentColor = False
                   ParentFont = False
-                  FormatoTabela = False
-                  LinkToResult = 0
-                end
-                object lbICMSAplicado: TTS_Label
-                  Left = 8
-                  Top = 64
-                  Width = 126
-                  Caption = 'ICMS de Venda:'
-                  Color = 9027548
-                  ParentColor = False
+                  Visible = False
                   FormatoTabela = False
                   LinkToResult = 0
                 end
                 object TS_Label32: TTS_Label
-                  Left = -13
-                  Top = 230
+                  Left = -9
+                  Top = 235
                   Width = 147
                   Caption = 'Pre'#231'o com Desc. M'#225'ximo:'
                   Color = 9027548
@@ -6609,8 +6694,8 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_Label45: TTS_Label
-                  Left = -12
-                  Top = 251
+                  Left = -8
+                  Top = 256
                   Width = 146
                   Caption = 'Menor Pre'#231'o de Venda:'
                   Color = 9027548
@@ -6626,8 +6711,8 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_DBText8: TTS_DBText
-                  Left = 143
-                  Top = 251
+                  Left = 191
+                  Top = 323
                   Width = 81
                   Height = 14
                   Hint = 
@@ -6642,6 +6727,7 @@ inherited FrmItens: TFrmItens
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
+                  Visible = False
                   AllowEditOnClick = False
                   EditFont.Charset = DEFAULT_CHARSET
                   EditFont.Color = clWindowText
@@ -6652,8 +6738,8 @@ inherited FrmItens: TFrmItens
                   EditOffSet.y = 0
                 end
                 object TS_DBText9: TTS_DBText
-                  Left = 143
-                  Top = 230
+                  Left = 199
+                  Top = 310
                   Width = 81
                   Height = 14
                   Hint = 
@@ -6668,6 +6754,7 @@ inherited FrmItens: TFrmItens
                   Font.Name = 'Tahoma'
                   Font.Style = [fsBold]
                   ParentFont = False
+                  Visible = False
                   AllowEditOnClick = False
                   EditFont.Charset = DEFAULT_CHARSET
                   EditFont.Color = clWindowText
@@ -6679,17 +6766,17 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_Shape36: TTS_Shape
                   Left = 245
-                  Top = 164
-                  Width = 240
-                  Height = 35
+                  Top = 162
+                  Width = 228
+                  Height = 31
                   Brush.Color = 12315135
                   Pen.Color = 16744448
                   Shape = stRoundRect
                   Transparent = False
                 end
                 object TS_Label79: TTS_Label
-                  Left = 248
-                  Top = 165
+                  Left = 251
+                  Top = 171
                   Width = 50
                   Alignment = taLeftJustify
                   Caption = 'Fatores:'
@@ -6697,9 +6784,9 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_DBText12: TTS_DBText
-                  Left = 304
-                  Top = 180
-                  Width = 52
+                  Left = 329
+                  Top = 171
+                  Width = 40
                   Height = 14
                   Hint = 
                     'Dividindo o Custo M'#233'dio por este Fator voc'#234' encontrar'#225' o Pre'#231'o d' +
@@ -6723,8 +6810,8 @@ inherited FrmItens: TFrmItens
                   EditOffSet.y = 0
                 end
                 object imgPreco: TTS_Image
-                  Left = 253
-                  Top = 233
+                  Left = 237
+                  Top = 241
                   Width = 117
                   Height = 37
                   Center = True
@@ -6834,8 +6921,8 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBText21: TTS_DBText
                   Left = 420
-                  Top = 180
-                  Width = 52
+                  Top = 171
+                  Width = 45
                   Height = 14
                   Hint = 
                     'Multiplicando o Custo M'#233'dio por este Fator voc'#234' obtem o Pre'#231'o de' +
@@ -6859,12 +6946,12 @@ inherited FrmItens: TFrmItens
                   EditOffSet.y = 0
                 end
                 object dxfLabel1: TdxfLabel
-                  Left = 263
-                  Top = 179
+                  Left = 292
+                  Top = 170
                   Width = 40
                   Height = 14
                   AutoSize = False
-                  Caption = 'C.M.  /'
+                  Caption = 'C.M./'
                   Font.Charset = ANSI_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -11
@@ -6881,12 +6968,12 @@ inherited FrmItens: TFrmItens
                   PenWidth = 1
                 end
                 object dxfLabel2: TdxfLabel
-                  Left = 381
-                  Top = 179
+                  Left = 380
+                  Top = 170
                   Width = 37
                   Height = 14
                   AutoSize = False
-                  Caption = 'C.M.  x'
+                  Caption = 'C.M. x'
                   Font.Charset = ANSI_CHARSET
                   Font.Color = clWindowText
                   Font.Height = -11
@@ -6902,18 +6989,8 @@ inherited FrmItens: TFrmItens
                   Effect3D.ShadowedColor = clGray
                   PenWidth = 1
                 end
-                object TS_Label43: TTS_Label
-                  Left = -6
-                  Top = 24
-                  Width = 140
-                  Caption = 'Compensa'#231#227'o de Custo:'
-                  Color = 9027548
-                  ParentColor = False
-                  FormatoTabela = False
-                  LinkToResult = 0
-                end
                 object lbUltPrecoCompra: TTS_Label
-                  Left = 249
+                  Left = 242
                   Top = 44
                   Width = 127
                   Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -6929,7 +7006,7 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_Label49: TTS_Label
-                  Left = 251
+                  Left = 244
                   Top = 110
                   Width = 127
                   Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -6944,8 +7021,8 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_Label7: TTS_Label
-                  Left = 232
-                  Top = 6
+                  Left = 368
+                  Top = 326
                   Width = 133
                   Height = 13
                   Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -6957,12 +7034,13 @@ inherited FrmItens: TFrmItens
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
+                  Visible = False
                   FormatoTabela = False
                   LinkToResult = 0
                 end
                 object TS_Label13: TTS_Label
-                  Left = 379
-                  Top = 30
+                  Left = 371
+                  Top = 28
                   Width = 97
                   Height = 13
                   Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -6978,8 +7056,8 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_DBText1: TTS_DBText
-                  Left = 252
-                  Top = 7
+                  Left = 388
+                  Top = 327
                   Width = 106
                   Height = 12
                   Alignment = taCenter
@@ -6991,6 +7069,7 @@ inherited FrmItens: TFrmItens
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
+                  Visible = False
                   AllowEditOnClick = False
                   EditFont.Charset = DEFAULT_CHARSET
                   EditFont.Color = clWindowText
@@ -7001,7 +7080,7 @@ inherited FrmItens: TFrmItens
                   EditOffSet.y = 0
                 end
                 object TS_DBText2: TTS_DBText
-                  Left = 383
+                  Left = 376
                   Top = 30
                   Width = 88
                   Height = 12
@@ -7027,27 +7106,8 @@ inherited FrmItens: TFrmItens
                   EditOffSet.x = 0
                   EditOffSet.y = 0
                 end
-                object TS_Label51: TTS_Label
-                  Left = 23
-                  Top = 44
-                  Width = 113
-                  Cursor = crHandPoint
-                  Caption = 'Impostos Federais:'
-                  Color = 9027548
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = [fsUnderline]
-                  ParentColor = False
-                  ParentFont = False
-                  OnClick = TS_Label77Click
-                  FormatoTabela = False
-                  LinkTo = 'FrmFatoresCustos'
-                  LinkToResult = 0
-                end
                 object TS_Label52: TTS_Label
-                  Left = 249
+                  Left = 242
                   Top = 68
                   Width = 127
                   Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -7063,7 +7123,7 @@ inherited FrmItens: TFrmItens
                   LinkToResult = 0
                 end
                 object TS_SpeedButton1: TTS_SpeedButton
-                  Left = 292
+                  Left = 277
                   Top = 130
                   Width = 155
                   Height = 27
@@ -7134,18 +7194,8 @@ inherited FrmItens: TFrmItens
                   RepeatedClick = False
                   Border = True
                 end
-                object lbIPIAplicado: TTS_Label
-                  Left = 8
-                  Top = 84
-                  Width = 126
-                  Caption = 'IPI para Venda:'
-                  Color = 9027548
-                  ParentColor = False
-                  FormatoTabela = False
-                  LinkToResult = 0
-                end
                 object TS_Label21: TTS_Label
-                  Left = 248
+                  Left = 241
                   Top = 89
                   Width = 127
                   Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -7160,10 +7210,379 @@ inherited FrmItens: TFrmItens
                   FormatoTabela = False
                   LinkToResult = 0
                 end
+                object TS_Label89: TTS_Label
+                  Left = 4
+                  Top = 4
+                  Width = 137
+                  Hint = 
+                    'M'#233'dia ponderada do estoque do custo cont'#225'bil (Pre'#231'o de Compra + ' +
+                    'IPI + Frete - ICMS)'
+                  Caption = 'Pre'#231'o de Compra (R$):'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label90: TTS_Label
+                  Left = 3
+                  Top = 28
+                  Width = 137
+                  Hint = 
+                    'M'#233'dia ponderada do estoque do custo cont'#225'bil (Pre'#231'o de Compra + ' +
+                    'IPI + Frete - ICMS)'
+                  Caption = 'Custo de Compra (R$):'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lbICMSVenda: TTS_Label
+                  Left = 1
+                  Top = 49
+                  Width = 140
+                  Caption = 'ICMS Venda (%):'
+                  Color = 9027548
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentColor = False
+                  ParentFont = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label93: TTS_Label
+                  Left = 1
+                  Top = 69
+                  Width = 140
+                  Height = 20
+                  Caption = 'IPI Venda (%):'
+                  Color = clGreen
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clBlack
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentColor = False
+                  ParentFont = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label94: TTS_Label
+                  Left = 1
+                  Top = 89
+                  Width = 140
+                  Caption = 'Despesas Fixas (%):'
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label95: TTS_Label
+                  Left = 1
+                  Top = 109
+                  Width = 140
+                  Caption = 'Encargos Cartoes (%):'
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label96: TTS_Label
+                  Left = 1
+                  Top = 129
+                  Width = 140
+                  Caption = 'Comiss'#227'o de Venda (%):'
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label97: TTS_Label
+                  Left = 1
+                  Top = 149
+                  Width = 140
+                  Caption = 'Custos Adicionais (%):'
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lbImpostosFederal: TTS_Label
+                  Left = 1
+                  Top = 169
+                  Width = 140
+                  Caption = 'Imposto Federal (%):'
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label99: TTS_Label
+                  Left = 1
+                  Top = 190
+                  Width = 140
+                  Caption = 'Percentual Lucro (%):'
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label101: TTS_Label
+                  Left = -14
+                  Top = 213
+                  Width = 155
+                  Hint = 
+                    'M'#233'dia ponderada do estoque do custo cont'#225'bil (Pre'#231'o de Compra + ' +
+                    'IPI + Frete - ICMS)'
+                  Caption = 'Pr. Venda Calculado (R$):'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lbTributacao: TTS_Label
+                  Left = 242
+                  Top = 4
+                  Width = 95
+                  Height = 17
+                  Alignment = taLeftJustify
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label43: TTS_Label
+                  Left = 329
+                  Top = 288
+                  Width = 88
+                  Height = 19
+                  Color = 9027548
+                  ParentColor = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Shape23: TTS_Shape
+                  Left = 480
+                  Top = 24
+                  Width = 173
+                  Height = 249
+                  Brush.Color = 12315135
+                  Pen.Color = 16744448
+                  Shape = stRoundRect
+                  Visible = False
+                  Transparent = False
+                end
+                object TS_Label51: TTS_Label
+                  Left = 487
+                  Top = 29
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'Periodo de Faturamento :'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_Periodo: TTS_Label
+                  Left = 488
+                  Top = 46
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'lb_Periodo'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_testo: TTS_Label
+                  Left = 487
+                  Top = 62
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'Tot. Faturamento do Periodo R$:'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label98: TTS_Label
+                  Left = 487
+                  Top = 127
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'Valor Faturado Mes Inicial R$:'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label104: TTS_Label
+                  Left = 487
+                  Top = 159
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'Fat. Acumulado Mes Atual R$:'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label106: TTS_Label
+                  Left = 487
+                  Top = 103
+                  Width = 161
+                  Height = 17
+                  Alignment = taCenter
+                  Caption = 'Previs'#227'o Acumulativa '
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label107: TTS_Label
+                  Left = 487
+                  Top = 193
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'Total Acumulado Proximo Periodo'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label108: TTS_Label
+                  Left = 487
+                  Top = 227
+                  Width = 63
+                  Alignment = taLeftJustify
+                  Caption = 'Varia'#231#227'o R$:'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label111: TTS_Label
+                  Left = 487
+                  Top = 93
+                  Width = 161
+                  Height = 17
+                  Alignment = taCenter
+                  Caption = '----------------------------------------'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object TS_Label91: TTS_Label
+                  Left = 487
+                  Top = 113
+                  Width = 161
+                  Height = 17
+                  Alignment = taCenter
+                  Caption = '----------------------------------------'
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_FatPeriodo: TTS_Label
+                  Left = 488
+                  Top = 78
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'lb_FatPeriodo'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_VLFatMesInicial: TTS_Label
+                  Left = 488
+                  Top = 142
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'lb_VLFatMesInicial'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clBlue
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_FatMesAtual: TTS_Label
+                  Left = 488
+                  Top = 175
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'lb_FatMesAtual'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_AcProxMes: TTS_Label
+                  Left = 493
+                  Top = 207
+                  Width = 161
+                  Alignment = taCenter
+                  Caption = 'lb_AcProxMes'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clBlue
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
+                object lb_Variacao: TTS_Label
+                  Left = 551
+                  Top = 227
+                  Width = 91
+                  Alignment = taCenter
+                  Caption = 'lb_Variacao'
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clRed
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Visible = False
+                  FormatoTabela = False
+                  LinkToResult = 0
+                end
                 object TS_DBEditNumber7: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 142
+                  Left = 321
+                  Top = 318
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7180,6 +7599,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 7
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icComissaoAplic'
@@ -7230,8 +7650,8 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBEditNumber6: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 122
+                  Left = 377
+                  Top = 338
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7248,6 +7668,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 6
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icEncargosCartoes'
@@ -7298,8 +7719,8 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBEditNumber5: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 102
+                  Left = 329
+                  Top = 342
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7316,6 +7737,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 5
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icDespesaFixa'
@@ -7366,8 +7788,8 @@ inherited FrmItens: TFrmItens
                 end
                 object dfLucro: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 183
+                  Left = 329
+                  Top = 359
                   Width = 92
                   Hint = 
                     #201' o percentual de lucro que se deseja ter sobre as vendas do Ite' +
@@ -7375,6 +7797,7 @@ inherited FrmItens: TFrmItens
                   HelpContext = -2
                   PopupMenu = ppmGrupo
                   TabOrder = 9
+                  Visible = False
                   OnExit = dfLucroExit
                   OnMouseDown = dfDescMax3MouseDown
                   DataField = 'icFATORLUCRO'
@@ -7426,8 +7849,8 @@ inherited FrmItens: TFrmItens
                 end
                 object dfCustoAdic: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 163
+                  Left = 345
+                  Top = 355
                   Width = 92
                   Hint = 
                     'Serve para informar algum custo percentual que o  item possua a ' +
@@ -7435,6 +7858,7 @@ inherited FrmItens: TFrmItens
                   HelpContext = -2
                   PopupMenu = ppmGrupo
                   TabOrder = 8
+                  Visible = False
                   OnMouseDown = dfDescMax3MouseDown
                   DataField = 'icCustoDepesas'
                   DataSource = DMItens.C_TabelaDS
@@ -7483,8 +7907,8 @@ inherited FrmItens: TFrmItens
                   StoredValues = 1
                 end
                 object DBEdit1: TDBEdit
-                  Left = 489
-                  Top = 109
+                  Left = 505
+                  Top = 349
                   Width = 10
                   Height = 19
                   DataField = 'icPrecoCalc'
@@ -7495,8 +7919,8 @@ inherited FrmItens: TFrmItens
                 end
                 object dfPrecoCalc: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 207
+                  Left = 369
+                  Top = 375
                   Width = 92
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7511,6 +7935,7 @@ inherited FrmItens: TFrmItens
                   Style.ButtonTransparence = ebtHideInactive
                   Style.HotTrack = False
                   TabOrder = 10
+                  Visible = False
                   OnExit = dfPrecoCalcExit
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icPrecoCalc'
@@ -7559,8 +7984,8 @@ inherited FrmItens: TFrmItens
                   StoredValues = 1
                 end
                 object DBEdit3: TDBEdit
-                  Left = 252
-                  Top = 253
+                  Left = 516
+                  Top = 325
                   Width = 6
                   Height = 19
                   DataField = 'icComissaoAplic'
@@ -7570,8 +7995,8 @@ inherited FrmItens: TFrmItens
                   OnChange = DBEdit6Change
                 end
                 object DBEdit6: TDBEdit
-                  Left = 264
-                  Top = 247
+                  Left = 528
+                  Top = 319
                   Width = 5
                   Height = 19
                   DataField = 'icCustoDepesas'
@@ -7581,8 +8006,8 @@ inherited FrmItens: TFrmItens
                   OnChange = DBEdit6Change
                 end
                 object DBEdit7: TDBEdit
-                  Left = 253
-                  Top = 238
+                  Left = 517
+                  Top = 310
                   Width = 8
                   Height = 19
                   DataField = 'icFatorLucro'
@@ -7592,8 +8017,8 @@ inherited FrmItens: TFrmItens
                   OnChange = DBEdit6Change
                 end
                 object DBEdit8: TDBEdit
-                  Left = 487
-                  Top = 59
+                  Left = 495
+                  Top = 323
                   Width = 6
                   Height = 19
                   DataField = 'PRECO'
@@ -7603,8 +8028,8 @@ inherited FrmItens: TFrmItens
                   OnChange = DBEdit1Change
                 end
                 object DBEdit9: TDBEdit
-                  Left = 491
-                  Top = 135
+                  Left = 467
+                  Top = 295
                   Width = 6
                   Height = 19
                   DataField = 'icPrecoCalcDescMax'
@@ -7614,7 +8039,7 @@ inherited FrmItens: TFrmItens
                   OnChange = DBEdit9Change
                 end
                 object dfDataCompra: TTS_DBEditDate
-                  Left = 377
+                  Left = 370
                   Top = 108
                   Width = 99
                   Color = 14019327
@@ -7667,18 +8092,18 @@ inherited FrmItens: TFrmItens
                   StoredValues = 64
                 end
                 object pnAtualizarPreco: TTS_Panel
-                  Left = 244
-                  Top = 199
-                  Width = 240
+                  Left = 238
+                  Top = 198
+                  Width = 203
                   Height = 35
                   BevelOuter = bvNone
                   Color = 14019327
                   TabOrder = 14
                   Visible = False
                   object btAtualizarPreco: TTS_SpeedButton
-                    Left = 9
-                    Top = 8
-                    Width = 118
+                    Left = 1
+                    Top = 12
+                    Width = 100
                     Height = 22
                     Caption = 'Atualizar Pre'#231'o'
                     Glyph.Data = {
@@ -7696,8 +8121,8 @@ inherited FrmItens: TFrmItens
                     Border = True
                   end
                   object TS_Label15: TTS_Label
-                    Left = 134
-                    Top = 0
+                    Left = 104
+                    Top = 4
                     Width = 99
                     Height = 13
                     Hint = 'Permite manipular v'#225'rias tabelas de pre'#231'o'
@@ -7714,8 +8139,8 @@ inherited FrmItens: TFrmItens
                   end
                   object TS_DBEditNumber2: TTS_DBEditNumber
                     Tag = -2
-                    Left = 134
-                    Top = 12
+                    Left = 104
+                    Top = 16
                     Width = 98
                     Hint = 
                       #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7781,8 +8206,8 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBEditNumber3: TTS_DBEditNumber
                   Tag = -2
-                  Left = 138
-                  Top = 0
+                  Left = 66
+                  Top = 320
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7799,6 +8224,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 0
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icCusto'
@@ -7849,8 +8275,8 @@ inherited FrmItens: TFrmItens
                 end
                 object dfCompensaCusto: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 22
+                  Left = 249
+                  Top = 342
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7866,6 +8292,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 1
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'COMPENSACUSTO'
@@ -7915,8 +8342,8 @@ inherited FrmItens: TFrmItens
                   StoredValues = 65
                 end
                 object DBEdit10: TDBEdit
-                  Left = 235
-                  Top = 247
+                  Left = 539
+                  Top = 287
                   Width = 12
                   Height = 19
                   DataField = 'icDescontoMaximo'
@@ -7927,8 +8354,8 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBEditNumber17: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 42
+                  Left = 265
+                  Top = 362
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -7945,6 +8372,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 2
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icImpostosFederais'
@@ -7995,8 +8423,8 @@ inherited FrmItens: TFrmItens
                 end
                 object dfICMSAplicado: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 62
+                  Left = 145
+                  Top = 294
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -8013,6 +8441,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 3
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'icICMSAplicado'
@@ -8063,7 +8492,7 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBEditNumber19: TTS_DBEditNumber
                   Tag = -2
-                  Left = 377
+                  Left = 370
                   Top = 66
                   Width = 98
                   Hint = 
@@ -8131,7 +8560,7 @@ inherited FrmItens: TFrmItens
                 end
                 object TS_DBEditNumber20: TTS_DBEditNumber
                   Tag = -2
-                  Left = 377
+                  Left = 370
                   Top = 44
                   Width = 98
                   Hint = 
@@ -8199,8 +8628,8 @@ inherited FrmItens: TFrmItens
                 end
                 object dfIPIAplicado: TTS_DBEditNumber
                   Tag = -2
-                  Left = 137
-                  Top = 82
+                  Left = 257
+                  Top = 386
                   Width = 91
                   Hint = 
                     #201' o preco de Venda calculado pela aplica'#231#227'o de todos os percentu' +
@@ -8217,6 +8646,7 @@ inherited FrmItens: TFrmItens
                   Style.HotTrack = False
                   TabOrder = 4
                   TabStop = False
+                  Visible = False
                   OnDblClick = TS_DBEditNumber3DblClick
                   OnKeyPress = dfPrecoCalcKeyPress
                   DataField = 'IPIVENDA'
@@ -8267,7 +8697,7 @@ inherited FrmItens: TFrmItens
                 end
                 object dfCUSTOMANUAL: TTS_DBEditNumber
                   Tag = -2
-                  Left = 377
+                  Left = 370
                   Top = 87
                   Width = 98
                   Hint = 
@@ -8332,6 +8762,825 @@ inherited FrmItens: TFrmItens
                   Height = 19
                   StoredValues = 65
                 end
+                object TS_DBEditNumber12: TTS_DBEditNumber
+                  Left = 144
+                  Top = 3
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 23
+                  DataField = 'FC_PRECOCOMPRA'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber27: TTS_DBEditNumber
+                  Left = 162
+                  Top = 346
+                  Width = 87
+                  TabOrder = 24
+                  Visible = False
+                  DataField = 'FC_PRECOCOMPRA'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = False
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber28: TTS_DBEditNumber
+                  Left = 144
+                  Top = 26
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  ParentShowHint = False
+                  ShowHint = False
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 25
+                  DataField = 'CUSTOMANUAL'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object dbFC_ICMSvenda: TTS_DBEditNumber
+                  Left = 144
+                  Top = 47
+                  Width = 87
+                  Color = 14019327
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 26
+                  DataField = 'FC_ICMSVENDA'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber31: TTS_DBEditNumber
+                  Left = 144
+                  Top = 67
+                  Width = 87
+                  Color = 14019327
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 27
+                  DataField = 'FC_IPIVENDA'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber32: TTS_DBEditNumber
+                  Left = 144
+                  Top = 87
+                  Width = 87
+                  Color = 14019327
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 28
+                  DataField = 'FC_DESPESAS'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber33: TTS_DBEditNumber
+                  Left = 144
+                  Top = 107
+                  Width = 87
+                  Color = 14019327
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 29
+                  DataField = 'FC_ENCARGOS'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber34: TTS_DBEditNumber
+                  Left = 144
+                  Top = 127
+                  Width = 87
+                  Color = 14019327
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 30
+                  DataField = 'FC_COMISSAO'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber35: TTS_DBEditNumber
+                  Left = 144
+                  Top = 147
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 31
+                  DataField = 'FC_CUSTOSADICIONAIS'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber36: TTS_DBEditNumber
+                  Left = 144
+                  Top = 167
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 32
+                  DataField = 'FC_IMPFEDERALSAIDA'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber37: TTS_DBEditNumber
+                  Left = 144
+                  Top = 188
+                  Width = 87
+                  Color = 14019327
+                  Style.ButtonTransparence = ebtHideInactive
+                  Style.HotTrack = False
+                  TabOrder = 33
+                  DataField = 'FC_LUCRO'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber39: TTS_DBEditNumber
+                  Left = 144
+                  Top = 212
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -13
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 34
+                  DataField = 'FC_PRECOCALCULADO'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEdit9: TTS_DBEdit
+                  Left = 353
+                  Top = 1
+                  Width = 129
+                  Color = 14019327
+                  DragCursor = crIBeam
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = []
+                  ParentFont = False
+                  Style.BorderColor = clWindow
+                  Style.BorderStyle = xbsNone
+                  TabOrder = 35
+                  DataField = 'lkSitECF'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  DistinctEditOn = False
+                  Height = 22
+                  StoredValues = 64
+                end
+                object TS_CurrencyEdit1: TTS_CurrencyEdit
+                  Left = 280
+                  Top = 304
+                  Width = 121
+                  TabOrder = 36
+                  Visible = False
+                  Height = 19
+                end
+                object TS_DBEditNumber15: TTS_DBEditNumber
+                  Left = 144
+                  Top = 233
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Style.BorderStyle = xbsNone
+                  Style.ButtonStyle = btsSimple
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 37
+                  DataField = 'icPrecoCalcDescMax'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBEditNumber16: TTS_DBEditNumber
+                  Left = 144
+                  Top = 257
+                  Width = 87
+                  Color = 14019327
+                  Font.Charset = ANSI_CHARSET
+                  Font.Color = clWindowText
+                  Font.Height = -11
+                  Font.Name = 'Tahoma'
+                  Font.Style = [fsBold]
+                  ParentFont = False
+                  Style.BorderStyle = xbsNone
+                  Style.ButtonStyle = btsSimple
+                  Style.ButtonTransparence = ebtHideInactive
+                  TabOrder = 38
+                  DataField = 'icMenorPrecoVenda'
+                  DataSource = DMItens.C_TabelaDS
+                  ReadOnly = True
+                  ButtonGlyph.Data = {
+                    AE040000424DAE0400000000000036040000280000000A0000000A0000000100
+                    0800000000007800000000000000000000000001000000000000000000000000
+                    80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                    A6000020400000206000002080000020A0000020C0000020E000004000000040
+                    20000040400000406000004080000040A0000040C0000040E000006000000060
+                    20000060400000606000006080000060A0000060C0000060E000008000000080
+                    20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                    200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                    200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                    200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                    20004000400040006000400080004000A0004000C0004000E000402000004020
+                    20004020400040206000402080004020A0004020C0004020E000404000004040
+                    20004040400040406000404080004040A0004040C0004040E000406000004060
+                    20004060400040606000406080004060A0004060C0004060E000408000004080
+                    20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                    200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                    200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                    200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                    20008000400080006000800080008000A0008000C0008000E000802000008020
+                    20008020400080206000802080008020A0008020C0008020E000804000008040
+                    20008040400080406000804080008040A0008040C0008040E000806000008060
+                    20008060400080606000806080008060A0008060C0008060E000808000008080
+                    20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                    200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                    200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                    200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                    2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                    2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                    2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                    2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                    2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                    2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                    2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                    FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FD0000000000
+                    000000FD000006060404040404040400000006FF0606060606060400000006FE
+                    0600FF00FF000400000006FF0606060606060400000006FE0007070707070400
+                    000006FF00FFFFFFFF070400000006FE0000000000000400000006FFFEFFFEFF
+                    FEFF06000000FD0606060606060606FD0000}
+                  Height = 19
+                  StoredValues = 65
+                end
+                object TS_DBMaskEdit1: TTS_DBMaskEdit
+                  Left = 424
+                  Top = 272
+                  Width = 116
+                  TabOrder = 39
+                  Visible = False
+                  DataField = 'VALORFINAL'
+                  DataSource = DMItens.C_FatDS
+                  EditMask = '#,###,##0.00'
+                  IgnoreMaskBlank = False
+                  Height = 19
+                  StoredValues = 4
+                end
               end
             end
             object tsCustomizados1: TTS_TabSheet
@@ -8348,7 +9597,7 @@ inherited FrmItens: TFrmItens
                 Left = 0
                 Top = 0
                 Width = 659
-                Height = 412
+                Height = 394
                 Align = alClient
                 BevelOuter = bvNone
                 Color = 14019327
@@ -9056,6 +10305,78 @@ inherited FrmItens: TFrmItens
                 LinkTo = 'FrmContas'
                 LinkToResult = 0
               end
+              object TS_Shape24: TTS_Shape
+                Left = 181
+                Top = 98
+                Width = 228
+                Height = 31
+                Brush.Color = 12315135
+                Pen.Color = 16744448
+                Shape = stRoundRect
+                Transparent = False
+              end
+              object dxfLabel3: TdxfLabel
+                Left = 212
+                Top = 106
+                Width = 181
+                Height = 14
+                AutoSize = False
+                Caption = 'Dados Reforma Tributaria '
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsBold]
+                ParentFont = False
+                Transparent = True
+                Style = dxfNormal
+                Angle = 0
+                Effect3D.Style = dxfCool
+                Effect3D.Orientation = dxfRightBottom
+                Effect3D.Depth = 0
+                Effect3D.ShadowedColor = clGray
+                PenWidth = 1
+              end
+              object TS_Label100: TTS_Label
+                Left = 11
+                Top = 184
+                Width = 101
+                Height = 15
+                Caption = 'CST IBS/ CSB :'
+                Color = 9027548
+                FocusControl = cmbGenero
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Versoes = 'S,P,E'
+                TagStr = 'G'#234'nero do Item:;Mensagem:;G'#234'nero:'
+                FormatoTabela = False
+                LinkToResult = 0
+              end
+              object TS_Label105: TTS_Label
+                Left = 19
+                Top = 216
+                Width = 101
+                Height = 15
+                Caption = 'Cod. Class Trib. :'
+                Color = 9027548
+                FocusControl = cmbGenero
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Versoes = 'S,P,E'
+                TagStr = 'G'#234'nero do Item:;Mensagem:;G'#234'nero:'
+                FormatoTabela = False
+                LinkToResult = 0
+              end
               object cmbContaVendas1: TTS_DBPopupEdit
                 Tag = -2
                 Left = 132
@@ -9308,6 +10629,55 @@ inherited FrmItens: TFrmItens
                 DisableEdit = False
                 Height = 19
               end
+              object TS_DBCheckBox6: TTS_DBCheckBox
+                Left = 40
+                Top = 157
+                Width = 177
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsSimple
+                Style.HotTrack = False
+                TabOrder = 6
+                Caption = ' Bem Usado Adquirido de P.F.'
+                DataField = 'DESONERACAOICMS'
+                DataSource = DMItens.C_TabelaDS
+                StyleController = DMProjeto.esGeral
+                ValueChecked = 'S'
+                ValueGrayed = 'N'
+                ValueUnchecked = 'N'
+                NullStyle = nsUnchecked
+                DisableEdit = False
+                Height = 22
+              end
+              object TS_DBLookupComboBox6: TTS_DBLookupComboBox
+                Left = 118
+                Top = 181
+                Width = 365
+                HelpContext = -2
+                TabOrder = 7
+                DataField = 'lkCSTIBS'
+                DataSource = DMItens.C_TabelaDS
+                StyleController = DMProjeto.esItens
+                DropDownRows = 15
+                ClearKey = 32
+                ListFieldName = 'CST;DESCRICAO'
+                LookupKeyValue = Null
+                Height = 20
+              end
+              object TS_DBLookupComboBox7: TTS_DBLookupComboBox
+                Left = 126
+                Top = 213
+                Width = 523
+                HelpContext = -2
+                TabOrder = 8
+                DataField = 'lkCLASSTRIB'
+                DataSource = DMItens.C_TabelaDS
+                StyleController = DMProjeto.esItens
+                DropDownRows = 15
+                ClearKey = 32
+                ListFieldName = 'CODIGO;DESCRICAO'
+                LookupKeyValue = Null
+                Height = 20
+              end
             end
             object tsServicosPreco: TTS_TabSheet
               Caption = 'tsServicosPreco'
@@ -9320,7 +10690,7 @@ inherited FrmItens: TFrmItens
                 Left = 0
                 Top = 0
                 Width = 659
-                Height = 412
+                Height = 394
                 Align = alClient
                 BevelOuter = bvNone
                 Color = 9552605
@@ -9328,7 +10698,7 @@ inherited FrmItens: TFrmItens
                 Versoes = 'P,E'
                 DesignSize = (
                   659
-                  412)
+                  394)
                 object TS_Label38: TTS_Label
                   Left = 11
                   Top = 4
@@ -9345,7 +10715,7 @@ inherited FrmItens: TFrmItens
                   Left = 2
                   Top = 22
                   Width = 656
-                  Height = 389
+                  Height = 371
                   HelpContext = -2
                   Bands = <
                     item
@@ -9452,7 +10822,7 @@ inherited FrmItens: TFrmItens
             Left = 3
             Top = 34
             Width = 119
-            Height = 394
+            Height = 376
             Anchors = [akLeft, akTop, akBottom]
             Color = 16116702
             TabOrder = 1
@@ -10770,13 +12140,32 @@ inherited FrmItens: TFrmItens
           end
           object lcbPrincipioAtivo: TTS_DBLookupComboBox
             Tag = -2
-            Left = 120
+            Left = 123
             Top = 2
             Width = 381
             HelpContext = -2
             TabOrder = 2
             Visible = False
             DataField = 'lkPrincipioAtivo'
+            DataSource = DMItens.C_TabelaDS
+            ReadOnly = False
+            StyleController = DMProjeto.esItens
+            DropDownRows = 15
+            ClearKey = 32
+            LookupKeyValue = Null
+            Versoes = 'S,P,E'
+            Height = 19
+            StoredValues = 64
+          end
+          object cb_tipoItemSped: TTS_DBLookupComboBox
+            Tag = -2
+            Left = 122
+            Top = 1
+            Width = 169
+            HelpContext = -2
+            TabOrder = 3
+            Visible = False
+            DataField = 'lkTipoItemSped'
             DataSource = DMItens.C_TabelaDS
             ReadOnly = False
             StyleController = DMProjeto.esItens
@@ -10800,12 +12189,12 @@ inherited FrmItens: TFrmItens
           BevelOuter = bvLowered
           DesignSize = (
             821
-            429)
+            411)
           object pcSemEstoque: TTS_PageControl
             Left = 123
             Top = 0
             Width = 668
-            Height = 428
+            Height = 410
             ActivePage = tsCaracteristicas2
             Anchors = [akLeft, akTop, akRight, akBottom]
             OwnerDraw = True
@@ -11512,7 +12901,7 @@ inherited FrmItens: TFrmItens
             Left = 3
             Top = 3
             Width = 119
-            Height = 425
+            Height = 407
             Anchors = [akLeft, akTop, akBottom]
             Color = 16116702
             TabOrder = 1
@@ -12757,12 +14146,12 @@ inherited FrmItens: TFrmItens
           BevelOuter = bvLowered
           DesignSize = (
             821
-            429)
+            411)
           object pcServicos: TTS_PageControl
             Left = 123
             Top = 0
             Width = 668
-            Height = 428
+            Height = 410
             ActivePage = tsCaracteristicas3
             Anchors = [akLeft, akTop, akRight, akBottom]
             OwnerDraw = True
@@ -13741,7 +15130,7 @@ inherited FrmItens: TFrmItens
             Left = 3
             Top = 3
             Width = 119
-            Height = 425
+            Height = 407
             Anchors = [akLeft, akTop, akBottom]
             Color = 16116702
             TabOrder = 1
@@ -15876,8 +17265,8 @@ inherited FrmItens: TFrmItens
         Height = 19
       end
       object pnItensCodigos: TTS_Panel
-        Left = 296
-        Top = 43
+        Left = 371
+        Top = 25
         Width = 201
         Height = 116
         BevelOuter = bvNone
@@ -15890,7 +17279,7 @@ inherited FrmItens: TFrmItens
           116)
         object dbgItensCodigos: TTS_QDBGrid
           Tag = -2
-          Left = 3
+          Left = 1
           Top = 2
           Width = 198
           Height = 113
@@ -16019,8 +17408,8 @@ inherited FrmItens: TFrmItens
     end
   end
   inherited DlgMsg: TDlgMsg
-    Left = 707
-    Top = 310
+    Left = 739
+    Top = 566
   end
   inherited LastDataObject: TTS_LastDataObject
     Left = 564
@@ -16064,8 +17453,8 @@ inherited FrmItens: TFrmItens
     end
   end
   inherited ImgPadrao: TImageList
-    Left = 786
-    Top = 389
+    Left = 674
+    Top = 149
   end
   inherited FormComponent: TFormComponent
     BeforeSave = FormComponentBeforeSave
@@ -16110,27 +17499,27 @@ inherited FrmItens: TFrmItens
     Top = 90
   end
   inherited ppmHelp: TTS_PopupMenu
-    Left = 665
-    Top = 464
+    Left = 641
+    Top = 152
   end
   inherited ppmGridPadrao: TTS_PopupMenu
     OnPopup = ppmGrupoPopup
-    Left = 633
-    Top = 147
+    Left = 681
+    Top = 99
   end
   inherited Beep: TBTBeeper
-    Left = 744
-    Top = 448
+    Left = 624
+    Top = 112
   end
   inherited FormStorage: TFormStorage
     StoredProps.Strings = (
       'FormComponent.FirstEditField'
       'FormComponent.FirstSearchField')
-    Left = 738
-    Top = 514
+    Left = 762
+    Top = 170
   end
   inherited ppmIR_Para: TTS_PopupMenu
-    Left = 652
+    Left = 676
     Top = 536
   end
   object ppmFiscal: TTS_PopupMenu
@@ -16268,8 +17657,8 @@ inherited FrmItens: TFrmItens
     end
   end
   object ppmOutros: TTS_PopupMenu
-    Left = 636
-    Top = 107
+    Left = 708
+    Top = 163
     object AjustedeItens1: TMenuItem
       Caption = 'Ajuste de Estoque de Itens'
       OnClick = AjustedeItens1Click
@@ -17939,7 +19328,7 @@ inherited FrmItens: TFrmItens
   end
   object ppmGrupo: TTS_PopupMenu
     OnPopup = ppmGrupoPopup
-    Left = 547
+    Left = 515
     Top = 9
     object ConsiderarPercentualdoGrupo1: TMenuItem
       Caption = 'Considerar Percentual do Grupo'
@@ -17991,5 +19380,85 @@ inherited FrmItens: TFrmItens
       Caption = 'Incluir'
       OnClick = Adicionar1Click
     end
+  end
+  object Q_Tabela: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = C_TabelaDS
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      ''
+      'SELECT  r.inicio, r.valorfinal, r.fim from ordenafaruramento r')
+    UpdateObject = U_Tabela
+    Left = 136
+    Top = 299
+  end
+  object U_Tabela: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  FABRICANTE,'
+      '  DESCRICAO'
+      'from Fabricantes '
+      'where'
+      '  FABRICANTE = :FABRICANTE')
+    ModifySQL.Strings = (
+      'update Fabricantes'
+      'set'
+      '  DESCRICAO = :DESCRICAO,'
+      '  CODIGO = :CODIGO'
+      'where'
+      '  FABRICANTE = :OLD_FABRICANTE')
+    InsertSQL.Strings = (
+      'insert into Fabricantes'
+      '  (FABRICANTE, DESCRICAO, CODIGO)'
+      'values'
+      '  (:FABRICANTE, :DESCRICAO, :CODIGO)')
+    DeleteSQL.Strings = (
+      'delete from Fabricantes'
+      'where'
+      '  FABRICANTE = :OLD_FABRICANTE')
+    Left = 136
+    Top = 347
+  end
+  object P_Tabela: TDataSetProvider
+    DataSet = Q_Tabela
+    Constraints = True
+    Options = [poIncFieldProps, poCascadeDeletes, poCascadeUpdates, poPropogateChanges, poAllowCommandText]
+    Left = 136
+    Top = 397
+  end
+  object C_Tabela: TClientDataSet
+    Tag = 100
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_Tabela'
+    Left = 137
+    Top = 460
+    object C_Tabela_icSelecionado: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_Tabelainicio: TStringField
+      FieldName = 'inicio'
+      Size = 10
+    end
+    object C_Tabelavalorfinal: TCurrencyField
+      FieldName = 'valorfinal'
+    end
+    object C_Tabelafim: TStringField
+      FieldName = 'fim'
+      Size = 10
+    end
+  end
+  object C_TabelaDS: TDataSource
+    Tag = 100
+    DataSet = C_Tabela
+    Left = 136
+    Top = 508
   end
 end

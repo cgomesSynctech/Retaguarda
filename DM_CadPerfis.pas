@@ -39,13 +39,13 @@ uses DM_Projeto;
 procedure TDMCadPerfis.DMComponentGravar3_AposApply(Sender: TObject);
 begin
   inherited;
-  if C_TabelaAproveitarPerfil.value > 0 then with DMProjeto.Q_SQL do begin
-    close;
-    SQL.text := 'insert into limitacoesmenu(perfil,objeto,menu,senha,iniciar,permissoes) '+
-    'select perfil,objeto,menu,senha,iniciar,permissoes from limitacoesmenu where perfil = :perfil';
-    params[0].asinteger := C_TabelaAproveitarPerfil.value;
-    ExecSQL;
-  end;
+//  if C_TabelaAproveitarPerfil.value > 0 then with DMProjeto.Q_SQL do begin
+//    close;
+//    SQL.text := 'insert into limitacoesmenu(perfil,objeto,menu,senha,iniciar,permissoes) '+
+//    'select perfil,objeto,menu,senha,iniciar,permissoes from limitacoesmenu where perfil = :perfil';
+//    params[0].asinteger := C_TabelaAproveitarPerfil.value;
+//    ExecSQL;
+//end;
 end;
 
 procedure TDMCadPerfis.DMComponentModoInclusao2_Terminar(Sender: TObject);

@@ -244,7 +244,7 @@ begin
     else if rbFixas.Checked then
         Result := 'S'
     else
-        Result := 'N';
+        Result := 'V';
 
     {
     sql := 'select coalesce(sum(co.valor), 0) as valor ' +
@@ -561,7 +561,7 @@ begin
     Result := 0;
 
     if (rbVariaveis.Checked) then
-        sTipoDespesa := ' and upper(ct.despesafixa) = ''N''';
+        sTipoDespesa := ' and upper(ct.despesafixa) = ''V''';
 
     if (rbFixas.Checked) then
         sTipoDespesa := ' and upper(ct.despesafixa) = ''S''';

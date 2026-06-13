@@ -50,6 +50,9 @@ type
     C_ConsultaVOLUME0_30: TFloatField;
     C_ConsultaVOLUME31_60: TFloatField;
     C_ConsultaVOLUME61_90: TFloatField;
+    dbgConsultaColumn13: TdxDBGridMaskColumn;
+    C_ConsultaCELULAR: TStringField;
+    dbgConsultaColumn14: TdxDBGridMaskColumn;
     procedure btAtualizarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Endereo1Click(Sender: TObject);

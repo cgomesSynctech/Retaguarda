@@ -14,7 +14,7 @@ uses
     TS_DBLookupComboBox, TS_LookupComboBox;
 
 type
-    TFrmFaturarPedidos = class(TFrmModeloCadastros)
+  TFrmFaturarPedidos = class(TFrmModeloCadastros)
         GridMovs: TTS_QDBGrid;
         GridMovsSAIDA: TdxDBGridMaskColumn;
         GridMovsNUMERO: TdxDBGridMaskColumn;
@@ -182,7 +182,9 @@ begin
         '''' + Q_TiposMovimentoBAIXAESTOQUE.AsString + ''', ''' + Q_TiposMovimentoCALCCOMISSAO.AsString + ''', ''' + Q_TiposMovimentoPOSSUIENTREGA.AsString + ''', ' +
         'CAMPO01, CAMPO02, CAMPO03, CAMPO04, IMPRESSO, IMPOSTO, IMPOSTO_INCLUSO, PCOMISSAO, CAIXA, LOCALENTREGA, ' +
         'TABELAPADRAO, ' + Q_TiposMovimentoTIPOPADRAO.AsString + ', DATACANCELAMENTO, FUNCCANCELAMENTO, MOTIVOCANCELAMENTO, PJUROS, VALORCOMISSAO, TOTALITENS, VALIDADE, ' +
-        'CONDICOESPGTO, DATAENTREGUE, STATUS, TOTALITENS123, BASEIMPOSTO, BASEINCLUSO, DESCONTOITENS, ''' + Q_TiposMovimentoTIPOIMPRESSAO_OP.AsString + ''', TOTALPGTOS, ' +
+        'CONDICOESPGTO, DATAENTREGUE, STATUS, TOTALITENS123, BASEIMPOSTO, BASEINCLUSO, '+
+//      'DESCONTOITENS, ''' + Q_TiposMovimentoTIPOIMPRESSAO_OP.AsString + ''', TOTALPGTOS, ' +  trocado abaixo ... dava erro na impressão quando existia um modelo de doc associado na impressoa 
+        'DESCONTOITENS, ''P'', TOTALPGTOS, ' +
         'STATUSANTERIOR, REDUCOESBASE, ACRESCIMOSBASE, DTMODIFICACAO, VOLUMES, TERMOCONTRATO, ALMOXPADRAO, CFOPNOTA, ''' + Q_TiposMovimentoSERIENOTA.AsString + ''', ' +
         'UFDESTINO, BASECALCICMS, VALORICMS, VALORISS, VALORIPI, BASECALCSUBST, VALORICMSSUBST, VALORSEGURO, TIPOFRETE, TRANSPORTADORA, ' +
         'PESOBRUTO, PESOLIQUIDO, ALIQICMSVENDA, VALORISENTAS, TOTALSERVICOS, DESCESPECIE, DESCMARCA, DESCNUMERO, INDICADOPELOFAV, ' +
@@ -330,6 +332,7 @@ end;
 
 procedure TFrmFaturarPedidos.btGravarClick(Sender: TObject);
 var i: Integer;
+comando: string;
 begin
     inherited;
     try

@@ -7,7 +7,7 @@ inherited RptEstimates: TRptEstimates
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 775
+    Width = 783
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 238
@@ -22,14 +22,14 @@ inherited RptEstimates: TRptEstimates
     end
   end
   inherited pnGrid: TPanel
-    Width = 722
-    Height = 385
+    Width = 730
+    Height = 397
     inherited RichEdit: TRichEdit
       Left = -2
       Top = 224
     end
     inherited pnDados: TTS_Panel
-      Width = 722
+      Width = 730
       Height = 42
       Color = 16116702
       object TS_Label1: TTS_Label
@@ -405,11 +405,25 @@ inherited RptEstimates: TRptEstimates
         LookupKeyValue = Null
         Height = 19
       end
+      object cbCanceladas: TTS_CheckBox
+        Left = 584
+        Top = 23
+        Width = 82
+        Style.BorderStyle = xbsNone
+        Style.ButtonStyle = btsSimple
+        Style.HotTrack = False
+        TabOrder = 8
+        Caption = 'Canceladas'
+        StyleController = DMProjeto.esClientes
+        OnChange = cbCanceladasChange
+        DisableEdit = False
+        Height = 19
+      end
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 42
-      Width = 722
-      Height = 324
+      Width = 730
+      Height = 336
       KeyField = 'SAIDA'
       SummaryGroups = <
         item
@@ -564,8 +578,8 @@ inherited RptEstimates: TRptEstimates
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 366
-      Width = 722
+      Top = 378
+      Width = 730
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -573,9 +587,9 @@ inherited RptEstimates: TRptEstimates
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 385
+    Height = 397
     inherited btSair: TTS_SpeedButton
-      Top = 340
+      Top = 352
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick

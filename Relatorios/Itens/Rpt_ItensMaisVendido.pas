@@ -37,6 +37,8 @@ type
     cbVolume: TTS_CheckBox;
     C_ConsultaTOTAL: TFloatField;
     C_ConsultaQTDE: TBCDField;
+    C_ConsultaREFERENCIA: TStringField;
+    dbgConsultaREFERENCIA: TdxDBGridColumn;
     procedure btAtualizarClick(Sender: TObject);
     procedure DataIDateChange(Sender: TObject);
     procedure edQuantosChange(Sender: TObject);
@@ -75,8 +77,8 @@ begin
         if sVendedores <> '' then begin
            CommandText := CommandText + ' and s.vendedor in (' + sVendedores +')';
         end;
-     CommandText := CommandText + ' group by si.item, i.descricao, g.descricaogrupo '+
-	   ' order by 4 desc';
+     CommandText := CommandText + ' group by si.item, i.descricao, g.descricaogrupo, i.referencia '+
+	   ' order by 5 desc';
     fetchparams;
     params.parambyname('DataI').AsDateTime := DataI.Date;
     params.parambyname('DataF').AsDateTime := DataF.Date;

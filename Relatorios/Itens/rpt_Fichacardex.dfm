@@ -7,10 +7,10 @@ inherited rptFichacardex: TrptFichacardex
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 334
-    Height = 233
+    Left = 342
+    Height = 243
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 199
+      Top = 209
     end
     inherited btLimpar: TTS_SpeedButton
       Visible = False
@@ -150,7 +150,7 @@ inherited rptFichacardex: TrptFichacardex
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 452
+    Width = 460
     Gradient.ColorStart = 9027548
     inherited lbEstadoForm: TTS_Label
       Width = 109
@@ -167,13 +167,13 @@ inherited rptFichacardex: TrptFichacardex
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 334
-    Height = 233
+    Width = 342
+    Height = 243
     Color = 14019327
     object rgOrdem: TTS_RadioGroup
       Left = 1
       Top = 106
-      Width = 332
+      Width = 340
       Height = 42
       Align = alTop
       Caption = 'Ordena'#231#227'o:'
@@ -188,7 +188,7 @@ inherited rptFichacardex: TrptFichacardex
     object TS_PanelCorner1: TTS_PanelCorner
       Left = 1
       Top = 36
-      Width = 332
+      Width = 340
       Height = 70
       Align = alTop
       Color = 14019327
@@ -330,7 +330,7 @@ inherited rptFichacardex: TrptFichacardex
     object TS_PanelCorner2: TTS_PanelCorner
       Left = 1
       Top = 1
-      Width = 332
+      Width = 340
       Height = 35
       Align = alTop
       Color = 14019327

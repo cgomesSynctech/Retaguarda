@@ -155,11 +155,23 @@ uses DM_Projeto, funcoes, Dlg_DigitacaoLeitor;
 
 Function TDlgContagensItens.receberContagem(sPath: String): Boolean;
 Var sLinhas: TStringList;
-    i,nTipoDelimitador:integer;
-    sCodigo:String;
+    i,nTipoDelimitador,nArq:integer;
+    sCodigo, sArq, sTexto:String;
     nQtd: Real;
+    Arq: TextFile;
 Begin
    Try
+   sArq := ExtractFilePath(Application.ExeName) + 'LOG_Coletor'+RestringirCarac(FormatDateTime('YYYMMDDHHNNSS',Now))+'.txt';
+      if not FileExists(sArq) then begin
+        nArq := FileCreate(sArq);
+        FileClose(nArq);
+        AssignFile(Arq,sArq);
+        System.Append(Arq);
+      end
+      else begin
+        AssignFile(Arq,sArq);
+        Rewrite(Arq);
+      end;
      //C_ContagensItens.DisableControls;
      result:=False;
      sLinhas := TStringList.Create;
@@ -172,9 +184,29 @@ Begin
           sCodigo:= Trim(Copy(sLinhas[i],1,13));
           nQtd := StrToInt(Copy(sLinhas[i],14,Length(sLinhas[i])));
         End;
+
+        with Q_Aux do begin
+//           try
+            close;
+                sql.text:= 'select first 1  i.item  from itenscodigos ii inner join itens i on i.item = ii.item where ii.codigo = :codigo';
+                paramByName('codigo').asString := sCodigo ;
+            open ;
+         if (Q_AUX.Fields[0].value <> Null ) then
+            sCodigo := Q_AUX.Fields[0].value
+         else
+            Writeln(Arq,sCodigo);
+
+     //  except
+      //   C_ItensicUltPrecoCliente.AsCurrency := 0;
+    //  end; // try
+    end; // with Q_SQL do begin
+
+
+
+
         with C_ContagensItens do Begin
           Open;
-          if Locate('CODIGO',sCodigo,[]) Then Begin
+          if Locate('ITEM',sCodigo,[]) Then Begin
              edit;
              FieldByName('Quantidade').AsFloat := FieldByName('Quantidade').AsFloat + nQtd;
           End;
@@ -184,6 +216,7 @@ Begin
      //C_ContagensItens.EnableControls;
      C_ContagensItens.First;
      result := true;
+     CloseFile(Arq);
    Except
      on e:Exception do
        Application.MessageBox(pChar(e.Message),'Aviso',mb_ok);

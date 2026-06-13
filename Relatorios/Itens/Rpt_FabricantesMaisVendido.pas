@@ -17,7 +17,6 @@ type
   TRptFabricantesMaisVendido = class(TRptPadrao)
     C_ConsultaFABRICANTE: TIntegerField;
     C_ConsultaDESCRICAO: TStringField;
-    C_ConsultaTOTAL: TBCDField;
     dbgConsultaFABRICANTE: TdxDBGridMaskColumn;
     dbgConsultaDESCRICAO: TdxDBGridMaskColumn;
     dbgConsultaQUANTIDADE: TdxDBGridMaskColumn;
@@ -35,6 +34,7 @@ type
     btVendedor: TTS_SpeedButton;
     cbValor: TTS_CheckBox;
     cbVolume: TTS_CheckBox;
+    C_ConsultaTOTAL: TFloatField;
     procedure FormsComponentBeforeClearParams(Sender: TObject);
     procedure btAtualizarClick(Sender: TObject);
     procedure DataIDateChange(Sender: TObject);

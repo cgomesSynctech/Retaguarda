@@ -1,12 +1,12 @@
 inherited RptVendasCartoes: TRptVendasCartoes
-  Left = 283
-  Top = 120
-  Width = 1058
+  Left = 162
+  Top = 63
+  Width = 1113
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 1050
+    Width = 1105
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 258
@@ -14,16 +14,16 @@ inherited RptVendasCartoes: TRptVendasCartoes
       Effect3D.ShadowedColor = 14859922
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 1014
+      Left = 1069
     end
     inherited btTemplates: TTS_SpeedButton
-      Left = 989
+      Left = 1044
     end
   end
   inherited pnGrid: TPanel
-    Width = 997
+    Width = 1052
     inherited pnDados: TTS_Panel
-      Width = 997
+      Width = 1052
       Color = 16116702
       object TS_Label1: TTS_Label
         Left = -2
@@ -184,6 +184,7 @@ inherited RptVendasCartoes: TRptVendasCartoes
         Caption = 'Com tipos de cobran'#231'as'
         StyleController = DMProjeto.esClientes
         NullStyle = nsUnchecked
+        State = cbsChecked
         DisableEdit = False
         Height = 19
       end
@@ -203,7 +204,7 @@ inherited RptVendasCartoes: TRptVendasCartoes
       end
     end
     inherited dbgConsulta: TTS_QDBGrid
-      Width = 997
+      Width = 1052
       KeyField = 'NUMERO'
       ShowGroupPanel = True
       SummaryGroups = <
@@ -235,13 +236,14 @@ inherited RptVendasCartoes: TRptVendasCartoes
         'ValorForma;SUM;')
       object dbgConsultaicSubTotal: TdxDBGridColumn
         Visible = False
+        Width = 50
         BandIndex = 0
         RowIndex = 0
         FieldName = 'icSubTotal'
       end
       object dbgConsultaNUMERO: TdxDBGridMaskColumn
         Caption = 'N'#250'mero'
-        Sorted = csUp
+        Width = 76
         BandIndex = 0
         RowIndex = 0
         FieldName = 'NUMERO'
@@ -250,13 +252,37 @@ inherited RptVendasCartoes: TRptVendasCartoes
       end
       object dbgConsultaDATA: TdxDBGridDateColumn
         Caption = 'Data'
+        Width = 71
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DATA'
       end
-      object dbgConsultaVALORFORMA: TdxDBGridCurrencyColumn
+      object dbgConsultaTOTAL: TdxDBGridMaskColumn
         Caption = 'Valor'
-        HeaderAlignment = taRightJustify
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTAL'
+      end
+      object dbgConsultaFORMAPGTO: TdxDBGridMaskColumn
+        Caption = 'Forma Pgto.'
+        Sorted = csUp
+        Visible = False
+        Width = 233
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FORMAPGTO'
+        GroupIndex = 0
+      end
+      object dbgConsultaPARCELAS: TdxDBGridMaskColumn
+        Caption = 'Parcelas'
+        Width = 58
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PARCELAS'
+      end
+      object dbgConsultaVALORFORMA: TdxDBGridCurrencyColumn
+        Caption = 'Valor Forma'
+        Width = 108
         BandIndex = 0
         RowIndex = 0
         FieldName = 'VALORFORMA'
@@ -264,61 +290,53 @@ inherited RptVendasCartoes: TRptVendasCartoes
         SummaryFooterFormat = '#,###,##0.00'
         Nullable = False
       end
-      object dbgConsultaPARCELAS: TdxDBGridMaskColumn
-        Caption = 'Parcela'
-        HeaderAlignment = taRightJustify
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'PARCELAS'
-      end
-      object dbgConsultaTOTAL: TdxDBGridMaskColumn
-        Caption = 'Total'
-        HeaderAlignment = taRightJustify
+      object dbgConsultaTOTALFORMA: TdxDBGridCurrencyColumn
+        Caption = 'Total Forma'
         Visible = False
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'TOTAL'
-        SummaryFooterFormat = '#,###,##0.00'
-      end
-      object dbgConsultaTOTALFORMA: TdxDBGridColumn
-        Caption = 'Valor Forma'
-        HeaderAlignment = taRightJustify
+        Width = 92
         BandIndex = 0
         RowIndex = 0
         FieldName = 'TOTALFORMA'
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
-      end
-      object dbgConsultaFORMAPGTO: TdxDBGridMaskColumn
-        Caption = 'Forma Pgto.'
-        Sorted = csUp
-        Visible = False
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'FORMAPGTO'
-        GroupIndex = 0
+        Nullable = False
       end
       object dbgConsultaDESCCONTA: TdxDBGridMaskColumn
         Caption = 'Conta'
+        Width = 106
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DESCCONTA'
       end
+      object dbgConsultaColumn13: TdxDBGridColumn
+        Caption = 'Forma Pgto.'
+        Width = 150
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FORMAPGTO'
+      end
       object dbgConsultaCLIENTE: TdxDBGridMaskColumn
         Caption = 'Cliente'
+        Width = 204
         BandIndex = 0
         RowIndex = 0
         FieldName = 'CLIENTE'
       end
       object dbgConsultaVENDEDOR: TdxDBGridMaskColumn
         Caption = 'Vendedor'
+        Width = 189
         BandIndex = 0
         RowIndex = 0
         FieldName = 'VENDEDOR'
       end
+      object dbgConsultaPDV: TdxDBGridColumn
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PDV'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Width = 997
+      Width = 1052
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -369,28 +387,100 @@ inherited RptVendasCartoes: TRptVendasCartoes
     Database = DMProjeto.DB_Projeto
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
-      'select'
+      'Select  s.numero,s.data,s.total,fp.Descricao as FormaPgto,'
       
-        'Distinct s.numero,s.data,s.total,fp.Descricao as FormaPgto,count' +
-        '(*) as Parcelas,Sum(dd.valor) as ValorForma,Sum(dd.valor) * coun' +
-        't(*) as TotalForma,c.Descricao as DescConta,v.nome as Vendedor'
-      'FROM'
+        'count(*) as Parcelas,Max(dd.valor) as ValorForma,Max(dd.valor) *' +
+        ' count(*) as TotalForma,'
       
-        ' Depositos d inner join DepositosDoc dd on d.empresa = dd.empres' +
-        'a  and d.pdv = dd.pdv and d.deposito = dd.deposito inner join de' +
-        'positostitulos dt on  d.empresa = dt.empresa and d.pdv = dt.pdv ' +
-        'and d.deposito = dt.deposito inner join titulosareceber tr on dt' +
-        '.titulo = tr.id and dt.empresa = tr.empresa and dt.pdv = tr.pdv ' +
-        'inner join saidas s on  s.empresa = tr.empresa and s.pdv = tr.pd' +
-        'v and s.saida = tr.venda inner join FormasPagamento fp on dd.for' +
-        'mapagamento = fp.formapagamento inner join Contas c on d.Conta =' +
-        ' c.Conta left join favorecidos f on f.favorecido = d.favorecido ' +
-        'left join favorecidos v on v.favorecido = s.vendedor'
+        'c.Descricao as DescConta, f.nome as Cliente, v.nome as Vendedor,' +
+        ' s.pdv'
+      'From saidas s'
+      
+        'inner join titulosareceber tr on  s.empresa = tr.empresa and s.p' +
+        'dv = tr.pdv and s.saida = tr.venda'
+      
+        'left join depositostitulos dt on  tr.empresa = dt.empresa and tr' +
+        '.pdv = dt.pdv and tr.id = dt.titulo'
+      
+        'left join depositosdoc dd on dt.empresa = dd.empresa and dt.pdv ' +
+        '= dd.pdv and dt.deposito = dd.deposito'
+      
+        'left join Depositos d on d.empresa = dd.empresa and d.pdv = dd.p' +
+        'dv and d.deposito = dd.deposito'
+      
+        'left join FormasPagamento fp on dd.formapagamento = fp.formapaga' +
+        'mento'
+      'left join Contas c on d.Conta = c.Conta'
+      'left join favorecidos f on f.favorecido = d.favorecido'
+      'left join favorecidos v on v.favorecido = s.vendedor'
+      
+        'Where  s.data >= :datai and s.data <= :dataf and s.situacao = '#39'N' +
+        #39
+      'and fp.especie in (1,3,5,10,20,30,40,50,6,7,2,8,17)'
+      'and s.tipomovimento in ( 7,700,2366,-1,-3,1,22,23,11,14,18,17)'
       
         'group by s.numero, s.data, s.total, fp.Descricao, c.Descricao, f' +
-        '.nome, v.nome')
+        '.nome,'
+      'v.nome, dd.valor, tr.parcela, s.pdv'
+      ''
+      'union'
+      ''
+      'select  s.numero,s.data,s.total,'#39'Doc Cobranca'#39' as FormaPgto,'
+      'count(*) as Parcelas,0 as ValorForma,0 as TotalForma,'
+      
+        's.total as DescConta, f.nome as Cliente, v.nome as Vendedor, s.p' +
+        'dv'
+      'From saidas s'
+      
+        'inner join titulosareceber tr on  s.empresa = tr.empresa and s.p' +
+        'dv = tr.pdv and s.saida = tr.venda'
+      
+        'left join depositostitulos dt on  tr.empresa = dt.empresa and tr' +
+        '.pdv = dt.pdv and tr.id = dt.titulo'
+      
+        'left join depositosdoc dd on dt.empresa = dd.empresa and dt.pdv ' +
+        '= dd.pdv and dt.deposito = dd.deposito'
+      
+        'left join Depositos d on d.empresa = dd.empresa and d.pdv = dd.p' +
+        'dv and d.deposito = dd.deposito'
+      
+        'left join FormasPagamento fp on dd.formapagamento = fp.formapaga' +
+        'mento'
+      'left join Contas c on d.Conta = c.Conta'
+      'left join favorecidos f on f.favorecido = s.favorecido'
+      'left join favorecidos v on v.favorecido = s.vendedor'
+      
+        'Where  s.data >= :datai and s.data <= :dataf and s.situacao = '#39'N' +
+        #39
+      'and fp.especie is null'
+      'and s.tipomovimento in ( 7,700,2366,-1,-3,1,22,23,11,14,18,17)'
+      
+        'group by s.numero, s.data, s.total, fp.Descricao, c.Descricao, f' +
+        '.nome,'
+      'v.nome, dd.valor, tr.parcela, s.pdv')
     Left = 410
     Top = 118
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'datai'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataf'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'datai'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataf'
+        ParamType = ptUnknown
+      end>
   end
   inherited C_Consulta: TClientDataSet
     OnCalcFields = C_ConsultaCalcFields
@@ -412,7 +502,6 @@ inherited RptVendasCartoes: TRptVendasCartoes
     end
     object C_ConsultaFORMAPGTO: TStringField
       FieldName = 'FORMAPGTO'
-      Required = True
       Size = 50
     end
     object C_ConsultaPARCELAS: TIntegerField
@@ -421,6 +510,11 @@ inherited RptVendasCartoes: TRptVendasCartoes
     end
     object C_ConsultaVALORFORMA: TBCDField
       FieldName = 'VALORFORMA'
+      Precision = 18
+      Size = 2
+    end
+    object C_ConsultaTOTALFORMA: TBCDField
+      FieldName = 'TOTALFORMA'
       Precision = 18
       Size = 2
     end
@@ -436,10 +530,9 @@ inherited RptVendasCartoes: TRptVendasCartoes
       FieldName = 'VENDEDOR'
       Size = 50
     end
-    object C_ConsultaTOTALFORMA: TBCDField
-      FieldName = 'TOTALFORMA'
-      Precision = 18
-      Size = 2
+    object C_ConsultaPDV: TIntegerField
+      FieldName = 'PDV'
+      Required = True
     end
   end
   inherited ppmDados: TTS_PopupMenu

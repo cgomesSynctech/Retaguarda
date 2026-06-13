@@ -1,8 +1,8 @@
 unit MDI_Projeto;
-
+  
 interface
 
-uses
+uses       
     Windows, MDI_PADRAO, ComCtrls, Controls, ToolWin, Menus, ImgList,
     TransEff, teTimed, teMasked, teBlock, teForm, AppEvnts, Forms, SysUtils,
     TS_ApplicationEvents, DlgMsg, LoginDialog, Dialogs, Classes, ExtCtrls,
@@ -564,6 +564,46 @@ type
     Boletos2: TMenuItem;
     ApagarEntrada1: TMenuItem;
     Em1: TMenuItem;
+    EntradaCarro1: TMenuItem;
+    Mecanica: TMenuItem;
+    EntradaVeiculo1: TMenuItem;
+    N46: TMenuItem;
+    CadMarcas1: TMenuItem;
+    CadModelo1: TMenuItem;
+    DuplicasPorCompetncia1: TMenuItem;
+    PlanilhaContabilPagamentos1: TMenuItem;
+    FaturarEntrada1: TMenuItem;
+    rocaClienteVenda1: TMenuItem;
+    GrafiscosGesto1: TMenuItem;
+    MetasdeFaturamento3: TMenuItem;
+    FaturamentoUltimos12Meses1: TMenuItem;
+    ComparativoFaturamentoanoAntereior1: TMenuItem;
+    AjustesdeVolumes1: TMenuItem;
+    Profissionais1: TMenuItem;
+    ReposioAvulsa1: TMenuItem;
+    EstoqueFisicoxFical1: TMenuItem;
+    N48: TMenuItem;
+    EntradasPorProdutos1: TMenuItem;
+    ItensOramentos1: TMenuItem;
+    ModelosVeiculos1: TMenuItem;
+    Mecanica1: TMenuItem;
+    EntradadeVeiculos1: TMenuItem;
+    Oficina1: TMenuItem;
+    Modelos1: TMenuItem;
+    iposServios1: TMenuItem;
+    StatusOficina1: TMenuItem;
+    Localizaes2: TMenuItem;
+    ProdutosVendidosnoPerodoGrupoPai2: TMenuItem;
+    Ransferenciageral1: TMenuItem;
+    Valores1: TMenuItem;
+    ESTECONSI1: TMenuItem;
+    Contabil1: TMenuItem;
+    GerencialSaidas1: TMenuItem;
+    ConfigVipShop1: TMenuItem;
+    RptVendasitensSimplificado: TMenuItem;
+    VendasFormadePgtoComDocsCobrana1: TMenuItem;
+    ApuraoBordados1: TMenuItem;
+    ItensMenosVendidos1: TMenuItem;
         procedure Bancos1Click(Sender: TObject);
         procedure Empresa1Click(Sender: TObject);
         procedure Idiomas1Click(Sender: TObject);
@@ -1003,6 +1043,40 @@ type
     procedure Boletos2Click(Sender: TObject);
     procedure ApagarEntrada1Click(Sender: TObject);
     procedure Em1Click(Sender: TObject);
+    procedure EntradaCarro1Click(Sender: TObject);
+    procedure EntradaVeiculo1Click(Sender: TObject);
+    procedure CadMarcas1Click(Sender: TObject);
+    procedure CadModelo1Click(Sender: TObject);
+    procedure DuplicasPorCompetncia1Click(Sender: TObject);
+    procedure PlanilhaContabilPagamentos1Click(Sender: TObject);
+    procedure FaturarEntrada1Click(Sender: TObject);
+    procedure rocaClienteVenda1Click(Sender: TObject);
+    procedure FaturamentoUltimos12Meses1Click(Sender: TObject);
+    procedure ComparativoFaturamentoanoAntereior1Click(Sender: TObject);
+    procedure MetasdeFaturamento3Click(Sender: TObject);
+    procedure AjustesdeVolumes1Click(Sender: TObject);
+    procedure ProfissionaisClick(Sender: TObject);
+    procedure ReposioAvulsa1Click(Sender: TObject);
+    procedure EstoqueFisicoxFical1Click(Sender: TObject);
+    procedure EntradasPorProdutos1Click(Sender: TObject);
+    procedure ItensOramentos1Click(Sender: TObject);
+    procedure ModelosVeiculos1Click(Sender: TObject);
+    procedure EntradadeVeiculos1Click(Sender: TObject);
+    procedure Modelos1Click(Sender: TObject);
+    procedure iposServios1Click(Sender: TObject);
+    procedure StatusOficina1Click(Sender: TObject);
+    procedure Localizaes2Click(Sender: TObject);
+    procedure ProdutosVendidosnoPerodoGrupoPai2Click(Sender: TObject);
+    procedure Ransferenciageral1Click(Sender: TObject);
+    procedure Valores1Click(Sender: TObject);
+    procedure ESTECONSI1Click(Sender: TObject);
+    procedure GerencialSaidas1Click(Sender: TObject);
+    procedure ConfigVipShop1Click(Sender: TObject);
+    procedure RptVendasitensSimplificadoClick(
+      Sender: TObject);
+    procedure VendasFormadePgtoComDocsCobrana1Click(Sender: TObject);
+    procedure ApuraoBordados1Click(Sender: TObject);
+    procedure ItensMenosVendidos1Click(Sender: TObject);
     private
         { Private declarations }
         validaPAF: TValidaPAF;
@@ -1028,7 +1102,7 @@ implementation
 uses DM_Projeto, DM_Financeiro, DM_Agenda, funcoes, FireBirdUses, Md5,
     Frm_Splash, Dlg_ConsultaPrecos, Dlg_Configurador, Frm_AtualizarAcesso,
     TDM_Projeto, {dm_ECF,} Frm_MsgTEF, Dlg_Importacao, Dlg_Wait,
-    Dlg_UpdatePack, Dlg_ConsultaPrecosSalao, {ECF, FuncoesPAF, RegReducaoZ_R06,}
+    Dlg_ConsultaPrecosSalao, {ECF, FuncoesPAF, RegReducaoZ_R06,}
     dlg_Divulgacao, IBQuery, DB; {, funcoesProteq}
 
 {$R *.DFM}
@@ -1101,9 +1175,11 @@ begin
             ToolButton13.Visible := bSituacaoCaixa;
         end;
     DigitaodaProduodosServios1.Visible := (DMProjeto.Parametro('ServicosEmItens') = 'S');
+    EstoqueFisicoxFical1.Visible := (DMProjeto.Parametro('BaixaEstoqueFiscal') = 'S');
     RelaodaProduodosServiosemItens1.Visible := DigitaodaProduodosServios1.Visible;
     AtualizarEstoque.Visible := (DMProjeto.Parametro('BaixaEstoqueOnLine') <> 'S');
     AssistnciaTecnica.Visible := (DMProjeto.Parametro('AssistenciaTecnica') = 'S');
+    Mecanica1.Visible := (DMProjeto.Parametro('Mecanica') = 'S');
     Servio1.Visible := (DMProjeto.Parametro('Servico') = 'S');
     Indstria1.Visible := (Dmprojeto.Parametro('Industria') = 'S');
     //    AdministrativoCarto1.Visible       := (DMProjeto.ParametroTEF('TEFGP') = 'S');
@@ -1128,6 +1204,7 @@ begin
     //    ConfiguraodoECF1.Visible      := DMPRojeto.MostrarMenuPAF;
 
     DMProjeto.bPermitirOficina := (DMProjeto.Parametro('Oficina') = 'S');
+    ApuraoBordados1.Visible := (DMProjeto.Parametro('Bordados') = 'S');
     Oficina2.Visible := DMProjeto.bPermitirOficina;
 
 end;
@@ -1569,7 +1646,9 @@ end;
 procedure TMDIProjeto.EscreverCheque1Click(Sender: TObject);
 begin
     inherited;
-    DMProjeto.CriarForm('DlgEscreverCheque', Self, false);
+      DMProjeto.SetParametrosForm([null, 2]);
+      DMProjeto.CriarForm('FrmSalesOrder', Self, False, False, '', DMProjeto.Parametro('VendasFullScreen') = 'S');
+      //DMProjeto.CriarForm('DlgEscreverCheque', Self, false);
 end;
 
 procedure TMDIProjeto.ConciliaoBancria1Click(Sender: TObject);
@@ -1734,9 +1813,6 @@ begin
                 end;
             if FileExists(ExtractFilePath(Application.ExeName) + 'EmptySyncLoja.fdb') then
                 begin
-                    DlgUpdatePack := TDlgUpdatePack.Create(self, DMProjeto.DB_Projeto.DataBaseName, DMProjeto.VersaoSistema, 'Anterior');
-                    DlgUpdatePack.ShowModal;
-                    DlgUpdatePack.free;
                 end
             else
                 begin
@@ -1820,6 +1896,7 @@ begin
                                     sEstacoes := FieldByName('ESTACOES').AsString;
 
                                     DMProjeto.bDemo := False;
+
                                     sChaveTMP := LowerCase(MD5.MD5Print(MD5.MD5String(sDataExpira + sHoraExpira + sCnpj + sRazao + sEstacoes + '{CHAVE PARA 30 DIAS}')));
                                     sChave := funcoes.ChaveFinal(sChaveTMP);
 
@@ -2443,7 +2520,7 @@ begin
 end;
 
 procedure TMDIProjeto.ContasPagas1Click(Sender: TObject);
-begin
+begin                                   
     inherited;
     DMProjeto.CriarForm('RptContasPagas', self, false);
 end;
@@ -2499,7 +2576,7 @@ end;
 procedure TMDIProjeto.Listagem1Click(Sender: TObject);
 begin
     inherited;
-    DMProjeto.CriarForm('RptClientes', self, false);
+        DMProjeto.CriarForm('RptClientes', self, false);
 end;
 
 procedure TMDIProjeto.AnlisedeCrdito1Click(Sender: TObject);
@@ -2517,7 +2594,16 @@ end;
 procedure TMDIProjeto.QueDeixaramdeComprar1Click(Sender: TObject);
 begin
     inherited;
+      if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
+        DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
+      With DMProjeto.StoreProcedure do Begin
+         StoredProcName := 'ATUALIZA_REL_CLIENTES';
+         ExecProc;
+      End;
+      DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+
     DMProjeto.CriarForm('RptUltimaCompraCliente', self, false);
+
 end;
 
 procedure TMDIProjeto.Aniversariantes1Click(Sender: TObject);
@@ -2706,12 +2792,14 @@ begin
     inherited;
     DMProjeto.SetParametrosForm([null, 2]);
     DMProjeto.CriarForm('FrmSalesOrder', Self, False, False, '', DMProjeto.Parametro('VendasFullScreen') = 'S');
+  
+
 end;
 
 procedure TMDIProjeto.Estimates1Click(Sender: TObject);
 begin
     inherited;
-    DMProjeto.SetParametrosForm([null, 3]);
+    DMProjeto.SetParametrosForm([null, 3]);                                
     DMProjeto.CriarForm('FrmEstimates', Self, False, False, '', DMProjeto.Parametro('VendasFullScreen') = 'S');
 end;
 
@@ -2737,13 +2825,18 @@ begin
 end;
 
 procedure TMDIProjeto.FecharCaixaClick(Sender: TObject);
+var
+    result, result2, result3: integer;
+    criticafechamento : string ;
 begin
     inherited;
-    if DMProjeto.Parametro('ModeloFechamento') = 'A' then
-        DMProjeto.CriarForm('DlgFechamento', self, true)
-    else
-        DMProjeto.CriarForm('DlgFechamentoModeloB', self, true);
+          if DMProjeto.Parametro('ModeloFechamento') = 'A' then
+             DMProjeto.CriarForm('DlgFechamento', self, true)
+          else
+             DMProjeto.CriarForm('DlgFechamentoModeloB', self, true);
+
     AtualizaMenu;
+
 end;
 
 procedure TMDIProjeto.TiposdeOperaesdeEntrada1Click(Sender: TObject);
@@ -2855,6 +2948,16 @@ end;
 procedure TMDIProjeto.ConsultadePreos1Click(Sender: TObject);
 begin
     inherited;
+      if DMProjeto.Parametro('BaixaEstoqueOnLine') = 'N' then
+  begin
+     if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
+      DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
+   With DMPRojeto.StoreProcedure do Begin
+      StoredProcName := 'PP_BAIXAESTOQUEOFFLINE';
+      ExecProc;
+   End;
+   DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+  end ;
     DlgConsultaPrecos := TDlgConsultaPrecos.create(self);
     DlgConsultaPrecos.ShowModal;
     DlgConsultaPrecos.Release;
@@ -2867,7 +2970,7 @@ begin
     DMProjeto.CriarForm('DlgSitCliente', Self, true);
 end;
 
-procedure TMDIProjeto.Statements1Click(Sender: TObject);
+procedure TMDIProjeto.Statements1Click(Sender: TObject);           
 begin
     inherited;
     DMProjeto.CriarForm('DlgStatements', Self, false);
@@ -3171,6 +3274,7 @@ begin
     DMProjeto.CriarForm('FrmDevolucoesFornecedores', Self, False);
 end;
 
+
 procedure TMDIProjeto.DevoluesvendasClick(Sender: TObject);
 begin
     inherited;
@@ -3321,7 +3425,8 @@ end;
 procedure TMDIProjeto.MetasporVendedor1Click(Sender: TObject);
 begin
     inherited;
-    DMProjeto.CriarForm('RptMetasVendedor', Self, False);
+//    DMProjeto.CriarForm('RptMetasVendedor', Self, False);
+DMProjeto.CriarForm('DlgMetas', Self, False);
 end;
 
 procedure TMDIProjeto.PerfisdeTabelasdePreos1Click(Sender: TObject);
@@ -3781,7 +3886,7 @@ end;
 procedure TMDIProjeto.ListagemECF1Click(Sender: TObject);
 begin
     inherited;
-    DMProjeto.CriarForm('RptItensECF', Self, False);
+//    DMProjeto.CriarForm('RptItensECF', Self, False);
 end;
 
 procedure TMDIProjeto.RelatriodeCaixa1Click(Sender: TObject);
@@ -3829,7 +3934,10 @@ end;
 procedure TMDIProjeto.GerarInventrio2Click(Sender: TObject);
 begin
     inherited;
-    DMProjeto.CriarForm('RptInventarioEstoque', Self, False);
+    if (DMProjeto.Parametro('TipoInventario') = '1') then
+       DMProjeto.CriarForm('RptInventarioEstoqueNovo', Self, False)
+    else
+        DMProjeto.CriarForm('RptInventarioEstoque', Self, False);
 end;
 
 procedure TMDIProjeto.AlterarInventrio1Click(Sender: TObject);
@@ -3948,8 +4056,7 @@ end;
 
 procedure TMDIProjeto.Laboratrio1Click(Sender: TObject);
 begin
-    inherited;
-    DMProjeto.CriarForm('dlgAcompanhamentoAssistencia', Self, False, False, '', True);
+        DMProjeto.CriarForm('dlgAcompanhamentoAssistencia', Self, False, False, '', True);
 end;
 
 procedure TMDIProjeto.ExportacaoPDVClick(Sender: TObject);
@@ -4496,6 +4603,9 @@ begin
     //    end;
 
     result := false;
+
+    if uppercase(trim(getNomeMaquina)) = uppercase('desenv-PC') THEN
+        result := true;
     //    if PrimeiroAcessoDia() then begin
     //        result := false;
     //        ReceberFTP := TNMFTP.Create(self);
@@ -4844,7 +4954,10 @@ end;
 procedure TMDIProjeto.Oficina1Click(Sender: TObject);
 begin
   inherited;
-    DMProjeto.CriarForm('RptOficina', Self, False);
+      inherited;
+        DMProjeto.CriarForm('dlgAcompanhamentoMecanica', Self, False, False, '', True)
+
+//    DMProjeto.CriarForm('RptOficina', Self, False);
 end;
 
 procedure TMDIProjeto.OficinaPeriodo1Click(Sender: TObject);
@@ -4907,5 +5020,217 @@ begin
     DMProjeto.CriarForm('FrmEmbalagem3', self, false);
 end;
 
+procedure TMDIProjeto.EntradaCarro1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmMecanica', self, false);
+end;
+
+procedure TMDIProjeto.EntradaVeiculo1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmMecanica', self, false);
+end;
+
+procedure TMDIProjeto.CadMarcas1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmMarcasVeiculos' , self, false);
+end;
+
+procedure TMDIProjeto.CadModelo1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmModeloMarca' , self, false);
+end;
+
+procedure TMDIProjeto.DuplicasPorCompetncia1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('RptDuplicatasPorCompetencia' , self, false);
+
+end;
+
+procedure TMDIProjeto.PlanilhaContabilPagamentos1Click(Sender: TObject);
+begin
+  inherited;
+       DMProjeto.CriarForm('RptPlanilhaContabil' , self, false);
+end;
+
+procedure TMDIProjeto.FaturarEntrada1Click(Sender: TObject);
+begin
+  inherited;
+      DMProjeto.CriarForm('FrmFaturarEntrada' , self, false);
+end;
+
+procedure TMDIProjeto.rocaClienteVenda1Click(Sender: TObject);
+begin
+  inherited;
+     DMProjeto.CriarForm('DlgTrocaVendaCliente' , self, false);
+end;
+
+procedure TMDIProjeto.FaturamentoUltimos12Meses1Click(Sender: TObject);
+begin
+  inherited;
+         DMProjeto.CriarForm('DlgGraficoFaturamento' , self, false);
+end;
+
+procedure TMDIProjeto.ComparativoFaturamentoanoAntereior1Click(
+  Sender: TObject);
+begin
+  inherited;
+      DMProjeto.CriarForm('DlgGraficoFatComparativo' , self, false);
+end;
+
+procedure TMDIProjeto.MetasdeFaturamento3Click(Sender: TObject);
+begin
+  inherited;
+      DMProjeto.CriarForm('DlgMetas', Self, False);
+end;
+
+procedure TMDIProjeto.AjustesdeVolumes1Click(Sender: TObject);
+begin
+  inherited;
+     DMProjeto.CriarForm('FrmAjustesVolumesItens', Self, False);
+end;
+
+procedure TMDIProjeto.ProfissionaisClick(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmIndicacao', Self, False);
+end;
+
+procedure TMDIProjeto.ReposioAvulsa1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('RptReposicaoAvulsa' , self, false);
+
+end;
+
+procedure TMDIProjeto.EstoqueFisicoxFical1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('RptEstoqueFisicoFiscal' , self, false);
+end;
+
+procedure TMDIProjeto.EntradasPorProdutos1Click(Sender: TObject);
+begin
+  inherited;
+      DMProjeto.CriarForm('RptEntradaItem' , self, false);
+end;
+
+procedure TMDIProjeto.ItensOramentos1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('RptProdutosOrcamentos' , self, false);
+
+end;
+
+
+procedure TMDIProjeto.ModelosVeiculos1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('FrmMarcaModelo' , self, false);
+
+end;
+
+procedure TMDIProjeto.EntradadeVeiculos1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmMecanica', self, false);
+end;
+
+procedure TMDIProjeto.Modelos1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('FrmMarcaModelo' , self, false);
+end;
+
+procedure TMDIProjeto.iposServios1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmTiposServicos', self, false);
+end;
+
+procedure TMDIProjeto.StatusOficina1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmStatusServicos', self, false);
+end;
+
+procedure TMDIProjeto.Localizaes2Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.CriarForm('FrmLocalEquipamento', self, false);
+end;
+
+procedure TMDIProjeto.ProdutosVendidosnoPerodoGrupoPai2Click(
+  Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('rptProdutosComprasGrupoPai', self, false);
+
+end;
+
+procedure TMDIProjeto.Ransferenciageral1Click(Sender: TObject);
+begin
+  inherited;
+      DMProjeto.CriarForm('FrmTransfereReposicao', self, false);
+end;
+
+procedure TMDIProjeto.Valores1Click(Sender: TObject);
+begin
+  inherited;
+     DMProjeto.CriarForm('DlgValoresFechaCaixa', self, false);
+end;
+
+procedure TMDIProjeto.ESTECONSI1Click(Sender: TObject);
+begin
+  inherited;
+      DMProjeto.CriarForm('FrmSaidasConsignadas', self, false);
+end;
+
+procedure TMDIProjeto.GerencialSaidas1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('RptGerencialSaidas', self, false);
+
+end;
+
+procedure TMDIProjeto.ConfigVipShop1Click(Sender: TObject);
+begin
+  inherited;
+     DMProjeto.CriarForm('DlgVipShop', self, false);
+end;
+
+procedure TMDIProjeto.RptVendasitensSimplificadoClick(
+  Sender: TObject);
+begin
+  inherited;
+   DMProjeto.CriarForm('RptVendasItensSimples', self, false);
+end;
+
+procedure TMDIProjeto.VendasFormadePgtoComDocsCobrana1Click(
+  Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('RptVendasCartoesDocs', self, false);
+
+end;
+
+procedure TMDIProjeto.ApuraoBordados1Click(Sender: TObject);
+begin
+  inherited;
+  DMProjeto.CriarForm('RptApuracaoTabela', self, false);
+
+end;
+
+procedure TMDIProjeto.ItensMenosVendidos1Click(Sender: TObject);
+begin
+  inherited;
+   DMProjeto.CriarForm('RptItensMenosVendido', self, false);
+end;
+
 end.
+
 

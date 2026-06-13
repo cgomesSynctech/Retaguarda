@@ -1,9 +1,9 @@
 inherited DlgDepositos: TDlgDepositos
   Tag = -2
-  Left = 323
-  Top = 100
+  Left = 490
+  Top = 207
   Width = 723
-  Height = 478
+  Height = 485
   HelpContext = -2
   Caption = 'Clientes / Vendas'
   OnActivate = tabCreditoShow
@@ -13,10 +13,10 @@ inherited DlgDepositos: TDlgDepositos
     Tag = -1
     Left = 597
     Top = 42
-    Height = 409
+    Height = 415
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 375
+      Top = 381
     end
     inherited btComando2: TTS_SpeedButton
       Top = 73
@@ -434,7 +434,7 @@ inherited DlgDepositos: TDlgDepositos
     Tag = -1
     Top = 42
     Width = 597
-    Height = 409
+    Height = 415
     HelpContext = -1
     Color = 16116702
     object pnConta: TTS_Panel
@@ -899,27 +899,32 @@ inherited DlgDepositos: TDlgDepositos
             SummaryItems = <
               item
                 SummaryField = 'ValorNominal'
-                SummaryFormat = 'ValorNominal;###,###,##0.00'
+                SummaryFormat = '>ValorNominal=###,###,##0.00'
                 SummaryType = cstSum
               end
               item
                 SummaryField = 'ValorAReceber'
-                SummaryFormat = 'ValorAReceber;###,###,##0.00'
+                SummaryFormat = '>ValorAReceber=###,###,##0.00'
                 SummaryType = cstSum
               end
               item
                 SummaryField = 'Pagamento'
-                SummaryFormat = 'Pagamento;###,###,##0.00'
+                SummaryFormat = '>Pagamento=###,###,##0.00'
                 SummaryType = cstSum
               end
               item
                 SummaryField = 'Juros'
-                SummaryFormat = 'Juros;###,###,##0.00'
+                SummaryFormat = '>Juros=###,###,##0.00'
                 SummaryType = cstSum
               end
               item
                 SummaryField = 'Descontos'
-                SummaryFormat = 'Descontos;###,###,##0.00'
+                SummaryFormat = '>Descontos=###,###,##0.00'
+                SummaryType = cstSum
+              end
+              item
+                SummaryField = 'Retencao'
+                SummaryFormat = '>Retencao=#,###,##0.00'
                 SummaryType = cstSum
               end>
             Name = 'Default'
@@ -1015,7 +1020,8 @@ inherited DlgDepositos: TDlgDepositos
           'ValorAReceber;Sum'
           'Pagamento;Sum'
           'Juros;Sum'
-          'Descontos;Sum')
+          'Descontos;Sum'
+          'Retencao;Sum')
         TS_SummaryFooterQtdText = 'Qtd. Geral:'
         TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
         object DBTitulosID: TdxDBGridMaskColumn
@@ -1173,6 +1179,15 @@ inherited DlgDepositos: TDlgDepositos
           RowIndex = 0
           FieldName = 'PERCENTUALMORA'
         end
+        object DBTitulosRetencao: TdxDBGridColumn
+          Caption = 'Reten'#231#227'o'
+          HeaderAlignment = taCenter
+          BandIndex = 0
+          RowIndex = 0
+          FieldName = 'RETENCAO'
+          SummaryFooterType = cstSum
+          SummaryFooterFormat = '###,###,##0.00'
+        end
       end
     end
     object pnFormapPag: TTS_Panel
@@ -1180,19 +1195,19 @@ inherited DlgDepositos: TDlgDepositos
       Left = 1
       Top = 230
       Width = 595
-      Height = 178
+      Height = 184
       HelpContext = -1
       Align = alClient
       Color = 16247774
       TabOrder = 3
       DesignSize = (
         595
-        178)
+        184)
       object TS_Shape5: TTS_Shape
         Left = 10
         Top = 29
         Width = 114
-        Height = 86
+        Height = 93
         Anchors = [akLeft, akTop, akBottom]
         Brush.Color = clGray
         Pen.Style = psClear
@@ -1200,7 +1215,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object TS_Shape7: TTS_Shape
         Left = 7
-        Top = 116
+        Top = 123
         Width = 117
         Height = 36
         Anchors = [akLeft, akBottom]
@@ -1210,7 +1225,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object TS_Shape2: TTS_Shape
         Left = 3
-        Top = 129
+        Top = 136
         Width = 119
         Height = 21
         Anchors = [akLeft, akBottom]
@@ -1219,7 +1234,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object dbtTotalForma: TTS_DBText
         Left = 7
-        Top = 132
+        Top = 139
         Width = 113
         Height = 14
         Alignment = taCenter
@@ -1244,7 +1259,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object TS_Shape1: TTS_Shape
         Left = 3
-        Top = 115
+        Top = 122
         Width = 119
         Height = 17
         Anchors = [akLeft, akBottom]
@@ -1254,7 +1269,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object TS_Label3: TTS_Label
         Left = 5
-        Top = 117
+        Top = 124
         Width = 109
         Alignment = taCenter
         Anchors = [akLeft, akBottom]
@@ -1292,7 +1307,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object shpFormaPagamento: TShape
         Left = 6
-        Top = 131
+        Top = 138
         Width = 111
         Height = 21
         Anchors = [akLeft, akBottom]
@@ -2010,7 +2025,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object lbTroco: TTS_Label
         Left = 10
-        Top = 154
+        Top = 161
         Width = 38
         Alignment = taLeftJustify
         Anchors = [akLeft, akBottom]
@@ -2032,16 +2047,16 @@ inherited DlgDepositos: TDlgDepositos
         Left = 127
         Top = 24
         Width = 465
-        Height = 145
+        Height = 152
         HelpContext = -1
-        ActivePage = tabDinheiro
+        ActivePage = tabChequeEletronico
         Anchors = [akLeft, akTop, akRight, akBottom]
         OwnerDraw = True
         Style = tsButtons
         TabHeight = 21
         TabOrder = 1
         Visible = False
-        ActivePageIndex = 0
+        ActivePageIndex = 2
         BorderInvisible = True
         Transparent = False
         TabColor = 16247774
@@ -2316,7 +2331,7 @@ inherited DlgDepositos: TDlgDepositos
           end
         end
         object tabChequeEletronico: TTS_TabSheet
-          Caption = 'Cheque Eletr'#244'nico'
+          Caption = 'PIX'
           TabVisible = False
           OnShow = tabChequeEletronicoShow
           TabColor = clBtnFace
@@ -2326,8 +2341,8 @@ inherited DlgDepositos: TDlgDepositos
           object DBChequesEletronico: TTS_QDBGrid
             Left = 0
             Top = 0
-            Width = 360
-            Height = 142
+            Width = 465
+            Height = 150
             Bands = <
               item
               end>
@@ -2414,6 +2429,7 @@ inherited DlgDepositos: TDlgDepositos
             object DBChequesEletronicoDescConvenio: TdxDBGridLookupColumn
               Caption = 'Conv'#234'nio'
               HeaderAlignment = taCenter
+              Sorted = csUp
               Width = 154
               BandIndex = 0
               RowIndex = 0
@@ -3295,7 +3311,7 @@ inherited DlgDepositos: TDlgDepositos
         Left = 4
         Top = 21
         Width = 118
-        Height = 92
+        Height = 99
         HelpContext = -1
         OnClickCheck = clbFormaClickCheck
         Anchors = [akLeft, akTop, akBottom]
@@ -3311,7 +3327,7 @@ inherited DlgDepositos: TDlgDepositos
         Items.Strings = (
           '1. Dinheiro'
           '2. Cheque'
-          '3. Cheque Eletr'#244'nico'
+          '3. PIX'
           '4. Cart'#227'o de Cr'#233'dito'
           '5. Utilizar Cr'#233'dito'
           '6. Dep'#243'sito Banc'#225'rio'
@@ -3357,7 +3373,7 @@ inherited DlgDepositos: TDlgDepositos
       end
       object dfTroco: TTS_DBEditNumber
         Left = 46
-        Top = 151
+        Top = 158
         Width = 74
         TabOrder = 3
         Anchors = [akLeft, akBottom]
@@ -3498,7 +3514,7 @@ inherited DlgDepositos: TDlgDepositos
         'cipacao, t.ValorDescAntecipado, t.Venda, t.cliente, t.JurosReceb' +
         'idos, t.FaltaReceber, t.dataatrasado, f.tipofavorecido, s.tipopa' +
         'drao,'
-      't.percentualmora, t.valorjurosmora, t.datapago'
+      't.percentualmora, t.valorjurosmora, t.datapago, T.RETENCAO'
       'From TitulosAReceber t '
       'left join Favorecidos f on t.cliente = f.favorecido'
       'left join saidas s on t.venda = s.saida and s.pdv = t.pdv'
@@ -3660,6 +3676,10 @@ inherited DlgDepositos: TDlgDepositos
     end
     object C_TitulosDATAPAGO: TDateField
       FieldName = 'DATAPAGO'
+    end
+    object C_TitulosRETENCAO: TFloatField
+      FieldName = 'RETENCAO'
+      OnChange = C_TitulosRETENCAOChange
     end
   end
   object C_Depositos: TClientDataSet
@@ -4148,8 +4168,8 @@ inherited DlgDepositos: TDlgDepositos
   object C_CartoesDS: TDataSource
     DataSet = C_Cartoes
     OnUpdateData = C_ChequesDSUpdateData
-    Left = 275
-    Top = 274
+    Left = 219
+    Top = 218
   end
   object ppmCartoes: TTS_PopupMenu
     Left = 393

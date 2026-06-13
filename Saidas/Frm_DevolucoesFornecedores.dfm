@@ -47,6 +47,7 @@ inherited FrmDevolucoesFornecedores: TFrmDevolucoesFornecedores
         Style.BorderColor = clMaroon
         DataSource = DMDevolucoesFornecedores.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMDevolucoesFornecedores.C_TiposMovimentoDS
         Height = 19
       end

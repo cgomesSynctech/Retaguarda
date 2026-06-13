@@ -9,9 +9,9 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
   inherited pnNavigator: TTS_Panel
     Left = 660
     Width = 111
-    Height = 341
+    Height = 345
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 307
+      Top = 311
       Width = 109
     end
     inherited btComando2: TTS_SpeedButton
@@ -108,7 +108,6 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
         0202002020202020202020202020111C1E152020202020202020202020202020
         202020202020201A1A2020202020202020202020202020202020202020202020
         2020202020202020202020202020202020202020202020202020}
-      Visible = True
       OnClick = btComando1Click
     end
     inherited btLimpar: TTS_SpeedButton
@@ -318,7 +317,7 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
   end
   inherited pnDados: TTS_Panel
     Width = 660
-    Height = 341
+    Height = 345
     Color = 14019327
     object TS_Label1: TTS_Label
       Left = 25
@@ -1138,13 +1137,6 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
       Precision = 18
       Size = 2
     end
-    object C_MontagensQTDEPRODUZIDO: TBCDField
-      FieldName = 'QTDEPRODUZIDO'
-      Origin = 'MONTAGENS.QTDEPRODUZIDO'
-      OnValidate = C_MontagensQTDEPRODUZIDOValidate
-      Precision = 18
-      Size = 2
-    end
     object C_MontagensSTATUS: TIntegerField
       FieldName = 'STATUS'
       Origin = 'MONTAGENS.STATUS'
@@ -1217,6 +1209,11 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
       FieldName = 'CODIGO'
       Origin = 'ITENS.CODIGO'
       Size = 14
+    end
+    object C_MontagensQTDEPRODUZIDO: TBCDField
+      FieldName = 'QTDEPRODUZIDO'
+      Precision = 18
+      Size = 3
     end
   end
   object U_Montagens: TIBUpdateSQL
@@ -1292,7 +1289,7 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
       FieldName = 'QUANTIDADE'
       Origin = 'MONTAGENSFILHOS.QUANTIDADE'
       Precision = 18
-      Size = 2
+      Size = 3
     end
     object C_MontagensFilhosCODIGO: TStringField
       FieldName = 'CODIGO'
@@ -1675,7 +1672,7 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
     DataPipeline = ppDBMontagens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1683,7 +1680,7 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 298
     Top = 25
@@ -2181,7 +2178,7 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
           DataPipeline = ppDBMontagensFilho
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -2189,7 +2186,7 @@ inherited FrmAcomphMontagens: TFrmAcomphMontagens
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 279401
           PrinterSetup.mmPaperWidth = 215900
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Version = '6.02'
           mmColumnWidth = 0
           DataPipelineName = 'ppDBMontagensFilho'

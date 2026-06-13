@@ -6,12 +6,20 @@ inherited DMRequisicoes: TDMRequisicoes
   inherited U_Tabela: TIBUpdateSQL
     Top = 54
   end
+  inherited C_Tabela: TClientDataSet
+    Active = False
+  end
   inherited ResultSet: TClientDataSet
     Top = 54
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select t.clasfiscal,'
+      't.cstibs, '
+      't.classtrib,'
+      'T.COMPENSACAOCUSTOMOEDA, '
+      't.customanual,'
+      ' t.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -179,6 +187,9 @@ inherited DMRequisicoes: TDMRequisicoes
   inherited P_TiposMovimento: TDataSetProvider
     Top = 54
   end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
+  end
   inherited U_Parcelas: TIBUpdateSQL
     Left = 339
     Top = 53
@@ -192,5 +203,26 @@ inherited DMRequisicoes: TDMRequisicoes
   end
   inherited P_Status: TDataSetProvider
     Top = 54
+  end
+  inherited C_Unidades: TClientDataSet
+    Active = True
+  end
+  inherited C_CFOPs_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_SitECF: TClientDataSet
+    Active = True
+  end
+  inherited C_Almoxarifado: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_IPI: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_PisCofins: TClientDataSet
+    Active = True
   end
 end

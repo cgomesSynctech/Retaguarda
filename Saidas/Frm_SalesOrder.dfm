@@ -1,9 +1,11 @@
 inherited FrmSalesOrder: TFrmSalesOrder
-  Left = 338
+  Left = 161
   Top = 83
+  Width = 1060
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
+    Left = 937
     inherited btComando1: TTS_SpeedButton
       Top = 234
       Height = 31
@@ -109,13 +111,30 @@ inherited FrmSalesOrder: TFrmSalesOrder
     end
   end
   inherited pnDados: TTS_Panel
+    Width = 937
     inherited Grid: TTS_QDBGrid
+      Width = 935
       Filter.Criteria = {00000000}
     end
+    inherited dxTreeListCampos: TdxTreeList
+      Width = 935
+    end
     inherited sbDados: TTS_Panel
+      Width = 935
+      inherited TS_Shape1: TTS_Shape
+        Width = 935
+      end
+      inherited lbOperacao: TTS_Label
+        Left = 660
+      end
+      inherited TS_Bevel1: TTS_Bevel
+        Width = 940
+      end
       inherited cmbTipoMovimento: TTS_DBLookupComboBox
+        Left = 719
         DataSource = DMSalesOrder.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMSalesOrder.C_TiposMovimentoDS
         Height = 19
       end
@@ -146,17 +165,20 @@ inherited FrmSalesOrder: TFrmSalesOrder
         DataSource = DMSalesOrder.C_TabelaDS
       end
       inherited pgCabecalho: TTS_PageControl
+        Width = 930
         inherited tsCabecalho: TTS_TabSheet
           inherited cbClienteTaxavel: TTS_DBCheckBox
             DataSource = DMSalesOrder.C_TabelaDS
             Height = 17
           end
           inherited pnNumero: TTS_Panel
+            Left = 834
             inherited dbtNumero: TTS_DBTextEffect
               DataSource = DMSalesOrder.C_TabelaDS
             end
           end
           inherited pnData: TTS_Panel
+            Left = 733
             inherited dbtData: TTS_DBTextEffect
               DataSource = DMSalesOrder.C_TabelaDS
             end
@@ -165,6 +187,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
             end
           end
           inherited pnAdicionais: TTS_Panel
+            Left = 365
             inherited pnCampo01: TTS_Panel
               inherited dfAdd1: TTS_DBEdit
                 DataSource = DMSalesOrder.C_TabelaDS
@@ -191,6 +214,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
             end
           end
           inherited pnLocalEntrega: TTS_Panel
+            Left = 733
             inherited lcbLocaisEntrega: TTS_LookupComboBox
               Height = 19
             end
@@ -236,6 +260,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
             end
           end
           inherited pnHorizontal: TTS_Panel
+            Width = 929
             inherited pnVendedor: TTS_Panel
               inherited cmbVendedor: TTS_DBLookupComboBox
                 DataSource = DMSalesOrder.C_TabelaDS
@@ -243,6 +268,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
               end
             end
             inherited pnDataEntrega: TTS_Panel
+              Left = 840
               inherited dfDataEntrega: TTS_DBEditDate
                 DataSource = DMSalesOrder.C_TabelaDS
                 Height = 21
@@ -255,6 +281,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
               end
             end
             inherited pnTipoEntrega: TTS_Panel
+              Left = 731
               inherited cmbTipoEntrega: TTS_DBLookupComboBox
                 DataSource = DMSalesOrder.C_TabelaDS
                 Height = 21
@@ -272,6 +299,52 @@ inherited FrmSalesOrder: TFrmSalesOrder
                 Height = 21
               end
             end
+            object TS_Indicacao: TTS_Panel
+              Left = 421
+              Top = 0
+              Width = 185
+              Height = 37
+              BorderStyle = bsSingle
+              Color = 16247774
+              TabOrder = 6
+              Visible = False
+              DesignSize = (
+                183
+                35)
+              object TS_Label30: TTS_Label
+                Left = 0
+                Top = 0
+                Width = 183
+                Height = 17
+                Cursor = crHandPoint
+                Alignment = taCenter
+                Anchors = [akLeft, akTop, akRight, akBottom]
+                Caption = 'Indica'#231#227'o '
+                Color = 14859922
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsUnderline]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                TagStr = 'Titulos'
+                FormatoTabela = False
+                LinkToResult = 0
+              end
+              object TS_DBLookupComboBox1: TTS_DBLookupComboBox
+                Left = -1
+                Top = 15
+                Width = 186
+                TabOrder = 0
+                DataField = 'lkProfissional'
+                DataSource = DMSalesOrder.C_TabelaDS
+                ClearKey = 32
+                LookupKeyValue = Null
+                Height = 20
+              end
+            end
           end
         end
       end
@@ -279,15 +352,24 @@ inherited FrmSalesOrder: TFrmSalesOrder
         DataSource = DMSalesOrder.C_TabelaDS
       end
       inherited pgItens: TTS_PageControl
+        Width = 928
         inherited tsItens: TTS_TabSheet
           BevelInner = bvRaised
           BevelOuter = bvLowered
+          inherited TS_Shape15: TTS_Shape
+            Left = 817
+          end
+          inherited dfFoto: TTS_Image
+            Left = 818
+          end
           inherited pnTotItens: TTS_Panel
+            Left = 817
             inherited TS_DBText1: TTS_DBText
               DataSource = DMSalesOrder.C_TabelaDS
             end
           end
           inherited dbgItens: TTS_QDBGrid
+            Width = 812
             Bands = <
               item
               end>
@@ -529,8 +611,961 @@ inherited FrmSalesOrder: TFrmSalesOrder
               FieldName = 'QUANTIDADEVOLUME'
               SummaryFooterType = cstSum
             end
+            object dbgItens_icSelecionado: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = '_icSelecionado'
+            end
+            object dbgItensI_TIPOITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_TIPOITEM'
+            end
+            object dbgItensColumn65: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CODIGO'
+            end
+            object dbgItensI_DESCRICAOCOMPRA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_DESCRICAOCOMPRA'
+            end
+            object dbgItensI_GRUPO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_GRUPO'
+            end
+            object dbgItensColumn68: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_DESCRICAO'
+            end
+            object dbgItensI_QTDEMINIMO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_QTDEMINIMO'
+              Nullable = False
+            end
+            object dbgItensI_QTDEMAXIMO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_QTDEMAXIMO'
+              Nullable = False
+            end
+            object dbgItensI_TAXAVEL: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_TAXAVEL'
+            end
+            object dbgItensI_ULTIMOFORNECEDOR: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_ULTIMOFORNECEDOR'
+            end
+            object dbgItensColumn73: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_PERCENTUAL'
+              Nullable = False
+            end
+            object dbgItensI_APLICARANTESTAX: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_APLICARANTESTAX'
+            end
+            object dbgItensColumn75: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_UNIDADE'
+            end
+            object dbgItensI_ESTOQUE: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_ESTOQUE'
+              Nullable = False
+            end
+            object dbgItensI_BALANCO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_BALANCO'
+            end
+            object dbgItensI_COMISSAO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_COMISSAO'
+              Nullable = False
+            end
+            object dbgItensI_DESCONTOMAXIMO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_DESCONTOMAXIMO'
+              Nullable = False
+            end
+            object dbgItensI_TAXINCLUSO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_TAXINCLUSO'
+            end
+            object dbgItensI_CONTA_VENDA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CONTA_VENDA'
+            end
+            object dbgItensI_CONTA_CUSTO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CONTA_CUSTO'
+            end
+            object dbgItensI_CONTA_INVENT: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CONTA_INVENT'
+            end
+            object dbgItensI_FOTO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_FOTO'
+            end
+            object dbgItensI_PROMOCAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_PROMOCAO'
+            end
+            object dbgItensI_PONTOPEDIDO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_PONTOPEDIDO'
+              Nullable = False
+            end
+            object dbgItensI_LOCALIZACAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_LOCALIZACAO'
+            end
+            object dbgItensI_FATORLUCRO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_FATORLUCRO'
+            end
+            object dbgItensI_REFERENCIA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_REFERENCIA'
+            end
+            object dbgItensI_SEMLUCRO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_SEMLUCRO'
+            end
+            object dbgItensI_UNIDADEENTRADA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_UNIDADEENTRADA'
+            end
+            object dbgItensI_UNIDADECARGA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_UNIDADECARGA'
+            end
+            object dbgItensI_UNIDADEVAREJO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_UNIDADEVAREJO'
+            end
+            object dbgItensI_UNIDADEMINIMA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_UNIDADEMINIMA'
+            end
+            object dbgItensI_CUSTOMEDIO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CUSTOMEDIO'
+            end
+            object dbgItensI_FATORUNDVENDA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_FATORUNDVENDA'
+            end
+            object dbgItensI_FATORUNDCOMPRA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_FATORUNDCOMPRA'
+            end
+            object dbgItensI_PESOLIQUIDO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_PESOLIQUIDO'
+              Nullable = False
+            end
+            object dbgItensI_PESOBRUTO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_PESOBRUTO'
+              Nullable = False
+            end
+            object dbgItensI_DescricaoComplementar: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_DescricaoComplementar'
+            end
+            object dbgItensI_DescricaoTecnica: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_DescricaoTecnica'
+            end
+            object dbgItensI_GRUPOCOMISSAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_GRUPOCOMISSAO'
+            end
+            object dbgItensI_INDEXADOR: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_INDEXADOR'
+            end
+            object dbgItensI_COMLUCRO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_COMLUCRO'
+            end
+            object dbgItensColumn105: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'USOTIPOITEM'
+            end
+            object dbgItensITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ITEM'
+            end
+            object dbgItensColumn107: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PRECO'
+            end
+            object dbgItensColumn108: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'QUANTIDADE'
+            end
+            object dbgItensColumn109: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DESCRICAO'
+            end
+            object dbgItensColumn110: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SEQUENCIA'
+            end
+            object dbgItensIDMESTRE: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'IDMESTRE'
+            end
+            object dbgItensIDITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'IDITEM'
+            end
+            object dbgItensUNIDADEINTEIRA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'UNIDADEINTEIRA'
+            end
+            object dbgItensDESCRICAOUNIDADE: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DESCRICAOUNIDADE'
+            end
+            object dbgItensORDEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ORDEM'
+            end
+            object dbgItensColumn116: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SubTotal'
+            end
+            object dbgItensHASCHILDREN: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'HASCHILDREN'
+            end
+            object dbgItensTABELAPRECO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'TABELAPRECO'
+            end
+            object dbgItenscfBaixoEstoque: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'cfBaixoEstoque'
+            end
+            object dbgItensCONTAVENDA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CONTAVENDA'
+            end
+            object dbgItensTAXAVEL: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'TAXAVEL'
+            end
+            object dbgItensQ_SaidasItensFilhos: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'Q_SaidasItensFilhos'
+            end
+            object dbgItensOrdemMontagem: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'OrdemMontagem'
+            end
+            object dbgItensPRODUCAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PRODUCAO'
+            end
+            object dbgItensColumn125: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'FUNCPRODUCAO'
+            end
+            object dbgItenslkFuncProducao: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkFuncProducao'
+            end
+            object dbgItensCHAVEPRODUCAOFUNC: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CHAVEPRODUCAOFUNC'
+            end
+            object dbgItensColumn128: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'COLUNA1'
+            end
+            object dbgItensColumn129: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'COLUNA2'
+            end
+            object dbgItensColumn130: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'COLUNA3'
+            end
+            object dbgItensColumn131: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'COLUNA4'
+            end
+            object dbgItenscfValorMaxDesconto: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'cfValorMaxDesconto'
+            end
+            object dbgItensENTRADAITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ENTRADAITEM'
+            end
+            object dbgItensDESPESA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DESPESA'
+            end
+            object dbgItensQ_Mesclagens: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'Q_Mesclagens'
+            end
+            object dbgItensColumn136: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'MESCLADO'
+            end
+            object dbgItensTrocouItem: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'TrocouItem'
+            end
+            object dbgItensOLDITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'OLDITEM'
+            end
+            object dbgItensColumn139: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'UltrapassouMesclagem'
+            end
+            object dbgItensFOTOGRUPO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'FOTOGRUPO'
+            end
+            object dbgItensColumn141: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'STATUS'
+            end
+            object dbgItensSTATUSOLD: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'STATUSOLD'
+            end
+            object dbgItensColumn143: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'NUMEROLOTE'
+            end
+            object dbgItensUNIDADE: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'UNIDADE'
+            end
+            object dbgItensColumn145: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PROMOCAO'
+            end
+            object dbgItensColumn146: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'BAIXAESTOQUE'
+            end
+            object dbgItensALMOXARIFADO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ALMOXARIFADO'
+            end
+            object dbgItensDESCRICAOCOMPLEMENTAR: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DESCRICAOCOMPLEMENTAR'
+            end
+            object dbgItensSITUACAOECF: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SITUACAOECF'
+            end
+            object dbgItensColumn150: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'NUMEROITEM'
+            end
+            object dbgItensColumn151: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'REGISTRO'
+            end
+            object dbgItensCFOPNOTA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CFOPNOTA'
+            end
+            object dbgItensDATACONTATO: TdxDBGridDateColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DATACONTATO'
+            end
+            object dbgItensBAIXAESTOQUEFISCAL: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'BAIXAESTOQUEFISCAL'
+            end
+            object dbgItensColumn155: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CFOPCST'
+            end
+            object dbgItensIDTRIBFEDERAL: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'IDTRIBFEDERAL'
+            end
+            object dbgItenslkUnidade: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkUnidade'
+            end
+            object dbgItensColumn158: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkAlmox'
+            end
+            object dbgItenslkSitECF: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkSitECF'
+            end
+            object dbgItenslkCFOP: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkCFOP'
+            end
+            object dbgItensColumn161: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'icPercComissao'
+            end
+            object dbgItensicFoto: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'icFoto'
+            end
+            object dbgItensicPercDesconto: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'icPercDesconto'
+            end
+            object dbgItensColumn164: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'icGrupoDesconto'
+            end
+            object dbgItensColumn165: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CSTPISCOFINS'
+            end
+            object dbgItensI_CODIGOBARRAS: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CODIGOBARRAS'
+            end
+            object dbgItensPDV: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PDV'
+            end
+            object dbgItensIMPORTACAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'IMPORTACAO'
+            end
+            object dbgItensColumn169: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CST'
+            end
+            object dbgItensEMPRESA: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'EMPRESA'
+            end
+            object dbgItensColumn171: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SITUACAO'
+            end
+            object dbgItensColumn172: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_CLASFISCAL'
+            end
+            object dbgItensI_IDENTIFICACAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_IDENTIFICACAO'
+            end
+            object dbgItensI_ITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'I_ITEM'
+            end
+            object dbgItensCalcSubTotalPrecoLicitacao: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CalcSubTotalPrecoLicitacao'
+            end
+            object dbgItensColumn176: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DifSubTotalLicitacao'
+            end
+            object dbgItensColumn177: TdxDBGridColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PercLucroLicitacao'
+            end
+            object dbgItensSUBTOTALITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SUBTOTALITEM'
+            end
+            object dbgItensColumn179: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PRECOTABELA'
+            end
+            object dbgItensRATEIODESCONTO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'RATEIODESCONTO'
+            end
+            object dbgItensCUSTOMEDIO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CUSTOMEDIO'
+            end
+            object dbgItensMAXDESCONTO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'MAXDESCONTO'
+            end
+            object dbgItensOLDQUANTIDADE: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'OLDQUANTIDADE'
+            end
+            object dbgItensCUSTOCONTABIL: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CUSTOCONTABIL'
+            end
+            object dbgItensColumn185: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'QTDFATURADA'
+            end
+            object dbgItensQTDMONTAGEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'QTDMONTAGEM'
+            end
+            object dbgItensFATOR: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'FATOR'
+            end
+            object dbgItensOLDPRECO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'OLDPRECO'
+            end
+            object dbgItensOLDUNIDADE: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'OLDUNIDADE'
+            end
+            object dbgItensDESCONTO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DESCONTO'
+            end
+            object dbgItensColumn191: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PDESCONTO'
+            end
+            object dbgItensPRECOSEMPROMOCAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PRECOSEMPROMOCAO'
+            end
+            object dbgItensColumn193: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'BASECALCICMSPROD'
+            end
+            object dbgItensColumn194: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'IPI'
+            end
+            object dbgItensColumn195: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ALIQICMS'
+            end
+            object dbgItensREDUCAOCST: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'REDUCAOCST'
+            end
+            object dbgItensColumn197: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'BASECALCSUBSTPROD'
+            end
+            object dbgItensColumn198: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'VALORIPIPROD'
+            end
+            object dbgItensColumn199: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'VALORICMSPROD'
+            end
+            object dbgItensColumn200: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'VALORICMSSUBSTPROD'
+            end
+            object dbgItensVALORISENTASPROD: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'VALORISENTASPROD'
+            end
+            object dbgItensColumn202: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ALIQPIS'
+            end
+            object dbgItensColumn203: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ALIQCOFINS'
+            end
+            object dbgItensColumn204: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CSTIPI'
+            end
+            object dbgItensColumn205: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'ALIQIPI'
+            end
+            object dbgItensPCOMISSAO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PCOMISSAO'
+            end
+            object dbgItensDESCONTOMAXIMOGRUPO: TdxDBGridCurrencyColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'DESCONTOMAXIMOGRUPO'
+              Nullable = False
+            end
+            object dbgItensColumn208: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'VALORPISPROD'
+            end
+            object dbgItensColumn209: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'VALORCOFINSPROD'
+            end
+            object dbgItensRATEIODESPESAS: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'RATEIODESPESAS'
+            end
+            object dbgItensRATEIOFRETE: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'RATEIOFRETE'
+            end
+            object dbgItensRATEIOSEGURO: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'RATEIOSEGURO'
+            end
+            object dbgItensColumn213: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'QUANTIDADEVOLUME'
+            end
+            object dbgItensColumn214: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'PRECOCUSTOLICITACAO'
+            end
+            object dbgItensN_USOTIPOITEM: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'N_USOTIPOITEM'
+            end
+            object dbgItensColumn216: TdxDBGridMaskColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'TVA'
+            end
+            object dbgItenslkCSTIPI: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkCSTIPI'
+            end
+            object dbgItenslkCSTPisCofins: TdxDBGridLookupColumn
+              Visible = False
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'lkCSTPisCofins'
+            end
+            object dbgItensicUltPrecoCliente: TdxDBGridColumn
+              Caption = 'Ult Venda'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'icUltPrecoCliente'
+            end
           end
           inherited pnVolumes: TTS_Panel
+            Left = 817
             inherited dfVolumes: TTS_DBEditNumber
               Height = 21
               StoredValues = 1
@@ -538,19 +1573,34 @@ inherited FrmSalesOrder: TFrmSalesOrder
           end
         end
         inherited tsTermos: TTS_TabSheet
+          inherited TS_Shape12: TTS_Shape
+            Width = 818
+          end
+          inherited lbTipoCobranca: TTS_Label
+            Left = 795
+          end
+          inherited lbCarteira: TTS_Label
+            Left = 797
+          end
           inherited pnTermos: TTS_Panel
+            Width = 497
+            inherited lbTermos: TTS_Label
+              Width = 493
+            end
             inherited cmbTermos: TTS_DBLookupComboBox
-              Width = 0
+              Width = 205
               DataSource = DMSalesOrder.C_TabelaDS
               Height = 19
             end
           end
           inherited pnTotalFinal: TTS_Panel
+            Left = 821
             inherited dbtTotalFinal: TTS_DBTextEffect
               DataSource = DMSalesOrder.C_TabelaDS
             end
           end
           inherited pnSomaTotal: TTS_Panel
+            Width = 823
             inherited pnFrete: TTS_Panel
               inherited dfFrete: TTS_DBEditNumber
                 DataSource = DMSalesOrder.C_TabelaDS
@@ -584,6 +1634,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
             end
           end
           inherited cbReceber: TTS_CheckBox
+            Left = 795
             State = cbsUnchecked
           end
           inherited dbgMensagens: TTS_QDBGrid
@@ -593,43 +1644,50 @@ inherited FrmSalesOrder: TFrmSalesOrder
             Filter.Criteria = {00000000}
           end
           inherited cmbTipoCobranca: TTS_DBLookupComboBox
+            Left = 846
             DataSource = DMSalesOrder.C_TabelaDS
             Height = 19
           end
           inherited cmbCarteira: TTS_DBLookupComboBox
+            Left = 846
             DataSource = DMSalesOrder.C_TabelaDS
             Height = 19
           end
           inherited dbgParcelas: TTS_QDBGrid
+            Left = 504
             DataSource = DMSalesOrder.C_ParcelasDS
             Filter.Criteria = {00000000}
           end
           inherited pnMensagem: TTS_Panel
+            Width = 497
             inherited dfMensagem: TTS_PopupEdit
-              Width = 205
+              Width = 410
               LookupSource = DMSalesOrder.C_MensagensOperacoesDS
               Height = 21
               StoredValues = 65
             end
             inherited dfObs: TTS_DBMemo
-              Width = 198
+              Width = 403
               DataSource = DMSalesOrder.C_TabelaDS
               MaxLength = 500
               OnValidate = dfObsValidate
-              Height = 49
+              Height = 77
               StoredValues = 2
             end
           end
         end
         inherited tsContrato: TTS_TabSheet
           inherited TS_Panel1: TTS_Panel
+            Width = 909
             inherited TS_DBMemo1: TTS_DBMemo
               Top = 65
+              Width = 905
               DataSource = DMSalesOrder.C_TabelaDS
-              Height = 129
+              Height = 157
             end
             inherited dfContrato: TTS_PopupEdit
               Left = -1
+              Width = 396
               Height = 21
               StoredValues = 65
             end
@@ -643,7 +1701,7 @@ inherited FrmSalesOrder: TFrmSalesOrder
         end
       end
       inherited pnSetas: TTS_Panel
-        Left = 621
+        Left = 826
       end
       inherited pnStatus: TTS_Panel
         inherited dfStatus: TTS_DBLookupComboBox
@@ -655,7 +1713,6 @@ inherited FrmSalesOrder: TFrmSalesOrder
       end
       inherited pnLotes: TTS_Panel
         Left = 228
-        Top = 301
         inherited dbgLotes: TTS_QDBGrid
           Filter.Criteria = {00000000}
         end
@@ -668,13 +1725,24 @@ inherited FrmSalesOrder: TFrmSalesOrder
         end
       end
     end
+    inherited dxF9Bar: TdxfProgressBar
+      Width = 935
+    end
   end
   inherited pnTitulo: TTS_MaxPanel
+    Width = 1052
     inherited lbCaption: TdxfLabel
       Width = 110
       Caption = 'Sales Order'
     end
+    inherited lbDesativado: TdxfLabel
+      Left = 763
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 1015
+    end
     inherited lbCancelado: TdxfLabel
+      Left = 417
       Visible = False
     end
   end
@@ -688,16 +1756,23 @@ inherited FrmSalesOrder: TFrmSalesOrder
   end
   inherited FormComponent: TFormComponent
     Caption = 'Sales Order'
-    Left = 208
-    Top = 279
+    Left = 248
+    Top = 271
   end
   inherited ppmGridPadrao: TTS_PopupMenu
     Left = 52
     Top = 389
   end
+  inherited ppmIR_Para: TTS_PopupMenu
+    Left = 330
+  end
   inherited esEndereco: TdxEditStyleController
     Left = 545
     Top = 2
+  end
+  inherited ppmCliente: TTS_PopupMenu
+    Left = 402
+    Top = 271
   end
   inherited ppmUltimo: TTS_PopupMenu
     Left = 454

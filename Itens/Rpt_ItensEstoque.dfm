@@ -1,6 +1,6 @@
 inherited RptItensEstoque: TRptItensEstoque
-  Left = -18
-  Top = 110
+  Left = 379
+  Top = 160
   Width = 1292
   Height = 744
   Caption = 'M'#243'dulo de Itens'
@@ -23,7 +23,7 @@ inherited RptItensEstoque: TRptItensEstoque
   end
   inherited pnGrid: TPanel
     Width = 1231
-    Height = 679
+    Height = 678
     inherited pnDados: TTS_Panel
       Width = 1231
       Height = 24
@@ -139,7 +139,7 @@ inherited RptItensEstoque: TRptItensEstoque
     inherited dbgConsulta: TTS_QDBGrid
       Top = 24
       Width = 1231
-      Height = 636
+      Height = 635
       KeyField = 'ITEM'
       SummaryGroups = <
         item
@@ -728,7 +728,7 @@ inherited RptItensEstoque: TRptItensEstoque
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 660
+      Top = 659
       Width = 1231
       inherited cbFullSelect: TTS_CheckBox
         Height = 19
@@ -736,9 +736,9 @@ inherited RptItensEstoque: TRptItensEstoque
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 679
+    Height = 678
     inherited btSair: TTS_SpeedButton
-      Top = 634
+      Top = 633
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick

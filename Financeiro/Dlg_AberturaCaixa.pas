@@ -84,7 +84,7 @@ type
     // Adriano
     DMContabil: TDMContabilidade;
   public
-    { Public declarations }
+    diaatual : TDate ;
   end;
 
 var
@@ -98,7 +98,14 @@ uses funcoes, DM_Projeto, DM_Financeiro, Frm_Contabilidade{, dm_ECF};
 
 function TDlgAberturaCaixa.Validacoes;
 begin
-	result := false;
+
+ diaatual := Date();
+   result := false;
+   if (( DMProjeto.Parametro('PermiteReabrirCaixa') = 'N') and ( DMFinanceiro.Caixa_MovimentoCorrente  = diaatual)) Then begin
+           DlgMsg.ShowMsg( 8088 );
+           exit;
+   end;
+
   if DMFinanceiro.Caixa_Situacao = 'Aberto' then begin
     if DMFinanceiro.Caixa_MovimentoCorrente < DMProjeto.dDataSistema then begin  // => que o Caixa não foi fechado no dia anterior
       // ShowMessage('O Caixa não foi Fechado no Movimento anterior!  É necessário Fechá-lo, antes de abrir o Movimento de hoje.');

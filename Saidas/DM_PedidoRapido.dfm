@@ -804,14 +804,11 @@ inherited DMPedidoRapido: TDMPedidoRapido
       '  DETALHEIMPORTACAO = :OLD_DETALHEIMPORTACAO')
   end
   inherited C_Tabela: TClientDataSet
-    inherited C_TabelaTOTAL: TBCDField
-      OnChange = C_TabelaTOTALChange
-    end
-    inherited C_TabelaDESCONTO: TBCDField
-      DisplayFormat = ''
-    end
     inherited C_TabelaTABELAPADRAO: TIntegerField
       OnChange = C_TabelaTABELAPADRAOChange
+    end
+    inherited C_TabelaTOTAL: TFloatField
+      OnChange = C_TabelaTOTALChange
     end
     object C_TabelaicNomeTabelaPadrao: TStringField
       FieldKind = fkInternalCalc
@@ -1496,10 +1493,6 @@ inherited DMPedidoRapido: TDMPedidoRapido
     object C_ParcelasJuros: TCurrencyField
       FieldKind = fkInternalCalc
       FieldName = 'Juros'
-    end
-    object C_ParcelasVENDA: TIntegerField
-      FieldName = 'VENDA'
-      Origin = 'TITULOSARECEBER.VENDA'
     end
   end
   inherited Q_Funcs: TIBQuery

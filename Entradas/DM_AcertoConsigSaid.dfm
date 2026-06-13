@@ -1,8 +1,8 @@
 inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
-  Left = 283
+  Left = 554
   Top = 20
-  Height = 516
-  Width = 917
+  Height = 641
+  Width = 1078
   inherited OpenDialog: TOpenDialog
     Left = 23
   end
@@ -19,6 +19,7 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
     Left = 23
   end
   inherited C_Tabela: TClientDataSet
+    Active = False
     Left = 23
   end
   inherited C_TabelaDS: TDataSource
@@ -26,7 +27,12 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select '
+      't.cstibs, '
+      't.classtrib,'
+      'T.COMPENSACAOCUSTOMOEDA, '
+      't.customanual,'
+      't.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -157,7 +163,8 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
       't.RateioFrete    as RateioFrete,'
       't.RateioDespesas    as RateioDespesas,'
       ''
-      'T.EMPRESA'
+      'T.EMPRESA,'
+      't.clasfiscal'
       'from    ((ENTRADASITENS t'
       'LEFT JOIN  ITENS I on I.ITEM = t.ITEM)'
       '    left join UNIDADES u on I.Unidade = u.Unidade)'
@@ -168,11 +175,11 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
       'where  t.ENTRADA = :IDMESTRE')
   end
   inherited C_Itens: TClientDataSet
-    inherited C_ItensQTDRECEBIDA: TBCDField
-      DisplayFormat = '##0.###'
-    end
     inherited C_ItensSTATUS: TStringField
       OnValidate = C_ItensSTATUSValidate
+    end
+    inherited C_ItensQTDRECEBIDA: TBCDField
+      DisplayFormat = '##0.###'
     end
   end
   inherited Q_TiposMovimento: TIBQuery
@@ -185,8 +192,20 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
       'Order by t.ordem, t.TipoPadrao, t.TipoMovimento'
       '')
   end
+  inherited C_TiposMovimento: TClientDataSet
+    Active = False
+  end
+  inherited C_PlanosPagamento: TClientDataSet
+    Active = False
+  end
+  inherited C_TiposEntrega: TClientDataSet
+    Active = False
+  end
   inherited Q_Parcelas: TIBQuery
     Top = 4
+  end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
   end
   inherited Q_Mesclagens: TIBQuery
     Left = 250
@@ -207,6 +226,9 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
       'where status in ('#39'P'#39', '#39'L'#39', '#39'R'#39', '#39'H'#39')'
       'order by Ordem')
   end
+  inherited C_Status: TClientDataSet
+    Active = False
+  end
   inherited Q_EntradasItensFilhos: TIBQuery
     Left = 356
     Top = 65534
@@ -222,5 +244,14 @@ inherited DMAcertoConsigSaid: TDMAcertoConsigSaid
   inherited C_EntradasItensFilhosDS: TDataSource
     Left = 352
     Top = 156
+  end
+  inherited C_CFOPs: TClientDataSet
+    Active = False
+  end
+  inherited C_Indexadores: TClientDataSet
+    Active = False
+  end
+  inherited C_Vendedores: TClientDataSet
+    Active = False
   end
 end

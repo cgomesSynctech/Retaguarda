@@ -119,7 +119,7 @@ begin
                       CurrToStr(C_TitulosVALOR.AsCurrency) + '|||' +
                       CurrToStr(C_TitulosVALOR.AsCurrency) + '|||0|||0';
             Deposito := DMFinanceiro.ReceberTitulos( 0, sItens, C_TitulosCLIENTE.Value, C_TitulosCONTA.Value,
-                        C_TitulosVENCIMENTO.AsDateTime, 0, 0, 'Título Baixado Manualmente ' + C_TitulosTITULO.AsString );
+                        C_TitulosVENCIMENTO.AsDateTime, 0, 0, 'Título Baixado Manualmente ' + C_TitulosTITULO.AsString, 0 );
             DMFinanceiro.ReceberDoc( 0, 1, Deposito, 20, C_TitulosVALOR.AsCurrency, C_TitulosVENCIMENTO.AsDateTime,
                                   'Título Baixado Manualmente ' + C_TitulosTITULO.AsString,0,0,'', C_TitulosCONTA.Value );
             DMFinanceiro.BaixarTitulo( C_TitulosID.AsString );

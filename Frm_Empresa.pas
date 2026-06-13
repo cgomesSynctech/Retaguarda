@@ -115,6 +115,8 @@ type
     lblAliquotaCredito: TTS_Label;
     dfAliquotaCredito: TTS_DBMaskEdit;
     btComando3: TTS_SpeedButton;
+    TS_Label42: TTS_Label;
+    TS_DBEdit5: TTS_DBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure CarregarFotoClick(Sender: TObject);
     procedure LimparFoto1Click(Sender: TObject);
@@ -199,6 +201,7 @@ var slProgramAls: TStringList;
 Begin
   if not DMProjeto.DlgAutorizacao.ExecuteX( self.name, 'A' ) then
      exit;
+
   inherited;
   slProgramAls := TStringList.Create;
   with slProgramAls do begin
@@ -209,6 +212,7 @@ Begin
       Free;
     end;
   end;
+
   DMEmpresa.GerarRegistro;
   Close;
 end;

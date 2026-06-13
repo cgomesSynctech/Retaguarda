@@ -1,6 +1,6 @@
 inherited DlgAntecipacaoDuplicatas: TDlgAntecipacaoDuplicatas
-  Left = 91
-  Top = 149
+  Left = 131
+  Top = 265
   Width = 772
   Height = 490
   Caption = 'Financeiro'
@@ -9,9 +9,9 @@ inherited DlgAntecipacaoDuplicatas: TDlgAntecipacaoDuplicatas
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 646
-    Height = 420
+    Height = 419
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 386
+      Top = 385
     end
     inherited btComando2: TTS_SpeedButton
       Top = 172
@@ -102,7 +102,7 @@ inherited DlgAntecipacaoDuplicatas: TDlgAntecipacaoDuplicatas
   end
   inherited pnDados: TTS_Panel
     Width = 646
-    Height = 420
+    Height = 419
     Color = 15724519
     object TS_Panel1: TTS_Panel
       Left = 1
@@ -356,7 +356,7 @@ inherited DlgAntecipacaoDuplicatas: TDlgAntecipacaoDuplicatas
       Left = 1
       Top = 71
       Width = 644
-      Height = 348
+      Height = 347
       Bands = <
         item
         end>

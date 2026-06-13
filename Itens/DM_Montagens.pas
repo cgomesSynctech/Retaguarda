@@ -14,7 +14,6 @@ type
         C_TabelaMONTADOR: TIntegerField;
         C_TabelaITEM: TIntegerField;
         C_TabelaQTDESOLIC: TBCDField;
-        C_TabelaQTDEPRODUZIDO: TBCDField;
         C_TabelaSTATUS: TIntegerField;
         C_TabelaOBS: TStringField;
         C_TabelaDATACONCLUSAO: TDateField;
@@ -60,10 +59,11 @@ type
         C_MontagensFilhosEMPRESA: TIntegerField;
         C_TabelaFORNECPREFERENCIA: TIntegerField;
         C_MontagensFilhosFORNECPREFERENCIA: TIntegerField;
-        C_MontagensFilhosQUANTIDADE: TBCDField;
-        C_MontagensFilhosQTDPRODUCAO: TBCDField;
-        C_MontagensFilhosQUANTIDADETOTAL: TBCDField;
+    C_MontagensFilhosQTDPRODUCAO: TBCDField;
+    C_MontagensFilhosQUANTIDADETOTAL: TBCDField;
         C_MontagensFilhosFABRICANTE: TStringField;
+    C_MontagensFilhosQUANTIDADE: TBCDField;
+    C_TabelaQTDEPRODUZIDO: TBCDField;
         procedure DataModuleCreate(Sender: TObject);
         procedure C_TabelaNewRecord(DataSet: TDataSet);
         procedure C_TabelaITEMChange(Sender: TField);

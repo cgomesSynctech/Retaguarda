@@ -583,6 +583,63 @@ type
     C_TabelaDESCRICAOCOMPLEMENTAR: TStringField;
     C_TabelaMATERIAPRIMA: TStringField;
     C_TabelaCUBAGEM: TBCDField;
+    C_TabelaDESONERACAOICMS: TStringField;
+    C_TabelaFC_DATA: TDateField;
+    C_TabelaFC_PRECOCOMPRA: TBCDField;
+    C_TabelaFC_FRETE: TBCDField;
+    C_TabelaFC_BONIFICACAO: TBCDField;
+    C_TabelaFC_CUSTOFINANCEIRO: TBCDField;
+    C_TabelaFC_ICMSCOMPRA: TBCDField;
+    C_TabelaFC_IPICOMPRA: TBCDField;
+    C_TabelaFC_PRECOCALCULADO: TBCDField;
+    C_TabelaFC_ICMSSUBSTITUTO: TBCDField;
+    C_TabelaFC_DESPESAS: TBCDField;
+    C_TabelaFC_ENCARGOS: TBCDField;
+    C_TabelaFC_COMISSAO: TBCDField;
+    C_TabelaFC_CUSTOSADICIONAIS: TBCDField;
+    C_TabelaFC_LUCRO: TBCDField;
+    C_TabelaFC_IMPFEDERALSAIDA: TBCDField;
+    C_TabelaFC_ICMSFRETE: TBCDField;
+    C_TabelaFC_IMPFEDERALENTRADA: TBCDField;
+    C_TabelaFC_ICMSVENDA: TBCDField;
+    C_TabelaFC_IPIVENDA: TBCDField;
+    C_TabelaFC_MVA: TBCDField;
+    C_TabelaFC_REDUCAOCST: TBCDField;
+    Q_Fat: TIBQuery;
+    P_Fat: TDataSetProvider;
+    C_Fat: TClientDataSet;
+    IntegerField2: TIntegerField;
+    C_FatINICIO: TStringField;
+    C_FatFIM: TStringField;
+    C_FatVALORMESINICIAL: TBCDField;
+    C_FatVALORFINAL: TBCDField;
+    C_FatVALORACUMULADOMES: TBCDField;
+    C_FatMESATUAL: TStringField;
+    C_FatDS: TDataSource;
+    C_FaticPrevisaoFatProxPeriodo: TCurrencyField;
+    C_FaticVariacao: TCurrencyField;
+    C_TabelaTIPOITEMSPED: TStringField;
+    Q_TipoItemSped: TIBQuery;
+    C_TipoItemSped: TClientDataSet;
+    P_TipoItemSped: TDataSetProvider;
+    C_TipoItemSpedTIPO: TStringField;
+    C_TipoItemSpedDESCRICAO: TStringField;
+    C_TabelalkTipoItemSped: TStringField;
+    C_TabelaBEMUSADO: TStringField;
+    Q_CSTIBS: TIBQuery;
+    P_CSTIBS: TDataSetProvider;
+    C_CSTIBS: TClientDataSet;
+    C_TabelaCSTIBS: TStringField;
+    C_TabelalkCSTIBS: TStringField;
+    C_CSTIBSCST: TStringField;
+    C_CSTIBSDESCRICAO: TStringField;
+    Q_ClassTrib: TIBQuery;
+    P_ClassTrib: TDataSetProvider;
+    C_ClassTrib: TClientDataSet;
+    C_ClassTribCODIGO: TStringField;
+    C_ClassTribDESCRICAO: TStringField;
+    C_TabelaCLASSTRIB: TStringField;
+    C_TabelalkCLASSTRIB: TStringField;
 
         procedure DataModuleCreate(Sender: TObject);
         procedure C_TabelaNewRecord(DataSet: TDataSet);
@@ -637,17 +694,18 @@ type
         function VerificaExistenciaCodigoVenda(codigo: string = ''): Boolean;
         procedure Q_ItensFilhosBeforeOpen(DataSet: TDataSet);
         procedure AtualizaPrecoItemPai(idItem: integer; itemPai: boolean = false);
+    procedure C_FatCalcFields(DataSet: TDataSet);
     private
         { Private declarations }
         bCalcItens: boolean;
         function TipoConta(nConta: Integer): Integer;
         procedure CalcPrecoVenda;
-    public
+    public                               
         { Public declarations }
         nSeq, nSeqFilhos: integer;
         nGrupo, nFabricante, nContaVenda, nContaCusto,
             nContaInventario, nFornecedor, nTipoItem: Integer;
-        sUnidade: string;
+        sUnidade, stributacaoempresaproduto: string;
         yMaiorComissao, yDespesaFixa, yImpostosFederais, yEncargosCartoes, yLucroPadrao,
             nDescMaxUsuarios: Currency;
         bAlterandoProdutosPreco, bMedicamentos, bNaoPermitirItemDuplicado: boolean;
@@ -665,7 +723,7 @@ implementation
 
 {$R *.dfm}
 
-uses DM_Projeto, funcoes;
+uses DM_Projeto, funcoes, TDM_Projeto;
 
 procedure TDMItens.ExportacaoMabel(AnoMes: string; Fabricante: Integer);
 var
@@ -982,7 +1040,9 @@ procedure TDMItens.C_TabelaCalcFields(DataSet: TDataSet);
 begin
     inherited;
     try
-        bCalcItens := True;
+
+
+            bCalcItens := True;
         {Setando grupos correto}
         if (C_TabelaGrupo.Value > 0) then
             C_Grupos.Locate('Grupo', C_TabelaGrupo.Value, []);
@@ -1752,12 +1812,13 @@ begin
 end;
 
 {   Felipe - Método criado para atualizar o preço de Item quando SubItens tiverem seus valores alterados. Criado para atender implantação
-            da empresa Center Bike  (04/02/2016)    }
+            da empresa Center Bike  (04/02/2016)
+   12-05-2022  -> alterado por cesar para prever alteração do custo dos produtos pai   }
 
 procedure TDMItens.AtualizaPrecoItemPai(idItem: integer; itemPai: boolean = false);
 var
     idItemPai, i, qtdTabelas: integer;
-    precoAtual: Currency;
+    precoAtual, quantidadepai : Currency;
     sTabelas: string;
 begin
     // Verifica se o Parâmetro está ativo. Utilizado para montagens de produto.
@@ -1836,7 +1897,6 @@ begin
         Exit;
 
 end;
-
 procedure TDMItens.DMComponentAntesDeApagar(Sender: TObject;
     var bCanDelete: Boolean);
 var sItens: string;
@@ -1983,7 +2043,12 @@ begin
         nICMS +
         C_TabelaIPIVenda.Value;
 
-    nPercTotal := nPercCusto + C_TabelaicFatorLucro.Value;
+  //  nPercTotal := nPercCusto + C_TabelaicFatorLucro.Value;
+    nPercTotal := C_TabelaFC_ICMSVENDA.Value + C_TabelaFC_IPIVENDA.value + C_TabelaFC_DESPESAS.value + C_TabelaFC_ENCARGOS.value +
+                  C_TabelaFC_COMISSAO.value + C_TabelaFC_CUSTOSADICIONAIS.value + C_TabelaFC_IMPFEDERALSAIDA.Value + C_TabelaFC_LUCRO.Value ;
+
+
+    C_TabelaicFatorMult.value := 1 + (nPercTotal/100)   ;
 
     if nPercCusto >= 100 then
         nPercCusto := 99.9;
@@ -2005,21 +2070,25 @@ begin
     nCusto := C_TabelaicCusto.Value * (1 + C_TabelaCOMPENSACUSTO.Value / 100);
 
     {Menor Preço de Venda}
-    C_TabelaicMenorPrecoVenda.Value := nCusto / nPercCusto;
+  //  C_TabelaicMenorPrecoVenda.Value := nCusto / nPercCusto;
 
     {Desconto Máximo}
     nDescMax := C_TabelaicDescontoMaximo.Value;
 
-    C_TabelaicPrecoCalcDescMax.Value := ((nCusto / nPercTotal) * (1 - (nDescMax / 100)));
+    C_TabelaicPrecoCalcDescMax.Value := ( (C_TabelaFC_PRECOCALCULADO.Value) * (1 - (nDescMax / 100)) );
+
+    C_TabelaicMenorPrecoVenda.Value := ( (C_TabelaFC_PRECOCALCULADO.Value) * (1 - (C_TabelaFC_LUCRO.Value / 100)) );
+
+   // C_TabelaicPrecoCalcDescMax.Value := ((nCusto / nPercTotal) * (1 - (nDescMax / 100)));
 
     {Preço de Venda - Por motivos de eventos sobre o preco mínimo acima calculado, esta atribuição é a última}
     //C_TabelaicPrecoCalc.value := Arredondar(nCusto / nPercTotal, 2);
 
     {Fator Multiplicador}
-    if C_TabelaicCusto.Value > 0 then
-        C_TabelaicFatorMult.Value := C_TabelaicPrecoCalc.Value / C_TabelaicCusto.Value
-    else
-        C_TabelaicFatorMult.Value := 0;
+//    if C_TabelaicCusto.Value > 0 then
+//        C_TabelaicFatorMult.Value := C_TabelaicPrecoCalc.Value / C_TabelaicCusto.Value
+//    else
+//        C_TabelaicFatorMult.Value := 0;
     {
         if C_TabelaCUSTOMEDIO.Value > 0 then
             C_TabelaicFatorMult.Value := C_TabelaicPrecoCalc.Value / C_TabelaCUSTOMEDIO.Value
@@ -2330,6 +2399,15 @@ begin
                     SQL.Text := Replace(SQL.Text, PreencherStr(index, index, 3), SeparaStrings(DMProjeto.sTabelasPreco, ';', i));
                 end;
         end;
+
+end;
+
+procedure TDMItens.C_FatCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  C_FaticPrevisaoFatProxPeriodo.Value :=  C_FatVALORFINAL.Value - C_FatVALORMESINICIAL.Value + C_FatVALORACUMULADOMES.Value ;
+  C_FaticVariacao.Value := C_FatVALORFINAL.Value - C_FaticPrevisaoFatProxPeriodo.Value ;
+// := FormatCurr('#,###,##0.00', nTroco);
 
 end;
 

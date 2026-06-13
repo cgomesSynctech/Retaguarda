@@ -388,9 +388,6 @@ inherited DMVendaRapida: TDMVendaRapida
   end
   inherited C_Tabela: TClientDataSet
     Left = 24
-    inherited C_TabelaDESCONTO: TBCDField
-      DisplayFormat = ''
-    end
     inherited C_TabelaTABELAPADRAO: TIntegerField
       OnChange = C_TabelaTABELAPADRAOChange
     end
@@ -611,10 +608,6 @@ inherited DMVendaRapida: TDMVendaRapida
       FieldKind = fkInternalCalc
       FieldName = 'Juros'
     end
-    object C_ParcelasVENDA: TIntegerField
-      FieldName = 'VENDA'
-      Origin = 'TITULOSARECEBER.VENDA'
-    end
   end
   inherited C_SaidasItensFilhos: TClientDataSet
     Left = 238
@@ -629,11 +622,7 @@ inherited DMVendaRapida: TDMVendaRapida
       'order by Ordem')
   end
   inherited IBEventos_Saidas: TIBEvents
-    Left = 743
     Top = 179
-  end
-  inherited C_SitECF: TClientDataSet
-    Top = 477
   end
   object C_PlanosPagamentoDS: TDataSource
     DataSet = C_PlanosPagamento
@@ -747,9 +736,5 @@ inherited DMVendaRapida: TDMVendaRapida
     DataSet = C_Precos
     Left = 810
     Top = 331
-  end
-  object TEF2: TTEFDiscado
-    Left = 234
-    Top = 484
   end
 end

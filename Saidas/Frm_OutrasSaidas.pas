@@ -109,6 +109,7 @@ type
     TS_DBEdit5: TTS_DBEdit;
     TS_Label26: TTS_Label;
     TS_Shape34: TTS_Shape;
+    ReferenciarNotas1: TMenuItem;
         procedure FormCreate(Sender: TObject);
         procedure lbOperacaoSetParametrosForm(Sender: TObject);
         procedure FormComponentEstado_Inicial(Sender: TObject;
@@ -123,6 +124,7 @@ type
       var Accept: Boolean);
     procedure dfVolumesValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
+    procedure ReferenciarNotas1Click(Sender: TObject);
     private
         DlgCFOPs, DlgCFOPs2: TDlgCFOPs;
     protected
@@ -247,6 +249,12 @@ begin
     a novo valor do Volume no seu campo. (28/11/2016) }
     if (DMOutrasSaidas.C_TabelaVOLUMES.Value > 0) then
         DMSaida.volumeEdit := DMOutrasSaidas.C_TabelaVOLUMES.Value;
+
+    if (DMOutrasSaidas.C_Tabela.FieldByName('IDMESTRE').Value <= 0) then
+        ReferenciarNotas1.Visible := False
+    else
+        ReferenciarNotas1.Visible := True;
+
 end;
 
 procedure TFrmOutrasSaidas.ppmPadraoPopup(Sender: TObject);
@@ -273,6 +281,13 @@ procedure TFrmOutrasSaidas.dfVolumesValidate(Sender: TObject;
 begin
   inherited;
     DMSaida.volumeEdit := dfVolumes.Value;
+end;
+
+procedure TFrmOutrasSaidas.ReferenciarNotas1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.SetParametrosForm([DMOutrasSaidas.C_Tabela.FieldByName('IDMESTRE').Value, DMOutrasSaidas.C_Tabela.FieldByName('EMPRESA').Value, DMOutrasSaidas.C_Tabela.FieldByName('PDV').Value]);
+    Dmprojeto.CriarForm('FrmSaidasReferenciadas', Self, True);
 end;
 
 end.

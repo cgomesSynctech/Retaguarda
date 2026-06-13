@@ -64,6 +64,8 @@ type
     C_TabelaULTIMOFORNECEDOR: TIntegerField;
     C_TabelaFORNECPREFERENCIA: TIntegerField;
     C_TabelaEMPRESA: TIntegerField;
+    C_TabelaUSUARIO: TIntegerField;
+    C_TabelaLOGINNAME: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure C_TabelaITEMChange(Sender: TField);
@@ -108,7 +110,7 @@ var
   DMAjustesItens: TDMAjustesItens;
 
 implementation
-uses DM_Projeto, funcoes, Frm_Contabilidade;
+uses DM_Projeto, funcoes, Frm_Contabilidade, TDM_Projeto;
 
 {$R *.DFM}
 
@@ -191,6 +193,9 @@ begin
     C_TabelaFatorUndVenda.Value := 1;
     C_TabelaControlevalidade.value := 'N'
   end;
+  C_TabelaUSUARIO.Value := DMProjeto.nFuncionarioLogado ;
+    C_TabelaLOGINNAME.Value := DMProjeto.sLoginName ;
+
 end;
 
 procedure TDMAjustesItens.C_TabelaQUANTIDADEChange(Sender: TField);
@@ -372,5 +377,5 @@ end;
 
 
 
-End.
+end.
 

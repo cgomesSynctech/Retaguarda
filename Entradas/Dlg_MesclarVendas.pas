@@ -9,7 +9,8 @@ uses
     Buttons, TS_SpeedButton, teCtrls, TS_EffectsPanel, DM_Entradas, dxCntner,
     dxTL, dxDBCtrl, dxDBGrid, TS_QDBGrid, Db, IBCustomDataSet, IBQuery,
     DBText, TS_DBTextEffect, dxDBTLCl, dxGrClms, DBClient, Provider, dxGrClEx,
-    dxfProgressBar, Variants, dxExEdtr, BTOdeum, Placemnt, Math;
+    dxfProgressBar, Variants, dxExEdtr, BTOdeum, Placemnt, Math, dxEditor,
+  dxEdLib, TS_DateTimePicker;
 
 type
     TDlgMesclarVendas = class(TFrmModeloCadastros)
@@ -170,7 +171,12 @@ type
         C_ItensALIQIPI: TFloatField;
         C_ItensVALORPISPROD: TFloatField;
         C_ItensVALORCOFINSPROD: TFloatField;
-        procedure FormShow(Sender: TObject);
+    TS_Label1: TTS_Label;
+    DataI: TTS_DateTimePicker;
+    TS_Label2: TTS_Label;
+    DataF: TTS_DateTimePicker;
+    TS_Label3: TTS_Label;
+   //     procedure FormShow(Sender: TObject);
         procedure Q_MovimentosBeforeOpen(DataSet: TDataSet);
         procedure GridMovsTS_OnAfterSelection(Sender: TObject;
             bSelected: Boolean; QtdSel: Integer);
@@ -185,6 +191,7 @@ type
         procedure C_ItensicQtdMesclarValidate(Sender: TField);
         procedure dbgItensTS_OnSelection(Sender: TObject; bSelected: Boolean;
             var bCanSelect: Boolean);
+    procedure btComando1Click(Sender: TObject);
     private
         { Private declarations }
         sFavs: string;
@@ -193,6 +200,9 @@ type
         procedure JoinItemToOperation(nIDItem: Integer);
         procedure AtualizarSelecionados;
         function PegaValidadeLote(nItem: integer; sNumeroLote: string): TDateTime;
+        procedure Consultar;
+
+        //        procedure buscarVendas;
 
     public
         { Public declarations }
@@ -206,20 +216,21 @@ var
     DlgMesclarVendas: TDlgMesclarVendas;
 
 implementation
-uses DM_Projeto, Funcoes;
+uses DM_Projeto, Funcoes, Data;
 
 {$R *.DFM}
 
-procedure TDlgMesclarVendas.FormShow(Sender: TObject);
+procedure TDlgMesclarVendas.Consultar;
 begin
-    inherited;
+  inherited;
+     sFavs := DM.C_TabelaFavorecido.asString;
+     dbtCliente.DataSource := DM.C_TabelaDS;
+     bDeleteItens := false;
+
     Screen.Cursor := crHourGlass;
-
-    sFavs := DM.C_TabelaFavorecido.asString;
-    dbtCliente.DataSource := DM.C_TabelaDS;
-    bDeleteItens := false;
-
-    try
+      try
+//        Q_Movimentos.ParamByName('datainicio').AsDateTime := DataI.Date;
+//        Q_Movimentos.ParamByName('datafinal').Value := DataF.Date ;
         C_Movimentos.Open;
 
         DM.C_Itens.DisableControls;
@@ -268,7 +279,10 @@ begin
 
     GridMovs.ExpandirGrupos;
 
+
 end;
+
+
 
 procedure TDlgMesclarVendas.Q_MovimentosBeforeOpen(DataSet: TDataSet);
 var
@@ -283,7 +297,7 @@ begin
         ' INNER JOIN TiposPadrao tp ON tp.TipoPadrao = t.TipoPadrao ' +
         ' LEFT JOIN Favorecidos v ON v.Favorecido = s.Vendedor ' +
         //                          ' Where 	s.Situacao = ''N''  and  KK and s.TipoPadrao = ZZ '+
-    ' Where 	s.Situacao = ''N''  and  s.TipoPadrao in (ZZ) ' +
+    ' Where  s.data >= :datainicio and s.data <= :datafinal and s.Situacao = ''N''  and  s.TipoPadrao in (ZZ) ' +
         ' and 	s.Favorecido  =  XX order by s.data desc ';
     if sSaida <> '' then
         begin
@@ -293,7 +307,7 @@ begin
                 ' INNER JOIN TiposMovimento t ON t.TipoMovimento = s.TipoMovimento ' +
                 ' INNER JOIN TiposPadrao tp ON tp.TipoPadrao = t.TipoPadrao ' +
                 ' LEFT JOIN Favorecidos v ON v.Favorecido = s.Vendedor ' +
-                ' Where 	s.Situacao = ''N''  and  s.TipoPadrao = 1 ' +
+                ' Where s.data >= :datainicio and s.data <= :datafinal and s.Situacao = ''N''  and  s.TipoPadrao = 1 ' +
                 ' and  Upper(s.numero) = ''' + UpperCase(sSaida) + '''';
         end
     else
@@ -326,9 +340,21 @@ begin
                         //          Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' ((s.Status is null) or (s.Status = ''X'')) ');
 
                 end;
+
+            Q_Movimentos.ParamByName('datainicio').AsDateTime := DataI.Date ;
+            Q_Movimentos.ParamByName('datafinal').AsDateTime := DataF.Date ;
             Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'XX', sFavs);
             Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'ZZ', sTipos);
+
+
+
         end;
+end;
+
+procedure buscarVendas ;
+begin
+
+
 end;
 
 procedure TDlgMesclarVendas.GridMovsTS_OnAfterSelection(
@@ -818,6 +844,16 @@ begin
    }
 
 end;
+
+procedure TDlgMesclarVendas.btComando1Click(Sender: TObject);
+begin
+  inherited;
+    consultar;
+
+end;
+
+
+
 
 end.
 

@@ -64,6 +64,7 @@ type
     C_TabelaEMPRESA: TIntegerField;
     C_TabelaULTIMOFORNECEDOR: TIntegerField;
     C_TabelaFORNECPREFERENCIA: TIntegerField;
+    C_TabelaESTOQUEFISCAL: TBCDField;
     procedure DataModuleCreate(Sender: TObject);
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure C_TabelaITEMChange(Sender: TField);
@@ -125,12 +126,13 @@ Var Qtd: Real;
 Begin
   Qtd:=0;
   With Q_Sql do Begin
-    Sql.Text := ' select a.estoquealmox from itensalmox a '+
-                ' where a.item = :ITEM and a.almoxarifado = :Almox ';
+    Sql.Text := ' Select a.estoquefiscal from itens a where a.item = :ITEM ; ' ;
+//    Sql.Text := ' select a.estoquealmox from itensalmox a '+
+//                ' where a.item = :ITEM and a.almoxarifado = :Almox ';
     Params[0].AsInteger := Item;
-    Params[1].AsInteger := Almox;
+//    Params[1].AsInteger := Almox;
     Open;
-    Qtd:= FieldByName('estoquealmox').AsFloat;
+    Qtd:= FieldByName('estoquefiscal').AsFloat;
   End;
   Result:=Qtd;
 
@@ -321,8 +323,10 @@ var
 begin
   inherited;
   nFator := IIF(C_TabelaFator.Value > 0, C_TabelaFator.Value, 1);
-
+// comentado por Cesar 17-03-22 , aqui esta mostrando o estoque fisico e não o fiscal ;
   C_TabelaicEstoque.Value := (C_TabelaEstoque.Value / nFator) * C_TabelaFATORUNDVENDA.Value;
+//  C_TabelaicEstoque.Value := C_TabelaESTOQUEFISCAL.Value ;
+
   C_TabelaicEstoqueNovo.Value := (C_TabelaEstoqueNovo.Value / nFator) * C_TabelaFATORUNDVENDA.Value;
   C_TabelaicCusto.Value := (C_TabelaCusto.Value * nFator) / IIF(C_TabelaFATORUNDVENDA.Value > 0, C_TabelaFATORUNDVENDA.Value, 1);
   

@@ -46,7 +46,7 @@ uses
     TS_Image, dxfLabel, TS_LookupComboBox, dxTL, dxDBCtrl, dxDBGrid,
     TS_QDBGrid, dxDBTLCl, dxGrClms, Menus, teCtrls,
     TS_EffectsPanel, TS_PopupEdit, Dlg_PopupContas, DM_Contabilidade,
-    TS_PopupMenu, BTOdeum, Placemnt;
+    TS_PopupMenu, BTOdeum, Placemnt, TS_DBEditDate;
 
 type
     TDlgLocalizarCheques = class(TFrmModeloCadastros)
@@ -124,6 +124,10 @@ type
         C_ChequesNUNDEV: TIntegerField;
         DBChequesNUNDEV: TdxDBGridColumn;
         btnLiquidarCheque: TTS_SpeedButton;
+    TS_Label1: TTS_Label;
+    TS_Label3: TTS_Label;
+    DataI: TTS_DateTimePicker;
+    DataF: TTS_DateTimePicker;
         procedure FormClose(Sender: TObject; var Action: TCloseAction);
         procedure SignificadodasCores1Click(Sender: TObject);
         procedure cmbTipoFavClick(Sender: TObject);
@@ -153,6 +157,8 @@ type
         procedure btImprimirClick(Sender: TObject);
         procedure btAcertarChequeClick(Sender: TObject);
         procedure btnLiquidarChequeClick(Sender: TObject);
+    procedure DataIChange(Sender: TObject);
+    procedure DataFChange(Sender: TObject);
     protected
         DlgPopup: TDlgPopupContas;
         // Adriano
@@ -178,6 +184,7 @@ uses funcoes, DM_Projeto, Dlg_CoresStatus, DM_Financeiro, Variants,
 
 procedure TDlgLocalizarCheques.Pesquisar;
 begin
+
     if not DMFinanceiro.C_ContasCxBc.Active then
         Exit;
     C_Cheques.AfterScroll := nil;
@@ -257,16 +264,25 @@ begin
                     CommandText := CommandText + ' and dd.Status = 60 ';
                     DBChequesLocalCheque.Visible := true;
                 end
-            else if cbConsulta.ItemIndex = 12 then
+            else if cbConsulta.ItemIndex = 12 then                        
                 begin
                     CommandText := CommandText + ' and dd.Status = 61 ';
                     DBChequesLocalCheque.Visible := true;
                 end;
+           if ((DataI.Date > 0) and (DataF.Date > 0)) then
+                CommandText := CommandText + ' and (d.Data >= ''' + formatdatetime('mm/dd/yyyy', DataI.Date) + ''' and d.Data <= ''' + formatdatetime('mm/dd/yyy',DataF.Date) + ''') ';
+
             CommandText := CommandText + ' order by Data desc ';
             if cbConsulta.ItemIndex <> 9 then
                 CommandText := replace(CommandText, ':Cancelado', ' and dd.Status < 70 ')
             else
                 CommandText := replace(CommandText, ':Cancelado', '');
+
+
+
+
+
+
             Open;
         end;
     C_Cheques.AfterScroll := C_ChequesAfterScroll;
@@ -770,6 +786,18 @@ begin
         MessageDlg('Falha ao liquidar o(s) cheque(s)!', mtWarning, [mbOK], 0);
     end;
 
+end;
+
+procedure TDlgLocalizarCheques.DataIChange(Sender: TObject);
+begin
+  inherited;
+  Pesquisar;
+end;
+
+procedure TDlgLocalizarCheques.DataFChange(Sender: TObject);
+begin
+  inherited;
+  Pesquisar;
 end;
 
 end.

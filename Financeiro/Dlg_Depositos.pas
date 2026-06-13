@@ -317,6 +317,8 @@ type
         C_AutenticacaoDs: TDataSource;
         C_AutenticacaoDtpgto: TStringField;
         DBTitulosPercentualMora: TdxDBGridMaskColumn;
+    C_TitulosRETENCAO: TFloatField;
+    DBTitulosRetencao: TdxDBGridColumn;
         procedure dfFavorecidoExit(Sender: TObject);
         procedure DBTitulosExit(Sender: TObject);
         procedure dfDataKeyPress(Sender: TObject; var Key: Char);
@@ -409,6 +411,7 @@ type
             Shift: TShiftState; X, Y: Integer);
         procedure FormKeyDown(Sender: TObject; var Key: Word;
             Shift: TShiftState);
+    procedure C_TitulosRETENCAOChange(Sender: TField);
     protected
         DlgPopup: TDlgPopupContas;
         DMContabil: TDMContabilidade;
@@ -721,7 +724,7 @@ begin
                 't.Descontos as DescontosRecebidos, t.DataAntecipacao, ' +
                 't.JurosRecebidos, t.ValorDescAntecipado, t.Venda, t.cliente, ' +
                 't.faltareceber, t.dataatrasado, f.tipofavorecido, s.tipopadrao, ' +
-                't.percentualmora, t.valorjurosmora, t.datapago ' +
+                't.percentualmora, t.valorjurosmora, t.datapago, t.retencao ' +
                 'From TitulosAReceber t ' +
                 'left join Favorecidos f on t.cliente = f.favorecido ' +
                 'left join Saidas s on t.venda = s.saida and t.pdv = s.pdv ' +
@@ -1484,9 +1487,10 @@ begin
                 DMFinanceiro.ApagarDeposito(DepositoHist);
             end;
         {Gravando o Depósito}
+
         Deposito := DMFinanceiro.ReceberTitulos(DepositoHist, DBTitulos.ItensSelecionados, C_DepositosCliente.Value, C_DepositosConta.Value,
             C_DepositosData.Value, C_DepositosCreditoUtilizado.Value, C_DepositosCreditoGerado.Value, C_DepositosHistorico.Value, 0,
-            iif(C_DepositosTroco.Value > C_DepositosValorDinheiro.Value, C_DepositosTroco.Value - C_DepositosValorDinheiro.Value, 0));
+            iif(C_DepositosTroco.Value > C_DepositosValorDinheiro.Value, C_DepositosTroco.Value - C_DepositosValorDinheiro.Value, 0 ), C_TitulosRETENCAO.Value );
         DepositoHist := Deposito;
         {Depositos Forma}
         if (C_DepositosValorDinheiro.Value > 0) and (C_DepositosValorDinheiro.Value > (C_DepositosTroco.Value)) then
@@ -1530,6 +1534,12 @@ begin
                             iif(C_ChequesEletronicoObs.value = '', C_DepositosHistorico.Value, C_ChequesEletronicoObs.value),
                             0, 0, C_DepositosNome.Value, 0, 0, C_ChequesEletronicoContaReceber.Value);
                         aIDDocAtualizado[i] := 'S';
+
+                        DMFinanceiro.RetiraDocEletronico(aIDDoc[i], 1, Deposito, C_ChequesEletronicoConvenio.Value, C_ChequesEletronicoValor.Value,
+                            C_ChequesEletronicoVencimento.Value,
+                            iif(C_ChequesEletronicoObs.value = '', C_DepositosHistorico.Value, C_ChequesEletronicoObs.value),
+                            0, 0, C_DepositosNome.Value, 0, 0, C_ChequesEletronicoContaReceber.Value);
+                                                 
                         inc(i);
                         C_ChequesEletronico.Next;
                     end;
@@ -2046,7 +2056,7 @@ begin
                             with Q_SQL2 do
                                 begin
                                     close;
-                                    sql.text := 'select Titulo, Valor, Descontos, Juros, CreditoUtilizado ' +
+                                    sql.text := 'select Titulo, dt.Valor, Descontos, Juros, CreditoUtilizado ' +
                                         'from DepositosTitulos dt ' +
                                         'where Deposito = ' + IntToStr(DepositoHist) + ' and Titulo = ' + SeparaStrings(sTitulosHist, ',', j);
                                     Open;
@@ -2357,6 +2367,7 @@ begin
         begin
             C_TitulosJuros.Value := 0;
             C_TitulosDescontos.Value := 0;
+            C_TitulosRETENCAO.Value := 0;
             if C_TitulosPagamento.AsCurrency = 0 then
                 C_TitulosPagamento.Value := C_TitulosValorAReceber.Value;
             if C_DepositosData.Value <= C_TitulosDataAntecipacao.Value then
@@ -2632,7 +2643,7 @@ begin
             DMProjeto.SetParametrosForm([C_TitulosVenda.Value]);
             case C_TitulosTIPOPADRAO.Value of
                 1: DMProjeto.CriarForm('FrmInvoices', self, true);
-                2: DMProjeto.CriarForm('FrmSalesOrder', self, true);
+                2: DMProjeto.CriarForm('FrmSalesOrder', self, true);    
             end;
         end
     else
@@ -2985,7 +2996,19 @@ begin
                     if C_TitulosJuros.Value < 0 then
                         C_TitulosJuros.Value := 0;
                     Key := #0;
+                end
+            else if DBTitulos.TS_SelectedColumn = 'RETENCAO' then
+                begin
+                    if C_Titulos.State in [dsEdit, dsInsert] then
+                        C_Titulos.Post;
+                    C_Titulos.Edit;
+                    C_TitulosRETENCAO.Value := Trunc((C_TitulosRETENCAO.Value / 100) * C_TitulosValorAReceber.Value) +
+                        Trunc(Frac((C_TitulosRETENCAO.Value / 100) * C_TitulosValorAReceber.Value) * 100) / 100;
+                    if C_TitulosRETENCAO.Value < 0 then
+                        C_TitulosRETENCAO.Value := 0;
+                    Key := #0;
                 end;
+
         end;
 end;
 
@@ -3250,5 +3273,14 @@ begin
     clbForma.ItemEnabled[3] := true;
 end;
 
+procedure TDlgDepositos.C_TitulosRETENCAOChange(Sender: TField);
+var nRetencao : Currency ;
+begin
+  inherited;
+  if C_TitulosRETENCAO.Value > 0 then
+     C_TitulosDescontos.Value := C_TitulosRETENCAO.Value ;
+end;
+
 end.
+
 

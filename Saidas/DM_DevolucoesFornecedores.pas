@@ -5,10 +5,11 @@ interface
 uses
     Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
     Dialogs, DM_Saidas, IBEvents, DB, DBClient, Provider, DlgMsg,
-    DMComponent, IBCustomDataSet, IBUpdateSQL, IBQuery, BTOdeum;
+    DMComponent, IBCustomDataSet, IBUpdateSQL, IBQuery, BTOdeum,
+  IBStoredProc, ActnList;
 
 type
-    TDMDevolucoesFornecedores = class(TDMSaidas)
+    TDMDevolucoesFornecedores = class(TDMSaidas)           
         C_TabelaSTATUSNFE: TIntegerField;
     C_ItenslkCST: TStringField;
         procedure DataModuleCreate(Sender: TObject);

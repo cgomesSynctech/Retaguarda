@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   DM_Entradas, Db, DBClient, Provider, DlgMsg, DMComponent,
-  IBCustomDataSet, IBUpdateSQL, IBQuery, IBEvents;
+  IBCustomDataSet, IBUpdateSQL, IBQuery, IBEvents, ActnList;
 
 type
   TDMRequisicoes = class(TDMEntradas)

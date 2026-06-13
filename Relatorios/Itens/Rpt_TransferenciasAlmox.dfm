@@ -1,6 +1,6 @@
 inherited RptTransferenciasAlmox: TRptTransferenciasAlmox
-  Left = -28
-  Top = 95
+  Left = 315
+  Top = 115
   Caption = 'M'#243'dulo de Itens'
   PixelsPerInch = 96
   TextHeight = 13
@@ -175,8 +175,9 @@ inherited RptTransferenciasAlmox: TRptTransferenciasAlmox
         PopupClientEdge = True
         LookupKeyValue = 0
         TS_DB_Projeto = DMProjeto.DB_Projeto
+        TS_TipoEstoque = 0
         TS_FornecedorSelecionado = 0
-        TS_PossuiEstoque = False
+        TS_FornPrefSelecionado = 0
         TS_NaoPossuiEstoque = False
         TS_EstoqueMinimo = False
         TS_EstoqueMaximo = False
@@ -185,8 +186,10 @@ inherited RptTransferenciasAlmox: TRptTransferenciasAlmox
         TS_ItensDesativado = False
         TS_C_LocalizarItem = DMProjeto.C_LocalizarItens
         TS_C_LocalizarFav = DMProjeto.C_LocalizarFav
+        TS_PossuiEstoque = False
         TS_TipoItem = 0
         TS_AliasItens = 'i'
+        TS_ItemAlterado = False
         Height = 19
       end
       object cmbAlmoxOrigem: TTS_LookupComboBox
@@ -446,15 +449,6 @@ inherited RptTransferenciasAlmox: TRptTransferenciasAlmox
       Size = 30
     end
   end
-  inherited FormsComponent: TFormsComponent
-    BeforeClearParams = FormsComponentBeforeClearParams
-    ModuloStyle = DMProjeto.msItens
-    BarEndColor = 9027548
-    CaptionShadow = 9027548
-    FormColor = 14019327
-    Modulo = 'M'#243'dulo de Itens'
-    Caption = 'Transfer'#234'ncias de Almoxarifados'
-  end
   inherited GridPrinter: TdxComponentPrinter
     PreviewOptions.PreviewBoundsRect = {00000000000000000000000000000000}
     inherited GridPrinterLink: TdxDBGridReportLink
@@ -468,6 +462,15 @@ inherited RptTransferenciasAlmox: TRptTransferenciasAlmox
     Left = 628
     Top = 135
   end
+  inherited FormsComponent: TFormsComponent
+    BeforeClearParams = FormsComponentBeforeClearParams
+    ModuloStyle = DMProjeto.msItens
+    BarEndColor = 9027548
+    CaptionShadow = 9027548
+    FormColor = 14019327
+    Modulo = 'M'#243'dulo de Itens'
+    Caption = 'Transfer'#234'ncias de Almoxarifados'
+  end
   object Q_Almoxarifados: TIBQuery
     Database = DMProjeto.DB_Projeto
     Transaction = DMProjeto.IBT_Projeto
@@ -475,8 +478,8 @@ inherited RptTransferenciasAlmox: TRptTransferenciasAlmox
     CachedUpdates = False
     SQL.Strings = (
       'select * from almoxarifados')
-    Left = 610
-    Top = 139
+    Left = 586
+    Top = 115
   end
   object C_Almoxarifados: TClientDataSet
     Aggregates = <>

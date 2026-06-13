@@ -88,6 +88,7 @@ type
     btImprimir: TTS_SpeedButton;
     ppLabel8: TppLabel;
     ppLine1: TppLine;
+    lbIDoc: TppLabel;
     procedure btGravarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cmbContaClick(Sender: TObject);
@@ -102,6 +103,7 @@ type
     procedure btContabilidadeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   protected
   	DlgPopup : TDlgPopupContas;
   private
@@ -491,6 +493,18 @@ begin
   	exit;
   if OperacaoHist <> 0 then
   	Imprimir;
+end;
+
+procedure TDlgTransferencias.FormShow(Sender: TObject);
+begin
+  inherited;
+  if ((DMProjeto.Parametro('VisualizarSaldoDinheiro') = 'N') and ( DMProjeto.nPerfil <> 1 ) )Then Begin
+        lbSaldoLabelOrig.Visible := False ;
+        lblSaldoOrigem.Visible := false ;
+        lbSaldoLabelDest.Visible := false ;
+        lblSaldoDestino.Visible := false ;
+  end ;
+
 end;
 
 end.

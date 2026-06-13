@@ -241,6 +241,9 @@ type
         dbgItensVALORIPIPROD: TdxDBGridColumn;
         dbgItensPRECOVENDA: TdxDBGridColumn;
         dbgItensCSTPISCOFINS: TdxDBGridLookupColumn;
+    dbgItensCOMPENSACAOCUSTOMOEDA: TdxDBGridMaskColumn;
+    dbgItensCSTIBS: TdxDBGridMaskColumn;
+    dbgItensCLASSTRIB: TdxDBGridMaskColumn;
         procedure FormCreate(Sender: TObject);
         procedure dbtObsMouseMove(Sender: TObject; Shift: TShiftState; X,
             Y: Integer);

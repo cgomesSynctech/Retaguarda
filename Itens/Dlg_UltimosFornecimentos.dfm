@@ -286,7 +286,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecNUMERO: TdxDBGridMaskColumn
         Caption = 'N'#250'mero'
         HeaderAlignment = taCenter
-        Width = 45
+        Width = 40
         BandIndex = 0
         RowIndex = 0
         FieldName = 'NUMERO'
@@ -296,7 +296,8 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecDATA: TdxDBGridDateColumn
         Caption = 'Data'
         HeaderAlignment = taCenter
-        Width = 48
+        Sorted = csDown
+        Width = 43
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DATA'
@@ -304,7 +305,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecNOME: TdxDBGridMaskColumn
         Caption = 'Fornecedor'
         HeaderAlignment = taCenter
-        Width = 147
+        Width = 130
         BandIndex = 0
         RowIndex = 0
         FieldName = 'NOME'
@@ -312,7 +313,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecColumn10: TdxDBGridColumn
         Caption = 'Unid.'
         HeaderAlignment = taCenter
-        Width = 46
+        Width = 41
         BandIndex = 0
         RowIndex = 0
         FieldName = 'UNIDADE'
@@ -320,7 +321,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecQUANTIDADE: TdxDBGridMaskColumn
         Caption = 'Qtde.'
         HeaderAlignment = taCenter
-        Width = 45
+        Width = 40
         BandIndex = 0
         RowIndex = 0
         FieldName = 'QUANTIDADE'
@@ -330,7 +331,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecicDesconto: TdxDBGridColumn
         Caption = 'Pre'#231'o'
         HeaderAlignment = taCenter
-        Width = 36
+        Width = 56
         BandIndex = 0
         RowIndex = 0
         FieldName = 'PRECO'
@@ -339,7 +340,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
         Caption = 'Pre'#231'o'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 40
+        Width = 24
         BandIndex = 0
         RowIndex = 0
         FieldName = 'PRECO'
@@ -348,21 +349,28 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
         Caption = 'Desconto'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 41
+        Width = 26
         BandIndex = 0
         RowIndex = 0
         FieldName = 'Desco'
       end
       object dbgFornecDescontoItem: TdxDBGridColumn
         Caption = 'Desc. Item'
-        Width = 58
+        Width = 66
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DESCONTO1'
       end
+      object dbgFornecCUSTOCOMPRA: TdxDBGridMaskColumn
+        Caption = 'Custo Compra'
+        Width = 74
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CUSTOCOMPRA'
+      end
       object dbgFornecSubTotal: TdxDBGridColumn
         HeaderAlignment = taCenter
-        Width = 42
+        Width = 63
         BandIndex = 0
         RowIndex = 0
         FieldName = 'SubTotal'
@@ -373,7 +381,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
         Alignment = taRightJustify
         Caption = 'Descri'#231#227'o'
         HeaderAlignment = taCenter
-        Width = 185
+        Width = 99
         BandIndex = 0
         RowIndex = 0
         FieldName = 'TIPOMOVIMENTO'
@@ -381,7 +389,7 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecEntrada: TdxDBGridColumn
         HeaderAlignment = taCenter
         Visible = False
-        Width = 44
+        Width = 27
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ENTRADA'
@@ -389,10 +397,1390 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
       object dbgFornecFavorecido: TdxDBGridColumn
         HeaderAlignment = taCenter
         Visible = False
-        Width = 59
+        Width = 35
         BandIndex = 0
         RowIndex = 0
         FieldName = 'FAVORECIDO'
+      end
+      object dbgFornecColumn15: TdxDBGridDateColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DATA'
+      end
+      object dbgFornecColumn16: TdxDBGridMaskColumn
+        Visible = False
+        Width = 308
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOME'
+      end
+      object dbgFornecTAXAVEL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 50
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TAXAVEL'
+      end
+      object dbgFornecColumn18: TdxDBGridMaskColumn
+        Visible = False
+        Width = 77
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NUMERO'
+      end
+      object dbgFornecColumn19: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ENTRADA'
+      end
+      object dbgFornecColumn20: TdxDBGridMaskColumn
+        Visible = False
+        Width = 73
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FAVORECIDO'
+      end
+      object dbgFornecUNIDADE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 52
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'UNIDADE'
+      end
+      object dbgFornecColumn22: TdxDBGridColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'icDesconto'
+      end
+      object dbgFornecColumn23: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCRICAO'
+      end
+      object dbgFornecTIPOMOVIMENTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 308
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOMOVIMENTO'
+      end
+      object dbgFornecEMPRESA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'EMPRESA'
+      end
+      object dbgFornecPDV: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PDV'
+      end
+      object dbgFornecOBS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 3045
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'OBS'
+      end
+      object dbgFornecTAX: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TAX'
+      end
+      object dbgFornecPERCENTUALTAX: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PERCENTUALTAX'
+        Nullable = False
+      end
+      object dbgFornecColumn30: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCONTO'
+        Nullable = False
+      end
+      object dbgFornecPLANOPAGAMENTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 102
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PLANOPAGAMENTO'
+      end
+      object dbgFornecFRETE: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FRETE'
+        Nullable = False
+      end
+      object dbgFornecTOTAL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTAL'
+      end
+      object dbgFornecTIPOENTREGA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 77
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOENTREGA'
+      end
+      object dbgFornecDATAENTREGA: TdxDBGridDateColumn
+        Visible = False
+        Width = 80
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DATAENTREGA'
+      end
+      object dbgFornecIMPORTACAO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 75
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IMPORTACAO'
+      end
+      object dbgFornecSITUACAO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 59
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SITUACAO'
+      end
+      object dbgFornecPREVISAOENTREGA: TdxDBGridDateColumn
+        Visible = False
+        Width = 103
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PREVISAOENTREGA'
+      end
+      object dbgFornecTIPOMOVIMENTO1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 98
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOMOVIMENTO1'
+      end
+      object dbgFornecTIPOPADRAO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 73
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOPADRAO'
+      end
+      object dbgFornecDATACANCELAMENTO: TdxDBGridDateColumn
+        Visible = False
+        Width = 116
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DATACANCELAMENTO'
+      end
+      object dbgFornecFUNCCANCELAMENTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 116
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FUNCCANCELAMENTO'
+      end
+      object dbgFornecMOTIVOCANCELAMENTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 491
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'MOTIVOCANCELAMENTO'
+      end
+      object dbgFornecBAIXAESTOQUE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 84
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BAIXAESTOQUE'
+      end
+      object dbgFornecSTATUS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 45
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'STATUS'
+      end
+      object dbgFornecIMPOSTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IMPOSTO'
+      end
+      object dbgFornecTOTALITENS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 68
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTALITENS'
+      end
+      object dbgFornecOUTRASDESPESAS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 98
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'OUTRASDESPESAS'
+      end
+      object dbgFornecJUROS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'JUROS'
+      end
+      object dbgFornecCAMPO01: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO01'
+      end
+      object dbgFornecCAMPO02: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO02'
+      end
+      object dbgFornecCAMPO03: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO03'
+      end
+      object dbgFornecCAMPO04: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CAMPO04'
+      end
+      object dbgFornecPJUROS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PJUROS'
+      end
+      object dbgFornecPOSSUITAX: TdxDBGridMaskColumn
+        Visible = False
+        Width = 63
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'POSSUITAX'
+      end
+      object dbgFornecCALCCOMISSAO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 87
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CALCCOMISSAO'
+      end
+      object dbgFornecPOSSUIENTREGA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 90
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'POSSUIENTREGA'
+      end
+      object dbgFornecTOTALITENS123: TdxDBGridMaskColumn
+        Visible = False
+        Width = 86
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTALITENS123'
+      end
+      object dbgFornecDESCONTOITENS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 91
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCONTOITENS'
+      end
+      object dbgFornecLOCALENTREGA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 85
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'LOCALENTREGA'
+      end
+      object dbgFornecLOCALCLIENTE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 80
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'LOCALCLIENTE'
+      end
+      object dbgFornecINCLUIDESCONTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 96
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'INCLUIDESCONTO'
+      end
+      object dbgFornecATUALIZACUSTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 90
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ATUALIZACUSTO'
+      end
+      object dbgFornecATUALIZAPRECO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 90
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ATUALIZAPRECO'
+      end
+      object dbgFornecATUALIZAPRECOMANUAL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 132
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ATUALIZAPRECOMANUAL'
+      end
+      object dbgFornecSTATUSANTERIOR: TdxDBGridMaskColumn
+        Visible = False
+        Width = 97
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'STATUSANTERIOR'
+      end
+      object dbgFornecUSUARIO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 95
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'USUARIO'
+      end
+      object dbgFornecTOTALPGTOS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 72
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTALPGTOS'
+      end
+      object dbgFornecBASEIMPOSTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 78
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASEIMPOSTO'
+      end
+      object dbgFornecBASEINCLUSO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASEINCLUSO'
+      end
+      object dbgFornecIMPOSTO_INCLUSO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 103
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IMPOSTO_INCLUSO'
+      end
+      object dbgFornecREDUCOESBASE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 86
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'REDUCOESBASE'
+      end
+      object dbgFornecACRESCIMOSBASE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 98
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ACRESCIMOSBASE'
+      end
+      object dbgFornecVOLUMES: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VOLUMES'
+      end
+      object dbgFornecALMOXPADRAO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 83
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALMOXPADRAO'
+      end
+      object dbgFornecUFORIGEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 60
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'UFORIGEM'
+      end
+      object dbgFornecCFOPNOTA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 62
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CFOPNOTA'
+      end
+      object dbgFornecCFOPENTRADA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 81
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CFOPENTRADA'
+      end
+      object dbgFornecSERIENOTA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 64
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SERIENOTA'
+      end
+      object dbgFornecVALORSEGURO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 81
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORSEGURO'
+      end
+      object dbgFornecBASECALCICMS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 83
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCICMS'
+      end
+      object dbgFornecVALORICMS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMS'
+      end
+      object dbgFornecBASECALCSUBST: TdxDBGridMaskColumn
+        Visible = False
+        Width = 89
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCSUBST'
+      end
+      object dbgFornecVALORICMSSUBST: TdxDBGridMaskColumn
+        Visible = False
+        Width = 96
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMSSUBST'
+      end
+      object dbgFornecVALORIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORIPI'
+      end
+      object dbgFornecPESOBRUTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 67
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PESOBRUTO'
+      end
+      object dbgFornecPESOLIQUIDO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PESOLIQUIDO'
+      end
+      object dbgFornecALIQICMSCOMPRA: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALIQICMSCOMPRA'
+        Nullable = False
+      end
+      object dbgFornecFRETEINCLUSO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 82
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FRETEINCLUSO'
+      end
+      object dbgFornecVALORISENTAS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 82
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORISENTAS'
+      end
+      object dbgFornecCONSIDERARDESCONTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 129
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CONSIDERARDESCONTO'
+      end
+      object dbgFornecMODELO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 49
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'MODELO'
+      end
+      object dbgFornecVALOROUTRASICMS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 106
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALOROUTRASICMS'
+      end
+      object dbgFornecVALORISENTASIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 96
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORISENTASIPI'
+      end
+      object dbgFornecVALOROUTRASIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 95
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALOROUTRASIPI'
+      end
+      object dbgFornecPOSSUIICMS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 69
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'POSSUIICMS'
+      end
+      object dbgFornecCONTABILIZAICMS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 99
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CONTABILIZAICMS'
+      end
+      object dbgFornecCIF_FOB: TdxDBGridMaskColumn
+        Visible = False
+        Width = 50
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CIF_FOB'
+      end
+      object dbgFornecPOSSUIIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 58
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'POSSUIIPI'
+      end
+      object dbgFornecDATANOTA: TdxDBGridDateColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DATANOTA'
+      end
+      object dbgFornecIMPRESSO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 58
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IMPRESSO'
+      end
+      object dbgFornecNOTAORIGEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 75
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOTAORIGEM'
+      end
+      object dbgFornecTRANSPORTADORA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 103
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TRANSPORTADORA'
+      end
+      object dbgFornecPLACAVEIC: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PLACAVEIC'
+      end
+      object dbgFornecVENDEDOR: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VENDEDOR'
+      end
+      object dbgFornecDESCESPECIE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 95
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCESPECIE'
+      end
+      object dbgFornecDESCMARCA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 95
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCMARCA'
+      end
+      object dbgFornecDESCNUMERO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCNUMERO'
+      end
+      object dbgFornecFRETEEXTERNO: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FRETEEXTERNO'
+        Nullable = False
+      end
+      object dbgFornecINDEXADOR: TdxDBGridMaskColumn
+        Visible = False
+        Width = 66
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'INDEXADOR'
+      end
+      object dbgFornecFONTE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 40
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FONTE'
+      end
+      object dbgFornecBAIXAESTOQUEFISCAL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BAIXAESTOQUEFISCAL'
+      end
+      object dbgFornecESPECIE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 48
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ESPECIE'
+      end
+      object dbgFornecHORA: TdxDBGridTimeColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'HORA'
+      end
+      object dbgFornecDETALHEIMPORTACAO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DETALHEIMPORTACAO'
+      end
+      object dbgFornecCHAVENFE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 308
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CHAVENFE'
+      end
+      object dbgFornecRATEAROUTRASDESPESAS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 139
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RATEAROUTRASDESPESAS'
+      end
+      object dbgFornecORIGEMREPLIC: TdxDBGridMaskColumn
+        Visible = False
+        Width = 82
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ORIGEMREPLIC'
+      end
+      object dbgFornecEMPRESA1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'EMPRESA1'
+      end
+      object dbgFornecENTRADA1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ENTRADA1'
+      end
+      object dbgFornecENTRADAITEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 78
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ENTRADAITEM'
+      end
+      object dbgFornecPDV1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PDV1'
+      end
+      object dbgFornecSEQUENCIA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SEQUENCIA'
+      end
+      object dbgFornecITEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ITEM'
+      end
+      object dbgFornecDESCRICAO1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 1555
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCRICAO1'
+      end
+      object dbgFornecColumn126: TdxDBGridMaskColumn
+        Visible = False
+        Width = 73
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'QUANTIDADE'
+      end
+      object dbgFornecColumn127: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PRECO'
+      end
+      object dbgFornecIMPORTACAO1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 81
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IMPORTACAO1'
+      end
+      object dbgFornecUSOTIPOITEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'USOTIPOITEM'
+      end
+      object dbgFornecCUSTOMEDIO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 74
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CUSTOMEDIO'
+      end
+      object dbgFornecSITUACAO1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SITUACAO1'
+      end
+      object dbgFornecSUBTOTALITEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 82
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SUBTOTALITEM'
+      end
+      object dbgFornecQTDRECEBIDA: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'QTDRECEBIDA'
+        Nullable = False
+      end
+      object dbgFornecHASCHILDREN: TdxDBGridMaskColumn
+        Visible = False
+        Width = 77
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'HASCHILDREN'
+      end
+      object dbgFornecORDEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ORDEM'
+      end
+      object dbgFornecCOLUNA1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'COLUNA1'
+      end
+      object dbgFornecCOLUNA2: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'COLUNA2'
+      end
+      object dbgFornecCOLUNA3: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'COLUNA3'
+      end
+      object dbgFornecCOLUNA4: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'COLUNA4'
+      end
+      object dbgFornecCLIENTEREF: TdxDBGridMaskColumn
+        Visible = False
+        Width = 67
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CLIENTEREF'
+      end
+      object dbgFornecREFERENCIA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'REFERENCIA'
+      end
+      object dbgFornecSAIDAITEM: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SAIDAITEM'
+      end
+      object dbgFornecNAOCOBRAR: TdxDBGridMaskColumn
+        Visible = False
+        Width = 71
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NAOCOBRAR'
+      end
+      object dbgFornecCUSTOCONTABIL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 91
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CUSTOCONTABIL'
+      end
+      object dbgFornecRATEIODESCONTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 100
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RATEIODESCONTO'
+      end
+      object dbgFornecCUSTOMEDIO_ANT: TdxDBGridMaskColumn
+        Visible = False
+        Width = 100
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CUSTOMEDIO_ANT'
+      end
+      object dbgFornecCUSTOCONTABIL_ANT: TdxDBGridMaskColumn
+        Visible = False
+        Width = 118
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CUSTOCONTABIL_ANT'
+      end
+      object dbgFornecSEMLUCRO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SEMLUCRO'
+      end
+      object dbgFornecLUCRO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'LUCRO'
+      end
+      object dbgFornecINDICELUCRO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'INDICELUCRO'
+      end
+      object dbgFornecNOVOPRECO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 70
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOVOPRECO'
+      end
+      object dbgFornecANALISADO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ANALISADO'
+      end
+      object dbgFornecATUALIZOUCUSTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 98
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ATUALIZOUCUSTO'
+      end
+      object dbgFornecATUALIZOUPRECO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 98
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ATUALIZOUPRECO'
+      end
+      object dbgFornecFRETEPROPORCIONAL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 119
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FRETEPROPORCIONAL'
+      end
+      object dbgFornecMESCLADO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 61
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'MESCLADO'
+      end
+      object dbgFornecSTATUS1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 51
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'STATUS1'
+      end
+      object dbgFornecCODIGOFORN: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CODIGOFORN'
+      end
+      object dbgFornecNUMEROLOTE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 77
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NUMEROLOTE'
+      end
+      object dbgFornecVALIDADE: TdxDBGridDateColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALIDADE'
+      end
+      object dbgFornecVENDEDOR1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 67
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VENDEDOR1'
+      end
+      object dbgFornecFATOR: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FATOR'
+      end
+      object dbgFornecESTOQUE_ANT: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ESTOQUE_ANT'
+        Nullable = False
+      end
+      object dbgFornecBAIXAESTOQUE1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 90
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BAIXAESTOQUE1'
+      end
+      object dbgFornecALMOXARIFADO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 87
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALMOXARIFADO'
+      end
+      object dbgFornecBASECALCICMSPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 112
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCICMSPROD'
+      end
+      object dbgFornecIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IPI'
+      end
+      object dbgFornecALIQICMS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALIQICMS'
+      end
+      object dbgFornecCST: TdxDBGridMaskColumn
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CST'
+      end
+      object dbgFornecREDUCAOCST: TdxDBGridMaskColumn
+        Visible = False
+        Width = 75
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'REDUCAOCST'
+      end
+      object dbgFornecCFOPENTRADA1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 87
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CFOPENTRADA1'
+      end
+      object dbgFornecDESCONTO1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 68
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'DESCONTO1'
+      end
+      object dbgFornecBASECALCSUBSTPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 118
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCSUBSTPROD'
+      end
+      object dbgFornecVALORIPIPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 82
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORIPIPROD'
+      end
+      object dbgFornecTVA: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TVA'
+      end
+      object dbgFornecSITUACAOECF: TdxDBGridMaskColumn
+        Visible = False
+        Width = 78
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SITUACAOECF'
+      end
+      object dbgFornecVALORICMSPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 93
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMSPROD'
+      end
+      object dbgFornecVALORISENTASPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 110
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORISENTASPROD'
+      end
+      object dbgFornecVALORICMSSUBSTPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 125
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMSSUBSTPROD'
+      end
+      object dbgFornecQTDDEVOLVIDO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 85
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'QTDDEVOLVIDO'
+      end
+      object dbgFornecQTDACERTADO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 83
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'QTDACERTADO'
+      end
+      object dbgFornecPDESCONTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 68
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PDESCONTO'
+      end
+      object dbgFornecCOMPENSACAOCUSTO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 119
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'COMPENSACAOCUSTO'
+      end
+      object dbgFornecCFOPCST: TdxDBGridMaskColumn
+        Visible = False
+        Width = 53
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CFOPCST'
+      end
+      object dbgFornecFATORPRECO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 75
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FATORPRECO'
+      end
+      object dbgFornecPRECOVENDA: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PRECOVENDA'
+        Nullable = False
+      end
+      object dbgFornecBAIXAESTOQUEFISCAL1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 126
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BAIXAESTOQUEFISCAL1'
+      end
+      object dbgFornecIDTRIBFEDERAL: TdxDBGridMaskColumn
+        Visible = False
+        Width = 85
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'IDTRIBFEDERAL'
+      end
+      object dbgFornecQUANTIDADEVOLUME: TdxDBGridMaskColumn
+        Visible = False
+        Width = 114
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'QUANTIDADEVOLUME'
+      end
+      object dbgFornecCSTPISCOFINS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 80
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CSTPISCOFINS'
+      end
+      object dbgFornecALIQPIS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALIQPIS'
+      end
+      object dbgFornecALIQCOFINS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 69
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALIQCOFINS'
+      end
+      object dbgFornecVALORPISPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 84
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORPISPROD'
+      end
+      object dbgFornecVALORCOFINSPROD: TdxDBGridMaskColumn
+        Visible = False
+        Width = 106
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORCOFINSPROD'
+      end
+      object dbgFornecCSTIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 40
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CSTIPI'
+      end
+      object dbgFornecALIQIPI: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ALIQIPI'
+      end
+      object dbgFornecFABRICACAO: TdxDBGridDateColumn
+        Visible = False
+        Width = 73
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FABRICACAO'
+      end
+      object dbgFornecV_BCII: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'V_BCII'
+      end
+      object dbgFornecV_DESPADUII: TdxDBGridMaskColumn
+        Visible = False
+        Width = 73
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'V_DESPADUII'
+      end
+      object dbgFornecV_II: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'V_II'
+      end
+      object dbgFornecV_IOFII: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'V_IOFII'
+      end
+      object dbgFornecRATEIODESPESAS: TdxDBGridMaskColumn
+        Visible = False
+        Width = 95
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RATEIODESPESAS'
+      end
+      object dbgFornecRATEIOFRETE: TdxDBGridMaskColumn
+        Visible = False
+        Width = 76
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RATEIOFRETE'
+      end
+      object dbgFornecFRETE1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FRETE1'
+      end
+      object dbgFornecSEGURO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SEGURO'
+      end
+      object dbgFornecOUTRASDESPESAS1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 104
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'OUTRASDESPESAS1'
+      end
+      object dbgFornecRATEIOSEGURO: TdxDBGridMaskColumn
+        Visible = False
+        Width = 86
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RATEIOSEGURO'
+      end
+      object dbgFornecORIGEMREPLIC1: TdxDBGridMaskColumn
+        Visible = False
+        Width = 88
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ORIGEMREPLIC1'
+      end
+      object dbgFornecColumn209: TdxDBGridColumn
+        Visible = False
+        Width = 65
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SubTotal'
+      end
+      object dbgFornecCUSTOMANUAL: TdxDBGridCurrencyColumn
+        Visible = False
+        Width = 120
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CUSTOMANUAL'
+        Nullable = False
       end
     end
     object TS_Panel1: TTS_Panel
@@ -512,7 +1900,8 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
     SQL.Strings = (
       
         'Select tm.descricao as tipomovimento, tp.descricao ,e.*,ei.*, f.' +
-        'nome  from'
+        'nome, (ei.preco - ei.desconto - ei.rateiodesconto) as custocompr' +
+        'a  from'
       
         '(Entradas e inner join EntradasItens ei on e.entrada = ei.entrad' +
         'a)'
@@ -1215,6 +2604,14 @@ inherited DlgUltimosFornecimentos: TDlgUltimosFornecimentos
     object C_FornecSubTotal: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'SubTotal'
+    end
+    object C_FornecCUSTOMANUAL: TBCDField
+      FieldName = 'CUSTOMANUAL'
+      Precision = 18
+      Size = 3
+    end
+    object C_FornecCUSTOCOMPRA: TFloatField
+      FieldName = 'CUSTOCOMPRA'
     end
   end
   object Q_FornecProvider: TDataSetProvider

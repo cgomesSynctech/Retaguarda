@@ -133,6 +133,12 @@ type
     dbgConsultaTIPOREC: TdxDBGridColumn;
     C_ConsultaDESCPER: TBCDField;
     dbgConsultaDESCPER: TdxDBGridColumn;
+    C_ConsultaFORMAPAGAMENTO: TStringField;
+    dbgConsultaFORMAPAGAMENTO: TdxDBGridMaskColumn;
+    C_ConsultaRETENCAO: TFloatField;
+    dbgConsultaRetencao: TdxDBGridColumn;
+    C_ConsultaRETENCAOPER: TFloatField;
+    dbgConsultaRETENCAOPER: TdxDBGridMaskColumn;
     procedure edFavorecidoSelecionou(Sender: TObject);
     procedure DataFDateChange(Sender: TObject);
     procedure btAtualizarClick(Sender: TObject);

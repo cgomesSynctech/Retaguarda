@@ -257,7 +257,7 @@ inherited RptChequesEmitidos: TRptChequesEmitidos
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 34
-      Height = 355
+      Height = 366
       KeyField = 'IDDOC'
       SummaryGroups = <
         item
@@ -534,6 +534,10 @@ inherited RptChequesEmitidos: TRptChequesEmitidos
       PrinterPage._dxLastMU_ = 2
       BuiltInReportLink = True
     end
+  end
+  inherited Q_FullSelect: TIBQuery
+    Left = 447
+    Top = 327
   end
   inherited FormsComponent: TFormsComponent
     BeforeClearParams = FormsComponentBeforeClearParams

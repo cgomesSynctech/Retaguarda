@@ -8,14 +8,14 @@ inherited FrmMontagens: TFrmMontagens
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 479
-    Height = 299
+    Height = 303
     inherited btComando1: TTS_SpeedButton
       Hint = 
         'Permite visualizar ou alterar os subitens do item selecionado pa' +
         'ra produ'#231#227'o'
       AllowAllUp = True
       GroupIndex = 1
-      Caption = 'Editar SubItens'
+      Caption = 'SubItens'
       Glyph.Data = {
         76060000424D7606000000000000360400002800000018000000180000000100
         08000000000040020000130B0000130B00000001000000010000CE6300003929
@@ -69,7 +69,6 @@ inherited FrmMontagens: TFrmMontagens
         0202002020202020202020202020111C1E152020202020202020202020202020
         202020202020201A1A2020202020202020202020202020202020202020202020
         2020202020202020202020202020202020202020202020202020}
-      Visible = True
       OnClick = lblItemClick
       ActiveControlNil = False
     end
@@ -79,15 +78,15 @@ inherited FrmMontagens: TFrmMontagens
       OnClick = btComando2Click
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 265
+      Top = 269
     end
   end
   inherited pnDados: TTS_Panel
     Width = 479
-    Height = 299
+    Height = 303
     inherited Grid: TTS_QDBGrid
       Width = 477
-      Height = 297
+      Height = 301
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'DATA'
       object Grid_icSelecionado: TdxDBGridColumn
@@ -226,11 +225,11 @@ inherited FrmMontagens: TFrmMontagens
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 477
-      Height = 297
+      Height = 301
     end
     inherited sbDados: TTS_Panel
       Width = 477
-      Height = 297
+      Height = 301
       Color = 14019327
       object TS_Label1: TTS_Label
         Left = 32
@@ -1202,7 +1201,7 @@ inherited FrmMontagens: TFrmMontagens
     DataPipeline = ppDBMontagens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1210,7 +1209,7 @@ inherited FrmMontagens: TFrmMontagens
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 410
     Top = 115
@@ -1708,7 +1707,7 @@ inherited FrmMontagens: TFrmMontagens
           DataPipeline = ppDBMontagensFilho
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -1716,7 +1715,7 @@ inherited FrmMontagens: TFrmMontagens
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 279401
           PrinterSetup.mmPaperWidth = 215900
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Version = '6.02'
           mmColumnWidth = 0
           DataPipelineName = 'ppDBMontagensFilho'

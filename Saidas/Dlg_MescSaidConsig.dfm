@@ -1,19 +1,19 @@
 inherited DlgMescSaidConsig: TDlgMescSaidConsig
-  Left = 126
-  Top = 115
+  Left = 430
+  Top = 191
   Width = 750
   Height = 413
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 616
-    Height = 331
+    Left = 624
+    Height = 343
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 297
+      Top = 309
     end
     inherited btLimpar: TTS_SpeedButton
-      Hint = 'Faz uma cópia do Movimento selecionado para a operação corrente.'
+      Hint = 'Faz uma c'#243'pia do Movimento selecionado para a opera'#231#227'o corrente.'
       Caption = '&Copiar'
       Glyph.Data = {
         C6050000424DC605000000000000360400002800000014000000140000000100
@@ -67,7 +67,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       Visible = False
     end
     inherited btGravar: TTS_SpeedButton
-      Hint = 'Junta os Movimentos e Itens selecionados na operação corrente.'
+      Hint = 'Junta os Movimentos e Itens selecionados na opera'#231#227'o corrente.'
       Caption = 'Devolver'
       Glyph.Data = {
         0E100000424D0E100000000000003600000028000000340000001A0000000100
@@ -205,12 +205,12 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 734
+    Width = 742
     Gradient.ColorStart = 14859922
     inherited lbEstadoForm: TTS_Label
       Top = 24
       Width = 301
-      Caption = 'Informe a quantidade dos itens que o cliente está devolvendo.'
+      Caption = 'Informe a quantidade dos itens que o cliente est'#225' devolvendo.'
     end
     inherited btHelp: TTS_SpeedButton
       Left = 706
@@ -219,13 +219,13 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       Left = 52
       Width = 265
       AutoSize = True
-      Caption = 'Devolução de Consignações'
+      Caption = 'Devolu'#231#227'o de Consigna'#231#245'es'
       Effect3D.ShadowedColor = 14859922
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 616
-    Height = 331
+    Width = 624
+    Height = 343
     Color = 16116702
     object dbtForn: TTS_DBTextEffect
       Left = 6
@@ -252,7 +252,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     end
     object dbgItens: TTS_QDBGrid
       Left = 66
-      Top = 77
+      Top = 85
       Width = 559
       Height = 183
       Bands = <
@@ -368,7 +368,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         FieldName = 'ITEM'
       end
       object dbgItensCodigo: TdxDBGridColumn
-        Caption = 'Código'
+        Caption = 'C'#243'digo'
         Color = 15461355
         DisableEditor = True
         HeaderAlignment = taCenter
@@ -379,7 +379,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         FieldName = 'CODIGO'
       end
       object dbgItensDESCRICAO: TdxDBGridMaskColumn
-        Caption = 'Descrição'
+        Caption = 'Descri'#231#227'o'
         Color = 15461355
         DisableCustomizing = True
         DisableEditor = True
@@ -416,7 +416,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         FieldName = 'QTDFATURADA'
       end
       object dbgItensPRECO: TdxDBGridMaskColumn
-        Caption = 'Preço'
+        Caption = 'Pre'#231'o'
         Color = 15461355
         DisableCustomizing = True
         DisableEditor = True
@@ -615,7 +615,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       TS_SummaryFooterQtdText = 'Qtd. Geral:'
       TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
       object GridMovsDESCTIPOMOV: TdxDBGridMaskColumn
-        Caption = 'Operação'
+        Caption = 'Opera'#231#227'o'
         DisableEditor = True
         HeaderAlignment = taCenter
         Visible = False
@@ -625,11 +625,11 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         FieldName = 'DESCTIPOMOV'
       end
       object GridMovsNumero: TdxDBGridColumn
-        Caption = 'Número'
+        Caption = 'N'#250'mero'
         DisableCustomizing = True
         DisableEditor = True
         HeaderAlignment = taCenter
-        Sorted = csDown
+        Sorted = csUp
         Width = 75
         BandIndex = 0
         RowIndex = 0
@@ -674,7 +674,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         FieldName = 'TOTAL'
       end
       object GridMovsDESCTIPOPADRAO: TdxDBGridMaskColumn
-        Caption = 'Tipo Operação'
+        Caption = 'Tipo Opera'#231#227'o'
         DisableEditor = True
         HeaderAlignment = taCenter
         Sorted = csUp
@@ -749,7 +749,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     end
     object gridAcerto: TTS_QDBGrid
       Left = 7
-      Top = 43
+      Top = 45
       Width = 611
       Height = 283
       Bands = <
@@ -880,7 +880,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         FieldName = 'ITEM'
       end
       object gridAcertoCODIGO: TdxDBGridMaskColumn
-        Caption = 'Código'
+        Caption = 'C'#243'digo'
         DisableCustomizing = True
         DisableEditor = True
         HeaderAlignment = taCenter
@@ -967,7 +967,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
         Nullable = False
       end
       object gridAcertoREFERENCIA: TdxDBGridMaskColumn
-        Caption = 'Referência'
+        Caption = 'Refer'#234'ncia'
         DisableCustomizing = True
         DisableEditor = True
         HeaderAlignment = taCenter
@@ -1008,6 +1008,16 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       Color = 16247774
       TabOrder = 2
       Visible = False
+      object pbBar: TProgressBar
+        Left = 1
+        Top = 1
+        Width = 609
+        Height = 6
+        Align = alClient
+        Min = 0
+        Max = 100
+        TabOrder = 0
+      end
     end
   end
   inherited DlgMsg: TDlgMsg
@@ -1027,8 +1037,8 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     Top = 156
   end
   inherited FormStorage: TFormStorage
-    Left = 576
-    Top = 104
+    Left = 560
+    Top = 128
   end
   inherited FormsComponent: TFormsComponent
     ModuloStyle = DMProjeto.msClientes
@@ -1036,7 +1046,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     CaptionShadow = 14859922
     FormColor = 16116702
     Modulo = 'Clientes / Vendas'
-    Caption = 'Devolução de Consignações'
+    Caption = 'Devolu'#231#227'o de Consigna'#231#245'es'
     Left = 664
     Top = 203
   end
@@ -1051,7 +1061,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     BufferChunks = 1000
     CachedUpdates = False
     SQL.Strings = (
-      'Select '#9'e.*,'
+      'Select 0 as seq,'#9'e.*,'
       #9'f.Nome, t.Descricao as DescTipoMov, '
       #9'tp.Descricao as DescTipoPadrao'
       
@@ -1066,7 +1076,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       ''
       ''
       
-        'Where '#9'e.Situacao = ''N'' and KK and e.TipoPadrao in (ZZ) and e.Fa' +
+        'Where '#9'e.Situacao = '#39'N'#39' and KK and e.TipoPadrao in (ZZ) and e.Fa' +
         'vorecido in (XX)'
       '')
     UniDirectional = True
@@ -1600,6 +1610,9 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       Origin = 'SAIDAS.NF_CUPOM'
       Size = 12
     end
+    object C_Movimentosseq: TIntegerField
+      FieldName = 'seq'
+    end
     object C_MovimentosNOME: TStringField
       FieldName = 'NOME'
       Origin = 'FAVORECIDOS.NOME'
@@ -1637,10 +1650,12 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     DataSource = Q_MovimentosDS
     SQL.Strings = (
       
-        'Select ei.*, i.TipoItem, i.Codigo, ei.QtdFaturada as OldQtdReceb' +
-        'ida'
+        'Select 0 as seq, ei.*, i.TipoItem, i.Codigo, ei.QtdFaturada as O' +
+        'ldQtdRecebida'
       'from SaidasItens ei LEFT JOIN Itens i ON ei.Item = i.Item'
-      'Where ei.Saida = :SAIDA and ei.Status in (''P'', ''L'', ''F'')'
+      
+        'Where ei.Saida = :SAIDA and ei.Status in ('#39'P'#39', '#39'L'#39', '#39'F'#39')  AND (E' +
+        'I.qtdfaturada  < EI.quantidade)'
       'order by ei.Ordem')
     Left = 282
     Top = 132
@@ -1702,6 +1717,9 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     end
     object C_ItensIMPORTACAO: TIntegerField
       FieldName = 'IMPORTACAO'
+    end
+    object C_Itensseq: TIntegerField
+      FieldName = 'seq'
     end
     object C_ItensCONTAVENDA: TIntegerField
       FieldName = 'CONTAVENDA'
@@ -1987,6 +2005,18 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     object C_AcertoQTDACERT: TFloatField
       FieldName = 'QTDACERT'
     end
+    object C_AcertoQtdSelect: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QtdSelect'
+    end
+    object C_Acertoseq: TIntegerField
+      FieldName = 'seq'
+    end
+    object C_AcertolistaMovimentos: TStringField
+      FieldKind = fkInternalCalc
+      FieldName = 'listaMovimentos'
+      Size = 2000
+    end
     object C_AcertoESTOQUE: TBCDField
       FieldName = 'ESTOQUE'
       Precision = 18
@@ -2005,8 +2035,8 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     CachedUpdates = False
     SQL.Strings = (
       
-        'select e.tipomovimento, e.favorecido, f.nome, ei.item, i.codigo,' +
-        ' i.descricao,'
+        'select 0 as seq, e.tipomovimento, e.favorecido, f.nome, ei.item,' +
+        ' i.codigo, i.descricao,'
       'i.unidade, i.referencia, i.estoqueconsigsaida, i.estoque,'
       'sum(ei.quantidade) as qtd,'
       'sum(ei.qtddevolvido) as qtddev, sum(ei.qtdacertado) as qtdacert'
@@ -2014,7 +2044,7 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
       'left join saidasitens ei on e.saida = ei.saida'
       'left join itens i on ei.item = i.item'
       'left join favorecidos f on e.favorecido = f.favorecido'
-      'where ei.status in (''L'',''F'',''P'') and e.tipomovimento = 11 and '
+      'where ei.status in ('#39'L'#39','#39'F'#39','#39'P'#39') and e.tipomovimento = 11 and '
       'e.favorecido in (XX) '
       'group by e.tipomovimento, e.favorecido,f.nome,ei.item,i.codigo,'
       
@@ -2032,5 +2062,13 @@ inherited DlgMescSaidConsig: TDlgMescSaidConsig
     Constraints = True
     Left = 282
     Top = 187
+  end
+  object Q_Aux: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Left = 364
+    Top = 266
   end
 end

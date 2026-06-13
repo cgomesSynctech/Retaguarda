@@ -1,6 +1,6 @@
 inherited DlgBaixaTitulosBoletoBancario: TDlgBaixaTitulosBoletoBancario
-  Left = 157
-  Top = 151
+  Left = 226
+  Top = 268
   Width = 667
   Height = 343
   Caption = 'Financeiro'
@@ -8,9 +8,9 @@ inherited DlgBaixaTitulosBoletoBancario: TDlgBaixaTitulosBoletoBancario
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 541
-    Height = 273
+    Height = 272
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 239
+      Top = 238
     end
     inherited btLimpar: TTS_SpeedButton
       Glyph.Data = {00000000}
@@ -68,13 +68,13 @@ inherited DlgBaixaTitulosBoletoBancario: TDlgBaixaTitulosBoletoBancario
   end
   inherited pnDados: TTS_Panel
     Width = 541
-    Height = 273
+    Height = 272
     Color = 15724519
     object dbgTitulos: TTS_QDBGrid
       Left = 1
       Top = 25
       Width = 539
-      Height = 247
+      Height = 246
       Bands = <
         item
         end>

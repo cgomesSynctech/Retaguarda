@@ -1,6 +1,6 @@
 inherited FrmPermissoes: TFrmPermissoes
-  Left = 60
-  Top = 197
+  Left = 250
+  Top = 171
   Width = 518
   Height = 283
   Caption = 'Cadastros Gerais'
@@ -28,7 +28,7 @@ inherited FrmPermissoes: TFrmPermissoes
     inherited sbDados: TTS_Panel
       Width = 393
       Height = 211
-      Color = 13359603
+      Color = 14542583
       object TS_Label1: TTS_Label
         Left = 20
         Top = 27
@@ -41,7 +41,7 @@ inherited FrmPermissoes: TFrmPermissoes
         Left = 20
         Top = 56
         Width = 65
-        Caption = 'Descrição:'
+        Caption = 'Descri'#231#227'o:'
         FormatoTabela = False
         LinkToResult = 0
       end
@@ -53,6 +53,7 @@ inherited FrmPermissoes: TFrmPermissoes
         DataField = 'SIGLA'
         DataSource = DMPermissoes.C_TabelaDS
         StyleController = DMProjeto.esGeral
+        DistinctEditOn = False
         Height = 19
       end
       object TS_DBEdit2: TTS_DBEdit
@@ -63,25 +64,29 @@ inherited FrmPermissoes: TFrmPermissoes
         DataField = 'DESCRICAO'
         DataSource = DMPermissoes.C_TabelaDS
         StyleController = DMProjeto.esGeral
+        DistinctEditOn = False
         Height = 19
       end
+    end
+    inherited dxF9Bar: TdxfProgressBar
+      Width = 393
     end
   end
   inherited pnTitulo: TTS_MaxPanel
     Width = 510
-    Gradient.ColorStart = 9741530
+    Gradient.ColorStart = 11911142
     inherited lbCaption: TdxfLabel
       Width = 108
-      Caption = 'Permissões'
-      Effect3D.ShadowedColor = 9741530
+      Caption = 'Permiss'#245'es'
+      Effect3D.ShadowedColor = 11911142
     end
   end
   inherited FormComponent: TFormComponent
     ModuloStyle = DMProjeto.msGeral
-    BarEndColor = 9741530
-    CaptionShadow = 9741530
-    FormColor = 13359603
+    BarEndColor = 11911142
+    CaptionShadow = 11911142
+    FormColor = 14542583
     Modulo = 'Cadastros Gerais'
-    Caption = 'Permissões'
+    Caption = 'Permiss'#245'es'
   end
 end

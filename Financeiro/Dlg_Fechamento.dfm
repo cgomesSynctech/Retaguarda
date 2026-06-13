@@ -10,10 +10,10 @@ inherited DlgFechamento: TDlgFechamento
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 739
-    Height = 253
+    Left = 747
+    Height = 265
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 219
+      Top = 231
       Caption = 'Cancelar'
       Glyph.Data = {
         76060000424D7606000000000000360400002800000018000000180000000100
@@ -165,7 +165,7 @@ inherited DlgFechamento: TDlgFechamento
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 857
+    Width = 865
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
       Width = 242
@@ -185,8 +185,8 @@ inherited DlgFechamento: TDlgFechamento
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 739
-    Height = 253
+    Width = 747
+    Height = 265
     Color = 15724519
     object TS_Label1: TTS_Label
       Left = -1
@@ -337,7 +337,7 @@ inherited DlgFechamento: TDlgFechamento
     DataPipeline = dbMaster
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 210 x 297 mm'
+    PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -345,7 +345,7 @@ inherited DlgFechamento: TDlgFechamento
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 40
     Top = 70
@@ -552,7 +552,7 @@ inherited DlgFechamento: TDlgFechamento
           DataPipeline = dbPagamentos
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4 210 x 297 mm'
+          PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -560,7 +560,7 @@ inherited DlgFechamento: TDlgFechamento
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Left = 916
           Top = 900
           Version = '6.02'
@@ -698,7 +698,7 @@ inherited DlgFechamento: TDlgFechamento
                 DataPipeline = dbPagamentosDet
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'A4 210 x 297 mm'
+                PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 6350
                 PrinterSetup.mmMarginLeft = 6350
@@ -706,7 +706,7 @@ inherited DlgFechamento: TDlgFechamento
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 297000
                 PrinterSetup.mmPaperWidth = 210000
-                PrinterSetup.PaperSize = 139
+                PrinterSetup.PaperSize = 256
                 Left = 988
                 Top = 972
                 Version = '6.02'
@@ -1016,7 +1016,7 @@ inherited DlgFechamento: TDlgFechamento
           DataPipeline = dbTipoOperacao
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4 210 x 297 mm'
+          PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -1024,7 +1024,7 @@ inherited DlgFechamento: TDlgFechamento
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Left = 748
           Top = 732
           Version = '6.02'
@@ -1162,7 +1162,7 @@ inherited DlgFechamento: TDlgFechamento
                 DataPipeline = dbTipoOperacaoDet
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'A4 210 x 297 mm'
+                PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 6350
                 PrinterSetup.mmMarginLeft = 6350
@@ -1170,7 +1170,7 @@ inherited DlgFechamento: TDlgFechamento
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 297000
                 PrinterSetup.mmPaperWidth = 210000
-                PrinterSetup.PaperSize = 139
+                PrinterSetup.PaperSize = 256
                 Left = 832
                 Top = 816
                 Version = '6.02'
@@ -1481,7 +1481,7 @@ inherited DlgFechamento: TDlgFechamento
           DataPipeline = dbDisponivel
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4 210 x 297 mm'
+          PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -1489,7 +1489,7 @@ inherited DlgFechamento: TDlgFechamento
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Left = 520
           Top = 504
           Version = '6.02'
@@ -1628,7 +1628,7 @@ inherited DlgFechamento: TDlgFechamento
                 DataPipeline = dbDisponivelDet
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'A4 210 x 297 mm'
+                PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 6350
                 PrinterSetup.mmMarginLeft = 6350
@@ -1636,7 +1636,7 @@ inherited DlgFechamento: TDlgFechamento
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 297000
                 PrinterSetup.mmPaperWidth = 210000
-                PrinterSetup.PaperSize = 139
+                PrinterSetup.PaperSize = 256
                 Left = 616
                 Top = 600
                 Version = '6.02'
@@ -1992,7 +1992,7 @@ inherited DlgFechamento: TDlgFechamento
           DataPipeline = dbResumo
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4 210 x 297 mm'
+          PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -2000,7 +2000,7 @@ inherited DlgFechamento: TDlgFechamento
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Left = 352
           Top = 336
           Version = '6.02'
@@ -2382,7 +2382,7 @@ inherited DlgFechamento: TDlgFechamento
                 DataPipeline = dbOutrosDoc
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'A4 210 x 297 mm'
+                PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 6350
                 PrinterSetup.mmMarginLeft = 6350
@@ -2390,7 +2390,7 @@ inherited DlgFechamento: TDlgFechamento
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 297000
                 PrinterSetup.mmPaperWidth = 210000
-                PrinterSetup.PaperSize = 139
+                PrinterSetup.PaperSize = 256
                 Left = 280
                 Top = 236
                 Version = '6.02'
@@ -2713,7 +2713,7 @@ inherited DlgFechamento: TDlgFechamento
           DataPipeline = dbCreditoUtilizado
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4 210 x 297 mm'
+          PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -2721,7 +2721,7 @@ inherited DlgFechamento: TDlgFechamento
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 139
+          PrinterSetup.PaperSize = 256
           Version = '6.02'
           mmColumnWidth = 0
           DataPipelineName = 'dbCreditoUtilizado'
@@ -2790,7 +2790,7 @@ inherited DlgFechamento: TDlgFechamento
                 DataPipeline = dbCreditoUtilizadoDet
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'A4 210 x 297 mm'
+                PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 6350
                 PrinterSetup.mmMarginLeft = 6350
@@ -2798,7 +2798,7 @@ inherited DlgFechamento: TDlgFechamento
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 297000
                 PrinterSetup.mmPaperWidth = 210000
-                PrinterSetup.PaperSize = 139
+                PrinterSetup.PaperSize = 256
                 Version = '6.02'
                 mmColumnWidth = 0
                 DataPipelineName = 'dbCreditoUtilizadoDet'

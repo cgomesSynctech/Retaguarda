@@ -1,12 +1,12 @@
 inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
-  Left = 0
-  Top = 29
+  Left = 440
+  Top = 336
   Width = 981
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 965
+    Width = 973
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 182
@@ -24,9 +24,9 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
     end
   end
   inherited pnGrid: TPanel
-    Width = 912
+    Width = 920
     inherited pnDados: TTS_Panel
-      Width = 912
+      Width = 920
       Color = 16116702
       object lbPeriodo: TTS_Label
         Left = -3
@@ -284,7 +284,7 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
       end
     end
     inherited dbgConsulta: TTS_QDBGrid
-      Width = 912
+      Width = 920
       KeyField = 'ID'
       SummaryGroups = <
         item
@@ -324,6 +324,11 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
               SummaryField = 'DESCONTOS'
               SummaryFormat = '>DESCONTOS=#,###,##0.00'
               SummaryType = cstSum
+            end
+            item
+              SummaryField = 'Retencao'
+              SummaryFormat = '>Retencao=#,###,##0.00'
+              SummaryType = cstSum
             end>
           Name = 'Default'
         end>
@@ -336,7 +341,8 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
         'JurosRecebidos;Sum'
         'TITULO;COUNT'
         'CREDITOUTILIZADO;Sum'
-        'DESCONTOS;Sum')
+        'DESCONTOS;Sum'
+        'Retencao;Sum')
       object dbgConsultaID: TdxDBGridMaskColumn
         DisableCustomizing = True
         Visible = False
@@ -759,9 +765,32 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
         RowIndex = 0
         FieldName = 'DESCPER'
       end
+      object dbgConsultaFORMAPAGAMENTO: TdxDBGridMaskColumn
+        Caption = 'Forma Pgto.'
+        Width = 91
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FORMAPAGAMENTO'
+      end
+      object dbgConsultaRetencao: TdxDBGridColumn
+        Caption = 'Reten'#231#227'o'
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RETENCAO'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaRETENCAOPER: TdxDBGridMaskColumn
+        Caption = '% Reten'#231#227'o'
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'RETENCAOPER'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Width = 912
+      Width = 920
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -772,25 +801,34 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick
     end
+    inherited btSumarizacao: TTS_SpeedButton
+      Top = 88
+    end
+    inherited btAgrupamento: TTS_SpeedButton
+      Top = 132
+    end
   end
   inherited DlgMsg: TDlgMsg
     Top = 345
   end
   inherited LastDataObject: TTS_LastDataObject
-    Top = 329
+    Left = 643
+    Top = 265
   end
   inherited Q_Consulta: TIBQuery
     Database = DMProjeto.DB_Projeto
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
       
-        'select t.ID, t.notafiscal, t.competencia, t.vencimento, t.valor,' +
-        ' t.descontos/t.valor*100 as DescPer, t.valorpago, t.datapago, t.' +
-        'descontos, t.jurosrecebidos, t.creditogerado, t.creditoutilizado' +
-        ', s.Descricao as DescStatus, t.titulo, (t.faltareceber) as Saldo' +
-        ', t.obs, tc.descricao as tipocobranca, t.percentualmulta, t.perc' +
-        'entualmora,'
-      't.valorjurosmora, t.valormulta, t.dataatrasado, t.parcela, '
+        'select t.retencao, t.ID, t.notafiscal, t.competencia, t.vencimen' +
+        'to, t.valor, t.descontos/t.valor*100 as DescPer, t.valorpago, t.' +
+        'datapago, t.descontos, t.jurosrecebidos, t.creditogerado, t.cred' +
+        'itoutilizado, s.Descricao as DescStatus, t.titulo, (t.faltareceb' +
+        'er) as Saldo, t.obs, tc.descricao as tipocobranca, t.percentualm' +
+        'ulta, t.percentualmora,'
+      
+        't.valorjurosmora, t.valormulta, t.dataatrasado, t.parcela,  (t.r' +
+        'etencao/t.valor*100) as RetencaoPer,'
       
         'f.cpf_cnpj, f.codigo, f.nome, f.razao, f.Endereco, f.bairro, f.C' +
         'idade, f.UF, f.fone1, f.fone2, f.fax, f.celular, f.cep,  f.email' +
@@ -799,7 +837,19 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
         'nome as vendedor, t.dataantecipacao, t.valordescantecipado, t.or' +
         'igem_areceber, t.idgerador_areceber, t.numboleto, t.doc_garantia' +
         ', c.descricao as desccarteira, c.numerocarteira, ct.descricao as' +
-        ' desccaixa, sd.TIPOPADRAO, t.venda, t.competencia'
+        ' desccaixa, sd.TIPOPADRAO, t.venda, t.competencia, '
+      '(select Max(fp.descricao)'
+      
+        'from  depositostitulos dt left join depositos dp on dt.empresa =' +
+        ' dp.empresa and dt.deposito = dp.deposito'
+      
+        'left join contas ct on dp.conta = ct.conta left join depositosdo' +
+        'c dc on dc.deposito = dt.deposito'
+      
+        'left join formaspagamento fp on fp.formapagamento = dc.formapaga' +
+        'mento'
+      'where t.id = dt.titulo )'
+      'as FormaPagamento'
       'from titulosareceber t '
       '        left join saidas sd on t.venda = sd.saida'
       '        left join favorecidos f on t.cliente = f.favorecido'
@@ -1141,6 +1191,16 @@ inherited RptInvoicesRecebidas: TRptInvoicesRecebidas
     object C_ConsultaDESCPER: TBCDField
       FieldName = 'DESCPER'
       Precision = 18
+    end
+    object C_ConsultaFORMAPAGAMENTO: TStringField
+      FieldName = 'FORMAPAGAMENTO'
+      Size = 50
+    end
+    object C_ConsultaRETENCAO: TFloatField
+      FieldName = 'RETENCAO'
+    end
+    object C_ConsultaRETENCAOPER: TFloatField
+      FieldName = 'RETENCAOPER'
     end
   end
   inherited GridPrinter: TdxComponentPrinter

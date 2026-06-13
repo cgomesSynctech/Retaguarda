@@ -34,7 +34,6 @@ object RptPedidosCompra: TRptPedidosCompra
     Margins.Left = 0
     Margins.Right = 0
     Margins.Bottom = 0
-    Minimized = True
     object cCODIGO: TZRField
       Format.Width = 13
       DataField = 'CODIGO'
@@ -236,9 +235,9 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasHeader: TZRBand
       Left = 0
-      Top = 11
+      Top = 1
       Width = 40
-      Height = 5
+      Height = 7
       Stretch = False
       BandType = zbtHeader
       object zrCidade3: TZRLabel
@@ -273,10 +272,18 @@ object RptPedidosCompra: TRptPedidosCompra
         Alignment.X = zawCenter
         Caption = 'zrFone'
       end
+      object ZRLabel1: TZRLabel
+        Left = 1
+        Top = 5
+        Width = 39
+        Height = 1
+        Alignment.X = zawCenter
+        Caption = 'DEVOLU'#199#195'O DE VENDAS'
+      end
     end
     object zr40ColunasChild: TZRBand
       Left = 0
-      Top = 16
+      Top = 8
       Width = 40
       Height = 2
       Stretch = False
@@ -327,7 +334,7 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasColumnHeader: TZRBand
       Left = 0
-      Top = 18
+      Top = 10
       Width = 40
       Height = 4
       Frame.Top = 1
@@ -381,7 +388,7 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasGroupHeader: TZRBand
       Left = 0
-      Top = 22
+      Top = 14
       Width = 40
       Height = 1
       Stretch = False
@@ -391,7 +398,7 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasDetail: TZRBand
       Left = 0
-      Top = 23
+      Top = 15
       Width = 40
       Height = 2
       Stretch = False
@@ -460,7 +467,7 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasDetailFooter: TZRBand
       Left = 0
-      Top = 25
+      Top = 17
       Width = 40
       Height = 1
       Frame.Top = 1
@@ -469,7 +476,7 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasFooter: TZRBand
       Left = 0
-      Top = 26
+      Top = 18
       Width = 40
       Height = 11
       Stretch = False
@@ -626,7 +633,7 @@ object RptPedidosCompra: TRptPedidosCompra
     end
     object zr40ColunasSubDetail: TZRSubDetail
       Left = 0
-      Top = 39
+      Top = 31
       Width = 40
       Height = 1
       DataSet = Q_Parcelas
@@ -697,7 +704,7 @@ object RptPedidosCompra: TRptPedidosCompra
       end
       object zr40ColunasSubDetailColumnHeader: TZRBand
         Left = 0
-        Top = 37
+        Top = 29
         Width = 40
         Height = 2
         Stretch = False
@@ -749,7 +756,7 @@ object RptPedidosCompra: TRptPedidosCompra
       end
       object zr40ColunasSubDetailDetailFooter: TZRBand
         Left = 0
-        Top = 40
+        Top = 32
         Width = 40
         Height = 11
         Stretch = False
@@ -794,7 +801,7 @@ object RptPedidosCompra: TRptPedidosCompra
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Units = utScreenPixels
     DeviceType = 'Screen'
     Left = 591
@@ -1519,7 +1526,7 @@ object RptPedidosCompra: TRptPedidosCompra
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 279401
           PrinterSetup.mmPaperWidth = 215900
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Units = utScreenPixels
           Left = 240
           Top = 208
@@ -1991,7 +1998,7 @@ object RptPedidosCompra: TRptPedidosCompra
                 PrinterSetup.mmMarginTop = 6350
                 PrinterSetup.mmPaperHeight = 279401
                 PrinterSetup.mmPaperWidth = 215900
-                PrinterSetup.PaperSize = 1
+                PrinterSetup.PaperSize = 256
                 Units = utScreenPixels
                 Version = '6.02'
                 mmColumnWidth = 0
@@ -2232,7 +2239,7 @@ object RptPedidosCompra: TRptPedidosCompra
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 279401
           PrinterSetup.mmPaperWidth = 215900
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Units = utScreenPixels
           Left = 160
           Top = 112
@@ -6326,7 +6333,7 @@ object RptPedidosCompra: TRptPedidosCompra
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 279000
     PrinterSetup.mmPaperWidth = 216000
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Temp\Templates\NF_Entrada.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
@@ -6934,7 +6941,7 @@ object RptPedidosCompra: TRptPedidosCompra
           PrinterSetup.mmMarginTop = 0
           PrinterSetup.mmPaperHeight = 279000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Units = utMillimeters
           Version = '6.02'
           mmColumnWidth = 0
@@ -7383,7 +7390,7 @@ object RptPedidosCompra: TRptPedidosCompra
           PrinterSetup.mmMarginTop = 0
           PrinterSetup.mmPaperHeight = 279000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Units = utMillimeters
           Version = '6.02'
           mmColumnWidth = 54000
@@ -8122,7 +8129,7 @@ object RptPedidosCompra: TRptPedidosCompra
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 279000
     PrinterSetup.mmPaperWidth = 216000
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Temp\Templates\Nota Fiscal Walber.rtm'
     Units = utMillimeters
     DeviceType = 'Screen'
@@ -8727,7 +8734,7 @@ object RptPedidosCompra: TRptPedidosCompra
           PrinterSetup.mmMarginTop = 0
           PrinterSetup.mmPaperHeight = 279000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Units = utMillimeters
           Version = '6.02'
           mmColumnWidth = 0
@@ -8770,7 +8777,7 @@ object RptPedidosCompra: TRptPedidosCompra
                 PrinterSetup.mmMarginTop = 0
                 PrinterSetup.mmPaperHeight = 279000
                 PrinterSetup.mmPaperWidth = 216000
-                PrinterSetup.PaperSize = 1
+                PrinterSetup.PaperSize = 256
                 Units = utMillimeters
                 Version = '6.02'
                 mmColumnWidth = 0
@@ -9139,7 +9146,7 @@ object RptPedidosCompra: TRptPedidosCompra
                 PrinterSetup.mmMarginTop = 0
                 PrinterSetup.mmPaperHeight = 279000
                 PrinterSetup.mmPaperWidth = 216000
-                PrinterSetup.PaperSize = 1
+                PrinterSetup.PaperSize = 256
                 Units = utMillimeters
                 Version = '6.02'
                 mmColumnWidth = 0
@@ -9221,7 +9228,7 @@ object RptPedidosCompra: TRptPedidosCompra
           PrinterSetup.mmMarginTop = 0
           PrinterSetup.mmPaperHeight = 279000
           PrinterSetup.mmPaperWidth = 216000
-          PrinterSetup.PaperSize = 1
+          PrinterSetup.PaperSize = 256
           Units = utMillimeters
           Version = '6.02'
           mmColumnWidth = 0

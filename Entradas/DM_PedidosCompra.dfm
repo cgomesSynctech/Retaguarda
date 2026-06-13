@@ -1,6 +1,6 @@
 inherited DMPedidosCompra: TDMPedidosCompra
-  Left = 245
-  Top = 37
+  Left = 682
+  Top = 490
   Height = 651
   Width = 1073
   inherited OpenDialog: TOpenDialog
@@ -19,6 +19,7 @@ inherited DMPedidosCompra: TDMPedidosCompra
     Left = 23
   end
   inherited C_Tabela: TClientDataSet
+    Active = False
     Left = 25
   end
   inherited C_TabelaDS: TDataSource
@@ -26,7 +27,12 @@ inherited DMPedidosCompra: TDMPedidosCompra
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select t.clasfiscal,'
+      't.cstibs, '
+      't.classtrib,'
+      'T.COMPENSACAOCUSTOMOEDA, '
+      't.customanual, '
+      't.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -189,6 +195,9 @@ inherited DMPedidosCompra: TDMPedidosCompra
         'drao = 102'
       'Order by t.ordem, t.TipoPadrao, t.TipoMovimento')
   end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
+  end
   inherited Q_Mesclagens: TIBQuery
     Left = 250
   end
@@ -208,6 +217,9 @@ inherited DMPedidosCompra: TDMPedidosCompra
       'where status in ('#39'P'#39', '#39'L'#39', '#39'R'#39', '#39'H'#39')'
       'order by Ordem')
   end
+  inherited C_Unidades: TClientDataSet
+    Active = True
+  end
   inherited Q_EntradasItensFilhos: TIBQuery
     Left = 365
   end
@@ -219,5 +231,23 @@ inherited DMPedidosCompra: TDMPedidosCompra
   end
   inherited C_EntradasItensFilhosDS: TDataSource
     Left = 365
+  end
+  inherited C_CFOPs_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_SitECF: TClientDataSet
+    Active = True
+  end
+  inherited C_Almoxarifado: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_IPI: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_PisCofins: TClientDataSet
+    Active = True
   end
 end

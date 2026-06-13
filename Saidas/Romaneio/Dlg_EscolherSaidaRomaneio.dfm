@@ -1,27 +1,27 @@
 inherited DlgEscolherSaidaRomaneio: TDlgEscolherSaidaRomaneio
   Left = 228
   Top = 46
-  Width = 921
+  Width = 979
   Height = 612
   Caption = 'DlgEscolherSaidaRomaneio'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 787
-    Height = 531
+    Left = 853
+    Height = 542
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 497
+      Top = 508
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 905
+    Width = 971
     inherited btHelp: TTS_SpeedButton
-      Left = 877
+      Left = 935
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 787
-    Height = 531
+    Width = 853
+    Height = 542
     inherited TS_Shape1: TTS_Shape
       Width = 187
       Height = 5
@@ -106,27 +106,103 @@ inherited DlgEscolherSaidaRomaneio: TDlgEscolherSaidaRomaneio
       Height = 19
     end
     inherited pnGrid: TTS_Panel
-      Top = 260
-      Width = 785
+      Top = 271
+      Width = 851
       Height = 270
       inherited dbgItens: TTS_QDBGrid
-        Width = 783
-        Height = 268
+        Width = 849
+        Height = 248
         Filter.Criteria = {00000000}
       end
       inherited Grid: TTS_QDBGrid
-        Width = 783
-        Height = 268
+        Width = 849
+        Height = 248
+        SummaryGroups = <
+          item
+            DefaultGroup = True
+            SummaryItems = <
+              item
+                SummaryField = 'Total'
+                SummaryFormat = '>Total=#,###,##0.00'
+                SummaryType = cstSum
+              end
+              item
+                SummaryField = 'CUBAGEMTOTAL'
+                SummaryFormat = '>CUBAGEMTOTAL=#,###,##0.00'
+                SummaryType = cstSum
+              end>
+            Name = 'Default'
+          end>
         OnMouseUp = GridMouseUp
         Filter.Criteria = {00000000}
+        TS_FooterBox = pnlSelecionados
+        TS_SummaryFields.Strings = (
+          'Total;Sum'
+          'CUBAGEMTOTAL;sum')
+        TS_SummaryFooterQtdText = ''
+        TS_SummaryFooterQtdSelectedText = 'Qtd. Sel :'
+        inherited GridNUMERO: TdxDBGridMaskColumn
+          SummaryFooterType = cstNone
+        end
         inherited GridNOMECLIENTE: TdxDBGridMaskColumn
           Sorted = csDown
+        end
+        inherited GridNOMEVENDEDOR: TdxDBGridMaskColumn
+          Width = 131
+        end
+        inherited GridOBS: TdxDBGridMaskColumn
+          Width = 152
+        end
+        inherited Grid_icSelecionado: TdxDBGridColumn
+          Width = 69
+        end
+        inherited GridSAIDA: TdxDBGridMaskColumn
+          Width = 58
+        end
+        inherited GridColumn10: TdxDBGridMaskColumn
+          Width = 69
+        end
+        inherited GridColumn11: TdxDBGridDateColumn
+          Width = 58
+        end
+        inherited GridColumn12: TdxDBGridMaskColumn
+          Width = 1386
+        end
+        inherited GridColumn13: TdxDBGridMaskColumn
+          Width = 274
+        end
+        inherited GridColumn14: TdxDBGridMaskColumn
+          Width = 274
+        end
+        inherited GridColumn15: TdxDBGridMaskColumn
+          Width = 58
+        end
+        inherited GridQ_Itens: TdxDBGridColumn
+          Width = 58
+        end
+        inherited GridEMPRESA: TdxDBGridMaskColumn
+          Width = 58
+        end
+        inherited GridPDV: TdxDBGridMaskColumn
+          Width = 58
+        end
+      end
+      inherited pnlSelecionados: TTS_Panel
+        Top = 249
+        Width = 849
+        Height = 20
+        Color = 16116702
+        DesignSize = (
+          849
+          20)
+        inherited shpTitulos: TShape
+          Left = 527
         end
       end
     end
     inherited chStatus: TTS_CheckListBox
-      Left = 411
-      Top = 193
+      Left = 675
+      Top = 161
     end
     inherited peZona: TTS_PopupEdit
       Height = 19
@@ -141,12 +217,18 @@ inherited DlgEscolherSaidaRomaneio: TDlgEscolherSaidaRomaneio
       Height = 19
     end
     inherited peZonasClientes: TTS_PopupEdit
-      TabOrder = 35
+      TabOrder = 36
       Height = 19
     end
     inherited peCidades: TTS_PopupEdit
       Height = 19
-    end    
+    end
+    inherited chkMontagem: TTS_CheckBox
+      Height = 21
+    end
+    inherited chkPorCustoContabil: TTS_CheckBox
+      Height = 21
+    end
     object Panel1: TPanel
       Left = 582
       Top = 20
@@ -341,8 +423,8 @@ inherited DlgEscolherSaidaRomaneio: TDlgEscolherSaidaRomaneio
     Top = 11
   end
   inherited Q_Saidas: TIBQuery
-    Left = 45
-    Top = 261
+    Left = 53
+    Top = 333
   end
   inherited Q_TiposMovimento: TIBQuery
     Left = 187
@@ -357,39 +439,65 @@ inherited DlgEscolherSaidaRomaneio: TDlgEscolherSaidaRomaneio
     Top = 283
   end
   inherited P_Fabricantes: TDataSetProvider
-    Left = 342
-    Top = 257
+    Left = 438
+    Top = 193
   end
   inherited C_Fabricantes: TClientDataSet
-    Left = 345
-    Top = 301
+    Left = 377
+    Top = 269
   end
   inherited C_FabricantesDS: TDataSource
     Left = 343
     Top = 344
   end
   inherited Q_Grupos: TIBQuery
-    Left = 374
-    Top = 286
+    Left = 246
+    Top = 174
   end
   inherited C_Grupos: TClientDataSet
-    Left = 417
-    Top = 324
+    Left = 545
+    Top = 252
+  end
+  inherited P_Grupos: TDataSetProvider
+    Left = 646
+    Top = 187
   end
   inherited Q_SQL: TIBQuery
     Left = 525
     Top = 181
   end
   inherited C_ItensDS: TDataSource
-    Left = 509
-    Top = 384
+    Left = 477
+    Top = 400
   end
   inherited Q_Itens: TIBQuery
-    Left = 508
-    Top = 337
+    Left = 476
+    Top = 297
+  end
+  inherited C_Zonas: TClientDataSet
+    Left = 314
+    Top = 478
+  end
+  inherited P_Zonas: TDataSetProvider
+    Left = 458
+    Top = 260
   end
   inherited Q_Zonas: TIBQuery
     Left = 293
     Top = 257
+  end
+  inherited C_ZonasDs: TDataSource
+    Left = 366
+    Top = 226
+  end
+  inherited Q_Municipios: TIBQuery
+    Left = 329
+    Top = 168
+  end
+  inherited P_Municipios: TDataSetProvider
+    Top = 371
+  end
+  inherited C_Municipios: TClientDataSet
+    Left = 203
   end
 end

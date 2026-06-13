@@ -2,15 +2,15 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
   Left = 467
   Top = 173
   Width = 488
-  Height = 216
+  Height = 180
   Caption = 'Financeiro'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 354
-    Height = 134
+    Left = 362
+    Height = 110
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 100
+      Top = 76
     end
     inherited btLimpar: TTS_SpeedButton
       Caption = ''
@@ -55,7 +55,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 472
+    Width = 480
     Gradient.ColorStart = 13223591
     inherited imgModulo: TTS_Image
       Width = 53
@@ -63,7 +63,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     end
     inherited lbEstadoForm: TTS_Label
       Width = 144
-      Caption = 'Movimentação do Caixa Diário'
+      Caption = 'Movimenta'#231#227'o do Caixa Di'#225'rio'
     end
     inherited btHelp: TTS_SpeedButton
       Left = 444
@@ -71,13 +71,13 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     inherited lbCaption: TdxfLabel
       Width = 176
       AutoSize = True
-      Caption = 'Relatório do Caixa'
+      Caption = 'Relat'#243'rio do Caixa'
       Effect3D.ShadowedColor = 13223591
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 354
-    Height = 134
+    Width = 362
+    Height = 110
     Color = 15724519
     object TS_Label1: TTS_Label
       Left = 40
@@ -173,8 +173,8 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     end
     object Barra: TdxfProgressBar
       Left = 1
-      Top = 118
-      Width = 352
+      Top = 94
+      Width = 360
       Height = 15
       Align = alBottom
       BarBevelOuter = bvNone
@@ -210,7 +210,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     CaptionShadow = 13223591
     FormColor = 15724519
     Modulo = 'Financeiro'
-    Caption = 'Relatório do Caixa'
+    Caption = 'Relat'#243'rio do Caixa'
     Top = 226
   end
   inherited ppmHelp: TTS_PopupMenu
@@ -221,7 +221,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     NoDataBehaviors = [ndBlankReport]
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -229,7 +229,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 144
     Top = 48
@@ -254,7 +254,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
       end
       object ppLabel1: TppLabel
         UserName = 'Label1'
-        Caption = 'Relatório de Caixa Diário'
+        Caption = 'Relat'#243'rio de Caixa Di'#225'rio'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Tahoma'
@@ -326,7 +326,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
           DataPipeline = dbCartoes
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -334,7 +334,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 9
+          PrinterSetup.PaperSize = 256
           Version = '6.02'
           mmColumnWidth = 0
           DataPipelineName = 'dbCartoes'
@@ -344,7 +344,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
             mmPrintPosition = 0
             object ppLabel26: TppLabel
               UserName = 'Label26'
-              Caption = 'Cartões'
+              Caption = 'Cart'#245'es'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Tahoma'
@@ -461,7 +461,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         mmStopPosition = 0
         object ppLabel36: TppLabel
           UserName = 'Label36'
-          Caption = 'Títulos a Receber:'
+          Caption = 'T'#237'tulos a Receber:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -476,7 +476,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         end
         object ppLabel37: TppLabel
           UserName = 'Label37'
-          Caption = 'Títulos'
+          Caption = 'T'#237'tulos'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Name = 'Tahoma'
@@ -492,7 +492,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         end
         object ppLabel38: TppLabel
           UserName = 'Label38'
-          Caption = 'Títulos Recebidos:'
+          Caption = 'T'#237'tulos Recebidos:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -702,7 +702,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         end
         object ppLAcuMes: TppLabel
           UserName = 'Label301'
-          Caption = 'Acumulado do Mês:'
+          Caption = 'Acumulado do M'#234's:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -1008,7 +1008,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         object ppLabel8: TppLabel
           UserName = 'Label8'
           AutoSize = False
-          Caption = 'Devoluções:'
+          Caption = 'Devolu'#231#245'es:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -1067,7 +1067,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         object ppLabel13: TppLabel
           UserName = 'Label13'
           AutoSize = False
-          Caption = 'Qtd Devoluções:'
+          Caption = 'Qtd Devolu'#231#245'es:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -1128,7 +1128,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
           DataPipeline = dbRetiradas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PaperName = 'Custom'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -1136,7 +1136,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 9
+          PrinterSetup.PaperSize = 256
           Version = '6.02'
           mmColumnWidth = 0
           DataPipelineName = 'dbRetiradas'
@@ -1146,7 +1146,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
             mmPrintPosition = 0
             object ppLabel4: TppLabel
               UserName = 'Label4'
-              Caption = 'Discriminação das Retiradas'
+              Caption = 'Discrimina'#231#227'o das Retiradas'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Tahoma'
@@ -1252,7 +1252,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         mmStopPosition = 0
         object ppLabel2: TppLabel
           UserName = 'Label2'
-          Caption = 'Vendas à Vista'
+          Caption = 'Vendas '#224' Vista'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -1516,7 +1516,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         end
         object ppLabel20: TppLabel
           UserName = 'Label20'
-          Caption = 'Em Cheques Pré-datados'
+          Caption = 'Em Cheques Pr'#233'-datados'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -1654,7 +1654,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
         end
         object ppLabel27: TppLabel
           UserName = 'Label27'
-          Caption = 'Cheques Pré-datados'
+          Caption = 'Cheques Pr'#233'-datados'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Tahoma'
@@ -1805,6 +1805,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
   object Q_Retiradas: TIBQuery
     Database = DMProjeto.DB_Projeto
     Transaction = DMProjeto.IBT_Projeto
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     SQL.Strings = (
@@ -1816,7 +1817,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
       'inner join Contas c on co.conta = c.conta'
       
         'Where t.Data = :Data and t.Conta = :Conta and t.TipoTransacao = ' +
-        '''D'' and t.Situacao is null'
+        #39'D'#39' and t.Situacao is null'
       'Group by c.Descricao'
       '')
     Left = 216
@@ -1856,7 +1857,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
       'Where t.Data = :Data and '
       '           t.Conta = :Conta and '
       '           fp.especie = 3 and'
-      '           t.tipotransacao = ''C'''
+      '           t.tipotransacao = '#39'C'#39
       'Group by fp.descricao')
     Left = 296
     Top = 40
@@ -1905,6 +1906,22 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     UserName = 'dbRetiradas'
     Left = 216
     Top = 136
+    object dbRetiradasppField1: TppField
+      FieldAlias = 'DESCRICAO'
+      FieldName = 'DESCRICAO'
+      FieldLength = 0
+      DisplayWidth = 0
+      Position = 0
+    end
+    object dbRetiradasppField2: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALOR'
+      FieldName = 'VALOR'
+      FieldLength = 2
+      DataType = dtDouble
+      DisplayWidth = 19
+      Position = 1
+    end
   end
   object dbCartoes: TppDBPipeline
     DataSource = Q_CartoesDS
@@ -1945,7 +1962,7 @@ inherited DlgRelCaixaB: TDlgRelCaixaB
     SQL.Strings = (
       'select conta, descricao, situacao'
       'from contas'
-      'where tipoconta = 1 and desativado = ''N'''
+      'where tipoconta = 1 and desativado = '#39'N'#39
       'order by descricao')
     Left = 24
     Top = 128

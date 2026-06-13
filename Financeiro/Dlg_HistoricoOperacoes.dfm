@@ -1,17 +1,18 @@
 inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
   Left = 550
   Top = 207
-  Width = 554
+  Width = 841
+  Height = 538
   HelpContext = 0
   Caption = 'Financeiro'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 420
+    Left = 715
     Top = 47
-    Height = 227
+    Height = 464
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 193
+      Top = 430
     end
     inherited btComando2: TTS_SpeedButton
       Top = 73
@@ -322,7 +323,7 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 538
+    Width = 833
     Height = 47
     Gradient.ColorStart = 13223591
     inherited imgModulo: TTS_Image
@@ -336,6 +337,9 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
         'Opera'#231#245'es realizadas anteriormente. '#13#10'Utilize para alterar ou ca' +
         'ncelar uma opera'#231#227'o.'
     end
+    inherited btHelp: TTS_SpeedButton
+      Left = 709
+    end
     inherited lbUpperHint: TTS_Label
       Left = 538
     end
@@ -348,13 +352,13 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
   end
   inherited pnDados: TTS_Panel
     Top = 47
-    Width = 420
-    Height = 227
+    Width = 715
+    Height = 464
     Color = 15724519
     object TS_Panel1: TTS_Panel
       Left = 1
       Top = 1
-      Width = 418
+      Width = 713
       Height = 39
       Align = alTop
       BevelOuter = bvNone
@@ -501,8 +505,8 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
     object DBOperacoes: TTS_QDBGrid
       Left = 1
       Top = 40
-      Width = 418
-      Height = 186
+      Width = 713
+      Height = 423
       Bands = <
         item
         end>
@@ -762,12 +766,12 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
     end
   end
   inherited Beep: TBTBeeper
-    Left = 440
-    Top = 136
+    Left = 368
+    Top = 208
   end
   inherited FormStorage: TFormStorage
-    Left = 448
-    Top = 88
+    Left = 472
+    Top = 272
   end
   inherited FormsComponent: TFormsComponent
     BeforeClearParams = FormsComponentBeforeClearParams
@@ -894,8 +898,8 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
       
         'where o.data >= :DataI and o.data <= :DataF and o.TipoOperacao =' +
         ' :Tipo')
-    Left = 348
-    Top = 68
+    Left = 396
+    Top = 60
     ParamData = <
       item
         DataType = ftUnknown
@@ -921,7 +925,7 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
   object ppRepasse: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1154,7 +1158,7 @@ inherited DlgHistoricoOperacoes: TDlgHistoricoOperacoes
           DataPipeline = ppDBCheques
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4'
+          PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350

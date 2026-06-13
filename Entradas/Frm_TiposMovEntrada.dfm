@@ -1,8 +1,8 @@
 inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
-  Left = 391
-  Top = 163
+  Left = 427
+  Top = 44
   Width = 642
-  Height = 514
+  Height = 584
   Caption = 'Fornecedores / Compras'
   PixelsPerInch = 96
   TextHeight = 13
@@ -44,8 +44,8 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
     LinkToResult = 0
   end
   inherited pnNavigator: TTS_Panel
-    Left = 511
-    Height = 433
+    Left = 519
+    Height = 514
     Color = 15196656
     inherited btComando1: TTS_SpeedButton
       Caption = 'Copiar...'
@@ -112,7 +112,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
       OnClick = btComando2Click
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 399
+      Top = 480
     end
     inherited pnInicioFim: TTS_Panel
       Color = 14859922
@@ -122,11 +122,11 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 511
-    Height = 433
+    Width = 519
+    Height = 514
     inherited Grid: TTS_QDBGrid
-      Width = 509
-      Height = 431
+      Width = 517
+      Height = 512
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'DESCRICAO'
       object GridTIPOMOVIMENTO: TdxDBGridMaskColumn
@@ -166,12 +166,12 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 509
-      Height = 431
+      Width = 517
+      Height = 512
     end
     inherited sbDados: TTS_Panel
-      Width = 509
-      Height = 431
+      Width = 517
+      Height = 512
       Color = 15196656
       object TS_Label1: TTS_Label
         Left = 7
@@ -208,7 +208,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
         Left = 3
         Top = 38
         Width = 509
-        Height = 396
+        Height = 466
         ActivePage = tsFiscal
         Anchors = [akLeft, akTop, akRight, akBottom]
         Font.Charset = ANSI_CHARSET
@@ -243,7 +243,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           BevelOuter = bvLowered
           DesignSize = (
             501
-            368)
+            438)
           object TS_Label16: TTS_Label
             Left = 260
             Top = 9
@@ -433,15 +433,15 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
             Left = 2
             Top = 120
             Width = 500
-            Height = 249
+            Height = 319
             Anchors = [akLeft, akTop, akRight, akBottom]
             BevelOuter = bvNone
             Color = 15196656
             TabOrder = 10
             Visible = False
             object lbNotPrecos: TTS_Label
-              Left = 284
-              Top = 75
+              Left = 276
+              Top = 175
               Width = 213
               Height = 118
               Alignment = taLeftJustify
@@ -690,7 +690,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
             end
             object lbTabelasManuais: TTS_Label
               Left = 284
-              Top = 155
+              Top = 131
               Width = 209
               Alignment = taLeftJustify
               Caption = 'E os Pre'#231'os das demais tabelas Manuais?'
@@ -699,7 +699,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
               LinkToResult = 0
             end
             object cmbPrecoVendaItem: TTS_DBImageEdit
-              Left = 282
+              Left = 274
               Top = 104
               Width = 212
               TabOrder = 0
@@ -745,8 +745,8 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
               Height = 21
             end
             object cmbTabelasManuais: TTS_DBImageEdit
-              Left = 282
-              Top = 170
+              Left = 274
+              Top = 154
               Width = 212
               TabOrder = 2
               DataField = 'ATUALIZAPRECOMANUAL'
@@ -966,7 +966,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_Shape5: TTS_Shape
             Left = 3
-            Top = 216
+            Top = 263
             Width = 486
             Height = 3
             Brush.Color = 11775972
@@ -975,7 +975,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_Shape6: TTS_Shape
             Left = 11
-            Top = 208
+            Top = 255
             Width = 83
             Height = 19
             Brush.Color = 11775972
@@ -985,7 +985,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_Label33: TTS_Label
             Left = 13
-            Top = 210
+            Top = 257
             Width = 78
             Height = 17
             Alignment = taCenter
@@ -1040,7 +1040,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_Label35: TTS_Label
             Left = 179
-            Top = 222
+            Top = 273
             Width = 69
             Alignment = taLeftJustify
             Caption = 'T'#237'tulo'
@@ -1049,7 +1049,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_Label36: TTS_Label
             Left = 263
-            Top = 222
+            Top = 273
             Width = 69
             Alignment = taLeftJustify
             Caption = 'Impress'#227'o'
@@ -1067,7 +1067,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_Shape13: TTS_Shape
             Left = 4
-            Top = 328
+            Top = 388
             Width = 486
             Height = 3
             Brush.Color = 11775972
@@ -1075,8 +1075,8 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
             Transparent = False
           end
           object TS_Shape14: TTS_Shape
-            Left = 14
-            Top = 322
+            Left = 11
+            Top = 381
             Width = 83
             Height = 19
             Brush.Color = 11775972
@@ -1085,8 +1085,8 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
             Transparent = False
           end
           object TS_Label28: TTS_Label
-            Left = 16
-            Top = 324
+            Left = 8
+            Top = 383
             Width = 78
             Height = 17
             Alignment = taCenter
@@ -1198,7 +1198,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBCheckBox9: TTS_DBCheckBox
             Left = 8
-            Top = 235
+            Top = 286
             Width = 137
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsSimple
@@ -1216,7 +1216,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBCheckBox15: TTS_DBCheckBox
             Left = 8
-            Top = 256
+            Top = 307
             Width = 137
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsSimple
@@ -1234,7 +1234,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit111: TTS_DBEdit
             Left = 148
-            Top = 237
+            Top = 288
             Width = 91
             TabOrder = 7
             DataField = 'TIT1_ICMS'
@@ -1245,7 +1245,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit112: TTS_DBEdit
             Left = 248
-            Top = 237
+            Top = 288
             Width = 91
             TabOrder = 8
             DataField = 'TIT2_ICMS'
@@ -1256,7 +1256,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit113: TTS_DBEdit
             Left = 148
-            Top = 257
+            Top = 308
             Width = 91
             TabOrder = 9
             DataField = 'TIT1_IPI'
@@ -1267,7 +1267,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit114: TTS_DBEdit
             Left = 248
-            Top = 257
+            Top = 308
             Width = 91
             TabOrder = 10
             DataField = 'TIT2_IPI'
@@ -1278,7 +1278,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBCheckBox34: TTS_DBCheckBox
             Left = 8
-            Top = 276
+            Top = 327
             Width = 137
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsSimple
@@ -1296,7 +1296,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit115: TTS_DBEdit
             Left = 148
-            Top = 279
+            Top = 330
             Width = 91
             TabOrder = 12
             DataField = 'TIT1_TVA'
@@ -1307,7 +1307,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit116: TTS_DBEdit
             Left = 248
-            Top = 279
+            Top = 330
             Width = 91
             TabOrder = 13
             DataField = 'TIT2_TVA'
@@ -1318,7 +1318,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBCheckBox4: TTS_DBCheckBox
             Left = 8
-            Top = 298
+            Top = 349
             Width = 137
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsSimple
@@ -1336,7 +1336,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit21: TTS_DBEdit
             Left = 148
-            Top = 301
+            Top = 352
             Width = 91
             TabOrder = 15
             DataField = 'TIT1_CFOP'
@@ -1347,7 +1347,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBEdit37: TTS_DBEdit
             Left = 248
-            Top = 301
+            Top = 352
             Width = 91
             TabOrder = 16
             DataField = 'TIT2_CFOP'
@@ -1481,7 +1481,7 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
           end
           object TS_DBCheckBox37: TTS_DBCheckBox
             Left = 8
-            Top = 340
+            Top = 403
             Width = 299
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsSimple
@@ -1531,11 +1531,10 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
             StoredValues = 64
           end
           object cmbCstPadrao: TTS_DBLookupComboBox
-            Left = 87
+            Left = 90
             Top = 172
             Width = 202
             TabOrder = 20
-            Visible = False
             DataField = 'lkpCST_Padrao'
             DataSource = DMTiposMovEntrada.C_TabelaDS
             StyleController = DMProjeto.esFornecedores
@@ -1571,6 +1570,96 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
             NullStyle = nsInactive
             DisableEdit = False
             StoredValues = 64
+          end
+          object cmbCstPisCofinsPadrao: TTS_DBLookupComboBox
+            Left = 160
+            Top = 195
+            Width = 256
+            TabOrder = 22
+            DataField = 'lkCST_PisCofinsPadrao'
+            DataSource = DMTiposMovEntrada.C_TabelaDS
+            StyleController = DMProjeto.esFornecedores
+            ClearKey = 32
+            LookupKeyValue = Null
+            Height = 19
+          end
+          object TS_DBCheckBox25: TTS_DBCheckBox
+            Left = 8
+            Top = 194
+            Width = 153
+            Hint = 
+              'Se esta op'#231#227'o estiver marcada, indica que esta Opera'#231#227'o ir'#225' calc' +
+              'ular Tax.'#13#10'Embora voc'#234' marque aqui, s'#243' ser'#225' calculado o Tax se o' +
+              ' cliente for Tax'#225'vel e houverem Itens tamb'#233'm tax'#225'veis na Opera'#231#227 +
+              'o.'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.HotTrack = False
+            TabOrder = 23
+            AutoSize = True
+            Caption = 'CST Trib Federal Padr'#227'o :'
+            DataField = 'CB_CSTPISCOFINSPADRAO'
+            DataSource = DMTiposMovEntrada.C_TabelaDS
+            ReadOnly = False
+            StyleController = DMProjeto.esFornecedores
+            ValueChecked = 'S'
+            ValueGrayed = 'N'
+            ValueUnchecked = 'N'
+            OnChange = TS_DBCheckBox25Change
+            NullStyle = nsInactive
+            DisableEdit = False
+            StoredValues = 64
+          end
+          object TS_DBCheckBox35: TTS_DBCheckBox
+            Left = 8
+            Top = 216
+            Width = 153
+            Hint = 
+              'Se esta op'#231#227'o estiver marcada, indica que esta Opera'#231#227'o ir'#225' calc' +
+              'ular Tax.'#13#10'Embora voc'#234' marque aqui, s'#243' ser'#225' calculado o Tax se o' +
+              ' cliente for Tax'#225'vel e houverem Itens tamb'#233'm tax'#225'veis na Opera'#231#227 +
+              'o.'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.HotTrack = False
+            TabOrder = 24
+            AutoSize = True
+            Caption = 'CST IPI Padr'#227'o '
+            DataField = 'CB_CSTIPIPADRAO'
+            DataSource = DMTiposMovEntrada.C_TabelaDS
+            ReadOnly = False
+            StyleController = DMProjeto.esFornecedores
+            ValueChecked = 'S'
+            ValueGrayed = 'N'
+            ValueUnchecked = 'N'
+            OnChange = TS_DBCheckBox25Change
+            NullStyle = nsInactive
+            DisableEdit = False
+            StoredValues = 64
+          end
+          object TS_DBLookupComboBox1: TTS_DBLookupComboBox
+            Left = 112
+            Top = 219
+            Width = 256
+            TabOrder = 25
+            DataField = 'lkCSTIPI'
+            DataSource = DMTiposMovEntrada.C_TabelaDS
+            StyleController = DMProjeto.esFornecedores
+            ClearKey = 32
+            LookupKeyValue = Null
+            Height = 19
           end
         end
         object tsCampos: TTS_TabSheet
@@ -3491,11 +3580,11 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 509
+      Width = 517
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 626
+    Width = 634
     Gradient.ColorStart = 11775972
     inherited lbCaption: TdxfLabel
       Width = 296
@@ -3512,20 +3601,20 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
     end
   end
   inherited DlgMsg: TDlgMsg
-    Left = 79
-    Top = 418
+    Left = 351
+    Top = 234
   end
   inherited LastDataObject: TTS_LastDataObject
-    Left = 128
-    Top = 418
+    Left = 400
+    Top = 234
   end
   inherited ppmPadrao: TTS_PopupMenu
     Left = 535
     Top = 260
   end
   inherited ImgPadrao: TImageList
-    Left = 34
-    Top = 418
+    Left = 306
+    Top = 234
   end
   inherited FormComponent: TFormComponent
     BeforeLoadKey = FormComponentBeforeLoadKey
@@ -3539,8 +3628,8 @@ inherited FrmTiposMovEntrada: TFrmTiposMovEntrada
     FormColor = 15196656
     Modulo = 'Fornecedores / Compras'
     Caption = 'Tipos de Opera'#231#245'es de Entrada'
-    Left = 184
-    Top = 418
+    Left = 456
+    Top = 234
   end
   inherited ppmHelp: TTS_PopupMenu
     Left = 596

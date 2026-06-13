@@ -61,7 +61,6 @@ uses
 type
   TFrmA_Receber = class(TFrmPadrao)
     lblDoc: TTS_Label;
-    dfNota: TTS_DBEdit;
     Label10: TTS_Label;
     Label12: TTS_Label;
     lbStatus: TTS_Label;
@@ -144,6 +143,7 @@ type
     pnCancelado: TdxfLabel;
     ImprimirBoleto1: TMenuItem;
     ImprimirTtuloReceber1: TMenuItem;
+    dfNota: TTS_DBButtonEdit;
     procedure btPesquisarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BloquearClienteClick(Sender: TObject);
@@ -193,6 +193,7 @@ type
     procedure btVerRecebimentosClick(Sender: TObject);
     procedure ImprimirBoleto1Click(Sender: TObject);
     procedure ImprimirTtuloReceber1Click(Sender: TObject);
+    procedure dfNotaButtonClick(Sender: TObject; AbsoluteIndex: Integer);
   protected
   	DlgPopUp : TDlgpopupContas;
   private
@@ -996,6 +997,14 @@ begin
     RptDocCobranca.ImprimirTituloReceber(DMA_Receber.C_TabelaVENDA.Value);
     RptDocCobranca.Release;
     RptDocCobranca := nil;
+end;
+
+procedure TFrmA_Receber.dfNotaButtonClick(Sender: TObject;
+  AbsoluteIndex: Integer);
+begin
+  inherited;
+    DMA_Receber.GeraCodigo;
+    ActiveControl := dfParc;
 end;
 
 end.

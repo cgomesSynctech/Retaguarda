@@ -1,13 +1,13 @@
 inherited RptOutrasSaidas: TRptOutrasSaidas
-  Left = 28
-  Top = 179
-  Width = 1004
-  Height = 469
+  Left = -4
+  Top = -4
+  Width = 1608
+  Height = 864
   Caption = 'Clientes / Outras Saidas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 988
+    Width = 1600
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 138
@@ -15,17 +15,17 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
       Effect3D.ShadowedColor = 14859922
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 965
+      Left = 1569
     end
     inherited btTemplates: TTS_SpeedButton
-      Left = 938
+      Left = 1542
     end
   end
   inherited pnGrid: TPanel
-    Width = 935
-    Height = 392
+    Width = 1547
+    Height = 798
     inherited pnDados: TTS_Panel
-      Width = 935
+      Width = 1547
       Height = 25
       Color = 16116702
       object TS_Label1: TTS_Label
@@ -300,8 +300,8 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 25
-      Width = 935
-      Height = 348
+      Width = 1547
+      Height = 754
       KeyField = 'SAIDA'
       SummaryGroups = <
         item
@@ -328,8 +328,13 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
               SummaryType = cstSum
             end
             item
-              SummaryField = 'valorcomissao'
-              SummaryFormat = '>valorcomissao=#,###,##0.00'
+              SummaryField = 'basecalcicms'
+              SummaryFormat = '>basecalcicms=#,###,##0.00'
+              SummaryType = cstSum
+            end
+            item
+              SummaryField = 'valoricms'
+              SummaryFormat = '>valoricms=#,###,##0.00'
               SummaryType = cstSum
             end>
           Name = 'Default'
@@ -343,17 +348,20 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         'DESCONTO;SUM'
         'Imposto;Sum'
         'valorcomissao;Sum'
-        'Comissao;Sum')
+        'Comissao;Sum'
+        'basecalcicms;Sum'
+        'valoricms;Sum')
       object dbgConsultaSAIDA: TdxDBGridMaskColumn
         DisableCustomizing = True
         Visible = False
-        Width = 36
+        Width = 38
         BandIndex = 0
         RowIndex = 0
         FieldName = 'SAIDA'
       end
       object dbgConsultaDATA: TdxDBGridDateColumn
         HeaderAlignment = taCenter
+        Width = 64
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DATA'
@@ -387,7 +395,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         DisableCustomizing = True
         HeaderAlignment = taCenter
         Visible = False
-        Width = 40
+        Width = 42
         BandIndex = 0
         RowIndex = 0
         FieldName = 'FAVORECIDO'
@@ -406,6 +414,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         HeaderAlignment = taCenter
         Sorted = csUp
         Visible = False
+        Width = 122
         BandIndex = 0
         RowIndex = 0
         FieldName = 'CUSTO'
@@ -444,7 +453,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Data Entrega'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 40
+        Width = 42
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DATAENTREGA'
@@ -453,7 +462,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Caixa'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 236
+        Width = 244
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DESCCAIXA'
@@ -462,7 +471,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Status'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 89
+        Width = 93
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DESCSTATUS'
@@ -471,7 +480,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Observa'#231#245'es'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 782
+        Width = 810
         BandIndex = 0
         RowIndex = 0
         FieldName = 'OBS'
@@ -480,7 +489,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Juros'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 58
+        Width = 60
         BandIndex = 0
         RowIndex = 0
         FieldName = 'JUROS'
@@ -489,7 +498,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Frete'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 58
+        Width = 60
         BandIndex = 0
         RowIndex = 0
         FieldName = 'FRETE'
@@ -499,7 +508,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         Caption = 'Tabela de Pre'#231'o'
         HeaderAlignment = taCenter
         Visible = False
-        Width = 108
+        Width = 112
         BandIndex = 0
         RowIndex = 0
         FieldName = 'DESCTABELAPRECO'
@@ -507,7 +516,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
       object dbgConsultaNOMEMEDICO: TdxDBGridMaskColumn
         Caption = 'M'#233'dico'
         Visible = False
-        Width = 275
+        Width = 285
         BandIndex = 0
         RowIndex = 0
         FieldName = 'NOMEMEDICO'
@@ -515,7 +524,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
       object dbgConsultaMEDICO: TdxDBGridMaskColumn
         DisableCustomizing = True
         Visible = False
-        Width = 57
+        Width = 59
         BandIndex = 0
         RowIndex = 0
         FieldName = 'MEDICO'
@@ -528,10 +537,28 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
         RowIndex = 0
         FieldName = 'DESCTIPOMOVIMENTO'
       end
+      object dbgConsultaBASECALCICMS: TdxDBGridMaskColumn
+        Caption = 'Base Calc'
+        Width = 80
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'BASECALCICMS'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaVALORICMS: TdxDBGridMaskColumn
+        Caption = 'Valor ICMS'
+        Width = 83
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'VALORICMS'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 373
-      Width = 935
+      Top = 779
+      Width = 1547
       inherited cbFullSelect: TTS_CheckBox
         Height = 19
       end
@@ -553,9 +580,9 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 392
+    Height = 798
     inherited btSair: TTS_SpeedButton
-      Top = 347
+      Top = 753
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick
@@ -583,7 +610,7 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
       
         'tm.descricao as desctipomovimento, (select cast(sum(si.customedi' +
         'o * si.quantidade) as numeric(15,2)) from saidasitens si where s' +
-        'i.saida = s.saida) as custo'
+        'i.saida = s.saida) as custo, s.basecalcicms , s.valoricms'
       'from saidas s'
       '     left join favorecidos f on f.favorecido = s.favorecido'
       '     left join favorecidos v on v.favorecido = s.vendedor'
@@ -753,6 +780,12 @@ inherited RptOutrasSaidas: TRptOutrasSaidas
       FieldName = 'CUSTO'
       Precision = 18
       Size = 2
+    end
+    object C_ConsultaBASECALCICMS: TFloatField
+      FieldName = 'BASECALCICMS'
+    end
+    object C_ConsultaVALORICMS: TFloatField
+      FieldName = 'VALORICMS'
     end
   end
   inherited ppmDados: TTS_PopupMenu

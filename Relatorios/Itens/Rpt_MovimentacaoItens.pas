@@ -148,6 +148,8 @@ type
     C_ConsultaQTDENTRA: TFloatField;
     C_ConsultaPRCENTRA: TFloatField;
     C_ConsultaSUBTOTALENT: TFloatField;
+    C_ConsultaREFERENCIA: TStringField;
+    dbgConsultaColumn11: TdxDBGridMaskColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dxBarSubItem4Click(Sender: TObject);
     procedure btSairClick(Sender: TObject);
@@ -2400,7 +2402,7 @@ begin
   with C_Consulta do begin
     Close;
     CommandText :=
-    ' select i.item, i.codigo, i.descricao, s.unidade, '+
+    ' select i.item, i.codigo, i.descricao, s.unidade, i.referencia, '+
     ' sum(s.quantidade) as QtdSai, avg(s.preco) as PrcSai, sum(s.subtotalitem + s.rateiodesconto + s.desconto) as SubTotalSai, '+
     ' Max((select sum(quantidade) from entradasitens e inner join entradas ee on e.entrada = ee.entrada '+
     ' where ee.data >= :datainicio and ee.data <= :datafinal and e.unidade = s.unidade and e.item = s.item)) as QtdEntra,  '+
@@ -2409,7 +2411,7 @@ begin
     ' Max((select sum(e.subtotalitem + e.rateiodesconto + e.desconto) from entradasitens e  '+
     ' inner join entradas ee on e.entrada = ee.entrada where ee.data >= :datainicio and ee.data <= :datafinal and e.unidade = s.unidade and e.item = s.item)) as SubTotalEnt  '+
     ' from saidasitens s  inner join saidas ss on s.saida = ss.saida inner join itens i on i.item = s.item '+
-    ' where ss.data >= :datainicio and ss.data <= :datafinal and '+FiltroItens.getSQL+ ' Group by i.item,i.descricao, s.unidade,i.codigo ';
+    ' where ss.data >= :datainicio and ss.data <= :datafinal and '+FiltroItens.getSQL+ ' Group by i.item,i.descricao, s.unidade,i.codigo, i.referencia ';
     Params.ParamByName('datainicio').AsDateTime := DataI.Date;
     Params.ParamByName('datafinal').AsDateTime := DataF.Date;
     Open;

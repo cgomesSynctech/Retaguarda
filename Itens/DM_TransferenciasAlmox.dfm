@@ -1,7 +1,7 @@
 inherited DMTransferenciasAlmox: TDMTransferenciasAlmox
   Left = 470
   Top = 124
-  Height = 359
+  Height = 367
   Width = 526
   inherited Q_Tabela: TIBQuery
     Database = DMProjeto.DB_Projeto

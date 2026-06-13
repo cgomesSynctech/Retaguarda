@@ -215,6 +215,7 @@ type
     dfRG: TTS_DBMaskEdit;
     TS_Label6: TTS_Label;
     TS_DBEdit1: TTS_DBEdit;
+    ColorDialog1: TColorDialog;
     procedure FormCreate(Sender: TObject);
     procedure TS_SpeedButton6Click(Sender: TObject);
     procedure ppDBText12GetText(Sender: TObject;

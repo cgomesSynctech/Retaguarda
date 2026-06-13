@@ -23,6 +23,20 @@ type
     C_UFsDS: TDataSource;
     C_TabelalkUF: TStringField;
     C_TabelaDATADESEMBARACO: TDateField;
+    C_TabelaTPVIATRANSP: TIntegerField;
+    C_TabelaVAFRMMOPC: TFloatField;
+    C_TabelaTPINTERMEDIARIO: TIntegerField;
+    C_TabelaCNPJOPC: TStringField;
+    C_TabelaUFTERCEIROOPC: TStringField;
+    C_TabelaNADICAO: TIntegerField;
+    C_TabelaNSEQADIC: TIntegerField;
+    C_TabelaCFABRICANTE: TStringField;
+    C_TabelaVDESCDI: TFloatField;
+    C_TabelaNDRAWOPC: TStringField;
+    C_TabelaVBC: TBCDField;
+    C_TabelaVDESPADU: TBCDField;
+    C_TabelaVII: TBCDField;
+    C_TabelaVIOF: TBCDField;
   private
     { Private declarations }
   public

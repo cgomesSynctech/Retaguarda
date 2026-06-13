@@ -1,11 +1,16 @@
 inherited DMInvoices: TDMInvoices
-  Left = 164
-  Top = 70
+  Left = 418
+  Top = 182
   Height = 655
   Width = 1003
   inherited Q_Tabela: TIBQuery
     SQL.Strings = (
-      'Select '#9't.Saida'#9#9'as IDMESTRE,'
+      'Select'
+      't.profissional ,'
+      't.REDUCOESBASESUBST as REDUCOESBASESUBST ,'
+      'T.ICMSDESONERADO AS ICMSDESONERADO ,'
+      'T.CUBAGEMTOTAL , '
+      ' '#9't.Saida'#9#9'as IDMESTRE,'
       #9't.Favorecido'#9'as Favorecido,'
       #9't.Numero'#9'as Numero,'
       #9't.Data'#9#9'as Data,'
@@ -195,6 +200,9 @@ inherited DMInvoices: TDMInvoices
     ModifySQL.Strings = (
       'update SAIDAS'
       'set'
+      ' PROFISSIONAL = :PROFISSIONAL ,'
+      'ICMSDESONERADO = :ICMSDESONERADO ,'
+      ' CUBAGEMTOTAL = :CUBAGEMTOTAL,'
       '  NUMERO = :NUMERO,'
       '  DATA = :DATA,'
       '  FAVORECIDO = :FAVORECIDO,'
@@ -316,11 +324,11 @@ inherited DMInvoices: TDMInvoices
     inherited C_TabelaSTATUS: TStringField
       OnChange = C_TabelaSTATUSChange
     end
-    object C_TabelaSTATUSNFE: TIntegerField
+    object C_TabelaSTATUSNFE: TIntegerField [194]
       FieldName = 'STATUSNFE'
       Origin = 'RECIBOSNFE.STATUSNFE'
     end
-    object C_TabelalkStatusNFe: TStringField
+    object C_TabelalkStatusNFe: TStringField [195]
       FieldKind = fkLookup
       FieldName = 'lkStatusNFe'
       LookupDataSet = C_StatusNFe
@@ -334,6 +342,10 @@ inherited DMInvoices: TDMInvoices
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.cstibs,'
+      't.classtrib,'
+      'T.CUSTOMANUAL, '
+      'T.CUBAGEMTOTALITEM,'
       't.SaidaItem    as IDITEM,'
       't.Saida        as IDMestre,'
       't.Sequencia    as Sequencia,'
@@ -501,6 +513,8 @@ inherited DMInvoices: TDMInvoices
     ModifySQL.Strings = (
       'update SAIDASITENS'
       'set'
+      ' CUSTOMANUAL = :CUSTOMANUAL,'
+      '  CUBAGEMTOTALITEM = :CUBAGEMTOTALITEM,'
       '  SEQUENCIA = :SEQUENCIA,'
       '  DESCRICAO = :DESCRICAO,'
       '  QUANTIDADE = :QUANTIDADE,'
@@ -574,7 +588,9 @@ inherited DMInvoices: TDMInvoices
       '  RATEIODESPESAS = :RATEIODESPESAS,'
       '  RATEIOFRETE = :RATEIOFRETE ,'
       '  RATEIOSEGURO = :RATEIOSEGURO,'
-      '  QUANTIDADEVOLUME = :QUANTIDADEVOLUME'
+      '  QUANTIDADEVOLUME = :QUANTIDADEVOLUME, '
+      ' CSTIBS = :CSTIBS, '
+      ' CLASSTRIB = :CLASSTRIB'
       'Where'
       
         '  SaidaItem = :OLD_IDITEM and SAIDA = :OLD_IDMESTRE and EMPRESA ' +
@@ -713,8 +729,8 @@ inherited DMInvoices: TDMInvoices
     Top = 446
   end
   inherited IBEventos_Saidas: TIBEvents
-    Left = 69
-    Top = 408
+    Left = 93
+    Top = 392
   end
   inherited Q_MensagensOperacoes: TIBQuery
     Left = 655

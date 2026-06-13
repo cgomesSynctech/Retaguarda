@@ -8,10 +8,10 @@ inherited DlgFechamentoBalanco: TDlgFechamentoBalanco
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 601
-    Height = 367
+    Left = 609
+    Height = 377
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 333
+      Top = 343
     end
     inherited btComando2: TTS_SpeedButton
       Caption = 'Contabilidade'
@@ -304,7 +304,7 @@ inherited DlgFechamentoBalanco: TDlgFechamentoBalanco
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 719
+    Width = 727
     Gradient.ColorStart = 9027548
     inherited lbUpperHint: TTS_Label
       Left = 719
@@ -318,8 +318,8 @@ inherited DlgFechamentoBalanco: TDlgFechamentoBalanco
   end
   inherited pnDados: TTS_Panel
     Tag = -1
-    Width = 601
-    Height = 367
+    Width = 609
+    Height = 377
     HelpContext = -1
     Color = 14019327
     object Bevel2: TBevel
@@ -483,8 +483,8 @@ inherited DlgFechamentoBalanco: TDlgFechamentoBalanco
     object dbgItens: TTS_QDBGrid
       Tag = -2
       Left = 1
-      Top = 76
-      Width = 599
+      Top = 86
+      Width = 607
       Height = 249
       HelpContext = -2
       Bands = <
@@ -743,8 +743,8 @@ inherited DlgFechamentoBalanco: TDlgFechamentoBalanco
     end
     object TS_Panel1: TTS_Panel
       Left = 1
-      Top = 325
-      Width = 599
+      Top = 335
+      Width = 607
       Height = 41
       Align = alBottom
       TabOrder = 3

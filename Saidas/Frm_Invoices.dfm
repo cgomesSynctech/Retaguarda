@@ -1,13 +1,13 @@
 inherited FrmInvoices: TFrmInvoices
-  Left = 263
-  Top = 113
-  Width = 874
-  Height = 578
+  Left = 340
+  Top = 244
+  Width = 1075
+  Height = 605
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 751
-    Height = 508
+    Left = 952
+    Height = 534
     inherited btComando1: TTS_SpeedButton
       Top = 234
       Height = 31
@@ -20,7 +20,7 @@ inherited FrmInvoices: TFrmInvoices
       Height = 31
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 474
+      Top = 500
     end
     inherited btOutros: TTS_SpeedButton
       Top = 327
@@ -178,33 +178,35 @@ inherited FrmInvoices: TFrmInvoices
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 751
-    Height = 508
+    Width = 952
+    Height = 534
     inherited Grid: TTS_QDBGrid
-      Width = 749
-      Height = 506
+      Width = 950
+      Height = 532
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 749
-      Height = 506
+      Width = 950
+      Height = 532
     end
     inherited sbDados: TTS_Panel
-      Width = 749
-      Height = 506
+      Width = 950
+      Height = 532
       inherited TS_Shape1: TTS_Shape
-        Width = 749
+        Width = 950
       end
       inherited lbOperacao: TTS_Label
-        Left = 474
+        Left = 585
       end
       inherited TS_Bevel1: TTS_Bevel
-        Width = 754
+        Width = 955
       end
       inherited cmbTipoMovimento: TTS_DBLookupComboBox
-        Left = 533
+        Left = 640
+        Width = 306
         DataSource = DMInvoices.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMInvoices.C_TiposMovimentoDS
         Height = 19
       end
@@ -358,12 +360,10 @@ inherited FrmInvoices: TFrmInvoices
         DataSource = DMInvoices.C_TabelaDS
       end
       inherited pgCabecalho: TTS_PageControl
-        Width = 744
+        Width = 945
         Height = 163
-        ActivePage = tsNotaFiscal
         Style = tsTabs
-        TabIndex = 1
-        ActivePageIndex = 1
+        TabIndex = 0
         inherited tsCabecalho: TTS_TabSheet
           Caption = 'Dados'
           TabVisible = True
@@ -375,13 +375,13 @@ inherited FrmInvoices: TFrmInvoices
             Height = 17
           end
           inherited pnNumero: TTS_Panel
-            Left = 648
+            Left = 849
             inherited dbtNumero: TTS_DBTextEffect
               DataSource = DMInvoices.C_TabelaDS
             end
           end
           inherited pnData: TTS_Panel
-            Left = 547
+            Left = 748
             inherited dbtData: TTS_DBTextEffect
               DataSource = DMInvoices.C_TabelaDS
             end
@@ -390,7 +390,7 @@ inherited FrmInvoices: TFrmInvoices
             end
           end
           inherited pnAdicionais: TTS_Panel
-            Left = 272
+            Left = 374
             inherited pnCampo01: TTS_Panel
               inherited dfAdd1: TTS_DBEdit
                 DataSource = DMInvoices.C_TabelaDS
@@ -417,7 +417,7 @@ inherited FrmInvoices: TFrmInvoices
             end
           end
           inherited pnLocalEntrega: TTS_Panel
-            Left = 547
+            Left = 748
             inherited lcbLocaisEntrega: TTS_LookupComboBox
               Height = 19
             end
@@ -468,7 +468,7 @@ inherited FrmInvoices: TFrmInvoices
           inherited pnHorizontal: TTS_Panel
             Left = -5
             Top = 98
-            Width = 743
+            Width = 944
             inherited pnVendedor: TTS_Panel
               inherited cmbVendedor: TTS_DBLookupComboBox
                 DataSource = DMInvoices.C_TabelaDS
@@ -476,7 +476,7 @@ inherited FrmInvoices: TFrmInvoices
               end
             end
             inherited pnDataEntrega: TTS_Panel
-              Left = 654
+              Left = 855
               inherited dfDataEntrega: TTS_DBEditDate
                 DataSource = DMInvoices.C_TabelaDS
                 Height = 20
@@ -489,7 +489,7 @@ inherited FrmInvoices: TFrmInvoices
               end
             end
             inherited pnTipoEntrega: TTS_Panel
-              Left = 545
+              Left = 746
               inherited cmbTipoEntrega: TTS_DBLookupComboBox
                 DataSource = DMInvoices.C_TabelaDS
                 Height = 20
@@ -507,6 +507,52 @@ inherited FrmInvoices: TFrmInvoices
                 Height = 20
               end
             end
+            object TS_Indicacao: TTS_Panel
+              Left = 421
+              Top = 0
+              Width = 185
+              Height = 37
+              BorderStyle = bsSingle
+              Color = 16247774
+              TabOrder = 6
+              Visible = False
+              DesignSize = (
+                183
+                35)
+              object TS_Label30: TTS_Label
+                Left = 0
+                Top = 0
+                Width = 183
+                Height = 17
+                Cursor = crHandPoint
+                Alignment = taCenter
+                Anchors = [akLeft, akTop, akRight, akBottom]
+                Caption = 'Indica'#231#227'o '
+                Color = 14859922
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = [fsUnderline]
+                ParentColor = False
+                ParentFont = False
+                Transparent = False
+                TagStr = 'Titulos'
+                FormatoTabela = False
+                LinkToResult = 0
+              end
+              object TS_DBLookupComboBox1: TTS_DBLookupComboBox
+                Left = -1
+                Top = 15
+                Width = 186
+                TabOrder = 0
+                DataField = 'lkProfissional'
+                DataSource = DMInvoices.C_TabelaDS
+                ClearKey = 32
+                LookupKeyValue = Null
+                Height = 20
+              end
+            end
           end
         end
         object tsNotaFiscal: TTS_TabSheet
@@ -516,7 +562,7 @@ inherited FrmInvoices: TFrmInvoices
           BevelInner = bvRaised
           BevelOuter = bvLowered
           DesignSize = (
-            736
+            937
             135)
           object TS_Label16: TTS_Label
             Left = 100
@@ -554,7 +600,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnBaseCalcICMS: TTS_Panel
             Tag = -1
-            Left = 34
+            Left = 235
             Top = 26
             Width = 109
             Height = 34
@@ -662,7 +708,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnAliqICMS: TTS_Panel
             Tag = -1
-            Left = 143
+            Left = 344
             Top = 26
             Width = 21
             Height = 34
@@ -774,7 +820,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnValorICMS: TTS_Panel
             Tag = -1
-            Left = 169
+            Left = 370
             Top = 26
             Width = 168
             Height = 34
@@ -882,7 +928,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnBaseCalcICMSSubst: TTS_Panel
             Tag = -1
-            Left = 343
+            Left = 544
             Top = 26
             Width = 130
             Height = 34
@@ -990,7 +1036,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnValorFrete: TTS_Panel
             Tag = -1
-            Left = 34
+            Left = 235
             Top = 63
             Width = 109
             Height = 34
@@ -1010,27 +1056,6 @@ inherited FrmInvoices: TFrmInvoices
               Height = 34
               Anchors = [akLeft, akTop, akRight, akBottom]
               Transparent = False
-            end
-            object TS_Label5: TTS_Label
-              Left = 2
-              Top = 1
-              Width = 104
-              Alignment = taCenter
-              Anchors = [akLeft, akTop, akRight, akBottom]
-              Caption = 'Valor do Frete'
-              Color = 14859922
-              FocusControl = dfValorFrete
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentColor = False
-              ParentFont = False
-              Transparent = False
-              TagStr = 'Titulos'
-              FormatoTabela = False
-              LinkToResult = 0
             end
             object dfValorFrete: TTS_DBEditNumber
               Tag = -2
@@ -1098,7 +1123,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnValorSeguro: TTS_Panel
             Tag = -1
-            Left = 169
+            Left = 370
             Top = 63
             Width = 168
             Height = 34
@@ -1206,7 +1231,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnOutrasDespesas: TTS_Panel
             Tag = -1
-            Left = 343
+            Left = 544
             Top = 63
             Width = 130
             Height = 34
@@ -1314,7 +1339,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnValorIPI: TTS_Panel
             Tag = -1
-            Left = 491
+            Left = 692
             Top = 63
             Width = 97
             Height = 34
@@ -1422,7 +1447,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnTotalNota: TTS_Panel
             Tag = -1
-            Left = 643
+            Left = 844
             Top = 63
             Width = 93
             Height = 34
@@ -1531,7 +1556,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnValorICMSSubst: TTS_Panel
             Tag = -1
-            Left = 491
+            Left = 692
             Top = 26
             Width = 97
             Height = 34
@@ -1639,7 +1664,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnTotalProdutos: TTS_Panel
             Tag = -1
-            Left = 643
+            Left = 844
             Top = 26
             Width = 93
             Height = 34
@@ -1785,7 +1810,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnTransportadora: TTS_Panel
             Tag = -1
-            Left = 34
+            Left = 235
             Top = 100
             Width = 198
             Height = 34
@@ -1857,7 +1882,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnCIF_FOB: TTS_Panel
             Tag = -1
-            Left = 238
+            Left = 439
             Top = 100
             Width = 99
             Height = 34
@@ -1911,21 +1936,33 @@ inherited FrmInvoices: TFrmInvoices
               Descriptions.Strings = (
                 'CIF'
                 'FOB'
-                'Outros')
+                'Outros'
+                'por conta de Terceiros'
+                'Pr'#243'prio do Remetente'
+                'Pr'#243'prio do Destinat'#225'rio'
+                'Sem Ocorr'#234'ncia')
               ImageIndexes.Strings = (
                 '0'
                 '1'
-                '2')
+                '2'
+                '3'
+                '4'
+                '5'
+                '6')
               Values.Strings = (
                 'C'
                 'F'
-                'O')
+                'O'
+                '2'
+                '3'
+                '4'
+                '9')
               Height = 19
             end
           end
           object pnPlaca: TTS_Panel
             Tag = -1
-            Left = 343
+            Left = 544
             Top = 100
             Width = 94
             Height = 34
@@ -1996,7 +2033,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnEspecie: TTS_Panel
             Tag = -1
-            Left = 441
+            Left = 642
             Top = 100
             Width = 78
             Height = 34
@@ -2067,7 +2104,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnMarca: TTS_Panel
             Tag = -1
-            Left = 519
+            Left = 720
             Top = 100
             Width = 70
             Height = 34
@@ -2138,7 +2175,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnPesoBruto: TTS_Panel
             Tag = -1
-            Left = 589
+            Left = 790
             Top = 100
             Width = 74
             Height = 34
@@ -2246,7 +2283,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           object pnPesoLiquido: TTS_Panel
             Tag = -1
-            Left = 663
+            Left = 864
             Top = 100
             Width = 74
             Height = 34
@@ -2360,30 +2397,27 @@ inherited FrmInvoices: TFrmInvoices
       inherited pgItens: TTS_PageControl
         Left = 2
         Top = 189
-        Width = 744
-        Height = 309
-        ActivePage = tsTermos
-        TabIndex = 1
-        ActivePageIndex = 1
+        Width = 945
+        Height = 336
         inherited tsItens: TTS_TabSheet
           BevelInner = bvRaised
           BevelOuter = bvLowered
           inherited TS_Shape15: TTS_Shape
-            Left = 633
+            Left = 834
           end
           inherited dfFoto: TTS_Image
-            Left = 634
+            Left = 835
           end
           inherited pnTotItens: TTS_Panel
-            Left = 633
-            Top = 242
+            Left = 834
+            Top = 269
             inherited TS_DBText1: TTS_DBText
               DataSource = DMInvoices.C_TabelaDS
             end
           end
           inherited dbgItens: TTS_QDBGrid
-            Width = 628
-            Height = 279
+            Width = 829
+            Height = 306
             DataSource = DMInvoices.C_ItensDS
             Filter.Criteria = {00000000}
             TS_ShowSelectionColumn = True
@@ -2445,6 +2479,7 @@ inherited FrmInvoices: TFrmInvoices
             inherited dbgItensSubTotal: TdxDBGridColumn [15]
               Visible = True
               Width = 60
+              SummaryFormat = '#,###;0,000'
             end
             inherited dbgItenscfopcst: TdxDBGridColumn [16]
               Width = 48
@@ -2565,6 +2600,7 @@ inherited FrmInvoices: TFrmInvoices
               Caption = 'Valor Cofins'
               HeaderAlignment = taCenter
               Width = 71
+              SummaryFormat = '#,###;0,000'
             end
             inherited dbgItensColumn19: TdxDBGridColumn [36]
               Width = 60
@@ -2639,8 +2675,8 @@ inherited FrmInvoices: TFrmInvoices
             end
           end
           inherited pnVolumes: TTS_Panel
-            Left = 633
-            Top = 201
+            Left = 834
+            Top = 228
             inherited dfVolumes: TTS_DBEditNumber
               Hint = 
                 'Se a unidade inteira para o item estiver habilitado, ser'#225' totali' +
@@ -2655,32 +2691,32 @@ inherited FrmInvoices: TFrmInvoices
         end
         inherited tsTermos: TTS_TabSheet
           inherited TS_Shape12: TTS_Shape
-            Width = 628
+            Width = 829
           end
           inherited lbTipoCobranca: TTS_Label
-            Left = 596
+            Left = 797
             Top = 75
             Width = 52
             Height = 17
           end
           inherited lbCarteira: TTS_Label
-            Left = 596
+            Left = 797
             Top = 95
             Height = 15
           end
           inherited pnTermos: TTS_Panel
-            Width = 313
+            Width = 514
             inherited lbTermos: TTS_Label
-              Width = 309
+              Width = 510
             end
             inherited cmbTermos: TTS_DBLookupComboBox
-              Width = 182
+              Width = 383
               DataSource = DMInvoices.C_TabelaDS
               Height = 19
             end
           end
           inherited pnTotalFinal: TTS_Panel
-            Left = 633
+            Left = 834
             inherited dbtTotalFinal: TTS_DBTextEffect
               DataSource = DMInvoices.C_TabelaDS
               Font.Height = -15
@@ -2688,13 +2724,30 @@ inherited FrmInvoices: TFrmInvoices
           end
           inherited pnSomaTotal: TTS_Panel
             Left = -4
-            Width = 637
+            Width = 838
+            Alignment = taLeftJustify
             inherited TS_Label4: TTS_Label
-              Left = 496
+              Left = 520
               Top = 8
               Width = 18
               Height = 19
               Font.Height = -16
+            end
+            object TS_Label29: TTS_Label [1]
+              Left = 411
+              Top = 10
+              Width = 18
+              Height = 19
+              Alignment = taCenter
+              Caption = '-'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -16
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              FormatoTabela = False
+              LinkToResult = 0
             end
             inherited pnFrete: TTS_Panel
               Left = 171
@@ -2764,40 +2817,24 @@ inherited FrmInvoices: TFrmInvoices
               end
             end
             object TS_Panel3: TTS_Panel
-              Tag = -1
-              Left = 417
+              Left = 427
               Top = 0
-              Width = 87
-              Height = 38
-              HelpContext = -1
-              Align = alLeft
-              Alignment = taLeftJustify
-              BevelOuter = bvNone
-              BorderWidth = 1
-              Caption = '+'
+              Width = 69
+              Height = 37
+              BorderStyle = bsSingle
               Color = 16247774
               TabOrder = 5
-              TagStr = '265'
               DesignSize = (
-                87
-                38)
-              object TS_Shape7: TTS_Shape
-                Left = 11
+                67
+                35)
+              object TS_Label5: TTS_Label
+                Left = 0
                 Top = 0
-                Width = 73
-                Height = 37
-                Anchors = [akLeft, akTop, akRight]
-                Brush.Color = 16247774
-                Transparent = False
-              end
-              object TS_Label29: TTS_Label
-                Left = 12
-                Top = 1
-                Width = 71
+                Width = 60
                 Height = 16
                 Alignment = taCenter
                 Anchors = [akLeft, akTop, akRight]
-                Caption = 'Outros'
+                Caption = 'Desonera'#231#227'o'
                 Color = 14859922
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -2811,22 +2848,21 @@ inherited FrmInvoices: TFrmInvoices
                 FormatoTabela = False
                 LinkToResult = 0
               end
-              object TS_DBText8: TTS_DBText
-                Left = 12
-                Top = 19
-                Width = 70
+              object TS_DBDesoneracao: TTS_DBText
+                Left = 4
+                Top = 18
+                Width = 31
                 Height = 16
                 Alignment = taRightJustify
                 Anchors = [akLeft, akTop, akRight]
-                DataField = 'BASEIMPOSTO'
+                DataField = 'ICMSDESONERADO'
                 DataSource = DMInvoices.C_TabelaDS
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clNavy
-                Font.Height = -12
+                Font.Height = -11
                 Font.Name = 'Tahoma'
                 Font.Style = [fsBold]
                 ParentFont = False
-                StyleControler = esVendas
                 AllowEditOnClick = False
                 EditFont.Charset = DEFAULT_CHARSET
                 EditFont.Color = clWindowText
@@ -2839,7 +2875,7 @@ inherited FrmInvoices: TFrmInvoices
             end
           end
           inherited cbReceber: TTS_CheckBox
-            Left = 594
+            Left = 795
             Top = 50
             Anchors = [akTop, akRight]
             Caption = 'Receber Pagamento'
@@ -2852,7 +2888,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           inherited cmbTipoCobranca: TTS_DBLookupComboBox
             Tag = -17
-            Left = 649
+            Left = 850
             Top = 73
             Width = 87
             HelpContext = -17
@@ -2862,7 +2898,7 @@ inherited FrmInvoices: TFrmInvoices
           end
           inherited cmbCarteira: TTS_DBLookupComboBox
             Tag = -17
-            Left = 649
+            Left = 850
             Top = 93
             Width = 87
             HelpContext = -17
@@ -2870,33 +2906,33 @@ inherited FrmInvoices: TFrmInvoices
             Height = 19
           end
           inherited dbgParcelas: TTS_QDBGrid
-            Left = 322
+            Left = 523
             Width = 269
-            Height = 230
+            Height = 257
             DataSource = DMInvoices.C_ParcelasDS
             Filter.Criteria = {00000000}
           end
           inherited pnMensagem: TTS_Panel
             Left = 1
-            Width = 313
-            Height = 186
+            Width = 514
+            Height = 213
             inherited dfMensagem: TTS_PopupEdit
-              Width = 314
+              Width = 515
               Height = 21
               StoredValues = 65
             end
             inherited dfObs: TTS_DBMemo
               Left = 3
-              Width = 306
+              Width = 507
               OnKeyPress = dfObsKeyPress
               DataSource = DMInvoices.C_TabelaDS
               OnValidate = dfObsValidate
-              Height = 164
+              Height = 191
               StoredValues = 2
             end
           end
           object pnServicos: TTS_Panel
-            Left = 593
+            Left = 794
             Top = 115
             Width = 142
             Height = 53
@@ -3004,16 +3040,16 @@ inherited FrmInvoices: TFrmInvoices
         end
         inherited tsContrato: TTS_TabSheet
           inherited TS_Panel1: TTS_Panel
-            Width = 725
-            Height = 269
+            Width = 926
+            Height = 296
             inherited TS_DBMemo1: TTS_DBMemo
               Top = 23
-              Width = 721
+              Width = 922
               DataSource = DMInvoices.C_TabelaDS
-              Height = 243
+              Height = 270
             end
             inherited dfContrato: TTS_PopupEdit
-              Width = 728
+              Width = 929
               Height = 21
               StoredValues = 65
             end
@@ -3028,7 +3064,7 @@ inherited FrmInvoices: TFrmInvoices
         end
       end
       inherited pnSetas: TTS_Panel
-        Left = 727
+        Left = 928
         Top = 192
       end
       inherited cbImprimir: TTS_CheckBox
@@ -3109,24 +3145,24 @@ inherited FrmInvoices: TFrmInvoices
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 749
+      Width = 950
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 866
+    Width = 1067
     Hint = ''
     inherited lbCaption: TdxfLabel
       Width = 71
       Caption = 'Invoice'
     end
     inherited lbDesativado: TdxfLabel
-      Left = 577
+      Left = 778
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 829
+      Left = 1030
     end
     inherited lbCancelado: TdxfLabel
-      Left = 326
+      Left = 423
       Visible = False
     end
   end
@@ -3134,14 +3170,26 @@ inherited FrmInvoices: TFrmInvoices
     Left = 141
     Top = 311
   end
+  inherited LastDataObject: TTS_LastDataObject
+    Left = 152
+    Top = 196
+  end
   inherited ppmPadrao: TTS_PopupMenu
-    Left = 151
-    Top = 389
+    Left = 383
+    Top = 221
+  end
+  inherited ImgPadrao: TImageList
+    Left = 190
+    Top = 142
   end
   inherited FormComponent: TFormComponent
     Caption = 'Invoice'
-    Left = 101
-    Top = 286
+    Left = 53
+    Top = 414
+  end
+  inherited ppmGridPadrao: TTS_PopupMenu
+    Left = 372
+    Top = 149
   end
   inherited Beep: TBTBeeper
     Left = 121
@@ -3152,19 +3200,20 @@ inherited FrmInvoices: TFrmInvoices
     Top = 385
   end
   inherited ppmIR_Para: TTS_PopupMenu
-    Left = 168
+    Left = 176
+    Top = 460
   end
   inherited TransitionSaidas: TTransitionList
-    Left = 76
-    Top = 275
+    Left = 60
+    Top = 115
   end
   inherited ppmCliente: TTS_PopupMenu
-    Left = 109
-    Top = 258
+    Left = 53
+    Top = 498
   end
   inherited ppmUltimo: TTS_PopupMenu
-    Left = 291
-    Top = 286
+    Left = 99
+    Top = 542
     inherited UltimoGravado: TMenuItem
       Visible = False
     end
@@ -3181,24 +3230,32 @@ inherited FrmInvoices: TFrmInvoices
   inherited ppmOutros: TTS_PopupMenu
     Left = 630
     Top = 275
+    object ReferenciarNotas1: TMenuItem
+      Caption = 'Referenciar Notas'
+      OnClick = ReferenciarNotas1Click
+    end
   end
   inherited tmInvoice: TTimer
     Left = 715
     Top = 276
   end
   inherited ppmGrid: TTS_PopupMenu
-    Left = 355
-    Top = 276
+    Left = 91
+    Top = 308
   end
   inherited ppmParcelas: TTS_PopupMenu
-    Left = 227
-    Top = 290
+    Left = 187
+    Top = 530
+  end
+  inherited Q_SQLt: TIBQuery
+    Left = 118
+    Top = 130
   end
   object imgStatus: TImageList
     Height = 18
     Width = 18
-    Left = 34
-    Top = 362
+    Left = 58
+    Top = 178
     Bitmap = {
       494C010105000900040012001200FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000048000000360000000100200000000000C03C
@@ -3714,14 +3771,15 @@ inherited FrmInvoices: TFrmInvoices
       0000000000000000000000000000}
   end
   object ppmConsig: TTS_PopupMenu
-    Left = 421
-    Top = 217
+    Left = 373
+    Top = 97
     object Itens1: TMenuItem
       Caption = 'Itens'
       OnClick = Itens1Click
     end
     object Movimentos1: TMenuItem
       Caption = 'Movimentos'
+      Visible = False
       OnClick = Movimentos1Click
     end
   end

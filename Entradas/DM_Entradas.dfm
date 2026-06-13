@@ -1,8 +1,8 @@
 inherited DMEntradas: TDMEntradas
-  Left = 214
-  Top = 41
+  Left = 323
+  Top = 244
   Height = 632
-  Width = 1024
+  Width = 1144
   inherited OpenDialog: TOpenDialog
     Left = 24
     Top = 321
@@ -359,6 +359,7 @@ inherited DMEntradas: TDMEntradas
     Left = 22
   end
   inherited C_Tabela: TClientDataSet
+    Active = True
     AfterScroll = C_TabelaAfterScroll
     OnCalcFields = C_TabelaCalcFields
     Left = 26
@@ -887,7 +888,12 @@ inherited DMEntradas: TDMEntradas
     Database = DMProjeto.DB_Projeto
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select'
+      't.cstibs, '
+      't.classtrib,'
+      'T.COMPENSACAOCUSTOMOEDA, '
+      't.customanual,'
+      ' t.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -1017,7 +1023,8 @@ inherited DMEntradas: TDMEntradas
       'u.Inteira        as  UnidadeInteira,'
       'fa.Nome        as  Nome,'
       'p.preco as PRECOVENDAProdutosPreco,'
-      'T.EMPRESA'
+      'T.EMPRESA, '
+      't.clasfiscal'
       'from    ((ENTRADASITENS t'
       'LEFT JOIN  ITENS I on I.ITEM = t.ITEM)'
       '    left join UNIDADES u on I.Unidade = u.Unidade)'
@@ -1117,7 +1124,11 @@ inherited DMEntradas: TDMEntradas
       '  RATEIOSEGURO  = :RATEIOSEGURO,'
       '  FRETE = :FRETE,'
       '  SEGURO  = :SEGURO,'
-      '  OUTRASDESPESAS = :OUTRASDESPESAS'
+      '  OUTRASDESPESAS = :OUTRASDESPESAS,'
+      'CLASFISCAL = :I_NCM, '
+      ' COMPENSACAOCUSTOMOEDA = :COMPENSACAOCUSTOMOEDA,'
+      ' CSTIBS = :CSTIBS, '
+      ' CLASSTRIB = :CLASSTRIB'
       'where'
       '  ENTRADAITEM = :OLD_IDITEM')
     InsertSQL.Strings = (
@@ -1146,7 +1157,8 @@ inherited DMEntradas: TDMEntradas
       '   ALIQCOFINS,'
       '    VALORPISPROD, VALORCOFINSPROD,  CSTIPI,  ALIQIPI, V_BCII,'
       '    V_DESPADUII, V_II, V_IOFII, RATEIODESPESAS, RATEIOFRETE,'
-      '  RATEIOSEGURO, FRETE, SEGURO , OUTRASDESPESAS)'
+      '  RATEIOSEGURO, FRETE, SEGURO , OUTRASDESPESAS, CLASFISCAL, '
+      'COMPENSACAOCUSTOMOEDA,  CSTIBS,  CLASSTRIB )'
       'values'
       '  (:IDITEM, :IDMESTRE, :SEQUENCIA, :DESCRICAO, :QUANTIDADE,'
       '   :PRECO, :ITEM, :USOTIPOITEM, :SUBTOTALITEM, :ORDEM,'
@@ -1173,7 +1185,8 @@ inherited DMEntradas: TDMEntradas
         'S,'
       
         '    :RATEIOFRETE, :RATEIOSEGURO, :FRETE, :SEGURO , :OUTRASDESPES' +
-        'AS)')
+        'AS, '
+      ':I_NCM, :COMPENSACAOCUSTOMOEDA,  :CSTIBS,  :CLASSTRIB )')
     DeleteSQL.Strings = (
       'delete from ENTRADASITENS'
       'where'
@@ -1226,6 +1239,9 @@ inherited DMEntradas: TDMEntradas
       Origin = 'ENTRADASITENS.SUBTOTAL'
       DisplayFormat = '#,###,###,##0.000'
       EditFormat = '#########0.000000'
+    end
+    inherited C_ItensCUSTOMANUAL: TBCDField
+      Origin = 'ENTRADASITENS.CUSTOMANUAL'
     end
     object C_ItensORDEM: TIntegerField
       FieldName = 'ORDEM'
@@ -1748,6 +1764,21 @@ inherited DMEntradas: TDMEntradas
       Precision = 18
       Size = 3
     end
+    object C_ItensCLASFISCAL: TStringField
+      FieldName = 'CLASFISCAL'
+      Size = 15
+    end
+    object C_ItensCOMPENSACAOCUSTOMOEDA: TFloatField
+      FieldName = 'COMPENSACAOCUSTOMOEDA'
+    end
+    object C_ItensCSTIBS: TStringField
+      FieldName = 'CSTIBS'
+      Size = 3
+    end
+    object C_ItensCLASSTRIB: TStringField
+      FieldName = 'CLASSTRIB'
+      Size = 6
+    end
   end
   inherited C_ItensDS: TDataSource
     Left = 160
@@ -1768,6 +1799,7 @@ inherited DMEntradas: TDMEntradas
     Left = 538
   end
   inherited C_TiposMovimento: TClientDataSet
+    Active = True
     Left = 540
     Top = 101
     inherited C_TiposMovimentoDESCRICAO: TStringField
@@ -2417,10 +2449,24 @@ inherited DMEntradas: TDMEntradas
       Origin = 'TIPOSMOVIMENTO.TIPOIMPRESSAO_OP'
       Size = 3
     end
+    object C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO: TStringField
+      FieldName = 'CST_PIS_COFINS_MOVIMENTO'
+      Origin = 'TIPOSMOVIMENTO.CST_PIS_COFINS_MOVIMENTO'
+      Size = 2
+    end
+    object C_TiposMovimentoCB_CSTPISCOFINSPADRAO: TStringField
+      FieldName = 'CB_CSTPISCOFINSPADRAO'
+      Origin = 'TIPOSMOVIMENTO.CB_CSTPISCOFINSPADRAO'
+      Size = 1
+    end
   end
   inherited C_TiposMovimentoDS: TDataSource
     Left = 538
     Top = 154
+  end
+  inherited ActionList1: TActionList
+    Left = 96
+    Top = 416
   end
   object Q_PlanosPagamento: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -2448,6 +2494,7 @@ inherited DMEntradas: TDMEntradas
     Top = 260
   end
   object C_PlanosPagamento: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_PlanosPagamento'
@@ -2562,6 +2609,7 @@ inherited DMEntradas: TDMEntradas
     Top = 260
   end
   object C_TiposEntrega: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_TiposEntrega'
@@ -2742,6 +2790,7 @@ inherited DMEntradas: TDMEntradas
     Top = 253
   end
   object C_Parcelas: TClientDataSet
+    Active = True
     Aggregates = <>
     DataSetField = C_TabelaQ_Parcelas
     Params = <>
@@ -3141,6 +3190,7 @@ inherited DMEntradas: TDMEntradas
     Top = 51
   end
   object C_Status: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Status'
@@ -3275,7 +3325,7 @@ inherited DMEntradas: TDMEntradas
     DataSetField = C_ItensQ_EntradasItensFilhos
     Params = <>
     OnNewRecord = C_EntradasItensFilhosNewRecord
-    Left = 266
+    Left = 258
     Top = 103
     object C_EntradasItensFilhosENTRADAITEMFILHO: TIntegerField
       FieldName = 'ENTRADAITEMFILHO'
@@ -3410,6 +3460,7 @@ inherited DMEntradas: TDMEntradas
     Top = 5
   end
   object C_CFOPs: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_CFOPs'
@@ -3602,6 +3653,7 @@ inherited DMEntradas: TDMEntradas
     Top = 64
   end
   object C_Indexadores: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Indexadores'
@@ -3644,6 +3696,7 @@ inherited DMEntradas: TDMEntradas
     Top = 71
   end
   object C_Vendedores: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Vendedores'

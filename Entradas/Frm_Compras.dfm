@@ -1,13 +1,13 @@
 inherited FrmCompras: TFrmCompras
-  Left = 222
-  Top = 119
+  Left = 220
+  Top = 86
   Width = 1053
   Height = 548
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 930
-    Height = 474
+    Height = 477
     inherited btComando1: TTS_SpeedButton
       Caption = 'Pedidos'
       Visible = True
@@ -17,7 +17,7 @@ inherited FrmCompras: TFrmCompras
       Caption = 'Contabilidade'
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 440
+      Top = 443
     end
     object btConsig: TTS_SpeedButton [12]
       Left = 1
@@ -66,19 +66,19 @@ inherited FrmCompras: TFrmCompras
   end
   inherited pnDados: TTS_Panel
     Width = 930
-    Height = 474
+    Height = 477
     inherited Grid: TTS_QDBGrid
       Width = 928
-      Height = 472
+      Height = 475
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 928
-      Height = 472
+      Height = 475
     end
     inherited sbDados: TTS_Panel
       Width = 928
-      Height = 472
+      Height = 475
       inherited TS_Shape1: TTS_Shape
         Width = 928
       end
@@ -94,6 +94,7 @@ inherited FrmCompras: TFrmCompras
         Left = 710
         DataSource = DMCompras.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMCompras.C_TiposMovimentoDS
         Height = 19
       end
@@ -1796,7 +1797,7 @@ inherited FrmCompras: TFrmCompras
       end
       inherited pgItens: TTS_PageControl
         Left = 0
-        Top = 206
+        Top = 209
         Width = 928
         Height = 266
         Align = alBottom
@@ -1895,22 +1896,22 @@ inherited FrmCompras: TFrmCompras
               Width = 120
             end
             inherited dbgItensColuna1: TdxDBGridColumn [18]
-              Width = 223
+              Width = 224
             end
             inherited dbgItensColuna2: TdxDBGridColumn [19]
-              Width = 223
+              Width = 224
             end
             inherited dbgItensColuna3: TdxDBGridColumn [20]
-              Width = 223
+              Width = 224
             end
             inherited dbgItensColuna4: TdxDBGridColumn [21]
-              Width = 223
+              Width = 224
             end
             inherited dbgItensUsoTipoItem: TdxDBGridColumn [22]
               Width = 147
             end
             inherited dbgItensI_Percentual: TdxDBGridColumn [23]
-              Width = 212
+              Width = 213
             end
             inherited dbgItensAtualizaCusto: TdxDBGridColumn [24]
               Width = 141
@@ -1946,7 +1947,7 @@ inherited FrmCompras: TFrmCompras
             end
             inherited dbgItensI_DescricaoCompra: TdxDBGridColumn [30]
               Caption = 'Descri'#231#227'o Compra'
-              Width = 449
+              Width = 450
             end
             inherited dbgItensColumn26: TdxDBGridColumn [31]
               Width = 61
@@ -1961,8 +1962,7 @@ inherited FrmCompras: TFrmCompras
               OnInitPopup = dbgItensCFOPInitPopup
             end
             inherited dbgItensDesconto: TdxDBGridMaskColumn [35]
-              Visible = False
-              Width = 50
+              Width = 57
               SummaryFooterType = cstSum
               SummaryFooterFormat = '#,###,##0.00'
             end
@@ -2050,19 +2050,19 @@ inherited FrmCompras: TFrmCompras
               SummaryFooterType = cstSum
               SummaryFooterFormat = '#,###,##0.00'
             end
-            inherited dbgItensFrete: TdxDBGridColumn
+            inherited dbgItensFrete: TdxDBGridColumn [53]
               Width = 79
               SummaryFooterType = cstSum
               SummaryFooterFormat = '#,###,##0.00'
             end
-            inherited dbgItensSeguro: TdxDBGridColumn
+            inherited dbgItensSeguro: TdxDBGridColumn [54]
               Alignment = taRightJustify
               HeaderAlignment = taCenter
               Width = 92
               SummaryFooterType = cstSum
               SummaryFooterFormat = '#,###,##0.00'
             end
-            inherited dbgItensoutrasdespesas: TdxDBGridColumn
+            inherited dbgItensoutrasdespesas: TdxDBGridColumn [55]
               Alignment = taRightJustify
               HeaderAlignment = taCenter
               Width = 102
@@ -2419,6 +2419,10 @@ inherited FrmCompras: TFrmCompras
     Top = 378
     inherited ReceberPagamento1: TMenuItem
       Caption = 'Fazer Pagamentos'
+    end
+    object ReferenciarNotas1: TMenuItem
+      Caption = 'Referenciar Notas'
+      OnClick = ReferenciarNotas1Click
     end
   end
   inherited tmInvoice: TTimer

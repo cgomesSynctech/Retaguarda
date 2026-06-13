@@ -1,16 +1,16 @@
 inherited FrmSaidas: TFrmSaidas
-  Left = 278
-  Top = 121
-  Width = 855
-  Height = 497
+  Left = 446
+  Top = 209
+  Width = 883
+  Height = 525
   Caption = 'Clientes / Vendas'
   Constraints.MinHeight = 455
   Constraints.MinWidth = 752
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 732
-    Height = 427
+    Left = 760
+    Height = 454
     inherited btComando1: TTS_SpeedButton
       Top = 238
       Hint = 
@@ -367,7 +367,7 @@ inherited FrmSaidas: TFrmSaidas
       Align = alTop
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 393
+      Top = 420
     end
     object btOutros: TTS_SpeedButton [10]
       Left = 1
@@ -438,12 +438,12 @@ inherited FrmSaidas: TFrmSaidas
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 732
-    Height = 427
+    Width = 760
+    Height = 454
     ParentCtl3D = False
     inherited Grid: TTS_QDBGrid
-      Width = 730
-      Height = 425
+      Width = 758
+      Height = 452
       KeyField = 'IDMESTRE'
       Filter.Criteria = {00000000}
       TS_MultiSelection = False
@@ -607,22 +607,22 @@ inherited FrmSaidas: TFrmSaidas
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 730
-      Height = 425
+      Width = 758
+      Height = 452
     end
     inherited sbDados: TTS_Panel
       Tag = -1
-      Width = 730
-      Height = 425
+      Width = 758
+      Height = 452
       HelpContext = -1
       Color = 16116702
       DesignSize = (
-        730
-        425)
+        758
+        452)
       object TS_Shape1: TTS_Shape [0]
         Left = 0
         Top = 0
-        Width = 730
+        Width = 758
         Height = 28
         Align = alTop
         Brush.Color = 14859922
@@ -630,7 +630,7 @@ inherited FrmSaidas: TFrmSaidas
         Transparent = False
       end
       inherited lbOperacao: TTS_Label
-        Left = 455
+        Left = 483
         Top = 5
         Width = 54
         Cursor = crHandPoint
@@ -644,7 +644,7 @@ inherited FrmSaidas: TFrmSaidas
       object TS_Bevel1: TTS_Bevel [2]
         Left = -4
         Top = 25
-        Width = 735
+        Width = 763
         Height = 2
         Anchors = [akLeft, akTop, akRight]
         Shape = bsTopLine
@@ -674,7 +674,7 @@ inherited FrmSaidas: TFrmSaidas
       end
       inherited cmbTipoMovimento: TTS_DBLookupComboBox
         Tag = -2
-        Left = 514
+        Left = 542
         Top = 3
         Width = 211
         Hint = 'Tipo da Opera'#231#227'o'
@@ -900,13 +900,13 @@ inherited FrmSaidas: TFrmSaidas
       end
       inherited pgCabecalho: TTS_PageControl [11]
         Left = 2
-        Width = 725
+        Width = 753
         Height = 152
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 2
         inherited tsCabecalho: TTS_TabSheet
           DesignSize = (
-            717
+            745
             142)
           object lbMenorPreco: TTS_Label [0]
             Left = 562
@@ -945,7 +945,7 @@ inherited FrmSaidas: TFrmSaidas
           end
           inherited pnNumero: TTS_Panel
             Tag = -1
-            Left = 629
+            Left = 657
             Top = 0
             Width = 88
             HelpContext = -1
@@ -969,7 +969,7 @@ inherited FrmSaidas: TFrmSaidas
           end
           inherited pnData: TTS_Panel
             Tag = -1
-            Left = 528
+            Left = 556
             Top = 0
             Width = 99
             HelpContext = -1
@@ -1001,7 +1001,7 @@ inherited FrmSaidas: TFrmSaidas
           end
           object pnAdicionais: TTS_Panel
             Tag = -1
-            Left = 261
+            Left = 275
             Top = 0
             Width = 206
             Height = 84
@@ -1267,7 +1267,7 @@ inherited FrmSaidas: TFrmSaidas
           end
           object pnLocalEntrega: TTS_Panel
             Tag = -1
-            Left = 528
+            Left = 556
             Top = 45
             Width = 189
             Height = 38
@@ -1616,7 +1616,7 @@ inherited FrmSaidas: TFrmSaidas
             Tag = -1
             Left = -4
             Top = 104
-            Width = 724
+            Width = 752
             Height = 38
             HelpContext = -1
             Anchors = [akLeft, akTop, akRight]
@@ -1702,7 +1702,7 @@ inherited FrmSaidas: TFrmSaidas
             end
             object pnDataEntrega: TTS_Panel
               Tag = -1
-              Left = 635
+              Left = 663
               Top = 0
               Width = 89
               Height = 38
@@ -1878,7 +1878,7 @@ inherited FrmSaidas: TFrmSaidas
             end
             object pnTipoEntrega: TTS_Panel
               Tag = -1
-              Left = 526
+              Left = 554
               Top = 0
               Width = 109
               Height = 38
@@ -2144,8 +2144,8 @@ inherited FrmSaidas: TFrmSaidas
         Tag = -1
         Left = 4
         Top = 178
-        Width = 723
-        Height = 237
+        Width = 751
+        Height = 265
         HelpContext = -1
         Anchors = [akLeft, akTop, akRight, akBottom]
         TabOrder = 4
@@ -2159,10 +2159,10 @@ inherited FrmSaidas: TFrmSaidas
           BevelInner = bvNone
           BevelOuter = bvNone
           DesignSize = (
-            715
-            209)
+            743
+            237)
           object TS_Shape15: TTS_Shape [0]
-            Left = 612
+            Left = 640
             Top = 1
             Width = 101
             Height = 77
@@ -2171,7 +2171,7 @@ inherited FrmSaidas: TFrmSaidas
             Transparent = False
           end
           object dfFoto: TTS_Image [1]
-            Left = 613
+            Left = 641
             Top = 2
             Width = 100
             Height = 75
@@ -2182,8 +2182,8 @@ inherited FrmSaidas: TFrmSaidas
           end
           object pnTotItens: TTS_Panel [2]
             Tag = -1
-            Left = 612
-            Top = 168
+            Left = 640
+            Top = 196
             Width = 99
             Height = 39
             HelpContext = -1
@@ -2246,8 +2246,8 @@ inherited FrmSaidas: TFrmSaidas
             Tag = -2
             Left = 2
             Top = 2
-            Width = 607
-            Height = 207
+            Width = 635
+            Height = 235
             HelpContext = -2
             Bands = <
               item
@@ -2719,6 +2719,7 @@ inherited FrmSaidas: TFrmSaidas
               RowIndex = 0
               FieldName = 'VALORIPIPROD'
               SummaryFooterType = cstSum
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensVALORCOFINSPROD: TdxDBGridColumn
               Caption = 'Valor Cofins Prod.'
@@ -2727,6 +2728,7 @@ inherited FrmSaidas: TFrmSaidas
               RowIndex = 0
               FieldName = 'VALORCOFINSPROD'
               SummaryFooterType = cstSum
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensVALORPISPROD: TdxDBGridColumn
               Caption = 'Valor Pis Prod.'
@@ -2735,30 +2737,35 @@ inherited FrmSaidas: TFrmSaidas
               RowIndex = 0
               FieldName = 'VALORPISPROD'
               SummaryFooterType = cstSum
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensVALORICMSSUBSTPROD: TdxDBGridMaskColumn
               Caption = 'Valor ICMS Subs. Prod.'
               BandIndex = 0
               RowIndex = 0
               FieldName = 'VALORICMSSUBSTPROD'
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensVALORICMSPROD: TdxDBGridMaskColumn
               Caption = 'Valor ICMS Prod.'
               BandIndex = 0
               RowIndex = 0
               FieldName = 'VALORICMSPROD'
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensBASECALCICMSPROD: TdxDBGridMaskColumn
               Caption = 'BC ICMS Prod.'
               BandIndex = 0
               RowIndex = 0
               FieldName = 'BASECALCICMSPROD'
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensBASECALCSUBSTPROD: TdxDBGridMaskColumn
               Caption = 'BC Subs. Prod.'
               BandIndex = 0
               RowIndex = 0
               FieldName = 'BASECALCSUBSTPROD'
+              SummaryFooterFormat = '#,##0.000'
             end
             object dbgItensSITUACAO: TdxDBGridMaskColumn
               Alignment = taCenter
@@ -2769,11 +2776,23 @@ inherited FrmSaidas: TFrmSaidas
               RowIndex = 0
               FieldName = 'SITUACAO'
             end
+            object dbgItensCSTIBS: TdxDBGridMaskColumn
+              Caption = 'CST RTC'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'cstibs'
+            end
+            object dbgItensClassTrib: TdxDBGridMaskColumn
+              Caption = 'Cod Class RTC'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'CLASSTRIB'
+            end
           end
           object pnVolumes: TTS_Panel
             Tag = -1
-            Left = 612
-            Top = 125
+            Left = 640
+            Top = 153
             Width = 99
             Height = 39
             HelpContext = -1
@@ -2873,12 +2892,12 @@ inherited FrmSaidas: TFrmSaidas
           BevelInner = bvRaised
           BevelOuter = bvLowered
           DesignSize = (
-            715
-            209)
+            743
+            237)
           object TS_Shape12: TTS_Shape
             Left = 1
             Top = 43
-            Width = 613
+            Width = 641
             Height = 3
             Anchors = [akLeft, akTop, akRight]
             Brush.Color = 14859922
@@ -2886,7 +2905,7 @@ inherited FrmSaidas: TFrmSaidas
             Transparent = False
           end
           object lbTipoCobranca: TTS_Label
-            Left = 590
+            Left = 618
             Top = 51
             Width = 53
             Alignment = taLeftJustify
@@ -2896,7 +2915,7 @@ inherited FrmSaidas: TFrmSaidas
             LinkToResult = 0
           end
           object lbCarteira: TTS_Label
-            Left = 592
+            Left = 620
             Top = 76
             Width = 48
             Alignment = taLeftJustify
@@ -2910,7 +2929,7 @@ inherited FrmSaidas: TFrmSaidas
             Tag = -1
             Left = 0
             Top = 50
-            Width = 292
+            Width = 320
             Height = 37
             HelpContext = -1
             Anchors = [akLeft, akTop, akRight]
@@ -2920,12 +2939,12 @@ inherited FrmSaidas: TFrmSaidas
             Color = clWhite
             TabOrder = 2
             DesignSize = (
-              290
+              318
               35)
             object lbTermos: TTS_Label
               Left = 1
               Top = 1
-              Width = 288
+              Width = 316
               Cursor = crHandPoint
               Align = alTop
               Alignment = taCenter
@@ -2950,7 +2969,7 @@ inherited FrmSaidas: TFrmSaidas
               Tag = -2
               Left = 1
               Top = 16
-              Width = 87
+              Width = 79
               HelpContext = -2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -2974,7 +2993,7 @@ inherited FrmSaidas: TFrmSaidas
           end
           object pnTotalFinal: TTS_Panel
             Tag = -1
-            Left = 616
+            Left = 644
             Top = 0
             Width = 99
             Height = 45
@@ -3043,7 +3062,7 @@ inherited FrmSaidas: TFrmSaidas
             Tag = -1
             Left = -5
             Top = 0
-            Width = 618
+            Width = 646
             Height = 38
             HelpContext = -1
             Anchors = [akLeft, akTop, akRight]
@@ -3541,8 +3560,8 @@ inherited FrmSaidas: TFrmSaidas
           end
           object cbReceber: TTS_CheckBox
             Tag = -2
-            Left = 590
-            Top = 171
+            Left = 618
+            Top = 199
             Width = 126
             HelpContext = -2
             Style.BorderStyle = xbsNone
@@ -3661,7 +3680,7 @@ inherited FrmSaidas: TFrmSaidas
             end
           end
           object cmbTipoCobranca: TTS_DBLookupComboBox
-            Left = 641
+            Left = 669
             Top = 50
             Width = 73
             TabOrder = 7
@@ -3676,7 +3695,7 @@ inherited FrmSaidas: TFrmSaidas
             Height = 19
           end
           object cmbCarteira: TTS_DBLookupComboBox
-            Left = 641
+            Left = 669
             Top = 74
             Width = 73
             TabOrder = 8
@@ -3693,10 +3712,10 @@ inherited FrmSaidas: TFrmSaidas
           end
           object dbgParcelas: TTS_QDBGrid
             Tag = -2
-            Left = 299
+            Left = 327
             Top = 50
             Width = 288
-            Height = 158
+            Height = 186
             HelpContext = -2
             Bands = <
               item
@@ -3866,8 +3885,8 @@ inherited FrmSaidas: TFrmSaidas
             Tag = -1
             Left = 2
             Top = 92
-            Width = 292
-            Height = 114
+            Width = 320
+            Height = 142
             HelpContext = -1
             Anchors = [akLeft, akTop, akRight, akBottom]
             BevelOuter = bvNone
@@ -3876,13 +3895,13 @@ inherited FrmSaidas: TFrmSaidas
             Color = clWhite
             TabOrder = 3
             DesignSize = (
-              290
-              112)
+              318
+              140)
             object dfMensagem: TTS_PopupEdit
               Tag = -2
               Left = -2
               Top = -2
-              Width = 87
+              Width = 79
               HelpContext = -2
               Color = 14859922
               Style.BorderStyle = xbsNone
@@ -3907,7 +3926,7 @@ inherited FrmSaidas: TFrmSaidas
               Tag = -2
               Left = 1
               Top = 20
-              Width = 276
+              Width = 268
               HelpContext = -2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -3922,7 +3941,7 @@ inherited FrmSaidas: TFrmSaidas
               DataSource = DMSaidas.C_TabelaDS
               MaxLength = 8000
               StyleController = esVendas
-              Height = 89
+              Height = 81
               StoredValues = 3
             end
           end
@@ -3934,14 +3953,14 @@ inherited FrmSaidas: TFrmSaidas
           BevelInner = bvRaised
           BevelOuter = bvLowered
           DesignSize = (
-            715
-            209)
+            743
+            237)
           object TS_Panel1: TTS_Panel
             Tag = -1
             Left = 3
             Top = 6
-            Width = 704
-            Height = 197
+            Width = 732
+            Height = 225
             HelpContext = -1
             Anchors = [akLeft, akTop, akRight, akBottom]
             BevelOuter = bvNone
@@ -3950,13 +3969,13 @@ inherited FrmSaidas: TFrmSaidas
             Color = clWhite
             TabOrder = 0
             DesignSize = (
-              702
-              195)
+              730
+              223)
             object TS_DBMemo1: TTS_DBMemo
               Tag = -2
               Left = 1
-              Top = 198
-              Width = 700
+              Top = 246
+              Width = 728
               HelpContext = -2
               Align = alBottom
               Font.Charset = DEFAULT_CHARSET
@@ -3970,13 +3989,13 @@ inherited FrmSaidas: TFrmSaidas
               DataField = 'TERMOCONTRATO'
               DataSource = DMSaidas.C_TabelaDS
               StyleController = esVendas
-              Height = -4
+              Height = -24
             end
             object dfContrato: TTS_PopupEdit
               Tag = -2
               Left = -2
               Top = -2
-              Width = 219
+              Width = 199
               HelpContext = -2
               Color = 14859922
               Style.BorderStyle = xbsNone
@@ -4105,7 +4124,7 @@ inherited FrmSaidas: TFrmSaidas
       end
       inherited pnSetas: TTS_Panel [14]
         Tag = -1
-        Left = 707
+        Left = 735
         Top = 183
         HelpContext = -1
         Anchors = [akTop, akRight]
@@ -4283,7 +4302,6 @@ inherited FrmSaidas: TFrmSaidas
             DisableDragging = True
             DisableEditor = True
             HeaderAlignment = taCenter
-            Sorted = csUp
             Width = 114
             BandIndex = 0
             RowIndex = 0
@@ -4298,6 +4316,7 @@ inherited FrmSaidas: TFrmSaidas
             DisableDragging = True
             DisableEditor = True
             HeaderAlignment = taCenter
+            Sorted = csUp
             Width = 87
             BandIndex = 0
             RowIndex = 0
@@ -4568,14 +4587,14 @@ inherited FrmSaidas: TFrmSaidas
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 730
+      Width = 758
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 847
+    Width = 875
     Hint = 'Duvida do tax sobre os juros do plano de pgto.'
     DesignSize = (
-      847
+      875
       43)
     inherited lbCaption: TdxfLabel
       Left = 53
@@ -4589,7 +4608,7 @@ inherited FrmSaidas: TFrmSaidas
       Left = 55
     end
     inherited lbDesativado: TdxfLabel
-      Left = 558
+      Left = 586
       Top = 19
       Width = 156
       Hint = ''
@@ -4602,10 +4621,10 @@ inherited FrmSaidas: TFrmSaidas
       Effect3D.ShadowedColor = 14859922
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 810
+      Left = 838
     end
     object lbCancelado: TdxfLabel
-      Left = 317
+      Left = 331
       Top = -12
       Width = 190
       Height = 57
@@ -4633,8 +4652,8 @@ inherited FrmSaidas: TFrmSaidas
     Top = 275
   end
   inherited LastDataObject: TTS_LastDataObject
-    Left = 120
-    Top = 412
+    Left = 168
+    Top = 348
   end
   inherited ppmPadrao: TTS_PopupMenu
     Left = 150
@@ -4658,8 +4677,8 @@ inherited FrmSaidas: TFrmSaidas
     end
   end
   inherited ImgPadrao: TImageList
-    Left = 94
-    Top = 414
+    Left = 150
+    Top = 398
   end
   inherited FormComponent: TFormComponent
     AntesDeApagar = FormComponentAntesDeApagar
@@ -4691,8 +4710,8 @@ inherited FrmSaidas: TFrmSaidas
     end
   end
   inherited ppmGridPadrao: TTS_PopupMenu
-    Left = 92
-    Top = 413
+    Left = 84
+    Top = 365
   end
   inherited FormStorage: TFormStorage
     Left = 609
@@ -4707,15 +4726,16 @@ inherited FrmSaidas: TFrmSaidas
     ButtonStyle = btsFlat
     ButtonTransparence = ebtHideInactive
     HotTrack = True
-    Left = 546
-    Top = 37
+    Left = 522
+    Top = 125
   end
   object esEndereco: TdxEditStyleController
     BorderStyle = xbsNone
     ButtonTransparence = ebtHideInactive
     Edges = []
     HotTrack = True
-    Left = 527
+    Left = 519
+    Top = 72
   end
   object TransitionSaidas: TTransitionList
     Left = 70
@@ -4745,7 +4765,7 @@ inherited FrmSaidas: TFrmSaidas
   end
   object ppmCliente: TTS_PopupMenu
     OnPopup = ppmClientePopup
-    Left = 298
+    Left = 354
     Top = 279
     object AbrirCadastro1: TMenuItem
       Caption = 'Abrir Cadastro'

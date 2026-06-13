@@ -1,6 +1,6 @@
 inherited FrmMetasFaturamento: TFrmMetasFaturamento
-  Left = 266
-  Top = 223
+  Left = 274
+  Top = 140
   Width = 618
   Height = 396
   Caption = 'Financeiro'
@@ -8,17 +8,17 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 495
-    Height = 319
+    Height = 326
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 285
+      Top = 292
     end
   end
   inherited pnDados: TTS_Panel
     Width = 495
-    Height = 319
+    Height = 326
     inherited Grid: TTS_QDBGrid
       Width = 493
-      Height = 317
+      Height = 324
       KeyField = 'ID'
       DataSource = DMMetasFaturamento.C_TabelaDS
       Filter.Criteria = {00000000}
@@ -50,17 +50,17 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 493
-      Height = 317
+      Height = 324
     end
     inherited sbDados: TTS_Panel
       Width = 493
-      Height = 317
+      Height = 324
       Color = 15724519
       object TS_Shape11: TTS_Shape
         Left = 4
-        Top = 22
+        Top = 15
         Width = 480
-        Height = 68
+        Height = 99
         Brush.Style = bsClear
         Pen.Color = 14078909
         Transparent = False
@@ -129,7 +129,7 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
       end
       object TS_Shape1: TTS_Shape
         Left = 5
-        Top = 98
+        Top = 122
         Width = 482
         Height = 20
         Brush.Color = 14078909
@@ -138,7 +138,7 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
       end
       object TS_Shape2: TTS_Shape
         Left = 4
-        Top = 117
+        Top = 141
         Width = 480
         Height = 181
         Brush.Style = bsClear
@@ -147,7 +147,7 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
       end
       object TS_Label4: TTS_Label
         Left = 10
-        Top = 101
+        Top = 124
         Width = 65
         Height = 13
         Alignment = taCenter
@@ -159,6 +159,15 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object TS_Label7: TTS_Label
+        Left = 99
+        Top = 90
+        Width = 65
+        Caption = 'Titulo :'
+        FocusControl = TS_DBEditDate2
         FormatoTabela = False
         LinkToResult = 0
       end
@@ -363,7 +372,7 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
       end
       object dbgFunc: TTS_QDBGrid
         Left = 11
-        Top = 122
+        Top = 150
         Width = 464
         Height = 165
         Bands = <
@@ -476,7 +485,7 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
         object dbgFuncNOME: TdxDBGridButtonColumn
           Caption = 'Nome'
           HeaderAlignment = taCenter
-          Sorted = csDown
+          Sorted = csUp
           Width = 277
           BandIndex = 0
           RowIndex = 0
@@ -606,6 +615,16 @@ inherited FrmMetasFaturamento: TFrmMetasFaturamento
           FieldName = 'METADIARIA'
           Nullable = False
         end
+      end
+      object TS_DBEdit1: TTS_DBEdit
+        Left = 168
+        Top = 88
+        Width = 121
+        TabOrder = 5
+        DataField = 'TITULO'
+        DataSource = DMMetasFaturamento.C_TabelaDS
+        DistinctEditOn = False
+        Height = 19
       end
     end
     inherited dxF9Bar: TdxfProgressBar

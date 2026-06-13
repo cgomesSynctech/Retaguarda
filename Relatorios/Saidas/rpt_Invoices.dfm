@@ -1,8 +1,8 @@
 object RptInvoices: TRptInvoices
-  Left = 269
-  Top = 31
-  Width = 869
-  Height = 652
+  Left = 414
+  Top = 135
+  Width = 1292
+  Height = 939
   HorzScrollBar.Color = clWhite
   HorzScrollBar.ParentColor = False
   VertScrollBar.Color = clWhite
@@ -20,7 +20,7 @@ object RptInvoices: TRptInvoices
   PixelsPerInch = 96
   TextHeight = 13
   object ZReportInvoice: TZReport
-    Left = 29
+    Left = 21
     Top = 93
     Width = 80
     Height = 49
@@ -942,8 +942,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object ZRVendaRapida: TZReport
-    Left = 29
-    Top = 241
+    Left = 45
+    Top = 225
     Width = 70
     Height = 36
     DataSet = C_Itens
@@ -1705,10 +1705,10 @@ object RptInvoices: TRptInvoices
     end
   end
   object zr40Colunas: TZReport
-    Left = 243
+    Left = 939
     Top = 8
     Width = 40
-    Height = 65
+    Height = 71
     DataSet = C_Itens
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -1816,7 +1816,7 @@ object RptInvoices: TRptInvoices
     end
     object cOBS: TZRField
       Format.Width = 255
-      DataField = 'OBS'
+      DataField = 'OBSCLIENTE'
       DataSet = C_Invoice
     end
     object cDATA: TZRField
@@ -1839,7 +1839,7 @@ object RptInvoices: TRptInvoices
     end
     object cTOTALINVOICE: TZRField
       Format.DisplayMask = '#,###,##0.00'
-      Format.Width = 19
+      Format.Width = 10
       DataField = 'TOTAL'
       DataSet = C_Invoice
     end
@@ -1856,7 +1856,7 @@ object RptInvoices: TRptInvoices
     end
     object zrvOutras40Col: TZRField
       Format.DisplayMask = '#,###,###,###,##0.00'
-      Format.Width = 19
+      Format.Width = 10
       DataField = 'OUTRASDESPESAS'
       DataSet = C_Invoice
     end
@@ -1959,6 +1959,23 @@ object RptInvoices: TRptInvoices
       DataField = 'FONE1'
       DataSet = C_Invoice
     end
+    object zrvFieldFRETE: TZRField
+      Format.DisplayMask = '#,###,###,###,##0.00'
+      Format.Width = 10
+      DataField = 'FRETE'
+      DataSet = C_Invoice
+    end
+    object zrvFieldOBSINV: TZRField
+      Format.Width = 1255
+      DataField = 'OBS'
+      DataSet = C_Invoice
+    end
+    object zrvField3: TZRField
+      DataSet = C_Itens
+    end
+    object zrvField4: TZRField
+      DataSet = C_Itens
+    end
     object zr40ColunasGroup: TZRGroup
       Variable = zrvLocalizacao
     end
@@ -2059,7 +2076,7 @@ object RptInvoices: TRptInvoices
         Variable = cTIT2_CODIGO
       end
       object ZRLabel89: TZRLabel
-        Left = 7
+        Left = 6
         Top = 1
         Width = 28
         Height = 1
@@ -2222,11 +2239,11 @@ object RptInvoices: TRptInvoices
       Left = 0
       Top = 17
       Width = 40
-      Height = 23
+      Height = 32
       Stretch = False
       BandType = zbtFooter
       object ZRLabel104: TZRLabel
-        Left = 18
+        Left = 17
         Top = 0
         Width = 8
         Height = 1
@@ -2251,16 +2268,16 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel106: TZRLabel
         Left = 0
-        Top = 5
+        Top = 6
         Width = 40
         Height = 1
         AutoSize = zasHeight
         Caption = 'ZRLabel106'
-        Variable = cOBS
+        Variable = zrvFieldOBSINV
         WordWrap = True
       end
       object zrlDesconto: TZRLabel
-        Left = 12
+        Left = 11
         Top = 1
         Width = 14
         Height = 1
@@ -2269,42 +2286,42 @@ object RptInvoices: TRptInvoices
         BeforePrint = zrlDescontoBeforePrint
       end
       object ZRLabel115: TZRLabel
-        Left = 26
+        Left = 25
         Top = 1
-        Width = 10
+        Width = 14
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
         Variable = zrvDesconto40Col
       end
       object ZRLabel116: TZRLabel
-        Left = 15
+        Left = 14
         Top = 2
         Width = 11
         Height = 1
         Caption = 'Acrescimo +'
       end
       object ZRLabel117: TZRLabel
-        Left = 26
+        Left = 25
         Top = 2
-        Width = 10
+        Width = 14
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
         Variable = zrvOutras40Col
       end
       object ZRLabel118: TZRLabel
-        Left = 12
-        Top = 3
-        Width = 14
+        Left = 8
+        Top = 4
+        Width = 17
         Height = 1
         FontStyles = [zfsBold]
         Caption = 'TOTAL FINAL = '
       end
       object ZRLabel119: TZRLabel
-        Left = 26
-        Top = 3
-        Width = 10
+        Left = 25
+        Top = 4
+        Width = 14
         Height = 1
         FontStyles = [zfsBold]
         Alignment.X = zawRight
@@ -2312,9 +2329,9 @@ object RptInvoices: TRptInvoices
         Variable = cTOTALINVOICE
       end
       object ZrtTotalFinal: TZRTotalLabel
-        Left = 26
+        Left = 25
         Top = 0
-        Width = 10
+        Width = 14
         Height = 1
         Alignment.X = zawRight
         Kind = ztkSum
@@ -2323,7 +2340,7 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel111: TZRLabel
         Left = 0
-        Top = 8
+        Top = 15
         Width = 40
         Height = 1
         Alignment.X = zawCenter
@@ -2332,7 +2349,7 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel120: TZRLabel
         Left = 0
-        Top = 7
+        Top = 16
         Width = 40
         Height = 1
         Alignment.X = zawCenter
@@ -2340,23 +2357,24 @@ object RptInvoices: TRptInvoices
       end
       object ENDERECO: TZRLabel
         Left = 5
-        Top = 14
+        Top = 22
         Width = 35
         Height = 1
+        Visible = False
         Caption = 'ENDERECO'
         Variable = zrvEnderecoCliente
       end
       object ZRLabel145: TZRLabel
-        Left = 2
-        Top = 20
+        Left = 1
+        Top = 29
         Width = 9
         Height = 1
         Alignment.X = zawRight
         Caption = 'Vendedor:'
       end
       object ZRLabel149: TZRLabel
-        Left = 11
-        Top = 20
+        Left = 10
+        Top = 29
         Width = 29
         Height = 1
         Caption = 'ZRLabel17'
@@ -2364,32 +2382,33 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel150: TZRLabel
         Left = 0
-        Top = 21
+        Top = 30
         Width = 11
         Height = 1
         Caption = 'Plano Pag.:'
       end
       object ZRLabel151: TZRLabel
-        Left = 11
-        Top = 21
+        Left = 10
+        Top = 30
         Width = 29
         Height = 1
         Caption = 'dbTerms2'
         Variable = zrv40ColunasPlanoPag
       end
       object ZRLabel153: TZRLabel
-        Left = 7
-        Top = 13
+        Left = 0
+        Top = 21
         Width = 26
         Height = 1
+        Visible = False
         Alignment.X = zawCenter
         Alignment.Y = zahCenter
         Caption = 'ZRLabel17'
         Variable = cFone1
       end
       object ZRCampo01: TZRLabel
-        Left = 10
-        Top = 17
+        Left = 9
+        Top = 26
         Width = 30
         Height = 1
         Alignment.Y = zahCenter
@@ -2414,8 +2433,8 @@ object RptInvoices: TRptInvoices
         Caption = 'Vol.'
       end
       object ZRCampo02: TZRLabel
-        Left = 10
-        Top = 18
+        Left = 9
+        Top = 27
         Width = 30
         Height = 1
         Alignment.Y = zahCenter
@@ -2424,7 +2443,7 @@ object RptInvoices: TRptInvoices
       end
       object zrLabel_TitCAMPO02: TZRLabel
         Left = 0
-        Top = 18
+        Top = 27
         Width = 10
         Height = 1
         Caption = 'ZRLabel17'
@@ -2432,7 +2451,7 @@ object RptInvoices: TRptInvoices
       end
       object zrLabel_TitCAMPO01: TZRLabel
         Left = 0
-        Top = 17
+        Top = 26
         Width = 10
         Height = 1
         Caption = 'ZRLabel17'
@@ -2440,37 +2459,38 @@ object RptInvoices: TRptInvoices
       end
       object zrDataEntrega: TZRLabel
         Left = 10
-        Top = 16
+        Top = 25
         Width = 29
         Height = 1
         Caption = 'ENDERECO'
         Variable = zrv40ColunasDATAENTREGA
       end
       object zrLabelDataEntrega: TZRLabel
-        Left = 0
-        Top = 16
+        Left = 1
+        Top = 25
         Width = 10
         Height = 1
         Caption = 'Entrega:'
       end
       object zrLabelEndEntrega: TZRLabel
         Left = 0
-        Top = 14
+        Top = 22
         Width = 5
         Height = 1
+        Visible = False
         Caption = 'End.:'
       end
       object zrLabelSeparador: TZRLabel
         Left = 0
-        Top = 15
+        Top = 24
         Width = 40
         Height = 1
         Alignment.X = zawCenter
         Caption = '----------------------------------------'
       end
       object ZRLabel781: TZRLabel
-        Left = 0
-        Top = 19
+        Left = 1
+        Top = 28
         Width = 40
         Height = 1
         Alignment.X = zawCenter
@@ -2478,7 +2498,7 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel931: TZRLabel
         Left = 0
-        Top = 9
+        Top = 14
         Width = 33
         Height = 1
         Alignment.X = zawCenter
@@ -2487,7 +2507,7 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel934: TZRLabel
         Left = 33
-        Top = 9
+        Top = 16
         Width = 7
         Height = 1
         Alignment.X = zawCenter
@@ -2496,7 +2516,7 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel1045: TZRLabel
         Left = 0
-        Top = 10
+        Top = 17
         Width = 21
         Height = 1
         Alignment.X = zawCenter
@@ -2504,8 +2524,8 @@ object RptInvoices: TRptInvoices
         Variable = zrvField1BAIRRO
       end
       object ZRLabel1046: TZRLabel
-        Left = 21
-        Top = 10
+        Left = 20
+        Top = 17
         Width = 16
         Height = 1
         Alignment.X = zawCenter
@@ -2513,8 +2533,8 @@ object RptInvoices: TRptInvoices
         Variable = zrvField1CIDADE
       end
       object ZRLabel1047: TZRLabel
-        Left = 37
-        Top = 10
+        Left = 36
+        Top = 17
         Width = 3
         Height = 1
         Alignment.X = zawCenter
@@ -2522,8 +2542,8 @@ object RptInvoices: TRptInvoices
         Variable = zrvField1UF
       end
       object ZRLabel1048: TZRLabel
-        Left = 7
-        Top = 11
+        Left = 6
+        Top = 18
         Width = 21
         Height = 1
         Alignment.X = zawCenter
@@ -2532,15 +2552,52 @@ object RptInvoices: TRptInvoices
       end
       object ZRLabel1049: TZRLabel
         Left = 0
-        Top = 11
+        Top = 18
         Width = 7
         Height = 1
         Caption = 'Fone :'
       end
+      object ZRLabel1589: TZRLabel
+        Left = 17
+        Top = 3
+        Width = 8
+        Height = 1
+        FontStyles = [zfsBold]
+        Caption = 'Frete  +'
+      end
+      object ZRLabel1590: TZRLabel
+        Left = 25
+        Top = 3
+        Width = 14
+        Height = 1
+        Alignment.X = zawRight
+        Caption = 'ZRLabel109'
+        Variable = zrvFieldFRETE
+      end
+      object ZRLabel1591: TZRLabel
+        Left = 0
+        Top = 23
+        Width = 40
+        Height = 1
+        AutoSize = zasHeight
+        Caption = 'ZRLabel106'
+        Variable = cOBS
+        WordWrap = True
+      end
+      object ZRLabel1592: TZRLabel
+        Left = 0
+        Top = 20
+        Width = 40
+        Height = 1
+        AutoSize = zasHeight
+        Caption = 'ZRLabel106'
+        Variable = cOBS
+        WordWrap = True
+      end
     end
     object zr40ColunasSubDetail: TZRSubDetail
       Left = 0
-      Top = 42
+      Top = 51
       Width = 40
       Height = 1
       DataSet = C_Parcelas
@@ -2642,7 +2699,7 @@ object RptInvoices: TRptInvoices
       end
       object zr40ColunasSubDetailColumnHeader: TZRBand
         Left = 0
-        Top = 40
+        Top = 49
         Width = 40
         Height = 2
         Stretch = False
@@ -2701,52 +2758,7388 @@ object RptInvoices: TRptInvoices
       end
       object zr40ColunasSubDetailDetailFooter: TZRBand
         Left = 0
-        Top = 43
+        Top = 52
         Width = 40
-        Height = 8
+        Height = 10
         Stretch = False
         BandType = zbtDetailFooter
         object ZRLabel29: TZRLabel
           Left = 0
-          Top = 7
+          Top = 9
           Width = 1
           Height = 1
           Caption = '.'
         end
         object ZRLabeTecnico: TZRLabel
           Left = 0
-          Top = 3
+          Top = 5
           Width = 9
           Height = 1
           Caption = 'T'#233'cnico:'
         end
         object ZRTecnico: TZRLabel
-          Left = 9
-          Top = 3
+          Left = 8
+          Top = 5
           Width = 31
           Height = 1
           Caption = ' _____________________________'
         end
         object ZRLabelEntregue: TZRLabel
           Left = 0
-          Top = 5
+          Top = 7
           Width = 9
           Height = 1
           Caption = 'Entregue:'
         end
         object ZREntregue: TZRLabel
           Left = 9
-          Top = 5
+          Top = 7
           Width = 31
           Height = 1
           Caption = ' _____________________________'
         end
         object zrLabelInvoice: TZRLabel
           Left = 0
-          Top = 1
+          Top = 3
           Width = 39
           Height = 1
           Caption = 'Invoice #'
+        end
+      end
+    end
+    object ZReport5: TZReport
+      Left = -249
+      Top = -879
+      Width = 40
+      Height = 65
+      DataSet = C_Itens
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Courier New'
+      Font.Style = []
+      Options.LineSpacing = zrd16
+      Options.AutoHeight = False
+      Options.Escapes.Model = emEpsonLXSeries
+      Options.PageFrom = 1
+      Options.PageTo = 1
+      Options.PaperType = zptContinuous
+      Options.Acentos = Retorno_Carro
+      Options.Scissors = False
+      Margins.Left = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Minimized = True
+      object ZRField554: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CODIGO'
+        DataSet = C_Invoice
+      end
+      object ZRField555: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_DESCRICAO'
+        DataSet = C_Invoice
+      end
+      object ZRField556: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_UNIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField601: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_QUANTIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField602: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_PRECO'
+        DataSet = C_Invoice
+      end
+      object ZRField603: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_SUBTOTAL'
+        DataSet = C_Invoice
+      end
+      object ZRField604: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_REFERENCIA'
+        DataSet = C_Invoice
+      end
+      object ZRField605: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_TAX'
+        DataSet = C_Invoice
+      end
+      object ZRField606: TZRField
+        Format.Width = 13
+        DataField = 'CODIGO'
+        DataSet = C_Itens
+      end
+      object ZRField607: TZRField
+        Format.Width = 255
+        DataField = 'ITEMDESC'
+        DataSet = C_Itens
+      end
+      object ZRField608: TZRField
+        Format.DisplayMask = '#,##0.###'
+        Format.Width = 19
+        DataField = 'QUANTIDADE'
+        DataSet = C_Itens
+      end
+      object ZRField609: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 10
+        DataField = 'PRECO'
+        DataSet = C_Itens
+      end
+      object ZRField610: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTAL'
+        DataSet = C_Itens
+      end
+      object ZRField611: TZRField
+        Format.Width = 6
+        DataField = 'UNIDADE'
+        DataSet = C_Itens
+      end
+      object ZRField612: TZRField
+        Format.Width = 1
+        DataField = 'TAXAVEL'
+        DataSet = C_Itens
+      end
+      object ZRAggregator17: TZRAggregator
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        Variable = ZRField610
+      end
+      object ZRAggregator18: TZRAggregator
+        Format.DisplayMask = '#,##0.###'
+        Format.Width = 19
+        Variable = ZRField608
+      end
+      object ZRField613: TZRField
+        Format.Width = 255
+        DataField = 'OBS'
+        DataSet = C_Invoice
+      end
+      object ZRField614: TZRField
+        Format.DisplayMask = 'dd/mm/yy'
+        Format.Width = 10
+        DataField = 'DATA'
+        DataSet = C_Invoice
+      end
+      object ZRField615: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTALITENS'
+        DataSet = C_Invoice
+      end
+      object ZRField616: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'IMPOSTO'
+        DataSet = C_Invoice
+      end
+      object ZRField617: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTAL'
+        DataSet = C_Invoice
+      end
+      object ZRField618: TZRField
+        Format.Width = 50
+        DataField = 'NOME'
+        DataSet = C_Invoice
+      end
+      object ZRField619: TZRField
+        Format.DisplayMask = '#,###,###,###,##0.00'
+        Format.Width = 19
+        DataField = 'DESCONTO'
+        DataSet = C_Invoice
+      end
+      object ZRField620: TZRField
+        Format.DisplayMask = '#,###,###,###,##0.00'
+        Format.Width = 19
+        DataField = 'OUTRASDESPESAS'
+        DataSet = C_Invoice
+      end
+      object ZRField621: TZRField
+        Format.Width = 20
+        DataField = 'FONE1'
+        DataSet = C_Invoice
+      end
+      object ZRField622: TZRField
+        Format.Width = 50
+        DataField = 'ENDERECO'
+        DataSet = C_Invoice
+      end
+      object ZRField623: TZRField
+        Format.Width = 30
+        DataField = 'PLANOPAG'
+        DataSet = C_Invoice
+      end
+      object ZRField624: TZRField
+        Format.Width = 50
+        DataField = 'VENDEDOR'
+        DataSet = C_Invoice
+      end
+      object ZRField625: TZRField
+        Format.Width = 1255
+        DataField = 'OBS'
+        DataSet = C_Invoice
+      end
+      object ZRField626: TZRField
+        Format.Width = 50
+        DataField = 'CAMPO01'
+        DataSet = C_Invoice
+      end
+      object ZRField627: TZRField
+        Format.Width = 15
+        DataField = 'LOCAL'
+        DataSet = C_Itens
+      end
+      object ZRField628: TZRField
+        Format.Width = 50
+        DataField = 'CAMPO02'
+        DataSet = C_Invoice
+      end
+      object ZRField629: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CAMPO2'
+        DataSet = C_Invoice
+      end
+      object ZRField630: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CAMPO1'
+        DataSet = C_Invoice
+      end
+      object ZRField631: TZRField
+        Format.Width = 10
+        DataField = 'DATAENTREGA'
+        DataSet = C_Invoice
+      end
+      object ZRField632: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_FABRICANTE'
+        DataSet = C_Invoice
+      end
+      object ZRField633: TZRField
+        Format.Width = 30
+        DataField = 'FABRICANTE'
+        DataSet = C_Itens
+      end
+      object ZRField634: TZRField
+        Format.Width = 50
+        DataField = 'ENDERECO'
+        DataSet = C_Invoice
+      end
+      object ZRField635: TZRField
+        Format.Width = 4
+        DataField = 'NRO'
+        DataSet = C_Invoice
+      end
+      object ZRField636: TZRField
+        Format.Width = 30
+        DataField = 'BAIRRO'
+        DataSet = C_Invoice
+      end
+      object ZRField637: TZRField
+        Format.Width = 30
+        DataField = 'CIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField638: TZRField
+        DataField = 'UF'
+        DataSet = C_Invoice
+      end
+      object ZRField639: TZRField
+        Format.Width = 10
+        DataField = 'CEP'
+        DataSet = C_Invoice
+      end
+      object ZRField640: TZRField
+        Format.Width = 20
+        DataField = 'FONE1'
+        DataSet = C_Invoice
+      end
+      object ZRGroup4: TZRGroup
+        Variable = ZRField627
+      end
+      object ZRBand101: TZRBand
+        Left = 0
+        Top = 11
+        Width = 40
+        Height = 5
+        Stretch = False
+        BandType = zbtHeader
+        object ZRLabel1050: TZRLabel
+          Left = 1
+          Top = 2
+          Width = 39
+          Height = 1
+          Caption = 'zrCidade3'
+        end
+        object ZRLabel1051: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 39
+          Height = 1
+          Caption = 'zrEndereco3'
+        end
+        object ZRLabel1052: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 39
+          Height = 1
+          Caption = 'zrNomeEmpresa3'
+        end
+        object ZRLabel1053: TZRLabel
+          Left = 1
+          Top = 3
+          Width = 39
+          Height = 1
+          Caption = 'zrFone'
+        end
+      end
+      object ZRBand102: TZRBand
+        Left = 0
+        Top = 16
+        Width = 40
+        Height = 3
+        Stretch = False
+        BandType = zbtChild
+        ParentIndex = 0
+        object ZRLabel1054: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 37
+          Height = 1
+          FontStyles = [zfsBold]
+          Alignment.X = zawCenter
+          Caption = 'Invoice # '
+          BeforePrint = ZRLabel86BeforePrint
+        end
+        object ZRLabel1055: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 13
+          Height = 1
+          Caption = 'ZRLabel87'
+          Variable = ZRField614
+        end
+        object ZRSystemLabel12: TZRSystemLabel
+          Left = 24
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          DataKind = zsdTime
+        end
+        object ZRLabel1056: TZRLabel
+          Left = 1
+          Top = 2
+          Width = 37
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'zrNomeCodigoCliente'
+        end
+      end
+      object ZRBand103: TZRBand
+        Left = 0
+        Top = 19
+        Width = 40
+        Height = 4
+        Frame.Top = 1
+        Frame.Bottom = 1
+        Stretch = False
+        BandType = zbtColumnHeader
+        object ZRLabel1057: TZRLabel
+          Left = 0
+          Top = 1
+          Width = 6
+          Height = 1
+          Caption = 'ID'
+          Variable = ZRField554
+        end
+        object ZRLabel1058: TZRLabel
+          Left = 7
+          Top = 1
+          Width = 28
+          Height = 1
+          Caption = 'ID'
+          Variable = ZRField555
+        end
+        object ZRLabel1059: TZRLabel
+          Left = 37
+          Top = 1
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel90'
+          Variable = ZRField556
+        end
+        object ZRLabel1060: TZRLabel
+          Left = 0
+          Top = 2
+          Width = 11
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField601
+        end
+        object ZRLabel1061: TZRLabel
+          Left = 12
+          Top = 2
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField602
+        end
+        object ZRLabel1062: TZRLabel
+          Left = 25
+          Top = 2
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField603
+        end
+        object ZRLabel1063: TZRLabel
+          Left = 37
+          Top = 2
+          Width = 3
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel91'
+          Variable = ZRField605
+        end
+      end
+      object ZRBand104: TZRBand
+        Left = 0
+        Top = 23
+        Width = 40
+        Height = 1
+        Stretch = False
+        BandType = zbtGroupHeader
+        GroupOrder = 0
+        object ZRLabel1064: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 38
+          Height = 1
+          Caption = 'Localizacao'
+          Variable = ZRField627
+        end
+      end
+      object ZRBand105: TZRBand
+        Left = 0
+        Top = 24
+        Width = 40
+        Height = 2
+        Stretch = False
+        BandType = zbtDetail
+        object ZRLabel1065: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 8
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField606
+        end
+        object ZRLabel1066: TZRLabel
+          Left = 10
+          Top = 0
+          Width = 25
+          Height = 1
+          Caption = 'ZRLabel95'
+          Variable = ZRField607
+        end
+        object ZRLabel1067: TZRLabel
+          Left = 37
+          Top = 0
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel95'
+          Variable = ZRField611
+        end
+        object ZRLabel1068: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 8
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField608
+        end
+        object ZRLabel1069: TZRLabel
+          Left = 12
+          Top = 1
+          Width = 5
+          Height = 1
+          AutoSize = zasWidth
+          Caption = 'ZRLabel95'
+          Variable = ZRField609
+          WordWrap = True
+        end
+        object ZRLabel1070: TZRLabel
+          Left = 26
+          Top = 1
+          Width = 10
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField610
+        end
+        object ZRLabel1071: TZRLabel
+          Left = 10
+          Top = 1
+          Width = 1
+          Height = 1
+          Caption = 'x'
+        end
+        object ZRLabel1072: TZRLabel
+          Left = 24
+          Top = 1
+          Width = 1
+          Height = 1
+          Caption = '='
+        end
+        object ZRLabel1073: TZRLabel
+          Left = 37
+          Top = 1
+          Width = 3
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField612
+        end
+      end
+      object ZRBand106: TZRBand
+        Left = 0
+        Top = 26
+        Width = 40
+        Height = 1
+        Frame.Top = 1
+        Stretch = False
+        BandType = zbtDetailFooter
+      end
+      object ZRBand107: TZRBand
+        Left = 0
+        Top = 27
+        Width = 40
+        Height = 23
+        Stretch = False
+        BandType = zbtFooter
+        object ZRLabel1074: TZRLabel
+          Left = 17
+          Top = 0
+          Width = 8
+          Height = 1
+          Caption = 'Total  +'
+        end
+        object ZRTotalLabel25: TZRTotalLabel
+          Left = 0
+          Top = 0
+          Width = 5
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkCount
+          Level = ZReport5
+          Variable = ZRAggregator18
+        end
+        object ZRLabel1075: TZRLabel
+          Left = 6
+          Top = 0
+          Width = 6
+          Height = 1
+          Caption = 'itens'
+        end
+        object ZRLabel1076: TZRLabel
+          Left = 0
+          Top = 5
+          Width = 40
+          Height = 1
+          AutoSize = zasHeight
+          Caption = 'ZRLabel106'
+          Variable = ZRField613
+          WordWrap = True
+        end
+        object ZRLabel1077: TZRLabel
+          Left = 11
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Descontos -'
+          BeforePrint = zrlDescontoBeforePrint
+        end
+        object ZRLabel1078: TZRLabel
+          Left = 25
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField619
+        end
+        object ZRLabel1079: TZRLabel
+          Left = 14
+          Top = 2
+          Width = 11
+          Height = 1
+          Caption = 'Acrescimo +'
+        end
+        object ZRLabel1080: TZRLabel
+          Left = 25
+          Top = 2
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField620
+        end
+        object ZRLabel1081: TZRLabel
+          Left = 8
+          Top = 3
+          Width = 17
+          Height = 1
+          FontStyles = [zfsBold]
+          Caption = 'TOTAL FINAL = '
+        end
+        object ZRLabel1082: TZRLabel
+          Left = 25
+          Top = 3
+          Width = 14
+          Height = 1
+          FontStyles = [zfsBold]
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField617
+        end
+        object ZRTotalLabel26: TZRTotalLabel
+          Left = 25
+          Top = 0
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkSum
+          Level = ZReport5
+          Variable = ZRAggregator17
+        end
+        object ZRLabel1083: TZRLabel
+          Left = 0
+          Top = 8
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'NOME'
+          Variable = ZRField618
+        end
+        object ZRLabel1084: TZRLabel
+          Left = 0
+          Top = 7
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '___________________________'
+        end
+        object ZRLabel1085: TZRLabel
+          Left = 5
+          Top = 14
+          Width = 35
+          Height = 1
+          Caption = 'ENDERECO'
+          Variable = ZRField622
+        end
+        object ZRLabel1086: TZRLabel
+          Left = 2
+          Top = 20
+          Width = 9
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Vendedor:'
+        end
+        object ZRLabel1087: TZRLabel
+          Left = 11
+          Top = 20
+          Width = 29
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField624
+        end
+        object ZRLabel1088: TZRLabel
+          Left = 0
+          Top = 21
+          Width = 11
+          Height = 1
+          Caption = 'Plano Pag.:'
+        end
+        object ZRLabel1089: TZRLabel
+          Left = 11
+          Top = 21
+          Width = 29
+          Height = 1
+          Caption = 'dbTerms2'
+          Variable = ZRField623
+        end
+        object ZRLabel1090: TZRLabel
+          Left = 7
+          Top = 13
+          Width = 26
+          Height = 1
+          Alignment.X = zawCenter
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField621
+        end
+        object ZRLabel1091: TZRLabel
+          Left = 10
+          Top = 17
+          Width = 30
+          Height = 1
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField626
+        end
+        object ZRTotalLabel27: TZRTotalLabel
+          Left = 0
+          Top = 1
+          Width = 5
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkSum
+          Level = ZReport5
+          Variable = ZRAggregator18
+        end
+        object ZRLabel1092: TZRLabel
+          Left = 6
+          Top = 1
+          Width = 4
+          Height = 1
+          Caption = 'Vol.'
+        end
+        object ZRLabel1093: TZRLabel
+          Left = 10
+          Top = 18
+          Width = 30
+          Height = 1
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField628
+        end
+        object ZRLabel1094: TZRLabel
+          Left = 0
+          Top = 18
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField629
+        end
+        object ZRLabel1095: TZRLabel
+          Left = 0
+          Top = 17
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField630
+        end
+        object ZRLabel1096: TZRLabel
+          Left = 10
+          Top = 16
+          Width = 29
+          Height = 1
+          Caption = 'ENDERECO'
+          Variable = ZRField631
+        end
+        object ZRLabel1097: TZRLabel
+          Left = 0
+          Top = 16
+          Width = 10
+          Height = 1
+          Caption = 'Entrega:'
+        end
+        object ZRLabel1098: TZRLabel
+          Left = 0
+          Top = 14
+          Width = 5
+          Height = 1
+          Caption = 'End.:'
+        end
+        object ZRLabel1099: TZRLabel
+          Left = 0
+          Top = 15
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '----------------------------------------'
+        end
+        object ZRLabel1100: TZRLabel
+          Left = 0
+          Top = 19
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '----------------------------------------'
+        end
+        object ZRLabel1101: TZRLabel
+          Left = 0
+          Top = 9
+          Width = 33
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'ENDERECO'
+          Variable = ZRField634
+        end
+        object ZRLabel1102: TZRLabel
+          Left = 33
+          Top = 9
+          Width = 7
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'NRO'
+          Variable = ZRField635
+        end
+        object ZRLabel1103: TZRLabel
+          Left = 0
+          Top = 10
+          Width = 21
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'BAIRRO'
+          Variable = ZRField636
+        end
+        object ZRLabel1104: TZRLabel
+          Left = 21
+          Top = 10
+          Width = 16
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'CIDADE'
+          Variable = ZRField637
+        end
+        object ZRLabel1105: TZRLabel
+          Left = 37
+          Top = 10
+          Width = 3
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'UF'
+          Variable = ZRField638
+        end
+        object ZRLabel1106: TZRLabel
+          Left = 7
+          Top = 11
+          Width = 21
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'FONE1'
+          Variable = ZRField640
+        end
+        object ZRLabel1107: TZRLabel
+          Left = 0
+          Top = 11
+          Width = 7
+          Height = 1
+          Caption = 'Fone :'
+        end
+      end
+      object ZRSubDetail17: TZRSubDetail
+        Left = 0
+        Top = 52
+        Width = 40
+        Height = 1
+        DataSet = C_Parcelas
+        Stretch = False
+        MasterIndex = 6
+        object ZRField641: TZRField
+          Format.Width = 10
+          DataField = 'PARCELA'
+          DataSet = C_Parcelas
+        end
+        object ZRField642: TZRField
+          Format.FloatFormat = ffCurrency
+          Format.DisplayMask = '##0.00'
+          Format.Width = 19
+          DataField = 'VALOR'
+          DataSet = C_Parcelas
+        end
+        object ZRField643: TZRField
+          Format.Width = 10
+          DataField = 'VENCIMENTO'
+          DataSet = C_Parcelas
+        end
+        object ZRField644: TZRField
+          Format.Width = 10
+          DataField = 'TITULO'
+          DataSet = C_Parcelas
+        end
+        object ZRField645: TZRField
+          Format.Width = 10
+          DataField = 'STATUS'
+          DataSet = C_Parcelas
+        end
+        object ZRField646: TZRField
+          Format.Width = 10
+          DataField = 'VENDA'
+          DataSet = C_Parcelas
+        end
+        object ZRField647: TZRField
+          Format.FloatFormat = ffCurrency
+          Format.DisplayMask = '##0.00'
+          Format.Width = 19
+          DataField = 'VALORPAGO'
+          DataSet = C_Parcelas
+        end
+        object ZRField648: TZRField
+          Format.Width = 6
+          DataField = 'SIGLA'
+          DataSet = C_Parcelas
+        end
+        object ZRLabel1108: TZRLabel
+          Left = 0
+          Top = 0
+          Width = 4
+          Height = 1
+          Caption = 'Parcela'
+          Variable = ZRField641
+        end
+        object ZRLabel1109: TZRLabel
+          Left = 5
+          Top = 0
+          Width = 6
+          Height = 1
+          Caption = 'Parcela'
+          Variable = ZRField644
+        end
+        object ZRLabel1110: TZRLabel
+          Left = 12
+          Top = 0
+          Width = 8
+          Height = 1
+          Caption = 'Vencimento'
+          Variable = ZRField643
+        end
+        object ZRLabel1111: TZRLabel
+          Left = 21
+          Top = 0
+          Width = 6
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Valor'
+          Variable = ZRField642
+        end
+        object ZRLabel1112: TZRLabel
+          Left = 28
+          Top = 0
+          Width = 7
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Valor'
+          Variable = ZRField647
+        end
+        object ZRLabel1113: TZRLabel
+          Left = 36
+          Top = 0
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel350'
+          Variable = ZRField648
+        end
+        object ZRBand108: TZRBand
+          Left = 0
+          Top = 50
+          Width = 40
+          Height = 2
+          Stretch = False
+          BandType = zbtColumnHeader
+          object ZRLabel1114: TZRLabel
+            Left = 0
+            Top = 0
+            Width = 4
+            Height = 1
+            Caption = '#'
+          end
+          object ZRLabel1115: TZRLabel
+            Left = 5
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Parc.'
+          end
+          object ZRLabel1116: TZRLabel
+            Left = 12
+            Top = 0
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Venc.'
+          end
+          object ZRLabel1117: TZRLabel
+            Left = 21
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Valor'
+          end
+          object ZRLabel1118: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 40
+            Height = 1
+            Frame.Top = 1
+          end
+          object ZRLabel1119: TZRLabel
+            Left = 30
+            Top = 0
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Pgto'
+          end
+          object ZRLabel1120: TZRLabel
+            Left = 36
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'Tp'
+          end
+        end
+        object ZRBand109: TZRBand
+          Left = 0
+          Top = 53
+          Width = 40
+          Height = 8
+          Stretch = False
+          BandType = zbtDetailFooter
+          object ZRLabel1121: TZRLabel
+            Left = 0
+            Top = 7
+            Width = 1
+            Height = 1
+            Caption = '.'
+          end
+          object ZRLabel1122: TZRLabel
+            Left = 0
+            Top = 3
+            Width = 9
+            Height = 1
+            Caption = 'T'#233'cnico:'
+          end
+          object ZRLabel1123: TZRLabel
+            Left = 9
+            Top = 3
+            Width = 31
+            Height = 1
+            Caption = ' _____________________________'
+          end
+          object ZRLabel1124: TZRLabel
+            Left = 0
+            Top = 5
+            Width = 9
+            Height = 1
+            Caption = 'Entregue:'
+          end
+          object ZRLabel1125: TZRLabel
+            Left = 9
+            Top = 5
+            Width = 31
+            Height = 1
+            Caption = ' _____________________________'
+          end
+          object ZRLabel1126: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 39
+            Height = 1
+            Caption = 'Invoice #'
+          end
+        end
+      end
+    end
+    object ZReport6: TZReport
+      Left = -249
+      Top = -879
+      Width = 40
+      Height = 65
+      DataSet = C_Itens
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Courier New'
+      Font.Style = []
+      Options.LineSpacing = zrd16
+      Options.AutoHeight = False
+      Options.Escapes.Model = emEpsonLXSeries
+      Options.PageFrom = 1
+      Options.PageTo = 1
+      Options.PaperType = zptContinuous
+      Options.Acentos = Retorno_Carro
+      Options.Scissors = False
+      Margins.Left = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Minimized = True
+      object ZRField649: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CODIGO'
+        DataSet = C_Invoice
+      end
+      object ZRField650: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_DESCRICAO'
+        DataSet = C_Invoice
+      end
+      object ZRField651: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_UNIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField652: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_QUANTIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField653: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_PRECO'
+        DataSet = C_Invoice
+      end
+      object ZRField654: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_SUBTOTAL'
+        DataSet = C_Invoice
+      end
+      object ZRField655: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_REFERENCIA'
+        DataSet = C_Invoice
+      end
+      object ZRField656: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_TAX'
+        DataSet = C_Invoice
+      end
+      object ZRField657: TZRField
+        Format.Width = 13
+        DataField = 'CODIGO'
+        DataSet = C_Itens
+      end
+      object ZRField658: TZRField
+        Format.Width = 255
+        DataField = 'ITEMDESC'
+        DataSet = C_Itens
+      end
+      object ZRField659: TZRField
+        Format.DisplayMask = '#,##0.###'
+        Format.Width = 19
+        DataField = 'QUANTIDADE'
+        DataSet = C_Itens
+      end
+      object ZRField660: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 10
+        DataField = 'PRECO'
+        DataSet = C_Itens
+      end
+      object ZRField661: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTAL'
+        DataSet = C_Itens
+      end
+      object ZRField662: TZRField
+        Format.Width = 6
+        DataField = 'UNIDADE'
+        DataSet = C_Itens
+      end
+      object ZRField663: TZRField
+        Format.Width = 1
+        DataField = 'TAXAVEL'
+        DataSet = C_Itens
+      end
+      object ZRAggregator21: TZRAggregator
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        Variable = ZRField661
+      end
+      object ZRAggregator22: TZRAggregator
+        Format.DisplayMask = '#,##0.###'
+        Format.Width = 19
+        Variable = ZRField659
+      end
+      object ZRField664: TZRField
+        Format.Width = 255
+        DataField = 'OBS'
+        DataSet = C_Invoice
+      end
+      object ZRField665: TZRField
+        Format.DisplayMask = 'dd/mm/yy'
+        Format.Width = 10
+        DataField = 'DATA'
+        DataSet = C_Invoice
+      end
+      object ZRField666: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTALITENS'
+        DataSet = C_Invoice
+      end
+      object ZRField667: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'IMPOSTO'
+        DataSet = C_Invoice
+      end
+      object ZRField668: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTAL'
+        DataSet = C_Invoice
+      end
+      object ZRField669: TZRField
+        Format.Width = 50
+        DataField = 'NOME'
+        DataSet = C_Invoice
+      end
+      object ZRField670: TZRField
+        Format.DisplayMask = '#,###,###,###,##0.00'
+        Format.Width = 19
+        DataField = 'DESCONTO'
+        DataSet = C_Invoice
+      end
+      object ZRField671: TZRField
+        Format.DisplayMask = '#,###,###,###,##0.00'
+        Format.Width = 19
+        DataField = 'OUTRASDESPESAS'
+        DataSet = C_Invoice
+      end
+      object ZRField672: TZRField
+        Format.Width = 20
+        DataField = 'FONE1'
+        DataSet = C_Invoice
+      end
+      object ZRField673: TZRField
+        Format.Width = 50
+        DataField = 'ENDERECO'
+        DataSet = C_Invoice
+      end
+      object ZRField674: TZRField
+        Format.Width = 30
+        DataField = 'PLANOPAG'
+        DataSet = C_Invoice
+      end
+      object ZRField675: TZRField
+        Format.Width = 50
+        DataField = 'VENDEDOR'
+        DataSet = C_Invoice
+      end
+      object ZRField676: TZRField
+        Format.Width = 1255
+        DataField = 'OBS'
+        DataSet = C_Invoice
+      end
+      object ZRField677: TZRField
+        Format.Width = 50
+        DataField = 'CAMPO01'
+        DataSet = C_Invoice
+      end
+      object ZRField678: TZRField
+        Format.Width = 15
+        DataField = 'LOCAL'
+        DataSet = C_Itens
+      end
+      object ZRField679: TZRField
+        Format.Width = 50
+        DataField = 'CAMPO02'
+        DataSet = C_Invoice
+      end
+      object ZRField680: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CAMPO2'
+        DataSet = C_Invoice
+      end
+      object ZRField681: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CAMPO1'
+        DataSet = C_Invoice
+      end
+      object ZRField682: TZRField
+        Format.Width = 10
+        DataField = 'DATAENTREGA'
+        DataSet = C_Invoice
+      end
+      object ZRField683: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_FABRICANTE'
+        DataSet = C_Invoice
+      end
+      object ZRField684: TZRField
+        Format.Width = 30
+        DataField = 'FABRICANTE'
+        DataSet = C_Itens
+      end
+      object ZRField685: TZRField
+        Format.Width = 50
+        DataField = 'ENDERECO'
+        DataSet = C_Invoice
+      end
+      object ZRField686: TZRField
+        Format.Width = 4
+        DataField = 'NRO'
+        DataSet = C_Invoice
+      end
+      object ZRField687: TZRField
+        Format.Width = 30
+        DataField = 'BAIRRO'
+        DataSet = C_Invoice
+      end
+      object ZRField688: TZRField
+        Format.Width = 30
+        DataField = 'CIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField689: TZRField
+        DataField = 'UF'
+        DataSet = C_Invoice
+      end
+      object ZRField690: TZRField
+        Format.Width = 10
+        DataField = 'CEP'
+        DataSet = C_Invoice
+      end
+      object ZRField691: TZRField
+        Format.Width = 20
+        DataField = 'FONE1'
+        DataSet = C_Invoice
+      end
+      object ZRGroup5: TZRGroup
+        Variable = ZRField678
+      end
+      object ZRBand110: TZRBand
+        Left = 0
+        Top = 11
+        Width = 40
+        Height = 5
+        Stretch = False
+        BandType = zbtHeader
+        object ZRLabel1127: TZRLabel
+          Left = 1
+          Top = 2
+          Width = 39
+          Height = 1
+          Caption = 'zrCidade3'
+        end
+        object ZRLabel1128: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 39
+          Height = 1
+          Caption = 'zrEndereco3'
+        end
+        object ZRLabel1129: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 39
+          Height = 1
+          Caption = 'zrNomeEmpresa3'
+        end
+        object ZRLabel1130: TZRLabel
+          Left = 1
+          Top = 3
+          Width = 39
+          Height = 1
+          Caption = 'zrFone'
+        end
+      end
+      object ZRBand111: TZRBand
+        Left = 0
+        Top = 16
+        Width = 40
+        Height = 3
+        Stretch = False
+        BandType = zbtChild
+        ParentIndex = 0
+        object ZRLabel1131: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 37
+          Height = 1
+          FontStyles = [zfsBold]
+          Alignment.X = zawCenter
+          Caption = 'Invoice # '
+          BeforePrint = ZRLabel86BeforePrint
+        end
+        object ZRLabel1132: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 13
+          Height = 1
+          Caption = 'ZRLabel87'
+          Variable = ZRField665
+        end
+        object ZRSystemLabel13: TZRSystemLabel
+          Left = 24
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          DataKind = zsdTime
+        end
+        object ZRLabel1133: TZRLabel
+          Left = 1
+          Top = 2
+          Width = 37
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'zrNomeCodigoCliente'
+        end
+      end
+      object ZRBand112: TZRBand
+        Left = 0
+        Top = 19
+        Width = 40
+        Height = 4
+        Frame.Top = 1
+        Frame.Bottom = 1
+        Stretch = False
+        BandType = zbtColumnHeader
+        object ZRLabel1134: TZRLabel
+          Left = 0
+          Top = 1
+          Width = 6
+          Height = 1
+          Caption = 'ID'
+          Variable = ZRField649
+        end
+        object ZRLabel1135: TZRLabel
+          Left = 7
+          Top = 1
+          Width = 28
+          Height = 1
+          Caption = 'ID'
+          Variable = ZRField650
+        end
+        object ZRLabel1136: TZRLabel
+          Left = 37
+          Top = 1
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel90'
+          Variable = ZRField651
+        end
+        object ZRLabel1137: TZRLabel
+          Left = 0
+          Top = 2
+          Width = 11
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField652
+        end
+        object ZRLabel1138: TZRLabel
+          Left = 12
+          Top = 2
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField653
+        end
+        object ZRLabel1139: TZRLabel
+          Left = 25
+          Top = 2
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField654
+        end
+        object ZRLabel1140: TZRLabel
+          Left = 37
+          Top = 2
+          Width = 3
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel91'
+          Variable = ZRField656
+        end
+      end
+      object ZRBand113: TZRBand
+        Left = 0
+        Top = 23
+        Width = 40
+        Height = 1
+        Stretch = False
+        BandType = zbtGroupHeader
+        GroupOrder = 0
+        object ZRLabel1141: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 38
+          Height = 1
+          Caption = 'Localizacao'
+          Variable = ZRField678
+        end
+      end
+      object ZRBand114: TZRBand
+        Left = 0
+        Top = 24
+        Width = 40
+        Height = 2
+        Stretch = False
+        BandType = zbtDetail
+        object ZRLabel1142: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 8
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField657
+        end
+        object ZRLabel1143: TZRLabel
+          Left = 10
+          Top = 0
+          Width = 25
+          Height = 1
+          Caption = 'ZRLabel95'
+          Variable = ZRField658
+        end
+        object ZRLabel1144: TZRLabel
+          Left = 37
+          Top = 0
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel95'
+          Variable = ZRField662
+        end
+        object ZRLabel1145: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 8
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField659
+        end
+        object ZRLabel1146: TZRLabel
+          Left = 12
+          Top = 1
+          Width = 5
+          Height = 1
+          AutoSize = zasWidth
+          Caption = 'ZRLabel95'
+          Variable = ZRField660
+          WordWrap = True
+        end
+        object ZRLabel1147: TZRLabel
+          Left = 26
+          Top = 1
+          Width = 10
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField661
+        end
+        object ZRLabel1148: TZRLabel
+          Left = 10
+          Top = 1
+          Width = 1
+          Height = 1
+          Caption = 'x'
+        end
+        object ZRLabel1149: TZRLabel
+          Left = 24
+          Top = 1
+          Width = 1
+          Height = 1
+          Caption = '='
+        end
+        object ZRLabel1150: TZRLabel
+          Left = 37
+          Top = 1
+          Width = 3
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField663
+        end
+      end
+      object ZRBand115: TZRBand
+        Left = 0
+        Top = 26
+        Width = 40
+        Height = 1
+        Frame.Top = 1
+        Stretch = False
+        BandType = zbtDetailFooter
+      end
+      object ZRBand116: TZRBand
+        Left = 0
+        Top = 27
+        Width = 40
+        Height = 23
+        Stretch = False
+        BandType = zbtFooter
+        object ZRLabel1151: TZRLabel
+          Left = 17
+          Top = 0
+          Width = 8
+          Height = 1
+          Caption = 'Total  +'
+        end
+        object ZRTotalLabel28: TZRTotalLabel
+          Left = 0
+          Top = 0
+          Width = 5
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkCount
+          Level = ZReport6
+          Variable = ZRAggregator22
+        end
+        object ZRLabel1152: TZRLabel
+          Left = 6
+          Top = 0
+          Width = 6
+          Height = 1
+          Caption = 'itens'
+        end
+        object ZRLabel1153: TZRLabel
+          Left = 0
+          Top = 5
+          Width = 40
+          Height = 1
+          AutoSize = zasHeight
+          Caption = 'ZRLabel106'
+          Variable = ZRField664
+          WordWrap = True
+        end
+        object ZRLabel1154: TZRLabel
+          Left = 11
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Descontos -'
+          BeforePrint = zrlDescontoBeforePrint
+        end
+        object ZRLabel1155: TZRLabel
+          Left = 25
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField670
+        end
+        object ZRLabel1156: TZRLabel
+          Left = 14
+          Top = 2
+          Width = 11
+          Height = 1
+          Caption = 'Acrescimo +'
+        end
+        object ZRLabel1157: TZRLabel
+          Left = 25
+          Top = 2
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField671
+        end
+        object ZRLabel1158: TZRLabel
+          Left = 8
+          Top = 3
+          Width = 17
+          Height = 1
+          FontStyles = [zfsBold]
+          Caption = 'TOTAL FINAL = '
+        end
+        object ZRLabel1159: TZRLabel
+          Left = 25
+          Top = 3
+          Width = 14
+          Height = 1
+          FontStyles = [zfsBold]
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField668
+        end
+        object ZRTotalLabel29: TZRTotalLabel
+          Left = 25
+          Top = 0
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkSum
+          Level = ZReport6
+          Variable = ZRAggregator21
+        end
+        object ZRLabel1160: TZRLabel
+          Left = 0
+          Top = 8
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'NOME'
+          Variable = ZRField669
+        end
+        object ZRLabel1161: TZRLabel
+          Left = 0
+          Top = 7
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '___________________________'
+        end
+        object ZRLabel1162: TZRLabel
+          Left = 5
+          Top = 14
+          Width = 35
+          Height = 1
+          Caption = 'ENDERECO'
+          Variable = ZRField673
+        end
+        object ZRLabel1163: TZRLabel
+          Left = 2
+          Top = 20
+          Width = 9
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Vendedor:'
+        end
+        object ZRLabel1164: TZRLabel
+          Left = 11
+          Top = 20
+          Width = 29
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField675
+        end
+        object ZRLabel1165: TZRLabel
+          Left = 0
+          Top = 21
+          Width = 11
+          Height = 1
+          Caption = 'Plano Pag.:'
+        end
+        object ZRLabel1166: TZRLabel
+          Left = 11
+          Top = 21
+          Width = 29
+          Height = 1
+          Caption = 'dbTerms2'
+          Variable = ZRField674
+        end
+        object ZRLabel1167: TZRLabel
+          Left = 7
+          Top = 13
+          Width = 26
+          Height = 1
+          Alignment.X = zawCenter
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField672
+        end
+        object ZRLabel1168: TZRLabel
+          Left = 10
+          Top = 17
+          Width = 30
+          Height = 1
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField677
+        end
+        object ZRTotalLabel30: TZRTotalLabel
+          Left = 0
+          Top = 1
+          Width = 5
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkSum
+          Level = ZReport6
+          Variable = ZRAggregator22
+        end
+        object ZRLabel1169: TZRLabel
+          Left = 6
+          Top = 1
+          Width = 4
+          Height = 1
+          Caption = 'Vol.'
+        end
+        object ZRLabel1170: TZRLabel
+          Left = 10
+          Top = 18
+          Width = 30
+          Height = 1
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField679
+        end
+        object ZRLabel1171: TZRLabel
+          Left = 0
+          Top = 18
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField680
+        end
+        object ZRLabel1172: TZRLabel
+          Left = 0
+          Top = 17
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField681
+        end
+        object ZRLabel1173: TZRLabel
+          Left = 10
+          Top = 16
+          Width = 29
+          Height = 1
+          Caption = 'ENDERECO'
+          Variable = ZRField682
+        end
+        object ZRLabel1174: TZRLabel
+          Left = 0
+          Top = 16
+          Width = 10
+          Height = 1
+          Caption = 'Entrega:'
+        end
+        object ZRLabel1175: TZRLabel
+          Left = 0
+          Top = 14
+          Width = 5
+          Height = 1
+          Caption = 'End.:'
+        end
+        object ZRLabel1176: TZRLabel
+          Left = 0
+          Top = 15
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '----------------------------------------'
+        end
+        object ZRLabel1177: TZRLabel
+          Left = 0
+          Top = 19
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '----------------------------------------'
+        end
+        object ZRLabel1178: TZRLabel
+          Left = 0
+          Top = 9
+          Width = 33
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'ENDERECO'
+          Variable = ZRField685
+        end
+        object ZRLabel1179: TZRLabel
+          Left = 33
+          Top = 9
+          Width = 7
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'NRO'
+          Variable = ZRField686
+        end
+        object ZRLabel1180: TZRLabel
+          Left = 0
+          Top = 10
+          Width = 21
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'BAIRRO'
+          Variable = ZRField687
+        end
+        object ZRLabel1181: TZRLabel
+          Left = 21
+          Top = 10
+          Width = 16
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'CIDADE'
+          Variable = ZRField688
+        end
+        object ZRLabel1182: TZRLabel
+          Left = 37
+          Top = 10
+          Width = 3
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'UF'
+          Variable = ZRField689
+        end
+        object ZRLabel1183: TZRLabel
+          Left = 7
+          Top = 11
+          Width = 21
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'FONE1'
+          Variable = ZRField691
+        end
+        object ZRLabel1184: TZRLabel
+          Left = 0
+          Top = 11
+          Width = 7
+          Height = 1
+          Caption = 'Fone :'
+        end
+      end
+      object ZRSubDetail18: TZRSubDetail
+        Left = 0
+        Top = 52
+        Width = 40
+        Height = 1
+        DataSet = C_Parcelas
+        Stretch = False
+        MasterIndex = 6
+        object ZRField692: TZRField
+          Format.Width = 10
+          DataField = 'PARCELA'
+          DataSet = C_Parcelas
+        end
+        object ZRField693: TZRField
+          Format.FloatFormat = ffCurrency
+          Format.DisplayMask = '##0.00'
+          Format.Width = 19
+          DataField = 'VALOR'
+          DataSet = C_Parcelas
+        end
+        object ZRField694: TZRField
+          Format.Width = 10
+          DataField = 'VENCIMENTO'
+          DataSet = C_Parcelas
+        end
+        object ZRField695: TZRField
+          Format.Width = 10
+          DataField = 'TITULO'
+          DataSet = C_Parcelas
+        end
+        object ZRField696: TZRField
+          Format.Width = 10
+          DataField = 'STATUS'
+          DataSet = C_Parcelas
+        end
+        object ZRField697: TZRField
+          Format.Width = 10
+          DataField = 'VENDA'
+          DataSet = C_Parcelas
+        end
+        object ZRField698: TZRField
+          Format.FloatFormat = ffCurrency
+          Format.DisplayMask = '##0.00'
+          Format.Width = 19
+          DataField = 'VALORPAGO'
+          DataSet = C_Parcelas
+        end
+        object ZRField699: TZRField
+          Format.Width = 6
+          DataField = 'SIGLA'
+          DataSet = C_Parcelas
+        end
+        object ZRLabel1185: TZRLabel
+          Left = 0
+          Top = 0
+          Width = 4
+          Height = 1
+          Caption = 'Parcela'
+          Variable = ZRField692
+        end
+        object ZRLabel1186: TZRLabel
+          Left = 5
+          Top = 0
+          Width = 6
+          Height = 1
+          Caption = 'Parcela'
+          Variable = ZRField695
+        end
+        object ZRLabel1187: TZRLabel
+          Left = 12
+          Top = 0
+          Width = 8
+          Height = 1
+          Caption = 'Vencimento'
+          Variable = ZRField694
+        end
+        object ZRLabel1188: TZRLabel
+          Left = 21
+          Top = 0
+          Width = 6
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Valor'
+          Variable = ZRField693
+        end
+        object ZRLabel1189: TZRLabel
+          Left = 28
+          Top = 0
+          Width = 7
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Valor'
+          Variable = ZRField698
+        end
+        object ZRLabel1190: TZRLabel
+          Left = 36
+          Top = 0
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel350'
+          Variable = ZRField699
+        end
+        object ZRBand117: TZRBand
+          Left = 0
+          Top = 50
+          Width = 40
+          Height = 2
+          Stretch = False
+          BandType = zbtColumnHeader
+          object ZRLabel1191: TZRLabel
+            Left = 0
+            Top = 0
+            Width = 4
+            Height = 1
+            Caption = '#'
+          end
+          object ZRLabel1192: TZRLabel
+            Left = 5
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Parc.'
+          end
+          object ZRLabel1193: TZRLabel
+            Left = 12
+            Top = 0
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Venc.'
+          end
+          object ZRLabel1194: TZRLabel
+            Left = 21
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Valor'
+          end
+          object ZRLabel1195: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 40
+            Height = 1
+            Frame.Top = 1
+          end
+          object ZRLabel1196: TZRLabel
+            Left = 30
+            Top = 0
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Pgto'
+          end
+          object ZRLabel1197: TZRLabel
+            Left = 36
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'Tp'
+          end
+        end
+        object ZRBand118: TZRBand
+          Left = 0
+          Top = 53
+          Width = 40
+          Height = 8
+          Stretch = False
+          BandType = zbtDetailFooter
+          object ZRLabel1198: TZRLabel
+            Left = 0
+            Top = 7
+            Width = 1
+            Height = 1
+            Caption = '.'
+          end
+          object ZRLabel1199: TZRLabel
+            Left = 0
+            Top = 3
+            Width = 9
+            Height = 1
+            Caption = 'T'#233'cnico:'
+          end
+          object ZRLabel1200: TZRLabel
+            Left = 9
+            Top = 3
+            Width = 31
+            Height = 1
+            Caption = ' _____________________________'
+          end
+          object ZRLabel1201: TZRLabel
+            Left = 0
+            Top = 5
+            Width = 9
+            Height = 1
+            Caption = 'Entregue:'
+          end
+          object ZRLabel1202: TZRLabel
+            Left = 9
+            Top = 5
+            Width = 31
+            Height = 1
+            Caption = ' _____________________________'
+          end
+          object ZRLabel1203: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 39
+            Height = 1
+            Caption = 'Invoice #'
+          end
+        end
+      end
+      object ZReport7: TZReport
+        Left = -249
+        Top = -879
+        Width = 40
+        Height = 65
+        DataSet = C_Itens
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Courier New'
+        Font.Style = []
+        Options.LineSpacing = zrd16
+        Options.AutoHeight = False
+        Options.Escapes.Model = emEpsonLXSeries
+        Options.PageFrom = 1
+        Options.PageTo = 1
+        Options.PaperType = zptContinuous
+        Options.Acentos = Retorno_Carro
+        Options.Scissors = False
+        Margins.Left = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Minimized = True
+        object ZRField700: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CODIGO'
+          DataSet = C_Invoice
+        end
+        object ZRField701: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_DESCRICAO'
+          DataSet = C_Invoice
+        end
+        object ZRField702: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_UNIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField703: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_QUANTIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField704: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_PRECO'
+          DataSet = C_Invoice
+        end
+        object ZRField705: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_SUBTOTAL'
+          DataSet = C_Invoice
+        end
+        object ZRField706: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_REFERENCIA'
+          DataSet = C_Invoice
+        end
+        object ZRField707: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_TAX'
+          DataSet = C_Invoice
+        end
+        object ZRField708: TZRField
+          Format.Width = 13
+          DataField = 'CODIGO'
+          DataSet = C_Itens
+        end
+        object ZRField709: TZRField
+          Format.Width = 255
+          DataField = 'ITEMDESC'
+          DataSet = C_Itens
+        end
+        object ZRField710: TZRField
+          Format.DisplayMask = '#,##0.###'
+          Format.Width = 19
+          DataField = 'QUANTIDADE'
+          DataSet = C_Itens
+        end
+        object ZRField711: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 10
+          DataField = 'PRECO'
+          DataSet = C_Itens
+        end
+        object ZRField712: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTAL'
+          DataSet = C_Itens
+        end
+        object ZRField713: TZRField
+          Format.Width = 6
+          DataField = 'UNIDADE'
+          DataSet = C_Itens
+        end
+        object ZRField714: TZRField
+          Format.Width = 1
+          DataField = 'TAXAVEL'
+          DataSet = C_Itens
+        end
+        object ZRAggregator23: TZRAggregator
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          Variable = ZRField712
+        end
+        object ZRAggregator24: TZRAggregator
+          Format.DisplayMask = '#,##0.###'
+          Format.Width = 19
+          Variable = ZRField710
+        end
+        object ZRField715: TZRField
+          Format.Width = 255
+          DataField = 'OBS'
+          DataSet = C_Invoice
+        end
+        object ZRField716: TZRField
+          Format.DisplayMask = 'dd/mm/yy'
+          Format.Width = 10
+          DataField = 'DATA'
+          DataSet = C_Invoice
+        end
+        object ZRField717: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTALITENS'
+          DataSet = C_Invoice
+        end
+        object ZRField718: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'IMPOSTO'
+          DataSet = C_Invoice
+        end
+        object ZRField719: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTAL'
+          DataSet = C_Invoice
+        end
+        object ZRField720: TZRField
+          Format.Width = 50
+          DataField = 'NOME'
+          DataSet = C_Invoice
+        end
+        object ZRField721: TZRField
+          Format.DisplayMask = '#,###,###,###,##0.00'
+          Format.Width = 19
+          DataField = 'DESCONTO'
+          DataSet = C_Invoice
+        end
+        object ZRField722: TZRField
+          Format.DisplayMask = '#,###,###,###,##0.00'
+          Format.Width = 19
+          DataField = 'OUTRASDESPESAS'
+          DataSet = C_Invoice
+        end
+        object ZRField723: TZRField
+          Format.Width = 20
+          DataField = 'FONE1'
+          DataSet = C_Invoice
+        end
+        object ZRField724: TZRField
+          Format.Width = 50
+          DataField = 'ENDERECO'
+          DataSet = C_Invoice
+        end
+        object ZRField725: TZRField
+          Format.Width = 30
+          DataField = 'PLANOPAG'
+          DataSet = C_Invoice
+        end
+        object ZRField726: TZRField
+          Format.Width = 50
+          DataField = 'VENDEDOR'
+          DataSet = C_Invoice
+        end
+        object ZRField727: TZRField
+          Format.Width = 1255
+          DataField = 'OBS'
+          DataSet = C_Invoice
+        end
+        object ZRField728: TZRField
+          Format.Width = 50
+          DataField = 'CAMPO01'
+          DataSet = C_Invoice
+        end
+        object ZRField729: TZRField
+          Format.Width = 15
+          DataField = 'LOCAL'
+          DataSet = C_Itens
+        end
+        object ZRField730: TZRField
+          Format.Width = 50
+          DataField = 'CAMPO02'
+          DataSet = C_Invoice
+        end
+        object ZRField731: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CAMPO2'
+          DataSet = C_Invoice
+        end
+        object ZRField732: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CAMPO1'
+          DataSet = C_Invoice
+        end
+        object ZRField733: TZRField
+          Format.Width = 10
+          DataField = 'DATAENTREGA'
+          DataSet = C_Invoice
+        end
+        object ZRField734: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_FABRICANTE'
+          DataSet = C_Invoice
+        end
+        object ZRField735: TZRField
+          Format.Width = 30
+          DataField = 'FABRICANTE'
+          DataSet = C_Itens
+        end
+        object ZRField736: TZRField
+          Format.Width = 50
+          DataField = 'ENDERECO'
+          DataSet = C_Invoice
+        end
+        object ZRField737: TZRField
+          Format.Width = 4
+          DataField = 'NRO'
+          DataSet = C_Invoice
+        end
+        object ZRField738: TZRField
+          Format.Width = 30
+          DataField = 'BAIRRO'
+          DataSet = C_Invoice
+        end
+        object ZRField739: TZRField
+          Format.Width = 30
+          DataField = 'CIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField740: TZRField
+          DataField = 'UF'
+          DataSet = C_Invoice
+        end
+        object ZRField741: TZRField
+          Format.Width = 10
+          DataField = 'CEP'
+          DataSet = C_Invoice
+        end
+        object ZRField742: TZRField
+          Format.Width = 20
+          DataField = 'FONE1'
+          DataSet = C_Invoice
+        end
+        object ZRGroup6: TZRGroup
+          Variable = ZRField729
+        end
+        object ZRBand119: TZRBand
+          Left = 0
+          Top = 11
+          Width = 40
+          Height = 5
+          Stretch = False
+          BandType = zbtHeader
+          object ZRLabel1204: TZRLabel
+            Left = 1
+            Top = 2
+            Width = 39
+            Height = 1
+            Caption = 'zrCidade3'
+          end
+          object ZRLabel1205: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 39
+            Height = 1
+            Caption = 'zrEndereco3'
+          end
+          object ZRLabel1206: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 39
+            Height = 1
+            Caption = 'zrNomeEmpresa3'
+          end
+          object ZRLabel1207: TZRLabel
+            Left = 1
+            Top = 3
+            Width = 39
+            Height = 1
+            Caption = 'zrFone'
+          end
+        end
+        object ZRBand120: TZRBand
+          Left = 0
+          Top = 16
+          Width = 40
+          Height = 3
+          Stretch = False
+          BandType = zbtChild
+          ParentIndex = 0
+          object ZRLabel1208: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 37
+            Height = 1
+            FontStyles = [zfsBold]
+            Alignment.X = zawCenter
+            Caption = 'Invoice # '
+            BeforePrint = ZRLabel86BeforePrint
+          end
+          object ZRLabel1209: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 13
+            Height = 1
+            Caption = 'ZRLabel87'
+            Variable = ZRField716
+          end
+          object ZRSystemLabel14: TZRSystemLabel
+            Left = 24
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            DataKind = zsdTime
+          end
+          object ZRLabel1210: TZRLabel
+            Left = 1
+            Top = 2
+            Width = 37
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'zrNomeCodigoCliente'
+          end
+        end
+        object ZRBand121: TZRBand
+          Left = 0
+          Top = 19
+          Width = 40
+          Height = 4
+          Frame.Top = 1
+          Frame.Bottom = 1
+          Stretch = False
+          BandType = zbtColumnHeader
+          object ZRLabel1211: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 6
+            Height = 1
+            Caption = 'ID'
+            Variable = ZRField700
+          end
+          object ZRLabel1212: TZRLabel
+            Left = 7
+            Top = 1
+            Width = 28
+            Height = 1
+            Caption = 'ID'
+            Variable = ZRField701
+          end
+          object ZRLabel1213: TZRLabel
+            Left = 37
+            Top = 1
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel90'
+            Variable = ZRField702
+          end
+          object ZRLabel1214: TZRLabel
+            Left = 0
+            Top = 2
+            Width = 11
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField703
+          end
+          object ZRLabel1215: TZRLabel
+            Left = 12
+            Top = 2
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField704
+          end
+          object ZRLabel1216: TZRLabel
+            Left = 25
+            Top = 2
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField705
+          end
+          object ZRLabel1217: TZRLabel
+            Left = 37
+            Top = 2
+            Width = 3
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel91'
+            Variable = ZRField707
+          end
+        end
+        object ZRBand122: TZRBand
+          Left = 0
+          Top = 23
+          Width = 40
+          Height = 1
+          Stretch = False
+          BandType = zbtGroupHeader
+          GroupOrder = 0
+          object ZRLabel1218: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 38
+            Height = 1
+            Caption = 'Localizacao'
+            Variable = ZRField729
+          end
+        end
+        object ZRBand123: TZRBand
+          Left = 0
+          Top = 24
+          Width = 40
+          Height = 2
+          Stretch = False
+          BandType = zbtDetail
+          object ZRLabel1219: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField708
+          end
+          object ZRLabel1220: TZRLabel
+            Left = 10
+            Top = 0
+            Width = 25
+            Height = 1
+            Caption = 'ZRLabel95'
+            Variable = ZRField709
+          end
+          object ZRLabel1221: TZRLabel
+            Left = 37
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel95'
+            Variable = ZRField713
+          end
+          object ZRLabel1222: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField710
+          end
+          object ZRLabel1223: TZRLabel
+            Left = 12
+            Top = 1
+            Width = 5
+            Height = 1
+            AutoSize = zasWidth
+            Caption = 'ZRLabel95'
+            Variable = ZRField711
+            WordWrap = True
+          end
+          object ZRLabel1224: TZRLabel
+            Left = 26
+            Top = 1
+            Width = 10
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField712
+          end
+          object ZRLabel1225: TZRLabel
+            Left = 10
+            Top = 1
+            Width = 1
+            Height = 1
+            Caption = 'x'
+          end
+          object ZRLabel1226: TZRLabel
+            Left = 24
+            Top = 1
+            Width = 1
+            Height = 1
+            Caption = '='
+          end
+          object ZRLabel1227: TZRLabel
+            Left = 37
+            Top = 1
+            Width = 3
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField714
+          end
+        end
+        object ZRBand124: TZRBand
+          Left = 0
+          Top = 26
+          Width = 40
+          Height = 1
+          Frame.Top = 1
+          Stretch = False
+          BandType = zbtDetailFooter
+        end
+        object ZRBand125: TZRBand
+          Left = 0
+          Top = 27
+          Width = 40
+          Height = 23
+          Stretch = False
+          BandType = zbtFooter
+          object ZRLabel1228: TZRLabel
+            Left = 17
+            Top = 0
+            Width = 8
+            Height = 1
+            Caption = 'Total  +'
+          end
+          object ZRTotalLabel31: TZRTotalLabel
+            Left = 0
+            Top = 0
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkCount
+            Level = ZReport7
+            Variable = ZRAggregator24
+          end
+          object ZRLabel1229: TZRLabel
+            Left = 6
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'itens'
+          end
+          object ZRLabel1230: TZRLabel
+            Left = 0
+            Top = 5
+            Width = 40
+            Height = 1
+            AutoSize = zasHeight
+            Caption = 'ZRLabel106'
+            Variable = ZRField715
+            WordWrap = True
+          end
+          object ZRLabel1231: TZRLabel
+            Left = 11
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Descontos -'
+            BeforePrint = zrlDescontoBeforePrint
+          end
+          object ZRLabel1232: TZRLabel
+            Left = 25
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField721
+          end
+          object ZRLabel1233: TZRLabel
+            Left = 14
+            Top = 2
+            Width = 11
+            Height = 1
+            Caption = 'Acrescimo +'
+          end
+          object ZRLabel1234: TZRLabel
+            Left = 25
+            Top = 2
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField722
+          end
+          object ZRLabel1235: TZRLabel
+            Left = 8
+            Top = 3
+            Width = 17
+            Height = 1
+            FontStyles = [zfsBold]
+            Caption = 'TOTAL FINAL = '
+          end
+          object ZRLabel1236: TZRLabel
+            Left = 25
+            Top = 3
+            Width = 14
+            Height = 1
+            FontStyles = [zfsBold]
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField719
+          end
+          object ZRTotalLabel32: TZRTotalLabel
+            Left = 25
+            Top = 0
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkSum
+            Level = ZReport7
+            Variable = ZRAggregator23
+          end
+          object ZRLabel1237: TZRLabel
+            Left = 0
+            Top = 8
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'NOME'
+            Variable = ZRField720
+          end
+          object ZRLabel1238: TZRLabel
+            Left = 0
+            Top = 7
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '___________________________'
+          end
+          object ZRLabel1239: TZRLabel
+            Left = 5
+            Top = 14
+            Width = 35
+            Height = 1
+            Caption = 'ENDERECO'
+            Variable = ZRField724
+          end
+          object ZRLabel1240: TZRLabel
+            Left = 2
+            Top = 20
+            Width = 9
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Vendedor:'
+          end
+          object ZRLabel1241: TZRLabel
+            Left = 11
+            Top = 20
+            Width = 29
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField726
+          end
+          object ZRLabel1242: TZRLabel
+            Left = 0
+            Top = 21
+            Width = 11
+            Height = 1
+            Caption = 'Plano Pag.:'
+          end
+          object ZRLabel1243: TZRLabel
+            Left = 11
+            Top = 21
+            Width = 29
+            Height = 1
+            Caption = 'dbTerms2'
+            Variable = ZRField725
+          end
+          object ZRLabel1244: TZRLabel
+            Left = 7
+            Top = 13
+            Width = 26
+            Height = 1
+            Alignment.X = zawCenter
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField723
+          end
+          object ZRLabel1245: TZRLabel
+            Left = 10
+            Top = 17
+            Width = 30
+            Height = 1
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField728
+          end
+          object ZRTotalLabel33: TZRTotalLabel
+            Left = 0
+            Top = 1
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkSum
+            Level = ZReport7
+            Variable = ZRAggregator24
+          end
+          object ZRLabel1246: TZRLabel
+            Left = 6
+            Top = 1
+            Width = 4
+            Height = 1
+            Caption = 'Vol.'
+          end
+          object ZRLabel1247: TZRLabel
+            Left = 10
+            Top = 18
+            Width = 30
+            Height = 1
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField730
+          end
+          object ZRLabel1248: TZRLabel
+            Left = 0
+            Top = 18
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField731
+          end
+          object ZRLabel1249: TZRLabel
+            Left = 0
+            Top = 17
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField732
+          end
+          object ZRLabel1250: TZRLabel
+            Left = 10
+            Top = 16
+            Width = 29
+            Height = 1
+            Caption = 'ENDERECO'
+            Variable = ZRField733
+          end
+          object ZRLabel1251: TZRLabel
+            Left = 0
+            Top = 16
+            Width = 10
+            Height = 1
+            Caption = 'Entrega:'
+          end
+          object ZRLabel1252: TZRLabel
+            Left = 0
+            Top = 14
+            Width = 5
+            Height = 1
+            Caption = 'End.:'
+          end
+          object ZRLabel1253: TZRLabel
+            Left = 0
+            Top = 15
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '----------------------------------------'
+          end
+          object ZRLabel1254: TZRLabel
+            Left = 0
+            Top = 19
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '----------------------------------------'
+          end
+          object ZRLabel1255: TZRLabel
+            Left = 0
+            Top = 9
+            Width = 33
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'ENDERECO'
+            Variable = ZRField736
+          end
+          object ZRLabel1256: TZRLabel
+            Left = 33
+            Top = 9
+            Width = 7
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'NRO'
+            Variable = ZRField737
+          end
+          object ZRLabel1257: TZRLabel
+            Left = 0
+            Top = 10
+            Width = 21
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'BAIRRO'
+            Variable = ZRField738
+          end
+          object ZRLabel1258: TZRLabel
+            Left = 21
+            Top = 10
+            Width = 16
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'CIDADE'
+            Variable = ZRField739
+          end
+          object ZRLabel1259: TZRLabel
+            Left = 37
+            Top = 10
+            Width = 3
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'UF'
+            Variable = ZRField740
+          end
+          object ZRLabel1260: TZRLabel
+            Left = 7
+            Top = 11
+            Width = 21
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'FONE1'
+            Variable = ZRField742
+          end
+          object ZRLabel1261: TZRLabel
+            Left = 0
+            Top = 11
+            Width = 7
+            Height = 1
+            Caption = 'Fone :'
+          end
+        end
+        object ZRSubDetail19: TZRSubDetail
+          Left = 0
+          Top = 52
+          Width = 40
+          Height = 1
+          DataSet = C_Parcelas
+          Stretch = False
+          MasterIndex = 6
+          object ZRField743: TZRField
+            Format.Width = 10
+            DataField = 'PARCELA'
+            DataSet = C_Parcelas
+          end
+          object ZRField744: TZRField
+            Format.FloatFormat = ffCurrency
+            Format.DisplayMask = '##0.00'
+            Format.Width = 19
+            DataField = 'VALOR'
+            DataSet = C_Parcelas
+          end
+          object ZRField745: TZRField
+            Format.Width = 10
+            DataField = 'VENCIMENTO'
+            DataSet = C_Parcelas
+          end
+          object ZRField746: TZRField
+            Format.Width = 10
+            DataField = 'TITULO'
+            DataSet = C_Parcelas
+          end
+          object ZRField747: TZRField
+            Format.Width = 10
+            DataField = 'STATUS'
+            DataSet = C_Parcelas
+          end
+          object ZRField748: TZRField
+            Format.Width = 10
+            DataField = 'VENDA'
+            DataSet = C_Parcelas
+          end
+          object ZRField749: TZRField
+            Format.FloatFormat = ffCurrency
+            Format.DisplayMask = '##0.00'
+            Format.Width = 19
+            DataField = 'VALORPAGO'
+            DataSet = C_Parcelas
+          end
+          object ZRField750: TZRField
+            Format.Width = 6
+            DataField = 'SIGLA'
+            DataSet = C_Parcelas
+          end
+          object ZRLabel1262: TZRLabel
+            Left = 0
+            Top = 0
+            Width = 4
+            Height = 1
+            Caption = 'Parcela'
+            Variable = ZRField743
+          end
+          object ZRLabel1263: TZRLabel
+            Left = 5
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Parcela'
+            Variable = ZRField746
+          end
+          object ZRLabel1264: TZRLabel
+            Left = 12
+            Top = 0
+            Width = 8
+            Height = 1
+            Caption = 'Vencimento'
+            Variable = ZRField745
+          end
+          object ZRLabel1265: TZRLabel
+            Left = 21
+            Top = 0
+            Width = 6
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Valor'
+            Variable = ZRField744
+          end
+          object ZRLabel1266: TZRLabel
+            Left = 28
+            Top = 0
+            Width = 7
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Valor'
+            Variable = ZRField749
+          end
+          object ZRLabel1267: TZRLabel
+            Left = 36
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel350'
+            Variable = ZRField750
+          end
+          object ZRBand126: TZRBand
+            Left = 0
+            Top = 50
+            Width = 40
+            Height = 2
+            Stretch = False
+            BandType = zbtColumnHeader
+            object ZRLabel1268: TZRLabel
+              Left = 0
+              Top = 0
+              Width = 4
+              Height = 1
+              Caption = '#'
+            end
+            object ZRLabel1269: TZRLabel
+              Left = 5
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Parc.'
+            end
+            object ZRLabel1270: TZRLabel
+              Left = 12
+              Top = 0
+              Width = 8
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Venc.'
+            end
+            object ZRLabel1271: TZRLabel
+              Left = 21
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Valor'
+            end
+            object ZRLabel1272: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 40
+              Height = 1
+              Frame.Top = 1
+            end
+            object ZRLabel1273: TZRLabel
+              Left = 30
+              Top = 0
+              Width = 5
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Pgto'
+            end
+            object ZRLabel1274: TZRLabel
+              Left = 36
+              Top = 0
+              Width = 3
+              Height = 1
+              Caption = 'Tp'
+            end
+          end
+          object ZRBand127: TZRBand
+            Left = 0
+            Top = 53
+            Width = 40
+            Height = 8
+            Stretch = False
+            BandType = zbtDetailFooter
+            object ZRLabel1275: TZRLabel
+              Left = 0
+              Top = 7
+              Width = 1
+              Height = 1
+              Caption = '.'
+            end
+            object ZRLabel1276: TZRLabel
+              Left = 0
+              Top = 3
+              Width = 9
+              Height = 1
+              Caption = 'T'#233'cnico:'
+            end
+            object ZRLabel1277: TZRLabel
+              Left = 9
+              Top = 3
+              Width = 31
+              Height = 1
+              Caption = ' _____________________________'
+            end
+            object ZRLabel1278: TZRLabel
+              Left = 0
+              Top = 5
+              Width = 9
+              Height = 1
+              Caption = 'Entregue:'
+            end
+            object ZRLabel1279: TZRLabel
+              Left = 9
+              Top = 5
+              Width = 31
+              Height = 1
+              Caption = ' _____________________________'
+            end
+            object ZRLabel1280: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 39
+              Height = 1
+              Caption = 'Invoice #'
+            end
+          end
+        end
+      end
+    end
+    object ZReport8: TZReport
+      Left = 300
+      Top = 120
+      Width = 40
+      Height = 300
+      DataSet = C_Itens
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Courier New'
+      Font.Style = []
+      Options.LineSpacing = zrd16
+      Options.AutoHeight = False
+      Options.Escapes.Model = emEpsonLXSeries
+      Options.PageFrom = 1
+      Options.PageTo = 1
+      Options.PaperType = zptContinuous
+      Options.Acentos = Retorno_Carro
+      Options.Scissors = False
+      Margins.Left = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Minimized = True
+      object ZRField751: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CODIGO'
+        DataSet = C_Invoice
+      end
+      object ZRField752: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_DESCRICAO'
+        DataSet = C_Invoice
+      end
+      object ZRField753: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_UNIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField754: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_QUANTIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField755: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_PRECO'
+        DataSet = C_Invoice
+      end
+      object ZRField756: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_SUBTOTAL'
+        DataSet = C_Invoice
+      end
+      object ZRField757: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_REFERENCIA'
+        DataSet = C_Invoice
+      end
+      object ZRField758: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_TAX'
+        DataSet = C_Invoice
+      end
+      object ZRField759: TZRField
+        Format.Width = 13
+        DataField = 'CODIGO'
+        DataSet = C_Itens
+      end
+      object ZRField760: TZRField
+        Format.Width = 255
+        DataField = 'ITEMDESC'
+        DataSet = C_Itens
+      end
+      object ZRField761: TZRField
+        Format.DisplayMask = '#,##0.###'
+        Format.Width = 19
+        DataField = 'QUANTIDADE'
+        DataSet = C_Itens
+      end
+      object ZRField762: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 10
+        DataField = 'PRECO'
+        DataSet = C_Itens
+      end
+      object ZRField763: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTAL'
+        DataSet = C_Itens
+      end
+      object ZRField764: TZRField
+        Format.Width = 6
+        DataField = 'UNIDADE'
+        DataSet = C_Itens
+      end
+      object ZRField765: TZRField
+        Format.Width = 1
+        DataField = 'TAXAVEL'
+        DataSet = C_Itens
+      end
+      object ZRAggregator25: TZRAggregator
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        Variable = ZRField763
+      end
+      object ZRAggregator26: TZRAggregator
+        Format.DisplayMask = '#,##0.###'
+        Format.Width = 19
+        Variable = ZRField761
+      end
+      object ZRField766: TZRField
+        Format.Width = 255
+        DataField = 'OBS'
+        DataSet = C_Invoice
+      end
+      object ZRField767: TZRField
+        Format.DisplayMask = 'dd/mm/yy'
+        Format.Width = 10
+        DataField = 'DATA'
+        DataSet = C_Invoice
+      end
+      object ZRField768: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTALITENS'
+        DataSet = C_Invoice
+      end
+      object ZRField769: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'IMPOSTO'
+        DataSet = C_Invoice
+      end
+      object ZRField770: TZRField
+        Format.DisplayMask = '#,###,##0.00'
+        Format.Width = 19
+        DataField = 'TOTAL'
+        DataSet = C_Invoice
+      end
+      object ZRField771: TZRField
+        Format.Width = 50
+        DataField = 'NOME'
+        DataSet = C_Invoice
+      end
+      object ZRField772: TZRField
+        Format.DisplayMask = '#,###,###,###,##0.00'
+        Format.Width = 19
+        DataField = 'DESCONTO'
+        DataSet = C_Invoice
+      end
+      object ZRField773: TZRField
+        Format.DisplayMask = '#,###,###,###,##0.00'
+        Format.Width = 19
+        DataField = 'OUTRASDESPESAS'
+        DataSet = C_Invoice
+      end
+      object ZRField774: TZRField
+        Format.Width = 20
+        DataField = 'FONE1'
+        DataSet = C_Invoice
+      end
+      object ZRField775: TZRField
+        Format.Width = 50
+        DataField = 'ENDERECO'
+        DataSet = C_Invoice
+      end
+      object ZRField776: TZRField
+        Format.Width = 30
+        DataField = 'PLANOPAG'
+        DataSet = C_Invoice
+      end
+      object ZRField777: TZRField
+        Format.Width = 50
+        DataField = 'VENDEDOR'
+        DataSet = C_Invoice
+      end
+      object ZRField778: TZRField
+        Format.Width = 1255
+        DataField = 'OBS'
+        DataSet = C_Invoice
+      end
+      object ZRField779: TZRField
+        Format.Width = 50
+        DataField = 'CAMPO01'
+        DataSet = C_Invoice
+      end
+      object ZRField780: TZRField
+        Format.Width = 15
+        DataField = 'LOCAL'
+        DataSet = C_Itens
+      end
+      object ZRField781: TZRField
+        Format.Width = 50
+        DataField = 'CAMPO02'
+        DataSet = C_Invoice
+      end
+      object ZRField782: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CAMPO2'
+        DataSet = C_Invoice
+      end
+      object ZRField783: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_CAMPO1'
+        DataSet = C_Invoice
+      end
+      object ZRField784: TZRField
+        Format.Width = 10
+        DataField = 'DATAENTREGA'
+        DataSet = C_Invoice
+      end
+      object ZRField785: TZRField
+        Format.Width = 20
+        DataField = 'TIT2_FABRICANTE'
+        DataSet = C_Invoice
+      end
+      object ZRField786: TZRField
+        Format.Width = 30
+        DataField = 'FABRICANTE'
+        DataSet = C_Itens
+      end
+      object ZRField787: TZRField
+        Format.Width = 50
+        DataField = 'ENDERECO'
+        DataSet = C_Invoice
+      end
+      object ZRField788: TZRField
+        Format.Width = 4
+        DataField = 'NRO'
+        DataSet = C_Invoice
+      end
+      object ZRField789: TZRField
+        Format.Width = 30
+        DataField = 'BAIRRO'
+        DataSet = C_Invoice
+      end
+      object ZRField790: TZRField
+        Format.Width = 30
+        DataField = 'CIDADE'
+        DataSet = C_Invoice
+      end
+      object ZRField791: TZRField
+        DataField = 'UF'
+        DataSet = C_Invoice
+      end
+      object ZRField792: TZRField
+        Format.Width = 10
+        DataField = 'CEP'
+        DataSet = C_Invoice
+      end
+      object ZRField793: TZRField
+        Format.Width = 20
+        DataField = 'FONE1'
+        DataSet = C_Invoice
+      end
+      object ZRGroup7: TZRGroup
+        Variable = ZRField780
+      end
+      object ZRBand128: TZRBand
+        Left = 0
+        Top = 11
+        Width = 40
+        Height = 5
+        Stretch = False
+        BandType = zbtHeader
+        object ZRLabel1281: TZRLabel
+          Left = 1
+          Top = 2
+          Width = 39
+          Height = 1
+          Caption = 'zrCidade3'
+        end
+        object ZRLabel1282: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 39
+          Height = 1
+          Caption = 'zrEndereco3'
+        end
+        object ZRLabel1283: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 39
+          Height = 1
+          Caption = 'zrNomeEmpresa3'
+        end
+        object ZRLabel1284: TZRLabel
+          Left = 1
+          Top = 3
+          Width = 39
+          Height = 1
+          Caption = 'zrFone'
+        end
+      end
+      object ZRBand129: TZRBand
+        Left = 0
+        Top = 16
+        Width = 40
+        Height = 3
+        Stretch = False
+        BandType = zbtChild
+        ParentIndex = 0
+        object ZRLabel1285: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 37
+          Height = 1
+          FontStyles = [zfsBold]
+          Alignment.X = zawCenter
+          Caption = 'Invoice # '
+          BeforePrint = ZRLabel86BeforePrint
+        end
+        object ZRLabel1286: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 13
+          Height = 1
+          Caption = 'ZRLabel87'
+          Variable = ZRField767
+        end
+        object ZRSystemLabel15: TZRSystemLabel
+          Left = 24
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          DataKind = zsdTime
+        end
+        object ZRLabel1287: TZRLabel
+          Left = 1
+          Top = 2
+          Width = 37
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'zrNomeCodigoCliente'
+        end
+      end
+      object ZRBand130: TZRBand
+        Left = 0
+        Top = 19
+        Width = 40
+        Height = 4
+        Frame.Top = 1
+        Frame.Bottom = 1
+        Stretch = False
+        BandType = zbtColumnHeader
+        object ZRLabel1288: TZRLabel
+          Left = 0
+          Top = 1
+          Width = 6
+          Height = 1
+          Caption = 'ID'
+          Variable = ZRField751
+        end
+        object ZRLabel1289: TZRLabel
+          Left = 7
+          Top = 1
+          Width = 28
+          Height = 1
+          Caption = 'ID'
+          Variable = ZRField752
+        end
+        object ZRLabel1290: TZRLabel
+          Left = 37
+          Top = 1
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel90'
+          Variable = ZRField753
+        end
+        object ZRLabel1291: TZRLabel
+          Left = 0
+          Top = 2
+          Width = 11
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField754
+        end
+        object ZRLabel1292: TZRLabel
+          Left = 12
+          Top = 2
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField755
+        end
+        object ZRLabel1293: TZRLabel
+          Left = 25
+          Top = 2
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel91'
+          Variable = ZRField756
+        end
+        object ZRLabel1294: TZRLabel
+          Left = 37
+          Top = 2
+          Width = 3
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel91'
+          Variable = ZRField758
+        end
+      end
+      object ZRBand131: TZRBand
+        Left = 0
+        Top = 23
+        Width = 40
+        Height = 1
+        Stretch = False
+        BandType = zbtGroupHeader
+        GroupOrder = 0
+        object ZRLabel1295: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 38
+          Height = 1
+          Caption = 'Localizacao'
+          Variable = ZRField780
+        end
+      end
+      object ZRBand132: TZRBand
+        Left = 0
+        Top = 24
+        Width = 40
+        Height = 2
+        Stretch = False
+        BandType = zbtDetail
+        object ZRLabel1296: TZRLabel
+          Left = 1
+          Top = 0
+          Width = 8
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField759
+        end
+        object ZRLabel1297: TZRLabel
+          Left = 10
+          Top = 0
+          Width = 25
+          Height = 1
+          Caption = 'ZRLabel95'
+          Variable = ZRField760
+        end
+        object ZRLabel1298: TZRLabel
+          Left = 37
+          Top = 0
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel95'
+          Variable = ZRField764
+        end
+        object ZRLabel1299: TZRLabel
+          Left = 1
+          Top = 1
+          Width = 8
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField761
+        end
+        object ZRLabel1300: TZRLabel
+          Left = 12
+          Top = 1
+          Width = 5
+          Height = 1
+          AutoSize = zasWidth
+          Caption = 'ZRLabel95'
+          Variable = ZRField762
+          WordWrap = True
+        end
+        object ZRLabel1301: TZRLabel
+          Left = 26
+          Top = 1
+          Width = 10
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField763
+        end
+        object ZRLabel1302: TZRLabel
+          Left = 10
+          Top = 1
+          Width = 1
+          Height = 1
+          Caption = 'x'
+        end
+        object ZRLabel1303: TZRLabel
+          Left = 24
+          Top = 1
+          Width = 1
+          Height = 1
+          Caption = '='
+        end
+        object ZRLabel1304: TZRLabel
+          Left = 37
+          Top = 1
+          Width = 3
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel95'
+          Variable = ZRField765
+        end
+      end
+      object ZRBand133: TZRBand
+        Left = 0
+        Top = 26
+        Width = 40
+        Height = 1
+        Frame.Top = 1
+        Stretch = False
+        BandType = zbtDetailFooter
+      end
+      object ZRBand134: TZRBand
+        Left = 0
+        Top = 27
+        Width = 40
+        Height = 23
+        Stretch = False
+        BandType = zbtFooter
+        object ZRLabel1305: TZRLabel
+          Left = 17
+          Top = 0
+          Width = 8
+          Height = 1
+          Caption = 'Total  +'
+        end
+        object ZRTotalLabel34: TZRTotalLabel
+          Left = 0
+          Top = 0
+          Width = 5
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkCount
+          Level = ZReport8
+          Variable = ZRAggregator26
+        end
+        object ZRLabel1306: TZRLabel
+          Left = 6
+          Top = 0
+          Width = 6
+          Height = 1
+          Caption = 'itens'
+        end
+        object ZRLabel1307: TZRLabel
+          Left = 0
+          Top = 5
+          Width = 40
+          Height = 1
+          AutoSize = zasHeight
+          Caption = 'ZRLabel106'
+          Variable = ZRField766
+          WordWrap = True
+        end
+        object ZRLabel1308: TZRLabel
+          Left = 11
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Descontos -'
+          BeforePrint = zrlDescontoBeforePrint
+        end
+        object ZRLabel1309: TZRLabel
+          Left = 25
+          Top = 1
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField772
+        end
+        object ZRLabel1310: TZRLabel
+          Left = 14
+          Top = 2
+          Width = 11
+          Height = 1
+          Caption = 'Acrescimo +'
+        end
+        object ZRLabel1311: TZRLabel
+          Left = 25
+          Top = 2
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField773
+        end
+        object ZRLabel1312: TZRLabel
+          Left = 8
+          Top = 3
+          Width = 17
+          Height = 1
+          FontStyles = [zfsBold]
+          Caption = 'TOTAL FINAL = '
+        end
+        object ZRLabel1313: TZRLabel
+          Left = 25
+          Top = 3
+          Width = 14
+          Height = 1
+          FontStyles = [zfsBold]
+          Alignment.X = zawRight
+          Caption = 'ZRLabel109'
+          Variable = ZRField770
+        end
+        object ZRTotalLabel35: TZRTotalLabel
+          Left = 25
+          Top = 0
+          Width = 14
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkSum
+          Level = ZReport8
+          Variable = ZRAggregator25
+        end
+        object ZRLabel1314: TZRLabel
+          Left = 0
+          Top = 8
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'NOME'
+          Variable = ZRField771
+        end
+        object ZRLabel1315: TZRLabel
+          Left = 0
+          Top = 7
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '___________________________'
+        end
+        object ZRLabel1316: TZRLabel
+          Left = 5
+          Top = 14
+          Width = 35
+          Height = 1
+          Caption = 'ENDERECO'
+          Variable = ZRField775
+        end
+        object ZRLabel1317: TZRLabel
+          Left = 2
+          Top = 20
+          Width = 9
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Vendedor:'
+        end
+        object ZRLabel1318: TZRLabel
+          Left = 11
+          Top = 20
+          Width = 29
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField777
+        end
+        object ZRLabel1319: TZRLabel
+          Left = 0
+          Top = 21
+          Width = 11
+          Height = 1
+          Caption = 'Plano Pag.:'
+        end
+        object ZRLabel1320: TZRLabel
+          Left = 11
+          Top = 21
+          Width = 29
+          Height = 1
+          Caption = 'dbTerms2'
+          Variable = ZRField776
+        end
+        object ZRLabel1321: TZRLabel
+          Left = 7
+          Top = 13
+          Width = 26
+          Height = 1
+          Alignment.X = zawCenter
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField774
+        end
+        object ZRLabel1322: TZRLabel
+          Left = 10
+          Top = 17
+          Width = 30
+          Height = 1
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField779
+        end
+        object ZRTotalLabel36: TZRTotalLabel
+          Left = 0
+          Top = 1
+          Width = 5
+          Height = 1
+          Alignment.X = zawRight
+          Kind = ztkSum
+          Level = ZReport8
+          Variable = ZRAggregator26
+        end
+        object ZRLabel1323: TZRLabel
+          Left = 6
+          Top = 1
+          Width = 4
+          Height = 1
+          Caption = 'Vol.'
+        end
+        object ZRLabel1324: TZRLabel
+          Left = 10
+          Top = 18
+          Width = 30
+          Height = 1
+          Alignment.Y = zahCenter
+          Caption = 'ZRLabel17'
+          Variable = ZRField781
+        end
+        object ZRLabel1325: TZRLabel
+          Left = 0
+          Top = 18
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField782
+        end
+        object ZRLabel1326: TZRLabel
+          Left = 0
+          Top = 17
+          Width = 10
+          Height = 1
+          Caption = 'ZRLabel17'
+          Variable = ZRField783
+        end
+        object ZRLabel1327: TZRLabel
+          Left = 10
+          Top = 16
+          Width = 29
+          Height = 1
+          Caption = 'ENDERECO'
+          Variable = ZRField784
+        end
+        object ZRLabel1328: TZRLabel
+          Left = 0
+          Top = 16
+          Width = 10
+          Height = 1
+          Caption = 'Entrega:'
+        end
+        object ZRLabel1329: TZRLabel
+          Left = 0
+          Top = 14
+          Width = 5
+          Height = 1
+          Caption = 'End.:'
+        end
+        object ZRLabel1330: TZRLabel
+          Left = 0
+          Top = 15
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '----------------------------------------'
+        end
+        object ZRLabel1331: TZRLabel
+          Left = 0
+          Top = 19
+          Width = 40
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = '----------------------------------------'
+        end
+        object ZRLabel1332: TZRLabel
+          Left = 0
+          Top = 9
+          Width = 33
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'ENDERECO'
+          Variable = ZRField787
+        end
+        object ZRLabel1333: TZRLabel
+          Left = 33
+          Top = 9
+          Width = 7
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'NRO'
+          Variable = ZRField788
+        end
+        object ZRLabel1334: TZRLabel
+          Left = 0
+          Top = 10
+          Width = 21
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'BAIRRO'
+          Variable = ZRField789
+        end
+        object ZRLabel1335: TZRLabel
+          Left = 21
+          Top = 10
+          Width = 16
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'CIDADE'
+          Variable = ZRField790
+        end
+        object ZRLabel1336: TZRLabel
+          Left = 37
+          Top = 10
+          Width = 3
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'UF'
+          Variable = ZRField791
+        end
+        object ZRLabel1337: TZRLabel
+          Left = 7
+          Top = 11
+          Width = 21
+          Height = 1
+          Alignment.X = zawCenter
+          Caption = 'FONE1'
+          Variable = ZRField793
+        end
+        object ZRLabel1338: TZRLabel
+          Left = 0
+          Top = 11
+          Width = 7
+          Height = 1
+          Caption = 'Fone :'
+        end
+      end
+      object ZRSubDetail20: TZRSubDetail
+        Left = 0
+        Top = 52
+        Width = 40
+        Height = 1
+        DataSet = C_Parcelas
+        Stretch = False
+        MasterIndex = 6
+        object ZRField794: TZRField
+          Format.Width = 10
+          DataField = 'PARCELA'
+          DataSet = C_Parcelas
+        end
+        object ZRField795: TZRField
+          Format.FloatFormat = ffCurrency
+          Format.DisplayMask = '##0.00'
+          Format.Width = 19
+          DataField = 'VALOR'
+          DataSet = C_Parcelas
+        end
+        object ZRField796: TZRField
+          Format.Width = 10
+          DataField = 'VENCIMENTO'
+          DataSet = C_Parcelas
+        end
+        object ZRField797: TZRField
+          Format.Width = 10
+          DataField = 'TITULO'
+          DataSet = C_Parcelas
+        end
+        object ZRField798: TZRField
+          Format.Width = 10
+          DataField = 'STATUS'
+          DataSet = C_Parcelas
+        end
+        object ZRField799: TZRField
+          Format.Width = 10
+          DataField = 'VENDA'
+          DataSet = C_Parcelas
+        end
+        object ZRField800: TZRField
+          Format.FloatFormat = ffCurrency
+          Format.DisplayMask = '##0.00'
+          Format.Width = 19
+          DataField = 'VALORPAGO'
+          DataSet = C_Parcelas
+        end
+        object ZRField801: TZRField
+          Format.Width = 6
+          DataField = 'SIGLA'
+          DataSet = C_Parcelas
+        end
+        object ZRLabel1339: TZRLabel
+          Left = 0
+          Top = 0
+          Width = 4
+          Height = 1
+          Caption = 'Parcela'
+          Variable = ZRField794
+        end
+        object ZRLabel1340: TZRLabel
+          Left = 5
+          Top = 0
+          Width = 6
+          Height = 1
+          Caption = 'Parcela'
+          Variable = ZRField797
+        end
+        object ZRLabel1341: TZRLabel
+          Left = 12
+          Top = 0
+          Width = 8
+          Height = 1
+          Caption = 'Vencimento'
+          Variable = ZRField796
+        end
+        object ZRLabel1342: TZRLabel
+          Left = 21
+          Top = 0
+          Width = 6
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Valor'
+          Variable = ZRField795
+        end
+        object ZRLabel1343: TZRLabel
+          Left = 28
+          Top = 0
+          Width = 7
+          Height = 1
+          Alignment.X = zawRight
+          Caption = 'Valor'
+          Variable = ZRField800
+        end
+        object ZRLabel1344: TZRLabel
+          Left = 36
+          Top = 0
+          Width = 3
+          Height = 1
+          Caption = 'ZRLabel350'
+          Variable = ZRField801
+        end
+        object ZRBand135: TZRBand
+          Left = 0
+          Top = 50
+          Width = 40
+          Height = 2
+          Stretch = False
+          BandType = zbtColumnHeader
+          object ZRLabel1345: TZRLabel
+            Left = 0
+            Top = 0
+            Width = 4
+            Height = 1
+            Caption = '#'
+          end
+          object ZRLabel1346: TZRLabel
+            Left = 5
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Parc.'
+          end
+          object ZRLabel1347: TZRLabel
+            Left = 12
+            Top = 0
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Venc.'
+          end
+          object ZRLabel1348: TZRLabel
+            Left = 21
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Valor'
+          end
+          object ZRLabel1349: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 40
+            Height = 1
+            Frame.Top = 1
+          end
+          object ZRLabel1350: TZRLabel
+            Left = 30
+            Top = 0
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Pgto'
+          end
+          object ZRLabel1351: TZRLabel
+            Left = 36
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'Tp'
+          end
+        end
+        object ZRBand136: TZRBand
+          Left = 0
+          Top = 53
+          Width = 40
+          Height = 8
+          Stretch = False
+          BandType = zbtDetailFooter
+          object ZRLabel1352: TZRLabel
+            Left = 0
+            Top = 7
+            Width = 1
+            Height = 1
+            Caption = '.'
+          end
+          object ZRLabel1353: TZRLabel
+            Left = 0
+            Top = 3
+            Width = 9
+            Height = 1
+            Caption = 'T'#233'cnico:'
+          end
+          object ZRLabel1354: TZRLabel
+            Left = 9
+            Top = 3
+            Width = 31
+            Height = 1
+            Caption = ' _____________________________'
+          end
+          object ZRLabel1355: TZRLabel
+            Left = 0
+            Top = 5
+            Width = 9
+            Height = 1
+            Caption = 'Entregue:'
+          end
+          object ZRLabel1356: TZRLabel
+            Left = 9
+            Top = 5
+            Width = 31
+            Height = 1
+            Caption = ' _____________________________'
+          end
+          object ZRLabel1357: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 39
+            Height = 1
+            Caption = 'Invoice #'
+          end
+        end
+      end
+      object ZReport9: TZReport
+        Left = -249
+        Top = -879
+        Width = 40
+        Height = 65
+        DataSet = C_Itens
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Courier New'
+        Font.Style = []
+        Options.LineSpacing = zrd16
+        Options.AutoHeight = False
+        Options.Escapes.Model = emEpsonLXSeries
+        Options.PageFrom = 1
+        Options.PageTo = 1
+        Options.PaperType = zptContinuous
+        Options.Acentos = Retorno_Carro
+        Options.Scissors = False
+        Margins.Left = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Minimized = True
+        object ZRField802: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CODIGO'
+          DataSet = C_Invoice
+        end
+        object ZRField803: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_DESCRICAO'
+          DataSet = C_Invoice
+        end
+        object ZRField804: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_UNIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField805: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_QUANTIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField806: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_PRECO'
+          DataSet = C_Invoice
+        end
+        object ZRField807: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_SUBTOTAL'
+          DataSet = C_Invoice
+        end
+        object ZRField808: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_REFERENCIA'
+          DataSet = C_Invoice
+        end
+        object ZRField809: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_TAX'
+          DataSet = C_Invoice
+        end
+        object ZRField810: TZRField
+          Format.Width = 13
+          DataField = 'CODIGO'
+          DataSet = C_Itens
+        end
+        object ZRField811: TZRField
+          Format.Width = 255
+          DataField = 'ITEMDESC'
+          DataSet = C_Itens
+        end
+        object ZRField812: TZRField
+          Format.DisplayMask = '#,##0.###'
+          Format.Width = 19
+          DataField = 'QUANTIDADE'
+          DataSet = C_Itens
+        end
+        object ZRField813: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 10
+          DataField = 'PRECO'
+          DataSet = C_Itens
+        end
+        object ZRField814: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTAL'
+          DataSet = C_Itens
+        end
+        object ZRField815: TZRField
+          Format.Width = 6
+          DataField = 'UNIDADE'
+          DataSet = C_Itens
+        end
+        object ZRField816: TZRField
+          Format.Width = 1
+          DataField = 'TAXAVEL'
+          DataSet = C_Itens
+        end
+        object ZRAggregator27: TZRAggregator
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          Variable = ZRField814
+        end
+        object ZRAggregator28: TZRAggregator
+          Format.DisplayMask = '#,##0.###'
+          Format.Width = 19
+          Variable = ZRField812
+        end
+        object ZRField817: TZRField
+          Format.Width = 255
+          DataField = 'OBS'
+          DataSet = C_Invoice
+        end
+        object ZRField818: TZRField
+          Format.DisplayMask = 'dd/mm/yy'
+          Format.Width = 10
+          DataField = 'DATA'
+          DataSet = C_Invoice
+        end
+        object ZRField819: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTALITENS'
+          DataSet = C_Invoice
+        end
+        object ZRField820: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'IMPOSTO'
+          DataSet = C_Invoice
+        end
+        object ZRField821: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTAL'
+          DataSet = C_Invoice
+        end
+        object ZRField822: TZRField
+          Format.Width = 50
+          DataField = 'NOME'
+          DataSet = C_Invoice
+        end
+        object ZRField823: TZRField
+          Format.DisplayMask = '#,###,###,###,##0.00'
+          Format.Width = 19
+          DataField = 'DESCONTO'
+          DataSet = C_Invoice
+        end
+        object ZRField824: TZRField
+          Format.DisplayMask = '#,###,###,###,##0.00'
+          Format.Width = 19
+          DataField = 'OUTRASDESPESAS'
+          DataSet = C_Invoice
+        end
+        object ZRField825: TZRField
+          Format.Width = 20
+          DataField = 'FONE1'
+          DataSet = C_Invoice
+        end
+        object ZRField826: TZRField
+          Format.Width = 50
+          DataField = 'ENDERECO'
+          DataSet = C_Invoice
+        end
+        object ZRField827: TZRField
+          Format.Width = 30
+          DataField = 'PLANOPAG'
+          DataSet = C_Invoice
+        end
+        object ZRField828: TZRField
+          Format.Width = 50
+          DataField = 'VENDEDOR'
+          DataSet = C_Invoice
+        end
+        object ZRField829: TZRField
+          Format.Width = 1255
+          DataField = 'OBS'
+          DataSet = C_Invoice
+        end
+        object ZRField830: TZRField
+          Format.Width = 50
+          DataField = 'CAMPO01'
+          DataSet = C_Invoice
+        end
+        object ZRField831: TZRField
+          Format.Width = 15
+          DataField = 'LOCAL'
+          DataSet = C_Itens
+        end
+        object ZRField832: TZRField
+          Format.Width = 50
+          DataField = 'CAMPO02'
+          DataSet = C_Invoice
+        end
+        object ZRField833: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CAMPO2'
+          DataSet = C_Invoice
+        end
+        object ZRField834: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CAMPO1'
+          DataSet = C_Invoice
+        end
+        object ZRField835: TZRField
+          Format.Width = 10
+          DataField = 'DATAENTREGA'
+          DataSet = C_Invoice
+        end
+        object ZRField836: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_FABRICANTE'
+          DataSet = C_Invoice
+        end
+        object ZRField837: TZRField
+          Format.Width = 30
+          DataField = 'FABRICANTE'
+          DataSet = C_Itens
+        end
+        object ZRField838: TZRField
+          Format.Width = 50
+          DataField = 'ENDERECO'
+          DataSet = C_Invoice
+        end
+        object ZRField839: TZRField
+          Format.Width = 4
+          DataField = 'NRO'
+          DataSet = C_Invoice
+        end
+        object ZRField840: TZRField
+          Format.Width = 30
+          DataField = 'BAIRRO'
+          DataSet = C_Invoice
+        end
+        object ZRField841: TZRField
+          Format.Width = 30
+          DataField = 'CIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField842: TZRField
+          DataField = 'UF'
+          DataSet = C_Invoice
+        end
+        object ZRField843: TZRField
+          Format.Width = 10
+          DataField = 'CEP'
+          DataSet = C_Invoice
+        end
+        object ZRField844: TZRField
+          Format.Width = 20
+          DataField = 'FONE1'
+          DataSet = C_Invoice
+        end
+        object ZRGroup8: TZRGroup
+          Variable = ZRField831
+        end
+        object ZRBand137: TZRBand
+          Left = 0
+          Top = 11
+          Width = 40
+          Height = 5
+          Stretch = False
+          BandType = zbtHeader
+          object ZRLabel1358: TZRLabel
+            Left = 1
+            Top = 2
+            Width = 39
+            Height = 1
+            Caption = 'zrCidade3'
+          end
+          object ZRLabel1359: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 39
+            Height = 1
+            Caption = 'zrEndereco3'
+          end
+          object ZRLabel1360: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 39
+            Height = 1
+            Caption = 'zrNomeEmpresa3'
+          end
+          object ZRLabel1361: TZRLabel
+            Left = 1
+            Top = 3
+            Width = 39
+            Height = 1
+            Caption = 'zrFone'
+          end
+        end
+        object ZRBand138: TZRBand
+          Left = 0
+          Top = 16
+          Width = 40
+          Height = 3
+          Stretch = False
+          BandType = zbtChild
+          ParentIndex = 0
+          object ZRLabel1362: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 37
+            Height = 1
+            FontStyles = [zfsBold]
+            Alignment.X = zawCenter
+            Caption = 'Invoice # '
+            BeforePrint = ZRLabel86BeforePrint
+          end
+          object ZRLabel1363: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 13
+            Height = 1
+            Caption = 'ZRLabel87'
+            Variable = ZRField818
+          end
+          object ZRSystemLabel16: TZRSystemLabel
+            Left = 24
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            DataKind = zsdTime
+          end
+          object ZRLabel1364: TZRLabel
+            Left = 1
+            Top = 2
+            Width = 37
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'zrNomeCodigoCliente'
+          end
+        end
+        object ZRBand139: TZRBand
+          Left = 0
+          Top = 19
+          Width = 40
+          Height = 4
+          Frame.Top = 1
+          Frame.Bottom = 1
+          Stretch = False
+          BandType = zbtColumnHeader
+          object ZRLabel1365: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 6
+            Height = 1
+            Caption = 'ID'
+            Variable = ZRField802
+          end
+          object ZRLabel1366: TZRLabel
+            Left = 7
+            Top = 1
+            Width = 28
+            Height = 1
+            Caption = 'ID'
+            Variable = ZRField803
+          end
+          object ZRLabel1367: TZRLabel
+            Left = 37
+            Top = 1
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel90'
+            Variable = ZRField804
+          end
+          object ZRLabel1368: TZRLabel
+            Left = 0
+            Top = 2
+            Width = 11
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField805
+          end
+          object ZRLabel1369: TZRLabel
+            Left = 12
+            Top = 2
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField806
+          end
+          object ZRLabel1370: TZRLabel
+            Left = 25
+            Top = 2
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField807
+          end
+          object ZRLabel1371: TZRLabel
+            Left = 37
+            Top = 2
+            Width = 3
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel91'
+            Variable = ZRField809
+          end
+        end
+        object ZRBand140: TZRBand
+          Left = 0
+          Top = 23
+          Width = 40
+          Height = 1
+          Stretch = False
+          BandType = zbtGroupHeader
+          GroupOrder = 0
+          object ZRLabel1372: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 38
+            Height = 1
+            Caption = 'Localizacao'
+            Variable = ZRField831
+          end
+        end
+        object ZRBand141: TZRBand
+          Left = 0
+          Top = 24
+          Width = 40
+          Height = 2
+          Stretch = False
+          BandType = zbtDetail
+          object ZRLabel1373: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField810
+          end
+          object ZRLabel1374: TZRLabel
+            Left = 10
+            Top = 0
+            Width = 25
+            Height = 1
+            Caption = 'ZRLabel95'
+            Variable = ZRField811
+          end
+          object ZRLabel1375: TZRLabel
+            Left = 37
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel95'
+            Variable = ZRField815
+          end
+          object ZRLabel1376: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField812
+          end
+          object ZRLabel1377: TZRLabel
+            Left = 12
+            Top = 1
+            Width = 5
+            Height = 1
+            AutoSize = zasWidth
+            Caption = 'ZRLabel95'
+            Variable = ZRField813
+            WordWrap = True
+          end
+          object ZRLabel1378: TZRLabel
+            Left = 26
+            Top = 1
+            Width = 10
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField814
+          end
+          object ZRLabel1379: TZRLabel
+            Left = 10
+            Top = 1
+            Width = 1
+            Height = 1
+            Caption = 'x'
+          end
+          object ZRLabel1380: TZRLabel
+            Left = 24
+            Top = 1
+            Width = 1
+            Height = 1
+            Caption = '='
+          end
+          object ZRLabel1381: TZRLabel
+            Left = 37
+            Top = 1
+            Width = 3
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField816
+          end
+        end
+        object ZRBand142: TZRBand
+          Left = 0
+          Top = 26
+          Width = 40
+          Height = 1
+          Frame.Top = 1
+          Stretch = False
+          BandType = zbtDetailFooter
+        end
+        object ZRBand143: TZRBand
+          Left = 0
+          Top = 27
+          Width = 40
+          Height = 23
+          Stretch = False
+          BandType = zbtFooter
+          object ZRLabel1382: TZRLabel
+            Left = 17
+            Top = 0
+            Width = 8
+            Height = 1
+            Caption = 'Total  +'
+          end
+          object ZRTotalLabel37: TZRTotalLabel
+            Left = 0
+            Top = 0
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkCount
+            Level = ZReport9
+            Variable = ZRAggregator28
+          end
+          object ZRLabel1383: TZRLabel
+            Left = 6
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'itens'
+          end
+          object ZRLabel1384: TZRLabel
+            Left = 0
+            Top = 5
+            Width = 40
+            Height = 1
+            AutoSize = zasHeight
+            Caption = 'ZRLabel106'
+            Variable = ZRField817
+            WordWrap = True
+          end
+          object ZRLabel1385: TZRLabel
+            Left = 11
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Descontos -'
+            BeforePrint = zrlDescontoBeforePrint
+          end
+          object ZRLabel1386: TZRLabel
+            Left = 25
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField823
+          end
+          object ZRLabel1387: TZRLabel
+            Left = 14
+            Top = 2
+            Width = 11
+            Height = 1
+            Caption = 'Acrescimo +'
+          end
+          object ZRLabel1388: TZRLabel
+            Left = 25
+            Top = 2
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField824
+          end
+          object ZRLabel1389: TZRLabel
+            Left = 8
+            Top = 3
+            Width = 17
+            Height = 1
+            FontStyles = [zfsBold]
+            Caption = 'TOTAL FINAL = '
+          end
+          object ZRLabel1390: TZRLabel
+            Left = 25
+            Top = 3
+            Width = 14
+            Height = 1
+            FontStyles = [zfsBold]
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField821
+          end
+          object ZRTotalLabel38: TZRTotalLabel
+            Left = 25
+            Top = 0
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkSum
+            Level = ZReport9
+            Variable = ZRAggregator27
+          end
+          object ZRLabel1391: TZRLabel
+            Left = 0
+            Top = 8
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'NOME'
+            Variable = ZRField822
+          end
+          object ZRLabel1392: TZRLabel
+            Left = 0
+            Top = 7
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '___________________________'
+          end
+          object ZRLabel1393: TZRLabel
+            Left = 5
+            Top = 14
+            Width = 35
+            Height = 1
+            Caption = 'ENDERECO'
+            Variable = ZRField826
+          end
+          object ZRLabel1394: TZRLabel
+            Left = 2
+            Top = 20
+            Width = 9
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Vendedor:'
+          end
+          object ZRLabel1395: TZRLabel
+            Left = 11
+            Top = 20
+            Width = 29
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField828
+          end
+          object ZRLabel1396: TZRLabel
+            Left = 0
+            Top = 21
+            Width = 11
+            Height = 1
+            Caption = 'Plano Pag.:'
+          end
+          object ZRLabel1397: TZRLabel
+            Left = 11
+            Top = 21
+            Width = 29
+            Height = 1
+            Caption = 'dbTerms2'
+            Variable = ZRField827
+          end
+          object ZRLabel1398: TZRLabel
+            Left = 7
+            Top = 13
+            Width = 26
+            Height = 1
+            Alignment.X = zawCenter
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField825
+          end
+          object ZRLabel1399: TZRLabel
+            Left = 10
+            Top = 17
+            Width = 30
+            Height = 1
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField830
+          end
+          object ZRTotalLabel39: TZRTotalLabel
+            Left = 0
+            Top = 1
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkSum
+            Level = ZReport9
+            Variable = ZRAggregator28
+          end
+          object ZRLabel1400: TZRLabel
+            Left = 6
+            Top = 1
+            Width = 4
+            Height = 1
+            Caption = 'Vol.'
+          end
+          object ZRLabel1401: TZRLabel
+            Left = 10
+            Top = 18
+            Width = 30
+            Height = 1
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField832
+          end
+          object ZRLabel1402: TZRLabel
+            Left = 0
+            Top = 18
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField833
+          end
+          object ZRLabel1403: TZRLabel
+            Left = 0
+            Top = 17
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField834
+          end
+          object ZRLabel1404: TZRLabel
+            Left = 10
+            Top = 16
+            Width = 29
+            Height = 1
+            Caption = 'ENDERECO'
+            Variable = ZRField835
+          end
+          object ZRLabel1405: TZRLabel
+            Left = 0
+            Top = 16
+            Width = 10
+            Height = 1
+            Caption = 'Entrega:'
+          end
+          object ZRLabel1406: TZRLabel
+            Left = 0
+            Top = 14
+            Width = 5
+            Height = 1
+            Caption = 'End.:'
+          end
+          object ZRLabel1407: TZRLabel
+            Left = 0
+            Top = 15
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '----------------------------------------'
+          end
+          object ZRLabel1408: TZRLabel
+            Left = 0
+            Top = 19
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '----------------------------------------'
+          end
+          object ZRLabel1409: TZRLabel
+            Left = 0
+            Top = 9
+            Width = 33
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'ENDERECO'
+            Variable = ZRField838
+          end
+          object ZRLabel1410: TZRLabel
+            Left = 33
+            Top = 9
+            Width = 7
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'NRO'
+            Variable = ZRField839
+          end
+          object ZRLabel1411: TZRLabel
+            Left = 0
+            Top = 10
+            Width = 21
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'BAIRRO'
+            Variable = ZRField840
+          end
+          object ZRLabel1412: TZRLabel
+            Left = 21
+            Top = 10
+            Width = 16
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'CIDADE'
+            Variable = ZRField841
+          end
+          object ZRLabel1413: TZRLabel
+            Left = 37
+            Top = 10
+            Width = 3
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'UF'
+            Variable = ZRField842
+          end
+          object ZRLabel1414: TZRLabel
+            Left = 7
+            Top = 11
+            Width = 21
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'FONE1'
+            Variable = ZRField844
+          end
+          object ZRLabel1415: TZRLabel
+            Left = 0
+            Top = 11
+            Width = 7
+            Height = 1
+            Caption = 'Fone :'
+          end
+        end
+        object ZRSubDetail21: TZRSubDetail
+          Left = 0
+          Top = 52
+          Width = 40
+          Height = 1
+          DataSet = C_Parcelas
+          Stretch = False
+          MasterIndex = 6
+          object ZRField845: TZRField
+            Format.Width = 10
+            DataField = 'PARCELA'
+            DataSet = C_Parcelas
+          end
+          object ZRField846: TZRField
+            Format.FloatFormat = ffCurrency
+            Format.DisplayMask = '##0.00'
+            Format.Width = 19
+            DataField = 'VALOR'
+            DataSet = C_Parcelas
+          end
+          object ZRField847: TZRField
+            Format.Width = 10
+            DataField = 'VENCIMENTO'
+            DataSet = C_Parcelas
+          end
+          object ZRField848: TZRField
+            Format.Width = 10
+            DataField = 'TITULO'
+            DataSet = C_Parcelas
+          end
+          object ZRField849: TZRField
+            Format.Width = 10
+            DataField = 'STATUS'
+            DataSet = C_Parcelas
+          end
+          object ZRField850: TZRField
+            Format.Width = 10
+            DataField = 'VENDA'
+            DataSet = C_Parcelas
+          end
+          object ZRField851: TZRField
+            Format.FloatFormat = ffCurrency
+            Format.DisplayMask = '##0.00'
+            Format.Width = 19
+            DataField = 'VALORPAGO'
+            DataSet = C_Parcelas
+          end
+          object ZRField852: TZRField
+            Format.Width = 6
+            DataField = 'SIGLA'
+            DataSet = C_Parcelas
+          end
+          object ZRLabel1416: TZRLabel
+            Left = 0
+            Top = 0
+            Width = 4
+            Height = 1
+            Caption = 'Parcela'
+            Variable = ZRField845
+          end
+          object ZRLabel1417: TZRLabel
+            Left = 5
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Parcela'
+            Variable = ZRField848
+          end
+          object ZRLabel1418: TZRLabel
+            Left = 12
+            Top = 0
+            Width = 8
+            Height = 1
+            Caption = 'Vencimento'
+            Variable = ZRField847
+          end
+          object ZRLabel1419: TZRLabel
+            Left = 21
+            Top = 0
+            Width = 6
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Valor'
+            Variable = ZRField846
+          end
+          object ZRLabel1420: TZRLabel
+            Left = 28
+            Top = 0
+            Width = 7
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Valor'
+            Variable = ZRField851
+          end
+          object ZRLabel1421: TZRLabel
+            Left = 36
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel350'
+            Variable = ZRField852
+          end
+          object ZRBand144: TZRBand
+            Left = 0
+            Top = 50
+            Width = 40
+            Height = 2
+            Stretch = False
+            BandType = zbtColumnHeader
+            object ZRLabel1422: TZRLabel
+              Left = 0
+              Top = 0
+              Width = 4
+              Height = 1
+              Caption = '#'
+            end
+            object ZRLabel1423: TZRLabel
+              Left = 5
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Parc.'
+            end
+            object ZRLabel1424: TZRLabel
+              Left = 12
+              Top = 0
+              Width = 8
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Venc.'
+            end
+            object ZRLabel1425: TZRLabel
+              Left = 21
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Valor'
+            end
+            object ZRLabel1426: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 40
+              Height = 1
+              Frame.Top = 1
+            end
+            object ZRLabel1427: TZRLabel
+              Left = 30
+              Top = 0
+              Width = 5
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Pgto'
+            end
+            object ZRLabel1428: TZRLabel
+              Left = 36
+              Top = 0
+              Width = 3
+              Height = 1
+              Caption = 'Tp'
+            end
+          end
+          object ZRBand145: TZRBand
+            Left = 0
+            Top = 53
+            Width = 40
+            Height = 8
+            Stretch = False
+            BandType = zbtDetailFooter
+            object ZRLabel1429: TZRLabel
+              Left = 0
+              Top = 7
+              Width = 1
+              Height = 1
+              Caption = '.'
+            end
+            object ZRLabel1430: TZRLabel
+              Left = 0
+              Top = 3
+              Width = 9
+              Height = 1
+              Caption = 'T'#233'cnico:'
+            end
+            object ZRLabel1431: TZRLabel
+              Left = 9
+              Top = 3
+              Width = 31
+              Height = 1
+              Caption = ' _____________________________'
+            end
+            object ZRLabel1432: TZRLabel
+              Left = 0
+              Top = 5
+              Width = 9
+              Height = 1
+              Caption = 'Entregue:'
+            end
+            object ZRLabel1433: TZRLabel
+              Left = 9
+              Top = 5
+              Width = 31
+              Height = 1
+              Caption = ' _____________________________'
+            end
+            object ZRLabel1434: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 39
+              Height = 1
+              Caption = 'Invoice #'
+            end
+          end
+        end
+      end
+      object ZReport10: TZReport
+        Left = -249
+        Top = -879
+        Width = 40
+        Height = 65
+        DataSet = C_Itens
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Courier New'
+        Font.Style = []
+        Options.LineSpacing = zrd16
+        Options.AutoHeight = False
+        Options.Escapes.Model = emEpsonLXSeries
+        Options.PageFrom = 1
+        Options.PageTo = 1
+        Options.PaperType = zptContinuous
+        Options.Acentos = Retorno_Carro
+        Options.Scissors = False
+        Margins.Left = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Minimized = True
+        object ZRField853: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CODIGO'
+          DataSet = C_Invoice
+        end
+        object ZRField854: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_DESCRICAO'
+          DataSet = C_Invoice
+        end
+        object ZRField855: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_UNIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField856: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_QUANTIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField857: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_PRECO'
+          DataSet = C_Invoice
+        end
+        object ZRField858: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_SUBTOTAL'
+          DataSet = C_Invoice
+        end
+        object ZRField859: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_REFERENCIA'
+          DataSet = C_Invoice
+        end
+        object ZRField860: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_TAX'
+          DataSet = C_Invoice
+        end
+        object ZRField861: TZRField
+          Format.Width = 13
+          DataField = 'CODIGO'
+          DataSet = C_Itens
+        end
+        object ZRField862: TZRField
+          Format.Width = 255
+          DataField = 'ITEMDESC'
+          DataSet = C_Itens
+        end
+        object ZRField863: TZRField
+          Format.DisplayMask = '#,##0.###'
+          Format.Width = 19
+          DataField = 'QUANTIDADE'
+          DataSet = C_Itens
+        end
+        object ZRField864: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 10
+          DataField = 'PRECO'
+          DataSet = C_Itens
+        end
+        object ZRField865: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTAL'
+          DataSet = C_Itens
+        end
+        object ZRField866: TZRField
+          Format.Width = 6
+          DataField = 'UNIDADE'
+          DataSet = C_Itens
+        end
+        object ZRField867: TZRField
+          Format.Width = 1
+          DataField = 'TAXAVEL'
+          DataSet = C_Itens
+        end
+        object ZRAggregator29: TZRAggregator
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          Variable = ZRField865
+        end
+        object ZRAggregator30: TZRAggregator
+          Format.DisplayMask = '#,##0.###'
+          Format.Width = 19
+          Variable = ZRField863
+        end
+        object ZRField868: TZRField
+          Format.Width = 255
+          DataField = 'OBS'
+          DataSet = C_Invoice
+        end
+        object ZRField869: TZRField
+          Format.DisplayMask = 'dd/mm/yy'
+          Format.Width = 10
+          DataField = 'DATA'
+          DataSet = C_Invoice
+        end
+        object ZRField870: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTALITENS'
+          DataSet = C_Invoice
+        end
+        object ZRField871: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'IMPOSTO'
+          DataSet = C_Invoice
+        end
+        object ZRField872: TZRField
+          Format.DisplayMask = '#,###,##0.00'
+          Format.Width = 19
+          DataField = 'TOTAL'
+          DataSet = C_Invoice
+        end
+        object ZRField873: TZRField
+          Format.Width = 50
+          DataField = 'NOME'
+          DataSet = C_Invoice
+        end
+        object ZRField874: TZRField
+          Format.DisplayMask = '#,###,###,###,##0.00'
+          Format.Width = 19
+          DataField = 'DESCONTO'
+          DataSet = C_Invoice
+        end
+        object ZRField875: TZRField
+          Format.DisplayMask = '#,###,###,###,##0.00'
+          Format.Width = 19
+          DataField = 'OUTRASDESPESAS'
+          DataSet = C_Invoice
+        end
+        object ZRField876: TZRField
+          Format.Width = 20
+          DataField = 'FONE1'
+          DataSet = C_Invoice
+        end
+        object ZRField877: TZRField
+          Format.Width = 50
+          DataField = 'ENDERECO'
+          DataSet = C_Invoice
+        end
+        object ZRField878: TZRField
+          Format.Width = 30
+          DataField = 'PLANOPAG'
+          DataSet = C_Invoice
+        end
+        object ZRField879: TZRField
+          Format.Width = 50
+          DataField = 'VENDEDOR'
+          DataSet = C_Invoice
+        end
+        object ZRField880: TZRField
+          Format.Width = 1255
+          DataField = 'OBS'
+          DataSet = C_Invoice
+        end
+        object ZRField881: TZRField
+          Format.Width = 50
+          DataField = 'CAMPO01'
+          DataSet = C_Invoice
+        end
+        object ZRField882: TZRField
+          Format.Width = 15
+          DataField = 'LOCAL'
+          DataSet = C_Itens
+        end
+        object ZRField883: TZRField
+          Format.Width = 50
+          DataField = 'CAMPO02'
+          DataSet = C_Invoice
+        end
+        object ZRField884: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CAMPO2'
+          DataSet = C_Invoice
+        end
+        object ZRField885: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_CAMPO1'
+          DataSet = C_Invoice
+        end
+        object ZRField886: TZRField
+          Format.Width = 10
+          DataField = 'DATAENTREGA'
+          DataSet = C_Invoice
+        end
+        object ZRField887: TZRField
+          Format.Width = 20
+          DataField = 'TIT2_FABRICANTE'
+          DataSet = C_Invoice
+        end
+        object ZRField888: TZRField
+          Format.Width = 30
+          DataField = 'FABRICANTE'
+          DataSet = C_Itens
+        end
+        object ZRField889: TZRField
+          Format.Width = 50
+          DataField = 'ENDERECO'
+          DataSet = C_Invoice
+        end
+        object ZRField890: TZRField
+          Format.Width = 4
+          DataField = 'NRO'
+          DataSet = C_Invoice
+        end
+        object ZRField891: TZRField
+          Format.Width = 30
+          DataField = 'BAIRRO'
+          DataSet = C_Invoice
+        end
+        object ZRField892: TZRField
+          Format.Width = 30
+          DataField = 'CIDADE'
+          DataSet = C_Invoice
+        end
+        object ZRField893: TZRField
+          DataField = 'UF'
+          DataSet = C_Invoice
+        end
+        object ZRField894: TZRField
+          Format.Width = 10
+          DataField = 'CEP'
+          DataSet = C_Invoice
+        end
+        object ZRField895: TZRField
+          Format.Width = 20
+          DataField = 'FONE1'
+          DataSet = C_Invoice
+        end
+        object ZRGroup9: TZRGroup
+          Variable = ZRField882
+        end
+        object ZRBand146: TZRBand
+          Left = 0
+          Top = 11
+          Width = 40
+          Height = 5
+          Stretch = False
+          BandType = zbtHeader
+          object ZRLabel1435: TZRLabel
+            Left = 1
+            Top = 2
+            Width = 39
+            Height = 1
+            Caption = 'zrCidade3'
+          end
+          object ZRLabel1436: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 39
+            Height = 1
+            Caption = 'zrEndereco3'
+          end
+          object ZRLabel1437: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 39
+            Height = 1
+            Caption = 'zrNomeEmpresa3'
+          end
+          object ZRLabel1438: TZRLabel
+            Left = 1
+            Top = 3
+            Width = 39
+            Height = 1
+            Caption = 'zrFone'
+          end
+        end
+        object ZRBand147: TZRBand
+          Left = 0
+          Top = 16
+          Width = 40
+          Height = 3
+          Stretch = False
+          BandType = zbtChild
+          ParentIndex = 0
+          object ZRLabel1439: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 37
+            Height = 1
+            FontStyles = [zfsBold]
+            Alignment.X = zawCenter
+            Caption = 'Invoice # '
+            BeforePrint = ZRLabel86BeforePrint
+          end
+          object ZRLabel1440: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 13
+            Height = 1
+            Caption = 'ZRLabel87'
+            Variable = ZRField869
+          end
+          object ZRSystemLabel17: TZRSystemLabel
+            Left = 24
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            DataKind = zsdTime
+          end
+          object ZRLabel1441: TZRLabel
+            Left = 1
+            Top = 2
+            Width = 37
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'zrNomeCodigoCliente'
+          end
+        end
+        object ZRBand148: TZRBand
+          Left = 0
+          Top = 19
+          Width = 40
+          Height = 4
+          Frame.Top = 1
+          Frame.Bottom = 1
+          Stretch = False
+          BandType = zbtColumnHeader
+          object ZRLabel1442: TZRLabel
+            Left = 0
+            Top = 1
+            Width = 6
+            Height = 1
+            Caption = 'ID'
+            Variable = ZRField853
+          end
+          object ZRLabel1443: TZRLabel
+            Left = 7
+            Top = 1
+            Width = 28
+            Height = 1
+            Caption = 'ID'
+            Variable = ZRField854
+          end
+          object ZRLabel1444: TZRLabel
+            Left = 37
+            Top = 1
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel90'
+            Variable = ZRField855
+          end
+          object ZRLabel1445: TZRLabel
+            Left = 0
+            Top = 2
+            Width = 11
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField856
+          end
+          object ZRLabel1446: TZRLabel
+            Left = 12
+            Top = 2
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField857
+          end
+          object ZRLabel1447: TZRLabel
+            Left = 25
+            Top = 2
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel91'
+            Variable = ZRField858
+          end
+          object ZRLabel1448: TZRLabel
+            Left = 37
+            Top = 2
+            Width = 3
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel91'
+            Variable = ZRField860
+          end
+        end
+        object ZRBand149: TZRBand
+          Left = 0
+          Top = 23
+          Width = 40
+          Height = 1
+          Stretch = False
+          BandType = zbtGroupHeader
+          GroupOrder = 0
+          object ZRLabel1449: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 38
+            Height = 1
+            Caption = 'Localizacao'
+            Variable = ZRField882
+          end
+        end
+        object ZRBand150: TZRBand
+          Left = 0
+          Top = 24
+          Width = 40
+          Height = 2
+          Stretch = False
+          BandType = zbtDetail
+          object ZRLabel1450: TZRLabel
+            Left = 1
+            Top = 0
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField861
+          end
+          object ZRLabel1451: TZRLabel
+            Left = 10
+            Top = 0
+            Width = 25
+            Height = 1
+            Caption = 'ZRLabel95'
+            Variable = ZRField862
+          end
+          object ZRLabel1452: TZRLabel
+            Left = 37
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel95'
+            Variable = ZRField866
+          end
+          object ZRLabel1453: TZRLabel
+            Left = 1
+            Top = 1
+            Width = 8
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField863
+          end
+          object ZRLabel1454: TZRLabel
+            Left = 12
+            Top = 1
+            Width = 5
+            Height = 1
+            AutoSize = zasWidth
+            Caption = 'ZRLabel95'
+            Variable = ZRField864
+            WordWrap = True
+          end
+          object ZRLabel1455: TZRLabel
+            Left = 26
+            Top = 1
+            Width = 10
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField865
+          end
+          object ZRLabel1456: TZRLabel
+            Left = 10
+            Top = 1
+            Width = 1
+            Height = 1
+            Caption = 'x'
+          end
+          object ZRLabel1457: TZRLabel
+            Left = 24
+            Top = 1
+            Width = 1
+            Height = 1
+            Caption = '='
+          end
+          object ZRLabel1458: TZRLabel
+            Left = 37
+            Top = 1
+            Width = 3
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel95'
+            Variable = ZRField867
+          end
+        end
+        object ZRBand151: TZRBand
+          Left = 0
+          Top = 26
+          Width = 40
+          Height = 1
+          Frame.Top = 1
+          Stretch = False
+          BandType = zbtDetailFooter
+        end
+        object ZRBand152: TZRBand
+          Left = 0
+          Top = 27
+          Width = 40
+          Height = 23
+          Stretch = False
+          BandType = zbtFooter
+          object ZRLabel1459: TZRLabel
+            Left = 17
+            Top = 0
+            Width = 8
+            Height = 1
+            Caption = 'Total  +'
+          end
+          object ZRTotalLabel40: TZRTotalLabel
+            Left = 0
+            Top = 0
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkCount
+            Level = ZReport10
+            Variable = ZRAggregator30
+          end
+          object ZRLabel1460: TZRLabel
+            Left = 6
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'itens'
+          end
+          object ZRLabel1461: TZRLabel
+            Left = 0
+            Top = 5
+            Width = 40
+            Height = 1
+            AutoSize = zasHeight
+            Caption = 'ZRLabel106'
+            Variable = ZRField868
+            WordWrap = True
+          end
+          object ZRLabel1462: TZRLabel
+            Left = 11
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Descontos -'
+            BeforePrint = zrlDescontoBeforePrint
+          end
+          object ZRLabel1463: TZRLabel
+            Left = 25
+            Top = 1
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField874
+          end
+          object ZRLabel1464: TZRLabel
+            Left = 14
+            Top = 2
+            Width = 11
+            Height = 1
+            Caption = 'Acrescimo +'
+          end
+          object ZRLabel1465: TZRLabel
+            Left = 25
+            Top = 2
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField875
+          end
+          object ZRLabel1466: TZRLabel
+            Left = 8
+            Top = 3
+            Width = 17
+            Height = 1
+            FontStyles = [zfsBold]
+            Caption = 'TOTAL FINAL = '
+          end
+          object ZRLabel1467: TZRLabel
+            Left = 25
+            Top = 3
+            Width = 14
+            Height = 1
+            FontStyles = [zfsBold]
+            Alignment.X = zawRight
+            Caption = 'ZRLabel109'
+            Variable = ZRField872
+          end
+          object ZRTotalLabel41: TZRTotalLabel
+            Left = 25
+            Top = 0
+            Width = 14
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkSum
+            Level = ZReport10
+            Variable = ZRAggregator29
+          end
+          object ZRLabel1468: TZRLabel
+            Left = 0
+            Top = 8
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'NOME'
+            Variable = ZRField873
+          end
+          object ZRLabel1469: TZRLabel
+            Left = 0
+            Top = 7
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '___________________________'
+          end
+          object ZRLabel1470: TZRLabel
+            Left = 5
+            Top = 14
+            Width = 35
+            Height = 1
+            Caption = 'ENDERECO'
+            Variable = ZRField877
+          end
+          object ZRLabel1471: TZRLabel
+            Left = 2
+            Top = 20
+            Width = 9
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Vendedor:'
+          end
+          object ZRLabel1472: TZRLabel
+            Left = 11
+            Top = 20
+            Width = 29
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField879
+          end
+          object ZRLabel1473: TZRLabel
+            Left = 0
+            Top = 21
+            Width = 11
+            Height = 1
+            Caption = 'Plano Pag.:'
+          end
+          object ZRLabel1474: TZRLabel
+            Left = 11
+            Top = 21
+            Width = 29
+            Height = 1
+            Caption = 'dbTerms2'
+            Variable = ZRField878
+          end
+          object ZRLabel1475: TZRLabel
+            Left = 7
+            Top = 13
+            Width = 26
+            Height = 1
+            Alignment.X = zawCenter
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField876
+          end
+          object ZRLabel1476: TZRLabel
+            Left = 10
+            Top = 17
+            Width = 30
+            Height = 1
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField881
+          end
+          object ZRTotalLabel42: TZRTotalLabel
+            Left = 0
+            Top = 1
+            Width = 5
+            Height = 1
+            Alignment.X = zawRight
+            Kind = ztkSum
+            Level = ZReport10
+            Variable = ZRAggregator30
+          end
+          object ZRLabel1477: TZRLabel
+            Left = 6
+            Top = 1
+            Width = 4
+            Height = 1
+            Caption = 'Vol.'
+          end
+          object ZRLabel1478: TZRLabel
+            Left = 10
+            Top = 18
+            Width = 30
+            Height = 1
+            Alignment.Y = zahCenter
+            Caption = 'ZRLabel17'
+            Variable = ZRField883
+          end
+          object ZRLabel1479: TZRLabel
+            Left = 0
+            Top = 18
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField884
+          end
+          object ZRLabel1480: TZRLabel
+            Left = 0
+            Top = 17
+            Width = 10
+            Height = 1
+            Caption = 'ZRLabel17'
+            Variable = ZRField885
+          end
+          object ZRLabel1481: TZRLabel
+            Left = 10
+            Top = 16
+            Width = 29
+            Height = 1
+            Caption = 'ENDERECO'
+            Variable = ZRField886
+          end
+          object ZRLabel1482: TZRLabel
+            Left = 0
+            Top = 16
+            Width = 10
+            Height = 1
+            Caption = 'Entrega:'
+          end
+          object ZRLabel1483: TZRLabel
+            Left = 0
+            Top = 14
+            Width = 5
+            Height = 1
+            Caption = 'End.:'
+          end
+          object ZRLabel1484: TZRLabel
+            Left = 0
+            Top = 15
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '----------------------------------------'
+          end
+          object ZRLabel1485: TZRLabel
+            Left = 0
+            Top = 19
+            Width = 40
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = '----------------------------------------'
+          end
+          object ZRLabel1486: TZRLabel
+            Left = 0
+            Top = 9
+            Width = 33
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'ENDERECO'
+            Variable = ZRField889
+          end
+          object ZRLabel1487: TZRLabel
+            Left = 33
+            Top = 9
+            Width = 7
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'NRO'
+            Variable = ZRField890
+          end
+          object ZRLabel1488: TZRLabel
+            Left = 0
+            Top = 10
+            Width = 21
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'BAIRRO'
+            Variable = ZRField891
+          end
+          object ZRLabel1489: TZRLabel
+            Left = 21
+            Top = 10
+            Width = 16
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'CIDADE'
+            Variable = ZRField892
+          end
+          object ZRLabel1490: TZRLabel
+            Left = 37
+            Top = 10
+            Width = 3
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'UF'
+            Variable = ZRField893
+          end
+          object ZRLabel1491: TZRLabel
+            Left = 7
+            Top = 11
+            Width = 21
+            Height = 1
+            Alignment.X = zawCenter
+            Caption = 'FONE1'
+            Variable = ZRField895
+          end
+          object ZRLabel1492: TZRLabel
+            Left = 0
+            Top = 11
+            Width = 7
+            Height = 1
+            Caption = 'Fone :'
+          end
+        end
+        object ZRSubDetail22: TZRSubDetail
+          Left = 0
+          Top = 52
+          Width = 40
+          Height = 1
+          DataSet = C_Parcelas
+          Stretch = False
+          MasterIndex = 6
+          object ZRField896: TZRField
+            Format.Width = 10
+            DataField = 'PARCELA'
+            DataSet = C_Parcelas
+          end
+          object ZRField897: TZRField
+            Format.FloatFormat = ffCurrency
+            Format.DisplayMask = '##0.00'
+            Format.Width = 19
+            DataField = 'VALOR'
+            DataSet = C_Parcelas
+          end
+          object ZRField898: TZRField
+            Format.Width = 10
+            DataField = 'VENCIMENTO'
+            DataSet = C_Parcelas
+          end
+          object ZRField899: TZRField
+            Format.Width = 10
+            DataField = 'TITULO'
+            DataSet = C_Parcelas
+          end
+          object ZRField900: TZRField
+            Format.Width = 10
+            DataField = 'STATUS'
+            DataSet = C_Parcelas
+          end
+          object ZRField901: TZRField
+            Format.Width = 10
+            DataField = 'VENDA'
+            DataSet = C_Parcelas
+          end
+          object ZRField902: TZRField
+            Format.FloatFormat = ffCurrency
+            Format.DisplayMask = '##0.00'
+            Format.Width = 19
+            DataField = 'VALORPAGO'
+            DataSet = C_Parcelas
+          end
+          object ZRField903: TZRField
+            Format.Width = 6
+            DataField = 'SIGLA'
+            DataSet = C_Parcelas
+          end
+          object ZRLabel1493: TZRLabel
+            Left = 0
+            Top = 0
+            Width = 4
+            Height = 1
+            Caption = 'Parcela'
+            Variable = ZRField896
+          end
+          object ZRLabel1494: TZRLabel
+            Left = 5
+            Top = 0
+            Width = 6
+            Height = 1
+            Caption = 'Parcela'
+            Variable = ZRField899
+          end
+          object ZRLabel1495: TZRLabel
+            Left = 12
+            Top = 0
+            Width = 8
+            Height = 1
+            Caption = 'Vencimento'
+            Variable = ZRField898
+          end
+          object ZRLabel1496: TZRLabel
+            Left = 21
+            Top = 0
+            Width = 6
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Valor'
+            Variable = ZRField897
+          end
+          object ZRLabel1497: TZRLabel
+            Left = 28
+            Top = 0
+            Width = 7
+            Height = 1
+            Alignment.X = zawRight
+            Caption = 'Valor'
+            Variable = ZRField902
+          end
+          object ZRLabel1498: TZRLabel
+            Left = 36
+            Top = 0
+            Width = 3
+            Height = 1
+            Caption = 'ZRLabel350'
+            Variable = ZRField903
+          end
+          object ZRBand153: TZRBand
+            Left = 0
+            Top = 50
+            Width = 40
+            Height = 2
+            Stretch = False
+            BandType = zbtColumnHeader
+            object ZRLabel1499: TZRLabel
+              Left = 0
+              Top = 0
+              Width = 4
+              Height = 1
+              Caption = '#'
+            end
+            object ZRLabel1500: TZRLabel
+              Left = 5
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Parc.'
+            end
+            object ZRLabel1501: TZRLabel
+              Left = 12
+              Top = 0
+              Width = 8
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Venc.'
+            end
+            object ZRLabel1502: TZRLabel
+              Left = 21
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Valor'
+            end
+            object ZRLabel1503: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 40
+              Height = 1
+              Frame.Top = 1
+            end
+            object ZRLabel1504: TZRLabel
+              Left = 30
+              Top = 0
+              Width = 5
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Pgto'
+            end
+            object ZRLabel1505: TZRLabel
+              Left = 36
+              Top = 0
+              Width = 3
+              Height = 1
+              Caption = 'Tp'
+            end
+          end
+          object ZRBand154: TZRBand
+            Left = 0
+            Top = 53
+            Width = 40
+            Height = 8
+            Stretch = False
+            BandType = zbtDetailFooter
+            object ZRLabel1506: TZRLabel
+              Left = 0
+              Top = 7
+              Width = 1
+              Height = 1
+              Caption = '.'
+            end
+            object ZRLabel1507: TZRLabel
+              Left = 0
+              Top = 3
+              Width = 9
+              Height = 1
+              Caption = 'T'#233'cnico:'
+            end
+            object ZRLabel1508: TZRLabel
+              Left = 9
+              Top = 3
+              Width = 31
+              Height = 1
+              Caption = ' _____________________________'
+            end
+            object ZRLabel1509: TZRLabel
+              Left = 0
+              Top = 5
+              Width = 9
+              Height = 1
+              Caption = 'Entregue:'
+            end
+            object ZRLabel1510: TZRLabel
+              Left = 9
+              Top = 5
+              Width = 31
+              Height = 1
+              Caption = ' _____________________________'
+            end
+            object ZRLabel1511: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 39
+              Height = 1
+              Caption = 'Invoice #'
+            end
+          end
+        end
+        object ZReport11: TZReport
+          Left = -249
+          Top = -879
+          Width = 40
+          Height = 65
+          DataSet = C_Itens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Courier New'
+          Font.Style = []
+          Options.LineSpacing = zrd16
+          Options.AutoHeight = False
+          Options.Escapes.Model = emEpsonLXSeries
+          Options.PageFrom = 1
+          Options.PageTo = 1
+          Options.PaperType = zptContinuous
+          Options.Acentos = Retorno_Carro
+          Options.Scissors = False
+          Margins.Left = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Minimized = True
+          object ZRField904: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_CODIGO'
+            DataSet = C_Invoice
+          end
+          object ZRField905: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_DESCRICAO'
+            DataSet = C_Invoice
+          end
+          object ZRField906: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_UNIDADE'
+            DataSet = C_Invoice
+          end
+          object ZRField907: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_QUANTIDADE'
+            DataSet = C_Invoice
+          end
+          object ZRField908: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_PRECO'
+            DataSet = C_Invoice
+          end
+          object ZRField909: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_SUBTOTAL'
+            DataSet = C_Invoice
+          end
+          object ZRField910: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_REFERENCIA'
+            DataSet = C_Invoice
+          end
+          object ZRField911: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_TAX'
+            DataSet = C_Invoice
+          end
+          object ZRField912: TZRField
+            Format.Width = 13
+            DataField = 'CODIGO'
+            DataSet = C_Itens
+          end
+          object ZRField913: TZRField
+            Format.Width = 255
+            DataField = 'ITEMDESC'
+            DataSet = C_Itens
+          end
+          object ZRField914: TZRField
+            Format.DisplayMask = '#,##0.###'
+            Format.Width = 19
+            DataField = 'QUANTIDADE'
+            DataSet = C_Itens
+          end
+          object ZRField915: TZRField
+            Format.DisplayMask = '#,###,##0.00'
+            Format.Width = 10
+            DataField = 'PRECO'
+            DataSet = C_Itens
+          end
+          object ZRField916: TZRField
+            Format.DisplayMask = '#,###,##0.00'
+            Format.Width = 19
+            DataField = 'TOTAL'
+            DataSet = C_Itens
+          end
+          object ZRField917: TZRField
+            Format.Width = 6
+            DataField = 'UNIDADE'
+            DataSet = C_Itens
+          end
+          object ZRField918: TZRField
+            Format.Width = 1
+            DataField = 'TAXAVEL'
+            DataSet = C_Itens
+          end
+          object ZRAggregator31: TZRAggregator
+            Format.DisplayMask = '#,###,##0.00'
+            Format.Width = 19
+            Variable = ZRField916
+          end
+          object ZRAggregator32: TZRAggregator
+            Format.DisplayMask = '#,##0.###'
+            Format.Width = 19
+            Variable = ZRField914
+          end
+          object ZRField919: TZRField
+            Format.Width = 255
+            DataField = 'OBS'
+            DataSet = C_Invoice
+          end
+          object ZRField920: TZRField
+            Format.DisplayMask = 'dd/mm/yy'
+            Format.Width = 10
+            DataField = 'DATA'
+            DataSet = C_Invoice
+          end
+          object ZRField921: TZRField
+            Format.DisplayMask = '#,###,##0.00'
+            Format.Width = 19
+            DataField = 'TOTALITENS'
+            DataSet = C_Invoice
+          end
+          object ZRField922: TZRField
+            Format.DisplayMask = '#,###,##0.00'
+            Format.Width = 19
+            DataField = 'IMPOSTO'
+            DataSet = C_Invoice
+          end
+          object ZRField923: TZRField
+            Format.DisplayMask = '#,###,##0.00'
+            Format.Width = 19
+            DataField = 'TOTAL'
+            DataSet = C_Invoice
+          end
+          object ZRField924: TZRField
+            Format.Width = 50
+            DataField = 'NOME'
+            DataSet = C_Invoice
+          end
+          object ZRField925: TZRField
+            Format.DisplayMask = '#,###,###,###,##0.00'
+            Format.Width = 19
+            DataField = 'DESCONTO'
+            DataSet = C_Invoice
+          end
+          object ZRField926: TZRField
+            Format.DisplayMask = '#,###,###,###,##0.00'
+            Format.Width = 19
+            DataField = 'OUTRASDESPESAS'
+            DataSet = C_Invoice
+          end
+          object ZRField927: TZRField
+            Format.Width = 20
+            DataField = 'FONE1'
+            DataSet = C_Invoice
+          end
+          object ZRField928: TZRField
+            Format.Width = 50
+            DataField = 'ENDERECO'
+            DataSet = C_Invoice
+          end
+          object ZRField929: TZRField
+            Format.Width = 30
+            DataField = 'PLANOPAG'
+            DataSet = C_Invoice
+          end
+          object ZRField930: TZRField
+            Format.Width = 50
+            DataField = 'VENDEDOR'
+            DataSet = C_Invoice
+          end
+          object ZRField931: TZRField
+            Format.Width = 1255
+            DataField = 'OBS'
+            DataSet = C_Invoice
+          end
+          object ZRField932: TZRField
+            Format.Width = 50
+            DataField = 'CAMPO01'
+            DataSet = C_Invoice
+          end
+          object ZRField933: TZRField
+            Format.Width = 15
+            DataField = 'LOCAL'
+            DataSet = C_Itens
+          end
+          object ZRField934: TZRField
+            Format.Width = 50
+            DataField = 'CAMPO02'
+            DataSet = C_Invoice
+          end
+          object ZRField935: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_CAMPO2'
+            DataSet = C_Invoice
+          end
+          object ZRField936: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_CAMPO1'
+            DataSet = C_Invoice
+          end
+          object ZRField937: TZRField
+            Format.Width = 10
+            DataField = 'DATAENTREGA'
+            DataSet = C_Invoice
+          end
+          object ZRField938: TZRField
+            Format.Width = 20
+            DataField = 'TIT2_FABRICANTE'
+            DataSet = C_Invoice
+          end
+          object ZRField939: TZRField
+            Format.Width = 30
+            DataField = 'FABRICANTE'
+            DataSet = C_Itens
+          end
+          object ZRField940: TZRField
+            Format.Width = 50
+            DataField = 'ENDERECO'
+            DataSet = C_Invoice
+          end
+          object ZRField941: TZRField
+            Format.Width = 4
+            DataField = 'NRO'
+            DataSet = C_Invoice
+          end
+          object ZRField942: TZRField
+            Format.Width = 30
+            DataField = 'BAIRRO'
+            DataSet = C_Invoice
+          end
+          object ZRField943: TZRField
+            Format.Width = 30
+            DataField = 'CIDADE'
+            DataSet = C_Invoice
+          end
+          object ZRField944: TZRField
+            DataField = 'UF'
+            DataSet = C_Invoice
+          end
+          object ZRField945: TZRField
+            Format.Width = 10
+            DataField = 'CEP'
+            DataSet = C_Invoice
+          end
+          object ZRField946: TZRField
+            Format.Width = 20
+            DataField = 'FONE1'
+            DataSet = C_Invoice
+          end
+          object ZRGroup10: TZRGroup
+            Variable = ZRField933
+          end
+          object ZRBand155: TZRBand
+            Left = 0
+            Top = 11
+            Width = 40
+            Height = 5
+            Stretch = False
+            BandType = zbtHeader
+            object ZRLabel1512: TZRLabel
+              Left = 1
+              Top = 2
+              Width = 39
+              Height = 1
+              Caption = 'zrCidade3'
+            end
+            object ZRLabel1513: TZRLabel
+              Left = 1
+              Top = 1
+              Width = 39
+              Height = 1
+              Caption = 'zrEndereco3'
+            end
+            object ZRLabel1514: TZRLabel
+              Left = 1
+              Top = 0
+              Width = 39
+              Height = 1
+              Caption = 'zrNomeEmpresa3'
+            end
+            object ZRLabel1515: TZRLabel
+              Left = 1
+              Top = 3
+              Width = 39
+              Height = 1
+              Caption = 'zrFone'
+            end
+          end
+          object ZRBand156: TZRBand
+            Left = 0
+            Top = 16
+            Width = 40
+            Height = 3
+            Stretch = False
+            BandType = zbtChild
+            ParentIndex = 0
+            object ZRLabel1516: TZRLabel
+              Left = 1
+              Top = 0
+              Width = 37
+              Height = 1
+              FontStyles = [zfsBold]
+              Alignment.X = zawCenter
+              Caption = 'Invoice # '
+              BeforePrint = ZRLabel86BeforePrint
+            end
+            object ZRLabel1517: TZRLabel
+              Left = 1
+              Top = 1
+              Width = 13
+              Height = 1
+              Caption = 'ZRLabel87'
+              Variable = ZRField920
+            end
+            object ZRSystemLabel18: TZRSystemLabel
+              Left = 24
+              Top = 1
+              Width = 14
+              Height = 1
+              Alignment.X = zawRight
+              DataKind = zsdTime
+            end
+            object ZRLabel1518: TZRLabel
+              Left = 1
+              Top = 2
+              Width = 37
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'zrNomeCodigoCliente'
+            end
+          end
+          object ZRBand157: TZRBand
+            Left = 0
+            Top = 19
+            Width = 40
+            Height = 4
+            Frame.Top = 1
+            Frame.Bottom = 1
+            Stretch = False
+            BandType = zbtColumnHeader
+            object ZRLabel1519: TZRLabel
+              Left = 0
+              Top = 1
+              Width = 6
+              Height = 1
+              Caption = 'ID'
+              Variable = ZRField904
+            end
+            object ZRLabel1520: TZRLabel
+              Left = 7
+              Top = 1
+              Width = 28
+              Height = 1
+              Caption = 'ID'
+              Variable = ZRField905
+            end
+            object ZRLabel1521: TZRLabel
+              Left = 37
+              Top = 1
+              Width = 3
+              Height = 1
+              Caption = 'ZRLabel90'
+              Variable = ZRField906
+            end
+            object ZRLabel1522: TZRLabel
+              Left = 0
+              Top = 2
+              Width = 11
+              Height = 1
+              Caption = 'ZRLabel91'
+              Variable = ZRField907
+            end
+            object ZRLabel1523: TZRLabel
+              Left = 12
+              Top = 2
+              Width = 10
+              Height = 1
+              Caption = 'ZRLabel91'
+              Variable = ZRField908
+            end
+            object ZRLabel1524: TZRLabel
+              Left = 25
+              Top = 2
+              Width = 10
+              Height = 1
+              Caption = 'ZRLabel91'
+              Variable = ZRField909
+            end
+            object ZRLabel1525: TZRLabel
+              Left = 37
+              Top = 2
+              Width = 3
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel91'
+              Variable = ZRField911
+            end
+          end
+          object ZRBand158: TZRBand
+            Left = 0
+            Top = 23
+            Width = 40
+            Height = 1
+            Stretch = False
+            BandType = zbtGroupHeader
+            GroupOrder = 0
+            object ZRLabel1526: TZRLabel
+              Left = 1
+              Top = 0
+              Width = 38
+              Height = 1
+              Caption = 'Localizacao'
+              Variable = ZRField933
+            end
+          end
+          object ZRBand159: TZRBand
+            Left = 0
+            Top = 24
+            Width = 40
+            Height = 2
+            Stretch = False
+            BandType = zbtDetail
+            object ZRLabel1527: TZRLabel
+              Left = 1
+              Top = 0
+              Width = 8
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel95'
+              Variable = ZRField912
+            end
+            object ZRLabel1528: TZRLabel
+              Left = 10
+              Top = 0
+              Width = 25
+              Height = 1
+              Caption = 'ZRLabel95'
+              Variable = ZRField913
+            end
+            object ZRLabel1529: TZRLabel
+              Left = 37
+              Top = 0
+              Width = 3
+              Height = 1
+              Caption = 'ZRLabel95'
+              Variable = ZRField917
+            end
+            object ZRLabel1530: TZRLabel
+              Left = 1
+              Top = 1
+              Width = 8
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel95'
+              Variable = ZRField914
+            end
+            object ZRLabel1531: TZRLabel
+              Left = 12
+              Top = 1
+              Width = 5
+              Height = 1
+              AutoSize = zasWidth
+              Caption = 'ZRLabel95'
+              Variable = ZRField915
+              WordWrap = True
+            end
+            object ZRLabel1532: TZRLabel
+              Left = 26
+              Top = 1
+              Width = 10
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel95'
+              Variable = ZRField916
+            end
+            object ZRLabel1533: TZRLabel
+              Left = 10
+              Top = 1
+              Width = 1
+              Height = 1
+              Caption = 'x'
+            end
+            object ZRLabel1534: TZRLabel
+              Left = 24
+              Top = 1
+              Width = 1
+              Height = 1
+              Caption = '='
+            end
+            object ZRLabel1535: TZRLabel
+              Left = 37
+              Top = 1
+              Width = 3
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel95'
+              Variable = ZRField918
+            end
+          end
+          object ZRBand160: TZRBand
+            Left = 0
+            Top = 26
+            Width = 40
+            Height = 1
+            Frame.Top = 1
+            Stretch = False
+            BandType = zbtDetailFooter
+          end
+          object ZRBand161: TZRBand
+            Left = 0
+            Top = 27
+            Width = 40
+            Height = 23
+            Stretch = False
+            BandType = zbtFooter
+            object ZRLabel1536: TZRLabel
+              Left = 17
+              Top = 0
+              Width = 8
+              Height = 1
+              Caption = 'Total  +'
+            end
+            object ZRTotalLabel43: TZRTotalLabel
+              Left = 0
+              Top = 0
+              Width = 5
+              Height = 1
+              Alignment.X = zawRight
+              Kind = ztkCount
+              Level = ZReport11
+              Variable = ZRAggregator32
+            end
+            object ZRLabel1537: TZRLabel
+              Left = 6
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'itens'
+            end
+            object ZRLabel1538: TZRLabel
+              Left = 0
+              Top = 5
+              Width = 40
+              Height = 1
+              AutoSize = zasHeight
+              Caption = 'ZRLabel106'
+              Variable = ZRField919
+              WordWrap = True
+            end
+            object ZRLabel1539: TZRLabel
+              Left = 11
+              Top = 1
+              Width = 14
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Descontos -'
+              BeforePrint = zrlDescontoBeforePrint
+            end
+            object ZRLabel1540: TZRLabel
+              Left = 25
+              Top = 1
+              Width = 14
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel109'
+              Variable = ZRField925
+            end
+            object ZRLabel1541: TZRLabel
+              Left = 14
+              Top = 2
+              Width = 11
+              Height = 1
+              Caption = 'Acrescimo +'
+            end
+            object ZRLabel1542: TZRLabel
+              Left = 25
+              Top = 2
+              Width = 14
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'ZRLabel109'
+              Variable = ZRField926
+            end
+            object ZRLabel1543: TZRLabel
+              Left = 8
+              Top = 3
+              Width = 17
+              Height = 1
+              FontStyles = [zfsBold]
+              Caption = 'TOTAL FINAL = '
+            end
+            object ZRLabel1544: TZRLabel
+              Left = 25
+              Top = 3
+              Width = 14
+              Height = 1
+              FontStyles = [zfsBold]
+              Alignment.X = zawRight
+              Caption = 'ZRLabel109'
+              Variable = ZRField923
+            end
+            object ZRTotalLabel44: TZRTotalLabel
+              Left = 25
+              Top = 0
+              Width = 14
+              Height = 1
+              Alignment.X = zawRight
+              Kind = ztkSum
+              Level = ZReport11
+              Variable = ZRAggregator31
+            end
+            object ZRLabel1545: TZRLabel
+              Left = 0
+              Top = 8
+              Width = 40
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'NOME'
+              Variable = ZRField924
+            end
+            object ZRLabel1546: TZRLabel
+              Left = 0
+              Top = 7
+              Width = 40
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = '___________________________'
+            end
+            object ZRLabel1547: TZRLabel
+              Left = 5
+              Top = 14
+              Width = 35
+              Height = 1
+              Caption = 'ENDERECO'
+              Variable = ZRField928
+            end
+            object ZRLabel1548: TZRLabel
+              Left = 2
+              Top = 20
+              Width = 9
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Vendedor:'
+            end
+            object ZRLabel1549: TZRLabel
+              Left = 11
+              Top = 20
+              Width = 29
+              Height = 1
+              Caption = 'ZRLabel17'
+              Variable = ZRField930
+            end
+            object ZRLabel1550: TZRLabel
+              Left = 0
+              Top = 21
+              Width = 11
+              Height = 1
+              Caption = 'Plano Pag.:'
+            end
+            object ZRLabel1551: TZRLabel
+              Left = 11
+              Top = 21
+              Width = 29
+              Height = 1
+              Caption = 'dbTerms2'
+              Variable = ZRField929
+            end
+            object ZRLabel1552: TZRLabel
+              Left = 7
+              Top = 13
+              Width = 26
+              Height = 1
+              Alignment.X = zawCenter
+              Alignment.Y = zahCenter
+              Caption = 'ZRLabel17'
+              Variable = ZRField927
+            end
+            object ZRLabel1553: TZRLabel
+              Left = 10
+              Top = 17
+              Width = 30
+              Height = 1
+              Alignment.Y = zahCenter
+              Caption = 'ZRLabel17'
+              Variable = ZRField932
+            end
+            object ZRTotalLabel45: TZRTotalLabel
+              Left = 0
+              Top = 1
+              Width = 5
+              Height = 1
+              Alignment.X = zawRight
+              Kind = ztkSum
+              Level = ZReport11
+              Variable = ZRAggregator32
+            end
+            object ZRLabel1554: TZRLabel
+              Left = 6
+              Top = 1
+              Width = 4
+              Height = 1
+              Caption = 'Vol.'
+            end
+            object ZRLabel1555: TZRLabel
+              Left = 10
+              Top = 18
+              Width = 30
+              Height = 1
+              Alignment.Y = zahCenter
+              Caption = 'ZRLabel17'
+              Variable = ZRField934
+            end
+            object ZRLabel1556: TZRLabel
+              Left = 0
+              Top = 18
+              Width = 10
+              Height = 1
+              Caption = 'ZRLabel17'
+              Variable = ZRField935
+            end
+            object ZRLabel1557: TZRLabel
+              Left = 0
+              Top = 17
+              Width = 10
+              Height = 1
+              Caption = 'ZRLabel17'
+              Variable = ZRField936
+            end
+            object ZRLabel1558: TZRLabel
+              Left = 10
+              Top = 16
+              Width = 29
+              Height = 1
+              Caption = 'ENDERECO'
+              Variable = ZRField937
+            end
+            object ZRLabel1559: TZRLabel
+              Left = 0
+              Top = 16
+              Width = 10
+              Height = 1
+              Caption = 'Entrega:'
+            end
+            object ZRLabel1560: TZRLabel
+              Left = 0
+              Top = 14
+              Width = 5
+              Height = 1
+              Caption = 'End.:'
+            end
+            object ZRLabel1561: TZRLabel
+              Left = 0
+              Top = 15
+              Width = 40
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = '----------------------------------------'
+            end
+            object ZRLabel1562: TZRLabel
+              Left = 0
+              Top = 19
+              Width = 40
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = '----------------------------------------'
+            end
+            object ZRLabel1563: TZRLabel
+              Left = 0
+              Top = 9
+              Width = 33
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'ENDERECO'
+              Variable = ZRField940
+            end
+            object ZRLabel1564: TZRLabel
+              Left = 33
+              Top = 9
+              Width = 7
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'NRO'
+              Variable = ZRField941
+            end
+            object ZRLabel1565: TZRLabel
+              Left = 0
+              Top = 10
+              Width = 21
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'BAIRRO'
+              Variable = ZRField942
+            end
+            object ZRLabel1566: TZRLabel
+              Left = 21
+              Top = 10
+              Width = 16
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'CIDADE'
+              Variable = ZRField943
+            end
+            object ZRLabel1567: TZRLabel
+              Left = 37
+              Top = 10
+              Width = 3
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'UF'
+              Variable = ZRField944
+            end
+            object ZRLabel1568: TZRLabel
+              Left = 7
+              Top = 11
+              Width = 21
+              Height = 1
+              Alignment.X = zawCenter
+              Caption = 'FONE1'
+              Variable = ZRField946
+            end
+            object ZRLabel1569: TZRLabel
+              Left = 0
+              Top = 11
+              Width = 7
+              Height = 1
+              Caption = 'Fone :'
+            end
+          end
+          object ZRSubDetail23: TZRSubDetail
+            Left = 0
+            Top = 52
+            Width = 40
+            Height = 1
+            DataSet = C_Parcelas
+            Stretch = False
+            MasterIndex = 6
+            object ZRField947: TZRField
+              Format.Width = 10
+              DataField = 'PARCELA'
+              DataSet = C_Parcelas
+            end
+            object ZRField948: TZRField
+              Format.FloatFormat = ffCurrency
+              Format.DisplayMask = '##0.00'
+              Format.Width = 19
+              DataField = 'VALOR'
+              DataSet = C_Parcelas
+            end
+            object ZRField949: TZRField
+              Format.Width = 10
+              DataField = 'VENCIMENTO'
+              DataSet = C_Parcelas
+            end
+            object ZRField950: TZRField
+              Format.Width = 10
+              DataField = 'TITULO'
+              DataSet = C_Parcelas
+            end
+            object ZRField951: TZRField
+              Format.Width = 10
+              DataField = 'STATUS'
+              DataSet = C_Parcelas
+            end
+            object ZRField952: TZRField
+              Format.Width = 10
+              DataField = 'VENDA'
+              DataSet = C_Parcelas
+            end
+            object ZRField953: TZRField
+              Format.FloatFormat = ffCurrency
+              Format.DisplayMask = '##0.00'
+              Format.Width = 19
+              DataField = 'VALORPAGO'
+              DataSet = C_Parcelas
+            end
+            object ZRField954: TZRField
+              Format.Width = 6
+              DataField = 'SIGLA'
+              DataSet = C_Parcelas
+            end
+            object ZRLabel1570: TZRLabel
+              Left = 0
+              Top = 0
+              Width = 4
+              Height = 1
+              Caption = 'Parcela'
+              Variable = ZRField947
+            end
+            object ZRLabel1571: TZRLabel
+              Left = 5
+              Top = 0
+              Width = 6
+              Height = 1
+              Caption = 'Parcela'
+              Variable = ZRField950
+            end
+            object ZRLabel1572: TZRLabel
+              Left = 12
+              Top = 0
+              Width = 8
+              Height = 1
+              Caption = 'Vencimento'
+              Variable = ZRField949
+            end
+            object ZRLabel1573: TZRLabel
+              Left = 21
+              Top = 0
+              Width = 6
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Valor'
+              Variable = ZRField948
+            end
+            object ZRLabel1574: TZRLabel
+              Left = 28
+              Top = 0
+              Width = 7
+              Height = 1
+              Alignment.X = zawRight
+              Caption = 'Valor'
+              Variable = ZRField953
+            end
+            object ZRLabel1575: TZRLabel
+              Left = 36
+              Top = 0
+              Width = 3
+              Height = 1
+              Caption = 'ZRLabel350'
+              Variable = ZRField954
+            end
+            object ZRBand162: TZRBand
+              Left = 0
+              Top = 50
+              Width = 40
+              Height = 2
+              Stretch = False
+              BandType = zbtColumnHeader
+              object ZRLabel1576: TZRLabel
+                Left = 0
+                Top = 0
+                Width = 4
+                Height = 1
+                Caption = '#'
+              end
+              object ZRLabel1577: TZRLabel
+                Left = 5
+                Top = 0
+                Width = 6
+                Height = 1
+                Caption = 'Parc.'
+              end
+              object ZRLabel1578: TZRLabel
+                Left = 12
+                Top = 0
+                Width = 8
+                Height = 1
+                Alignment.X = zawRight
+                Caption = 'Venc.'
+              end
+              object ZRLabel1579: TZRLabel
+                Left = 21
+                Top = 0
+                Width = 6
+                Height = 1
+                Caption = 'Valor'
+              end
+              object ZRLabel1580: TZRLabel
+                Left = 0
+                Top = 1
+                Width = 40
+                Height = 1
+                Frame.Top = 1
+              end
+              object ZRLabel1581: TZRLabel
+                Left = 30
+                Top = 0
+                Width = 5
+                Height = 1
+                Alignment.X = zawRight
+                Caption = 'Pgto'
+              end
+              object ZRLabel1582: TZRLabel
+                Left = 36
+                Top = 0
+                Width = 3
+                Height = 1
+                Caption = 'Tp'
+              end
+            end
+            object ZRBand163: TZRBand
+              Left = 0
+              Top = 53
+              Width = 40
+              Height = 8
+              Stretch = False
+              BandType = zbtDetailFooter
+              object ZRLabel1583: TZRLabel
+                Left = 0
+                Top = 7
+                Width = 1
+                Height = 1
+                Caption = '.'
+              end
+              object ZRLabel1584: TZRLabel
+                Left = 0
+                Top = 3
+                Width = 9
+                Height = 1
+                Caption = 'T'#233'cnico:'
+              end
+              object ZRLabel1585: TZRLabel
+                Left = 9
+                Top = 3
+                Width = 31
+                Height = 1
+                Caption = ' _____________________________'
+              end
+              object ZRLabel1586: TZRLabel
+                Left = 0
+                Top = 5
+                Width = 9
+                Height = 1
+                Caption = 'Entregue:'
+              end
+              object ZRLabel1587: TZRLabel
+                Left = 9
+                Top = 5
+                Width = 31
+                Height = 1
+                Caption = ' _____________________________'
+              end
+              object ZRLabel1588: TZRLabel
+                Left = 0
+                Top = 1
+                Width = 39
+                Height = 1
+                Caption = 'Invoice #'
+              end
+            end
+          end
         end
       end
     end
@@ -3363,8 +10756,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object ZRPreImpresso: TZReport
-    Left = 32
-    Top = 176
+    Left = 24
+    Top = 184
     Width = 134
     Height = 46
     DataSet = C_Itens
@@ -4285,8 +11678,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object ZRTamanhoFixo: TZReport
-    Left = 29
-    Top = 289
+    Left = 45
+    Top = 273
     Width = 135
     Height = 43
     DataSet = C_Itens
@@ -5022,8 +12415,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object zrPreImpModeloII: TZReport
-    Left = 29
-    Top = 135
+    Left = 37
+    Top = 143
     Width = 143
     Height = 39
     DataSet = C_Itens
@@ -5591,7 +12984,7 @@ object RptInvoices: TRptInvoices
     end
   end
   object ZR40ColEconomico: TZReport
-    Left = 189
+    Left = 213
     Top = 5
     Width = 40
     Height = 90
@@ -6071,7 +13464,7 @@ object RptInvoices: TRptInvoices
       object ZRLabel298: TZRLabel
         Left = 26
         Top = 2
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
@@ -6087,16 +13480,16 @@ object RptInvoices: TRptInvoices
       object ZRLabel300: TZRLabel
         Left = 26
         Top = 3
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
         Variable = ZRField108
       end
       object ZRLabel301: TZRLabel
-        Left = 12
+        Left = 10
         Top = 4
-        Width = 14
+        Width = 15
         Height = 1
         FontStyles = [zfsBold]
         Caption = 'TOTAL FINAL = '
@@ -6104,7 +13497,7 @@ object RptInvoices: TRptInvoices
       object ZRLabel302: TZRLabel
         Left = 26
         Top = 4
-        Width = 10
+        Width = 13
         Height = 1
         FontStyles = [zfsBold]
         Alignment.X = zawRight
@@ -6114,7 +13507,7 @@ object RptInvoices: TRptInvoices
       object ZRTotalLabel7: TZRTotalLabel
         Left = 26
         Top = 1
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Kind = ztkSum
@@ -6402,8 +13795,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object AntesZPedidoCompleto: TZReport
-    Left = 158
-    Top = 160
+    Left = 182
+    Top = 152
     Width = 135
     Height = 65
     DataSet = C_Itens
@@ -8826,8 +16219,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object ZPedidoCompFolhaCompleta: TZReport
-    Left = 599
-    Top = 67
+    Left = 231
+    Top = 51
     Width = 135
     Height = 86
     DataSet = C_Itens
@@ -11181,8 +18574,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object ZPedidoCompleto: TZReport
-    Left = 158
-    Top = 124
+    Left = 198
+    Top = 116
     Width = 135
     Height = 66
     DataSet = C_Itens
@@ -14540,7 +21933,7 @@ object RptInvoices: TRptInvoices
     end
   end
   object zr40Colunas_Backup: TZReport
-    Left = 155
+    Left = 163
     Top = 9
     Width = 40
     Height = 66
@@ -15061,7 +22454,7 @@ object RptInvoices: TRptInvoices
       object ZRLabel880: TZRLabel
         Left = 26
         Top = 1
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
@@ -15077,16 +22470,16 @@ object RptInvoices: TRptInvoices
       object ZRLabel882: TZRLabel
         Left = 26
         Top = 2
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
         Variable = ZRField534
       end
       object ZRLabel883: TZRLabel
-        Left = 12
+        Left = 10
         Top = 3
-        Width = 14
+        Width = 15
         Height = 1
         FontStyles = [zfsBold]
         Caption = 'TOTAL FINAL = '
@@ -15094,7 +22487,7 @@ object RptInvoices: TRptInvoices
       object ZRLabel884: TZRLabel
         Left = 26
         Top = 3
-        Width = 10
+        Width = 13
         Height = 1
         FontStyles = [zfsBold]
         Alignment.X = zawRight
@@ -15104,7 +22497,7 @@ object RptInvoices: TRptInvoices
       object ZRTotalLabel17: TZRTotalLabel
         Left = 26
         Top = 0
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Kind = ztkSum
@@ -15475,8 +22868,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object zr40ColunasNovo: TZReport
-    Left = 664
-    Top = 24
+    Left = 296
+    Top = 6
     Width = 40
     Height = 68
     DataSet = C_Itens
@@ -16259,8 +23652,8 @@ object RptInvoices: TRptInvoices
     end
   end
   object zr40ColunasCenterBike: TZReport
-    Left = 155
-    Top = 50
+    Left = 139
+    Top = 58
     Width = 40
     Height = 66
     DataSet = C_Itens
@@ -16820,7 +24213,7 @@ object RptInvoices: TRptInvoices
       object ZRLabel969: TZRLabel
         Left = 26
         Top = 1
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
@@ -16836,16 +24229,16 @@ object RptInvoices: TRptInvoices
       object ZRLabel971: TZRLabel
         Left = 26
         Top = 2
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Caption = 'ZRLabel109'
         Variable = ZRField579
       end
       object ZRLabel972: TZRLabel
-        Left = 12
+        Left = 9
         Top = 3
-        Width = 14
+        Width = 17
         Height = 1
         FontStyles = [zfsBold]
         Caption = 'TOTAL FINAL = '
@@ -16853,7 +24246,7 @@ object RptInvoices: TRptInvoices
       object ZRLabel973: TZRLabel
         Left = 26
         Top = 3
-        Width = 10
+        Width = 13
         Height = 1
         FontStyles = [zfsBold]
         Alignment.X = zawRight
@@ -16863,7 +24256,7 @@ object RptInvoices: TRptInvoices
       object ZRTotalLabel20: TZRTotalLabel
         Left = 26
         Top = 0
-        Width = 10
+        Width = 13
         Height = 1
         Alignment.X = zawRight
         Kind = ztkSum
@@ -17262,7 +24655,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -17558,10 +24951,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 7408
           mmTop = 69850
-          mmWidth = 21521
+          mmWidth = 21886
           BandType = 0
         end
       end
@@ -17616,10 +25009,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 48683
           mmTop = 69850
-          mmWidth = 17142
+          mmWidth = 17526
           BandType = 0
         end
       end
@@ -17674,10 +25067,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 128588
           mmTop = 69850
-          mmWidth = 17893
+          mmWidth = 18203
           BandType = 0
         end
       end
@@ -17732,10 +25125,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 155840
           mmTop = 69850
-          mmWidth = 17893
+          mmWidth = 18203
           BandType = 0
         end
       end
@@ -17790,10 +25183,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 181240
           mmTop = 69850
-          mmWidth = 17893
+          mmWidth = 18203
           BandType = 0
         end
       end
@@ -17848,10 +25241,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 101600
           mmTop = 69850
-          mmWidth = 17893
+          mmWidth = 18203
           BandType = 0
         end
       end
@@ -17941,10 +25334,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3429
           mmLeft = 74613
           mmTop = 69850
-          mmWidth = 20145
+          mmWidth = 20447
           BandType = 0
         end
       end
@@ -18002,10 +25395,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3246
+          mmHeight = 3260
           mmLeft = 117740
           mmTop = 57150
-          mmWidth = 28153
+          mmWidth = 28279
           BandType = 0
         end
         object ppDBText39: TppDBText
@@ -18049,10 +25442,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3246
+          mmHeight = 3260
           mmLeft = 150284
           mmTop = 57150
-          mmWidth = 27777
+          mmWidth = 27771
           BandType = 0
         end
         object ppDBText43: TppDBText
@@ -18113,10 +25506,10 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3246
+          mmHeight = 3260
           mmLeft = 118269
           mmTop = 41540
-          mmWidth = 30530
+          mmWidth = 30395
           BandType = 0
         end
         object ppDBText41: TppDBText
@@ -18633,7 +26026,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbCompItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -18786,7 +26179,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbSaidasItensIdent
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -18886,7 +26279,7 @@ object RptInvoices: TRptInvoices
           mmHeight = 4233
           mmLeft = 4233
           mmTop = 1852
-          mmWidth = 31031
+          mmWidth = 31073
           BandType = 8
         end
         object ppDBMemo1: TppDBMemo
@@ -18944,7 +26337,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -20104,10 +27497,10 @@ object RptInvoices: TRptInvoices
         Font.Style = [fsBold]
         ParentDataPipeline = False
         DataPipelineName = 'dbpInvoice'
-        mmHeight = 3951
+        mmHeight = 3810
         mmLeft = 4233
         mmTop = 188384
-        mmWidth = 23648
+        mmWidth = 22987
         BandType = 9
       end
       object ppLine1: TppLine
@@ -20318,7 +27711,10 @@ object RptInvoices: TRptInvoices
     BufferChunks = 1000
     CachedUpdates = False
     SQL.Strings = (
-      'Select   s.saida, s.empresa, s.pdv, '
+      'Select   tm.cb_notaentrega, s.saida, s.empresa, s.pdv, '
+      
+        '             abs(( s.desconto / s.totalitens ) * 100) as percent' +
+        'ualdesconto,'
       '             s.numero as invoice, '
       '             s.data, '
       '             s.total,  '
@@ -20462,8 +27858,8 @@ object RptInvoices: TRptInvoices
       
         'Where s.saida =:saida and s.empresa = :empresa and s.pdv = :pdv ' +
         ' ')
-    Left = 645
-    Top = 153
+    Left = 445
+    Top = 89
     ParamData = <
       item
         DataType = ftInteger
@@ -20498,8 +27894,8 @@ object RptInvoices: TRptInvoices
     DataSource = C_InvoiceDS
     OpenDataSource = False
     UserName = 'dbpInvoice'
-    Left = 18
-    Top = 469
+    Left = 34
+    Top = 453
     object dbpInvoiceppField1: TppField
       Alignment = taRightJustify
       FieldAlias = 'SAIDA'
@@ -20525,2280 +27921,2280 @@ object RptInvoices: TRptInvoices
       Position = 2
     end
     object dbpInvoiceppField4: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'TOTALPGTOS'
-      FieldName = 'TOTALPGTOS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 3
-    end
-    object dbpInvoiceppField5: TppField
       FieldAlias = 'SITUACAO'
       FieldName = 'SITUACAO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 4
+      Position = 3
     end
-    object dbpInvoiceppField6: TppField
+    object dbpInvoiceppField5: TppField
       FieldAlias = 'DATAENTREGA'
       FieldName = 'DATAENTREGA'
       FieldLength = 0
       DataType = dtDate
       DisplayWidth = 10
-      Position = 5
+      Position = 4
     end
-    object dbpInvoiceppField7: TppField
+    object dbpInvoiceppField6: TppField
       FieldAlias = 'ENDERECOENTREGA'
       FieldName = 'ENDERECOENTREGA'
       FieldLength = 40
       DisplayWidth = 40
-      Position = 6
+      Position = 5
     end
-    object dbpInvoiceppField8: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'DESCONTO'
-      FieldName = 'DESCONTO'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 7
-    end
-    object dbpInvoiceppField9: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'FRETE'
-      FieldName = 'FRETE'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 8
-    end
-    object dbpInvoiceppField10: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'OUTRASDESPESAS'
-      FieldName = 'OUTRASDESPESAS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 9
-    end
-    object dbpInvoiceppField11: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'JUROS'
-      FieldName = 'JUROS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 10
-    end
-    object dbpInvoiceppField12: TppField
+    object dbpInvoiceppField7: TppField
       FieldAlias = 'VALIDADE'
       FieldName = 'VALIDADE'
       FieldLength = 0
       DataType = dtDate
       DisplayWidth = 10
-      Position = 11
+      Position = 6
     end
-    object dbpInvoiceppField13: TppField
+    object dbpInvoiceppField8: TppField
       FieldAlias = 'STATUS'
       FieldName = 'STATUS'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 12
+      Position = 7
     end
-    object dbpInvoiceppField14: TppField
+    object dbpInvoiceppField9: TppField
       FieldAlias = 'TIPOENTREGA'
       FieldName = 'TIPOENTREGA'
       FieldLength = 30
       DisplayWidth = 30
+      Position = 8
+    end
+    object dbpInvoiceppField10: TppField
+      FieldAlias = 'VENDEDOR'
+      FieldName = 'VENDEDOR'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 9
+    end
+    object dbpInvoiceppField11: TppField
+      FieldAlias = 'PEDIDO_CLIENTE'
+      FieldName = 'PEDIDO_CLIENTE'
+      FieldLength = 12
+      DisplayWidth = 12
+      Position = 10
+    end
+    object dbpInvoiceppField12: TppField
+      FieldAlias = 'FONE1'
+      FieldName = 'FONE1'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 11
+    end
+    object dbpInvoiceppField13: TppField
+      FieldAlias = 'FAX'
+      FieldName = 'FAX'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 12
+    end
+    object dbpInvoiceppField14: TppField
+      FieldAlias = 'CAMPO01'
+      FieldName = 'CAMPO01'
+      FieldLength = 50
+      DisplayWidth = 50
       Position = 13
     end
     object dbpInvoiceppField15: TppField
-      FieldAlias = 'VENDEDOR'
-      FieldName = 'VENDEDOR'
+      FieldAlias = 'CAMPO02'
+      FieldName = 'CAMPO02'
       FieldLength = 50
       DisplayWidth = 50
       Position = 14
     end
     object dbpInvoiceppField16: TppField
-      FieldAlias = 'PEDIDO_CLIENTE'
-      FieldName = 'PEDIDO_CLIENTE'
-      FieldLength = 12
-      DisplayWidth = 12
+      FieldAlias = 'CAMPO03'
+      FieldName = 'CAMPO03'
+      FieldLength = 50
+      DisplayWidth = 50
       Position = 15
     end
     object dbpInvoiceppField17: TppField
-      FieldAlias = 'FONE1'
-      FieldName = 'FONE1'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'CAMPO04'
+      FieldName = 'CAMPO04'
+      FieldLength = 50
+      DisplayWidth = 50
       Position = 16
     end
     object dbpInvoiceppField18: TppField
-      FieldAlias = 'FAX'
-      FieldName = 'FAX'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'PLANOPAG'
+      FieldName = 'PLANOPAG'
+      FieldLength = 30
+      DisplayWidth = 30
       Position = 17
     end
     object dbpInvoiceppField19: TppField
-      FieldAlias = 'CAMPO01'
-      FieldName = 'CAMPO01'
+      FieldAlias = 'NOME'
+      FieldName = 'NOME'
       FieldLength = 50
       DisplayWidth = 50
       Position = 18
     end
     object dbpInvoiceppField20: TppField
-      FieldAlias = 'CAMPO02'
-      FieldName = 'CAMPO02'
+      FieldAlias = 'ENDERECO'
+      FieldName = 'ENDERECO'
       FieldLength = 50
       DisplayWidth = 50
       Position = 19
     end
     object dbpInvoiceppField21: TppField
-      FieldAlias = 'CAMPO03'
-      FieldName = 'CAMPO03'
-      FieldLength = 50
-      DisplayWidth = 50
-      Position = 20
-    end
-    object dbpInvoiceppField22: TppField
-      FieldAlias = 'CAMPO04'
-      FieldName = 'CAMPO04'
-      FieldLength = 50
-      DisplayWidth = 50
-      Position = 21
-    end
-    object dbpInvoiceppField23: TppField
-      FieldAlias = 'PLANOPAG'
-      FieldName = 'PLANOPAG'
-      FieldLength = 30
-      DisplayWidth = 30
-      Position = 22
-    end
-    object dbpInvoiceppField24: TppField
-      FieldAlias = 'NOME'
-      FieldName = 'NOME'
-      FieldLength = 50
-      DisplayWidth = 50
-      Position = 23
-    end
-    object dbpInvoiceppField25: TppField
-      FieldAlias = 'ENDERECO'
-      FieldName = 'ENDERECO'
-      FieldLength = 50
-      DisplayWidth = 50
-      Position = 24
-    end
-    object dbpInvoiceppField26: TppField
       Alignment = taRightJustify
       FieldAlias = 'TIPOMOVIMENTO'
       FieldName = 'TIPOMOVIMENTO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 25
+      Position = 20
     end
-    object dbpInvoiceppField27: TppField
+    object dbpInvoiceppField22: TppField
       FieldAlias = 'DESCRICAO'
       FieldName = 'DESCRICAO'
       FieldLength = 30
       DisplayWidth = 30
+      Position = 21
+    end
+    object dbpInvoiceppField23: TppField
+      FieldAlias = 'TIPO'
+      FieldName = 'TIPO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 22
+    end
+    object dbpInvoiceppField24: TppField
+      FieldAlias = 'BAIXAESTOQUE'
+      FieldName = 'BAIXAESTOQUE'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 23
+    end
+    object dbpInvoiceppField25: TppField
+      FieldAlias = 'CALCCOMISSAO'
+      FieldName = 'CALCCOMISSAO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 24
+    end
+    object dbpInvoiceppField26: TppField
+      FieldAlias = 'POSSUIENTREGA'
+      FieldName = 'POSSUIENTREGA'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 25
+    end
+    object dbpInvoiceppField27: TppField
+      FieldAlias = 'BLOQUEARSEATRASADO'
+      FieldName = 'BLOQUEARSEATRASADO'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 26
     end
     object dbpInvoiceppField28: TppField
-      FieldAlias = 'TIPO'
-      FieldName = 'TIPO'
+      FieldAlias = 'BLOQUEARPORSITUACAO'
+      FieldName = 'BLOQUEARPORSITUACAO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 27
     end
     object dbpInvoiceppField29: TppField
-      FieldAlias = 'BAIXAESTOQUE'
-      FieldName = 'BAIXAESTOQUE'
+      FieldAlias = 'BLOQUEARPORESTOQUE'
+      FieldName = 'BLOQUEARPORESTOQUE'
       FieldLength = 1
       DisplayWidth = 1
       Position = 28
     end
     object dbpInvoiceppField30: TppField
-      FieldAlias = 'CALCCOMISSAO'
-      FieldName = 'CALCCOMISSAO'
+      FieldAlias = 'LIMITEFAVORECIDO'
+      FieldName = 'LIMITEFAVORECIDO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 29
     end
     object dbpInvoiceppField31: TppField
-      FieldAlias = 'POSSUIENTREGA'
-      FieldName = 'POSSUIENTREGA'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'SIGLAINICIAL'
+      FieldName = 'SIGLAINICIAL'
+      FieldLength = 3
+      DisplayWidth = 3
       Position = 30
     end
     object dbpInvoiceppField32: TppField
-      FieldAlias = 'BLOQUEARSEATRASADO'
-      FieldName = 'BLOQUEARSEATRASADO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_DATA'
+      FieldName = 'TIT2_DATA'
+      FieldLength = 15
+      DisplayWidth = 15
       Position = 31
     end
     object dbpInvoiceppField33: TppField
-      FieldAlias = 'BLOQUEARPORSITUACAO'
-      FieldName = 'BLOQUEARPORSITUACAO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_NUMERO'
+      FieldName = 'TIT2_NUMERO'
+      FieldLength = 15
+      DisplayWidth = 15
       Position = 32
     end
     object dbpInvoiceppField34: TppField
-      FieldAlias = 'BLOQUEARPORESTOQUE'
-      FieldName = 'BLOQUEARPORESTOQUE'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'OBS'
+      FieldName = 'OBS'
+      FieldLength = 1255
+      DisplayWidth = 1255
       Position = 33
     end
     object dbpInvoiceppField35: TppField
-      FieldAlias = 'LIMITEFAVORECIDO'
-      FieldName = 'LIMITEFAVORECIDO'
+      FieldAlias = 'CB_INFOENTREGA'
+      FieldName = 'CB_INFOENTREGA'
       FieldLength = 1
       DisplayWidth = 1
       Position = 34
     end
     object dbpInvoiceppField36: TppField
-      FieldAlias = 'SIGLAINICIAL'
-      FieldName = 'SIGLAINICIAL'
-      FieldLength = 3
-      DisplayWidth = 3
-      Position = 35
-    end
-    object dbpInvoiceppField37: TppField
-      FieldAlias = 'TIT2_DATA'
-      FieldName = 'TIT2_DATA'
-      FieldLength = 15
-      DisplayWidth = 15
-      Position = 36
-    end
-    object dbpInvoiceppField38: TppField
-      FieldAlias = 'TIT2_NUMERO'
-      FieldName = 'TIT2_NUMERO'
-      FieldLength = 15
-      DisplayWidth = 15
-      Position = 37
-    end
-    object dbpInvoiceppField39: TppField
-      FieldAlias = 'OBS'
-      FieldName = 'OBS'
-      FieldLength = 1255
-      DisplayWidth = 1255
-      Position = 38
-    end
-    object dbpInvoiceppField40: TppField
-      FieldAlias = 'CB_INFOENTREGA'
-      FieldName = 'CB_INFOENTREGA'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 39
-    end
-    object dbpInvoiceppField41: TppField
       FieldAlias = 'TIT2_LOCALENTREGA'
       FieldName = 'TIT2_LOCALENTREGA'
       FieldLength = 20
       DisplayWidth = 20
+      Position = 35
+    end
+    object dbpInvoiceppField37: TppField
+      FieldAlias = 'TIT2_DATAENTREGA'
+      FieldName = 'TIT2_DATAENTREGA'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 36
+    end
+    object dbpInvoiceppField38: TppField
+      FieldAlias = 'TIT2_TIPOENTREGA'
+      FieldName = 'TIT2_TIPOENTREGA'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 37
+    end
+    object dbpInvoiceppField39: TppField
+      FieldAlias = 'CB_VENDEDOR'
+      FieldName = 'CB_VENDEDOR'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 38
+    end
+    object dbpInvoiceppField40: TppField
+      FieldAlias = 'TIT2_VENDEDOR'
+      FieldName = 'TIT2_VENDEDOR'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 39
+    end
+    object dbpInvoiceppField41: TppField
+      FieldAlias = 'CB_PEDIDO'
+      FieldName = 'CB_PEDIDO'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 40
     end
     object dbpInvoiceppField42: TppField
-      FieldAlias = 'TIT2_DATAENTREGA'
-      FieldName = 'TIT2_DATAENTREGA'
+      FieldAlias = 'TIT2_PEDIDO'
+      FieldName = 'TIT2_PEDIDO'
       FieldLength = 20
       DisplayWidth = 20
       Position = 41
     end
     object dbpInvoiceppField43: TppField
-      FieldAlias = 'TIT2_TIPOENTREGA'
-      FieldName = 'TIT2_TIPOENTREGA'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 42
-    end
-    object dbpInvoiceppField44: TppField
-      FieldAlias = 'CB_VENDEDOR'
-      FieldName = 'CB_VENDEDOR'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 43
-    end
-    object dbpInvoiceppField45: TppField
-      FieldAlias = 'TIT2_VENDEDOR'
-      FieldName = 'TIT2_VENDEDOR'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 44
-    end
-    object dbpInvoiceppField46: TppField
-      FieldAlias = 'CB_PEDIDO'
-      FieldName = 'CB_PEDIDO'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 45
-    end
-    object dbpInvoiceppField47: TppField
-      FieldAlias = 'TIT2_PEDIDO'
-      FieldName = 'TIT2_PEDIDO'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 46
-    end
-    object dbpInvoiceppField48: TppField
       FieldAlias = 'CB_COMISSAO'
       FieldName = 'CB_COMISSAO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 47
+      Position = 42
     end
-    object dbpInvoiceppField49: TppField
+    object dbpInvoiceppField44: TppField
       FieldAlias = 'TIT2_COMISSAO'
       FieldName = 'TIT2_COMISSAO'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 48
+      Position = 43
     end
-    object dbpInvoiceppField50: TppField
+    object dbpInvoiceppField45: TppField
       FieldAlias = 'CB_TERMOS'
       FieldName = 'CB_TERMOS'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 49
+      Position = 44
     end
-    object dbpInvoiceppField51: TppField
+    object dbpInvoiceppField46: TppField
       FieldAlias = 'TIT2_TERMOS'
       FieldName = 'TIT2_TERMOS'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 50
+      Position = 45
     end
-    object dbpInvoiceppField52: TppField
+    object dbpInvoiceppField47: TppField
       FieldAlias = 'CB_MENSAGEM'
       FieldName = 'CB_MENSAGEM'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 51
+      Position = 46
     end
-    object dbpInvoiceppField53: TppField
+    object dbpInvoiceppField48: TppField
       FieldAlias = 'TIT2_MENSAGEM'
       FieldName = 'TIT2_MENSAGEM'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 52
+      Position = 47
     end
-    object dbpInvoiceppField54: TppField
+    object dbpInvoiceppField49: TppField
       FieldAlias = 'CB_DESCONTOS'
       FieldName = 'CB_DESCONTOS'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 53
+      Position = 48
     end
-    object dbpInvoiceppField55: TppField
+    object dbpInvoiceppField50: TppField
       FieldAlias = 'TIT2_DESCONTOS'
       FieldName = 'TIT2_DESCONTOS'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 54
+      Position = 49
     end
-    object dbpInvoiceppField56: TppField
+    object dbpInvoiceppField51: TppField
       FieldAlias = 'CB_FRETE'
       FieldName = 'CB_FRETE'
       FieldLength = 1
       DisplayWidth = 1
+      Position = 50
+    end
+    object dbpInvoiceppField52: TppField
+      FieldAlias = 'TIT2_FRETE'
+      FieldName = 'TIT2_FRETE'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 51
+    end
+    object dbpInvoiceppField53: TppField
+      FieldAlias = 'CB_TOTALITENS'
+      FieldName = 'CB_TOTALITENS'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 52
+    end
+    object dbpInvoiceppField54: TppField
+      FieldAlias = 'TIT2_TOTALITENS'
+      FieldName = 'TIT2_TOTALITENS'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 53
+    end
+    object dbpInvoiceppField55: TppField
+      FieldAlias = 'CB_TOTALFINAL'
+      FieldName = 'CB_TOTALFINAL'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 54
+    end
+    object dbpInvoiceppField56: TppField
+      FieldAlias = 'TIT2_TOTALFINAL'
+      FieldName = 'TIT2_TOTALFINAL'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 55
     end
     object dbpInvoiceppField57: TppField
-      FieldAlias = 'TIT2_FRETE'
-      FieldName = 'TIT2_FRETE'
+      FieldAlias = 'TIT2_DESCRICAO'
+      FieldName = 'TIT2_DESCRICAO'
       FieldLength = 20
       DisplayWidth = 20
       Position = 56
     end
     object dbpInvoiceppField58: TppField
-      FieldAlias = 'CB_TOTALITENS'
-      FieldName = 'CB_TOTALITENS'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_QUANTIDADE'
+      FieldName = 'TIT2_QUANTIDADE'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 57
     end
     object dbpInvoiceppField59: TppField
-      FieldAlias = 'TIT2_TOTALITENS'
-      FieldName = 'TIT2_TOTALITENS'
+      FieldAlias = 'TIT2_PRECO'
+      FieldName = 'TIT2_PRECO'
       FieldLength = 20
       DisplayWidth = 20
       Position = 58
     end
     object dbpInvoiceppField60: TppField
-      FieldAlias = 'CB_TOTALFINAL'
-      FieldName = 'CB_TOTALFINAL'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_SUBTOTAL'
+      FieldName = 'TIT2_SUBTOTAL'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 59
     end
     object dbpInvoiceppField61: TppField
-      FieldAlias = 'TIT2_TOTALFINAL'
-      FieldName = 'TIT2_TOTALFINAL'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'CB_JUROS'
+      FieldName = 'CB_JUROS'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 60
     end
     object dbpInvoiceppField62: TppField
-      FieldAlias = 'TIT2_DESCRICAO'
-      FieldName = 'TIT2_DESCRICAO'
+      FieldAlias = 'TIT2_JUROS'
+      FieldName = 'TIT2_JUROS'
       FieldLength = 20
       DisplayWidth = 20
       Position = 61
     end
     object dbpInvoiceppField63: TppField
-      FieldAlias = 'TIT2_QUANTIDADE'
-      FieldName = 'TIT2_QUANTIDADE'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'CB_DESPESAS'
+      FieldName = 'CB_DESPESAS'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 62
     end
     object dbpInvoiceppField64: TppField
-      FieldAlias = 'TIT2_PRECO'
-      FieldName = 'TIT2_PRECO'
+      FieldAlias = 'TIT2_DESPESAS'
+      FieldName = 'TIT2_DESPESAS'
       FieldLength = 20
       DisplayWidth = 20
       Position = 63
     end
     object dbpInvoiceppField65: TppField
-      FieldAlias = 'TIT2_SUBTOTAL'
-      FieldName = 'TIT2_SUBTOTAL'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 64
-    end
-    object dbpInvoiceppField66: TppField
-      FieldAlias = 'CB_JUROS'
-      FieldName = 'CB_JUROS'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 65
-    end
-    object dbpInvoiceppField67: TppField
-      FieldAlias = 'TIT2_JUROS'
-      FieldName = 'TIT2_JUROS'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 66
-    end
-    object dbpInvoiceppField68: TppField
-      FieldAlias = 'CB_DESPESAS'
-      FieldName = 'CB_DESPESAS'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 67
-    end
-    object dbpInvoiceppField69: TppField
-      FieldAlias = 'TIT2_DESPESAS'
-      FieldName = 'TIT2_DESPESAS'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 68
-    end
-    object dbpInvoiceppField70: TppField
       FieldAlias = 'CB_CAMPO01'
       FieldName = 'CB_CAMPO01'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 69
+      Position = 64
     end
-    object dbpInvoiceppField71: TppField
+    object dbpInvoiceppField66: TppField
       FieldAlias = 'TIT2_CAMPO1'
       FieldName = 'TIT2_CAMPO1'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 70
+      Position = 65
     end
-    object dbpInvoiceppField72: TppField
+    object dbpInvoiceppField67: TppField
       FieldAlias = 'CB_CAMPO02'
       FieldName = 'CB_CAMPO02'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 71
+      Position = 66
     end
-    object dbpInvoiceppField73: TppField
+    object dbpInvoiceppField68: TppField
       FieldAlias = 'TIT2_CAMPO2'
       FieldName = 'TIT2_CAMPO2'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 72
+      Position = 67
     end
-    object dbpInvoiceppField74: TppField
+    object dbpInvoiceppField69: TppField
       FieldAlias = 'CB_CAMPO03'
       FieldName = 'CB_CAMPO03'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 73
+      Position = 68
     end
-    object dbpInvoiceppField75: TppField
+    object dbpInvoiceppField70: TppField
       FieldAlias = 'TIT2_CAMPO3'
       FieldName = 'TIT2_CAMPO3'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 74
+      Position = 69
     end
-    object dbpInvoiceppField76: TppField
+    object dbpInvoiceppField71: TppField
       FieldAlias = 'CB_CAMPO04'
       FieldName = 'CB_CAMPO04'
       FieldLength = 1
       DisplayWidth = 1
+      Position = 70
+    end
+    object dbpInvoiceppField72: TppField
+      FieldAlias = 'TIT2_CAMPO4'
+      FieldName = 'TIT2_CAMPO4'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 71
+    end
+    object dbpInvoiceppField73: TppField
+      FieldAlias = 'CB_CODIGO'
+      FieldName = 'CB_CODIGO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 72
+    end
+    object dbpInvoiceppField74: TppField
+      FieldAlias = 'TIT2_CODIGO'
+      FieldName = 'TIT2_CODIGO'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 73
+    end
+    object dbpInvoiceppField75: TppField
+      FieldAlias = 'CB_FUNCIONARIO'
+      FieldName = 'CB_FUNCIONARIO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 74
+    end
+    object dbpInvoiceppField76: TppField
+      FieldAlias = 'TIT2_FUNCIONARIO'
+      FieldName = 'TIT2_FUNCIONARIO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 75
     end
     object dbpInvoiceppField77: TppField
-      FieldAlias = 'TIT2_CAMPO4'
-      FieldName = 'TIT2_CAMPO4'
+      FieldAlias = 'TIT2_COLUNA1'
+      FieldName = 'TIT2_COLUNA1'
       FieldLength = 20
       DisplayWidth = 20
       Position = 76
     end
     object dbpInvoiceppField78: TppField
-      FieldAlias = 'CB_CODIGO'
-      FieldName = 'CB_CODIGO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_COLUNA2'
+      FieldName = 'TIT2_COLUNA2'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 77
     end
     object dbpInvoiceppField79: TppField
-      FieldAlias = 'TIT2_CODIGO'
-      FieldName = 'TIT2_CODIGO'
+      FieldAlias = 'TIT2_COLUNA3'
+      FieldName = 'TIT2_COLUNA3'
       FieldLength = 20
       DisplayWidth = 20
       Position = 78
     end
     object dbpInvoiceppField80: TppField
-      FieldAlias = 'CB_FUNCIONARIO'
-      FieldName = 'CB_FUNCIONARIO'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 79
-    end
-    object dbpInvoiceppField81: TppField
-      FieldAlias = 'TIT2_FUNCIONARIO'
-      FieldName = 'TIT2_FUNCIONARIO'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 80
-    end
-    object dbpInvoiceppField82: TppField
-      FieldAlias = 'TIT2_COLUNA1'
-      FieldName = 'TIT2_COLUNA1'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 81
-    end
-    object dbpInvoiceppField83: TppField
-      FieldAlias = 'TIT2_COLUNA2'
-      FieldName = 'TIT2_COLUNA2'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 82
-    end
-    object dbpInvoiceppField84: TppField
-      FieldAlias = 'TIT2_COLUNA3'
-      FieldName = 'TIT2_COLUNA3'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 83
-    end
-    object dbpInvoiceppField85: TppField
       FieldAlias = 'TIT2_COLUNA4'
       FieldName = 'TIT2_COLUNA4'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 84
+      Position = 79
     end
-    object dbpInvoiceppField86: TppField
+    object dbpInvoiceppField81: TppField
       Alignment = taRightJustify
       FieldAlias = 'CORTITULOS'
       FieldName = 'CORTITULOS'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 85
+      Position = 80
     end
-    object dbpInvoiceppField87: TppField
+    object dbpInvoiceppField82: TppField
       Alignment = taRightJustify
       FieldAlias = 'TIPOFAVPADRAO'
       FieldName = 'TIPOFAVPADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 86
+      Position = 81
     end
-    object dbpInvoiceppField88: TppField
+    object dbpInvoiceppField83: TppField
       Alignment = taRightJustify
       FieldAlias = 'TIPOPADRAO'
       FieldName = 'TIPOPADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
+      Position = 82
+    end
+    object dbpInvoiceppField84: TppField
+      FieldAlias = 'CB_COLUNA1'
+      FieldName = 'CB_COLUNA1'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 83
+    end
+    object dbpInvoiceppField85: TppField
+      FieldAlias = 'CB_COLUNA2'
+      FieldName = 'CB_COLUNA2'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 84
+    end
+    object dbpInvoiceppField86: TppField
+      FieldAlias = 'CB_COLUNA3'
+      FieldName = 'CB_COLUNA3'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 85
+    end
+    object dbpInvoiceppField87: TppField
+      FieldAlias = 'CB_COLUNA4'
+      FieldName = 'CB_COLUNA4'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 86
+    end
+    object dbpInvoiceppField88: TppField
+      FieldAlias = 'TIT2_UNIDADE'
+      FieldName = 'TIT2_UNIDADE'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 87
     end
     object dbpInvoiceppField89: TppField
-      FieldAlias = 'CB_COLUNA1'
-      FieldName = 'CB_COLUNA1'
+      FieldAlias = 'FOTO'
+      FieldName = 'FOTO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 88
     end
     object dbpInvoiceppField90: TppField
-      FieldAlias = 'CB_COLUNA2'
-      FieldName = 'CB_COLUNA2'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_VALIDADE'
+      FieldName = 'TIT2_VALIDADE'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 89
     end
     object dbpInvoiceppField91: TppField
-      FieldAlias = 'CB_COLUNA3'
-      FieldName = 'CB_COLUNA3'
+      FieldAlias = 'CB_REFERENCIA'
+      FieldName = 'CB_REFERENCIA'
       FieldLength = 1
       DisplayWidth = 1
       Position = 90
     end
     object dbpInvoiceppField92: TppField
-      FieldAlias = 'CB_COLUNA4'
-      FieldName = 'CB_COLUNA4'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_REFERENCIA'
+      FieldName = 'TIT2_REFERENCIA'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 91
     end
     object dbpInvoiceppField93: TppField
-      FieldAlias = 'TIT2_UNIDADE'
-      FieldName = 'TIT2_UNIDADE'
+      FieldAlias = 'TIT2_QTDRECEBIDA'
+      FieldName = 'TIT2_QTDRECEBIDA'
       FieldLength = 20
       DisplayWidth = 20
       Position = 92
     end
     object dbpInvoiceppField94: TppField
-      FieldAlias = 'FOTO'
-      FieldName = 'FOTO'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 93
-    end
-    object dbpInvoiceppField95: TppField
-      FieldAlias = 'TIT2_VALIDADE'
-      FieldName = 'TIT2_VALIDADE'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 94
-    end
-    object dbpInvoiceppField96: TppField
-      FieldAlias = 'CB_REFERENCIA'
-      FieldName = 'CB_REFERENCIA'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 95
-    end
-    object dbpInvoiceppField97: TppField
-      FieldAlias = 'TIT2_REFERENCIA'
-      FieldName = 'TIT2_REFERENCIA'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 96
-    end
-    object dbpInvoiceppField98: TppField
-      FieldAlias = 'TIT2_QTDRECEBIDA'
-      FieldName = 'TIT2_QTDRECEBIDA'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 97
-    end
-    object dbpInvoiceppField99: TppField
       FieldAlias = 'TIT2_SITUACAO'
       FieldName = 'TIT2_SITUACAO'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 98
+      Position = 93
     end
-    object dbpInvoiceppField100: TppField
+    object dbpInvoiceppField95: TppField
       FieldAlias = 'ATUALIZACUSTO'
       FieldName = 'ATUALIZACUSTO'
       FieldLength = 3
       DisplayWidth = 3
-      Position = 99
+      Position = 94
     end
-    object dbpInvoiceppField101: TppField
+    object dbpInvoiceppField96: TppField
       FieldAlias = 'ATUALIZAPRECO'
       FieldName = 'ATUALIZAPRECO'
       FieldLength = 3
       DisplayWidth = 3
+      Position = 95
+    end
+    object dbpInvoiceppField97: TppField
+      FieldAlias = 'INCLUIDESCONTO'
+      FieldName = 'INCLUIDESCONTO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 96
+    end
+    object dbpInvoiceppField98: TppField
+      FieldAlias = 'ATUALIZAPRECOMANUAL'
+      FieldName = 'ATUALIZAPRECOMANUAL'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 97
+    end
+    object dbpInvoiceppField99: TppField
+      FieldAlias = 'CB_STATUS'
+      FieldName = 'CB_STATUS'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 98
+    end
+    object dbpInvoiceppField100: TppField
+      FieldAlias = 'STATUSPADRAO'
+      FieldName = 'STATUSPADRAO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 99
+    end
+    object dbpInvoiceppField101: TppField
+      FieldAlias = 'CB_STATUSITENS'
+      FieldName = 'CB_STATUSITENS'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 100
     end
     object dbpInvoiceppField102: TppField
-      FieldAlias = 'INCLUIDESCONTO'
-      FieldName = 'INCLUIDESCONTO'
+      FieldAlias = 'STATUSPADRAOITENS'
+      FieldName = 'STATUSPADRAOITENS'
       FieldLength = 1
       DisplayWidth = 1
       Position = 101
     end
     object dbpInvoiceppField103: TppField
-      FieldAlias = 'ATUALIZAPRECOMANUAL'
-      FieldName = 'ATUALIZAPRECOMANUAL'
+      FieldAlias = 'CB_DOCSGARANTIA'
+      FieldName = 'CB_DOCSGARANTIA'
       FieldLength = 1
       DisplayWidth = 1
       Position = 102
     end
     object dbpInvoiceppField104: TppField
-      FieldAlias = 'CB_STATUS'
-      FieldName = 'CB_STATUS'
+      FieldAlias = 'CB_CODIGOFORN'
+      FieldName = 'CB_CODIGOFORN'
       FieldLength = 1
       DisplayWidth = 1
       Position = 103
     end
     object dbpInvoiceppField105: TppField
-      FieldAlias = 'STATUSPADRAO'
-      FieldName = 'STATUSPADRAO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_CODIGOFORN'
+      FieldName = 'TIT2_CODIGOFORN'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 104
     end
     object dbpInvoiceppField106: TppField
-      FieldAlias = 'CB_STATUSITENS'
-      FieldName = 'CB_STATUSITENS'
+      FieldAlias = 'CB_IMPRIMIROP'
+      FieldName = 'CB_IMPRIMIROP'
       FieldLength = 1
       DisplayWidth = 1
       Position = 105
     end
     object dbpInvoiceppField107: TppField
-      FieldAlias = 'STATUSPADRAOITENS'
-      FieldName = 'STATUSPADRAOITENS'
+      FieldAlias = 'CB_PGTOS'
+      FieldName = 'CB_PGTOS'
       FieldLength = 1
       DisplayWidth = 1
       Position = 106
     end
     object dbpInvoiceppField108: TppField
-      FieldAlias = 'CB_DOCSGARANTIA'
-      FieldName = 'CB_DOCSGARANTIA'
+      FieldAlias = 'CB_FICHACLIENTE'
+      FieldName = 'CB_FICHACLIENTE'
       FieldLength = 1
       DisplayWidth = 1
       Position = 107
     end
     object dbpInvoiceppField109: TppField
-      FieldAlias = 'CB_CODIGOFORN'
-      FieldName = 'CB_CODIGOFORN'
+      FieldAlias = 'CB_TOPRINTER'
+      FieldName = 'CB_TOPRINTER'
       FieldLength = 1
       DisplayWidth = 1
       Position = 108
     end
     object dbpInvoiceppField110: TppField
-      FieldAlias = 'TIT2_CODIGOFORN'
-      FieldName = 'TIT2_CODIGOFORN'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 109
-    end
-    object dbpInvoiceppField111: TppField
-      FieldAlias = 'CB_IMPRIMIROP'
-      FieldName = 'CB_IMPRIMIROP'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 110
-    end
-    object dbpInvoiceppField112: TppField
-      FieldAlias = 'CB_PGTOS'
-      FieldName = 'CB_PGTOS'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 111
-    end
-    object dbpInvoiceppField113: TppField
-      FieldAlias = 'CB_FICHACLIENTE'
-      FieldName = 'CB_FICHACLIENTE'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 112
-    end
-    object dbpInvoiceppField114: TppField
-      FieldAlias = 'CB_TOPRINTER'
-      FieldName = 'CB_TOPRINTER'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 113
-    end
-    object dbpInvoiceppField115: TppField
       FieldAlias = 'CB_GERARNUM'
       FieldName = 'CB_GERARNUM'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 114
+      Position = 109
     end
-    object dbpInvoiceppField116: TppField
+    object dbpInvoiceppField111: TppField
       Alignment = taRightJustify
       FieldAlias = 'FAVORECIDOPADRAO'
       FieldName = 'FAVORECIDOPADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 115
+      Position = 110
     end
-    object dbpInvoiceppField117: TppField
+    object dbpInvoiceppField112: TppField
       FieldAlias = 'TIPOIMPRESSAO_OP'
       FieldName = 'TIPOIMPRESSAO_OP'
       FieldLength = 3
       DisplayWidth = 3
-      Position = 116
+      Position = 111
     end
-    object dbpInvoiceppField118: TppField
+    object dbpInvoiceppField113: TppField
       Alignment = taRightJustify
       FieldAlias = 'MENSAGEMPADRAO'
       FieldName = 'MENSAGEMPADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 117
+      Position = 112
     end
-    object dbpInvoiceppField119: TppField
+    object dbpInvoiceppField114: TppField
       FieldAlias = 'CB_CONTRATO'
       FieldName = 'CB_CONTRATO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 118
+      Position = 113
     end
-    object dbpInvoiceppField120: TppField
+    object dbpInvoiceppField115: TppField
       Alignment = taRightJustify
       FieldAlias = 'TERMOCONTRATO'
       FieldName = 'TERMOCONTRATO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 119
+      Position = 114
     end
-    object dbpInvoiceppField121: TppField
+    object dbpInvoiceppField116: TppField
       Alignment = taRightJustify
       FieldAlias = 'TEMPLATE'
       FieldName = 'TEMPLATE'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 120
+      Position = 115
     end
-    object dbpInvoiceppField122: TppField
+    object dbpInvoiceppField117: TppField
       FieldAlias = 'CB_PRECO'
       FieldName = 'CB_PRECO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 121
+      Position = 116
     end
-    object dbpInvoiceppField123: TppField
+    object dbpInvoiceppField118: TppField
       FieldAlias = 'CB_SUBTOTAL'
       FieldName = 'CB_SUBTOTAL'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 122
+      Position = 117
     end
-    object dbpInvoiceppField124: TppField
+    object dbpInvoiceppField119: TppField
       FieldAlias = 'DESCTERMOCONTRATO'
       FieldName = 'DESCTERMOCONTRATO'
       FieldLength = 500
       DisplayWidth = 500
-      Position = 123
+      Position = 118
     end
-    object dbpInvoiceppField125: TppField
+    object dbpInvoiceppField120: TppField
       FieldAlias = 'TITULOCONTRATO'
       FieldName = 'TITULOCONTRATO'
       FieldLength = 25
       DisplayWidth = 25
-      Position = 124
+      Position = 119
     end
-    object dbpInvoiceppField126: TppField
+    object dbpInvoiceppField121: TppField
       FieldAlias = 'TEMPLATEARQUIVO'
       FieldName = 'TEMPLATEARQUIVO'
       FieldLength = 50
       DisplayWidth = 50
-      Position = 125
+      Position = 120
     end
-    object dbpInvoiceppField127: TppField
+    object dbpInvoiceppField122: TppField
       FieldAlias = 'DESCSTATUSSAIDA'
       FieldName = 'DESCSTATUSSAIDA'
       FieldLength = 30
       DisplayWidth = 30
-      Position = 126
+      Position = 121
     end
-    object dbpInvoiceppField128: TppField
+    object dbpInvoiceppField123: TppField
       Alignment = taRightJustify
       FieldAlias = 'TIPOORIGEM'
       FieldName = 'TIPOORIGEM'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 127
+      Position = 122
     end
-    object dbpInvoiceppField129: TppField
+    object dbpInvoiceppField124: TppField
       FieldAlias = 'Q_Parcelas'
       FieldName = 'Q_Parcelas'
       FieldLength = 0
       DisplayWidth = 10
-      Position = 128
+      Position = 123
     end
-    object dbpInvoiceppField130: TppField
+    object dbpInvoiceppField125: TppField
       FieldAlias = 'CB_COMPOSICAOITENS'
       FieldName = 'CB_COMPOSICAOITENS'
       FieldLength = 1
       DisplayWidth = 1
+      Position = 124
+    end
+    object dbpInvoiceppField126: TppField
+      FieldAlias = 'CB_DESCRICAOCOMPLEMENTAR'
+      FieldName = 'CB_DESCRICAOCOMPLEMENTAR'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 125
+    end
+    object dbpInvoiceppField127: TppField
+      FieldAlias = 'CB_UNIDADE'
+      FieldName = 'CB_UNIDADE'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 126
+    end
+    object dbpInvoiceppField128: TppField
+      FieldAlias = 'CB_BALANCE'
+      FieldName = 'CB_BALANCE'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 127
+    end
+    object dbpInvoiceppField129: TppField
+      FieldAlias = 'TIT2_BALANCE'
+      FieldName = 'TIT2_BALANCE'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 128
+    end
+    object dbpInvoiceppField130: TppField
+      FieldAlias = 'TIT2_PGTOS'
+      FieldName = 'TIT2_PGTOS'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 129
     end
     object dbpInvoiceppField131: TppField
-      FieldAlias = 'CB_DESCRICAOCOMPLEMENTAR'
-      FieldName = 'CB_DESCRICAOCOMPLEMENTAR'
+      FieldAlias = 'CB_VALIDADE'
+      FieldName = 'CB_VALIDADE'
       FieldLength = 1
       DisplayWidth = 1
       Position = 130
     end
     object dbpInvoiceppField132: TppField
-      FieldAlias = 'CB_UNIDADE'
-      FieldName = 'CB_UNIDADE'
+      FieldAlias = 'CB_ICMS'
+      FieldName = 'CB_ICMS'
       FieldLength = 1
       DisplayWidth = 1
       Position = 131
     end
     object dbpInvoiceppField133: TppField
-      FieldAlias = 'CB_BALANCE'
-      FieldName = 'CB_BALANCE'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 132
-    end
-    object dbpInvoiceppField134: TppField
-      FieldAlias = 'TIT2_BALANCE'
-      FieldName = 'TIT2_BALANCE'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 133
-    end
-    object dbpInvoiceppField135: TppField
-      FieldAlias = 'TIT2_PGTOS'
-      FieldName = 'TIT2_PGTOS'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 134
-    end
-    object dbpInvoiceppField136: TppField
-      FieldAlias = 'CB_VALIDADE'
-      FieldName = 'CB_VALIDADE'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 135
-    end
-    object dbpInvoiceppField137: TppField
-      FieldAlias = 'CB_ICMS'
-      FieldName = 'CB_ICMS'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 136
-    end
-    object dbpInvoiceppField138: TppField
       FieldAlias = 'TIT2_ICMS'
       FieldName = 'TIT2_ICMS'
       FieldLength = 20
       DisplayWidth = 20
-      Position = 137
+      Position = 132
     end
-    object dbpInvoiceppField139: TppField
+    object dbpInvoiceppField134: TppField
       FieldAlias = 'CB_CONSISTENCIA'
       FieldName = 'CB_CONSISTENCIA'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 138
+      Position = 133
     end
-    object dbpInvoiceppField140: TppField
+    object dbpInvoiceppField135: TppField
       FieldAlias = 'DESATIVADO'
       FieldName = 'DESATIVADO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 139
+      Position = 134
     end
-    object dbpInvoiceppField141: TppField
+    object dbpInvoiceppField136: TppField
       Alignment = taRightJustify
       FieldAlias = 'DIASVALIDADE'
       FieldName = 'DIASVALIDADE'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 140
+      Position = 135
     end
-    object dbpInvoiceppField142: TppField
+    object dbpInvoiceppField137: TppField
       Alignment = taRightJustify
       FieldAlias = 'TABELAPADRAO'
       FieldName = 'TABELAPADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 141
+      Position = 136
     end
-    object dbpInvoiceppField143: TppField
+    object dbpInvoiceppField138: TppField
       Alignment = taRightJustify
       FieldAlias = 'ALMOXPADRAO'
       FieldName = 'ALMOXPADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 142
+      Position = 137
     end
-    object dbpInvoiceppField144: TppField
+    object dbpInvoiceppField139: TppField
       FieldAlias = 'TIPODESCRICAO'
       FieldName = 'TIPODESCRICAO'
       FieldLength = 2
       DisplayWidth = 2
+      Position = 138
+    end
+    object dbpInvoiceppField140: TppField
+      FieldAlias = 'POSSUIICMS'
+      FieldName = 'POSSUIICMS'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 139
+    end
+    object dbpInvoiceppField141: TppField
+      FieldAlias = 'POSSUIIPI'
+      FieldName = 'POSSUIIPI'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 140
+    end
+    object dbpInvoiceppField142: TppField
+      FieldAlias = 'POSSUIISS'
+      FieldName = 'POSSUIISS'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 141
+    end
+    object dbpInvoiceppField143: TppField
+      FieldAlias = 'CONTABILIZAICMS'
+      FieldName = 'CONTABILIZAICMS'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 142
+    end
+    object dbpInvoiceppField144: TppField
+      FieldAlias = 'TIT2_TVA'
+      FieldName = 'TIT2_TVA'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 143
     end
     object dbpInvoiceppField145: TppField
-      FieldAlias = 'POSSUIICMS'
-      FieldName = 'POSSUIICMS'
+      FieldAlias = 'CB_TVA'
+      FieldName = 'CB_TVA'
       FieldLength = 1
       DisplayWidth = 1
       Position = 144
     end
     object dbpInvoiceppField146: TppField
-      FieldAlias = 'POSSUIIPI'
-      FieldName = 'POSSUIIPI'
+      FieldAlias = 'CB_FABRICANTE'
+      FieldName = 'CB_FABRICANTE'
       FieldLength = 1
       DisplayWidth = 1
       Position = 145
     end
     object dbpInvoiceppField147: TppField
-      FieldAlias = 'POSSUIISS'
-      FieldName = 'POSSUIISS'
+      FieldAlias = 'CB_NUMEROITEM'
+      FieldName = 'CB_NUMEROITEM'
       FieldLength = 1
       DisplayWidth = 1
       Position = 146
     end
     object dbpInvoiceppField148: TppField
-      FieldAlias = 'CONTABILIZAICMS'
-      FieldName = 'CONTABILIZAICMS'
+      FieldAlias = 'CB_REGISTRO'
+      FieldName = 'CB_REGISTRO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 147
     end
     object dbpInvoiceppField149: TppField
-      FieldAlias = 'TIT2_TVA'
-      FieldName = 'TIT2_TVA'
+      FieldAlias = 'TIT2_FABRICANTE'
+      FieldName = 'TIT2_FABRICANTE'
       FieldLength = 20
       DisplayWidth = 20
       Position = 148
     end
     object dbpInvoiceppField150: TppField
-      FieldAlias = 'CB_TVA'
-      FieldName = 'CB_TVA'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT2_REGISTRO'
+      FieldName = 'TIT2_REGISTRO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 149
     end
     object dbpInvoiceppField151: TppField
-      FieldAlias = 'CB_FABRICANTE'
-      FieldName = 'CB_FABRICANTE'
+      FieldAlias = 'CB_ALIQICMS'
+      FieldName = 'CB_ALIQICMS'
       FieldLength = 1
       DisplayWidth = 1
       Position = 150
     end
     object dbpInvoiceppField152: TppField
-      FieldAlias = 'CB_NUMEROITEM'
-      FieldName = 'CB_NUMEROITEM'
+      FieldAlias = 'CB_POREXTENSO'
+      FieldName = 'CB_POREXTENSO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 151
     end
     object dbpInvoiceppField153: TppField
-      FieldAlias = 'CB_REGISTRO'
-      FieldName = 'CB_REGISTRO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'SERIE'
+      FieldName = 'SERIE'
+      FieldLength = 3
+      DisplayWidth = 3
       Position = 152
     end
     object dbpInvoiceppField154: TppField
-      FieldAlias = 'TIT2_FABRICANTE'
-      FieldName = 'TIT2_FABRICANTE'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'MODELODOC'
+      FieldName = 'MODELODOC'
+      FieldLength = 2
+      DisplayWidth = 2
       Position = 153
     end
     object dbpInvoiceppField155: TppField
-      FieldAlias = 'TIT2_REGISTRO'
-      FieldName = 'TIT2_REGISTRO'
+      FieldAlias = 'TIT2_IPI'
+      FieldName = 'TIT2_IPI'
       FieldLength = 20
       DisplayWidth = 20
       Position = 154
     end
     object dbpInvoiceppField156: TppField
-      FieldAlias = 'CB_ALIQICMS'
-      FieldName = 'CB_ALIQICMS'
+      FieldAlias = 'CB_IPI'
+      FieldName = 'CB_IPI'
       FieldLength = 1
       DisplayWidth = 1
       Position = 155
     end
     object dbpInvoiceppField157: TppField
-      FieldAlias = 'CB_POREXTENSO'
-      FieldName = 'CB_POREXTENSO'
+      FieldAlias = 'CB_LICITACAO'
+      FieldName = 'CB_LICITACAO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 156
     end
     object dbpInvoiceppField158: TppField
-      FieldAlias = 'SERIE'
-      FieldName = 'SERIE'
-      FieldLength = 3
-      DisplayWidth = 3
+      FieldAlias = 'CB_CFOP'
+      FieldName = 'CB_CFOP'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 157
     end
     object dbpInvoiceppField159: TppField
-      FieldAlias = 'MODELODOC'
-      FieldName = 'MODELODOC'
-      FieldLength = 2
-      DisplayWidth = 2
+      FieldAlias = 'TIT2_CFOP'
+      FieldName = 'TIT2_CFOP'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 158
     end
     object dbpInvoiceppField160: TppField
-      FieldAlias = 'TIT2_IPI'
-      FieldName = 'TIT2_IPI'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'CFOPNOTA'
+      FieldName = 'CFOPNOTA'
+      FieldLength = 3
+      DisplayWidth = 3
       Position = 159
     end
     object dbpInvoiceppField161: TppField
-      FieldAlias = 'CB_IPI'
-      FieldName = 'CB_IPI'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'SERIENOTA'
+      FieldName = 'SERIENOTA'
+      FieldLength = 3
+      DisplayWidth = 3
       Position = 160
     end
     object dbpInvoiceppField162: TppField
-      FieldAlias = 'CB_LICITACAO'
-      FieldName = 'CB_LICITACAO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'UFDESTINO'
+      FieldName = 'UFDESTINO'
+      FieldLength = 2
+      DisplayWidth = 2
       Position = 161
     end
     object dbpInvoiceppField163: TppField
-      FieldAlias = 'CB_CFOP'
-      FieldName = 'CB_CFOP'
+      FieldAlias = 'TIPOFRETE'
+      FieldName = 'TIPOFRETE'
       FieldLength = 1
       DisplayWidth = 1
       Position = 162
     end
     object dbpInvoiceppField164: TppField
-      FieldAlias = 'TIT2_CFOP'
-      FieldName = 'TIT2_CFOP'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'DESCESPECIE'
+      FieldName = 'DESCESPECIE'
+      FieldLength = 15
+      DisplayWidth = 15
       Position = 163
     end
     object dbpInvoiceppField165: TppField
-      FieldAlias = 'CFOPNOTA'
-      FieldName = 'CFOPNOTA'
-      FieldLength = 3
-      DisplayWidth = 3
+      FieldAlias = 'DESCMARCA'
+      FieldName = 'DESCMARCA'
+      FieldLength = 15
+      DisplayWidth = 15
       Position = 164
     end
     object dbpInvoiceppField166: TppField
-      FieldAlias = 'SERIENOTA'
-      FieldName = 'SERIENOTA'
-      FieldLength = 3
-      DisplayWidth = 3
+      FieldAlias = 'DESCNUMERO'
+      FieldName = 'DESCNUMERO'
+      FieldLength = 10
+      DisplayWidth = 10
       Position = 165
     end
     object dbpInvoiceppField167: TppField
-      FieldAlias = 'UFDESTINO'
-      FieldName = 'UFDESTINO'
+      FieldAlias = 'MODELO'
+      FieldName = 'MODELO'
       FieldLength = 2
       DisplayWidth = 2
       Position = 166
     end
     object dbpInvoiceppField168: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'BASECALCICMS'
-      FieldName = 'BASECALCICMS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'FONTE'
+      FieldName = 'FONTE'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 167
     end
     object dbpInvoiceppField169: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORICMS'
-      FieldName = 'VALORICMS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'PLACAVEIC'
+      FieldName = 'PLACAVEIC'
+      FieldLength = 10
+      DisplayWidth = 10
       Position = 168
     end
     object dbpInvoiceppField170: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORISS'
-      FieldName = 'VALORISS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'ATRATAR'
+      FieldName = 'ATRATAR'
+      FieldLength = 255
+      DisplayWidth = 255
       Position = 169
     end
     object dbpInvoiceppField171: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORIPI'
-      FieldName = 'VALORIPI'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'INTRODUCAO'
+      FieldName = 'INTRODUCAO'
+      FieldLength = 255
+      DisplayWidth = 255
       Position = 170
     end
     object dbpInvoiceppField172: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'BASECALCSUBST'
-      FieldName = 'BASECALCSUBST'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'PRAZOENTREGA'
+      FieldName = 'PRAZOENTREGA'
+      FieldLength = 40
+      DisplayWidth = 40
       Position = 171
     end
     object dbpInvoiceppField173: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORICMSSUBST'
-      FieldName = 'VALORICMSSUBST'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'CONDICOESPGTO'
+      FieldName = 'CONDICOESPGTO'
+      FieldLength = 255
+      DisplayWidth = 255
       Position = 172
     end
     object dbpInvoiceppField174: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORSEGURO'
-      FieldName = 'VALORSEGURO'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'GARANTIA'
+      FieldName = 'GARANTIA'
+      FieldLength = 50
+      DisplayWidth = 50
       Position = 173
     end
     object dbpInvoiceppField175: TppField
-      FieldAlias = 'TIPOFRETE'
-      FieldName = 'TIPOFRETE'
+      FieldAlias = 'SEESTOQUE'
+      FieldName = 'SEESTOQUE'
       FieldLength = 1
       DisplayWidth = 1
       Position = 174
     end
     object dbpInvoiceppField176: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'PESOBRUTO'
-      FieldName = 'PESOBRUTO'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 175
-    end
-    object dbpInvoiceppField177: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'PESOLIQUIDO'
-      FieldName = 'PESOLIQUIDO'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 176
-    end
-    object dbpInvoiceppField178: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'ALIQICMSVENDA'
-      FieldName = 'ALIQICMSVENDA'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 177
-    end
-    object dbpInvoiceppField179: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORISENTAS'
-      FieldName = 'VALORISENTAS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 178
-    end
-    object dbpInvoiceppField180: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'TOTALSERVICOS'
-      FieldName = 'TOTALSERVICOS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 179
-    end
-    object dbpInvoiceppField181: TppField
-      FieldAlias = 'DESCESPECIE'
-      FieldName = 'DESCESPECIE'
-      FieldLength = 15
-      DisplayWidth = 15
-      Position = 180
-    end
-    object dbpInvoiceppField182: TppField
-      FieldAlias = 'DESCMARCA'
-      FieldName = 'DESCMARCA'
-      FieldLength = 15
-      DisplayWidth = 15
-      Position = 181
-    end
-    object dbpInvoiceppField183: TppField
-      FieldAlias = 'DESCNUMERO'
-      FieldName = 'DESCNUMERO'
-      FieldLength = 10
-      DisplayWidth = 10
-      Position = 182
-    end
-    object dbpInvoiceppField184: TppField
-      FieldAlias = 'MODELO'
-      FieldName = 'MODELO'
-      FieldLength = 2
-      DisplayWidth = 2
-      Position = 183
-    end
-    object dbpInvoiceppField185: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALOROUTRASICMS'
-      FieldName = 'VALOROUTRASICMS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 184
-    end
-    object dbpInvoiceppField186: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALORISENTASIPI'
-      FieldName = 'VALORISENTASIPI'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 185
-    end
-    object dbpInvoiceppField187: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VALOROUTRASIPI'
-      FieldName = 'VALOROUTRASIPI'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
-      Position = 186
-    end
-    object dbpInvoiceppField188: TppField
-      FieldAlias = 'FONTE'
-      FieldName = 'FONTE'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 187
-    end
-    object dbpInvoiceppField189: TppField
-      FieldAlias = 'PLACAVEIC'
-      FieldName = 'PLACAVEIC'
-      FieldLength = 10
-      DisplayWidth = 10
-      Position = 188
-    end
-    object dbpInvoiceppField190: TppField
-      FieldAlias = 'ATRATAR'
-      FieldName = 'ATRATAR'
-      FieldLength = 255
-      DisplayWidth = 255
-      Position = 189
-    end
-    object dbpInvoiceppField191: TppField
-      FieldAlias = 'INTRODUCAO'
-      FieldName = 'INTRODUCAO'
-      FieldLength = 255
-      DisplayWidth = 255
-      Position = 190
-    end
-    object dbpInvoiceppField192: TppField
-      FieldAlias = 'PRAZOENTREGA'
-      FieldName = 'PRAZOENTREGA'
-      FieldLength = 40
-      DisplayWidth = 40
-      Position = 191
-    end
-    object dbpInvoiceppField193: TppField
-      FieldAlias = 'CONDICOESPGTO'
-      FieldName = 'CONDICOESPGTO'
-      FieldLength = 255
-      DisplayWidth = 255
-      Position = 192
-    end
-    object dbpInvoiceppField194: TppField
-      FieldAlias = 'GARANTIA'
-      FieldName = 'GARANTIA'
-      FieldLength = 50
-      DisplayWidth = 50
-      Position = 193
-    end
-    object dbpInvoiceppField195: TppField
-      FieldAlias = 'SEESTOQUE'
-      FieldName = 'SEESTOQUE'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 194
-    end
-    object dbpInvoiceppField196: TppField
       FieldAlias = 'PROCESSO'
       FieldName = 'PROCESSO'
       FieldLength = 30
       DisplayWidth = 30
-      Position = 195
+      Position = 175
     end
-    object dbpInvoiceppField197: TppField
+    object dbpInvoiceppField177: TppField
       FieldAlias = 'CARTACONVITE'
       FieldName = 'CARTACONVITE'
       FieldLength = 30
       DisplayWidth = 30
-      Position = 196
+      Position = 176
     end
-    object dbpInvoiceppField198: TppField
+    object dbpInvoiceppField178: TppField
       FieldAlias = 'TOMADAPRECOS'
       FieldName = 'TOMADAPRECOS'
       FieldLength = 30
       DisplayWidth = 30
-      Position = 197
+      Position = 177
     end
-    object dbpInvoiceppField199: TppField
+    object dbpInvoiceppField179: TppField
       FieldAlias = 'DATAABERTURA'
       FieldName = 'DATAABERTURA'
       FieldLength = 30
       DisplayWidth = 30
-      Position = 198
+      Position = 178
     end
-    object dbpInvoiceppField200: TppField
+    object dbpInvoiceppField180: TppField
       FieldAlias = 'EXPLICACOES'
       FieldName = 'EXPLICACOES'
       FieldLength = 4000
       DisplayWidth = 4000
-      Position = 199
+      Position = 179
     end
-    object dbpInvoiceppField201: TppField
+    object dbpInvoiceppField181: TppField
       Alignment = taRightJustify
       FieldAlias = 'LICITACAOICMS'
       FieldName = 'LICITACAOICMS'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
-      Position = 200
+      DisplayWidth = 10
+      Position = 180
     end
-    object dbpInvoiceppField202: TppField
+    object dbpInvoiceppField182: TppField
       FieldAlias = 'SUBSTTRIB'
       FieldName = 'SUBSTTRIB'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 201
+      Position = 181
     end
-    object dbpInvoiceppField203: TppField
+    object dbpInvoiceppField183: TppField
       Alignment = taRightJustify
       FieldAlias = 'PJUROSNEGOCIADO'
       FieldName = 'PJUROSNEGOCIADO'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
-      Position = 202
+      DisplayWidth = 10
+      Position = 182
     end
-    object dbpInvoiceppField204: TppField
+    object dbpInvoiceppField184: TppField
       FieldAlias = 'CPF_CNPJ'
       FieldName = 'CPF_CNPJ'
       FieldLength = 14
       DisplayWidth = 14
-      Position = 203
+      Position = 183
     end
-    object dbpInvoiceppField205: TppField
+    object dbpInvoiceppField185: TppField
       FieldAlias = 'INSCRICAO_EST'
       FieldName = 'INSCRICAO_EST'
       FieldLength = 14
       DisplayWidth = 14
-      Position = 204
+      Position = 184
     end
-    object dbpInvoiceppField206: TppField
+    object dbpInvoiceppField186: TppField
       FieldAlias = 'CB_NOTAFISCAL'
       FieldName = 'CB_NOTAFISCAL'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 205
+      Position = 185
     end
-    object dbpInvoiceppField207: TppField
+    object dbpInvoiceppField187: TppField
       FieldAlias = 'TIPONOTAFISCAL'
       FieldName = 'TIPONOTAFISCAL'
       FieldLength = 3
       DisplayWidth = 3
-      Position = 206
+      Position = 186
     end
-    object dbpInvoiceppField208: TppField
+    object dbpInvoiceppField188: TppField
       Alignment = taRightJustify
       FieldAlias = 'TEMPLATENOTAFISCAL'
       FieldName = 'TEMPLATENOTAFISCAL'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 207
+      Position = 187
     end
-    object dbpInvoiceppField209: TppField
+    object dbpInvoiceppField189: TppField
       FieldAlias = 'CB_DUPLICATA'
       FieldName = 'CB_DUPLICATA'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 208
+      Position = 188
     end
-    object dbpInvoiceppField210: TppField
+    object dbpInvoiceppField190: TppField
       FieldAlias = 'CB_BOLETO'
       FieldName = 'CB_BOLETO'
       FieldLength = 1
       DisplayWidth = 1
+      Position = 189
+    end
+    object dbpInvoiceppField191: TppField
+      FieldAlias = 'CB_CARNE'
+      FieldName = 'CB_CARNE'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 190
+    end
+    object dbpInvoiceppField192: TppField
+      FieldAlias = 'CB_RECIBO'
+      FieldName = 'CB_RECIBO'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 191
+    end
+    object dbpInvoiceppField193: TppField
+      FieldAlias = 'CB_IMPDOC'
+      FieldName = 'CB_IMPDOC'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 192
+    end
+    object dbpInvoiceppField194: TppField
+      FieldAlias = 'DESC_CFOP'
+      FieldName = 'DESC_CFOP'
+      FieldLength = 150
+      DisplayWidth = 150
+      Position = 193
+    end
+    object dbpInvoiceppField195: TppField
+      FieldAlias = 'TRANSP_NOME'
+      FieldName = 'TRANSP_NOME'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 194
+    end
+    object dbpInvoiceppField196: TppField
+      FieldAlias = 'TRANSP_ENDERECO'
+      FieldName = 'TRANSP_ENDERECO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 195
+    end
+    object dbpInvoiceppField197: TppField
+      FieldAlias = 'TRANSP_BAIRRO'
+      FieldName = 'TRANSP_BAIRRO'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 196
+    end
+    object dbpInvoiceppField198: TppField
+      FieldAlias = 'TRANSP_CIDADE'
+      FieldName = 'TRANSP_CIDADE'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 197
+    end
+    object dbpInvoiceppField199: TppField
+      FieldAlias = 'TRANSP_UF'
+      FieldName = 'TRANSP_UF'
+      FieldLength = 2
+      DisplayWidth = 2
+      Position = 198
+    end
+    object dbpInvoiceppField200: TppField
+      FieldAlias = 'TRANSP_CPF_CNPJ'
+      FieldName = 'TRANSP_CPF_CNPJ'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 199
+    end
+    object dbpInvoiceppField201: TppField
+      FieldAlias = 'TRANSP_INSCRICAO_EST'
+      FieldName = 'TRANSP_INSCRICAO_EST'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 200
+    end
+    object dbpInvoiceppField202: TppField
+      FieldAlias = 'TEMPLATENFARQUIVO'
+      FieldName = 'TEMPLATENFARQUIVO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 201
+    end
+    object dbpInvoiceppField203: TppField
+      FieldAlias = 'BAIRRO'
+      FieldName = 'BAIRRO'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 202
+    end
+    object dbpInvoiceppField204: TppField
+      FieldAlias = 'CIDADE'
+      FieldName = 'CIDADE'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 203
+    end
+    object dbpInvoiceppField205: TppField
+      FieldAlias = 'CEP'
+      FieldName = 'CEP'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 204
+    end
+    object dbpInvoiceppField206: TppField
+      FieldAlias = 'UF'
+      FieldName = 'UF'
+      FieldLength = 2
+      DisplayWidth = 2
+      Position = 205
+    end
+    object dbpInvoiceppField207: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VOLUMES'
+      FieldName = 'VOLUMES'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 206
+    end
+    object dbpInvoiceppField208: TppField
+      FieldAlias = 'CODIGOVENDEDOR'
+      FieldName = 'CODIGOVENDEDOR'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 207
+    end
+    object dbpInvoiceppField209: TppField
+      FieldAlias = 'RAZAO'
+      FieldName = 'RAZAO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 208
+    end
+    object dbpInvoiceppField210: TppField
+      FieldAlias = 'CONDICOESPAGTO'
+      FieldName = 'CONDICOESPAGTO'
+      FieldLength = 255
+      DisplayWidth = 255
       Position = 209
     end
     object dbpInvoiceppField211: TppField
-      FieldAlias = 'CB_CARNE'
-      FieldName = 'CB_CARNE'
+      FieldAlias = 'CB_IDENTIFICACAO'
+      FieldName = 'CB_IDENTIFICACAO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 210
     end
     object dbpInvoiceppField212: TppField
-      FieldAlias = 'CB_RECIBO'
-      FieldName = 'CB_RECIBO'
+      FieldAlias = 'IMPRESSO'
+      FieldName = 'IMPRESSO'
       FieldLength = 1
       DisplayWidth = 1
       Position = 211
     end
     object dbpInvoiceppField213: TppField
-      FieldAlias = 'CB_IMPDOC'
-      FieldName = 'CB_IMPDOC'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'CARGOVENDEDOR'
+      FieldName = 'CARGOVENDEDOR'
+      FieldLength = 30
+      DisplayWidth = 30
       Position = 212
     end
     object dbpInvoiceppField214: TppField
-      FieldAlias = 'DESC_CFOP'
-      FieldName = 'DESC_CFOP'
-      FieldLength = 150
-      DisplayWidth = 150
+      FieldAlias = 'CODIGOCLIENTE'
+      FieldName = 'CODIGOCLIENTE'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 213
     end
     object dbpInvoiceppField215: TppField
-      FieldAlias = 'TRANSP_NOME'
-      FieldName = 'TRANSP_NOME'
-      FieldLength = 50
-      DisplayWidth = 50
+      FieldAlias = 'NF_CUPOM'
+      FieldName = 'NF_CUPOM'
+      FieldLength = 12
+      DisplayWidth = 12
       Position = 214
     end
     object dbpInvoiceppField216: TppField
-      FieldAlias = 'TRANSP_ENDERECO'
-      FieldName = 'TRANSP_ENDERECO'
-      FieldLength = 50
-      DisplayWidth = 50
+      FieldAlias = 'CFOPASSOCIADO'
+      FieldName = 'CFOPASSOCIADO'
+      FieldLength = 4
+      DisplayWidth = 4
       Position = 215
     end
     object dbpInvoiceppField217: TppField
-      FieldAlias = 'TRANSP_BAIRRO'
-      FieldName = 'TRANSP_BAIRRO'
-      FieldLength = 30
-      DisplayWidth = 30
+      Alignment = taRightJustify
+      FieldAlias = 'BALANCE'
+      FieldName = 'BALANCE'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
       Position = 216
     end
     object dbpInvoiceppField218: TppField
-      FieldAlias = 'TRANSP_CIDADE'
-      FieldName = 'TRANSP_CIDADE'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldAlias = 'CIDADEUFZIPENTREGA'
+      FieldName = 'CIDADEUFZIPENTREGA'
+      FieldLength = 80
+      DisplayWidth = 80
       Position = 217
     end
     object dbpInvoiceppField219: TppField
-      FieldAlias = 'TRANSP_UF'
-      FieldName = 'TRANSP_UF'
-      FieldLength = 2
-      DisplayWidth = 2
+      FieldAlias = 'CIDADEUFZIP'
+      FieldName = 'CIDADEUFZIP'
+      FieldLength = 80
+      DisplayWidth = 80
       Position = 218
     end
     object dbpInvoiceppField220: TppField
-      FieldAlias = 'TRANSP_CPF_CNPJ'
-      FieldName = 'TRANSP_CPF_CNPJ'
-      FieldLength = 14
-      DisplayWidth = 14
+      FieldAlias = 'Q_Itens'
+      FieldName = 'Q_Itens'
+      FieldLength = 0
+      DisplayWidth = 10
       Position = 219
     end
     object dbpInvoiceppField221: TppField
-      FieldAlias = 'TRANSP_INSCRICAO_EST'
-      FieldName = 'TRANSP_INSCRICAO_EST'
-      FieldLength = 14
-      DisplayWidth = 14
+      FieldAlias = 'CB_IMPRESSAOSEMVALORES'
+      FieldName = 'CB_IMPRESSAOSEMVALORES'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 220
     end
     object dbpInvoiceppField222: TppField
-      FieldAlias = 'TEMPLATENFARQUIVO'
-      FieldName = 'TEMPLATENFARQUIVO'
-      FieldLength = 50
-      DisplayWidth = 50
+      FieldAlias = 'GERAFINANCEIRO'
+      FieldName = 'GERAFINANCEIRO'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 221
     end
     object dbpInvoiceppField223: TppField
-      FieldAlias = 'BAIRRO'
-      FieldName = 'BAIRRO'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldAlias = 'TIT1_DATA'
+      FieldName = 'TIT1_DATA'
+      FieldLength = 15
+      DisplayWidth = 15
       Position = 222
     end
     object dbpInvoiceppField224: TppField
-      FieldAlias = 'CIDADE'
-      FieldName = 'CIDADE'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldAlias = 'TIT1_NUMERO'
+      FieldName = 'TIT1_NUMERO'
+      FieldLength = 15
+      DisplayWidth = 15
       Position = 223
     end
     object dbpInvoiceppField225: TppField
-      FieldAlias = 'CEP'
-      FieldName = 'CEP'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'TIT1_LOCALENTREGA'
+      FieldName = 'TIT1_LOCALENTREGA'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 224
     end
     object dbpInvoiceppField226: TppField
-      FieldAlias = 'UF'
-      FieldName = 'UF'
-      FieldLength = 2
-      DisplayWidth = 2
+      FieldAlias = 'TIT1_DATAENTREGA'
+      FieldName = 'TIT1_DATAENTREGA'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 225
     end
     object dbpInvoiceppField227: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'VOLUMES'
-      FieldName = 'VOLUMES'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'TIT1_TIPOENTREGA'
+      FieldName = 'TIT1_TIPOENTREGA'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 226
     end
     object dbpInvoiceppField228: TppField
-      FieldAlias = 'CODIGOVENDEDOR'
-      FieldName = 'CODIGOVENDEDOR'
+      FieldAlias = 'TIT1_VENDEDOR'
+      FieldName = 'TIT1_VENDEDOR'
       FieldLength = 20
       DisplayWidth = 20
       Position = 227
     end
     object dbpInvoiceppField229: TppField
-      FieldAlias = 'RAZAO'
-      FieldName = 'RAZAO'
-      FieldLength = 50
-      DisplayWidth = 50
+      FieldAlias = 'TIT1_PEDIDO'
+      FieldName = 'TIT1_PEDIDO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 228
     end
     object dbpInvoiceppField230: TppField
-      FieldAlias = 'CONDICOESPAGTO'
-      FieldName = 'CONDICOESPAGTO'
-      FieldLength = 255
-      DisplayWidth = 255
+      FieldAlias = 'TIT1_COMISSAO'
+      FieldName = 'TIT1_COMISSAO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 229
     end
     object dbpInvoiceppField231: TppField
-      FieldAlias = 'CB_IDENTIFICACAO'
-      FieldName = 'CB_IDENTIFICACAO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT1_TERMOS'
+      FieldName = 'TIT1_TERMOS'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 230
     end
     object dbpInvoiceppField232: TppField
-      FieldAlias = 'IMPRESSO'
-      FieldName = 'IMPRESSO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT1_MENSAGEM'
+      FieldName = 'TIT1_MENSAGEM'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 231
     end
     object dbpInvoiceppField233: TppField
-      FieldAlias = 'CARGOVENDEDOR'
-      FieldName = 'CARGOVENDEDOR'
-      FieldLength = 30
-      DisplayWidth = 30
+      FieldAlias = 'TIT1_DESCONTOS'
+      FieldName = 'TIT1_DESCONTOS'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 232
     end
     object dbpInvoiceppField234: TppField
-      FieldAlias = 'CODIGOCLIENTE'
-      FieldName = 'CODIGOCLIENTE'
+      FieldAlias = 'TIT1_FRETE'
+      FieldName = 'TIT1_FRETE'
       FieldLength = 20
       DisplayWidth = 20
       Position = 233
     end
     object dbpInvoiceppField235: TppField
-      FieldAlias = 'NF_CUPOM'
-      FieldName = 'NF_CUPOM'
-      FieldLength = 12
-      DisplayWidth = 12
+      FieldAlias = 'TIT1_TOTALITENS'
+      FieldName = 'TIT1_TOTALITENS'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 234
     end
     object dbpInvoiceppField236: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'TOTALPRODUTOS'
-      FieldName = 'TOTALPRODUTOS'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'TIT1_TOTALFINAL'
+      FieldName = 'TIT1_TOTALFINAL'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 235
     end
     object dbpInvoiceppField237: TppField
-      FieldAlias = 'CFOPASSOCIADO'
-      FieldName = 'CFOPASSOCIADO'
-      FieldLength = 4
-      DisplayWidth = 4
+      FieldAlias = 'TIT1_DESCRICAO'
+      FieldName = 'TIT1_DESCRICAO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 236
     end
     object dbpInvoiceppField238: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'TOTAL'
-      FieldName = 'TOTAL'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'TIT1_QUANTIDADE'
+      FieldName = 'TIT1_QUANTIDADE'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 237
     end
     object dbpInvoiceppField239: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'TOTALITENS'
-      FieldName = 'TOTALITENS'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'TIT1_PRECO'
+      FieldName = 'TIT1_PRECO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 238
     end
     object dbpInvoiceppField240: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'BALANCE'
-      FieldName = 'BALANCE'
-      FieldLength = 3
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'TIT1_SUBTOTAL'
+      FieldName = 'TIT1_SUBTOTAL'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 239
     end
     object dbpInvoiceppField241: TppField
-      FieldAlias = 'CIDADEUFZIPENTREGA'
-      FieldName = 'CIDADEUFZIPENTREGA'
-      FieldLength = 80
-      DisplayWidth = 80
+      FieldAlias = 'TIT1_JUROS'
+      FieldName = 'TIT1_JUROS'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 240
     end
     object dbpInvoiceppField242: TppField
-      Alignment = taRightJustify
-      FieldAlias = 'BASEINCLUSO'
-      FieldName = 'BASEINCLUSO'
-      FieldLength = 2
-      DataType = dtDouble
-      DisplayWidth = 19
+      FieldAlias = 'TIT1_DESPESAS'
+      FieldName = 'TIT1_DESPESAS'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 241
     end
     object dbpInvoiceppField243: TppField
-      FieldAlias = 'CIDADEUFZIP'
-      FieldName = 'CIDADEUFZIP'
-      FieldLength = 80
-      DisplayWidth = 80
+      FieldAlias = 'TIT1_CAMPO1'
+      FieldName = 'TIT1_CAMPO1'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 242
     end
     object dbpInvoiceppField244: TppField
-      FieldAlias = 'Q_Itens'
-      FieldName = 'Q_Itens'
-      FieldLength = 0
-      DisplayWidth = 10
+      FieldAlias = 'TIT1_CAMPO2'
+      FieldName = 'TIT1_CAMPO2'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 243
     end
     object dbpInvoiceppField245: TppField
-      FieldAlias = 'CB_IMPRESSAOSEMVALORES'
-      FieldName = 'CB_IMPRESSAOSEMVALORES'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT1_CAMPO3'
+      FieldName = 'TIT1_CAMPO3'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 244
     end
     object dbpInvoiceppField246: TppField
-      FieldAlias = 'GERAFINANCEIRO'
-      FieldName = 'GERAFINANCEIRO'
-      FieldLength = 1
-      DisplayWidth = 1
+      FieldAlias = 'TIT1_CAMPO4'
+      FieldName = 'TIT1_CAMPO4'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 245
     end
     object dbpInvoiceppField247: TppField
-      FieldAlias = 'TIT1_DATA'
-      FieldName = 'TIT1_DATA'
-      FieldLength = 15
-      DisplayWidth = 15
+      FieldAlias = 'TIT1_CODIGO'
+      FieldName = 'TIT1_CODIGO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 246
     end
     object dbpInvoiceppField248: TppField
-      FieldAlias = 'TIT1_NUMERO'
-      FieldName = 'TIT1_NUMERO'
-      FieldLength = 15
-      DisplayWidth = 15
+      FieldAlias = 'TIT1_FUNCIONARIO'
+      FieldName = 'TIT1_FUNCIONARIO'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 247
     end
     object dbpInvoiceppField249: TppField
-      FieldAlias = 'TIT1_LOCALENTREGA'
-      FieldName = 'TIT1_LOCALENTREGA'
+      FieldAlias = 'TIT1_ICMS'
+      FieldName = 'TIT1_ICMS'
       FieldLength = 20
       DisplayWidth = 20
       Position = 248
     end
     object dbpInvoiceppField250: TppField
-      FieldAlias = 'TIT1_DATAENTREGA'
-      FieldName = 'TIT1_DATAENTREGA'
+      FieldAlias = 'TIT1_COLUNA1'
+      FieldName = 'TIT1_COLUNA1'
       FieldLength = 20
       DisplayWidth = 20
       Position = 249
     end
     object dbpInvoiceppField251: TppField
-      FieldAlias = 'TIT1_TIPOENTREGA'
-      FieldName = 'TIT1_TIPOENTREGA'
+      FieldAlias = 'TIT1_COLUNA2'
+      FieldName = 'TIT1_COLUNA2'
       FieldLength = 20
       DisplayWidth = 20
       Position = 250
     end
     object dbpInvoiceppField252: TppField
-      FieldAlias = 'TIT1_VENDEDOR'
-      FieldName = 'TIT1_VENDEDOR'
+      FieldAlias = 'TIT1_COLUNA3'
+      FieldName = 'TIT1_COLUNA3'
       FieldLength = 20
       DisplayWidth = 20
       Position = 251
     end
     object dbpInvoiceppField253: TppField
-      FieldAlias = 'TIT1_PEDIDO'
-      FieldName = 'TIT1_PEDIDO'
+      FieldAlias = 'TIT1_COLUNA4'
+      FieldName = 'TIT1_COLUNA4'
       FieldLength = 20
       DisplayWidth = 20
       Position = 252
     end
     object dbpInvoiceppField254: TppField
-      FieldAlias = 'TIT1_COMISSAO'
-      FieldName = 'TIT1_COMISSAO'
+      FieldAlias = 'TIT1_UNIDADE'
+      FieldName = 'TIT1_UNIDADE'
       FieldLength = 20
       DisplayWidth = 20
       Position = 253
     end
     object dbpInvoiceppField255: TppField
-      FieldAlias = 'TIT1_TERMOS'
-      FieldName = 'TIT1_TERMOS'
+      FieldAlias = 'TIT1_VALIDADE'
+      FieldName = 'TIT1_VALIDADE'
       FieldLength = 20
       DisplayWidth = 20
       Position = 254
     end
     object dbpInvoiceppField256: TppField
-      FieldAlias = 'TIT1_MENSAGEM'
-      FieldName = 'TIT1_MENSAGEM'
+      FieldAlias = 'TIT1_REFERENCIA'
+      FieldName = 'TIT1_REFERENCIA'
       FieldLength = 20
       DisplayWidth = 20
       Position = 255
     end
     object dbpInvoiceppField257: TppField
-      FieldAlias = 'TIT1_DESCONTOS'
-      FieldName = 'TIT1_DESCONTOS'
+      FieldAlias = 'TIT1_QTDRECEBIDA'
+      FieldName = 'TIT1_QTDRECEBIDA'
       FieldLength = 20
       DisplayWidth = 20
       Position = 256
     end
     object dbpInvoiceppField258: TppField
-      FieldAlias = 'TIT1_FRETE'
-      FieldName = 'TIT1_FRETE'
+      FieldAlias = 'TIT1_SITUACAO'
+      FieldName = 'TIT1_SITUACAO'
       FieldLength = 20
       DisplayWidth = 20
       Position = 257
     end
     object dbpInvoiceppField259: TppField
-      FieldAlias = 'TIT1_TOTALITENS'
-      FieldName = 'TIT1_TOTALITENS'
+      FieldAlias = 'TIT1_CODIGOFORN'
+      FieldName = 'TIT1_CODIGOFORN'
       FieldLength = 20
       DisplayWidth = 20
       Position = 258
     end
     object dbpInvoiceppField260: TppField
-      FieldAlias = 'TIT1_TOTALFINAL'
-      FieldName = 'TIT1_TOTALFINAL'
+      FieldAlias = 'TIT1_PGTOS'
+      FieldName = 'TIT1_PGTOS'
       FieldLength = 20
       DisplayWidth = 20
       Position = 259
     end
     object dbpInvoiceppField261: TppField
-      FieldAlias = 'TIT1_DESCRICAO'
-      FieldName = 'TIT1_DESCRICAO'
+      FieldAlias = 'TIT1_BALANCE'
+      FieldName = 'TIT1_BALANCE'
       FieldLength = 20
       DisplayWidth = 20
       Position = 260
     end
     object dbpInvoiceppField262: TppField
-      FieldAlias = 'TIT1_QUANTIDADE'
-      FieldName = 'TIT1_QUANTIDADE'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'POSSUIICMS1'
+      FieldName = 'POSSUIICMS1'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 261
     end
     object dbpInvoiceppField263: TppField
-      FieldAlias = 'TIT1_PRECO'
-      FieldName = 'TIT1_PRECO'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'POSSUIISS1'
+      FieldName = 'POSSUIISS1'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 262
     end
     object dbpInvoiceppField264: TppField
-      FieldAlias = 'TIT1_SUBTOTAL'
-      FieldName = 'TIT1_SUBTOTAL'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'CONTABILIZAICMS1'
+      FieldName = 'CONTABILIZAICMS1'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 263
     end
     object dbpInvoiceppField265: TppField
-      FieldAlias = 'TIT1_JUROS'
-      FieldName = 'TIT1_JUROS'
+      FieldAlias = 'TIT1_TVA'
+      FieldName = 'TIT1_TVA'
       FieldLength = 20
       DisplayWidth = 20
       Position = 264
     end
     object dbpInvoiceppField266: TppField
-      FieldAlias = 'TIT1_DESPESAS'
-      FieldName = 'TIT1_DESPESAS'
+      FieldAlias = 'TIT1_FABRICANTE'
+      FieldName = 'TIT1_FABRICANTE'
       FieldLength = 20
       DisplayWidth = 20
       Position = 265
     end
     object dbpInvoiceppField267: TppField
-      FieldAlias = 'TIT1_CAMPO1'
-      FieldName = 'TIT1_CAMPO1'
+      FieldAlias = 'TIT1_REGISTRO'
+      FieldName = 'TIT1_REGISTRO'
       FieldLength = 20
       DisplayWidth = 20
       Position = 266
     end
     object dbpInvoiceppField268: TppField
-      FieldAlias = 'TIT1_CAMPO2'
-      FieldName = 'TIT1_CAMPO2'
+      FieldAlias = 'TIT1_IPI'
+      FieldName = 'TIT1_IPI'
       FieldLength = 20
       DisplayWidth = 20
       Position = 267
     end
     object dbpInvoiceppField269: TppField
-      FieldAlias = 'TIT1_CAMPO3'
-      FieldName = 'TIT1_CAMPO3'
-      FieldLength = 20
-      DisplayWidth = 20
+      FieldAlias = 'POSSUITAX'
+      FieldName = 'POSSUITAX'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 268
     end
     object dbpInvoiceppField270: TppField
-      FieldAlias = 'TIT1_CAMPO4'
-      FieldName = 'TIT1_CAMPO4'
+      FieldAlias = 'TIT1_CFOP'
+      FieldName = 'TIT1_CFOP'
       FieldLength = 20
       DisplayWidth = 20
       Position = 269
     end
     object dbpInvoiceppField271: TppField
-      FieldAlias = 'TIT1_CODIGO'
-      FieldName = 'TIT1_CODIGO'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 270
-    end
-    object dbpInvoiceppField272: TppField
-      FieldAlias = 'TIT1_FUNCIONARIO'
-      FieldName = 'TIT1_FUNCIONARIO'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 271
-    end
-    object dbpInvoiceppField273: TppField
-      FieldAlias = 'TIT1_ICMS'
-      FieldName = 'TIT1_ICMS'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 272
-    end
-    object dbpInvoiceppField274: TppField
-      FieldAlias = 'TIT1_COLUNA1'
-      FieldName = 'TIT1_COLUNA1'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 273
-    end
-    object dbpInvoiceppField275: TppField
-      FieldAlias = 'TIT1_COLUNA2'
-      FieldName = 'TIT1_COLUNA2'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 274
-    end
-    object dbpInvoiceppField276: TppField
-      FieldAlias = 'TIT1_COLUNA3'
-      FieldName = 'TIT1_COLUNA3'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 275
-    end
-    object dbpInvoiceppField277: TppField
-      FieldAlias = 'TIT1_COLUNA4'
-      FieldName = 'TIT1_COLUNA4'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 276
-    end
-    object dbpInvoiceppField278: TppField
-      FieldAlias = 'TIT1_UNIDADE'
-      FieldName = 'TIT1_UNIDADE'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 277
-    end
-    object dbpInvoiceppField279: TppField
-      FieldAlias = 'TIT1_VALIDADE'
-      FieldName = 'TIT1_VALIDADE'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 278
-    end
-    object dbpInvoiceppField280: TppField
-      FieldAlias = 'TIT1_REFERENCIA'
-      FieldName = 'TIT1_REFERENCIA'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 279
-    end
-    object dbpInvoiceppField281: TppField
-      FieldAlias = 'TIT1_QTDRECEBIDA'
-      FieldName = 'TIT1_QTDRECEBIDA'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 280
-    end
-    object dbpInvoiceppField282: TppField
-      FieldAlias = 'TIT1_SITUACAO'
-      FieldName = 'TIT1_SITUACAO'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 281
-    end
-    object dbpInvoiceppField283: TppField
-      FieldAlias = 'TIT1_CODIGOFORN'
-      FieldName = 'TIT1_CODIGOFORN'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 282
-    end
-    object dbpInvoiceppField284: TppField
-      FieldAlias = 'TIT1_PGTOS'
-      FieldName = 'TIT1_PGTOS'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 283
-    end
-    object dbpInvoiceppField285: TppField
-      FieldAlias = 'TIT1_BALANCE'
-      FieldName = 'TIT1_BALANCE'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 284
-    end
-    object dbpInvoiceppField286: TppField
-      FieldAlias = 'POSSUIICMS1'
-      FieldName = 'POSSUIICMS1'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 285
-    end
-    object dbpInvoiceppField287: TppField
-      FieldAlias = 'POSSUIISS1'
-      FieldName = 'POSSUIISS1'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 286
-    end
-    object dbpInvoiceppField288: TppField
-      FieldAlias = 'CONTABILIZAICMS1'
-      FieldName = 'CONTABILIZAICMS1'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 287
-    end
-    object dbpInvoiceppField289: TppField
-      FieldAlias = 'TIT1_TVA'
-      FieldName = 'TIT1_TVA'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 288
-    end
-    object dbpInvoiceppField290: TppField
-      FieldAlias = 'TIT1_FABRICANTE'
-      FieldName = 'TIT1_FABRICANTE'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 289
-    end
-    object dbpInvoiceppField291: TppField
-      FieldAlias = 'TIT1_REGISTRO'
-      FieldName = 'TIT1_REGISTRO'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 290
-    end
-    object dbpInvoiceppField292: TppField
-      FieldAlias = 'TIT1_IPI'
-      FieldName = 'TIT1_IPI'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 291
-    end
-    object dbpInvoiceppField293: TppField
-      FieldAlias = 'POSSUITAX'
-      FieldName = 'POSSUITAX'
-      FieldLength = 1
-      DisplayWidth = 1
-      Position = 292
-    end
-    object dbpInvoiceppField294: TppField
-      FieldAlias = 'TIT1_CFOP'
-      FieldName = 'TIT1_CFOP'
-      FieldLength = 20
-      DisplayWidth = 20
-      Position = 293
-    end
-    object dbpInvoiceppField295: TppField
       Alignment = taRightJustify
       FieldAlias = 'TIPOCOB_PADRAO'
       FieldName = 'TIPOCOB_PADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 294
+      Position = 270
     end
-    object dbpInvoiceppField296: TppField
+    object dbpInvoiceppField272: TppField
       FieldAlias = 'CB_OPCOESIMPRESSAO'
       FieldName = 'CB_OPCOESIMPRESSAO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 295
+      Position = 271
     end
-    object dbpInvoiceppField297: TppField
+    object dbpInvoiceppField273: TppField
       Alignment = taRightJustify
       FieldAlias = 'TEMPLATEDUPLICATA'
       FieldName = 'TEMPLATEDUPLICATA'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 296
+      Position = 272
     end
-    object dbpInvoiceppField298: TppField
+    object dbpInvoiceppField274: TppField
       Alignment = taRightJustify
       FieldAlias = 'TEMPLATEBOLETO'
       FieldName = 'TEMPLATEBOLETO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 297
+      Position = 273
     end
-    object dbpInvoiceppField299: TppField
+    object dbpInvoiceppField275: TppField
       FieldAlias = 'CB_DESCONTOITEM'
       FieldName = 'CB_DESCONTOITEM'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 298
+      Position = 274
     end
-    object dbpInvoiceppField300: TppField
+    object dbpInvoiceppField276: TppField
       FieldAlias = 'CB_COMPENSACAO'
       FieldName = 'CB_COMPENSACAO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 299
+      Position = 275
     end
-    object dbpInvoiceppField301: TppField
+    object dbpInvoiceppField277: TppField
       FieldAlias = 'CB_COMPENSACAONOCUSTO'
       FieldName = 'CB_COMPENSACAONOCUSTO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 300
+      Position = 276
     end
-    object dbpInvoiceppField302: TppField
+    object dbpInvoiceppField278: TppField
       Alignment = taRightJustify
       FieldAlias = 'TIPO_CARTEIRA_PADRAO'
       FieldName = 'TIPO_CARTEIRA_PADRAO'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
-      Position = 301
+      Position = 277
     end
-    object dbpInvoiceppField303: TppField
+    object dbpInvoiceppField279: TppField
       FieldAlias = 'CB_ORDEM_IMP_ITENS'
       FieldName = 'CB_ORDEM_IMP_ITENS'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 302
+      Position = 278
     end
-    object dbpInvoiceppField304: TppField
+    object dbpInvoiceppField280: TppField
       FieldAlias = 'CB_DUPLICATA_IMPRESSA'
       FieldName = 'CB_DUPLICATA_IMPRESSA'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 303
+      Position = 279
     end
-    object dbpInvoiceppField305: TppField
+    object dbpInvoiceppField281: TppField
       FieldAlias = 'CB_ENTRADAPRECOVENDA'
       FieldName = 'CB_ENTRADAPRECOVENDA'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 304
+      Position = 280
     end
-    object dbpInvoiceppField306: TppField
+    object dbpInvoiceppField282: TppField
       FieldAlias = 'BAIXAESTOQUEFISCAL'
       FieldName = 'BAIXAESTOQUEFISCAL'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 305
+      Position = 281
     end
-    object dbpInvoiceppField307: TppField
+    object dbpInvoiceppField283: TppField
       FieldAlias = 'CB_SOLICITACAOALMOX'
       FieldName = 'CB_SOLICITACAOALMOX'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 306
+      Position = 282
     end
-    object dbpInvoiceppField308: TppField
+    object dbpInvoiceppField284: TppField
       FieldAlias = 'TIPOCOBRANCA'
       FieldName = 'TIPOCOBRANCA'
       FieldLength = 50
       DisplayWidth = 50
-      Position = 307
+      Position = 283
     end
-    object dbpInvoiceppField309: TppField
+    object dbpInvoiceppField285: TppField
       Alignment = taRightJustify
       FieldAlias = 'DescontoPerc'
       FieldName = 'DescontoPerc'
       FieldLength = 0
       DataType = dtDouble
       DisplayWidth = 10
-      Position = 308
+      Position = 284
     end
-    object dbpInvoiceppField310: TppField
+    object dbpInvoiceppField286: TppField
       FieldAlias = 'MENSAGEMITEM'
       FieldName = 'MENSAGEMITEM'
       FieldLength = 255
       DisplayWidth = 255
-      Position = 309
+      Position = 285
     end
-    object dbpInvoiceppField311: TppField
+    object dbpInvoiceppField287: TppField
       FieldAlias = 'NRO'
       FieldName = 'NRO'
       FieldLength = 4
       DisplayWidth = 4
-      Position = 310
+      Position = 286
     end
-    object dbpInvoiceppField312: TppField
+    object dbpInvoiceppField288: TppField
       FieldAlias = 'CB_CARNEIDENTIFICADO'
       FieldName = 'CB_CARNEIDENTIFICADO'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 311
+      Position = 287
     end
-    object dbpInvoiceppField313: TppField
+    object dbpInvoiceppField289: TppField
       FieldAlias = 'LIVROFISCAL'
       FieldName = 'LIVROFISCAL'
       FieldLength = 1
       DisplayWidth = 1
-      Position = 312
+      Position = 288
     end
-    object dbpInvoiceppField314: TppField
+    object dbpInvoiceppField290: TppField
       FieldAlias = 'RG'
       FieldName = 'RG'
       FieldLength = 14
       DisplayWidth = 14
+      Position = 289
+    end
+    object dbpInvoiceppField291: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TotalItensLicitacao'
+      FieldName = 'TotalItensLicitacao'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 290
+    end
+    object dbpInvoiceppField292: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'Lucro'
+      FieldName = 'Lucro'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 291
+    end
+    object dbpInvoiceppField293: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PercentualLucro'
+      FieldName = 'PercentualLucro'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 292
+    end
+    object dbpInvoiceppField294: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TOTAL'
+      FieldName = 'TOTAL'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 293
+    end
+    object dbpInvoiceppField295: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TOTALPGTOS'
+      FieldName = 'TOTALPGTOS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 294
+    end
+    object dbpInvoiceppField296: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'DESCONTO'
+      FieldName = 'DESCONTO'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 295
+    end
+    object dbpInvoiceppField297: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'FRETE'
+      FieldName = 'FRETE'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 296
+    end
+    object dbpInvoiceppField298: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'OUTRASDESPESAS'
+      FieldName = 'OUTRASDESPESAS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 297
+    end
+    object dbpInvoiceppField299: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'JUROS'
+      FieldName = 'JUROS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 298
+    end
+    object dbpInvoiceppField300: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TOTALITENS'
+      FieldName = 'TOTALITENS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 299
+    end
+    object dbpInvoiceppField301: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'BASECALCICMS'
+      FieldName = 'BASECALCICMS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 300
+    end
+    object dbpInvoiceppField302: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORICMS'
+      FieldName = 'VALORICMS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 301
+    end
+    object dbpInvoiceppField303: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORISS'
+      FieldName = 'VALORISS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 302
+    end
+    object dbpInvoiceppField304: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORIPI'
+      FieldName = 'VALORIPI'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 303
+    end
+    object dbpInvoiceppField305: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'BASECALCSUBST'
+      FieldName = 'BASECALCSUBST'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 304
+    end
+    object dbpInvoiceppField306: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORICMSSUBST'
+      FieldName = 'VALORICMSSUBST'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 305
+    end
+    object dbpInvoiceppField307: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORSEGURO'
+      FieldName = 'VALORSEGURO'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 306
+    end
+    object dbpInvoiceppField308: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PESOBRUTO'
+      FieldName = 'PESOBRUTO'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 307
+    end
+    object dbpInvoiceppField309: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PESOLIQUIDO'
+      FieldName = 'PESOLIQUIDO'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 308
+    end
+    object dbpInvoiceppField310: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'ALIQICMSVENDA'
+      FieldName = 'ALIQICMSVENDA'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 309
+    end
+    object dbpInvoiceppField311: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORISENTAS'
+      FieldName = 'VALORISENTAS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 310
+    end
+    object dbpInvoiceppField312: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'TOTALSERVICOS'
+      FieldName = 'TOTALSERVICOS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 311
+    end
+    object dbpInvoiceppField313: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALOROUTRASICMS'
+      FieldName = 'VALOROUTRASICMS'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 312
+    end
+    object dbpInvoiceppField314: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'VALORISENTASIPI'
+      FieldName = 'VALORISENTASIPI'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
       Position = 313
     end
     object dbpInvoiceppField315: TppField
       Alignment = taRightJustify
-      FieldAlias = 'TotalItensLicitacao'
-      FieldName = 'TotalItensLicitacao'
+      FieldAlias = 'VALOROUTRASIPI'
+      FieldName = 'VALOROUTRASIPI'
       FieldLength = 0
       DataType = dtDouble
       DisplayWidth = 10
@@ -22806,8 +30202,8 @@ object RptInvoices: TRptInvoices
     end
     object dbpInvoiceppField316: TppField
       Alignment = taRightJustify
-      FieldAlias = 'Lucro'
-      FieldName = 'Lucro'
+      FieldAlias = 'BASEINCLUSO'
+      FieldName = 'BASEINCLUSO'
       FieldLength = 0
       DataType = dtDouble
       DisplayWidth = 10
@@ -22815,81 +30211,122 @@ object RptInvoices: TRptInvoices
     end
     object dbpInvoiceppField317: TppField
       Alignment = taRightJustify
-      FieldAlias = 'PercentualLucro'
-      FieldName = 'PercentualLucro'
+      FieldAlias = 'TOTALPRODUTOS'
+      FieldName = 'TOTALPRODUTOS'
       FieldLength = 0
       DataType = dtDouble
       DisplayWidth = 10
       Position = 316
     end
     object dbpInvoiceppField318: TppField
-      FieldAlias = 'obscliente'
-      FieldName = 'obscliente'
-      FieldLength = 10
-      DisplayWidth = 10
+      Alignment = taRightJustify
+      FieldAlias = 'ALIQPIS_MOVIMENTO'
+      FieldName = 'ALIQPIS_MOVIMENTO'
+      FieldLength = 2
+      DataType = dtDouble
+      DisplayWidth = 19
       Position = 317
     end
-    object dbpInvoiceppField320: TppField
-      FieldAlias = 'EMAIL'
-      FieldName = 'EMAIL'
-      FieldLength = 10
-      DisplayWidth = 10
+    object dbpInvoiceppField319: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'ALIQCOFINS_MOVIMENTO'
+      FieldName = 'ALIQCOFINS_MOVIMENTO'
+      FieldLength = 2
+      DataType = dtDouble
+      DisplayWidth = 19
       Position = 318
     end
-    object dbpInvoiceppField319: TppField
-      FieldAlias = 'CELULAR'
-      FieldName = 'CELULAR'
-      FieldLength = 10
-      DisplayWidth = 10
+    object dbpInvoiceppField320: TppField
+      FieldAlias = 'CALCULAPISCOFINS'
+      FieldName = 'CALCULAPISCOFINS'
+      FieldLength = 1
+      DisplayWidth = 1
       Position = 319
     end
     object dbpInvoiceppField321: TppField
-      FieldAlias = 'REFFONE'
-      FieldName = 'REFFONE'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'OBSCLIENTE'
+      FieldName = 'OBSCLIENTE'
+      FieldLength = 255
+      DisplayWidth = 255
       Position = 320
     end
     object dbpInvoiceppField322: TppField
-      FieldAlias = 'REFNOME'
-      FieldName = 'REFNOME'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'EMAIL'
+      FieldName = 'EMAIL'
+      FieldLength = 80
+      DisplayWidth = 80
       Position = 321
     end
     object dbpInvoiceppField323: TppField
-      FieldAlias = 'REFNOME2'
-      FieldName = 'REFNOME2'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'CELULAR'
+      FieldName = 'CELULAR'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 322
     end
     object dbpInvoiceppField324: TppField
-      FieldAlias = 'REFFONE2'
-      FieldName = 'REFFONE2'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'REFFONE'
+      FieldName = 'REFFONE'
+      FieldLength = 20
+      DisplayWidth = 20
       Position = 323
     end
     object dbpInvoiceppField325: TppField
-      FieldAlias = 'REFNOME3'
-      FieldName = 'REFNOME3'
-      FieldLength = 10
-      DisplayWidth = 10
+      FieldAlias = 'REFNOME'
+      FieldName = 'REFNOME'
+      FieldLength = 30
+      DisplayWidth = 30
       Position = 324
     end
     object dbpInvoiceppField326: TppField
+      FieldAlias = 'REFNOME2'
+      FieldName = 'REFNOME2'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 325
+    end
+    object dbpInvoiceppField327: TppField
+      FieldAlias = 'REFFONE2'
+      FieldName = 'REFFONE2'
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 326
+    end
+    object dbpInvoiceppField328: TppField
+      FieldAlias = 'REFNOME3'
+      FieldName = 'REFNOME3'
+      FieldLength = 30
+      DisplayWidth = 30
+      Position = 327
+    end
+    object dbpInvoiceppField329: TppField
       FieldAlias = 'REFFONE3'
       FieldName = 'REFFONE3'
-      FieldLength = 10
+      FieldLength = 20
+      DisplayWidth = 20
+      Position = 328
+    end
+    object dbpInvoiceppField330: TppField
+      FieldAlias = 'CB_NOTAENTREGA'
+      FieldName = 'CB_NOTAENTREGA'
+      FieldLength = 1
+      DisplayWidth = 1
+      Position = 329
+    end
+    object dbpInvoiceppField331: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'PERCENTUALDESCONTO'
+      FieldName = 'PERCENTUALDESCONTO'
+      FieldLength = 0
+      DataType = dtDouble
       DisplayWidth = 10
-      Position = 325
+      Position = 330
     end
   end
   object C_ItensDS: TDataSource
     DataSet = C_Itens
-    Left = 524
-    Top = 253
+    Left = 172
+    Top = 221
   end
   object dbpInvItens: TppDBPipeline
     DataSource = C_ItensDS
@@ -22926,9 +30363,9 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'QUANTIDADE'
       FieldName = 'QUANTIDADE'
-      FieldLength = 3
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 3
     end
     object dbpInvItensppField5: TppField
@@ -23025,27 +30462,27 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'BASECALCICMSPROD'
       FieldName = 'BASECALCICMSPROD'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 16
     end
     object dbpInvItensppField18: TppField
       Alignment = taRightJustify
       FieldAlias = 'IPI'
       FieldName = 'IPI'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 17
     end
     object dbpInvItensppField19: TppField
       Alignment = taRightJustify
       FieldAlias = 'ALIQICMS'
       FieldName = 'ALIQICMS'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 18
     end
     object dbpInvItensppField20: TppField
@@ -23059,9 +30496,9 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'REDUCAOCST'
       FieldName = 'REDUCAOCST'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 20
     end
     object dbpInvItensppField22: TppField
@@ -23075,27 +30512,27 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'BASECALCSUBSTPROD'
       FieldName = 'BASECALCSUBSTPROD'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 22
     end
     object dbpInvItensppField24: TppField
       Alignment = taRightJustify
       FieldAlias = 'VALORIPIPROD'
       FieldName = 'VALORIPIPROD'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 23
     end
     object dbpInvItensppField25: TppField
       Alignment = taRightJustify
       FieldAlias = 'TVA'
       FieldName = 'TVA'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 24
     end
     object dbpInvItensppField26: TppField
@@ -23116,27 +30553,27 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'VALORICMSPROD'
       FieldName = 'VALORICMSPROD'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 27
     end
     object dbpInvItensppField29: TppField
       Alignment = taRightJustify
       FieldAlias = 'VALORISENTASPROD'
       FieldName = 'VALORISENTASPROD'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 28
     end
     object dbpInvItensppField30: TppField
       Alignment = taRightJustify
       FieldAlias = 'VALORICMSSUBSTPROD'
       FieldName = 'VALORICMSSUBSTPROD'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 29
     end
     object dbpInvItensppField31: TppField
@@ -23166,9 +30603,9 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'PDESCONTO'
       FieldName = 'PDESCONTO'
-      FieldLength = 2
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 33
     end
     object dbpInvItensppField35: TppField
@@ -23182,18 +30619,18 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'TOTAL'
       FieldName = 'TOTAL'
-      FieldLength = 3
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 35
     end
     object dbpInvItensppField37: TppField
       Alignment = taRightJustify
       FieldAlias = 'PRECOCUSTOLICITACAO'
       FieldName = 'PRECOCUSTOLICITACAO'
-      FieldLength = 3
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 36
     end
     object dbpInvItensppField38: TppField
@@ -23285,18 +30722,18 @@ object RptInvoices: TRptInvoices
       Alignment = taRightJustify
       FieldAlias = 'PRECOTABELA'
       FieldName = 'PRECOTABELA'
-      FieldLength = 3
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 48
     end
     object dbpInvItensppField50: TppField
       Alignment = taRightJustify
       FieldAlias = 'QUANTIDADEVOLUME'
       FieldName = 'QUANTIDADEVOLUME'
-      FieldLength = 3
+      FieldLength = 0
       DataType = dtDouble
-      DisplayWidth = 19
+      DisplayWidth = 10
       Position = 49
     end
     object dbpInvItensppField51: TppField
@@ -23324,6 +30761,13 @@ object RptInvoices: TRptInvoices
       DisplayWidth = 15
       Position = 52
     end
+    object dbpInvItensppField54: TppField
+      FieldAlias = 'OBSERVACAO'
+      FieldName = 'OBSERVACAO'
+      FieldLength = 255
+      DisplayWidth = 255
+      Position = 53
+    end
   end
   object Q_Parcelas: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -23348,8 +30792,8 @@ object RptInvoices: TRptInvoices
         'Where tr.venda = :saida and tr.empresa = :empresa and tr.pdv = :' +
         'pdv'
       'Order By tr.parcela')
-    Left = 763
-    Top = 121
+    Left = 723
+    Top = 169
     ParamData = <
       item
         DataType = ftInteger
@@ -23459,11 +30903,12 @@ object RptInvoices: TRptInvoices
     end
   end
   object C_Parcelas: TClientDataSet
+    Active = True
     Aggregates = <>
     DataSetField = C_InvoiceQ_Parcelas
     Params = <>
-    Left = 849
-    Top = 121
+    Left = 809
+    Top = 185
     object C_ParcelasPARCELA: TIntegerField
       FieldName = 'PARCELA'
       Origin = 'TITULOSARECEBER.PARCELA'
@@ -23533,7 +30978,8 @@ object RptInvoices: TRptInvoices
         ' as Local,'
       
         's.descricao as StatusItem, si.taxavel, si.ordem, si.sequencia , ' +
-        'si.precotabela, si.quantidadevolume, si.precocustolicitacao'
+        'si.precotabela, si.quantidadevolume, si.precocustolicitacao, si.' +
+        'observacao'
       ''
       'FROM SaidasItens si '
       'INNER JOIN itens i on si.item=i.item'
@@ -23546,8 +30992,8 @@ object RptInvoices: TRptInvoices
         ' Where si.saida = :saida  and si.empresa = :empresa and si.pdv =' +
         ' :pdv and si.situacao = '#39'N'#39
       'Order By i.tipoitem,fab.descricao,i.descricao,si.ordem')
-    Left = 683
-    Top = 110
+    Left = 339
+    Top = 86
     ParamData = <
       item
         DataType = ftInteger
@@ -23569,6 +31015,7 @@ object RptInvoices: TRptInvoices
       end>
   end
   object C_Invoice: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <
       item
@@ -23601,8 +31048,8 @@ object RptInvoices: TRptInvoices
       end>
     ProviderName = 'P_Invoice'
     OnCalcFields = C_InvoiceCalcFields
-    Left = 761
-    Top = 73
+    Left = 673
+    Top = 241
     object C_InvoiceSAIDA: TIntegerField
       FieldName = 'SAIDA'
       Origin = 'SAIDAS.SAIDA'
@@ -24960,131 +32407,177 @@ object RptInvoices: TRptInvoices
     end
     object C_InvoiceTOTAL: TFloatField
       FieldName = 'TOTAL'
+      Origin = 'SAIDAS.TOTAL'
     end
     object C_InvoiceTOTALPGTOS: TFloatField
       FieldName = 'TOTALPGTOS'
+      Origin = 'SAIDAS.TOTALPGTOS'
     end
     object C_InvoiceDESCONTO: TFloatField
       FieldName = 'DESCONTO'
+      Origin = 'SAIDAS.DESCONTO'
     end
     object C_InvoiceFRETE: TFloatField
       FieldName = 'FRETE'
+      Origin = 'SAIDAS.FRETE'
     end
     object C_InvoiceOUTRASDESPESAS: TFloatField
       FieldName = 'OUTRASDESPESAS'
+      Origin = 'SAIDAS.OUTRASDESPESAS'
     end
     object C_InvoiceJUROS: TFloatField
       FieldName = 'JUROS'
+      Origin = 'SAIDAS.JUROS'
     end
     object C_InvoiceTOTALITENS: TFloatField
       FieldName = 'TOTALITENS'
+      Origin = 'SAIDAS.TOTALITENS'
     end
     object C_InvoiceBASECALCICMS: TFloatField
       FieldName = 'BASECALCICMS'
+      Origin = 'SAIDAS.BASECALCICMS'
     end
     object C_InvoiceVALORICMS: TFloatField
       FieldName = 'VALORICMS'
+      Origin = 'SAIDAS.VALORICMS'
     end
     object C_InvoiceVALORISS: TFloatField
       FieldName = 'VALORISS'
+      Origin = 'SAIDAS.VALORISS'
     end
     object C_InvoiceVALORIPI: TFloatField
       FieldName = 'VALORIPI'
+      Origin = 'SAIDAS.VALORIPI'
     end
     object C_InvoiceBASECALCSUBST: TFloatField
       FieldName = 'BASECALCSUBST'
+      Origin = 'SAIDAS.BASECALCSUBST'
     end
     object C_InvoiceVALORICMSSUBST: TFloatField
       FieldName = 'VALORICMSSUBST'
+      Origin = 'SAIDAS.VALORICMSSUBST'
     end
     object C_InvoiceVALORSEGURO: TFloatField
       FieldName = 'VALORSEGURO'
+      Origin = 'SAIDAS.VALORSEGURO'
     end
     object C_InvoicePESOBRUTO: TFloatField
       FieldName = 'PESOBRUTO'
+      Origin = 'SAIDAS.PESOBRUTO'
     end
     object C_InvoicePESOLIQUIDO: TFloatField
       FieldName = 'PESOLIQUIDO'
+      Origin = 'SAIDAS.PESOLIQUIDO'
     end
     object C_InvoiceALIQICMSVENDA: TFloatField
       FieldName = 'ALIQICMSVENDA'
+      Origin = 'SAIDAS.ALIQICMSVENDA'
     end
     object C_InvoiceVALORISENTAS: TFloatField
       FieldName = 'VALORISENTAS'
+      Origin = 'SAIDAS.VALORISENTAS'
     end
     object C_InvoiceTOTALSERVICOS: TFloatField
       FieldName = 'TOTALSERVICOS'
+      Origin = 'SAIDAS.TOTALSERVICOS'
     end
     object C_InvoiceVALOROUTRASICMS: TFloatField
       FieldName = 'VALOROUTRASICMS'
+      Origin = 'SAIDAS.VALOROUTRASICMS'
     end
     object C_InvoiceVALORISENTASIPI: TFloatField
       FieldName = 'VALORISENTASIPI'
+      Origin = 'SAIDAS.VALORISENTASIPI'
     end
     object C_InvoiceVALOROUTRASIPI: TFloatField
       FieldName = 'VALOROUTRASIPI'
+      Origin = 'SAIDAS.VALOROUTRASIPI'
     end
     object C_InvoiceBASEINCLUSO: TFloatField
       FieldName = 'BASEINCLUSO'
+      Origin = 'SAIDAS.BASEINCLUSO'
     end
     object C_InvoiceTOTALPRODUTOS: TFloatField
       FieldName = 'TOTALPRODUTOS'
+      Origin = 'SAIDAS.TOTALPRODUTOS'
     end
     object C_InvoiceALIQPIS_MOVIMENTO: TBCDField
       FieldName = 'ALIQPIS_MOVIMENTO'
+      Origin = 'TIPOSMOVIMENTO.ALIQPIS_MOVIMENTO'
       Precision = 18
       Size = 2
     end
     object C_InvoiceALIQCOFINS_MOVIMENTO: TBCDField
       FieldName = 'ALIQCOFINS_MOVIMENTO'
+      Origin = 'TIPOSMOVIMENTO.ALIQCOFINS_MOVIMENTO'
       Precision = 18
       Size = 2
     end
     object C_InvoiceCALCULAPISCOFINS: TStringField
       FieldName = 'CALCULAPISCOFINS'
+      Origin = 'TIPOSMOVIMENTO.CALCULAPISCOFINS'
       FixedChar = True
       Size = 1
     end
     object C_InvoiceOBSCLIENTE: TStringField
       FieldName = 'OBSCLIENTE'
+      Origin = 'FAVORECIDOS.OBSCLIENTE'
       Size = 255
     end
     object C_InvoiceEMAIL: TStringField
       FieldName = 'EMAIL'
+      Origin = 'FAVORECIDOS.EMAIL'
       Size = 80
     end
     object C_InvoiceCELULAR: TStringField
       FieldName = 'CELULAR'
+      Origin = 'FAVORECIDOS.CELULAR'
     end
     object C_InvoiceREFFONE: TStringField
       FieldName = 'REFFONE'
+      Origin = 'CLIENTES.REFFONE'
     end
     object C_InvoiceREFNOME: TStringField
       FieldName = 'REFNOME'
+      Origin = 'CLIENTES.REFNOME'
       Size = 30
     end
     object C_InvoiceREFNOME2: TStringField
       FieldName = 'REFNOME2'
+      Origin = 'CLIENTES.REFNOME2'
       Size = 30
     end
     object C_InvoiceREFFONE2: TStringField
       FieldName = 'REFFONE2'
+      Origin = 'CLIENTES.REFFONE2'
     end
     object C_InvoiceREFNOME3: TStringField
       FieldName = 'REFNOME3'
+      Origin = 'CLIENTES.REFNOME3'
       Size = 30
     end
     object C_InvoiceREFFONE3: TStringField
       FieldName = 'REFFONE3'
+      Origin = 'CLIENTES.REFFONE3'
+    end
+    object C_InvoiceCB_NOTAENTREGA: TStringField
+      FieldName = 'CB_NOTAENTREGA'
+      Origin = 'TIPOSMOVIMENTO.CB_NOTAENTREGA'
+      FixedChar = True
+      Size = 1
+    end
+    object C_InvoicePERCENTUALDESCONTO: TFloatField
+      FieldName = 'PERCENTUALDESCONTO'
     end
   end
   object C_Itens: TClientDataSet
+    Active = True
     Aggregates = <>
     DataSetField = C_InvoiceQ_Itens
     Params = <>
     OnCalcFields = C_ItensCalcFields
-    Left = 897
-    Top = 77
+    Left = 337
+    Top = 141
     object C_ItensSAIDA: TIntegerField
       FieldName = 'SAIDA'
       Origin = 'SAIDASITENS.SAIDA'
@@ -25322,13 +32815,18 @@ object RptInvoices: TRptInvoices
       Size = 15
       Calculated = True
     end
+    object C_ItensOBSERVACAO: TStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'SAIDASITENS.OBSERVACAO'
+      Size = 255
+    end
   end
   object P_Invoice: TDataSetProvider
     DataSet = Q_Invoice
     Constraints = True
     Options = [poReadOnly]
-    Left = 472
-    Top = 139
+    Left = 592
+    Top = 99
   end
   object Q_InvoiceDS: TDataSource
     DataSet = Q_Invoice
@@ -25336,6 +32834,7 @@ object RptInvoices: TRptInvoices
     Top = 112
   end
   object C_CompItens: TClientDataSet
+    Active = True
     Aggregates = <>
     DataSetField = C_ItensQ_CompItens
     Params = <>
@@ -25365,8 +32864,8 @@ object RptInvoices: TRptInvoices
   end
   object C_CompItensDS: TDataSource
     DataSet = C_CompItens
-    Left = 456
-    Top = 82
+    Left = 624
+    Top = 26
   end
   object Q_CompItens: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -25379,8 +32878,8 @@ object RptInvoices: TRptInvoices
       'from saidasitensfilhos sif '
       'inner join itens i on i.item = sif.item'
       'where sif.saidaitem = :saidaitem')
-    Left = 811
-    Top = 122
+    Left = 771
+    Top = 234
     ParamData = <
       item
         DataType = ftInteger
@@ -25438,7 +32937,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -26357,7 +33856,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpInvItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -26796,7 +34295,7 @@ object RptInvoices: TRptInvoices
                 DataPipeline = dbCompItens
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+                PrinterSetup.PaperName = 'Carta'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 6350
                 PrinterSetup.mmMarginLeft = 6350
@@ -26908,7 +34407,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbServicos
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -27606,7 +35105,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -28677,8 +36176,8 @@ object RptInvoices: TRptInvoices
   object C_Servicos: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 906
-    Top = 126
+    Left = 882
+    Top = 174
     object C_ServicosCodigo: TStringField
       FieldName = 'Codigo'
     end
@@ -28709,8 +36208,8 @@ object RptInvoices: TRptInvoices
     DataSource = C_ServicosDS
     OpenDataSource = False
     UserName = 'dbServicos'
-    Left = 34
-    Top = 411
+    Left = 42
+    Top = 395
     object dbServicosppField1: TppField
       FieldAlias = 'Codigo'
       FieldName = 'Codigo'
@@ -28778,7 +36277,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -29072,7 +36571,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 7408
           mmTop = 64558
           mmWidth = 21521
@@ -29130,7 +36629,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 48683
           mmTop = 64558
           mmWidth = 17142
@@ -29188,7 +36687,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 128588
           mmTop = 64558
           mmWidth = 17893
@@ -29246,7 +36745,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 155840
           mmTop = 64558
           mmWidth = 17893
@@ -29304,7 +36803,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 181240
           mmTop = 64558
           mmWidth = 17893
@@ -29381,7 +36880,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 101600
           mmTop = 64558
           mmWidth = 17893
@@ -29475,7 +36974,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3387
+          mmHeight = 3378
           mmLeft = 74613
           mmTop = 64558
           mmWidth = 20145
@@ -29535,7 +37034,7 @@ object RptInvoices: TRptInvoices
           Font.Size = 8
           Font.Style = []
           DataPipelineName = 'dbpInvItens'
-          mmHeight = 3246
+          mmHeight = 3253
           mmLeft = 117740
           mmTop = 51858
           mmWidth = 28153
@@ -29581,7 +37080,7 @@ object RptInvoices: TRptInvoices
           Font.Size = 8
           Font.Style = []
           DataPipelineName = 'dbpInvItens'
-          mmHeight = 3246
+          mmHeight = 3253
           mmLeft = 150284
           mmTop = 51858
           mmWidth = 27777
@@ -29645,7 +37144,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 3246
+          mmHeight = 3253
           mmLeft = 118269
           mmTop = 36248
           mmWidth = 30530
@@ -30489,7 +37988,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbCompItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -30619,7 +38118,7 @@ object RptInvoices: TRptInvoices
           Font.Style = [fsBold]
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 4233
+          mmHeight = 4254
           mmLeft = 4233
           mmTop = 5820
           mmWidth = 31031
@@ -30700,7 +38199,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -31464,7 +38963,7 @@ object RptInvoices: TRptInvoices
         Font.Style = [fsBold]
         ParentDataPipeline = False
         DataPipelineName = 'dbpInvoice'
-        mmHeight = 3246
+        mmHeight = 3253
         mmLeft = 3175
         mmTop = 794
         mmWidth = 19644
@@ -31610,7 +39109,7 @@ object RptInvoices: TRptInvoices
     DataPipeline = dbpInvItens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -31631,14 +39130,14 @@ object RptInvoices: TRptInvoices
     DataPipelineName = 'dbpInvItens'
     object ppHeaderBand8: TppHeaderBand
       mmBottomOffset = 0
-      mmHeight = 41275
+      mmHeight = 49213
       mmPrintPosition = 0
       object ppShapeCampo01: TppShape
         UserName = 'ShapeCampo01'
         Pen.Color = clGray
         mmHeight = 7938
-        mmLeft = 1058
-        mmTop = 27781
+        mmLeft = 529
+        mmTop = 36248
         mmWidth = 43127
         BandType = 0
       end
@@ -31646,8 +39145,8 @@ object RptInvoices: TRptInvoices
         UserName = 'ShapeCampo02'
         Pen.Color = clGray
         mmHeight = 7938
-        mmLeft = 44979
-        mmTop = 27781
+        mmLeft = 44450
+        mmTop = 36248
         mmWidth = 43127
         BandType = 0
       end
@@ -31655,8 +39154,8 @@ object RptInvoices: TRptInvoices
         UserName = 'ShapeCampo03'
         Pen.Color = clGray
         mmHeight = 7938
-        mmLeft = 88900
-        mmTop = 27781
+        mmLeft = 88371
+        mmTop = 36248
         mmWidth = 43127
         BandType = 0
       end
@@ -31664,8 +39163,8 @@ object RptInvoices: TRptInvoices
         UserName = 'ShapeCampo04'
         Pen.Color = clGray
         mmHeight = 7938
-        mmLeft = 133086
-        mmTop = 27781
+        mmLeft = 132557
+        mmTop = 36248
         mmWidth = 43127
         BandType = 0
       end
@@ -31675,8 +39174,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Pen.Style = psClear
         mmHeight = 5821
-        mmLeft = 166952
-        mmTop = 3440
+        mmLeft = 166423
+        mmTop = 11906
         mmWidth = 33867
         BandType = 0
       end
@@ -31684,8 +39183,8 @@ object RptInvoices: TRptInvoices
         UserName = 'Shape4'
         Pen.Color = clGray
         mmHeight = 6085
-        mmLeft = 166159
-        mmTop = 1058
+        mmLeft = 165629
+        mmTop = 9525
         mmWidth = 34131
         BandType = 0
       end
@@ -31704,8 +39203,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 5027
-        mmLeft = 166688
-        mmTop = 1588
+        mmLeft = 166159
+        mmTop = 10054
         mmWidth = 33073
         BandType = 0
       end
@@ -31723,8 +39222,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 165894
-        mmTop = 9525
+        mmLeft = 165365
+        mmTop = 17992
         mmWidth = 34396
         BandType = 0
       end
@@ -31742,8 +39241,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 5027
-        mmLeft = 60854
-        mmTop = 8467
+        mmLeft = 60325
+        mmTop = 16933
         mmWidth = 74877
         BandType = 0
       end
@@ -31761,8 +39260,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 25135
-        mmTop = 35983
+        mmLeft = 24606
+        mmTop = 44450
         mmWidth = 9790
         BandType = 0
       end
@@ -31780,8 +39279,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 2910
-        mmTop = 35983
+        mmLeft = 2381
+        mmTop = 44450
         mmWidth = 20638
         BandType = 0
       end
@@ -31799,8 +39298,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 107421
-        mmTop = 35983
+        mmLeft = 106892
+        mmTop = 44450
         mmWidth = 11642
         BandType = 0
       end
@@ -31819,8 +39318,8 @@ object RptInvoices: TRptInvoices
         Visible = False
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 132292
-        mmTop = 35983
+        mmLeft = 131763
+        mmTop = 44450
         mmWidth = 14288
         BandType = 0
       end
@@ -31838,8 +39337,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 155046
-        mmTop = 35983
+        mmLeft = 154517
+        mmTop = 44450
         mmWidth = 11113
         BandType = 0
       end
@@ -31856,8 +39355,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         Visible = False
         mmHeight = 3440
-        mmLeft = 147109
-        mmTop = 36248
+        mmLeft = 146579
+        mmTop = 44715
         mmWidth = 5556
         BandType = 0
       end
@@ -31875,8 +39374,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 35719
-        mmTop = 35983
+        mmLeft = 35190
+        mmTop = 44450
         mmWidth = 48419
         BandType = 0
       end
@@ -31894,8 +39393,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 101600
-        mmTop = 35983
+        mmLeft = 101071
+        mmTop = 44450
         mmWidth = 5027
         BandType = 0
       end
@@ -31914,8 +39413,8 @@ object RptInvoices: TRptInvoices
         Visible = False
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 119592
-        mmTop = 35983
+        mmLeft = 119063
+        mmTop = 44450
         mmWidth = 11906
         BandType = 0
       end
@@ -31933,8 +39432,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 86519
-        mmTop = 35983
+        mmLeft = 85990
+        mmTop = 44450
         mmWidth = 13758
         BandType = 0
       end
@@ -31943,8 +39442,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 189442
-        mmTop = 39952
+        mmLeft = 188913
+        mmTop = 48419
         mmWidth = 12171
         BandType = 0
       end
@@ -31953,8 +39452,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 177271
-        mmTop = 39952
+        mmLeft = 176742
+        mmTop = 48419
         mmWidth = 12171
         BandType = 0
       end
@@ -31963,8 +39462,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 165100
-        mmTop = 39952
+        mmLeft = 164571
+        mmTop = 48419
         mmWidth = 12171
         BandType = 0
       end
@@ -31973,8 +39472,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 152929
-        mmTop = 39952
+        mmLeft = 152400
+        mmTop = 48419
         mmWidth = 12171
         BandType = 0
       end
@@ -31983,8 +39482,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 146844
-        mmTop = 39952
+        mmLeft = 146315
+        mmTop = 48419
         mmWidth = 6085
         BandType = 0
       end
@@ -31993,8 +39492,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 131234
-        mmTop = 39952
+        mmLeft = 130704
+        mmTop = 48419
         mmWidth = 15610
         BandType = 0
       end
@@ -32003,8 +39502,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 118534
-        mmTop = 39952
+        mmLeft = 118004
+        mmTop = 48419
         mmWidth = 12700
         BandType = 0
       end
@@ -32013,8 +39512,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 106098
-        mmTop = 39952
+        mmLeft = 105569
+        mmTop = 48419
         mmWidth = 12435
         BandType = 0
       end
@@ -32023,8 +39522,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 100277
-        mmTop = 39952
+        mmLeft = 99748
+        mmTop = 48419
         mmWidth = 5821
         BandType = 0
       end
@@ -32033,8 +39532,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 85196
-        mmTop = 39952
+        mmLeft = 84667
+        mmTop = 48419
         mmWidth = 15081
         BandType = 0
       end
@@ -32043,8 +39542,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 35454
-        mmTop = 39952
+        mmLeft = 34925
+        mmTop = 48419
         mmWidth = 49742
         BandType = 0
       end
@@ -32053,8 +39552,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 24606
-        mmTop = 39952
+        mmLeft = 24077
+        mmTop = 48419
         mmWidth = 10848
         BandType = 0
       end
@@ -32063,8 +39562,8 @@ object RptInvoices: TRptInvoices
         Pen.Color = clGray
         Weight = 0.75
         mmHeight = 529
-        mmLeft = 2117
-        mmTop = 39952
+        mmLeft = 1588
+        mmTop = 48419
         mmWidth = 22490
         BandType = 0
       end
@@ -32074,8 +39573,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 24077
-        mmTop = 36248
+        mmLeft = 23548
+        mmTop = 44715
         mmWidth = 3175
         BandType = 0
       end
@@ -32085,8 +39584,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 34925
-        mmTop = 36248
+        mmLeft = 34396
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32096,8 +39595,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 84667
-        mmTop = 36248
+        mmLeft = 84138
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32107,8 +39606,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 100013
-        mmTop = 36248
+        mmLeft = 99484
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32118,8 +39617,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 106892
-        mmTop = 36248
+        mmLeft = 106363
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32129,8 +39628,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 116417
-        mmTop = 36248
+        mmLeft = 115888
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32140,8 +39639,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 129117
-        mmTop = 36248
+        mmLeft = 128588
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32151,8 +39650,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 144198
-        mmTop = 36248
+        mmLeft = 143669
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32162,8 +39661,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 150284
-        mmTop = 36248
+        mmLeft = 149754
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32173,8 +39672,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 162190
-        mmTop = 36248
+        mmLeft = 161661
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32184,8 +39683,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 174361
-        mmTop = 36248
+        mmLeft = 173832
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32195,8 +39694,8 @@ object RptInvoices: TRptInvoices
         Position = lpLeft
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 186532
-        mmTop = 36248
+        mmLeft = 186002
+        mmTop = 44715
         mmWidth = 2646
         BandType = 0
       end
@@ -32207,8 +39706,8 @@ object RptInvoices: TRptInvoices
         Visible = False
         Weight = 0.75
         mmHeight = 3969
-        mmLeft = 1852
-        mmTop = 36248
+        mmLeft = 1323
+        mmTop = 44715
         mmWidth = 2117
         BandType = 0
       end
@@ -32226,8 +39725,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 189707
-        mmTop = 35983
+        mmLeft = 189177
+        mmTop = 44450
         mmWidth = 11377
         BandType = 0
       end
@@ -32245,8 +39744,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 167217
-        mmTop = 35983
+        mmLeft = 166688
+        mmTop = 44450
         mmWidth = 9790
         BandType = 0
       end
@@ -32264,8 +39763,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 4233
-        mmLeft = 178065
-        mmTop = 35983
+        mmLeft = 177536
+        mmTop = 44450
         mmWidth = 8202
         BandType = 0
       end
@@ -32279,9 +39778,9 @@ object RptInvoices: TRptInvoices
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 2646
-        mmTop = 1058
-        mmWidth = 22860
+        mmLeft = 27252
+        mmTop = 0
+        mmWidth = 22754
         BandType = 0
       end
       object lbEndereco: TppLabel
@@ -32294,8 +39793,8 @@ object RptInvoices: TRptInvoices
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 2646
-        mmTop = 5292
+        mmLeft = 27252
+        mmTop = 4233
         mmWidth = 25400
         BandType = 0
       end
@@ -32309,8 +39808,8 @@ object RptInvoices: TRptInvoices
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 4233
-        mmLeft = 2646
-        mmTop = 9525
+        mmLeft = 27252
+        mmTop = 8467
         mmWidth = 25400
         BandType = 0
       end
@@ -32327,8 +39826,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 35719
-        mmTop = 15081
+        mmLeft = 35190
+        mmTop = 23548
         mmWidth = 81227
         BandType = 0
       end
@@ -32342,8 +39841,8 @@ object RptInvoices: TRptInvoices
         Font.Style = [fsBold]
         Transparent = True
         mmHeight = 7673
-        mmLeft = 82815
-        mmTop = 529
+        mmLeft = 82286
+        mmTop = 8996
         mmWidth = 33073
         BandType = 0
       end
@@ -32360,8 +39859,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 17992
-        mmTop = 19050
+        mmLeft = 17463
+        mmTop = 27517
         mmWidth = 98954
         BandType = 0
       end
@@ -32378,8 +39877,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 17992
-        mmTop = 23019
+        mmLeft = 17463
+        mmTop = 31485
         mmWidth = 41540
         BandType = 0
       end
@@ -32396,8 +39895,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 128323
-        mmTop = 15081
+        mmLeft = 127794
+        mmTop = 23548
         mmWidth = 34925
         BandType = 0
       end
@@ -32411,8 +39910,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3704
-        mmLeft = 6879
-        mmTop = 15081
+        mmLeft = 6350
+        mmTop = 23548
         mmWidth = 10583
         BandType = 0
       end
@@ -32426,8 +39925,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3704
-        mmLeft = 3440
-        mmTop = 19050
+        mmLeft = 2910
+        mmTop = 27517
         mmWidth = 14023
         BandType = 0
       end
@@ -32441,8 +39940,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3704
-        mmLeft = 7938
-        mmTop = 23019
+        mmLeft = 7408
+        mmTop = 31485
         mmWidth = 9525
         BandType = 0
       end
@@ -32456,8 +39955,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3704
-        mmLeft = 119856
-        mmTop = 15081
+        mmLeft = 119327
+        mmTop = 23548
         mmWidth = 7938
         BandType = 0
       end
@@ -32471,8 +39970,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3704
-        mmLeft = 117475
-        mmTop = 19050
+        mmLeft = 116946
+        mmTop = 27517
         mmWidth = 10583
         BandType = 0
       end
@@ -32490,8 +39989,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 17992
-        mmTop = 15081
+        mmLeft = 17463
+        mmTop = 23548
         mmWidth = 17198
         BandType = 0
       end
@@ -32508,10 +40007,10 @@ object RptInvoices: TRptInvoices
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'dbpInvoice'
-        mmHeight = 3951
-        mmLeft = 128323
-        mmTop = 19050
-        mmWidth = 11636
+        mmHeight = 3754
+        mmLeft = 127794
+        mmTop = 27517
+        mmWidth = 10886
         BandType = 0
       end
       object ppDBText343: TppDBText
@@ -32527,8 +40026,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 128323
-        mmTop = 23019
+        mmLeft = 127794
+        mmTop = 31485
         mmWidth = 17198
         BandType = 0
       end
@@ -32542,8 +40041,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3704
-        mmLeft = 121444
-        mmTop = 23019
+        mmLeft = 120915
+        mmTop = 31485
         mmWidth = 6615
         BandType = 0
       end
@@ -32560,8 +40059,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3440
-        mmLeft = 191823
-        mmTop = 19050
+        mmLeft = 191294
+        mmTop = 27517
         mmWidth = 8202
         BandType = 0
       end
@@ -32575,8 +40074,8 @@ object RptInvoices: TRptInvoices
         Font.Style = []
         Transparent = True
         mmHeight = 3440
-        mmLeft = 187061
-        mmTop = 19050
+        mmLeft = 186532
+        mmTop = 27517
         mmWidth = 4233
         BandType = 0
       end
@@ -32594,8 +40093,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 2910
-        mmLeft = 1852
-        mmTop = 28310
+        mmLeft = 1323
+        mmTop = 36777
         mmWidth = 41540
         BandType = 0
       end
@@ -32612,8 +40111,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 1852
-        mmTop = 31485
+        mmLeft = 1323
+        mmTop = 39952
         mmWidth = 41540
         BandType = 0
       end
@@ -32631,8 +40130,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 2910
-        mmLeft = 45773
-        mmTop = 28310
+        mmLeft = 45244
+        mmTop = 36777
         mmWidth = 41540
         BandType = 0
       end
@@ -32650,8 +40149,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 2910
-        mmLeft = 89694
-        mmTop = 28310
+        mmLeft = 89165
+        mmTop = 36777
         mmWidth = 41540
         BandType = 0
       end
@@ -32669,8 +40168,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 2910
-        mmLeft = 133879
-        mmTop = 28310
+        mmLeft = 133350
+        mmTop = 36777
         mmWidth = 41540
         BandType = 0
       end
@@ -32687,8 +40186,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 45773
-        mmTop = 31485
+        mmLeft = 45244
+        mmTop = 39952
         mmWidth = 41540
         BandType = 0
       end
@@ -32705,8 +40204,8 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 89694
-        mmTop = 31485
+        mmLeft = 89165
+        mmTop = 39952
         mmWidth = 41540
         BandType = 0
       end
@@ -32723,9 +40222,18 @@ object RptInvoices: TRptInvoices
         Transparent = True
         DataPipelineName = 'dbpInvoice'
         mmHeight = 3704
-        mmLeft = 133879
-        mmTop = 31485
+        mmLeft = 133350
+        mmTop = 39952
         mmWidth = 41540
+        BandType = 0
+      end
+      object ppImage25: TppImage
+        UserName = 'Image1'
+        MaintainAspectRatio = False
+        mmHeight = 17198
+        mmLeft = 265
+        mmTop = 0
+        mmWidth = 25400
         BandType = 0
       end
     end
@@ -32953,7 +40461,7 @@ object RptInvoices: TRptInvoices
         end
         object dbtReferencia4: TppDBText
           UserName = 'DBText38'
-          DataField = 'StatusItem'
+          DataField = 'REFERENCIA'
           DataPipeline = dbpInvItens
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -33036,7 +40544,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbCompItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -33180,7 +40688,7 @@ object RptInvoices: TRptInvoices
           Font.Style = [fsBold]
           ParentDataPipeline = False
           DataPipelineName = 'dbpInvoice'
-          mmHeight = 4233
+          mmHeight = 4254
           mmLeft = 4233
           mmTop = 1058
           mmWidth = 31031
@@ -33232,7 +40740,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -33795,7 +41303,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -34995,7 +42503,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -36677,7 +44185,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 0
@@ -37284,7 +44792,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbCompItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 0
@@ -37733,7 +45241,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbSaidasItensIdent
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 0
@@ -38486,7 +45994,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 0
@@ -39094,7 +46602,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbServicos
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 0
@@ -39232,7 +46740,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpInvItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 0
           PrinterSetup.mmMarginLeft = 0
@@ -39275,7 +46783,7 @@ object RptInvoices: TRptInvoices
                 DataPipeline = dbCompItens
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+                PrinterSetup.PaperName = 'Carta'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 0
                 PrinterSetup.mmMarginLeft = 0
@@ -39642,7 +47150,7 @@ object RptInvoices: TRptInvoices
                 DataPipeline = dbSaidasItensIdent
                 PrinterSetup.BinName = 'Default'
                 PrinterSetup.DocumentName = 'Report'
-                PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+                PrinterSetup.PaperName = 'Carta'
                 PrinterSetup.PrinterName = 'Default'
                 PrinterSetup.mmMarginBottom = 0
                 PrinterSetup.mmMarginLeft = 0
@@ -40435,15 +47943,16 @@ object RptInvoices: TRptInvoices
   end
   object C_SaidasItensIdentDS: TDataSource
     DataSet = C_SaidasItensIdent
-    Left = 704
-    Top = 69
+    Left = 760
+    Top = 117
   end
   object C_SaidasItensIdent: TClientDataSet
+    Active = True
     Aggregates = <>
     DataSetField = C_ItensQ_SaidasItensIdent
     Params = <>
-    Left = 849
-    Top = 75
+    Left = 889
+    Top = 83
     object C_SaidasItensIdentSAIDAITEMIDENT: TIntegerField
       FieldName = 'SAIDAITEMIDENT'
       Origin = 'SAIDASITENSIDENTS.SAIDAITEMIDENT'
@@ -40472,8 +47981,8 @@ object RptInvoices: TRptInvoices
     SQL.Strings = (
       'select * from saidasitensidents'
       'where saidaitem = :saidaitem')
-    Left = 795
-    Top = 76
+    Left = 819
+    Top = 12
     ParamData = <
       item
         DataType = ftInteger
@@ -40485,8 +47994,8 @@ object RptInvoices: TRptInvoices
   object dbSaidasItensIdent: TppDBPipeline
     DataSource = C_SaidasItensIdentDS
     UserName = 'dbSaidasItensIdent'
-    Left = 18
-    Top = 363
+    Left = 34
+    Top = 339
   end
   object DlgMsg: TDlgMsg
     Left = 535
@@ -40505,7 +48014,7 @@ object RptInvoices: TRptInvoices
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 155000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 102
@@ -41025,13 +48534,13 @@ object RptInvoices: TRptInvoices
     PrinterSetup.mmMarginTop = 2000
     PrinterSetup.mmPaperHeight = 156000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 114
     Top = 509
     Version = '6.02'
-    mmColumnWidth = 210000
+    mmColumnWidth = 90000
     DataPipelineName = 'dbpInvItens'
     object ppHeaderBand16: TppHeaderBand
       mmBottomOffset = 0
@@ -41543,7 +49052,7 @@ object RptInvoices: TRptInvoices
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 152000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 102
@@ -42056,7 +49565,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -42948,7 +50457,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -43562,7 +51071,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -44928,7 +52437,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -45117,7 +52626,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -46651,7 +54160,7 @@ object RptInvoices: TRptInvoices
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 105834
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utScreenPixels
     AllowPrintToArchive = True
     AllowPrintToFile = True
@@ -47925,7 +55434,7 @@ object RptInvoices: TRptInvoices
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 105834
           PrinterSetup.mmPaperWidth = 215900
-          PrinterSetup.PaperSize = 256
+          PrinterSetup.PaperSize = 119
           Units = utScreenPixels
           Version = '6.02'
           mmColumnWidth = 0
@@ -48121,7 +55630,7 @@ object RptInvoices: TRptInvoices
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 105834
           PrinterSetup.mmPaperWidth = 215900
-          PrinterSetup.PaperSize = 256
+          PrinterSetup.PaperSize = 119
           Units = utScreenPixels
           Left = 160
           Top = 112
@@ -48683,13 +56192,13 @@ object RptInvoices: TRptInvoices
     PrinterSetup.mmMarginTop = 1588
     PrinterSetup.mmPaperHeight = 127000
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Template.FileName = 'E:\tmp\rptDuasVias.rtm'
     Units = utScreenPixels
     AllowPrintToArchive = True
     AllowPrintToFile = True
     DeviceType = 'Screen'
-    Left = 162
+    Left = 186
     Top = 362
     Version = '6.02'
     mmColumnWidth = 212724
@@ -49552,7 +57061,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -50317,7 +57826,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Bandeja de papel sup.'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 1588
     PrinterSetup.mmMarginLeft = 1588
@@ -51171,7 +58680,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -51941,15 +59450,15 @@ object RptInvoices: TRptInvoices
   object PDFDocument: TPDFDocument4
     AutoConnect = False
     ConnectKind = ckRunningOrNew
-    Left = 152
-    Top = 89
+    Left = 176
+    Top = 17
   end
   object rbMeiaFolha_Backup: TppReport
     AutoStop = False
     DataPipeline = dbpInvItens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -53190,7 +60699,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbCompItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -53386,7 +60895,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -53949,7 +61458,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -55660,7 +63169,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbCompItens
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -55871,7 +63380,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -56782,7 +64291,7 @@ object RptInvoices: TRptInvoices
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -58411,7 +65920,7 @@ object RptInvoices: TRptInvoices
     DataPipeline = dbpInvItens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 1588
     PrinterSetup.mmMarginLeft = 1588
@@ -58443,7 +65952,7 @@ object RptInvoices: TRptInvoices
         mmHeight = 4498
         mmLeft = 4233
         mmTop = 53446
-        mmWidth = 198173
+        mmWidth = 203994
         BandType = 0
         mmBottomOffset = 0
         mmOverFlowOffset = 0
@@ -58495,7 +66004,7 @@ object RptInvoices: TRptInvoices
           Position = lpLeft
           Weight = 0.75
           mmHeight = 3704
-          mmLeft = 184680
+          mmLeft = 183357
           mmTop = 53711
           mmWidth = 1058
           BandType = 0
@@ -58506,7 +66015,7 @@ object RptInvoices: TRptInvoices
           Position = lpLeft
           Weight = 0.75
           mmHeight = 3704
-          mmLeft = 168540
+          mmLeft = 167217
           mmTop = 53711
           mmWidth = 1323
           BandType = 0
@@ -58528,7 +66037,7 @@ object RptInvoices: TRptInvoices
           Position = lpLeft
           Weight = 0.75
           mmHeight = 3704
-          mmLeft = 143404
+          mmLeft = 141552
           mmTop = 53711
           mmWidth = 1323
           BandType = 0
@@ -58544,7 +66053,7 @@ object RptInvoices: TRptInvoices
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3704
-          mmLeft = 146315
+          mmLeft = 144198
           mmTop = 53975
           mmWidth = 5821
           BandType = 0
@@ -58559,7 +66068,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           Transparent = True
           mmHeight = 3704
-          mmLeft = 162190
+          mmLeft = 160073
           mmTop = 53975
           mmWidth = 6085
           BandType = 0
@@ -58574,7 +66083,7 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           Transparent = True
           mmHeight = 3704
-          mmLeft = 174625
+          mmLeft = 173302
           mmTop = 53975
           mmWidth = 8467
           BandType = 0
@@ -58589,9 +66098,9 @@ object RptInvoices: TRptInvoices
           Font.Style = []
           Transparent = True
           mmHeight = 3704
-          mmLeft = 192088
+          mmLeft = 196321
           mmTop = 53975
-          mmWidth = 7144
+          mmWidth = 9790
           BandType = 0
         end
       end
@@ -58600,7 +66109,7 @@ object RptInvoices: TRptInvoices
         ParentWidth = True
         Pen.Style = psClear
         Stretch = True
-        mmHeight = 19579
+        mmHeight = 21167
         mmLeft = 0
         mmTop = 794
         mmWidth = 212724
@@ -59065,7 +66574,7 @@ object RptInvoices: TRptInvoices
         mmHeight = 4498
         mmLeft = 3969
         mmTop = 265
-        mmWidth = 198173
+        mmWidth = 204523
         BandType = 4
         mmBottomOffset = 0
         mmOverFlowOffset = 0
@@ -59087,7 +66596,7 @@ object RptInvoices: TRptInvoices
           Position = lpLeft
           Weight = 0.75
           mmHeight = 3969
-          mmLeft = 184680
+          mmLeft = 183357
           mmTop = 265
           mmWidth = 1058
           BandType = 4
@@ -59098,7 +66607,7 @@ object RptInvoices: TRptInvoices
           Position = lpLeft
           Weight = 0.75
           mmHeight = 3969
-          mmLeft = 168540
+          mmLeft = 167217
           mmTop = 265
           mmWidth = 1323
           BandType = 4
@@ -59156,7 +66665,7 @@ object RptInvoices: TRptInvoices
           Transparent = True
           DataPipelineName = 'dbpInvItens'
           mmHeight = 4233
-          mmLeft = 155047
+          mmLeft = 152929
           mmTop = 265
           mmWidth = 13229
           BandType = 4
@@ -59176,7 +66685,7 @@ object RptInvoices: TRptInvoices
           Transparent = True
           DataPipelineName = 'dbpInvItens'
           mmHeight = 4233
-          mmLeft = 170392
+          mmLeft = 169069
           mmTop = 265
           mmWidth = 12700
           BandType = 4
@@ -59196,9 +66705,9 @@ object RptInvoices: TRptInvoices
           Transparent = True
           DataPipelineName = 'dbpInvItens'
           mmHeight = 4233
-          mmLeft = 186797
+          mmLeft = 184415
           mmTop = 265
-          mmWidth = 12700
+          mmWidth = 22225
           BandType = 4
         end
         object ppLine228: TppLine
@@ -59207,7 +66716,7 @@ object RptInvoices: TRptInvoices
           Position = lpLeft
           Weight = 0.75
           mmHeight = 3969
-          mmLeft = 143140
+          mmLeft = 141552
           mmTop = 265
           mmWidth = 1323
           BandType = 4
@@ -59240,7 +66749,7 @@ object RptInvoices: TRptInvoices
           mmHeight = 4233
           mmLeft = 27517
           mmTop = 265
-          mmWidth = 114036
+          mmWidth = 112977
           BandType = 4
           mmBottomOffset = 0
           mmOverFlowOffset = 0
@@ -59286,7 +66795,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -59830,7 +67339,7 @@ object RptInvoices: TRptInvoices
           Weight = 0.75
           mmHeight = 1323
           mmLeft = 19844
-          mmTop = 14288
+          mmTop = 15081
           mmWidth = 135467
           BandType = 7
         end
@@ -59849,7 +67358,7 @@ object RptInvoices: TRptInvoices
           DataPipelineName = 'dbpInvoice'
           mmHeight = 4233
           mmLeft = 19844
-          mmTop = 14817
+          mmTop = 15875
           mmWidth = 135467
           BandType = 7
         end
@@ -60050,7 +67559,7 @@ object RptInvoices: TRptInvoices
     DataPipeline = dbpInvItens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 1588
     PrinterSetup.mmMarginLeft = 1588
@@ -60984,7 +68493,7 @@ object RptInvoices: TRptInvoices
           DataPipeline = dbpParcelas
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+          PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -61740,6 +69249,15690 @@ object RptInvoices: TRptInvoices
         mmTop = 1058
         mmWidth = 8996
         BandType = 7
+      end
+    end
+  end
+  object pp40ColunasGraficoPrintID: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 4000
+    PrinterSetup.mmMarginLeft = 1000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 2000
+    PrinterSetup.mmPaperHeight = 500000
+    PrinterSetup.mmPaperWidth = 85000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 170
+    Top = 121
+    Version = '6.02'
+    mmColumnWidth = 97000
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand32: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 55563
+      mmPrintPosition = 0
+      object ppMovimento: TppLabel
+        UserName = 'zrlNumero'
+        AutoSize = False
+        Caption = 'ppMovimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 794
+        mmTop = 21431
+        mmWidth = 78052
+        BandType = 0
+      end
+      object ppPIDNomeCliente: TppLabel
+        UserName = 'zrlPreFXCodigoCliente1'
+        AutoSize = False
+        Caption = 'ppPIDNomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 1323
+        mmTop = 29369
+        mmWidth = 77523
+        BandType = 0
+      end
+      object ppPIDEnderecoCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente'
+        AutoSize = False
+        Caption = 'ppPIDEnderecoCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 1058
+        mmTop = 33338
+        mmWidth = 77788
+        BandType = 0
+      end
+      object ppPIDCidadeCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente1'
+        AutoSize = False
+        Caption = 'ppPIDCidadeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 1058
+        mmTop = 37306
+        mmWidth = 77788
+        BandType = 0
+      end
+      object ppLabel358: TppLabel
+        UserName = 'Label73'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 1058
+        mmTop = 41275
+        mmWidth = 9260
+        BandType = 0
+      end
+      object ppPIDFoneCliente: TppLabel
+        UserName = 'zrlPreFXFone'
+        AutoSize = False
+        Caption = 'ppPIDFoneCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 10319
+        mmTop = 41275
+        mmWidth = 23813
+        BandType = 0
+      end
+      object ppPIDEmpresa: TppLabel
+        UserName = 'lbEmpresa1'
+        AutoSize = False
+        Caption = 'ppPIDEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 529
+        mmTop = 265
+        mmWidth = 78052
+        BandType = 0
+      end
+      object ppPIDEndereco: TppLabel
+        UserName = 'Label79'
+        AutoSize = False
+        Caption = 'ppPIDEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 529
+        mmTop = 5027
+        mmWidth = 78000
+        BandType = 0
+      end
+      object ppPIDCidade: TppLabel
+        UserName = 'lbTelefone1'
+        AutoSize = False
+        Caption = 'ppPIDCidade'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 529
+        mmTop = 9790
+        mmWidth = 78000
+        BandType = 0
+      end
+      object ppPIDFone: TppLabel
+        UserName = 'PIDFone'
+        AutoSize = False
+        Caption = 'ppPIDFone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 529
+        mmTop = 14288
+        mmWidth = 78000
+        BandType = 0
+      end
+      object ppLabel364: TppLabel
+        UserName = 'Label364'
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 1323
+        mmTop = 47625
+        mmWidth = 11113
+        BandType = 0
+      end
+      object ppLabel367: TppLabel
+        UserName = 'Label367'
+        Caption = 'Unid.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 2381
+        mmTop = 51594
+        mmWidth = 9260
+        BandType = 0
+      end
+      object ppLabel368: TppLabel
+        UserName = 'Label368'
+        Caption = 'Descri'#231#227'o do Item /Servi'#231'o '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 19844
+        mmTop = 47890
+        mmWidth = 50006
+        BandType = 0
+      end
+      object ppLabel369: TppLabel
+        UserName = 'Label369'
+        Caption = 'Qtde.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 19844
+        mmTop = 51858
+        mmWidth = 9260
+        BandType = 0
+      end
+      object ppLabel370: TppLabel
+        UserName = 'Label370'
+        Caption = 'Pre'#231'o Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 32808
+        mmTop = 51858
+        mmWidth = 20373
+        BandType = 0
+      end
+      object ppLabel371: TppLabel
+        UserName = 'Label3701'
+        Caption = 'total Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 57944
+        mmTop = 51858
+        mmWidth = 20373
+        BandType = 0
+      end
+      object ppLine267: TppLine
+        UserName = 'Line501'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 794
+        mmTop = 55298
+        mmWidth = 79640
+        BandType = 0
+      end
+      object ppLine268: TppLine
+        UserName = 'Line502'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 529
+        mmTop = 26723
+        mmWidth = 79640
+        BandType = 0
+      end
+      object ppLine269: TppLine
+        UserName = 'Line269'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 45773
+        mmWidth = 79640
+        BandType = 0
+      end
+    end
+    object ppDetailBand49: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 8996
+      mmPrintPosition = 0
+      object ppDBText786: TppDBText
+        UserName = 'DBText308'
+        DataField = 'icCodigoAsterisco'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3048
+        mmLeft = 265
+        mmTop = 265
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText787: TppDBText
+        UserName = 'DBText309'
+        DataField = 'ITEMDESC'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 17992
+        mmTop = 265
+        mmWidth = 61119
+        BandType = 4
+      end
+      object ppDBText788: TppDBText
+        UserName = 'DBText310'
+        DataField = 'UNIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3175
+        mmLeft = 1323
+        mmTop = 3704
+        mmWidth = 10054
+        BandType = 4
+      end
+      object ppDBText789: TppDBText
+        UserName = 'DBText311'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 14552
+        mmTop = 3704
+        mmWidth = 12965
+        BandType = 4
+      end
+      object ppDBText790: TppDBText
+        UserName = 'DBText312'
+        DataField = 'PRECO'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 36777
+        mmTop = 3704
+        mmWidth = 15875
+        BandType = 4
+      end
+      object ppDBText791: TppDBText
+        UserName = 'DBText313'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3768
+        mmLeft = 57944
+        mmTop = 3969
+        mmWidth = 19050
+        BandType = 4
+      end
+      object ppLabel365: TppLabel
+        UserName = 'Label78'
+        Caption = 'X'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3133
+        mmLeft = 29104
+        mmTop = 3704
+        mmWidth = 1693
+        BandType = 4
+      end
+      object ppLabel366: TppLabel
+        UserName = 'Label1'
+        Caption = '='
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3133
+        mmLeft = 55033
+        mmTop = 3704
+        mmWidth = 1693
+        BandType = 4
+      end
+    end
+    object ppSummaryBand25: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 87842
+      mmPrintPosition = 0
+      object ppDBText792: TppDBText
+        UserName = 'DBText1'
+        DataField = 'VOLUMES'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 5292
+        mmTop = 6085
+        mmWidth = 23813
+        BandType = 7
+      end
+      object ppDBText793: TppDBText
+        UserName = 'DBText2'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 1588
+        mmTop = 19844
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText794: TppDBText
+        UserName = 'DBText3'
+        BlankWhenZero = True
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 61119
+        mmTop = 5821
+        mmWidth = 15875
+        BandType = 7
+      end
+      object ppDBText795: TppDBText
+        UserName = 'DBText4'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 57679
+        mmTop = 529
+        mmWidth = 19050
+        BandType = 7
+      end
+      object ppDBText796: TppDBText
+        UserName = 'DBText5'
+        CharWrap = True
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold, fsItalic]
+        ParentDataPipeline = False
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 12965
+        mmLeft = 1323
+        mmTop = 28046
+        mmWidth = 78846
+        BandType = 7
+      end
+      object ppLine266: TppLine
+        UserName = 'Line50'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 79640
+        BandType = 7
+      end
+      object ppLabel353: TppLabel
+        UserName = 'Label353'
+        Caption = 'Total -->'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 35983
+        mmTop = 529
+        mmWidth = 14552
+        BandType = 7
+      end
+      object ppLabel354: TppLabel
+        UserName = 'Label354'
+        Caption = 'Desconto   -'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 29369
+        mmTop = 5821
+        mmWidth = 22225
+        BandType = 7
+      end
+      object ppLabel355: TppLabel
+        UserName = 'Label355'
+        Caption = 'Acrescimo  +'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 29104
+        mmTop = 11377
+        mmWidth = 22225
+        BandType = 7
+      end
+      object ppDBText797: TppDBText
+        UserName = 'DBText797'
+        BlankWhenZero = True
+        DataField = 'OUTRASDESPESAS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 61119
+        mmTop = 12171
+        mmWidth = 15875
+        BandType = 7
+      end
+      object ppLabel356: TppLabel
+        UserName = 'Label356'
+        Caption = 'Total Final = '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 25665
+        mmTop = 18785
+        mmWidth = 26194
+        BandType = 7
+      end
+      object ppDBText798: TppDBText
+        UserName = 'DBText798'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 52388
+        mmTop = 18785
+        mmWidth = 24342
+        BandType = 7
+      end
+      object ppLabel357: TppLabel
+        UserName = 'Label357'
+        Caption = 'Vendedor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 5292
+        mmTop = 1058
+        mmWidth = 24342
+        BandType = 7
+      end
+      object ppLabel359: TppLabel
+        UserName = 'Label359'
+        Caption = 'Plano PGTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 1588
+        mmTop = 14817
+        mmWidth = 23019
+        BandType = 7
+      end
+      object ppLabel360: TppLabel
+        UserName = 'Label360'
+        Caption = 'Parlelas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 33073
+        mmTop = 41275
+        mmWidth = 14817
+        BandType = 7
+      end
+      object ppSubReport13: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 44979
+        mmWidth = 84000
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport30: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 4000
+          PrinterSetup.mmMarginLeft = 1000
+          PrinterSetup.mmMarginRight = 0
+          PrinterSetup.mmMarginTop = 2000
+          PrinterSetup.mmPaperHeight = 500000
+          PrinterSetup.mmPaperWidth = 85000
+          PrinterSetup.PaperSize = 119
+          Units = utMillimeters
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbpParcelas'
+          object ppTitleBand8: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppLabel361: TppLabel
+              UserName = 'Label361'
+              Caption = 'Valor'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 56092
+              mmTop = 529
+              mmWidth = 6615
+              BandType = 1
+            end
+            object ppLabel362: TppLabel
+              UserName = 'Label362'
+              Caption = 'Parc'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 7673
+              mmTop = 265
+              mmWidth = 5821
+              BandType = 1
+            end
+            object ppLabel363: TppLabel
+              UserName = 'Label363'
+              Caption = 'Vencimento '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 25400
+              mmTop = 529
+              mmWidth = 15610
+              BandType = 1
+            end
+          end
+          object ppDetailBand50: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBText799: TppDBText
+              UserName = 'DBText799'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 1323
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText800: TppDBText
+              UserName = 'DBText800'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 48948
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText801: TppDBText
+              UserName = 'DBText8001'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 24871
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+          end
+          object ppSummaryBand26: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+    end
+    object ppGroup5: TppGroup
+      BreakName = 'LOCAL'
+      DataPipeline = dbpInvItens
+      KeepTogether = True
+      UserName = 'Group3'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'dbpInvItens'
+      object ppGroupHeaderBand4: TppGroupHeaderBand
+        Visible = False
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+      object ppGroupFooterBand4: TppGroupFooterBand
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+    end
+  end
+  object pp40ColunasGraficoEpson: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 4000
+    PrinterSetup.mmMarginLeft = 1000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 2000
+    PrinterSetup.mmPaperHeight = 1000000
+    PrinterSetup.mmPaperWidth = 85000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 442
+    Top = 368
+    Version = '6.02'
+    mmColumnWidth = 97000
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand33: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 55563
+      mmPrintPosition = 0
+      object ppEPSMovimento: TppLabel
+        UserName = 'zrlNumero'
+        AutoSize = False
+        Caption = 'ppEPSMovimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 0
+        mmTop = 21431
+        mmWidth = 71967
+        BandType = 0
+      end
+      object ppEPSNomeCliente: TppLabel
+        UserName = 'zrlPreFXCodigoCliente1'
+        AutoSize = False
+        Caption = 'ppEPSNomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1588
+        mmTop = 29369
+        mmWidth = 71438
+        BandType = 0
+      end
+      object ppEPSEnderecoCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente'
+        AutoSize = False
+        Caption = 'ppEPSEnderecoCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1323
+        mmTop = 33338
+        mmWidth = 71702
+        BandType = 0
+      end
+      object ppEPSCidadeCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente1'
+        AutoSize = False
+        Caption = 'ppEPSCidadeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1323
+        mmTop = 37306
+        mmWidth = 71702
+        BandType = 0
+      end
+      object ppLabel376: TppLabel
+        UserName = 'Label73'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1323
+        mmTop = 41275
+        mmWidth = 9769
+        BandType = 0
+      end
+      object ppEPSFoneCliente: TppLabel
+        UserName = 'zrlPreFXFone'
+        AutoSize = False
+        Caption = 'ppEPSFoneCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 10583
+        mmTop = 41275
+        mmWidth = 20902
+        BandType = 0
+      end
+      object ppEPSEmpresa: TppLabel
+        UserName = 'lbEmpresa1'
+        AutoSize = False
+        Caption = 'ppEPSEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppEPSEndereco: TppLabel
+        UserName = 'Label79'
+        AutoSize = False
+        Caption = 'ppEPSEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 5027
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppEPSCidade: TppLabel
+        UserName = 'lbTelefone1'
+        AutoSize = False
+        Caption = 'ppEPSCidade'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 9790
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppEPSFone: TppLabel
+        UserName = 'PIDFone'
+        AutoSize = False
+        Caption = 'ppEPSFone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 14288
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppLabel382: TppLabel
+        UserName = 'Label364'
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 1588
+        mmTop = 47625
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppLabel383: TppLabel
+        UserName = 'Label367'
+        Caption = 'Unid.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 2646
+        mmTop = 51594
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppLabel384: TppLabel
+        UserName = 'Label368'
+        Caption = 'Descri'#231#227'o do Item /Servi'#231'o '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 14817
+        mmTop = 47890
+        mmWidth = 47096
+        BandType = 0
+      end
+      object ppLabel385: TppLabel
+        UserName = 'Label369'
+        Caption = 'Qtde.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 12171
+        mmTop = 51858
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppLabel386: TppLabel
+        UserName = 'Label370'
+        Caption = 'Pre'#231'o Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 27781
+        mmTop = 51858
+        mmWidth = 17463
+        BandType = 0
+      end
+      object ppLabel387: TppLabel
+        UserName = 'Label3701'
+        Caption = 'total Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 52388
+        mmTop = 51858
+        mmWidth = 18521
+        BandType = 0
+      end
+      object ppLine270: TppLine
+        UserName = 'Line501'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 55298
+        mmWidth = 76729
+        BandType = 0
+      end
+      object ppLine271: TppLine
+        UserName = 'Line502'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 26723
+        mmWidth = 73554
+        BandType = 0
+      end
+      object ppLine272: TppLine
+        UserName = 'Line269'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 45773
+        mmWidth = 73554
+        BandType = 0
+      end
+    end
+    object ppDetailBand51: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 13494
+      mmPrintPosition = 0
+      object ppDBText802: TppDBText
+        UserName = 'DBText308'
+        DataField = 'icCodigoAsterisco'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 1852
+        mmTop = 265
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText803: TppDBText
+        UserName = 'DBText309'
+        DataField = 'ITEMDESC'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 8731
+        mmLeft = 19315
+        mmTop = 265
+        mmWidth = 51329
+        BandType = 4
+      end
+      object ppDBText804: TppDBText
+        UserName = 'DBText310'
+        DataField = 'UNIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3175
+        mmLeft = 1588
+        mmTop = 9260
+        mmWidth = 6350
+        BandType = 4
+      end
+      object ppDBText805: TppDBText
+        UserName = 'DBText311'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 10054
+        mmTop = 9260
+        mmWidth = 12965
+        BandType = 4
+      end
+      object ppDBText806: TppDBText
+        UserName = 'DBText312'
+        DataField = 'PRECO'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 31485
+        mmTop = 9260
+        mmWidth = 15875
+        BandType = 4
+      end
+      object ppDBText807: TppDBText
+        UserName = 'DBText313'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 53446
+        mmTop = 9525
+        mmWidth = 17992
+        BandType = 4
+      end
+      object ppLabel388: TppLabel
+        UserName = 'Label78'
+        Caption = 'X'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 24606
+        mmTop = 9260
+        mmWidth = 1588
+        BandType = 4
+      end
+      object ppLabel389: TppLabel
+        UserName = 'Label1'
+        Caption = '='
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 50536
+        mmTop = 9260
+        mmWidth = 1588
+        BandType = 4
+      end
+    end
+    object ppSummaryBand27: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 79375
+      mmPrintPosition = 0
+      object ppShape127: TppShape
+        UserName = 'Shape127'
+        mmHeight = 16933
+        mmLeft = 265
+        mmTop = 265
+        mmWidth = 30427
+        BandType = 7
+      end
+      object ppDBText808: TppDBText
+        UserName = 'DBText1'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 17463
+        mmTop = 28310
+        mmWidth = 49213
+        BandType = 7
+      end
+      object ppDBText809: TppDBText
+        UserName = 'DBText2'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 22225
+        mmTop = 24342
+        mmWidth = 45244
+        BandType = 7
+      end
+      object ppDBText810: TppDBText
+        UserName = 'DBText3'
+        BlankWhenZero = True
+        DataField = 'PERCENTUALDESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 58208
+        mmTop = 5821
+        mmWidth = 12435
+        BandType = 7
+      end
+      object ppDBText811: TppDBText
+        UserName = 'DBText4'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 52652
+        mmTop = 529
+        mmWidth = 18256
+        BandType = 7
+      end
+      object ppDBText812: TppDBText
+        UserName = 'DBText5'
+        CharWrap = True
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold, fsItalic]
+        ParentDataPipeline = False
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 12965
+        mmLeft = 1323
+        mmTop = 52652
+        mmWidth = 69056
+        BandType = 7
+      end
+      object ppLine273: TppLine
+        UserName = 'Line50'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 78846
+        BandType = 7
+      end
+      object ppLabel390: TppLabel
+        UserName = 'Label353'
+        Caption = 'Total -->'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 31750
+        mmTop = 529
+        mmWidth = 14552
+        BandType = 7
+      end
+      object ppLabel391: TppLabel
+        UserName = 'Label354'
+        Caption = 'Desc-('
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3246
+        mmLeft = 31750
+        mmTop = 6085
+        mmWidth = 10160
+        BandType = 7
+      end
+      object ppLabel392: TppLabel
+        UserName = 'Label355'
+        Caption = 'Acres  +'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 31750
+        mmTop = 12171
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppDBText813: TppDBText
+        UserName = 'DBText797'
+        BlankWhenZero = True
+        DataField = 'OUTRASDESPESAS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 56621
+        mmTop = 12171
+        mmWidth = 15081
+        BandType = 7
+      end
+      object ppLabel393: TppLabel
+        UserName = 'Label356'
+        Caption = 'Tot Final = '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4745
+        mmLeft = 23283
+        mmTop = 18785
+        mmWidth = 22330
+        BandType = 7
+      end
+      object ppDBText814: TppDBText
+        UserName = 'DBText798'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 47361
+        mmTop = 18785
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel394: TppLabel
+        UserName = 'Label357'
+        Caption = 'Vendedor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 794
+        mmTop = 28310
+        mmWidth = 16140
+        BandType = 7
+      end
+      object ppLabel395: TppLabel
+        UserName = 'Label359'
+        Caption = 'Plano PGTO :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 2963
+        mmLeft = 821
+        mmTop = 24342
+        mmWidth = 20320
+        BandType = 7
+      end
+      object ppLabel396: TppLabel
+        UserName = 'Label360'
+        Caption = 'Parlelas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 33073
+        mmTop = 65881
+        mmWidth = 14817
+        BandType = 7
+      end
+      object ppSubReport14: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 69586
+        mmWidth = 84000
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport31: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 4000
+          PrinterSetup.mmMarginLeft = 1000
+          PrinterSetup.mmMarginRight = 0
+          PrinterSetup.mmMarginTop = 2000
+          PrinterSetup.mmPaperHeight = 1000000
+          PrinterSetup.mmPaperWidth = 85000
+          PrinterSetup.PaperSize = 119
+          Units = utMillimeters
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbpParcelas'
+          object ppTitleBand9: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppLabel397: TppLabel
+              UserName = 'Label361'
+              Caption = 'Valor'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 56092
+              mmTop = 529
+              mmWidth = 6615
+              BandType = 1
+            end
+            object ppLabel398: TppLabel
+              UserName = 'Label362'
+              Caption = 'Parc'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 7673
+              mmTop = 265
+              mmWidth = 5821
+              BandType = 1
+            end
+            object ppLabel399: TppLabel
+              UserName = 'Label363'
+              Caption = 'Vencimento '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 25400
+              mmTop = 529
+              mmWidth = 15610
+              BandType = 1
+            end
+          end
+          object ppDetailBand52: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBText815: TppDBText
+              UserName = 'DBText799'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 1323
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText816: TppDBText
+              UserName = 'DBText800'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 48948
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText817: TppDBText
+              UserName = 'DBText8001'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 24871
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+          end
+          object ppSummaryBand28: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+      object ppLabel380: TppLabel
+        UserName = 'Label380'
+        Caption = 'Qtd Itens:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 6085
+        mmWidth = 16747
+        BandType = 7
+      end
+      object ppLabel381: TppLabel
+        UserName = 'Label381'
+        Caption = 'Tot Vol.:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 1058
+        mmWidth = 15073
+        BandType = 7
+      end
+      object ppDBText849: TppDBText
+        UserName = 'DBText849'
+        DataField = 'VOLUMES'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3210
+        mmLeft = 18521
+        mmTop = 1058
+        mmWidth = 11377
+        BandType = 7
+      end
+      object ppDBCalc6: TppDBCalc
+        UserName = 'DBCalc6'
+        DataField = 'SAIDAITEM'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DBCalcType = dcCount
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 19579
+        mmTop = 6350
+        mmWidth = 9260
+        BandType = 7
+      end
+      object ppDBCalc7: TppDBCalc
+        UserName = 'DBCalc7'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 16933
+        mmTop = 11377
+        mmWidth = 11642
+        BandType = 7
+      end
+      object ppLabel400: TppLabel
+        UserName = 'Label3801'
+        Caption = 'Qtd Tot:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 11377
+        mmWidth = 13398
+        BandType = 7
+      end
+      object ppLabel451: TppLabel
+        UserName = 'Label451'
+        AutoSize = False
+        Caption = 'ppEPSNomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 3175
+        mmTop = 46567
+        mmWidth = 71438
+        BandType = 7
+      end
+      object ppLine319: TppLine
+        UserName = 'Line319'
+        Weight = 0.75
+        mmHeight = 265
+        mmLeft = 12171
+        mmTop = 45773
+        mmWidth = 42069
+        BandType = 7
+      end
+      object ppDBText906: TppDBText
+        UserName = 'DBText906'
+        BlankWhenZero = True
+        DataField = 'PERCENTUALDESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 43392
+        mmTop = 5821
+        mmWidth = 9525
+        BandType = 7
+      end
+      object ppLabel452: TppLabel
+        UserName = 'Label452'
+        Caption = '%)'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 53446
+        mmTop = 6085
+        mmWidth = 3440
+        BandType = 7
+      end
+    end
+    object ppGroup6: TppGroup
+      BreakName = 'LOCAL'
+      DataPipeline = dbpInvItens
+      KeepTogether = True
+      UserName = 'Group3'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'dbpInvItens'
+      object ppGroupHeaderBand5: TppGroupHeaderBand
+        Visible = False
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+      object ppGroupFooterBand5: TppGroupFooterBand
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+    end
+  end
+  object pp40ColunasGraficoEpsonvolumes: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 4000
+    PrinterSetup.mmMarginLeft = 1000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 2000
+    PrinterSetup.mmPaperHeight = 500000
+    PrinterSetup.mmPaperWidth = 85000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 730
+    Top = 357
+    Version = '6.02'
+    mmColumnWidth = 97000
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand34: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 55563
+      mmPrintPosition = 0
+      object ppEPSVMovimento: TppLabel
+        UserName = 'zrlNumero'
+        AutoSize = False
+        Caption = 'ppEPSMovimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 0
+        mmTop = 21431
+        mmWidth = 71967
+        BandType = 0
+      end
+      object ppEPSVNomeCliente: TppLabel
+        UserName = 'zrlPreFXCodigoCliente1'
+        AutoSize = False
+        Caption = 'ppEPSNomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 529
+        mmTop = 29369
+        mmWidth = 71438
+        BandType = 0
+      end
+      object ppEPSVEnderecoCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente'
+        AutoSize = False
+        Caption = 'ppEPSEnderecoCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 265
+        mmTop = 33338
+        mmWidth = 71702
+        BandType = 0
+      end
+      object ppEPSVCidadeCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente1'
+        AutoSize = False
+        Caption = 'ppEPSCidadeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 265
+        mmTop = 37306
+        mmWidth = 71702
+        BandType = 0
+      end
+      object ppLabel377: TppLabel
+        UserName = 'Label73'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 265
+        mmTop = 41275
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppEPSVFoneCliente: TppLabel
+        UserName = 'zrlPreFXFone'
+        AutoSize = False
+        Caption = 'ppEPSFoneCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 9525
+        mmTop = 41275
+        mmWidth = 20902
+        BandType = 0
+      end
+      object ppEPSVEmpresa: TppLabel
+        UserName = 'lbEmpresa1'
+        AutoSize = False
+        Caption = 'ppEPSEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppEPSVEndereco: TppLabel
+        UserName = 'Label79'
+        AutoSize = False
+        Caption = 'ppEPSEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 5027
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppEPSVCidade: TppLabel
+        UserName = 'lbTelefone1'
+        AutoSize = False
+        Caption = 'ppEPSCidade'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 9790
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppEPSVFone: TppLabel
+        UserName = 'PIDFone'
+        AutoSize = False
+        Caption = 'ppEPSFone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 14288
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppLabel401: TppLabel
+        UserName = 'Label364'
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 529
+        mmTop = 47625
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppLabel402: TppLabel
+        UserName = 'Label367'
+        Caption = 'Unid.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 529
+        mmTop = 51594
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppLabel403: TppLabel
+        UserName = 'Label368'
+        Caption = 'Descri'#231#227'o do Item /Servi'#231'o '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 12965
+        mmTop = 47890
+        mmWidth = 55563
+        BandType = 0
+      end
+      object ppLabel404: TppLabel
+        UserName = 'Label369'
+        Caption = 'Qtde.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 20108
+        mmTop = 51858
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppLabel405: TppLabel
+        UserName = 'Label370'
+        Caption = 'Pre'#231'o Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 30956
+        mmTop = 51858
+        mmWidth = 17463
+        BandType = 0
+      end
+      object ppLabel406: TppLabel
+        UserName = 'Label3701'
+        Caption = 'total Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 52388
+        mmTop = 51858
+        mmWidth = 18521
+        BandType = 0
+      end
+      object ppLine274: TppLine
+        UserName = 'Line501'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 55033
+        mmWidth = 76729
+        BandType = 0
+      end
+      object ppLine275: TppLine
+        UserName = 'Line502'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 26723
+        mmWidth = 73554
+        BandType = 0
+      end
+      object ppLine276: TppLine
+        UserName = 'Line269'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 45773
+        mmWidth = 73554
+        BandType = 0
+      end
+      object ppLabel419: TppLabel
+        UserName = 'Label419'
+        Caption = 'Vol.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 2963
+        mmLeft = 8520
+        mmTop = 51858
+        mmWidth = 6773
+        BandType = 0
+      end
+    end
+    object ppDetailBand53: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 8996
+      mmPrintPosition = 0
+      object ppDBText818: TppDBText
+        UserName = 'DBText308'
+        DataField = 'icCodigoAsterisco'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3048
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText819: TppDBText
+        UserName = 'DBText309'
+        DataField = 'ITEMDESC'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 16933
+        mmTop = 265
+        mmWidth = 53181
+        BandType = 4
+      end
+      object ppDBText820: TppDBText
+        UserName = 'DBText310'
+        DataField = 'UNIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3175
+        mmLeft = 265
+        mmTop = 3704
+        mmWidth = 6350
+        BandType = 4
+      end
+      object ppDBText821: TppDBText
+        UserName = 'DBText311'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 14288
+        mmTop = 3704
+        mmWidth = 12965
+        BandType = 4
+      end
+      object ppDBText822: TppDBText
+        UserName = 'DBText312'
+        DataField = 'PRECO'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 31485
+        mmTop = 3704
+        mmWidth = 15875
+        BandType = 4
+      end
+      object ppDBText823: TppDBText
+        UserName = 'DBText313'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3768
+        mmLeft = 53446
+        mmTop = 3969
+        mmWidth = 17992
+        BandType = 4
+      end
+      object ppLabel407: TppLabel
+        UserName = 'Label78'
+        Caption = 'X'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 28575
+        mmTop = 3969
+        mmWidth = 1588
+        BandType = 4
+      end
+      object ppLabel408: TppLabel
+        UserName = 'Label1'
+        Caption = '='
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3133
+        mmLeft = 50536
+        mmTop = 3704
+        mmWidth = 1693
+        BandType = 4
+      end
+      object ppDBText834: TppDBText
+        UserName = 'DBText3101'
+        DataField = 'QUANTIDADEVOLUME'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3175
+        mmLeft = 7408
+        mmTop = 3704
+        mmWidth = 6350
+        BandType = 4
+      end
+    end
+    object ppSummaryBand29: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 87842
+      mmPrintPosition = 0
+      object ppDBText824: TppDBText
+        UserName = 'DBText1'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 0
+        mmTop = 6085
+        mmWidth = 23813
+        BandType = 7
+      end
+      object ppDBText825: TppDBText
+        UserName = 'DBText2'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 0
+        mmTop = 19844
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText826: TppDBText
+        UserName = 'DBText3'
+        BlankWhenZero = True
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 55033
+        mmTop = 5821
+        mmWidth = 15081
+        BandType = 7
+      end
+      object ppDBText827: TppDBText
+        UserName = 'DBText4'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 51065
+        mmTop = 529
+        mmWidth = 18256
+        BandType = 7
+      end
+      object ppDBText828: TppDBText
+        UserName = 'DBText5'
+        CharWrap = True
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold, fsItalic]
+        ParentDataPipeline = False
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 12965
+        mmLeft = 1323
+        mmTop = 28046
+        mmWidth = 69056
+        BandType = 7
+      end
+      object ppLine277: TppLine
+        UserName = 'Line50'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 78846
+        BandType = 7
+      end
+      object ppLabel409: TppLabel
+        UserName = 'Label353'
+        Caption = 'Total -->'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 34660
+        mmTop = 529
+        mmWidth = 14552
+        BandType = 7
+      end
+      object ppLabel410: TppLabel
+        UserName = 'Label354'
+        Caption = 'Desconto   -'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 28046
+        mmTop = 5821
+        mmWidth = 22225
+        BandType = 7
+      end
+      object ppLabel411: TppLabel
+        UserName = 'Label355'
+        Caption = 'Acrescimo  +'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 27781
+        mmTop = 11377
+        mmWidth = 22225
+        BandType = 7
+      end
+      object ppDBText829: TppDBText
+        UserName = 'DBText797'
+        BlankWhenZero = True
+        DataField = 'OUTRASDESPESAS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 55033
+        mmTop = 12171
+        mmWidth = 15081
+        BandType = 7
+      end
+      object ppLabel412: TppLabel
+        UserName = 'Label356'
+        Caption = 'Total Final = '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 22225
+        mmTop = 18785
+        mmWidth = 25135
+        BandType = 7
+      end
+      object ppDBText830: TppDBText
+        UserName = 'DBText798'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 47361
+        mmTop = 18785
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel413: TppLabel
+        UserName = 'Label357'
+        Caption = 'Vendedor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 0
+        mmTop = 1058
+        mmWidth = 24342
+        BandType = 7
+      end
+      object ppLabel414: TppLabel
+        UserName = 'Label359'
+        Caption = 'Plano PGTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 0
+        mmTop = 14817
+        mmWidth = 23019
+        BandType = 7
+      end
+      object ppLabel415: TppLabel
+        UserName = 'Label360'
+        Caption = 'Parlelas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 33073
+        mmTop = 41275
+        mmWidth = 14817
+        BandType = 7
+      end
+      object ppSubReport15: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 44979
+        mmWidth = 84000
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport32: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 4000
+          PrinterSetup.mmMarginLeft = 1000
+          PrinterSetup.mmMarginRight = 0
+          PrinterSetup.mmMarginTop = 2000
+          PrinterSetup.mmPaperHeight = 500000
+          PrinterSetup.mmPaperWidth = 85000
+          PrinterSetup.PaperSize = 119
+          Units = utMillimeters
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbpParcelas'
+          object ppTitleBand10: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppLabel416: TppLabel
+              UserName = 'Label361'
+              Caption = 'Valor'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 56092
+              mmTop = 529
+              mmWidth = 6615
+              BandType = 1
+            end
+            object ppLabel417: TppLabel
+              UserName = 'Label362'
+              Caption = 'Parc'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 7673
+              mmTop = 265
+              mmWidth = 5821
+              BandType = 1
+            end
+            object ppLabel418: TppLabel
+              UserName = 'Label363'
+              Caption = 'Vencimento '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 25400
+              mmTop = 529
+              mmWidth = 15610
+              BandType = 1
+            end
+          end
+          object ppDetailBand54: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBText831: TppDBText
+              UserName = 'DBText799'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 1323
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText832: TppDBText
+              UserName = 'DBText800'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 48948
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText833: TppDBText
+              UserName = 'DBText8001'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 24871
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+          end
+          object ppSummaryBand30: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+    end
+    object ppGroup7: TppGroup
+      BreakName = 'LOCAL'
+      DataPipeline = dbpInvItens
+      KeepTogether = True
+      UserName = 'Group3'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'dbpInvItens'
+      object ppGroupHeaderBand6: TppGroupHeaderBand
+        Visible = False
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+      object ppGroupFooterBand6: TppGroupFooterBand
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+    end
+  end
+  object ppNotaEntrega: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 4000
+    PrinterSetup.mmMarginLeft = 1000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 2000
+    PrinterSetup.mmPaperHeight = 1000000
+    PrinterSetup.mmPaperWidth = 85000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 338
+    Top = 357
+    Version = '6.02'
+    mmColumnWidth = 97000
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand35: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 49213
+      mmPrintPosition = 0
+      object ppNEMovimento: TppLabel
+        UserName = 'zrlNumero'
+        AutoSize = False
+        Caption = 'ppMovimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 265
+        mmTop = 18785
+        mmWidth = 73819
+        BandType = 0
+      end
+      object ppNEEmpresa: TppLabel
+        UserName = 'lbEmpresa1'
+        AutoSize = False
+        Caption = 'ppNEEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 78052
+        BandType = 0
+      end
+      object ppNEEndereco: TppLabel
+        UserName = 'Label79'
+        AutoSize = False
+        Caption = 'ppNEEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 5027
+        mmWidth = 78000
+        BandType = 0
+      end
+      object ppNECidade: TppLabel
+        UserName = 'lbTelefone1'
+        AutoSize = False
+        Caption = 'ppNECidade'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 9790
+        mmWidth = 78000
+        BandType = 0
+      end
+      object ppNEFone: TppLabel
+        UserName = 'PIDFone'
+        AutoSize = False
+        Caption = 'ppNEFone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 14288
+        mmWidth = 78000
+        BandType = 0
+      end
+      object ppLabel421: TppLabel
+        UserName = 'Label364'
+        Caption = 'Item | Codigo '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 3175
+        mmTop = 36513
+        mmWidth = 28840
+        BandType = 0
+      end
+      object ppLabel422: TppLabel
+        UserName = 'Label367'
+        Caption = 'Und.  Qtde  x  Pre'#231'o Unt  = Total Item'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 0
+        mmTop = 45773
+        mmWidth = 74348
+        BandType = 0
+      end
+      object ppLabel423: TppLabel
+        UserName = 'Label368'
+        Caption = 'Descri'#231#227'o do Item /Servi'#231'o '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 265
+        mmTop = 41275
+        mmWidth = 51858
+        BandType = 0
+      end
+      object ppLine278: TppLine
+        UserName = 'Line501'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 529
+        mmTop = 35983
+        mmWidth = 79640
+        BandType = 0
+      end
+      object ppLine279: TppLine
+        UserName = 'Line502'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 529
+        mmTop = 27781
+        mmWidth = 79640
+        BandType = 0
+      end
+      object ppDBText841: TppDBText
+        UserName = 'DBText1'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3210
+        mmLeft = 18521
+        mmTop = 23019
+        mmWidth = 21696
+        BandType = 0
+      end
+      object ppLabel433: TppLabel
+        UserName = 'Label357'
+        Caption = 'Vendedor :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1549
+        mmTop = 23019
+        mmWidth = 16747
+        BandType = 0
+      end
+      object ppShape124: TppShape
+        UserName = 'Shape124'
+        Pen.Mode = pmBlack
+        mmHeight = 6350
+        mmLeft = 2117
+        mmTop = 29104
+        mmWidth = 72496
+        BandType = 0
+      end
+      object ppLabel372: TppLabel
+        UserName = 'Label372'
+        Caption = 'NOTA DE ENTREGA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Name = 'Arial'
+        Font.Size = 16
+        Font.Style = []
+        Transparent = True
+        mmHeight = 6350
+        mmLeft = 9525
+        mmTop = 29104
+        mmWidth = 52652
+        BandType = 0
+      end
+      object ppNEData: TppLabel
+        UserName = 'zrlNumero1'
+        AutoSize = False
+        Caption = 'ppData'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 42863
+        mmTop = 23019
+        mmWidth = 30692
+        BandType = 0
+      end
+      object ppLine282: TppLine
+        UserName = 'Line282'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 794
+        mmTop = 48948
+        mmWidth = 79640
+        BandType = 0
+      end
+    end
+    object ppDetailBand55: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 20108
+      mmPrintPosition = 0
+      object ppDBText835: TppDBText
+        UserName = 'DBText308'
+        DataField = 'icCodigoAsterisco'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 14552
+        mmTop = 529
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText836: TppDBText
+        UserName = 'DBText309'
+        DataField = 'ITEMDESC'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 10583
+        mmLeft = 1588
+        mmTop = 4498
+        mmWidth = 72496
+        BandType = 4
+      end
+      object ppDBText837: TppDBText
+        UserName = 'DBText310'
+        DataField = 'UNIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3175
+        mmLeft = 2117
+        mmTop = 15081
+        mmWidth = 10054
+        BandType = 4
+      end
+      object ppDBText838: TppDBText
+        UserName = 'DBText311'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 12965
+        mmTop = 14817
+        mmWidth = 12965
+        BandType = 4
+      end
+      object ppDBText839: TppDBText
+        UserName = 'DBText312'
+        DataField = 'PRECO'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 28575
+        mmTop = 14817
+        mmWidth = 15875
+        BandType = 4
+      end
+      object ppDBText840: TppDBText
+        UserName = 'DBText313'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 50536
+        mmTop = 15081
+        mmWidth = 20373
+        BandType = 4
+      end
+      object ppLabel427: TppLabel
+        UserName = 'Label78'
+        Caption = 'X'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 26194
+        mmTop = 15081
+        mmWidth = 1588
+        BandType = 4
+      end
+      object ppLabel428: TppLabel
+        UserName = 'Label1'
+        Caption = '='
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 46831
+        mmTop = 15081
+        mmWidth = 1588
+        BandType = 4
+      end
+      object ppDBText851: TppDBText
+        UserName = 'DBText3102'
+        DataField = 'SEQUENCIA'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 265
+        mmWidth = 10054
+        BandType = 4
+      end
+      object ppLabel373: TppLabel
+        UserName = 'Label373'
+        Caption = '|'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 12435
+        mmTop = 265
+        mmWidth = 1588
+        BandType = 4
+      end
+      object ppLine283: TppLine
+        UserName = 'Line283'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 19315
+        mmWidth = 79640
+        BandType = 4
+      end
+    end
+    object ppSummaryBand31: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 76729
+      mmPrintPosition = 0
+      object ppShape126: TppShape
+        UserName = 'Shape126'
+        mmHeight = 9525
+        mmLeft = 1058
+        mmTop = 7938
+        mmWidth = 16404
+        BandType = 7
+      end
+      object ppShape125: TppShape
+        UserName = 'Shape125'
+        mmHeight = 8731
+        mmLeft = 1058
+        mmTop = 265
+        mmWidth = 16404
+        BandType = 7
+      end
+      object ppDBText843: TppDBText
+        UserName = 'DBText3'
+        BlankWhenZero = True
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 55033
+        mmTop = 3969
+        mmWidth = 15875
+        BandType = 7
+      end
+      object ppDBText844: TppDBText
+        UserName = 'DBText4'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 50271
+        mmTop = 529
+        mmWidth = 24342
+        BandType = 7
+      end
+      object ppDBText845: TppDBText
+        UserName = 'DBText5'
+        CharWrap = True
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold, fsItalic]
+        ParentDataPipeline = False
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 14817
+        mmLeft = 1852
+        mmTop = 53975
+        mmWidth = 76465
+        BandType = 7
+      end
+      object ppLine281: TppLine
+        UserName = 'Line50'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 529
+        mmTop = 0
+        mmWidth = 79640
+        BandType = 7
+      end
+      object ppLabel429: TppLabel
+        UserName = 'Label353'
+        Caption = 'Total -->'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 34131
+        mmTop = 529
+        mmWidth = 14552
+        BandType = 7
+      end
+      object ppLabel430: TppLabel
+        UserName = 'Label354'
+        Caption = 'Desc   -'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 33867
+        mmTop = 4498
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppLabel431: TppLabel
+        UserName = 'Label355'
+        Caption = 'Acresc +'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 34131
+        mmTop = 8202
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppDBText846: TppDBText
+        UserName = 'DBText797'
+        BlankWhenZero = True
+        DataField = 'OUTRASDESPESAS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 55563
+        mmTop = 7938
+        mmWidth = 15875
+        BandType = 7
+      end
+      object ppLabel432: TppLabel
+        UserName = 'Label356'
+        Caption = 'Tot Final = '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 22754
+        mmTop = 11642
+        mmWidth = 22225
+        BandType = 7
+      end
+      object ppDBText847: TppDBText
+        UserName = 'DBText798'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 46567
+        mmTop = 11906
+        mmWidth = 28046
+        BandType = 7
+      end
+      object ppLabel435: TppLabel
+        UserName = 'Label360'
+        Caption = '...'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 0
+        mmTop = 66675
+        mmWidth = 5027
+        BandType = 7
+      end
+      object ppSubReport16: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 70379
+        mmWidth = 84000
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport33: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 4000
+          PrinterSetup.mmMarginLeft = 1000
+          PrinterSetup.mmMarginRight = 0
+          PrinterSetup.mmMarginTop = 2000
+          PrinterSetup.mmPaperHeight = 1000000
+          PrinterSetup.mmPaperWidth = 85000
+          PrinterSetup.PaperSize = 119
+          Units = utMillimeters
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbpParcelas'
+          object ppTitleBand11: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+          end
+          object ppDetailBand56: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+          end
+          object ppSummaryBand32: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object raCodeModule3: TraCodeModule
+            ProgramStream = {00}
+          end
+        end
+      end
+      object ppNENomeCliente: TppLabel
+        UserName = 'zrlPreFXCodigoCliente1'
+        AutoSize = False
+        Caption = 'ppNENomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 2910
+        mmTop = 37571
+        mmWidth = 77523
+        BandType = 7
+      end
+      object ppNEEnderecoCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente'
+        AutoSize = False
+        Caption = 'ppNEEnderecoCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 2910
+        mmTop = 41540
+        mmWidth = 77788
+        BandType = 7
+      end
+      object ppNECidadeCliente: TppLabel
+        UserName = 'zrlPreFXEndCliente1'
+        AutoSize = False
+        Caption = 'ppNECidadeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 2910
+        mmTop = 45508
+        mmWidth = 77788
+        BandType = 7
+      end
+      object ppLabel378: TppLabel
+        UserName = 'Label73'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 2646
+        mmTop = 48948
+        mmWidth = 10583
+        BandType = 7
+      end
+      object ppNEFoneCliente: TppLabel
+        UserName = 'zrlPreFXFone'
+        AutoSize = False
+        Caption = 'ppNEFoneCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 13494
+        mmTop = 49213
+        mmWidth = 23813
+        BandType = 7
+      end
+      object ppLine280: TppLine
+        UserName = 'Line280'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 18256
+        mmWidth = 79640
+        BandType = 7
+      end
+      object ppLabel374: TppLabel
+        UserName = 'Label374'
+        Caption = '------  Dados do Cliente  ------'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 13758
+        mmTop = 19315
+        mmWidth = 42069
+        BandType = 7
+      end
+      object ppLabel375: TppLabel
+        UserName = 'Label375'
+        Caption = 'Volumes'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 2117
+        mmTop = 794
+        mmWidth = 13229
+        BandType = 7
+      end
+      object ppDBText842: TppDBText
+        UserName = 'DBText842'
+        DataField = 'VOLUMES'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3969
+        mmLeft = 2117
+        mmTop = 4233
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppLabel379: TppLabel
+        UserName = 'Label379'
+        Caption = 'Peso'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 1852
+        mmTop = 9260
+        mmWidth = 13229
+        BandType = 7
+      end
+      object ppDBText852: TppDBText
+        UserName = 'DBText852'
+        DataField = 'PESOBRUTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3969
+        mmLeft = 1852
+        mmTop = 12700
+        mmWidth = 13758
+        BandType = 7
+      end
+      object ppLine318: TppLine
+        UserName = 'Line2801'
+        Weight = 0.75
+        mmHeight = 265
+        mmLeft = 11906
+        mmTop = 35719
+        mmWidth = 56092
+        BandType = 7
+      end
+    end
+    object ppGroup8: TppGroup
+      BreakName = 'LOCAL'
+      DataPipeline = dbpInvItens
+      KeepTogether = True
+      UserName = 'Group3'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'dbpInvItens'
+      object ppGroupHeaderBand7: TppGroupHeaderBand
+        Visible = False
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+      object ppGroupFooterBand7: TppGroupFooterBand
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+    end
+  end
+  object ppReport2: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'C:\Users\desenv\Desktop\PedidoMeiaFolha_Colunas.rtm'
+    Units = utScreenPixels
+    AllowPrintToArchive = True
+    AllowPrintToFile = True
+    DeviceType = 'Screen'
+    Left = 382
+    Top = 195
+    Version = '6.02'
+    mmColumnWidth = 0
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand36: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 40481
+      mmPrintPosition = 0
+      object ppShape128: TppShape
+        UserName = 'ShapeCampo01'
+        Pen.Color = clGray
+        mmHeight = 7938
+        mmLeft = 1058
+        mmTop = 27781
+        mmWidth = 43127
+        BandType = 0
+      end
+      object ppShape129: TppShape
+        UserName = 'ShapeCampo02'
+        Pen.Color = clGray
+        mmHeight = 7938
+        mmLeft = 44979
+        mmTop = 27781
+        mmWidth = 43127
+        BandType = 0
+      end
+      object ppShape130: TppShape
+        UserName = 'ShapeCampo03'
+        Pen.Color = clGray
+        mmHeight = 7938
+        mmLeft = 88900
+        mmTop = 27781
+        mmWidth = 43127
+        BandType = 0
+      end
+      object ppShape131: TppShape
+        UserName = 'ShapeCampo04'
+        Pen.Color = clGray
+        mmHeight = 7938
+        mmLeft = 133086
+        mmTop = 27781
+        mmWidth = 43127
+        BandType = 0
+      end
+      object ppShape132: TppShape
+        UserName = 'Shape3'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 5821
+        mmLeft = 166952
+        mmTop = 3440
+        mmWidth = 33867
+        BandType = 0
+      end
+      object ppShape133: TppShape
+        UserName = 'Shape4'
+        Pen.Color = clGray
+        mmHeight = 6085
+        mmLeft = 166159
+        mmTop = 1058
+        mmWidth = 34131
+        BandType = 0
+      end
+      object ppDBText848: TppDBText
+        UserName = 'DBText2'
+        OnGetText = ppDBText2GetText
+        DataField = 'INVOICE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5027
+        mmLeft = 166688
+        mmTop = 1588
+        mmWidth = 33073
+        BandType = 0
+      end
+      object ppDBText850: TppDBText
+        UserName = 'dfTITData'
+        OnGetText = ppDBText141GetText
+        DataField = 'TIT2_DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 165894
+        mmTop = 9525
+        mmWidth = 34396
+        BandType = 0
+      end
+      object ppDBText853: TppDBText
+        UserName = 'dfTITTipoMov'
+        DataField = 'DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5027
+        mmLeft = 60854
+        mmTop = 8467
+        mmWidth = 74877
+        BandType = 0
+      end
+      object ppDBText854: TppDBText
+        UserName = 'lbCodigo'
+        DataField = 'TIT2_CODIGO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 25135
+        mmTop = 35983
+        mmWidth = 9790
+        BandType = 0
+      end
+      object ppDBText855: TppDBText
+        UserName = 'lbFuncionario'
+        DataField = 'TIT2_FUNCIONARIO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 2910
+        mmTop = 35983
+        mmWidth = 20638
+        BandType = 0
+      end
+      object ppDBText856: TppDBText
+        UserName = 'lbQuantidade'
+        DataField = 'TIT2_QUANTIDADE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 107421
+        mmTop = 35983
+        mmWidth = 11642
+        BandType = 0
+      end
+      object ppDBText857: TppDBText
+        UserName = 'lbSubTotal'
+        DataField = 'TIT2_SUBTOTAL'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 132292
+        mmTop = 35983
+        mmWidth = 14288
+        BandType = 0
+      end
+      object ppDBText858: TppDBText
+        UserName = 'lbColuna1'
+        DataField = 'TIT2_COLUNA1'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 155046
+        mmTop = 35983
+        mmWidth = 11113
+        BandType = 0
+      end
+      object ppLabel420: TppLabel
+        UserName = 'lbTax'
+        AutoSize = False
+        Caption = 'Tax'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        Visible = False
+        mmHeight = 3440
+        mmLeft = 147109
+        mmTop = 36248
+        mmWidth = 5556
+        BandType = 0
+      end
+      object ppDBText859: TppDBText
+        UserName = 'lbFuncionario1'
+        DataField = 'TIT2_DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 35719
+        mmTop = 35983
+        mmWidth = 48419
+        BandType = 0
+      end
+      object ppDBText860: TppDBText
+        UserName = 'dfTITQtd1'
+        DataField = 'TIT2_UNIDADE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 101600
+        mmTop = 35983
+        mmWidth = 5027
+        BandType = 0
+      end
+      object ppDBText861: TppDBText
+        UserName = 'dfTITQtd2'
+        DataField = 'TIT2_PRECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 119592
+        mmTop = 35983
+        mmWidth = 11906
+        BandType = 0
+      end
+      object ppDBText862: TppDBText
+        UserName = 'lbQuantidade2'
+        DataField = 'TIT2_REFERENCIA'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 86519
+        mmTop = 35983
+        mmWidth = 13758
+        BandType = 0
+      end
+      object ppLine284: TppLine
+        UserName = 'Line9'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 189442
+        mmTop = 39952
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine285: TppLine
+        UserName = 'Line10'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 177271
+        mmTop = 39952
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine286: TppLine
+        UserName = 'Line101'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 165100
+        mmTop = 39952
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine287: TppLine
+        UserName = 'shpColuna3_1'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 152929
+        mmTop = 39952
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine288: TppLine
+        UserName = 'shpTax3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 146844
+        mmTop = 39952
+        mmWidth = 6085
+        BandType = 0
+      end
+      object ppLine289: TppLine
+        UserName = 'shpSubTotal3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 131234
+        mmTop = 39952
+        mmWidth = 15610
+        BandType = 0
+      end
+      object ppLine290: TppLine
+        UserName = 'shpPreco3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 118534
+        mmTop = 39952
+        mmWidth = 12700
+        BandType = 0
+      end
+      object ppLine291: TppLine
+        UserName = 'shpQuantidade3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 106098
+        mmTop = 39952
+        mmWidth = 12435
+        BandType = 0
+      end
+      object ppLine292: TppLine
+        UserName = 'shpUnidade3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 100277
+        mmTop = 39952
+        mmWidth = 5821
+        BandType = 0
+      end
+      object ppLine293: TppLine
+        UserName = 'shpReferencia3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 85196
+        mmTop = 39952
+        mmWidth = 15081
+        BandType = 0
+      end
+      object ppLine294: TppLine
+        UserName = 'shpDescricao3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 35454
+        mmTop = 39952
+        mmWidth = 49742
+        BandType = 0
+      end
+      object ppLine295: TppLine
+        UserName = 'shpCodigo3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 24606
+        mmTop = 39952
+        mmWidth = 10848
+        BandType = 0
+      end
+      object ppLine296: TppLine
+        UserName = 'shpFuncionario3'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 2117
+        mmTop = 39952
+        mmWidth = 22490
+        BandType = 0
+      end
+      object ppLine297: TppLine
+        UserName = 'gjhg'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 24077
+        mmTop = 36248
+        mmWidth = 3175
+        BandType = 0
+      end
+      object ppLine298: TppLine
+        UserName = 'jhgjhg1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 34925
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine299: TppLine
+        UserName = 'bhgj'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 84667
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine300: TppLine
+        UserName = 'kjhh'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 100013
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine301: TppLine
+        UserName = 'jhgjh2'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 106892
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine302: TppLine
+        UserName = 'jhgjh1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 116417
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine303: TppLine
+        UserName = 'jhkh'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 129117
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine304: TppLine
+        UserName = 'jhgh'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 144198
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine305: TppLine
+        UserName = 'jhgjh'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 150284
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine306: TppLine
+        UserName = 'jhgjhg'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 162190
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine307: TppLine
+        UserName = 'hgfhg'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 174361
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine308: TppLine
+        UserName = 'gf'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 186532
+        mmTop = 36248
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine309: TppLine
+        UserName = 'hgjh'
+        Pen.Color = clGray
+        Position = lpLeft
+        Visible = False
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 1852
+        mmTop = 36248
+        mmWidth = 2117
+        BandType = 0
+      end
+      object ppDBText863: TppDBText
+        UserName = 'DBText40'
+        DataField = 'TIT2_COLUNA4'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 189707
+        mmTop = 35983
+        mmWidth = 11377
+        BandType = 0
+      end
+      object ppDBText864: TppDBText
+        UserName = 'DBText42'
+        DataField = 'TIT2_COLUNA2'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 167217
+        mmTop = 35983
+        mmWidth = 9790
+        BandType = 0
+      end
+      object ppDBText865: TppDBText
+        UserName = 'DBText132'
+        DataField = 'TIT2_COLUNA3'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 178065
+        mmTop = 35983
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppLabel424: TppLabel
+        UserName = 'lbEmpresa'
+        Caption = 'lbEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 2646
+        mmTop = 1058
+        mmWidth = 22860
+        BandType = 0
+      end
+      object ppLabel425: TppLabel
+        UserName = 'lbNomeEmpresa1'
+        Caption = 'lbEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 2646
+        mmTop = 5292
+        mmWidth = 25400
+        BandType = 0
+      end
+      object ppLabel426: TppLabel
+        UserName = 'lbTelefone'
+        Caption = 'lbTelefone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 2646
+        mmTop = 9525
+        mmWidth = 25400
+        BandType = 0
+      end
+      object ppDBText866: TppDBText
+        UserName = 'DBText136'
+        DataField = 'NOME'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 35719
+        mmTop = 15081
+        mmWidth = 81227
+        BandType = 0
+      end
+      object ppLabel434: TppLabel
+        UserName = 'lbCancelado4'
+        Caption = 'Cancelado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Tahoma'
+        Font.Size = 18
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 7673
+        mmLeft = 82815
+        mmTop = 529
+        mmWidth = 33073
+        BandType = 0
+      end
+      object ppDBText867: TppDBText
+        UserName = 'DBText211'
+        DataField = 'ENDERECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17992
+        mmTop = 19050
+        mmWidth = 98954
+        BandType = 0
+      end
+      object ppDBText868: TppDBText
+        UserName = 'DBText212'
+        DataField = 'BAIRRO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17992
+        mmTop = 23019
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText869: TppDBText
+        UserName = 'DBText324'
+        DataField = 'FONE1'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 128323
+        mmTop = 15081
+        mmWidth = 34925
+        BandType = 0
+      end
+      object ppLabel436: TppLabel
+        UserName = 'Label90'
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 6879
+        mmTop = 15081
+        mmWidth = 10583
+        BandType = 0
+      end
+      object ppLabel437: TppLabel
+        UserName = 'Label94'
+        Caption = 'Endere'#231'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 3440
+        mmTop = 19050
+        mmWidth = 14023
+        BandType = 0
+      end
+      object ppLabel438: TppLabel
+        UserName = 'Label95'
+        Caption = 'Bairro:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 7938
+        mmTop = 23019
+        mmWidth = 9525
+        BandType = 0
+      end
+      object ppLabel439: TppLabel
+        UserName = 'Label96'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119856
+        mmTop = 15081
+        mmWidth = 7938
+        BandType = 0
+      end
+      object ppLabel440: TppLabel
+        UserName = 'Label97'
+        Caption = 'Cidade:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 117475
+        mmTop = 19050
+        mmWidth = 10583
+        BandType = 0
+      end
+      object ppDBText870: TppDBText
+        UserName = 'DBText341'
+        OnGetText = ppDBText341GetText
+        DataField = 'CODIGOCLIENTE'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17992
+        mmTop = 15081
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppDBText871: TppDBText
+        UserName = 'DBText342'
+        AutoSize = True
+        DataField = 'CIDADE'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3951
+        mmLeft = 128323
+        mmTop = 19050
+        mmWidth = 11636
+        BandType = 0
+      end
+      object ppDBText872: TppDBText
+        UserName = 'DBText343'
+        DataField = 'CEP'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 128323
+        mmTop = 23019
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppLabel441: TppLabel
+        UserName = 'Label98'
+        Caption = 'CEP:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 121444
+        mmTop = 23019
+        mmWidth = 6615
+        BandType = 0
+      end
+      object ppDBText873: TppDBText
+        UserName = 'DBText344'
+        DataField = 'UF'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 191823
+        mmTop = 19050
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppLabel442: TppLabel
+        UserName = 'Label99'
+        Caption = 'UF:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 187061
+        mmTop = 19050
+        mmWidth = 4233
+        BandType = 0
+      end
+      object ppDBText874: TppDBText
+        UserName = 'TituloCampo01'
+        DataField = 'TIT2_CAMPO1'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 7
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 2910
+        mmLeft = 1852
+        mmTop = 28310
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText875: TppDBText
+        UserName = 'Campo01'
+        DataField = 'CAMPO01'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 1852
+        mmTop = 31485
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText876: TppDBText
+        UserName = 'TituloCampo02'
+        DataField = 'TIT2_CAMPO2'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 7
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 2910
+        mmLeft = 45773
+        mmTop = 28310
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText877: TppDBText
+        UserName = 'TituloCampo03'
+        DataField = 'TIT2_CAMPO3'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 7
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 2910
+        mmLeft = 89694
+        mmTop = 28310
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText878: TppDBText
+        UserName = 'TituloCampo04'
+        DataField = 'TIT2_CAMPO4'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 7
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 2910
+        mmLeft = 133879
+        mmTop = 28310
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText879: TppDBText
+        UserName = 'Campo02'
+        DataField = 'CAMPO02'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 45773
+        mmTop = 31485
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText880: TppDBText
+        UserName = 'DBText6101'
+        DataField = 'CAMPO03'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 89694
+        mmTop = 31485
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText881: TppDBText
+        UserName = 'Campo04'
+        DataField = 'CAMPO04'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 133879
+        mmTop = 31485
+        mmWidth = 41540
+        BandType = 0
+      end
+    end
+    object ppDetailBand57: TppDetailBand
+      BeforePrint = DetalheSimplesBeforePrint
+      PrintCount = 50
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 7673
+      mmPrintPosition = 0
+      object ppRegion58: TppRegion
+        UserName = 'rbshItens1'
+        Brush.Color = 16119285
+        Pen.Style = psClear
+        Stretch = True
+        mmHeight = 4233
+        mmLeft = 1588
+        mmTop = 0
+        mmWidth = 201613
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object myDBCheckBox3: TmyDBCheckBox
+          UserName = 'dbtTax1'
+          BooleanFalse = 'N'
+          BooleanTrue = 'S'
+          Style = csCheckMark
+          DataPipeline = dbpInvItens
+          DataField = 'TAXAVEL'
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 147902
+          mmTop = 0
+          mmWidth = 5027
+          BandType = 4
+        end
+        object ppDBText882: TppDBText
+          UserName = 'DBText22'
+          DataField = 'NOMEFUNCIONARIO'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 2646
+          mmTop = 265
+          mmWidth = 22754
+          BandType = 4
+        end
+        object ppDBText883: TppDBText
+          UserName = 'DBText24'
+          DataField = 'CODIGO'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 25930
+          mmTop = 265
+          mmWidth = 12435
+          BandType = 4
+        end
+        object ppDBText884: TppDBText
+          UserName = 'dbtUnidade2'
+          DataField = 'UNIDADE'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 98426
+          mmTop = 265
+          mmWidth = 6350
+          BandType = 4
+        end
+        object ppDBText885: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.##'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 106099
+          mmTop = 265
+          mmWidth = 13229
+          BandType = 4
+        end
+        object ppDBText886: TppDBText
+          UserName = 'dbtPreco1'
+          DataField = 'PRECO'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 120651
+          mmTop = 265
+          mmWidth = 13758
+          BandType = 4
+        end
+        object ppDBText887: TppDBText
+          UserName = 'DBText28'
+          DataField = 'TOTAL'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 135203
+          mmTop = 265
+          mmWidth = 12435
+          BandType = 4
+        end
+        object ppDBText888: TppDBText
+          UserName = 'DBText30'
+          DataField = 'COLUNA1'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 154517
+          mmTop = 265
+          mmWidth = 10319
+          BandType = 4
+        end
+        object ppDBText889: TppDBText
+          UserName = 'DBText32'
+          DataField = 'COLUNA2'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 165894
+          mmTop = 265
+          mmWidth = 11642
+          BandType = 4
+        end
+        object ppDBText890: TppDBText
+          UserName = 'DBText34'
+          DataField = 'COLUNA3'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 178330
+          mmTop = 265
+          mmWidth = 11642
+          BandType = 4
+        end
+        object ppDBText891: TppDBText
+          UserName = 'DBText36'
+          DataField = 'COLUNA4'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 190765
+          mmTop = 265
+          mmWidth = 10054
+          BandType = 4
+        end
+        object ppDBText892: TppDBText
+          UserName = 'DBText38'
+          DataField = 'REFERENCIA'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 84932
+          mmTop = 265
+          mmWidth = 12171
+          BandType = 4
+        end
+        object ppDBMemo29: TppDBMemo
+          UserName = 'dbtDescricao4'
+          CharWrap = False
+          DataField = 'ITEMDESC'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 2910
+          mmLeft = 39158
+          mmTop = 529
+          mmWidth = 43656
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+      end
+      object ppDBMemo30: TppDBMemo
+        UserName = 'dbtDescComplementar1'
+        CharWrap = False
+        DataField = 'DESCRICAOCOMPLEMENTAR'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Stretch = True
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 2910
+        mmLeft = 23019
+        mmTop = 3969
+        mmWidth = 138377
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmLeading = 0
+      end
+      object ppSubReport17: TppSubReport
+        UserName = 'subComposicaoItens1'
+        ExpandAll = False
+        NewPrintJob = False
+        ShiftRelativeTo = ppDBMemo30
+        TraverseAllData = False
+        DataPipelineName = 'dbCompItens'
+        mmHeight = 794
+        mmLeft = 0
+        mmTop = 6879
+        mmWidth = 203200
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport34: TppChildReport
+          AutoStop = False
+          DataPipeline = dbCompItens
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbCompItens'
+          object ppHeaderBand37: TppHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object ppDetailBand58: TppDetailBand
+            PrintHeight = phDynamic
+            mmBottomOffset = 0
+            mmHeight = 3440
+            mmPrintPosition = 0
+            object ppDBText893: TppDBText
+              UserName = 'dbtQtdeComposicao'
+              DataField = 'QUANTIDADE'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 14817
+              mmTop = 0
+              mmWidth = 7144
+              BandType = 4
+            end
+            object ppDBText894: TppDBText
+              UserName = 'dbtUnidComposicao4'
+              DataField = 'UNIDADE'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 23019
+              mmTop = 0
+              mmWidth = 5821
+              BandType = 4
+            end
+            object ppDBMemo31: TppDBMemo
+              UserName = 'dbtDescComposicao4'
+              CharWrap = True
+              DataField = 'DESCRICAO'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Stretch = True
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 29898
+              mmTop = 0
+              mmWidth = 48948
+              BandType = 4
+              mmBottomOffset = 0
+              mmOverFlowOffset = 0
+              mmStopPosition = 0
+              mmLeading = 0
+            end
+          end
+          object ppFooterBand30: TppFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+    end
+    object ppFooterBand31: TppFooterBand
+      BeforePrint = rbRodapeBeforePrint
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand33: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 25135
+      mmPrintPosition = 0
+      object ppLine310: TppLine
+        UserName = 'Line6'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1323
+        mmLeft = 1588
+        mmTop = 0
+        mmWidth = 200290
+        BandType = 7
+      end
+      object ppRegion59: TppRegion
+        UserName = 'Region6'
+        Pen.Style = psClear
+        mmHeight = 14817
+        mmLeft = 0
+        mmTop = 1058
+        mmWidth = 139700
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape134: TppShape
+          UserName = 'Shape6'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 11642
+          mmLeft = 1323
+          mmTop = 3175
+          mmWidth = 137054
+          BandType = 7
+        end
+        object ppDBText895: TppDBText
+          UserName = 'dfTITMensagem'
+          AutoSize = True
+          DataField = 'TIT2_MENSAGEM'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 4233
+          mmTop = 1058
+          mmWidth = 31031
+          BandType = 7
+        end
+        object ppDBMemo32: TppDBMemo
+          UserName = 'DBMemo1'
+          CharWrap = True
+          DataField = 'OBS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 9525
+          mmLeft = 4233
+          mmTop = 4762
+          mmWidth = 132027
+          BandType = 7
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+      end
+      object ppSubReport18: TppSubReport
+        UserName = 'rbsrParcelas1'
+        ExpandAll = False
+        NewPrintJob = False
+        ParentWidth = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 16404
+        mmWidth = 60325
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport35: TppChildReport
+          AutoStop = False
+          Columns = 3
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Left = 160
+          Top = 112
+          Version = '6.02'
+          mmColumnWidth = 48948
+          DataPipelineName = 'dbpParcelas'
+          object ppColumnHeaderBand16: TppColumnHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 5292
+            mmPrintPosition = 0
+            object ppShape135: TppShape
+              UserName = 'Shape12'
+              Brush.Color = 16053492
+              Pen.Color = clGray
+              mmHeight = 5292
+              mmLeft = 1323
+              mmTop = 0
+              mmWidth = 42069
+              BandType = 2
+            end
+            object ppLabel443: TppLabel
+              UserName = 'Label3'
+              AutoSize = False
+              Caption = '#'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 2117
+              mmTop = 794
+              mmWidth = 4233
+              BandType = 2
+            end
+            object ppLabel444: TppLabel
+              UserName = 'Label6'
+              AutoSize = False
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 26194
+              mmTop = 794
+              mmWidth = 16140
+              BandType = 2
+            end
+            object ppLine311: TppLine
+              UserName = 'Line19'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5292
+              mmLeft = 7144
+              mmTop = 0
+              mmWidth = 2117
+              BandType = 2
+            end
+            object ppLabel445: TppLabel
+              UserName = 'Label5'
+              AutoSize = False
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 7408
+              mmTop = 794
+              mmWidth = 17992
+              BandType = 2
+            end
+            object ppLine312: TppLine
+              UserName = 'Line20'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 25400
+              mmTop = 265
+              mmWidth = 4763
+              BandType = 2
+            end
+          end
+          object ppDetailBand59: TppDetailBand
+            Save = True
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBText896: TppDBText
+              UserName = 'DBText24'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 1588
+              mmTop = 265
+              mmWidth = 5292
+              BandType = 4
+            end
+            object ppDBText897: TppDBText
+              UserName = 'DBText26'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 8202
+              mmTop = 265
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText898: TppDBText
+              UserName = 'DBText28'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 25665
+              mmTop = 265
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppLine313: TppLine
+              UserName = 'Line201'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4763
+              mmLeft = 25400
+              mmTop = 0
+              mmWidth = 4763
+              BandType = 4
+            end
+            object ppLine314: TppLine
+              UserName = 'Line22'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4763
+              mmLeft = 7144
+              mmTop = 0
+              mmWidth = 1852
+              BandType = 4
+            end
+            object ppLine315: TppLine
+              UserName = 'Line2'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4763
+              mmLeft = 1323
+              mmTop = 0
+              mmWidth = 1588
+              BandType = 4
+            end
+            object ppLine316: TppLine
+              UserName = 'Line3'
+              Pen.Color = clGray
+              Position = lpRight
+              Weight = 0.75
+              mmHeight = 4763
+              mmLeft = 39952
+              mmTop = 0
+              mmWidth = 3440
+              BandType = 4
+            end
+            object ppLine317: TppLine
+              UserName = 'Line4'
+              Pen.Color = clGray
+              Position = lpBottom
+              Weight = 0.75
+              mmHeight = 1588
+              mmLeft = 1323
+              mmTop = 3175
+              mmWidth = 41804
+              BandType = 4
+            end
+            object ppImage23: TppImage
+              OnPrint = imgAtrasadoPrint
+              UserName = 'imgAtrasado'
+              MaintainAspectRatio = True
+              Transparent = True
+              Picture.Data = {
+                07544269746D6170B2050000424DB20500000000000036040000280000001400
+                00001300000001000800000000007C010000C40E0000C40E0000000100000000
+                000000000000000080000080000000808000800000008000800080800000C0C0
+                C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+                FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+                FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+                96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+                FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+                FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+                96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+                FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+                FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+                96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+                AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+                C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+                31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+                2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+                B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+                00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+                2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+                B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+                00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+                2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+                B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DB900003196
+                00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+                250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+                C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+                31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+                AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+                FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+                96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+                B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+                56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+                A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+                FF00FFFFFFFFFFFFF0F200F2F200F2F0FFFFFFFFFFFFFFFFFFFFEF00EEEBE8E6
+                E6E8EBEE00EFFFFFFFFFFFFFFFEF00EAE6E4E4E4E4E4E4E6EA00EFFFFFFFFFFF
+                EF00EBE5E4E4E4E4E4E4E4E4E5EB00EFFFFFFFEB00EAE500E4E4E4E4E4E4E4E4
+                E4E5EA00FFFFFFF0EEE5E4E600E4E4E4E4E4E600E4E4E6EEF0FFFFF2EBE4E3E3
+                0000EAE6E6EA00E6E4E4E5EBF2FFEB00EEEBE3E3E30000EAEA00EAE4E4E4E4E8
+                00FFF10000EEEBE3EBEE000000EAE6E3E4E4E4E6F2FF00383700EEEBEE003738
+                00E6E2E3E3E4E4E6F2FF0031353700EE0037353100E6E2E2E3E3E4E800FFEE00
+                3135370037353100EEE2E2E2E2E3E5EBF2FFFFEE00313537353100EEE6E2E2E2
+                E2E3E6EEF0FFFFFFEE0031353100EEE6E2E2E2E2E3E5EA00EBFFFFEE00363531
+                353600EEE6E2E2E3E5EB00EFFFFFEE003635310031353600EEE6E5E5EA00EFFF
+                FFFF0036353100EE0031353600E8EBEE00EFFFFFFFFF00383100EEFFFF003138
+                0000F2F0EBFFFFFFFFFFEA0000EEFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF}
+              mmHeight = 4763
+              mmLeft = 43921
+              mmTop = 0
+              mmWidth = 5027
+              BandType = 4
+            end
+            object ppImage24: TppImage
+              OnPrint = imgPagoPrint
+              UserName = 'imgPago'
+              MaintainAspectRatio = True
+              Transparent = True
+              Picture.Data = {
+                07544269746D617076050000424D760500000000000036040000280000001400
+                000010000000010008000000000040010000C40E0000C40E0000000100000000
+                000000000000000080000080000000808000800000008000800080800000C0C0
+                C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+                FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+                FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+                96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+                FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+                FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+                96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+                FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+                FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+                96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+                AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+                C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+                31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+                2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+                B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+                00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+                2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+                B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+                00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+                2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+                B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DB900003196
+                00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+                250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+                C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+                31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+                AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+                FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+                96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+                B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+                56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+                A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+                FF00FFFFFFFFFFFFFFEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000F0
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000B0B000F0FFFFFFFFFFFFFFFFFFFFFF
+                FFFFF000B0AFAFB000F0FFFFFFFFFFFFFFFFFFFFFFF000B0AFAFAFAFB000F0FF
+                FFFFFFFFFFFFFFFFF000B0AFAFBABAAFAFB000F0FFFFFFFFFFFFFFF000B0AFAF
+                BAADADBAAFAFB000F0FFFFFFFFFFEE00B0AFAFBAADD5D5ADBAAFAFB000F0FFFF
+                FFFF00B0AFAFBAAD00F00000ADBAAFAFB000F0FFFFFFF000BABAAD00F0FFFFF0
+                00ADBAAFAFB000F0FFFFFFF000AB00F0FFFFFFFFF000ADBAAFAFB000F0FFFFFF
+                F000EEFFFFFFFFFFFFF000ADBAAFAFB000EEFFFFFFFFFFFFFFFFFFFFFFFFF000
+                ADBAAFAFB000FFFFFFFFFFFFFFFFFFFFFFFFFFF000ADBAB000F0FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFF000AF00F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEE00F0
+                FFFF}
+              mmHeight = 4233
+              mmLeft = 43921
+              mmTop = 0
+              mmWidth = 5292
+              BandType = 4
+            end
+          end
+          object ppColumnFooterBand16: TppColumnFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+      object ppDBText899: TppDBText
+        UserName = 'DBText139'
+        DataField = 'TIT2_TOTALFINAL'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 145786
+        mmTop = 15610
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText900: TppDBText
+        UserName = 'DBText140'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 15610
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel446: TppLabel
+        UserName = 'Label80'
+        Caption = 'Desconto %:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 145786
+        mmTop = 5821
+        mmWidth = 23019
+        BandType = 7
+      end
+      object ppLabel447: TppLabel
+        UserName = 'Label81'
+        Caption = 'Desconto R$:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 145257
+        mmTop = 10848
+        mmWidth = 23548
+        BandType = 7
+      end
+      object ppDBText901: TppDBText
+        UserName = 'DBText1401'
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 10583
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText902: TppDBText
+        UserName = 'DBText337'
+        DataField = 'DescontoPerc'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 5821
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText903: TppDBText
+        UserName = 'DBText338'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 1058
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel448: TppLabel
+        UserName = 'Label801'
+        Caption = 'Sub Total:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 150813
+        mmTop = 1058
+        mmWidth = 17992
+        BandType = 7
+      end
+      object ppDBText904: TppDBText
+        UserName = 'DBText339'
+        CharWrap = True
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3429
+        mmLeft = 113506
+        mmTop = 16404
+        mmWidth = 29104
+        BandType = 7
+      end
+      object ppLabel449: TppLabel
+        UserName = 'Label1'
+        Caption = 'Vendedor:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 100277
+        mmTop = 16404
+        mmWidth = 12965
+        BandType = 7
+      end
+      object ppLabel450: TppLabel
+        UserName = 'Label89'
+        Caption = 'Plano:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 61648
+        mmTop = 16404
+        mmWidth = 7673
+        BandType = 7
+      end
+      object ppDBText905: TppDBText
+        UserName = 'DBText340'
+        CharWrap = True
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 69586
+        mmTop = 16404
+        mmWidth = 28575
+        BandType = 7
+      end
+    end
+  end
+  object ppRepGodola: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 1588
+    PrinterSetup.mmMarginLeft = 1588
+    PrinterSetup.mmMarginRight = 1588
+    PrinterSetup.mmMarginTop = 1588
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'E:\tmp\rptDuasVias.rtm'
+    Units = utScreenPixels
+    AllowPrintToArchive = True
+    AllowPrintToFile = True
+    DeviceType = 'Screen'
+    Left = 530
+    Top = 305
+    Version = '6.02'
+    mmColumnWidth = 212724
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand38: TppHeaderBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 50006
+      mmPrintPosition = 0
+      object ppRegion60: TppRegion
+        UserName = 'Region3'
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 4498
+        mmTop = 45244
+        mmWidth = 203994
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine320: TppLine
+          UserName = 'Line59'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 21167
+          mmTop = 45508
+          mmWidth = 529
+          BandType = 0
+        end
+        object ppLabel453: TppLabel
+          UserName = 'Label111'
+          Caption = 'Local'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3629
+          mmLeft = 22490
+          mmTop = 45773
+          mmWidth = 7633
+          BandType = 0
+        end
+        object ppLabel454: TppLabel
+          UserName = 'Label112'
+          Caption = 'Codigo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3629
+          mmLeft = 5027
+          mmTop = 45773
+          mmWidth = 10010
+          BandType = 0
+        end
+        object ppLine321: TppLine
+          UserName = 'Line62'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 177271
+          mmTop = 45508
+          mmWidth = 1058
+          BandType = 0
+        end
+        object ppLine322: TppLine
+          UserName = 'Line63'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 163513
+          mmTop = 45508
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLine323: TppLine
+          UserName = 'Line64'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 139436
+          mmTop = 45508
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLine324: TppLine
+          UserName = 'Line65'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 32808
+          mmTop = 45508
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLabel456: TppLabel
+          UserName = 'Label114'
+          Caption = 'Referencia '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3629
+          mmLeft = 144198
+          mmTop = 45773
+          mmWidth = 16141
+          BandType = 0
+        end
+        object ppLabel458: TppLabel
+          UserName = 'Label116'
+          Caption = 'Observa'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3629
+          mmLeft = 184680
+          mmTop = 45773
+          mmWidth = 16767
+          BandType = 0
+        end
+        object ppLabel455: TppLabel
+          UserName = 'Label455'
+          Caption = 'Descri'#231#227'o '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 34396
+          mmTop = 45773
+          mmWidth = 13758
+          BandType = 0
+        end
+        object ppLabel460: TppLabel
+          UserName = 'Label460'
+          Caption = 'Qtde. '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 165365
+          mmTop = 45773
+          mmWidth = 8467
+          BandType = 0
+        end
+      end
+      object ppRegion61: TppRegion
+        UserName = 'rbrgCabecalho'
+        ParentWidth = True
+        Pen.Style = psClear
+        Stretch = True
+        mmHeight = 19579
+        mmLeft = 0
+        mmTop = 794
+        mmWidth = 212724
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppDBText907: TppDBText
+        UserName = 'DBText1'
+        DataField = 'DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 153459
+        mmTop = 35190
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppLabel459: TppLabel
+        UserName = 'lbCancelado'
+        Caption = 'Cancelado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = [fsBold]
+        Transparent = True
+        Visible = False
+        mmHeight = 5821
+        mmLeft = 16669
+        mmTop = 23548
+        mmWidth = 27517
+        BandType = 0
+      end
+      object ppLabel461: TppLabel
+        UserName = 'Label185'
+        AutoSize = False
+        Caption = 'Vendedor :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 16404
+        mmTop = 35454
+        mmWidth = 19050
+        BandType = 0
+      end
+      object ppLabel468: TppLabel
+        UserName = 'Label200'
+        AutoSize = False
+        Caption = 'Data:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 142611
+        mmTop = 35190
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppDBText917: TppDBText
+        UserName = 'DBText2'
+        OnGetText = ppDBText2GetText
+        DataField = 'INVOICE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5556
+        mmLeft = 161661
+        mmTop = 26988
+        mmWidth = 39158
+        BandType = 0
+      end
+      object ppDBText918: TppDBText
+        UserName = 'DBText103'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 35983
+        mmTop = 35454
+        mmWidth = 98690
+        BandType = 0
+      end
+      object ppDBText919: TppDBText
+        UserName = 'dfTITTipoMov'
+        DataField = 'DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 67998
+        mmTop = 26194
+        mmWidth = 74877
+        BandType = 0
+      end
+      object ppLabel462: TppLabel
+        UserName = 'Label462'
+        AutoSize = False
+        Caption = 'Obs. :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 15610
+        mmTop = 40746
+        mmWidth = 19050
+        BandType = 0
+      end
+      object ppDBText909: TppDBText
+        UserName = 'DBText909'
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 35190
+        mmTop = 40746
+        mmWidth = 166423
+        BandType = 0
+      end
+    end
+    object ppDetailBand60: TppDetailBand
+      PrintCount = 48
+      mmBottomOffset = 0
+      mmHeight = 4763
+      mmPrintPosition = 0
+      object ppRegion62: TppRegion
+        UserName = 'rbshItens2'
+        KeepTogether = True
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 3969
+        mmTop = 265
+        mmWidth = 204523
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine325: TppLine
+          UserName = 'lnCodigo1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 31750
+          mmTop = 265
+          mmWidth = 529
+          BandType = 4
+        end
+        object ppLine326: TppLine
+          UserName = 'lnSubTotal1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 177271
+          mmTop = 265
+          mmWidth = 1058
+          BandType = 4
+        end
+        object ppDBText921: TppDBText
+          UserName = 'DBText24'
+          DataField = 'CODIGO'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 4498
+          mmTop = 265
+          mmWidth = 15610
+          BandType = 4
+        end
+        object ppDBText922: TppDBText
+          UserName = 'dbtUnidade3'
+          OnGetText = dbtUnidadeGetText
+          DataField = 'REFERENCIA'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 141023
+          mmTop = 265
+          mmWidth = 21696
+          BandType = 4
+        end
+        object ppDBText923: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 164307
+          mmTop = 265
+          mmWidth = 9790
+          BandType = 4
+        end
+        object ppDBText925: TppDBText
+          UserName = 'DBText28'
+          DataField = 'OBSERVACAO'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 178594
+          mmTop = 265
+          mmWidth = 28575
+          BandType = 4
+        end
+        object ppLine328: TppLine
+          UserName = 'lnUnidade2'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 139700
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine329: TppLine
+          UserName = 'lnQuantidade1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 163513
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBMemo33: TppDBMemo
+          UserName = 'dbtDescricao2'
+          CharWrap = True
+          DataField = 'ITEMDESC'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          OnGetMemo = ppDBMemo7GetMemo
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 33867
+          mmTop = 265
+          mmWidth = 105304
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+        object ppLine343: TppLine
+          UserName = 'Line343'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 21167
+          mmTop = 794
+          mmWidth = 529
+          BandType = 4
+        end
+        object ppDBText908: TppDBText
+          UserName = 'DBText908'
+          DataField = 'LOCAL'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 22225
+          mmTop = 265
+          mmWidth = 9525
+          BandType = 4
+        end
+        object ppLine327: TppLine
+          UserName = 'Line327'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 32808
+          mmTop = 794
+          mmWidth = 529
+          BandType = 4
+        end
+      end
+    end
+    object ppFooterBand32: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand34: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 21167
+      mmPrintPosition = 0
+      object ppLine340: TppLine
+        UserName = 'Line56'
+        Weight = 0.75
+        mmHeight = 1323
+        mmLeft = 3969
+        mmTop = 14552
+        mmWidth = 198173
+        BandType = 7
+      end
+    end
+  end
+  object rbPedidoPromissoria: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'C:\Users\desenv\Desktop\PedidoMeiaFolha_Colunas.rtm'
+    Units = utScreenPixels
+    AllowPrintToArchive = True
+    AllowPrintToFile = True
+    DeviceType = 'Screen'
+    Left = 302
+    Top = 235
+    Version = '6.02'
+    mmColumnWidth = 0
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand39: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 51065
+      mmPrintPosition = 0
+      object ppShape140: TppShape
+        UserName = 'Shape3'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 5821
+        mmLeft = 166423
+        mmTop = 11906
+        mmWidth = 33867
+        BandType = 0
+      end
+      object ppShape141: TppShape
+        UserName = 'Shape4'
+        Pen.Color = clGray
+        mmHeight = 6085
+        mmLeft = 165629
+        mmTop = 9525
+        mmWidth = 34131
+        BandType = 0
+      end
+      object ppDBText910: TppDBText
+        UserName = 'DBText2'
+        OnGetText = ppDBText2GetText
+        DataField = 'INVOICE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5027
+        mmLeft = 166159
+        mmTop = 10054
+        mmWidth = 33073
+        BandType = 0
+      end
+      object ppDBText911: TppDBText
+        UserName = 'dfTITData'
+        OnGetText = ppDBText141GetText
+        DataField = 'TIT2_DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 165365
+        mmTop = 17992
+        mmWidth = 34396
+        BandType = 0
+      end
+      object ppDBText912: TppDBText
+        UserName = 'dfTITTipoMov'
+        DataField = 'DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5027
+        mmLeft = 60325
+        mmTop = 16933
+        mmWidth = 74877
+        BandType = 0
+      end
+      object ppLabel463: TppLabel
+        UserName = 'lbEmpresa'
+        Caption = 'lbEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 27252
+        mmTop = 0
+        mmWidth = 22754
+        BandType = 0
+      end
+      object ppLabel464: TppLabel
+        UserName = 'lbNomeEmpresa1'
+        Caption = 'lbEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 27252
+        mmTop = 4233
+        mmWidth = 25400
+        BandType = 0
+      end
+      object ppLabel465: TppLabel
+        UserName = 'lbTelefone'
+        Caption = 'lbTelefone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 27252
+        mmTop = 8467
+        mmWidth = 25400
+        BandType = 0
+      end
+      object ppDBText932: TppDBText
+        UserName = 'DBText136'
+        DataField = 'NOME'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 35190
+        mmTop = 23548
+        mmWidth = 81227
+        BandType = 0
+      end
+      object ppLabel466: TppLabel
+        UserName = 'lbCancelado4'
+        Caption = 'Cancelado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Tahoma'
+        Font.Size = 18
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 7673
+        mmLeft = 82286
+        mmTop = 8996
+        mmWidth = 33073
+        BandType = 0
+      end
+      object ppDBText933: TppDBText
+        UserName = 'DBText211'
+        DataField = 'ENDERECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17727
+        mmTop = 32544
+        mmWidth = 98954
+        BandType = 0
+      end
+      object ppDBText934: TppDBText
+        UserName = 'DBText212'
+        DataField = 'BAIRRO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17727
+        mmTop = 36513
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppDBText935: TppDBText
+        UserName = 'DBText324'
+        DataField = 'FONE1'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 127794
+        mmTop = 23548
+        mmWidth = 34925
+        BandType = 0
+      end
+      object ppLabel467: TppLabel
+        UserName = 'Label90'
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 6350
+        mmTop = 23548
+        mmWidth = 10583
+        BandType = 0
+      end
+      object ppLabel469: TppLabel
+        UserName = 'Label94'
+        Caption = 'Endere'#231'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 3175
+        mmTop = 32544
+        mmWidth = 14023
+        BandType = 0
+      end
+      object ppLabel470: TppLabel
+        UserName = 'Label95'
+        Caption = 'Bairro:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 7673
+        mmTop = 36513
+        mmWidth = 9525
+        BandType = 0
+      end
+      object ppLabel471: TppLabel
+        UserName = 'Label96'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119327
+        mmTop = 23548
+        mmWidth = 7938
+        BandType = 0
+      end
+      object ppLabel472: TppLabel
+        UserName = 'Label97'
+        Caption = 'Cidade:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 117211
+        mmTop = 32544
+        mmWidth = 10583
+        BandType = 0
+      end
+      object ppDBText936: TppDBText
+        UserName = 'DBText341'
+        OnGetText = ppDBText341GetText
+        DataField = 'CODIGOCLIENTE'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17463
+        mmTop = 23548
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppDBText937: TppDBText
+        UserName = 'DBText342'
+        AutoSize = True
+        DataField = 'CIDADE'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3754
+        mmLeft = 128059
+        mmTop = 32544
+        mmWidth = 10886
+        BandType = 0
+      end
+      object ppDBText938: TppDBText
+        UserName = 'DBText343'
+        DataField = 'CEP'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 128059
+        mmTop = 36513
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppLabel473: TppLabel
+        UserName = 'Label98'
+        Caption = 'CEP:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 121179
+        mmTop = 36513
+        mmWidth = 6615
+        BandType = 0
+      end
+      object ppDBText939: TppDBText
+        UserName = 'DBText344'
+        DataField = 'UF'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 191559
+        mmTop = 32544
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppLabel474: TppLabel
+        UserName = 'Label99'
+        Caption = 'UF:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 186796
+        mmTop = 32544
+        mmWidth = 4233
+        BandType = 0
+      end
+      object ppImage26: TppImage
+        UserName = 'Image1'
+        MaintainAspectRatio = False
+        mmHeight = 17198
+        mmLeft = 265
+        mmTop = 0
+        mmWidth = 25400
+        BandType = 0
+      end
+      object ppLabel457: TppLabel
+        UserName = 'Label457'
+        Caption = 'Fone : '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 7408
+        mmTop = 41010
+        mmWidth = 9790
+        BandType = 0
+      end
+      object ppDBText913: TppDBText
+        UserName = 'DBText913'
+        DataField = 'FONE1'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17727
+        mmTop = 41010
+        mmWidth = 41540
+        BandType = 0
+      end
+      object ppLabel483: TppLabel
+        UserName = 'Label483'
+        Caption = 'CNPJ :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3754
+        mmLeft = 7673
+        mmTop = 28046
+        mmWidth = 9134
+        BandType = 0
+      end
+      object ppDBText914: TppDBText
+        UserName = 'DBText914'
+        OnGetText = ppDBText341GetText
+        DataField = 'CPF_CNPJ'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 17727
+        mmTop = 28046
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppLabel484: TppLabel
+        UserName = 'Label484'
+        Caption = 'I.E. :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3754
+        mmLeft = 120386
+        mmTop = 27781
+        mmWidth = 7007
+        BandType = 0
+      end
+      object ppDBText915: TppDBText
+        UserName = 'DBText915'
+        DataField = 'INSCRICAO_EST'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 127794
+        mmTop = 27781
+        mmWidth = 34925
+        BandType = 0
+      end
+      object ppLine331: TppLine
+        UserName = 'Line331'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 188913
+        mmTop = 50271
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine332: TppLine
+        UserName = 'Line104'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 176742
+        mmTop = 50271
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine333: TppLine
+        UserName = 'Line333'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 164571
+        mmTop = 50271
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine334: TppLine
+        UserName = 'Line334'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 152400
+        mmTop = 50271
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLine335: TppLine
+        UserName = 'Line335'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 146315
+        mmTop = 50271
+        mmWidth = 6085
+        BandType = 0
+      end
+      object ppLine336: TppLine
+        UserName = 'Line336'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 130704
+        mmTop = 50271
+        mmWidth = 15610
+        BandType = 0
+      end
+      object ppLine337: TppLine
+        UserName = 'Line337'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 118004
+        mmTop = 50271
+        mmWidth = 12700
+        BandType = 0
+      end
+      object ppLine338: TppLine
+        UserName = 'Line338'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 105569
+        mmTop = 50271
+        mmWidth = 12435
+        BandType = 0
+      end
+      object ppLine339: TppLine
+        UserName = 'Line339'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 99748
+        mmTop = 50271
+        mmWidth = 5821
+        BandType = 0
+      end
+      object ppLine341: TppLine
+        UserName = 'Line341'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 84667
+        mmTop = 50271
+        mmWidth = 15081
+        BandType = 0
+      end
+      object ppLine342: TppLine
+        UserName = 'Line342'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 34925
+        mmTop = 50271
+        mmWidth = 49742
+        BandType = 0
+      end
+      object ppLine344: TppLine
+        UserName = 'Line344'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 24077
+        mmTop = 50271
+        mmWidth = 10848
+        BandType = 0
+      end
+      object ppLine345: TppLine
+        UserName = 'Line345'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 529
+        mmLeft = 1588
+        mmTop = 50271
+        mmWidth = 22490
+        BandType = 0
+      end
+      object ppLine346: TppLine
+        UserName = 'gjhg1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 23548
+        mmTop = 46567
+        mmWidth = 3175
+        BandType = 0
+      end
+      object ppLine348: TppLine
+        UserName = 'bhgj1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 99484
+        mmTop = 46302
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine351: TppLine
+        UserName = 'Line351'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 120386
+        mmTop = 46567
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine352: TppLine
+        UserName = 'jhkh1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 131498
+        mmTop = 46567
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine353: TppLine
+        UserName = 'jhgh1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 151871
+        mmTop = 46567
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine355: TppLine
+        UserName = 'jhgjhg2'
+        Pen.Color = clGray
+        Position = lpLeft
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 172244
+        mmTop = 46567
+        mmWidth = 2646
+        BandType = 0
+      end
+      object ppLine359: TppLine
+        UserName = 'hgjh1'
+        Pen.Color = clGray
+        Position = lpLeft
+        Visible = False
+        Weight = 0.75
+        mmHeight = 3969
+        mmLeft = 1323
+        mmTop = 46567
+        mmWidth = 2117
+        BandType = 0
+      end
+      object ppLabel489: TppLabel
+        UserName = 'Label489'
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 3175
+        mmTop = 46302
+        mmWidth = 12700
+        BandType = 0
+      end
+      object ppLabel490: TppLabel
+        UserName = 'Label490'
+        Caption = 'Descri'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3754
+        mmLeft = 25400
+        mmTop = 46302
+        mmWidth = 13388
+        BandType = 0
+      end
+      object ppLabel491: TppLabel
+        UserName = 'Label4901'
+        Caption = 'Referencia'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 101071
+        mmTop = 46302
+        mmWidth = 18256
+        BandType = 0
+      end
+      object ppLabel488: TppLabel
+        UserName = 'Label488'
+        Caption = 'Und '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3754
+        mmLeft = 122767
+        mmTop = 46302
+        mmWidth = 6506
+        BandType = 0
+      end
+      object ppLabel492: TppLabel
+        UserName = 'Label492'
+        Caption = 'Quant.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 136525
+        mmTop = 46302
+        mmWidth = 13229
+        BandType = 0
+      end
+      object ppLabel493: TppLabel
+        UserName = 'Label493'
+        Caption = 'Pre'#231'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 156634
+        mmTop = 46302
+        mmWidth = 12171
+        BandType = 0
+      end
+      object ppLabel494: TppLabel
+        UserName = 'Label494'
+        Caption = 'Total'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 177800
+        mmTop = 46302
+        mmWidth = 12171
+        BandType = 0
+      end
+    end
+    object ppDetailBand61: TppDetailBand
+      BeforePrint = DetalheSimplesBeforePrint
+      PrintCount = 50
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 7673
+      mmPrintPosition = 0
+      object ppRegion63: TppRegion
+        UserName = 'rbshItens1'
+        Brush.Color = 16119285
+        Pen.Style = psClear
+        Stretch = True
+        mmHeight = 4233
+        mmLeft = 1588
+        mmTop = 0
+        mmWidth = 201613
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object myDBCheckBox4: TmyDBCheckBox
+          UserName = 'dbtTax1'
+          BooleanFalse = 'N'
+          BooleanTrue = 'S'
+          Style = csCheckMark
+          DataPipeline = dbpInvItens
+          DataField = 'TAXAVEL'
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 147902
+          mmTop = 0
+          mmWidth = 5027
+          BandType = 4
+        end
+        object ppDBText949: TppDBText
+          UserName = 'DBText24'
+          DataField = 'CODIGO'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 3175
+          mmTop = 529
+          mmWidth = 19579
+          BandType = 4
+        end
+        object ppDBText950: TppDBText
+          UserName = 'dbtUnidade2'
+          DataField = 'UNIDADE'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 122767
+          mmTop = 529
+          mmWidth = 6350
+          BandType = 4
+        end
+        object ppDBText951: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.##'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 136525
+          mmTop = 529
+          mmWidth = 14288
+          BandType = 4
+        end
+        object ppDBText952: TppDBText
+          UserName = 'dbtPreco1'
+          DataField = 'PRECO'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 156634
+          mmTop = 529
+          mmWidth = 13758
+          BandType = 4
+        end
+        object ppDBText953: TppDBText
+          UserName = 'DBText28'
+          DataField = 'TOTAL'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 177800
+          mmTop = 529
+          mmWidth = 14552
+          BandType = 4
+        end
+        object ppDBText958: TppDBText
+          UserName = 'DBText38'
+          DataField = 'REFERENCIA'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 101071
+          mmTop = 529
+          mmWidth = 18521
+          BandType = 4
+        end
+        object ppDBMemo34: TppDBMemo
+          UserName = 'dbtDescricao4'
+          CharWrap = False
+          DataField = 'ITEMDESC'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 2910
+          mmLeft = 25400
+          mmTop = 529
+          mmWidth = 73554
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+      end
+      object ppSubReport19: TppSubReport
+        UserName = 'subComposicaoItens1'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbCompItens'
+        mmHeight = 794
+        mmLeft = 0
+        mmTop = 6879
+        mmWidth = 203200
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport36: TppChildReport
+          AutoStop = False
+          DataPipeline = dbCompItens
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbCompItens'
+          object ppHeaderBand40: TppHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object ppDetailBand62: TppDetailBand
+            PrintHeight = phDynamic
+            mmBottomOffset = 0
+            mmHeight = 3440
+            mmPrintPosition = 0
+            object ppDBText959: TppDBText
+              UserName = 'dbtQtdeComposicao'
+              DataField = 'QUANTIDADE'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 14817
+              mmTop = 0
+              mmWidth = 7144
+              BandType = 4
+            end
+            object ppDBText960: TppDBText
+              UserName = 'dbtUnidComposicao4'
+              DataField = 'UNIDADE'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 23019
+              mmTop = 0
+              mmWidth = 5821
+              BandType = 4
+            end
+            object ppDBMemo36: TppDBMemo
+              UserName = 'dbtDescComposicao4'
+              CharWrap = True
+              DataField = 'DESCRICAO'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Stretch = True
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 29898
+              mmTop = 0
+              mmWidth = 48948
+              BandType = 4
+              mmBottomOffset = 0
+              mmOverFlowOffset = 0
+              mmStopPosition = 0
+              mmLeading = 0
+            end
+          end
+          object ppFooterBand33: TppFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+    end
+    object ppFooterBand34: TppFooterBand
+      BeforePrint = rbRodapeBeforePrint
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand35: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 66411
+      mmPrintPosition = 0
+      object ppLine358: TppLine
+        UserName = 'Line6'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1323
+        mmLeft = 1588
+        mmTop = 0
+        mmWidth = 200290
+        BandType = 7
+      end
+      object ppRegion64: TppRegion
+        UserName = 'Region6'
+        Pen.Style = psClear
+        mmHeight = 14817
+        mmLeft = 0
+        mmTop = 1058
+        mmWidth = 139700
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape142: TppShape
+          UserName = 'Shape6'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 11642
+          mmLeft = 1323
+          mmTop = 3175
+          mmWidth = 137054
+          BandType = 7
+        end
+        object ppDBText961: TppDBText
+          UserName = 'dfTITMensagem'
+          AutoSize = True
+          DataField = 'TIT2_MENSAGEM'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4254
+          mmLeft = 4233
+          mmTop = 1058
+          mmWidth = 31031
+          BandType = 7
+        end
+        object ppDBMemo37: TppDBMemo
+          UserName = 'DBMemo1'
+          CharWrap = True
+          DataField = 'OBS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 9525
+          mmLeft = 4233
+          mmTop = 4762
+          mmWidth = 132027
+          BandType = 7
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+      end
+      object ppSubReport20: TppSubReport
+        UserName = 'rbsrParcelas1'
+        ExpandAll = False
+        NewPrintJob = False
+        ParentWidth = False
+        TraverseAllData = False
+        Visible = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 4498
+        mmLeft = 1058
+        mmTop = 55563
+        mmWidth = 192617
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport37: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Left = 160
+          Top = 112
+          Version = '6.02'
+          mmColumnWidth = 203200
+          DataPipelineName = 'dbpParcelas'
+          object ppDetailBand63: TppDetailBand
+            Save = True
+            mmBottomOffset = 0
+            mmHeight = 7938
+            mmPrintPosition = 0
+            object ppDBText962: TppDBText
+              UserName = 'DBText24'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 5027
+              mmTop = 794
+              mmWidth = 9525
+              BandType = 4
+            end
+            object ppDBText963: TppDBText
+              UserName = 'DBText26'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 52123
+              mmTop = 794
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText964: TppDBText
+              UserName = 'DBText28'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 102394
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText916: TppDBText
+              UserName = 'DBText916'
+              DataField = 'TITULO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 22490
+              mmTop = 794
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText920: TppDBText
+              UserName = 'DBText3401'
+              CharWrap = True
+              DataField = 'PLANOPAG'
+              DataPipeline = dbpInvoice
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'dbpInvoice'
+              mmHeight = 3440
+              mmLeft = 141552
+              mmTop = 794
+              mmWidth = 28575
+              BandType = 4
+            end
+            object ppLine347: TppLine
+              UserName = 'Line3301'
+              Pen.Color = clGray
+              Position = lpBottom
+              Weight = 0.75
+              mmHeight = 265
+              mmLeft = 3704
+              mmTop = 5821
+              mmWidth = 192617
+              BandType = 4
+            end
+          end
+        end
+      end
+      object ppDBText965: TppDBText
+        UserName = 'DBText139'
+        DataField = 'TIT2_TOTALFINAL'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 145786
+        mmTop = 15610
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText966: TppDBText
+        UserName = 'DBText140'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 15610
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel478: TppLabel
+        UserName = 'Label80'
+        Caption = 'Desconto %:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 145786
+        mmTop = 5821
+        mmWidth = 23019
+        BandType = 7
+      end
+      object ppLabel479: TppLabel
+        UserName = 'Label81'
+        Caption = 'Desconto R$:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 145257
+        mmTop = 10848
+        mmWidth = 23548
+        BandType = 7
+      end
+      object ppDBText967: TppDBText
+        UserName = 'DBText1401'
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 10583
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText968: TppDBText
+        UserName = 'DBText337'
+        DataField = 'DescontoPerc'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 5821
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppDBText969: TppDBText
+        UserName = 'DBText338'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 1058
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel480: TppLabel
+        UserName = 'Label801'
+        Caption = 'Sub Total:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 150813
+        mmTop = 1058
+        mmWidth = 17992
+        BandType = 7
+      end
+      object ppDBText970: TppDBText
+        UserName = 'DBText339'
+        CharWrap = True
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3429
+        mmLeft = 113506
+        mmTop = 16404
+        mmWidth = 29104
+        BandType = 7
+      end
+      object ppLabel481: TppLabel
+        UserName = 'Label1'
+        Caption = 'Vendedor:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 100277
+        mmTop = 16404
+        mmWidth = 12965
+        BandType = 7
+      end
+      object ppLabel482: TppLabel
+        UserName = 'Label89'
+        Caption = 'Plano:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 61648
+        mmTop = 16404
+        mmWidth = 7673
+        BandType = 7
+      end
+      object ppDBText971: TppDBText
+        UserName = 'DBText340'
+        CharWrap = True
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 69586
+        mmTop = 16404
+        mmWidth = 28575
+        BandType = 7
+      end
+      object ppShape144: TppShape
+        UserName = 'Shape144'
+        Brush.Color = clGray
+        Pen.Color = clSilver
+        Pen.Mode = pmMask
+        Pen.Style = psClear
+        mmHeight = 5821
+        mmLeft = 4233
+        mmTop = 24606
+        mmWidth = 189177
+        BandType = 7
+      end
+      object ppLabel475: TppLabel
+        UserName = 'Label475'
+        Caption = 'Informa'#231#245'es de Pagamento'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 60061
+        mmTop = 25135
+        mmWidth = 65881
+        BandType = 7
+      end
+      object ppLabel476: TppLabel
+        UserName = 'Label476'
+        Caption = 'Parcela '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 4763
+        mmTop = 31221
+        mmWidth = 12171
+        BandType = 7
+      end
+      object ppLabel477: TppLabel
+        UserName = 'Label477'
+        Caption = 'Documento'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 22490
+        mmTop = 30956
+        mmWidth = 17727
+        BandType = 7
+      end
+      object ppLabel485: TppLabel
+        UserName = 'Label485'
+        Caption = 'Vencimento'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 52123
+        mmTop = 31221
+        mmWidth = 18256
+        BandType = 7
+      end
+      object ppLabel486: TppLabel
+        UserName = 'Label486'
+        Caption = 'Valor'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 108744
+        mmTop = 31221
+        mmWidth = 7938
+        BandType = 7
+      end
+      object ppLabel487: TppLabel
+        UserName = 'Label487'
+        Caption = 'Plano Pagamento'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 141552
+        mmTop = 31221
+        mmWidth = 26988
+        BandType = 7
+      end
+      object ppSubReport21: TppSubReport
+        UserName = 'SubReport21'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 36248
+        mmWidth = 203200
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport38: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbpParcelas'
+          object ppTitleBand12: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 265
+            mmPrintPosition = 0
+          end
+          object ppDetailBand64: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 7408
+            mmPrintPosition = 0
+            object ppDBText926: TppDBText
+              UserName = 'DBText926'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 7144
+              mmTop = 1058
+              mmWidth = 9525
+              BandType = 4
+            end
+            object ppDBText927: TppDBText
+              UserName = 'DBText927'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 54240
+              mmTop = 1058
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText928: TppDBText
+              UserName = 'DBText928'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = 'R$ #,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 104511
+              mmTop = 1058
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText929: TppDBText
+              UserName = 'DBText929'
+              DataField = 'TITULO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 4233
+              mmLeft = 24606
+              mmTop = 1058
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText930: TppDBText
+              UserName = 'DBText930'
+              CharWrap = True
+              DataField = 'PLANOPAG'
+              DataPipeline = dbpInvoice
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'dbpInvoice'
+              mmHeight = 3440
+              mmLeft = 143669
+              mmTop = 1058
+              mmWidth = 28575
+              BandType = 4
+            end
+          end
+          object ppSummaryBand36: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 6085
+            mmPrintPosition = 0
+            object ppLine349: TppLine
+              UserName = 'Line349'
+              Pen.Color = clGray
+              Position = lpBottom
+              Weight = 0.75
+              mmHeight = 265
+              mmLeft = 3969
+              mmTop = 794
+              mmWidth = 192617
+              BandType = 7
+            end
+            object ppDBCalc8: TppDBCalc
+              UserName = 'dbtTotalPorTipo1'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = 'R$ #,###,##0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clMaroon
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 98954
+              mmTop = 1588
+              mmWidth = 23548
+              BandType = 7
+            end
+          end
+        end
+      end
+    end
+  end
+  object rppedidogradeVolumes: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 1588
+    PrinterSetup.mmMarginLeft = 1588
+    PrinterSetup.mmMarginRight = 1588
+    PrinterSetup.mmMarginTop = 1588
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'E:\tmp\rptDuasVias.rtm'
+    Units = utScreenPixels
+    AllowPrintToArchive = True
+    AllowPrintToFile = True
+    DeviceType = 'Screen'
+    Left = 866
+    Top = 321
+    Version = '6.02'
+    mmColumnWidth = 212724
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand41: TppHeaderBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 57944
+      mmPrintPosition = 0
+      object ppRegion65: TppRegion
+        UserName = 'Region3'
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 4233
+        mmTop = 53446
+        mmWidth = 203994
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine330: TppLine
+          UserName = 'Line59'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 25929
+          mmTop = 53711
+          mmWidth = 529
+          BandType = 0
+        end
+        object ppLabel495: TppLabel
+          UserName = 'Label111'
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 27517
+          mmTop = 53975
+          mmWidth = 14288
+          BandType = 0
+        end
+        object ppLabel496: TppLabel
+          UserName = 'Label112'
+          Caption = 'C'#243'digo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 4763
+          mmTop = 53975
+          mmWidth = 20638
+          BandType = 0
+        end
+        object ppLine350: TppLine
+          UserName = 'Line62'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 183357
+          mmTop = 53711
+          mmWidth = 1058
+          BandType = 0
+        end
+        object ppLine354: TppLine
+          UserName = 'Line63'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 167217
+          mmTop = 53711
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLine356: TppLine
+          UserName = 'Line64'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 152400
+          mmTop = 53711
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLine357: TppLine
+          UserName = 'Line65'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 141552
+          mmTop = 53711
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLabel497: TppLabel
+          UserName = 'Label113'
+          Caption = 'Vols'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 3598
+          mmLeft = 143965
+          mmTop = 53975
+          mmWidth = 6054
+          BandType = 0
+        end
+        object ppLabel498: TppLabel
+          UserName = 'Label114'
+          Caption = 'Qtd.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 160073
+          mmTop = 53975
+          mmWidth = 6085
+          BandType = 0
+        end
+        object ppLabel499: TppLabel
+          UserName = 'Label115'
+          Caption = 'Pre'#231'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 173302
+          mmTop = 53975
+          mmWidth = 8467
+          BandType = 0
+        end
+        object ppLabel500: TppLabel
+          UserName = 'Label116'
+          Caption = 'Total'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 196321
+          mmTop = 53975
+          mmWidth = 9790
+          BandType = 0
+        end
+        object ppLine377: TppLine
+          UserName = 'Line377'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 130704
+          mmTop = 53975
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLabel524: TppLabel
+          UserName = 'Label524'
+          Caption = 'Und'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 133086
+          mmTop = 53975
+          mmWidth = 5821
+          BandType = 0
+        end
+      end
+      object ppRegion66: TppRegion
+        UserName = 'rbrgCabecalho'
+        ParentWidth = True
+        Pen.Style = psClear
+        Stretch = True
+        mmHeight = 19579
+        mmLeft = 0
+        mmTop = 794
+        mmWidth = 212724
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppDBText924: TppDBText
+        UserName = 'DBText1'
+        DataField = 'DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 177007
+        mmTop = 43921
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppDBText931: TppDBText
+        UserName = 'DBText10'
+        DataField = 'CODIGOCLIENTE'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 25135
+        mmTop = 31750
+        mmWidth = 14023
+        BandType = 0
+      end
+      object ppDBText940: TppDBText
+        UserName = 'DBText11'
+        DataField = 'ENDERECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 25135
+        mmTop = 35983
+        mmWidth = 84931
+        BandType = 0
+      end
+      object ppDBText941: TppDBText
+        UserName = 'DBText12'
+        CharWrap = True
+        DataField = 'CIDADEUFZIP'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 25135
+        mmTop = 39952
+        mmWidth = 92869
+        BandType = 0
+      end
+      object ppLabel501: TppLabel
+        UserName = 'lbCancelado'
+        Caption = 'Cancelado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = [fsBold]
+        Transparent = True
+        Visible = False
+        mmHeight = 5821
+        mmLeft = 16669
+        mmTop = 23548
+        mmWidth = 27517
+        BandType = 0
+      end
+      object ppDBText942: TppDBText
+        UserName = 'DBText402'
+        DataField = 'CPF_CNPJ'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3669
+        mmLeft = 25135
+        mmTop = 43921
+        mmWidth = 33602
+        BandType = 0
+      end
+      object ppDBText943: TppDBText
+        UserName = 'DBText167'
+        DataField = 'INSCRICAO_EST'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3669
+        mmLeft = 73554
+        mmTop = 43921
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppLabel502: TppLabel
+        UserName = 'Label1'
+        Caption = 'Insc. Est.:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 59002
+        mmTop = 43921
+        mmWidth = 14288
+        BandType = 0
+      end
+      object ppLabel503: TppLabel
+        UserName = 'Label185'
+        AutoSize = False
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 31750
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppLabel504: TppLabel
+        UserName = 'Label195'
+        AutoSize = False
+        Caption = 'Endere'#231'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 35983
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppLabel505: TppLabel
+        UserName = 'Label196'
+        AutoSize = False
+        Caption = 'Cidade:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 39952
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppLabel506: TppLabel
+        UserName = 'Label197'
+        AutoSize = False
+        Caption = 'Cpf/CNPJ:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 43921
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppDBText944: TppDBText
+        UserName = 'DBText484'
+        DataField = 'NRO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3669
+        mmLeft = 110067
+        mmTop = 35983
+        mmWidth = 9260
+        BandType = 0
+      end
+      object ppLabel507: TppLabel
+        UserName = 'Label183'
+        AutoSize = False
+        Caption = 'CEP:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119592
+        mmTop = 39952
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppLabel508: TppLabel
+        UserName = 'Label198'
+        AutoSize = False
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119592
+        mmTop = 43921
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppLabel509: TppLabel
+        UserName = 'Label199'
+        AutoSize = False
+        Caption = 'Bairro:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119856
+        mmTop = 35983
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppLabel510: TppLabel
+        UserName = 'Label200'
+        AutoSize = False
+        Caption = 'Data:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 166159
+        mmTop = 43921
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppDBText945: TppDBText
+        UserName = 'DBText480'
+        DataField = 'BAIRRO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 130440
+        mmTop = 35983
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppDBText946: TppDBText
+        UserName = 'DBText4801'
+        DataField = 'CEP'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 130440
+        mmTop = 39952
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppDBText947: TppDBText
+        UserName = 'DBText482'
+        DataField = 'FONE1'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 130440
+        mmTop = 43921
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppDBText948: TppDBText
+        UserName = 'DBText2'
+        OnGetText = ppDBText2GetText
+        DataField = 'INVOICE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5556
+        mmLeft = 161661
+        mmTop = 26988
+        mmWidth = 39158
+        BandType = 0
+      end
+      object ppDBText954: TppDBText
+        UserName = 'DBText103'
+        DataField = 'NOME'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3246
+        mmLeft = 39158
+        mmTop = 31750
+        mmWidth = 98690
+        BandType = 0
+      end
+      object ppDBText955: TppDBText
+        UserName = 'dfTITTipoMov'
+        DataField = 'DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 67998
+        mmTop = 26194
+        mmWidth = 74877
+        BandType = 0
+      end
+      object ppLabel511: TppLabel
+        UserName = 'Label293'
+        AutoSize = False
+        Caption = 'Obs :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 48154
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppDBText956: TppDBText
+        UserName = 'DBText718'
+        DataField = 'obscliente'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 25135
+        mmTop = 48154
+        mmWidth = 169069
+        BandType = 0
+      end
+    end
+    object ppDetailBand65: TppDetailBand
+      PrintCount = 48
+      mmBottomOffset = 0
+      mmHeight = 4763
+      mmPrintPosition = 0
+      object ppRegion67: TppRegion
+        UserName = 'rbshItens2'
+        KeepTogether = True
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 3969
+        mmTop = 265
+        mmWidth = 204523
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine360: TppLine
+          UserName = 'lnCodigo1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 25930
+          mmTop = 265
+          mmWidth = 529
+          BandType = 4
+        end
+        object ppLine361: TppLine
+          UserName = 'lnSubTotal1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 183357
+          mmTop = 265
+          mmWidth = 1058
+          BandType = 4
+        end
+        object ppLine362: TppLine
+          UserName = 'lnPreco1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 167217
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBText957: TppDBText
+          UserName = 'DBText24'
+          DataField = 'CODIGO'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 4498
+          mmTop = 265
+          mmWidth = 20902
+          BandType = 4
+        end
+        object ppDBText972: TppDBText
+          UserName = 'dbtUnidade3'
+          OnGetText = dbtUnidadeGetText
+          DataField = 'UNIDADE'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 133086
+          mmTop = 265
+          mmWidth = 7938
+          BandType = 4
+        end
+        object ppDBText973: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 153459
+          mmTop = 265
+          mmWidth = 12700
+          BandType = 4
+        end
+        object ppDBText974: TppDBText
+          UserName = 'dbtPreco2'
+          DataField = 'PRECO'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 169069
+          mmTop = 265
+          mmWidth = 12700
+          BandType = 4
+        end
+        object ppDBText975: TppDBText
+          UserName = 'DBText28'
+          DataField = 'TOTAL'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 184415
+          mmTop = 265
+          mmWidth = 22225
+          BandType = 4
+        end
+        object ppLine363: TppLine
+          UserName = 'lnUnidade2'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 130704
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine364: TppLine
+          UserName = 'lnQuantidade1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 141552
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBMemo35: TppDBMemo
+          UserName = 'dbtDescricao2'
+          CharWrap = True
+          DataField = 'ITEMDESC'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          OnGetMemo = ppDBMemo7GetMemo
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 27517
+          mmTop = 265
+          mmWidth = 101865
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+        object ppDBText990: TppDBText
+          UserName = 'DBText990'
+          OnGetText = dbtUnidadeGetText
+          DataField = 'QUANTIDADEVOLUME'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 4233
+          mmLeft = 143934
+          mmTop = 265
+          mmWidth = 7938
+          BandType = 4
+        end
+        object ppLine378: TppLine
+          UserName = 'Line378'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 152400
+          mmTop = 794
+          mmWidth = 1323
+          BandType = 4
+        end
+      end
+    end
+    object ppFooterBand35: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand37: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 21167
+      mmPrintPosition = 0
+      object ppSubReport22: TppSubReport
+        UserName = 'rbsrParcelas'
+        ExpandAll = True
+        NewPrintJob = False
+        ParentPrinterSetup = False
+        ParentWidth = False
+        TraverseAllData = False
+        Visible = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 4498
+        mmLeft = 3969
+        mmTop = 15610
+        mmWidth = 198438
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport39: TppChildReport
+          AutoStop = False
+          Columns = 3
+          ColumnPositions.Strings = (
+            '6350'
+            '69850'
+            '133350')
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Left = 160
+          Top = 112
+          Version = '6.02'
+          mmColumnWidth = 63500
+          DataPipelineName = 'dbpParcelas'
+          object ppColumnHeaderBand17: TppColumnHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 5292
+            mmPrintPosition = 0
+            object ppShape136: TppShape
+              UserName = 'Shape12'
+              Brush.Color = 16053492
+              Pen.Color = clGray
+              mmHeight = 5292
+              mmLeft = 1323
+              mmTop = 0
+              mmWidth = 61913
+              BandType = 2
+            end
+            object ppLabel512: TppLabel
+              UserName = 'Label3'
+              AutoSize = False
+              Caption = '#'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 2117
+              mmTop = 794
+              mmWidth = 4233
+              BandType = 2
+            end
+            object ppLabel513: TppLabel
+              UserName = 'Label6'
+              AutoSize = False
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3969
+              mmLeft = 26194
+              mmTop = 794
+              mmWidth = 16140
+              BandType = 2
+            end
+            object ppLine365: TppLine
+              UserName = 'Line19'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5292
+              mmLeft = 7144
+              mmTop = 0
+              mmWidth = 2117
+              BandType = 2
+            end
+            object ppLabel514: TppLabel
+              UserName = 'Label5'
+              AutoSize = False
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 7408
+              mmTop = 794
+              mmWidth = 17992
+              BandType = 2
+            end
+            object ppLine366: TppLine
+              UserName = 'Line20'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 25400
+              mmTop = 265
+              mmWidth = 4763
+              BandType = 2
+            end
+            object ppLabel515: TppLabel
+              UserName = 'Label100'
+              AutoSize = False
+              Caption = 'Forma'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3969
+              mmLeft = 44186
+              mmTop = 794
+              mmWidth = 11906
+              BandType = 2
+            end
+            object ppLine367: TppLine
+              UserName = 'Line202'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 42863
+              mmTop = 265
+              mmWidth = 529
+              BandType = 2
+            end
+            object ppLine368: TppLine
+              UserName = 'Line53'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 56621
+              mmTop = 265
+              mmWidth = 529
+              BandType = 2
+            end
+          end
+          object ppDetailBand66: TppDetailBand
+            Save = True
+            ColumnTraversal = ctLeftToRight
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppDBText976: TppDBText
+              UserName = 'DBText24'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 1588
+              mmTop = 265
+              mmWidth = 5292
+              BandType = 4
+            end
+            object ppDBText977: TppDBText
+              UserName = 'DBText26'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 8202
+              mmTop = 265
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText978: TppDBText
+              UserName = 'DBText28'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 26194
+              mmTop = 265
+              mmWidth = 16140
+              BandType = 4
+            end
+            object ppLine369: TppLine
+              UserName = 'Line201'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 25400
+              mmTop = 0
+              mmWidth = 4763
+              BandType = 4
+            end
+            object ppLine370: TppLine
+              UserName = 'Line22'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 7144
+              mmTop = 0
+              mmWidth = 1852
+              BandType = 4
+            end
+            object ppLine371: TppLine
+              UserName = 'Line2'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 1323
+              mmTop = 0
+              mmWidth = 1588
+              BandType = 4
+            end
+            object ppLine372: TppLine
+              UserName = 'Line3'
+              Pen.Color = clGray
+              Position = lpRight
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 42863
+              mmTop = 0
+              mmWidth = 529
+              BandType = 4
+            end
+            object ppLine373: TppLine
+              UserName = 'Line4'
+              Pen.Color = clGray
+              Position = lpBottom
+              Weight = 0.75
+              mmHeight = 794
+              mmLeft = 1323
+              mmTop = 3440
+              mmWidth = 55827
+              BandType = 4
+            end
+            object ppImage27: TppImage
+              OnPrint = imgAtrasadoPrint
+              UserName = 'imgAtrasado'
+              MaintainAspectRatio = True
+              Transparent = True
+              Visible = False
+              Picture.Data = {
+                07544269746D6170B2050000424DB20500000000000036040000280000001400
+                00001300000001000800000000007C010000C40E0000C40E0000000100000000
+                000000000000000080000080000000808000800000008000800080800000C0C0
+                C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+                FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+                FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+                96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+                FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+                FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+                96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+                FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+                FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+                96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+                AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+                C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+                31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+                2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+                B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+                00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+                2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+                B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+                00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+                2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+                B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DB900003196
+                00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+                250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+                C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+                31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+                AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+                FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+                96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+                B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+                56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+                A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+                FF00FFFFFFFFFFFFF0F200F2F200F2F0FFFFFFFFFFFFFFFFFFFFEF00EEEBE8E6
+                E6E8EBEE00EFFFFFFFFFFFFFFFEF00EAE6E4E4E4E4E4E4E6EA00EFFFFFFFFFFF
+                EF00EBE5E4E4E4E4E4E4E4E4E5EB00EFFFFFFFEB00EAE500E4E4E4E4E4E4E4E4
+                E4E5EA00FFFFFFF0EEE5E4E600E4E4E4E4E4E600E4E4E6EEF0FFFFF2EBE4E3E3
+                0000EAE6E6EA00E6E4E4E5EBF2FFEB00EEEBE3E3E30000EAEA00EAE4E4E4E4E8
+                00FFF10000EEEBE3EBEE000000EAE6E3E4E4E4E6F2FF00383700EEEBEE003738
+                00E6E2E3E3E4E4E6F2FF0031353700EE0037353100E6E2E2E3E3E4E800FFEE00
+                3135370037353100EEE2E2E2E2E3E5EBF2FFFFEE00313537353100EEE6E2E2E2
+                E2E3E6EEF0FFFFFFEE0031353100EEE6E2E2E2E2E3E5EA00EBFFFFEE00363531
+                353600EEE6E2E2E3E5EB00EFFFFFEE003635310031353600EEE6E5E5EA00EFFF
+                FFFF0036353100EE0031353600E8EBEE00EFFFFFFFFF00383100EEFFFF003138
+                0000F2F0EBFFFFFFFFFFEA0000EEFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF}
+              mmHeight = 4233
+              mmLeft = 57415
+              mmTop = 0
+              mmWidth = 5027
+              BandType = 4
+            end
+            object ppImage28: TppImage
+              OnPrint = imgPagoPrint
+              UserName = 'imgPago'
+              MaintainAspectRatio = True
+              Transparent = True
+              Visible = False
+              Picture.Data = {
+                07544269746D617076050000424D760500000000000036040000280000001400
+                000010000000010008000000000040010000C40E0000C40E0000000100000000
+                000000000000000080000080000000808000800000008000800080800000C0C0
+                C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+                FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+                FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+                96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+                FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+                FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+                96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+                FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+                FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+                96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+                AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+                C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+                31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+                2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+                B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+                00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+                2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+                B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+                00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+                2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+                B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DB900003196
+                00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+                250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+                C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+                31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+                AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+                FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+                96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+                B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+                56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+                A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+                FF00FFFFFFFFFFFFFFEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000F0
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000B0B000F0FFFFFFFFFFFFFFFFFFFFFF
+                FFFFF000B0AFAFB000F0FFFFFFFFFFFFFFFFFFFFFFF000B0AFAFAFAFB000F0FF
+                FFFFFFFFFFFFFFFFF000B0AFAFBABAAFAFB000F0FFFFFFFFFFFFFFF000B0AFAF
+                BAADADBAAFAFB000F0FFFFFFFFFFEE00B0AFAFBAADD5D5ADBAAFAFB000F0FFFF
+                FFFF00B0AFAFBAAD00F00000ADBAAFAFB000F0FFFFFFF000BABAAD00F0FFFFF0
+                00ADBAAFAFB000F0FFFFFFF000AB00F0FFFFFFFFF000ADBAAFAFB000F0FFFFFF
+                F000EEFFFFFFFFFFFFF000ADBAAFAFB000EEFFFFFFFFFFFFFFFFFFFFFFFFF000
+                ADBAAFAFB000FFFFFFFFFFFFFFFFFFFFFFFFFFF000ADBAB000F0FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFF000AF00F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEE00F0
+                FFFF}
+              mmHeight = 3704
+              mmLeft = 57415
+              mmTop = 265
+              mmWidth = 4763
+              BandType = 4
+            end
+            object ppDBText979: TppDBText
+              UserName = 'DBText345'
+              DataField = 'SIGLA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 44186
+              mmTop = 265
+              mmWidth = 11906
+              BandType = 4
+            end
+            object ppLine374: TppLine
+              UserName = 'Line51'
+              Pen.Color = clGray
+              Position = lpRight
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 56621
+              mmTop = 0
+              mmWidth = 529
+              BandType = 4
+            end
+          end
+          object ppColumnFooterBand17: TppColumnFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+      object ppDBText980: TppDBText
+        UserName = 'DBText19'
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 177271
+        mmTop = 5292
+        mmWidth = 24077
+        BandType = 7
+      end
+      object ppDBText981: TppDBText
+        UserName = 'DBText3'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#0.00,'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 177271
+        mmTop = 9525
+        mmWidth = 24077
+        BandType = 7
+      end
+      object ppLabel516: TppLabel
+        UserName = 'Label103'
+        Caption = 'Sub Total (R$)'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 155046
+        mmTop = 1058
+        mmWidth = 21696
+        BandType = 7
+      end
+      object ppLabel517: TppLabel
+        UserName = 'Label109'
+        Caption = 'Desconto (R$)'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 155046
+        mmTop = 5292
+        mmWidth = 21696
+        BandType = 7
+      end
+      object ppLabel518: TppLabel
+        UserName = 'Label110'
+        Caption = 'Total (R$)'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 161132
+        mmTop = 9525
+        mmWidth = 15610
+        BandType = 7
+      end
+      object ppDBText982: TppDBText
+        UserName = 'DBPrecoTotalOURO'
+        DataField = 'TOTALPRODUTOS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 177271
+        mmTop = 1058
+        mmWidth = 24077
+        BandType = 7
+      end
+      object ppLine375: TppLine
+        UserName = 'Line56'
+        Weight = 0.75
+        mmHeight = 1323
+        mmLeft = 3969
+        mmTop = 14552
+        mmWidth = 198173
+        BandType = 7
+      end
+      object ppRegion68: TppRegion
+        UserName = 'Region2'
+        Caption = 'Region2'
+        Pen.Style = psClear
+        mmHeight = 8202
+        mmLeft = 3175
+        mmTop = 12965
+        mmWidth = 198173
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine376: TppLine
+          UserName = 'Line57'
+          Weight = 0.75
+          mmHeight = 1323
+          mmLeft = 19844
+          mmTop = 15081
+          mmWidth = 135467
+          BandType = 7
+        end
+        object ppDBText983: TppDBText
+          UserName = 'DBText101'
+          DataField = 'NOME'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taCentered
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 19844
+          mmTop = 15875
+          mmWidth = 135467
+          BandType = 7
+        end
+      end
+      object ppLabel519: TppLabel
+        UserName = 'Label184'
+        Caption = 'Vendedor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 109273
+        mmTop = 1058
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppDBText984: TppDBText
+        UserName = 'DBPrecoTotalOURO2'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 123031
+        mmTop = 1058
+        mmWidth = 31750
+        BandType = 7
+      end
+      object ppLabel520: TppLabel
+        UserName = 'Label201'
+        Caption = 'Peso:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 50536
+        mmTop = 1058
+        mmWidth = 7673
+        BandType = 7
+      end
+      object ppDBText985: TppDBText
+        UserName = 'DBText486'
+        DataField = 'PESOBRUTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 58473
+        mmTop = 1058
+        mmWidth = 12965
+        BandType = 7
+      end
+      object ppDBText986: TppDBText
+        UserName = 'DBText495'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 19579
+        mmTop = 1058
+        mmWidth = 30692
+        BandType = 7
+      end
+      object ppLabel521: TppLabel
+        UserName = 'Label202'
+        Caption = 'Pagamento:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 3440
+        mmTop = 1058
+        mmWidth = 15875
+        BandType = 7
+      end
+      object ppDBText987: TppDBText
+        UserName = 'DBText496'
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 9031
+        mmLeft = 3440
+        mmTop = 5292
+        mmWidth = 151342
+        BandType = 7
+      end
+      object ppLabel522: TppLabel
+        UserName = 'Label204'
+        Caption = 'Carga:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 71702
+        mmTop = 1058
+        mmWidth = 9260
+        BandType = 7
+      end
+      object ppDBText988: TppDBText
+        UserName = 'DBText524'
+        DataField = 'CAMPO01'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 81227
+        mmTop = 1058
+        mmWidth = 10054
+        BandType = 7
+      end
+      object ppLabel523: TppLabel
+        UserName = 'Label205'
+        Caption = 'Feira:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 91546
+        mmTop = 1058
+        mmWidth = 7938
+        BandType = 7
+      end
+      object ppDBText989: TppDBText
+        UserName = 'DBText525'
+        DataField = 'CAMPO02'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 99748
+        mmTop = 1058
+        mmWidth = 8996
+        BandType = 7
+      end
+    end
+  end
+  object pp40ColunasGraficoEpson1Linha: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 4000
+    PrinterSetup.mmMarginLeft = 1000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 2000
+    PrinterSetup.mmPaperHeight = 1000000
+    PrinterSetup.mmPaperWidth = 85000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 450
+    Top = 448
+    Version = '6.02'
+    mmColumnWidth = 97000
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand42: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 55563
+      mmPrintPosition = 0
+      object ppLabel525: TppLabel
+        UserName = 'zrlNumero'
+        AutoSize = False
+        Caption = 'ppEPSMovimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 0
+        mmTop = 21431
+        mmWidth = 71967
+        BandType = 0
+      end
+      object ppLabel526: TppLabel
+        UserName = 'zrlPreFXCodigoCliente1'
+        AutoSize = False
+        Caption = 'ppEPSNomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1588
+        mmTop = 29369
+        mmWidth = 71438
+        BandType = 0
+      end
+      object ppLabel527: TppLabel
+        UserName = 'zrlPreFXEndCliente'
+        AutoSize = False
+        Caption = 'ppEPSEnderecoCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1323
+        mmTop = 33338
+        mmWidth = 71702
+        BandType = 0
+      end
+      object ppLabel528: TppLabel
+        UserName = 'zrlPreFXEndCliente1'
+        AutoSize = False
+        Caption = 'ppEPSCidadeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1323
+        mmTop = 37306
+        mmWidth = 71702
+        BandType = 0
+      end
+      object ppLabel529: TppLabel
+        UserName = 'Label73'
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 1323
+        mmTop = 41275
+        mmWidth = 9769
+        BandType = 0
+      end
+      object ppLabel530: TppLabel
+        UserName = 'zrlPreFXFone'
+        AutoSize = False
+        Caption = 'ppEPSFoneCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3768
+        mmLeft = 10583
+        mmTop = 41275
+        mmWidth = 20902
+        BandType = 0
+      end
+      object ppLabel531: TppLabel
+        UserName = 'lbEmpresa1'
+        AutoSize = False
+        Caption = 'ppEPSEmpresa'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppLabel532: TppLabel
+        UserName = 'Label79'
+        AutoSize = False
+        Caption = 'ppEPSEndereco'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 5027
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppLabel533: TppLabel
+        UserName = 'lbTelefone1'
+        AutoSize = False
+        Caption = 'ppEPSCidade'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 9790
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppLabel534: TppLabel
+        UserName = 'PIDFone'
+        AutoSize = False
+        Caption = 'ppEPSFone'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 14288
+        mmWidth = 70908
+        BandType = 0
+      end
+      object ppLabel535: TppLabel
+        UserName = 'Label364'
+        Caption = 'Codigo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 1588
+        mmTop = 47625
+        mmWidth = 8202
+        BandType = 0
+      end
+      object ppLabel536: TppLabel
+        UserName = 'Label367'
+        Caption = 'Unid.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 2646
+        mmTop = 51594
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppLabel537: TppLabel
+        UserName = 'Label368'
+        Caption = 'Descri'#231#227'o do Item /Servi'#231'o '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 14817
+        mmTop = 47890
+        mmWidth = 47096
+        BandType = 0
+      end
+      object ppLabel538: TppLabel
+        UserName = 'Label369'
+        Caption = 'Qtde.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 12171
+        mmTop = 51858
+        mmWidth = 6350
+        BandType = 0
+      end
+      object ppLabel539: TppLabel
+        UserName = 'Label370'
+        Caption = 'Pre'#231'o Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 27781
+        mmTop = 51858
+        mmWidth = 17463
+        BandType = 0
+      end
+      object ppLabel540: TppLabel
+        UserName = 'Label3701'
+        Caption = 'total Unit.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 52388
+        mmTop = 51858
+        mmWidth = 18521
+        BandType = 0
+      end
+      object ppLine379: TppLine
+        UserName = 'Line501'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 55298
+        mmWidth = 76729
+        BandType = 0
+      end
+      object ppLine380: TppLine
+        UserName = 'Line502'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 26723
+        mmWidth = 73554
+        BandType = 0
+      end
+      object ppLine381: TppLine
+        UserName = 'Line269'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 45773
+        mmWidth = 73554
+        BandType = 0
+      end
+    end
+    object ppDetailBand67: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 8467
+      mmPrintPosition = 0
+      object ppDBText991: TppDBText
+        UserName = 'DBText308'
+        DataField = 'icCodigoAsterisco'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 1852
+        mmTop = 265
+        mmWidth = 17198
+        BandType = 4
+      end
+      object ppDBText992: TppDBText
+        UserName = 'DBText309'
+        DataField = 'ITEMDESC'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold, fsItalic]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 19315
+        mmTop = 265
+        mmWidth = 51329
+        BandType = 4
+      end
+      object ppDBText993: TppDBText
+        UserName = 'DBText310'
+        DataField = 'UNIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3175
+        mmLeft = 1588
+        mmTop = 4233
+        mmWidth = 6350
+        BandType = 4
+      end
+      object ppDBText994: TppDBText
+        UserName = 'DBText311'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.###'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 10054
+        mmTop = 4233
+        mmWidth = 12965
+        BandType = 4
+      end
+      object ppDBText995: TppDBText
+        UserName = 'DBText312'
+        DataField = 'PRECO'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 31485
+        mmTop = 4233
+        mmWidth = 15875
+        BandType = 4
+      end
+      object ppDBText996: TppDBText
+        UserName = 'DBText313'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvItens
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3704
+        mmLeft = 53446
+        mmTop = 4498
+        mmWidth = 17992
+        BandType = 4
+      end
+      object ppLabel541: TppLabel
+        UserName = 'Label78'
+        Caption = 'X'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 24606
+        mmTop = 4233
+        mmWidth = 1588
+        BandType = 4
+      end
+      object ppLabel542: TppLabel
+        UserName = 'Label1'
+        Caption = '='
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 50536
+        mmTop = 4233
+        mmWidth = 1588
+        BandType = 4
+      end
+    end
+    object ppSummaryBand38: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 79375
+      mmPrintPosition = 0
+      object ppShape137: TppShape
+        UserName = 'Shape127'
+        mmHeight = 16933
+        mmLeft = 265
+        mmTop = 265
+        mmWidth = 30427
+        BandType = 7
+      end
+      object ppDBText997: TppDBText
+        UserName = 'DBText1'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 17463
+        mmTop = 28310
+        mmWidth = 49213
+        BandType = 7
+      end
+      object ppDBText998: TppDBText
+        UserName = 'DBText2'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 22225
+        mmTop = 24342
+        mmWidth = 45244
+        BandType = 7
+      end
+      object ppDBText999: TppDBText
+        UserName = 'DBText3'
+        BlankWhenZero = True
+        DataField = 'PERCENTUALDESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 58208
+        mmTop = 5821
+        mmWidth = 12435
+        BandType = 7
+      end
+      object ppDBText1000: TppDBText
+        UserName = 'DBText4'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 52652
+        mmTop = 529
+        mmWidth = 18256
+        BandType = 7
+      end
+      object ppDBText1001: TppDBText
+        UserName = 'DBText5'
+        CharWrap = True
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold, fsItalic]
+        ParentDataPipeline = False
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 12965
+        mmLeft = 1323
+        mmTop = 52652
+        mmWidth = 69056
+        BandType = 7
+      end
+      object ppLine382: TppLine
+        UserName = 'Line50'
+        Weight = 0.75
+        mmHeight = 1058
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 78846
+        BandType = 7
+      end
+      object ppLabel543: TppLabel
+        UserName = 'Label353'
+        Caption = 'Total -->'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 31750
+        mmTop = 529
+        mmWidth = 14552
+        BandType = 7
+      end
+      object ppLabel544: TppLabel
+        UserName = 'Label354'
+        Caption = 'Desc-('
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3246
+        mmLeft = 31750
+        mmTop = 6085
+        mmWidth = 10160
+        BandType = 7
+      end
+      object ppLabel545: TppLabel
+        UserName = 'Label355'
+        Caption = 'Acres  +'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 31750
+        mmTop = 12171
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppDBText1002: TppDBText
+        UserName = 'DBText797'
+        BlankWhenZero = True
+        DataField = 'OUTRASDESPESAS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 56621
+        mmTop = 12171
+        mmWidth = 15081
+        BandType = 7
+      end
+      object ppLabel546: TppLabel
+        UserName = 'Label356'
+        Caption = 'Tot Final = '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4745
+        mmLeft = 23283
+        mmTop = 18785
+        mmWidth = 22330
+        BandType = 7
+      end
+      object ppDBText1003: TppDBText
+        UserName = 'DBText798'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = 'R$ #,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 47361
+        mmTop = 18785
+        mmWidth = 22490
+        BandType = 7
+      end
+      object ppLabel547: TppLabel
+        UserName = 'Label357'
+        Caption = 'Vendedor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 794
+        mmTop = 28310
+        mmWidth = 16140
+        BandType = 7
+      end
+      object ppLabel548: TppLabel
+        UserName = 'Label359'
+        Caption = 'Plano PGTO :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 2963
+        mmLeft = 821
+        mmTop = 24342
+        mmWidth = 20320
+        BandType = 7
+      end
+      object ppLabel549: TppLabel
+        UserName = 'Label360'
+        Caption = 'Parlelas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 33073
+        mmTop = 65881
+        mmWidth = 14817
+        BandType = 7
+      end
+      object ppSubReport23: TppSubReport
+        UserName = 'SubReport1'
+        ExpandAll = False
+        NewPrintJob = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 5027
+        mmLeft = 0
+        mmTop = 69586
+        mmWidth = 84000
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport40: TppChildReport
+          AutoStop = False
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 4000
+          PrinterSetup.mmMarginLeft = 1000
+          PrinterSetup.mmMarginRight = 0
+          PrinterSetup.mmMarginTop = 2000
+          PrinterSetup.mmPaperHeight = 1000000
+          PrinterSetup.mmPaperWidth = 85000
+          PrinterSetup.PaperSize = 119
+          Units = utMillimeters
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbpParcelas'
+          object ppTitleBand13: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppLabel550: TppLabel
+              UserName = 'Label361'
+              Caption = 'Valor'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 56092
+              mmTop = 529
+              mmWidth = 6615
+              BandType = 1
+            end
+            object ppLabel551: TppLabel
+              UserName = 'Label362'
+              Caption = 'Parc'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 7673
+              mmTop = 265
+              mmWidth = 5821
+              BandType = 1
+            end
+            object ppLabel552: TppLabel
+              UserName = 'Label363'
+              Caption = 'Vencimento '
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              mmHeight = 3704
+              mmLeft = 25400
+              mmTop = 529
+              mmWidth = 15610
+              BandType = 1
+            end
+          end
+          object ppDetailBand68: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 4763
+            mmPrintPosition = 0
+            object ppDBText1004: TppDBText
+              UserName = 'DBText799'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 1323
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText1005: TppDBText
+              UserName = 'DBText800'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 48948
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppDBText1006: TppDBText
+              UserName = 'DBText8001'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 9
+              Font.Style = [fsBold]
+              ParentDataPipeline = False
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3969
+              mmLeft = 24871
+              mmTop = 794
+              mmWidth = 17198
+              BandType = 4
+            end
+          end
+          object ppSummaryBand39: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+      object ppLabel553: TppLabel
+        UserName = 'Label380'
+        Caption = 'Qtd Itens:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 6085
+        mmWidth = 16747
+        BandType = 7
+      end
+      object ppLabel554: TppLabel
+        UserName = 'Label381'
+        Caption = 'Tot Vol.:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 1058
+        mmWidth = 15073
+        BandType = 7
+      end
+      object ppDBText1007: TppDBText
+        UserName = 'DBText849'
+        DataField = 'VOLUMES'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3210
+        mmLeft = 18521
+        mmTop = 1058
+        mmWidth = 11377
+        BandType = 7
+      end
+      object ppDBCalc9: TppDBCalc
+        UserName = 'DBCalc6'
+        DataField = 'SAIDAITEM'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DBCalcType = dcCount
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 19579
+        mmTop = 6350
+        mmWidth = 9260
+        BandType = 7
+      end
+      object ppDBCalc10: TppDBCalc
+        UserName = 'DBCalc7'
+        DataField = 'QUANTIDADE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3210
+        mmLeft = 16933
+        mmTop = 11377
+        mmWidth = 11642
+        BandType = 7
+      end
+      object ppLabel555: TppLabel
+        UserName = 'Label3801'
+        Caption = 'Qtd Tot:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3210
+        mmLeft = 1588
+        mmTop = 11377
+        mmWidth = 13398
+        BandType = 7
+      end
+      object ppLabel556: TppLabel
+        UserName = 'Label451'
+        AutoSize = False
+        Caption = 'ppEPSNomeCliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 3175
+        mmTop = 46567
+        mmWidth = 71438
+        BandType = 7
+      end
+      object ppLine383: TppLine
+        UserName = 'Line319'
+        Weight = 0.75
+        mmHeight = 265
+        mmLeft = 12171
+        mmTop = 45773
+        mmWidth = 42069
+        BandType = 7
+      end
+      object ppDBText1008: TppDBText
+        UserName = 'DBText906'
+        BlankWhenZero = True
+        DataField = 'PERCENTUALDESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 43392
+        mmTop = 5821
+        mmWidth = 9525
+        BandType = 7
+      end
+      object ppLabel557: TppLabel
+        UserName = 'Label452'
+        Caption = '%)'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 53446
+        mmTop = 6085
+        mmWidth = 3440
+        BandType = 7
+      end
+    end
+    object ppGroup9: TppGroup
+      BreakName = 'LOCAL'
+      DataPipeline = dbpInvItens
+      KeepTogether = True
+      UserName = 'Group3'
+      mmNewColumnThreshold = 0
+      mmNewPageThreshold = 0
+      DataPipelineName = 'dbpInvItens'
+      object ppGroupHeaderBand8: TppGroupHeaderBand
+        Visible = False
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+      object ppGroupFooterBand8: TppGroupFooterBand
+        mmBottomOffset = 0
+        mmHeight = 0
+        mmPrintPosition = 0
+      end
+    end
+  end
+  object ppReport3: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 1588
+    PrinterSetup.mmMarginLeft = 1588
+    PrinterSetup.mmMarginRight = 1588
+    PrinterSetup.mmMarginTop = 1588
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    Units = utScreenPixels
+    AllowPrintToArchive = True
+    AllowPrintToFile = True
+    DeviceType = 'Screen'
+    Left = 234
+    Top = 570
+    Version = '6.02'
+    mmColumnWidth = 212724
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand43: TppHeaderBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 57944
+      mmPrintPosition = 0
+      object ppRegion69: TppRegion
+        UserName = 'Region3'
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 1852
+        mmTop = 53446
+        mmWidth = 200555
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLabel558: TppLabel
+          UserName = 'Label111'
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3598
+          mmLeft = 17198
+          mmTop = 53975
+          mmWidth = 14224
+          BandType = 0
+        end
+        object ppLabel559: TppLabel
+          UserName = 'Label112'
+          Caption = 'Ref.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3598
+          mmLeft = 129911
+          mmTop = 53711
+          mmWidth = 5842
+          BandType = 0
+        end
+        object ppLine385: TppLine
+          UserName = 'Line62'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 182563
+          mmTop = 53711
+          mmWidth = 1058
+          BandType = 0
+        end
+        object ppLine386: TppLine
+          UserName = 'Line63'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 166424
+          mmTop = 53711
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLine387: TppLine
+          UserName = 'Line64'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 150284
+          mmTop = 53711
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLine388: TppLine
+          UserName = 'Line65'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 141023
+          mmTop = 53711
+          mmWidth = 1323
+          BandType = 0
+        end
+        object ppLabel560: TppLabel
+          UserName = 'Label113'
+          Caption = 'Und'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 143934
+          mmTop = 53975
+          mmWidth = 5821
+          BandType = 0
+        end
+        object ppLabel561: TppLabel
+          UserName = 'Label114'
+          Caption = 'Qtd.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 159809
+          mmTop = 53975
+          mmWidth = 6085
+          BandType = 0
+        end
+        object ppLabel562: TppLabel
+          UserName = 'Label115'
+          Caption = 'Pre'#231'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 172244
+          mmTop = 53975
+          mmWidth = 8467
+          BandType = 0
+        end
+        object ppLabel563: TppLabel
+          UserName = 'Label116'
+          Caption = 'Total'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3598
+          mmLeft = 189707
+          mmTop = 53975
+          mmWidth = 6731
+          BandType = 0
+        end
+        object ppLine406: TppLine
+          UserName = 'Line406'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 125677
+          mmTop = 53975
+          mmWidth = 529
+          BandType = 0
+        end
+        object ppLabel587: TppLabel
+          UserName = 'Label587'
+          Caption = 'Local'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 3704
+          mmTop = 53446
+          mmWidth = 9790
+          BandType = 0
+        end
+        object ppLine408: TppLine
+          UserName = 'Line408'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 15875
+          mmTop = 54240
+          mmWidth = 529
+          BandType = 0
+        end
+      end
+      object ppRegion70: TppRegion
+        UserName = 'rbrgCabecalho'
+        Brush.Style = bsClear
+        ParentWidth = True
+        Pen.Style = psClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 17727
+        mmLeft = 0
+        mmTop = 1323
+        mmWidth = 212724
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppDBText1009: TppDBText
+        UserName = 'DBText1'
+        DataField = 'DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 177007
+        mmTop = 43921
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppDBText1010: TppDBText
+        UserName = 'DBText10'
+        DataField = 'CODIGOCLIENTE'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3175
+        mmLeft = 25135
+        mmTop = 31750
+        mmWidth = 14023
+        BandType = 0
+      end
+      object ppDBText1011: TppDBText
+        UserName = 'DBText11'
+        DataField = 'ENDERECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 25135
+        mmTop = 35983
+        mmWidth = 84931
+        BandType = 0
+      end
+      object ppDBText1012: TppDBText
+        UserName = 'DBText12'
+        CharWrap = True
+        DataField = 'CIDADEUFZIP'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 25135
+        mmTop = 39952
+        mmWidth = 92869
+        BandType = 0
+      end
+      object ppLabel564: TppLabel
+        UserName = 'lbCancelado'
+        Caption = 'Cancelado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = [fsBold]
+        Transparent = True
+        Visible = False
+        mmHeight = 5821
+        mmLeft = 16669
+        mmTop = 23548
+        mmWidth = 27517
+        BandType = 0
+      end
+      object ppDBText1013: TppDBText
+        UserName = 'DBText402'
+        DataField = 'CPF_CNPJ'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3669
+        mmLeft = 25135
+        mmTop = 43921
+        mmWidth = 33602
+        BandType = 0
+      end
+      object ppDBText1014: TppDBText
+        UserName = 'DBText167'
+        DataField = 'INSCRICAO_EST'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3669
+        mmLeft = 73554
+        mmTop = 43921
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppLabel565: TppLabel
+        UserName = 'Label1'
+        Caption = 'Insc. Est.:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 59002
+        mmTop = 43921
+        mmWidth = 14288
+        BandType = 0
+      end
+      object ppLabel566: TppLabel
+        UserName = 'Label185'
+        AutoSize = False
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 31750
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppLabel567: TppLabel
+        UserName = 'Label195'
+        AutoSize = False
+        Caption = 'Endere'#231'o:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 35983
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppLabel568: TppLabel
+        UserName = 'Label196'
+        AutoSize = False
+        Caption = 'Cidade:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 39952
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppLabel569: TppLabel
+        UserName = 'Label197'
+        AutoSize = False
+        Caption = 'Cpf/CNPJ:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 8996
+        mmTop = 43921
+        mmWidth = 15875
+        BandType = 0
+      end
+      object ppDBText1015: TppDBText
+        UserName = 'DBText484'
+        DataField = 'NRO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3669
+        mmLeft = 110067
+        mmTop = 35983
+        mmWidth = 9260
+        BandType = 0
+      end
+      object ppLabel570: TppLabel
+        UserName = 'Label183'
+        AutoSize = False
+        Caption = 'CEP:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119592
+        mmTop = 39952
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppLabel571: TppLabel
+        UserName = 'Label198'
+        AutoSize = False
+        Caption = 'Fone:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119592
+        mmTop = 43921
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppLabel572: TppLabel
+        UserName = 'Label199'
+        AutoSize = False
+        Caption = 'Bairro:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 119856
+        mmTop = 35983
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppLabel573: TppLabel
+        UserName = 'Label200'
+        AutoSize = False
+        Caption = 'Data:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 166159
+        mmTop = 43921
+        mmWidth = 10319
+        BandType = 0
+      end
+      object ppDBText1016: TppDBText
+        UserName = 'DBText480'
+        DataField = 'BAIRRO'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 130440
+        mmTop = 35983
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppDBText1017: TppDBText
+        UserName = 'DBText4801'
+        DataField = 'CEP'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 130440
+        mmTop = 39952
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppDBText1018: TppDBText
+        UserName = 'DBText482'
+        DataField = 'FONE1'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3704
+        mmLeft = 130440
+        mmTop = 43921
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppDBText1019: TppDBText
+        UserName = 'DBText2'
+        OnGetText = ppDBText2GetText
+        DataField = 'INVOICE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 12
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5556
+        mmLeft = 161661
+        mmTop = 26988
+        mmWidth = 39158
+        BandType = 0
+      end
+      object ppDBText1020: TppDBText
+        UserName = 'DBText103'
+        DataField = 'NOME'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3246
+        mmLeft = 39158
+        mmTop = 31750
+        mmWidth = 98690
+        BandType = 0
+      end
+      object ppDBText1021: TppDBText
+        UserName = 'dfTITTipoMov'
+        DataField = 'DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4763
+        mmLeft = 67998
+        mmTop = 26194
+        mmWidth = 74877
+        BandType = 0
+      end
+    end
+    object ppDetailBand69: TppDetailBand
+      PrintCount = 55
+      mmBottomOffset = 0
+      mmHeight = 3969
+      mmPrintPosition = 0
+      object ppRegion71: TppRegion
+        UserName = 'rbshItens2'
+        KeepTogether = True
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 1852
+        mmTop = 265
+        mmWidth = 200025
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine389: TppLine
+          UserName = 'lnCodigo1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 2910
+          mmLeft = 125677
+          mmTop = 265
+          mmWidth = 529
+          BandType = 4
+        end
+        object ppLine390: TppLine
+          UserName = 'lnSubTotal1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 2910
+          mmLeft = 182563
+          mmTop = 265
+          mmWidth = 1058
+          BandType = 4
+        end
+        object ppLine391: TppLine
+          UserName = 'lnPreco1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 2910
+          mmLeft = 166423
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBText1023: TppDBText
+          UserName = 'DBText24'
+          DataField = 'LOCAL'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 2381
+          mmTop = 265
+          mmWidth = 12171
+          BandType = 4
+        end
+        object ppDBText1024: TppDBText
+          UserName = 'dbtUnidade3'
+          OnGetText = dbtUnidadeGetText
+          DataField = 'UNIDADE'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 141817
+          mmTop = 265
+          mmWidth = 7938
+          BandType = 4
+        end
+        object ppDBText1025: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 152930
+          mmTop = 265
+          mmWidth = 13229
+          BandType = 4
+        end
+        object ppDBText1026: TppDBText
+          UserName = 'dbtPreco2'
+          DataField = 'PRECO'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 168275
+          mmTop = 265
+          mmWidth = 12700
+          BandType = 4
+        end
+        object ppDBText1027: TppDBText
+          UserName = 'DBText28'
+          DataField = 'TOTAL'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 184680
+          mmTop = 265
+          mmWidth = 12700
+          BandType = 4
+        end
+        object ppLine392: TppLine
+          UserName = 'lnUnidade2'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 2910
+          mmLeft = 141023
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine393: TppLine
+          UserName = 'lnQuantidade1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 2910
+          mmLeft = 150284
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBMemo38: TppDBMemo
+          UserName = 'dbtDescricao2'
+          CharWrap = True
+          DataField = 'ITEMDESC'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          OnGetMemo = ppDBMemo7GetMemo
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 17198
+          mmTop = 265
+          mmWidth = 105834
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+        object ppLine407: TppLine
+          UserName = 'Line407'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 2910
+          mmLeft = 15875
+          mmTop = 1058
+          mmWidth = 529
+          BandType = 4
+        end
+        object ppDBText1042: TppDBText
+          UserName = 'DBText1042'
+          DataField = 'REFERENCIA'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 127529
+          mmTop = 265
+          mmWidth = 12171
+          BandType = 4
+        end
+      end
+    end
+    object ppFooterBand36: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand40: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 61119
+      mmPrintPosition = 0
+      object ppDBText1032: TppDBText
+        UserName = 'DBText19'
+        DataField = 'DESCONTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 177271
+        mmTop = 5292
+        mmWidth = 24077
+        BandType = 7
+      end
+      object ppDBText1033: TppDBText
+        UserName = 'DBText3'
+        DataField = 'TOTAL'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#0.00,'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 177271
+        mmTop = 9525
+        mmWidth = 24077
+        BandType = 7
+      end
+      object ppLabel579: TppLabel
+        UserName = 'Label103'
+        Caption = 'Sub Total (R$)'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 155046
+        mmTop = 1058
+        mmWidth = 21696
+        BandType = 7
+      end
+      object ppLabel580: TppLabel
+        UserName = 'Label109'
+        Caption = 'Desconto (R$)'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 155046
+        mmTop = 5292
+        mmWidth = 21696
+        BandType = 7
+      end
+      object ppLabel581: TppLabel
+        UserName = 'Label110'
+        Caption = 'Total (R$)'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 161132
+        mmTop = 9525
+        mmWidth = 15610
+        BandType = 7
+      end
+      object ppDBText1034: TppDBText
+        UserName = 'DBPrecoTotalOURO'
+        DataField = 'TOTALPRODUTOS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 177271
+        mmTop = 1058
+        mmWidth = 24077
+        BandType = 7
+      end
+      object ppRegion72: TppRegion
+        UserName = 'Region2'
+        Caption = 'Region2'
+        Pen.Style = psClear
+        Stretch = True
+        mmHeight = 8202
+        mmLeft = 5556
+        mmTop = 24342
+        mmWidth = 129382
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine405: TppLine
+          UserName = 'Line57'
+          Weight = 0.75
+          mmHeight = 1323
+          mmLeft = 13758
+          mmTop = 25400
+          mmWidth = 118534
+          BandType = 7
+        end
+        object ppSubReport24: TppSubReport
+          UserName = 'rbsrParcelas'
+          ExpandAll = True
+          NewPrintJob = False
+          ParentPrinterSetup = False
+          ParentWidth = False
+          TraverseAllData = False
+          DataPipelineName = 'dbpParcelas'
+          mmHeight = 4498
+          mmLeft = 137054
+          mmTop = 26194
+          mmWidth = 69586
+          BandType = 7
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          object ppChildReport41: TppChildReport
+            AutoStop = False
+            Columns = 3
+            ColumnPositions.Strings = (
+              '6350'
+              '69850'
+              '133350')
+            DataPipeline = dbpParcelas
+            PrinterSetup.BinName = 'Default'
+            PrinterSetup.DocumentName = 'Report'
+            PrinterSetup.PaperName = 'Carta'
+            PrinterSetup.PrinterName = 'Default'
+            PrinterSetup.mmMarginBottom = 6350
+            PrinterSetup.mmMarginLeft = 6350
+            PrinterSetup.mmMarginRight = 6350
+            PrinterSetup.mmMarginTop = 6350
+            PrinterSetup.mmPaperHeight = 279401
+            PrinterSetup.mmPaperWidth = 215900
+            PrinterSetup.PaperSize = 1
+            Units = utScreenPixels
+            Left = 160
+            Top = 112
+            Version = '6.02'
+            mmColumnWidth = 63500
+            DataPipelineName = 'dbpParcelas'
+            object ppColumnHeaderBand18: TppColumnHeaderBand
+              mmBottomOffset = 0
+              mmHeight = 5292
+              mmPrintPosition = 0
+              object ppShape138: TppShape
+                UserName = 'Shape12'
+                Brush.Color = 16053492
+                Pen.Color = clGray
+                mmHeight = 5292
+                mmLeft = 1323
+                mmTop = 0
+                mmWidth = 42069
+                BandType = 2
+              end
+              object ppLabel575: TppLabel
+                UserName = 'Label3'
+                AutoSize = False
+                Caption = '#'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Name = 'Tahoma'
+                Font.Size = 9
+                Font.Style = []
+                TextAlignment = taCentered
+                Transparent = True
+                mmHeight = 3895
+                mmLeft = 2117
+                mmTop = 794
+                mmWidth = 4233
+                BandType = 2
+              end
+              object ppLabel576: TppLabel
+                UserName = 'Label6'
+                AutoSize = False
+                Caption = 'Valor'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Name = 'Tahoma'
+                Font.Size = 9
+                Font.Style = []
+                TextAlignment = taCentered
+                Transparent = True
+                mmHeight = 3969
+                mmLeft = 26194
+                mmTop = 794
+                mmWidth = 16140
+                BandType = 2
+              end
+              object ppLine394: TppLine
+                UserName = 'Line19'
+                Pen.Color = clGray
+                Position = lpLeft
+                Weight = 0.75
+                mmHeight = 5292
+                mmLeft = 7144
+                mmTop = 0
+                mmWidth = 2117
+                BandType = 2
+              end
+              object ppLabel577: TppLabel
+                UserName = 'Label5'
+                AutoSize = False
+                Caption = 'Vencimento'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Name = 'Tahoma'
+                Font.Size = 9
+                Font.Style = []
+                TextAlignment = taCentered
+                Transparent = True
+                mmHeight = 3895
+                mmLeft = 7408
+                mmTop = 794
+                mmWidth = 17992
+                BandType = 2
+              end
+              object ppLine395: TppLine
+                UserName = 'Line20'
+                Pen.Color = clGray
+                Position = lpLeft
+                Weight = 0.75
+                mmHeight = 5027
+                mmLeft = 25400
+                mmTop = 265
+                mmWidth = 4763
+                BandType = 2
+              end
+              object ppLine396: TppLine
+                UserName = 'Line202'
+                Pen.Color = clGray
+                Position = lpLeft
+                Weight = 0.75
+                mmHeight = 5027
+                mmLeft = 42863
+                mmTop = 265
+                mmWidth = 529
+                BandType = 2
+              end
+            end
+            object ppDetailBand70: TppDetailBand
+              Save = True
+              ColumnTraversal = ctLeftToRight
+              mmBottomOffset = 0
+              mmHeight = 4763
+              mmPrintPosition = 0
+              object ppDBText1028: TppDBText
+                UserName = 'DBText24'
+                DataField = 'PARCELA'
+                DataPipeline = dbpParcelas
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Name = 'Tahoma'
+                Font.Size = 9
+                Font.Style = []
+                TextAlignment = taCentered
+                Transparent = True
+                DataPipelineName = 'dbpParcelas'
+                mmHeight = 3704
+                mmLeft = 1588
+                mmTop = 265
+                mmWidth = 5292
+                BandType = 4
+              end
+              object ppDBText1029: TppDBText
+                UserName = 'DBText26'
+                DataField = 'VENCIMENTO'
+                DataPipeline = dbpParcelas
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Name = 'Tahoma'
+                Font.Size = 9
+                Font.Style = []
+                Transparent = True
+                DataPipelineName = 'dbpParcelas'
+                mmHeight = 3704
+                mmLeft = 8202
+                mmTop = 265
+                mmWidth = 16933
+                BandType = 4
+              end
+              object ppDBText1030: TppDBText
+                UserName = 'DBText28'
+                DataField = 'VALOR'
+                DataPipeline = dbpParcelas
+                DisplayFormat = '#,###,##0.00'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Name = 'Tahoma'
+                Font.Size = 9
+                Font.Style = []
+                TextAlignment = taRightJustified
+                Transparent = True
+                DataPipelineName = 'dbpParcelas'
+                mmHeight = 3704
+                mmLeft = 26194
+                mmTop = 265
+                mmWidth = 16140
+                BandType = 4
+              end
+              object ppLine398: TppLine
+                UserName = 'Line201'
+                Pen.Color = clGray
+                Position = lpLeft
+                Weight = 0.75
+                mmHeight = 4233
+                mmLeft = 25400
+                mmTop = 0
+                mmWidth = 4763
+                BandType = 4
+              end
+              object ppLine399: TppLine
+                UserName = 'Line22'
+                Pen.Color = clGray
+                Position = lpLeft
+                Weight = 0.75
+                mmHeight = 4233
+                mmLeft = 7144
+                mmTop = 0
+                mmWidth = 1852
+                BandType = 4
+              end
+              object ppLine400: TppLine
+                UserName = 'Line2'
+                Pen.Color = clGray
+                Position = lpLeft
+                Weight = 0.75
+                mmHeight = 4233
+                mmLeft = 1323
+                mmTop = 0
+                mmWidth = 1588
+                BandType = 4
+              end
+              object ppLine401: TppLine
+                UserName = 'Line3'
+                Pen.Color = clGray
+                Position = lpRight
+                Weight = 0.75
+                mmHeight = 4233
+                mmLeft = 42863
+                mmTop = 0
+                mmWidth = 529
+                BandType = 4
+              end
+              object ppLine402: TppLine
+                UserName = 'Line4'
+                Pen.Color = clGray
+                Position = lpBottom
+                Weight = 0.75
+                mmHeight = 794
+                mmLeft = 1323
+                mmTop = 3440
+                mmWidth = 42333
+                BandType = 4
+              end
+            end
+            object ppColumnFooterBand18: TppColumnFooterBand
+              mmBottomOffset = 0
+              mmHeight = 0
+              mmPrintPosition = 0
+            end
+          end
+        end
+        object ppDBText1035: TppDBText
+          UserName = 'DBText101'
+          DataField = 'NOME'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taCentered
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 7938
+          mmTop = 26194
+          mmWidth = 116681
+          BandType = 7
+        end
+      end
+      object ppLabel582: TppLabel
+        UserName = 'Label184'
+        Caption = 'Vendedor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 109273
+        mmTop = 1058
+        mmWidth = 13494
+        BandType = 7
+      end
+      object ppDBText1036: TppDBText
+        UserName = 'DBPrecoTotalOURO2'
+        DataField = 'VENDEDOR'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 123031
+        mmTop = 1058
+        mmWidth = 31750
+        BandType = 7
+      end
+      object ppLabel583: TppLabel
+        UserName = 'Label201'
+        Caption = 'Peso:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 50536
+        mmTop = 1058
+        mmWidth = 7673
+        BandType = 7
+      end
+      object ppDBText1037: TppDBText
+        UserName = 'DBText486'
+        DataField = 'PESOBRUTO'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 58473
+        mmTop = 1058
+        mmWidth = 12965
+        BandType = 7
+      end
+      object ppDBText1038: TppDBText
+        UserName = 'DBText495'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 19579
+        mmTop = 1058
+        mmWidth = 30692
+        BandType = 7
+      end
+      object ppLabel584: TppLabel
+        UserName = 'Label202'
+        Caption = 'Pagamento:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 3440
+        mmTop = 1058
+        mmWidth = 15875
+        BandType = 7
+      end
+      object ppDBText1039: TppDBText
+        UserName = 'DBText496'
+        DataField = 'OBS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 14023
+        mmLeft = 5556
+        mmTop = 6085
+        mmWidth = 143140
+        BandType = 7
+      end
+      object ppLabel585: TppLabel
+        UserName = 'Label204'
+        Caption = 'Carga:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 71702
+        mmTop = 1058
+        mmWidth = 9260
+        BandType = 7
+      end
+      object ppDBText1040: TppDBText
+        UserName = 'DBText524'
+        DataField = 'CAMPO01'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3387
+        mmLeft = 81227
+        mmTop = 1058
+        mmWidth = 10054
+        BandType = 7
+      end
+      object ppLabel586: TppLabel
+        UserName = 'Label205'
+        Caption = 'Feira:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3387
+        mmLeft = 91546
+        mmTop = 1058
+        mmWidth = 7938
+        BandType = 7
+      end
+      object ppDBText1041: TppDBText
+        UserName = 'DBText525'
+        DataField = 'CAMPO02'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 99748
+        mmTop = 1058
+        mmWidth = 8996
+        BandType = 7
+      end
+    end
+  end
+  object ppReport4: TppReport
+    AutoStop = False
+    DataPipeline = dbpInvItens
+    PassSetting = psTwoPass
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'S:\Fontes_BR\SyncLoja\RptInvoiceOURO.rtm'
+    Units = utScreenPixels
+    AllowPrintToArchive = True
+    AllowPrintToFile = True
+    DeviceType = 'Screen'
+    Left = 96
+    Top = 640
+    Version = '6.02'
+    mmColumnWidth = 0
+    DataPipelineName = 'dbpInvItens'
+    object ppHeaderBand44: TppHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 88636
+      mmPrintPosition = 0
+      object ppShape139: TppShape
+        UserName = 'Shape1'
+        Brush.Color = 16053492
+        Pen.Color = clGray
+        Shape = stRoundRect
+        mmHeight = 26458
+        mmLeft = 5292
+        mmTop = 40746
+        mmWidth = 93927
+        BandType = 0
+      end
+      object ppRegion73: TppRegion
+        UserName = 'rbrgCabecalho'
+        Brush.Style = bsClear
+        ParentWidth = True
+        Pen.Style = psClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 26988
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 203200
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+      end
+      object ppDBText1022: TppDBText
+        UserName = 'DBText1'
+        DataField = 'DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 25400
+        mmTop = 32544
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppShape143: TppShape
+        UserName = 'Shape2'
+        Pen.Color = clGray
+        mmHeight = 3969
+        mmLeft = 9790
+        mmTop = 38894
+        mmWidth = 12965
+        BandType = 0
+      end
+      object ppLabel574: TppLabel
+        UserName = 'Label2'
+        AutoSize = False
+        Caption = 'Cliente:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 10848
+        mmTop = 39158
+        mmWidth = 11113
+        BandType = 0
+      end
+      object ppShape145: TppShape
+        UserName = 'Shape3'
+        Brush.Color = clGray
+        Pen.Color = clGray
+        Pen.Style = psClear
+        mmHeight = 7144
+        mmLeft = 157957
+        mmTop = 30956
+        mmWidth = 40217
+        BandType = 0
+      end
+      object ppShape146: TppShape
+        UserName = 'Shape4'
+        Pen.Color = clGray
+        mmHeight = 7144
+        mmLeft = 157163
+        mmTop = 30163
+        mmWidth = 40217
+        BandType = 0
+      end
+      object ppDBText1031: TppDBText
+        UserName = 'DBText2'
+        OnGetText = ppDBText2GetText
+        DataField = 'INVOICE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5821
+        mmLeft = 157692
+        mmTop = 30692
+        mmWidth = 39158
+        BandType = 0
+      end
+      object ppDBText1043: TppDBText
+        UserName = 'DBText10'
+        DataField = 'NOME'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 9525
+        mmTop = 48683
+        mmWidth = 87313
+        BandType = 0
+      end
+      object ppDBText1044: TppDBText
+        UserName = 'DBText11'
+        DataField = 'ENDERECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 9525
+        mmTop = 53181
+        mmWidth = 87313
+        BandType = 0
+      end
+      object ppDBText1045: TppDBText
+        UserName = 'DBText12'
+        CharWrap = True
+        DataField = 'CIDADEUFZIP'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 9525
+        mmTop = 57679
+        mmWidth = 87313
+        BandType = 0
+      end
+      object ppDBText1046: TppDBText
+        UserName = 'DBText13'
+        DataField = 'FONE1'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 9525
+        mmTop = 62177
+        mmWidth = 40217
+        BandType = 0
+      end
+      object ppDBText1047: TppDBText
+        UserName = 'DBText14'
+        OnGetText = ppDBText14GetText
+        DataField = 'FAX'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 51065
+        mmTop = 62177
+        mmWidth = 46038
+        BandType = 0
+      end
+      object ppDBText1048: TppDBText
+        UserName = 'dfTITData'
+        DataField = 'TIT2_DATA'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 6615
+        mmTop = 32544
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppRegion74: TppRegion
+        UserName = 'rbrgVendedor'
+        Pen.Style = psClear
+        mmHeight = 12965
+        mmLeft = 3704
+        mmTop = 67733
+        mmWidth = 41804
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape147: TppShape
+          UserName = 'Shape9'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 5027
+          mmTop = 71702
+          mmWidth = 39423
+          BandType = 0
+        end
+        object ppDBText1049: TppDBText
+          UserName = 'DBText25'
+          DataField = 'VENDEDOR'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 6085
+          mmTop = 73819
+          mmWidth = 37306
+          BandType = 0
+        end
+        object ppDBText1050: TppDBText
+          UserName = 'dfTITVend'
+          AutoSize = True
+          DataField = 'TIT2_VENDEDOR'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 7408
+          mmTop = 69850
+          mmWidth = 21886
+          BandType = 0
+        end
+      end
+      object ppRegion75: TppRegion
+        UserName = 'Region1'
+        Pen.Style = psClear
+        mmHeight = 12700
+        mmLeft = 45244
+        mmTop = 67998
+        mmWidth = 26988
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape148: TppShape
+          UserName = 'Shape11'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 46567
+          mmTop = 71702
+          mmWidth = 24342
+          BandType = 0
+        end
+        object ppDBText1051: TppDBText
+          UserName = 'DBText27'
+          DataField = 'PEDIDO_CLIENTE'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 47890
+          mmTop = 73554
+          mmWidth = 21960
+          BandType = 0
+        end
+        object ppDBText1052: TppDBText
+          UserName = 'dfTITPedido'
+          AutoSize = True
+          DataField = 'TIT2_PEDIDO'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 48683
+          mmTop = 69850
+          mmWidth = 17526
+          BandType = 0
+        end
+      end
+      object ppRegion76: TppRegion
+        UserName = 'Region2'
+        Pen.Style = psClear
+        mmHeight = 13229
+        mmLeft = 125148
+        mmTop = 67998
+        mmWidth = 26723
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape149: TppShape
+          UserName = 'Shape15'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 126206
+          mmTop = 71702
+          mmWidth = 24871
+          BandType = 0
+        end
+        object ppDBText1053: TppDBText
+          UserName = 'DBText31'
+          DataField = 'CAMPO02'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 127794
+          mmTop = 73554
+          mmWidth = 22225
+          BandType = 0
+        end
+        object ppDBText1054: TppDBText
+          UserName = 'DBText301'
+          AutoSize = True
+          DataField = 'TIT2_CAMPO2'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 128588
+          mmTop = 69850
+          mmWidth = 18203
+          BandType = 0
+        end
+      end
+      object ppRegion77: TppRegion
+        UserName = 'Region3'
+        Pen.Style = psClear
+        mmHeight = 12965
+        mmLeft = 151607
+        mmTop = 67998
+        mmWidth = 27252
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape150: TppShape
+          UserName = 'Shape17'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 153194
+          mmTop = 71702
+          mmWidth = 24871
+          BandType = 0
+        end
+        object ppDBText1055: TppDBText
+          UserName = 'DBText33'
+          DataField = 'CAMPO03'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 154782
+          mmTop = 73554
+          mmWidth = 22225
+          BandType = 0
+        end
+        object ppDBText1056: TppDBText
+          UserName = 'dfTITCampo3'
+          AutoSize = True
+          DataField = 'TIT2_CAMPO3'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 155840
+          mmTop = 69850
+          mmWidth = 18203
+          BandType = 0
+        end
+      end
+      object ppRegion78: TppRegion
+        UserName = 'Region4'
+        Pen.Style = psClear
+        mmHeight = 12700
+        mmLeft = 178330
+        mmTop = 68263
+        mmWidth = 24606
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape151: TppShape
+          UserName = 'Shape19'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 179652
+          mmTop = 71703
+          mmWidth = 22225
+          BandType = 0
+        end
+        object ppDBText1057: TppDBText
+          UserName = 'DBText35'
+          DataField = 'CAMPO04'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 181505
+          mmTop = 73819
+          mmWidth = 19050
+          BandType = 0
+        end
+        object ppDBText1058: TppDBText
+          UserName = 'dfTITCampo4'
+          AutoSize = True
+          DataField = 'TIT2_CAMPO4'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 181240
+          mmTop = 69850
+          mmWidth = 18203
+          BandType = 0
+        end
+      end
+      object ppRegion79: TppRegion
+        UserName = 'Region5'
+        Pen.Style = psClear
+        mmHeight = 12965
+        mmLeft = 98161
+        mmTop = 67998
+        mmWidth = 27252
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape152: TppShape
+          UserName = 'Shape13'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 99220
+          mmTop = 71702
+          mmWidth = 24871
+          BandType = 0
+        end
+        object ppDBText1059: TppDBText
+          UserName = 'DBText29'
+          DataField = 'CAMPO01'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 100806
+          mmTop = 73554
+          mmWidth = 22225
+          BandType = 0
+        end
+        object ppDBText1060: TppDBText
+          UserName = 'dfTITCampo1'
+          AutoSize = True
+          DataField = 'TIT2_CAMPO1'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 101600
+          mmTop = 69850
+          mmWidth = 18203
+          BandType = 0
+        end
+      end
+      object ppDBText1061: TppDBText
+        UserName = 'dfTITTipoMov'
+        DataField = 'DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 5821
+        mmLeft = 69056
+        mmTop = 29104
+        mmWidth = 74877
+        BandType = 0
+      end
+      object ppLabel578: TppLabel
+        UserName = 'Label4'
+        Caption = ':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 23548
+        mmTop = 32544
+        mmWidth = 1323
+        BandType = 0
+      end
+      object ppRegion80: TppRegion
+        UserName = 'Region8'
+        Pen.Style = psClear
+        mmHeight = 12700
+        mmLeft = 71967
+        mmTop = 68263
+        mmWidth = 26458
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape153: TppShape
+          UserName = 'Shape7'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 73026
+          mmTop = 71703
+          mmWidth = 24342
+          BandType = 0
+        end
+        object ppDBText1062: TppDBText
+          UserName = 'DBText4'
+          DataField = 'VALIDADE'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 73819
+          mmTop = 73819
+          mmWidth = 22754
+          BandType = 0
+        end
+        object ppDBText1063: TppDBText
+          UserName = 'DBText5'
+          AutoSize = True
+          DataField = 'TIT2_VALIDADE'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3429
+          mmLeft = 74613
+          mmTop = 69850
+          mmWidth = 20447
+          BandType = 0
+        end
+      end
+      object ppDBText1064: TppDBText
+        UserName = 'DBText6'
+        OnGetText = ppDBText30GetText
+        DataField = 'DESCSTATUSSAIDA'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3440
+        mmLeft = 69056
+        mmTop = 35190
+        mmWidth = 74877
+        BandType = 0
+      end
+      object ppRegion81: TppRegion
+        UserName = 'Region16'
+        Caption = 'regInfoEntrega'
+        Pen.Style = psClear
+        mmHeight = 28310
+        mmLeft = 114036
+        mmTop = 39952
+        mmWidth = 85990
+        BandType = 0
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape154: TppShape
+          UserName = 'Shape23'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 115888
+          mmTop = 58473
+          mmWidth = 29633
+          BandType = 0
+        end
+        object ppDBText1065: TppDBText
+          UserName = 'DBText303'
+          AutoSize = True
+          DataField = 'TIT2_DATAENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3260
+          mmLeft = 117740
+          mmTop = 57150
+          mmWidth = 28279
+          BandType = 0
+        end
+        object ppDBText1066: TppDBText
+          UserName = 'DBText39'
+          DataField = 'DATAENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taCentered
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 117475
+          mmTop = 60854
+          mmWidth = 26988
+          BandType = 0
+        end
+        object ppShape155: TppShape
+          UserName = 'Shape25'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 7938
+          mmLeft = 147903
+          mmTop = 58473
+          mmWidth = 50006
+          BandType = 0
+        end
+        object ppDBText1067: TppDBText
+          UserName = 'dfTITTipoEnt'
+          AutoSize = True
+          DataField = 'TIT2_TIPOENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3260
+          mmLeft = 150284
+          mmTop = 57150
+          mmWidth = 27771
+          BandType = 0
+        end
+        object ppDBText1068: TppDBText
+          UserName = 'DBText43'
+          DataField = 'TIPOENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 149491
+          mmTop = 60854
+          mmWidth = 47625
+          BandType = 0
+        end
+        object ppShape156: TppShape
+          UserName = 'Shape21'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 12171
+          mmLeft = 115888
+          mmTop = 43657
+          mmWidth = 82021
+          BandType = 0
+        end
+        object ppDBText1069: TppDBText
+          UserName = 'DBText37'
+          DataField = 'ENDERECOENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4498
+          mmLeft = 117476
+          mmTop = 45244
+          mmWidth = 78581
+          BandType = 0
+        end
+        object ppDBText1070: TppDBText
+          UserName = 'DBText302'
+          AutoSize = True
+          DataField = 'TIT2_LOCALENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3260
+          mmLeft = 118269
+          mmTop = 41540
+          mmWidth = 30395
+          BandType = 0
+        end
+        object ppDBText1071: TppDBText
+          UserName = 'DBText41'
+          DataField = 'CIDADEUFZIPENTREGA'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 117476
+          mmTop = 50271
+          mmWidth = 78581
+          BandType = 0
+        end
+      end
+      object ppLabel588: TppLabel
+        UserName = 'lbCancelado'
+        Caption = 'Cancelado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Name = 'Tahoma'
+        Font.Size = 18
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 7585
+        mmLeft = 89429
+        mmTop = 39688
+        mmWidth = 33020
+        BandType = 0
+      end
+      object ppDBText1072: TppDBText
+        UserName = 'DBText402'
+        DataField = 'CPF_CNPJ'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 9525
+        mmTop = 44186
+        mmWidth = 38629
+        BandType = 0
+      end
+      object ppDBText1073: TppDBText
+        UserName = 'DBText167'
+        DataField = 'INSCRICAO_EST'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4233
+        mmLeft = 66940
+        mmTop = 44186
+        mmWidth = 29898
+        BandType = 0
+      end
+      object ppLabel589: TppLabel
+        UserName = 'Label1'
+        Caption = 'Insc. Est.:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 50800
+        mmTop = 44186
+        mmWidth = 16087
+        BandType = 0
+      end
+    end
+    object ppDetailBand71: TppDetailBand
+      PrintCount = 22
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 20373
+      mmPrintPosition = 0
+      object ppRegion82: TppRegion
+        UserName = 'rbshItens2'
+        Brush.Style = bsClear
+        Pen.Style = psClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 1588
+        mmTop = 0
+        mmWidth = 201613
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppLine384: TppLine
+          UserName = 'lnCodigo1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 25930
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine397: TppLine
+          UserName = 'lnSubTotal1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 140229
+          mmTop = 265
+          mmWidth = 1058
+          BandType = 4
+        end
+        object ppLine403: TppLine
+          UserName = 'Line2'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 154518
+          mmTop = 265
+          mmWidth = 1588
+          BandType = 4
+        end
+        object ppLine404: TppLine
+          UserName = 'lnFuncionario1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3440
+          mmLeft = 2647
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine409: TppLine
+          UserName = 'lnPreco1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 125413
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBText1074: TppDBText
+          UserName = 'DBText22'
+          DataField = 'NOMEFUNCIONARIO'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 2911
+          mmTop = 529
+          mmWidth = 22754
+          BandType = 4
+        end
+        object ppDBText1075: TppDBText
+          UserName = 'DBText24'
+          DataField = 'LOCAL'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 26459
+          mmTop = 529
+          mmWidth = 8202
+          BandType = 4
+        end
+        object ppDBText1076: TppDBText
+          UserName = 'dbtUnidade3'
+          OnGetText = dbtUnidadeGetText
+          DataField = 'UNIDADE'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 102923
+          mmTop = 529
+          mmWidth = 5821
+          BandType = 4
+        end
+        object ppDBText1077: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 111125
+          mmTop = 529
+          mmWidth = 13229
+          BandType = 4
+        end
+        object ppDBText1078: TppDBText
+          UserName = 'dbtPreco2'
+          DataField = 'PRECO'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 126471
+          mmTop = 529
+          mmWidth = 12700
+          BandType = 4
+        end
+        object ppDBText1079: TppDBText
+          UserName = 'DBText28'
+          DataField = 'TOTAL'
+          DataPipeline = dbpInvItens
+          DisplayFormat = '###,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 141023
+          mmTop = 529
+          mmWidth = 12700
+          BandType = 4
+        end
+        object ppDBText1080: TppDBText
+          UserName = 'DBText30'
+          DataField = 'COLUNA1'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 155047
+          mmTop = 529
+          mmWidth = 10319
+          BandType = 4
+        end
+        object ppDBText1081: TppDBText
+          UserName = 'DBText32'
+          DataField = 'COLUNA2'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 166424
+          mmTop = 529
+          mmWidth = 11642
+          BandType = 4
+        end
+        object ppDBText1082: TppDBText
+          UserName = 'DBText34'
+          DataField = 'COLUNA3'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 178860
+          mmTop = 529
+          mmWidth = 11642
+          BandType = 4
+        end
+        object ppDBText1083: TppDBText
+          UserName = 'DBText36'
+          DataField = 'COLUNA4'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 190501
+          mmTop = 529
+          mmWidth = 10848
+          BandType = 4
+        end
+        object ppLine410: TppLine
+          UserName = 'lnDescricao1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 35190
+          mmTop = 0
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine411: TppLine
+          UserName = 'lnUnidade2'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 102129
+          mmTop = 0
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine412: TppLine
+          UserName = 'lnQuantidade1'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 109273
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppLine413: TppLine
+          UserName = 'Line3'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 165895
+          mmTop = 265
+          mmWidth = 1588
+          BandType = 4
+        end
+        object ppLine414: TppLine
+          UserName = 'Line4'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 178330
+          mmTop = 265
+          mmWidth = 1588
+          BandType = 4
+        end
+        object ppLine415: TppLine
+          UserName = 'Line5'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 190766
+          mmTop = 265
+          mmWidth = 1588
+          BandType = 4
+        end
+        object ppLine416: TppLine
+          UserName = 'Line6'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3704
+          mmLeft = 80433
+          mmTop = 0
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBText1084: TppDBText
+          UserName = 'DBText38'
+          DataField = 'REFERENCIA'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 70379
+          mmTop = 529
+          mmWidth = 31485
+          BandType = 4
+        end
+        object ppDBMemo39: TppDBMemo
+          UserName = 'dbtDescricao2'
+          CharWrap = True
+          DataField = 'ITEMDESC'
+          DataPipeline = dbpInvItens
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 8
+          Font.Style = []
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'dbpInvItens'
+          mmHeight = 3440
+          mmLeft = 35190
+          mmTop = 529
+          mmWidth = 34660
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+      end
+      object ppDBMemo40: TppDBMemo
+        UserName = 'Fabricante'
+        KeepTogether = True
+        CharWrap = False
+        DataField = 'FABRICANTE'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ShiftRelativeTo = ppRegion82
+        Stretch = True
+        Transparent = True
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3969
+        mmLeft = 35983
+        mmTop = 4233
+        mmWidth = 44186
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmLeading = 0
+      end
+      object ppSubReport25: TppSubReport
+        UserName = 'subComposicaoItens'
+        ExpandAll = False
+        NewPrintJob = False
+        ShiftRelativeTo = ppSubReport26
+        TraverseAllData = False
+        Visible = False
+        DataPipelineName = 'dbCompItens'
+        mmHeight = 4233
+        mmLeft = 0
+        mmTop = 16140
+        mmWidth = 203200
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport42: TppChildReport
+          AutoStop = False
+          DataPipeline = dbCompItens
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Version = '6.02'
+          mmColumnWidth = 0
+          DataPipelineName = 'dbCompItens'
+          object ppHeaderBand45: TppHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object ppDetailBand72: TppDetailBand
+            PrintHeight = phDynamic
+            mmBottomOffset = 0
+            mmHeight = 3440
+            mmPrintPosition = 0
+            object ppDBText1085: TppDBText
+              UserName = 'dbtQtdeComposicao'
+              DataField = 'QUANTIDADE'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3351
+              mmLeft = 15875
+              mmTop = 0
+              mmWidth = 5821
+              BandType = 4
+            end
+            object ppDBText1086: TppDBText
+              UserName = 'dbtQtdeComposicao1'
+              DataField = 'UNIDADE'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3351
+              mmLeft = 22225
+              mmTop = 0
+              mmWidth = 5821
+              BandType = 4
+            end
+            object ppDBMemo41: TppDBMemo
+              UserName = 'dbtDescComposicao'
+              CharWrap = True
+              DataField = 'DESCRICAO'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Stretch = True
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 28840
+              mmTop = 0
+              mmWidth = 48948
+              BandType = 4
+              mmBottomOffset = 0
+              mmOverFlowOffset = 0
+              mmStopPosition = 0
+              mmLeading = 0
+            end
+            object ppDBText1087: TppDBText
+              UserName = 'DBText304'
+              DataField = 'SERIAL'
+              DataPipeline = dbCompItens
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbCompItens'
+              mmHeight = 3440
+              mmLeft = 78846
+              mmTop = 0
+              mmWidth = 31221
+              BandType = 4
+            end
+          end
+          object ppFooterBand37: TppFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+      object ppDBMemo42: TppDBMemo
+        UserName = 'dbtDescComplementar2'
+        KeepTogether = True
+        CharWrap = False
+        DataField = 'DESCRICAOCOMPLEMENTAR'
+        DataPipeline = dbpInvItens
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ShiftRelativeTo = ppDBMemo40
+        Stretch = True
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'dbpInvItens'
+        mmHeight = 3440
+        mmLeft = 35983
+        mmTop = 8202
+        mmWidth = 44186
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmLeading = 0
+      end
+      object ppSubReport26: TppSubReport
+        UserName = 'subIdentificacoes'
+        ExpandAll = False
+        NewPrintJob = False
+        ShiftRelativeTo = ppDBMemo42
+        TraverseAllData = False
+        DataPipelineName = 'dbSaidasItensIdent'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 11642
+        mmWidth = 203200
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport43: TppChildReport
+          AutoStop = False
+          Columns = 4
+          DataPipeline = dbSaidasItensIdent
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Version = '6.02'
+          mmColumnWidth = 50800
+          DataPipelineName = 'dbSaidasItensIdent'
+          object ppTitleBand14: TppTitleBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object ppColumnHeaderBand19: TppColumnHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object ppDetailBand73: TppDetailBand
+            mmBottomOffset = 0
+            mmHeight = 3704
+            mmPrintPosition = 0
+            object ppDBText1088: TppDBText
+              UserName = 'DBText1'
+              DataField = 'SERIAL'
+              DataPipeline = dbSaidasItensIdent
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Arial'
+              Font.Size = 8
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbSaidasItensIdent'
+              mmHeight = 3175
+              mmLeft = 1852
+              mmTop = 529
+              mmWidth = 46567
+              BandType = 4
+            end
+          end
+          object ppColumnFooterBand19: TppColumnFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+          object ppSummaryBand41: TppSummaryBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+    end
+    object ppFooterBand38: TppFooterBand
+      BeforePrint = rbRodapeBeforePrint
+      mmBottomOffset = 0
+      mmHeight = 16140
+      mmPrintPosition = 0
+      object ppRegion83: TppRegion
+        UserName = 'Region6'
+        Pen.Style = psClear
+        Stretch = True
+        mmHeight = 15875
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 203730
+        BandType = 8
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape157: TppShape
+          UserName = 'Shape6'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 11113
+          mmLeft = 1323
+          mmTop = 3704
+          mmWidth = 200555
+          BandType = 8
+        end
+        object ppDBText1089: TppDBText
+          UserName = 'dfTITMensagem'
+          AutoSize = True
+          DataField = 'TIT2_MENSAGEM'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 4233
+          mmTop = 1852
+          mmWidth = 31073
+          BandType = 8
+        end
+        object ppDBMemo43: TppDBMemo
+          UserName = 'DBMemo1'
+          CharWrap = False
+          DataField = 'OBS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 8202
+          mmLeft = 4233
+          mmTop = 6350
+          mmWidth = 194998
+          BandType = 8
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+      end
+    end
+    object ppSummaryBand42: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 46831
+      mmPrintPosition = 206375
+      object ppSubReport27: TppSubReport
+        UserName = 'rbsrParcelas'
+        ExpandAll = True
+        NewPrintJob = False
+        ParentWidth = False
+        TraverseAllData = False
+        DataPipelineName = 'dbpParcelas'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 794
+        mmWidth = 150548
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppChildReport44: TppChildReport
+          AutoStop = False
+          Columns = 3
+          ColumnPositions.Strings = (
+            '6350'
+            '69850'
+            '133350')
+          DataPipeline = dbpParcelas
+          PrinterSetup.BinName = 'Default'
+          PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.PaperName = 'Carta'
+          PrinterSetup.PrinterName = 'Default'
+          PrinterSetup.mmMarginBottom = 6350
+          PrinterSetup.mmMarginLeft = 6350
+          PrinterSetup.mmMarginRight = 6350
+          PrinterSetup.mmMarginTop = 6350
+          PrinterSetup.mmPaperHeight = 279401
+          PrinterSetup.mmPaperWidth = 215900
+          PrinterSetup.PaperSize = 1
+          Units = utScreenPixels
+          Left = 160
+          Top = 112
+          Version = '6.02'
+          mmColumnWidth = 63500
+          DataPipelineName = 'dbpParcelas'
+          object ppColumnHeaderBand20: TppColumnHeaderBand
+            mmBottomOffset = 0
+            mmHeight = 5292
+            mmPrintPosition = 0
+            object ppShape158: TppShape
+              UserName = 'Shape12'
+              Brush.Color = 16053492
+              Pen.Color = clGray
+              mmHeight = 5292
+              mmLeft = 1323
+              mmTop = 0
+              mmWidth = 61913
+              BandType = 2
+            end
+            object ppLabel590: TppLabel
+              UserName = 'Label3'
+              AutoSize = False
+              Caption = '#'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 2117
+              mmTop = 794
+              mmWidth = 4233
+              BandType = 2
+            end
+            object ppLabel591: TppLabel
+              UserName = 'Label6'
+              AutoSize = False
+              Caption = 'Valor'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 26194
+              mmTop = 794
+              mmWidth = 16140
+              BandType = 2
+            end
+            object ppLine417: TppLine
+              UserName = 'Line19'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5292
+              mmLeft = 7144
+              mmTop = 0
+              mmWidth = 2117
+              BandType = 2
+            end
+            object ppLabel592: TppLabel
+              UserName = 'Label5'
+              AutoSize = False
+              Caption = 'Vencimento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3895
+              mmLeft = 7408
+              mmTop = 794
+              mmWidth = 17992
+              BandType = 2
+            end
+            object ppLine418: TppLine
+              UserName = 'Line20'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 25400
+              mmTop = 265
+              mmWidth = 4763
+              BandType = 2
+            end
+            object ppLabel593: TppLabel
+              UserName = 'Label100'
+              AutoSize = False
+              Caption = 'Forma'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              mmHeight = 3969
+              mmLeft = 44186
+              mmTop = 794
+              mmWidth = 11906
+              BandType = 2
+            end
+            object ppLine419: TppLine
+              UserName = 'Line202'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 42863
+              mmTop = 265
+              mmWidth = 529
+              BandType = 2
+            end
+            object ppLine420: TppLine
+              UserName = 'Line53'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 5027
+              mmLeft = 56621
+              mmTop = 265
+              mmWidth = 529
+              BandType = 2
+            end
+          end
+          object ppDetailBand74: TppDetailBand
+            Save = True
+            mmBottomOffset = 0
+            mmHeight = 4233
+            mmPrintPosition = 0
+            object ppDBText1090: TppDBText
+              UserName = 'DBText24'
+              DataField = 'PARCELA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taCentered
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 1588
+              mmTop = 265
+              mmWidth = 5292
+              BandType = 4
+            end
+            object ppDBText1091: TppDBText
+              UserName = 'DBText26'
+              DataField = 'VENCIMENTO'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 8202
+              mmTop = 265
+              mmWidth = 16933
+              BandType = 4
+            end
+            object ppDBText1092: TppDBText
+              UserName = 'DBText28'
+              DataField = 'VALOR'
+              DataPipeline = dbpParcelas
+              DisplayFormat = '#,###,##0.00'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              TextAlignment = taRightJustified
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 25665
+              mmTop = 265
+              mmWidth = 17198
+              BandType = 4
+            end
+            object ppLine421: TppLine
+              UserName = 'Line201'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 25400
+              mmTop = 0
+              mmWidth = 4763
+              BandType = 4
+            end
+            object ppLine422: TppLine
+              UserName = 'Line22'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 7144
+              mmTop = 0
+              mmWidth = 1852
+              BandType = 4
+            end
+            object ppLine423: TppLine
+              UserName = 'Line2'
+              Pen.Color = clGray
+              Position = lpLeft
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 1323
+              mmTop = 0
+              mmWidth = 1588
+              BandType = 4
+            end
+            object ppLine424: TppLine
+              UserName = 'Line3'
+              Pen.Color = clGray
+              Position = lpRight
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 42863
+              mmTop = 0
+              mmWidth = 529
+              BandType = 4
+            end
+            object ppLine425: TppLine
+              UserName = 'Line4'
+              Pen.Color = clGray
+              Position = lpBottom
+              Weight = 0.75
+              mmHeight = 794
+              mmLeft = 1323
+              mmTop = 3440
+              mmWidth = 55827
+              BandType = 4
+            end
+            object ppImage29: TppImage
+              OnPrint = imgAtrasadoPrint
+              UserName = 'imgAtrasado'
+              MaintainAspectRatio = True
+              Transparent = True
+              Visible = False
+              Picture.Data = {
+                07544269746D6170B2050000424DB20500000000000036040000280000001400
+                00001300000001000800000000007C010000C40E0000C40E0000000100000000
+                000000000000000080000080000000808000800000008000800080800000C0C0
+                C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+                FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+                FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+                96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+                FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+                FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+                96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+                FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+                FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+                96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+                AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+                C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+                31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+                2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+                B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+                00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+                2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+                B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+                00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+                2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+                B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DB900003196
+                00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+                250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+                C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+                31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+                AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+                FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+                96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+                B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+                56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+                A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+                FF00FFFFFFFFFFFFF0F200F2F200F2F0FFFFFFFFFFFFFFFFFFFFEF00EEEBE8E6
+                E6E8EBEE00EFFFFFFFFFFFFFFFEF00EAE6E4E4E4E4E4E4E6EA00EFFFFFFFFFFF
+                EF00EBE5E4E4E4E4E4E4E4E4E5EB00EFFFFFFFEB00EAE500E4E4E4E4E4E4E4E4
+                E4E5EA00FFFFFFF0EEE5E4E600E4E4E4E4E4E600E4E4E6EEF0FFFFF2EBE4E3E3
+                0000EAE6E6EA00E6E4E4E5EBF2FFEB00EEEBE3E3E30000EAEA00EAE4E4E4E4E8
+                00FFF10000EEEBE3EBEE000000EAE6E3E4E4E4E6F2FF00383700EEEBEE003738
+                00E6E2E3E3E4E4E6F2FF0031353700EE0037353100E6E2E2E3E3E4E800FFEE00
+                3135370037353100EEE2E2E2E2E3E5EBF2FFFFEE00313537353100EEE6E2E2E2
+                E2E3E6EEF0FFFFFFEE0031353100EEE6E2E2E2E2E3E5EA00EBFFFFEE00363531
+                353600EEE6E2E2E3E5EB00EFFFFFEE003635310031353600EEE6E5E5EA00EFFF
+                FFFF0036353100EE0031353600E8EBEE00EFFFFFFFFF00383100EEFFFF003138
+                0000F2F0EBFFFFFFFFFFEA0000EEFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF}
+              mmHeight = 4233
+              mmLeft = 57415
+              mmTop = 0
+              mmWidth = 5027
+              BandType = 4
+            end
+            object ppImage30: TppImage
+              OnPrint = imgPagoPrint
+              UserName = 'imgPago'
+              MaintainAspectRatio = True
+              Transparent = True
+              Visible = False
+              Picture.Data = {
+                07544269746D617076050000424D760500000000000036040000280000001400
+                000010000000010008000000000040010000C40E0000C40E0000000100000000
+                000000000000000080000080000000808000800000008000800080800000C0C0
+                C000C0DCC000F0CAA600D4F0FF00B1E2FF008ED4FF006BC6FF0048B8FF0025AA
+                FF0000AAFF000092DC00007AB90000629600004A730000325000D4E3FF00B1C7
+                FF008EABFF006B8FFF004873FF002557FF000055FF000049DC00003DB9000031
+                96000025730000195000D4D4FF00B1B1FF008E8EFF006B6BFF004848FF002525
+                FF000000FE000000DC000000B900000096000000730000005000E3D4FF00C7B1
+                FF00AB8EFF008F6BFF007348FF005725FF005500FF004900DC003D00B9003100
+                96002500730019005000F0D4FF00E2B1FF00D48EFF00C66BFF00B848FF00AA25
+                FF00AA00FF009200DC007A00B900620096004A00730032005000FFD4FF00FFB1
+                FF00FF8EFF00FF6BFF00FF48FF00FF25FF00FE00FE00DC00DC00B900B9009600
+                96007300730050005000FFD4F000FFB1E200FF8ED400FF6BC600FF48B800FF25
+                AA00FF00AA00DC009200B9007A009600620073004A0050003200FFD4E300FFB1
+                C700FF8EAB00FF6B8F00FF487300FF255700FF005500DC004900B9003D009600
+                31007300250050001900FFD4D400FFB1B100FF8E8E00FF6B6B00FF484800FF25
+                2500FE000000DC000000B9000000960000007300000050000000FFE3D400FFC7
+                B100FFAB8E00FF8F6B00FF734800FF572500FF550000DC490000B93D00009631
+                00007325000050190000FFF0D400FFE2B100FFD48E00FFC66B00FFB84800FFAA
+                2500FFAA0000DC920000B97A000096620000734A000050320000FFFFD400FFFF
+                B100FFFF8E00FFFF6B00FFFF4800FFFF2500FEFE0000DCDC0000B9B900009696
+                00007373000050500000F0FFD400E2FFB100D4FF8E00C6FF6B00B8FF4800AAFF
+                2500AAFF000092DC00007AB90000629600004A73000032500000E3FFD400C7FF
+                B100ABFF8E008FFF6B0073FF480057FF250055FF000049DC00003DB900003196
+                00002573000019500000D4FFD400B1FFB1008EFF8E006BFF6B0048FF480025FF
+                250000FE000000DC000000B90000009600000073000000500000D4FFE300B1FF
+                C7008EFFAB006BFF8F0048FF730025FF570000FF550000DC490000B93D000096
+                31000073250000501900D4FFF000B1FFE2008EFFD4006BFFC60048FFB80025FF
+                AA0000FFAA0000DC920000B97A000096620000734A0000503200D4FFFF00B1FF
+                FF008EFFFF006BFFFF0048FFFF0025FFFF0000FEFE0000DCDC0000B9B9000096
+                96000073730000505000F2F2F200E6E6E600DADADA00CECECE00C2C2C200B6B6
+                B600AAAAAA009E9E9E0092929200868686007A7A7A006E6E6E00626262005656
+                56004A4A4A003E3E3E0032323200262626001A1A1A000E0E0E00F0FBFF00A4A0
+                A000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+                FF00FFFFFFFFFFFFFFEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000F0
+                FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000B0B000F0FFFFFFFFFFFFFFFFFFFFFF
+                FFFFF000B0AFAFB000F0FFFFFFFFFFFFFFFFFFFFFFF000B0AFAFAFAFB000F0FF
+                FFFFFFFFFFFFFFFFF000B0AFAFBABAAFAFB000F0FFFFFFFFFFFFFFF000B0AFAF
+                BAADADBAAFAFB000F0FFFFFFFFFFEE00B0AFAFBAADD5D5ADBAAFAFB000F0FFFF
+                FFFF00B0AFAFBAAD00F00000ADBAAFAFB000F0FFFFFFF000BABAAD00F0FFFFF0
+                00ADBAAFAFB000F0FFFFFFF000AB00F0FFFFFFFFF000ADBAAFAFB000F0FFFFFF
+                F000EEFFFFFFFFFFFFF000ADBAAFAFB000EEFFFFFFFFFFFFFFFFFFFFFFFFF000
+                ADBAAFAFB000FFFFFFFFFFFFFFFFFFFFFFFFFFF000ADBAB000F0FFFFFFFFFFFF
+                FFFFFFFFFFFFFFFFF000AF00F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEE00F0
+                FFFF}
+              mmHeight = 3704
+              mmLeft = 57415
+              mmTop = 265
+              mmWidth = 4763
+              BandType = 4
+            end
+            object ppDBText1093: TppDBText
+              UserName = 'DBText345'
+              DataField = 'SIGLA'
+              DataPipeline = dbpParcelas
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Name = 'Tahoma'
+              Font.Size = 9
+              Font.Style = []
+              Transparent = True
+              DataPipelineName = 'dbpParcelas'
+              mmHeight = 3704
+              mmLeft = 44186
+              mmTop = 265
+              mmWidth = 11906
+              BandType = 4
+            end
+            object ppLine426: TppLine
+              UserName = 'Line51'
+              Pen.Color = clGray
+              Position = lpRight
+              Weight = 0.75
+              mmHeight = 4233
+              mmLeft = 56621
+              mmTop = 0
+              mmWidth = 529
+              BandType = 4
+            end
+          end
+          object ppColumnFooterBand20: TppColumnFooterBand
+            mmBottomOffset = 0
+            mmHeight = 0
+            mmPrintPosition = 0
+          end
+        end
+      end
+      object ppRegion84: TppRegion
+        UserName = 'Region9'
+        Pen.Color = clGray
+        Stretch = True
+        mmHeight = 5821
+        mmLeft = 151607
+        mmTop = 0
+        mmWidth = 50536
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppDBText1094: TppDBText
+          UserName = 'dfTITTotal1'
+          DataField = 'TIT2_DESCONTOS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 152136
+          mmTop = 794
+          mmWidth = 23019
+          BandType = 7
+        end
+        object ppLine427: TppLine
+          UserName = 'Line14'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 5027
+          mmLeft = 175948
+          mmTop = 265
+          mmWidth = 4233
+          BandType = 7
+        end
+        object ppDBText1095: TppDBText
+          UserName = 'DBText19'
+          DataField = 'DESCONTO'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 176477
+          mmTop = 794
+          mmWidth = 24342
+          BandType = 7
+        end
+      end
+      object ppRegion85: TppRegion
+        UserName = 'Region10'
+        Pen.Color = clGray
+        ShiftRelativeTo = ppRegion84
+        Stretch = True
+        mmHeight = 5821
+        mmLeft = 151607
+        mmTop = 4763
+        mmWidth = 50536
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppDBText1096: TppDBText
+          UserName = 'DBText15'
+          DataField = 'TIT2_FRETE'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 152136
+          mmTop = 5557
+          mmWidth = 23019
+          BandType = 7
+        end
+        object ppLine428: TppLine
+          UserName = 'Line23'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 5027
+          mmLeft = 175948
+          mmTop = 5028
+          mmWidth = 4233
+          BandType = 7
+        end
+        object ppDBText1097: TppDBText
+          UserName = 'DBText16'
+          DataField = 'FRETE'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 176742
+          mmTop = 5557
+          mmWidth = 24077
+          BandType = 7
+        end
+      end
+      object ppRegion86: TppRegion
+        UserName = 'Region11'
+        Pen.Color = clGray
+        ShiftRelativeTo = ppRegion85
+        Stretch = True
+        mmHeight = 5821
+        mmLeft = 151607
+        mmTop = 9790
+        mmWidth = 50536
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppDBText1098: TppDBText
+          UserName = 'DBText17'
+          DataField = 'TIT2_JUROS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 152136
+          mmTop = 10584
+          mmWidth = 23019
+          BandType = 7
+        end
+        object ppLine429: TppLine
+          UserName = 'Line27'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 5027
+          mmLeft = 175948
+          mmTop = 10055
+          mmWidth = 1852
+          BandType = 7
+        end
+        object ppDBText1099: TppDBText
+          UserName = 'DBText18'
+          DataField = 'JUROS'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 176742
+          mmTop = 10584
+          mmWidth = 24077
+          BandType = 7
+        end
+      end
+      object ppRegion87: TppRegion
+        UserName = 'Region101'
+        Pen.Color = clGray
+        ShiftRelativeTo = ppRegion86
+        Stretch = True
+        mmHeight = 5821
+        mmLeft = 151607
+        mmTop = 14817
+        mmWidth = 50536
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppDBText1100: TppDBText
+          UserName = 'DBText20'
+          DataField = 'TIT2_DESPESAS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 152136
+          mmTop = 15611
+          mmWidth = 23019
+          BandType = 7
+        end
+        object ppLine430: TppLine
+          UserName = 'Line31'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 5027
+          mmLeft = 175948
+          mmTop = 15082
+          mmWidth = 1588
+          BandType = 7
+        end
+        object ppDBText1101: TppDBText
+          UserName = 'DBText21'
+          DataField = 'OUTRASDESPESAS'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#,###,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 9
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 3881
+          mmLeft = 176742
+          mmTop = 15611
+          mmWidth = 24077
+          BandType = 7
+        end
+      end
+      object ppRegion88: TppRegion
+        UserName = 'Region13'
+        Brush.Style = bsClear
+        Pen.Style = psClear
+        Transparent = True
+        mmHeight = 8202
+        mmLeft = 150813
+        mmTop = 23283
+        mmWidth = 51858
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape159: TppShape
+          UserName = 'Shape16'
+          Brush.Color = clGray
+          Pen.Color = clGray
+          Pen.Style = psClear
+          Shape = stRoundRect
+          mmHeight = 6350
+          mmLeft = 152400
+          mmTop = 24871
+          mmWidth = 49742
+          BandType = 7
+        end
+        object ppShape160: TppShape
+          UserName = 'Shape18'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 6085
+          mmLeft = 151607
+          mmTop = 24341
+          mmWidth = 49742
+          BandType = 7
+        end
+        object ppDBText1102: TppDBText
+          UserName = 'dfTITTotal'
+          DataField = 'TIT2_TOTALFINAL'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 153988
+          mmTop = 25135
+          mmWidth = 21960
+          BandType = 7
+        end
+        object ppDBText1103: TppDBText
+          UserName = 'DBText9'
+          DataField = 'TOTAL'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#0.00,'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 176478
+          mmTop = 25135
+          mmWidth = 24077
+          BandType = 7
+        end
+      end
+      object ppRegion89: TppRegion
+        OnPrint = rgBalancePrint
+        UserName = 'Region14'
+        Brush.Style = bsClear
+        Pen.Style = psClear
+        Transparent = True
+        mmHeight = 7938
+        mmLeft = 150548
+        mmTop = 38894
+        mmWidth = 52123
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape161: TppShape
+          UserName = 'Shape8'
+          Brush.Color = clGray
+          Pen.Color = clGray
+          Pen.Style = psClear
+          Shape = stRoundRect
+          mmHeight = 6350
+          mmLeft = 152400
+          mmTop = 40217
+          mmWidth = 49742
+          BandType = 7
+        end
+        object ppShape162: TppShape
+          UserName = 'Shape10'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 6085
+          mmLeft = 151606
+          mmTop = 39688
+          mmWidth = 49477
+          BandType = 7
+        end
+        object ppDBText1104: TppDBText
+          UserName = 'DBText8'
+          DataField = 'Balance'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#0.00,'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 176477
+          mmTop = 40481
+          mmWidth = 24077
+          BandType = 7
+        end
+        object ppDBText1105: TppDBText
+          UserName = 'DBText403'
+          DataField = 'TIT2_BALANCE'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 153723
+          mmTop = 40481
+          mmWidth = 21960
+          BandType = 7
+        end
+      end
+      object ppRegion90: TppRegion
+        OnPrint = rgBalancePrint
+        UserName = 'Region15'
+        Brush.Style = bsClear
+        Caption = 'Region15'
+        Pen.Style = psClear
+        Transparent = True
+        mmHeight = 7938
+        mmLeft = 150813
+        mmTop = 30956
+        mmWidth = 52123
+        BandType = 7
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppShape163: TppShape
+          UserName = 'Shape14'
+          Brush.Color = clGray
+          Pen.Color = clGray
+          Pen.Style = psClear
+          Shape = stRoundRect
+          mmHeight = 6350
+          mmLeft = 152400
+          mmTop = 32279
+          mmWidth = 49742
+          BandType = 7
+        end
+        object ppShape164: TppShape
+          UserName = 'Shape102'
+          Pen.Color = clGray
+          Shape = stRoundRect
+          mmHeight = 6085
+          mmLeft = 151607
+          mmTop = 31750
+          mmWidth = 49477
+          BandType = 7
+        end
+        object ppDBText1106: TppDBText
+          UserName = 'DBText7'
+          DataField = 'TOTALPGTOS'
+          DataPipeline = dbpInvoice
+          DisplayFormat = '#0.00,'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 176478
+          mmTop = 32543
+          mmWidth = 24077
+          BandType = 7
+        end
+        object ppDBText1107: TppDBText
+          UserName = 'DBText138'
+          DataField = 'TIT2_PGTOS'
+          DataPipeline = dbpInvoice
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 10
+          Font.Style = [fsBold]
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'dbpInvoice'
+          mmHeight = 4233
+          mmLeft = 153459
+          mmTop = 32808
+          mmWidth = 22225
+          BandType = 7
+        end
+      end
+    end
+    object ppPageStyle5: TppPageStyle
+      EndPage = 0
+      SinglePage = 0
+      StartPage = 0
+      mmBottomOffset = 0
+      mmHeight = 199232
+      mmPrintPosition = 0
+      object ppShape165: TppShape
+        OnPrint = dbtTotalItemPrint
+        UserName = 'shpSubtotal2'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 5821
+        mmLeft = 170657
+        mmTop = 188648
+        mmWidth = 31221
+        BandType = 9
+      end
+      object ppShape166: TppShape
+        Tag = 21
+        UserName = 'shpSubtotal1'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 87842
+        mmTop = 82815
+        mmWidth = 23548
+        BandType = 9
+      end
+      object ppShape167: TppShape
+        Tag = 21
+        UserName = 'shpColuna1'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 152136
+        mmTop = 82815
+        mmWidth = 12965
+        BandType = 9
+      end
+      object ppShape168: TppShape
+        Tag = 21
+        UserName = 'shpColuna2'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 164836
+        mmTop = 82815
+        mmWidth = 12700
+        BandType = 9
+      end
+      object ppShape169: TppShape
+        Tag = 21
+        UserName = 'shpColuna4'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 189177
+        mmTop = 82815
+        mmWidth = 12700
+        BandType = 9
+      end
+      object ppShape170: TppShape
+        Tag = 21
+        UserName = 'shpColuna3'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 177271
+        mmTop = 82815
+        mmWidth = 12171
+        BandType = 9
+      end
+      object ppShape171: TppShape
+        Tag = 21
+        UserName = 'Shape101'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 111125
+        mmTop = 82815
+        mmWidth = 5556
+        BandType = 9
+      end
+      object ppShape172: TppShape
+        Tag = 21
+        UserName = 'shpSubtotal'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        Visible = False
+        mmHeight = 105304
+        mmLeft = 138113
+        mmTop = 82815
+        mmWidth = 14288
+        BandType = 9
+      end
+      object ppShape173: TppShape
+        Tag = 21
+        UserName = 'shpQuantidade'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 116417
+        mmTop = 82815
+        mmWidth = 10319
+        BandType = 9
+      end
+      object ppShape174: TppShape
+        Tag = 21
+        UserName = 'shpFuncionario'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 1588
+        mmTop = 82815
+        mmWidth = 22225
+        BandType = 9
+      end
+      object ppShape175: TppShape
+        Tag = 21
+        UserName = 'shpCodigo'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 23548
+        mmTop = 82815
+        mmWidth = 9525
+        BandType = 9
+      end
+      object ppDBText1108: TppDBText
+        Tag = 20
+        UserName = 'lbCodigo'
+        DataField = 'TIT2_CODIGO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 23548
+        mmTop = 83608
+        mmWidth = 9525
+        BandType = 9
+      end
+      object ppDBText1109: TppDBText
+        Tag = 20
+        UserName = 'lbFuncionario'
+        DataField = 'TIT2_FUNCIONARIO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 1588
+        mmTop = 83608
+        mmWidth = 22225
+        BandType = 9
+      end
+      object ppDBText1110: TppDBText
+        Tag = 20
+        UserName = 'lbQuantidade'
+        DataField = 'TIT2_QUANTIDADE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 116417
+        mmTop = 83608
+        mmWidth = 10319
+        BandType = 9
+      end
+      object ppDBText1111: TppDBText
+        Tag = 20
+        UserName = 'lbSubTotal'
+        DataField = 'TIT2_SUBTOTAL'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 138113
+        mmTop = 83608
+        mmWidth = 14288
+        BandType = 9
+      end
+      object ppDBText1112: TppDBText
+        Tag = 20
+        UserName = 'lbColuna1'
+        DataField = 'TIT2_COLUNA1'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 152136
+        mmTop = 83608
+        mmWidth = 12965
+        BandType = 9
+      end
+      object ppShape176: TppShape
+        UserName = 'Shape5'
+        Pen.Color = clGray
+        Shape = stRoundRect
+        mmHeight = 7938
+        mmLeft = 1852
+        mmTop = 190500
+        mmWidth = 97631
+        BandType = 9
+      end
+      object ppDBText1113: TppDBText
+        UserName = 'DBText3'
+        DataField = 'PLANOPAG'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 4498
+        mmLeft = 3704
+        mmTop = 192352
+        mmWidth = 93663
+        BandType = 9
+      end
+      object ppDBText1114: TppDBText
+        UserName = 'dfTITTermo'
+        AutoSize = True
+        DataField = 'TIT2_TERMOS'
+        DataPipeline = dbpInvoice
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3810
+        mmLeft = 4233
+        mmTop = 188384
+        mmWidth = 22987
+        BandType = 9
+      end
+      object ppLine431: TppLine
+        Tag = 20
+        UserName = 'Line1'
+        Pen.Color = clGray
+        Weight = 0.75
+        mmHeight = 1323
+        mmLeft = 1588
+        mmTop = 88371
+        mmWidth = 200290
+        BandType = 9
+      end
+      object ppShape177: TppShape
+        Tag = 21
+        UserName = 'shpDescricao'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        mmHeight = 105304
+        mmLeft = 32808
+        mmTop = 82815
+        mmWidth = 55298
+        BandType = 9
+      end
+      object ppDBText1115: TppDBText
+        Tag = 20
+        UserName = 'lbFuncionario1'
+        DataField = 'TIT2_DESCRICAO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3969
+        mmLeft = 33867
+        mmTop = 83608
+        mmWidth = 54504
+        BandType = 9
+      end
+      object ppDBText1116: TppDBText
+        Tag = 20
+        UserName = 'dfTITQtd1'
+        DataField = 'TIT2_UNIDADE'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 111125
+        mmTop = 83608
+        mmWidth = 5292
+        BandType = 9
+      end
+      object ppShape178: TppShape
+        Tag = 21
+        UserName = 'shpPreco'
+        Brush.Style = bsClear
+        Pen.Color = clGray
+        Visible = False
+        mmHeight = 105304
+        mmLeft = 126471
+        mmTop = 82815
+        mmWidth = 11906
+        BandType = 9
+      end
+      object ppDBText1117: TppDBText
+        Tag = 20
+        UserName = 'dfTITQtd2'
+        DataField = 'TIT2_PRECO'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 126471
+        mmTop = 83608
+        mmWidth = 11906
+        BandType = 9
+      end
+      object ppDBText1118: TppDBText
+        Tag = 20
+        UserName = 'dfTITSubTotal1'
+        DataField = 'TIT2_COLUNA2'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 164836
+        mmTop = 83608
+        mmWidth = 12700
+        BandType = 9
+      end
+      object ppDBText1119: TppDBText
+        Tag = 20
+        UserName = 'lbColuna3'
+        DataField = 'TIT2_COLUNA3'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 177271
+        mmTop = 83608
+        mmWidth = 12171
+        BandType = 9
+      end
+      object ppDBText1120: TppDBText
+        Tag = 20
+        UserName = 'lbColuna4'
+        DataField = 'TIT2_COLUNA4'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 189177
+        mmTop = 83608
+        mmWidth = 12700
+        BandType = 9
+      end
+      object ppDBText1121: TppDBText
+        Tag = 20
+        UserName = 'lbQuantidade2'
+        DataField = 'TIT2_REFERENCIA'
+        DataPipeline = dbpInvoice
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3881
+        mmLeft = 88900
+        mmTop = 83608
+        mmWidth = 21960
+        BandType = 9
+      end
+      object ppDBText1122: TppDBText
+        UserName = 'DBText401'
+        DataField = 'TOTALITENS'
+        DataPipeline = dbpInvoice
+        DisplayFormat = '#,###,##0.00'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbpInvoice'
+        mmHeight = 3969
+        mmLeft = 171715
+        mmTop = 189442
+        mmWidth = 29369
+        BandType = 9
       end
     end
   end

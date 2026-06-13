@@ -7,8 +7,8 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 594
-    Height = 377
+    Left = 602
+    Height = 388
     inherited btComando1: TTS_SpeedButton
       Caption = '&Imprimir'
       Visible = True
@@ -18,24 +18,24 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
       Caption = ''
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 343
+      Top = 354
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 594
-    Height = 377
+    Width = 602
+    Height = 388
     inherited Grid: TTS_QDBGrid
-      Width = 592
-      Height = 375
+      Width = 600
+      Height = 386
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 592
-      Height = 375
+      Width = 600
+      Height = 386
     end
     inherited sbDados: TTS_Panel
-      Width = 592
-      Height = 375
+      Width = 600
+      Height = 386
       Color = 14019327
       object TS_Label2: TTS_Label
         Left = 23
@@ -897,11 +897,11 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 592
+      Width = 600
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 709
+    Width = 717
     Gradient.ColorStart = 9027548
     inherited lbCaption: TdxfLabel
       Width = 328
@@ -913,20 +913,20 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
     end
   end
   inherited DlgMsg: TDlgMsg
-    Left = 455
-    Top = 11
+    Left = 495
+    Top = 59
   end
   inherited LastDataObject: TTS_LastDataObject
-    Left = 387
-    Top = 65517
+    Left = 395
+    Top = 53
   end
   inherited ppmPadrao: TTS_PopupMenu
-    Left = 536
-    Top = 65534
+    Left = 464
+    Top = 54
   end
   inherited ImgPadrao: TImageList
-    Left = 418
-    Top = 65527
+    Left = 402
+    Top = 143
   end
   inherited FormComponent: TFormComponent
     BeforeClearParams = FormComponentBeforeClearParams
@@ -938,24 +938,24 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
     Caption = 'Tranfer'#234'ncias entre Almoxarifados'
     OnGravou = FormComponentGravou
     SalvarUnicoRegistro = True
-    Left = 471
-    Top = 57
+    Left = 503
+    Top = 89
   end
   inherited ppmHelp: TTS_PopupMenu
-    Left = 608
-    Top = 13
+    Left = 320
+    Top = 53
   end
   inherited ppmGridPadrao: TTS_PopupMenu
-    Left = 587
-    Top = 4
+    Left = 499
+    Top = 140
   end
   inherited Beep: TBTBeeper
-    Left = 300
-    Top = 65525
+    Left = 356
+    Top = 45
   end
   inherited FormStorage: TFormStorage
-    Left = 499
-    Top = 12
+    Left = 547
+    Top = 52
   end
   inherited ppmIR_Para: TTS_PopupMenu
     Left = 481
@@ -966,7 +966,7 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
     DataPipeline = ppDBItens
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -974,7 +974,7 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 9
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 262
     Top = 57
@@ -1373,7 +1373,7 @@ inherited FrmTransferenciasAlmox: TFrmTransferenciasAlmox
   object ppDBTransferencia: TppDBPipeline
     DataSource = DMTransferenciasAlmox.C_TabelaDS
     UserName = 'DBTransferencia'
-    Left = 419
-    Top = 52
+    Left = 371
+    Top = 76
   end
 end

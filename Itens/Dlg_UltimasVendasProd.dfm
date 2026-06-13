@@ -1,6 +1,6 @@
 inherited DlgUltimasVendasProd: TDlgUltimasVendasProd
-  Left = 5
-  Top = 111
+  Left = 241
+  Top = 141
   HelpContext = 0
   HorzScrollBar.Range = 0
   VertScrollBar.Range = 0
@@ -456,6 +456,7 @@ inherited DlgUltimasVendasProd: TDlgUltimasVendasProd
       
         'where si.item = :item and s.tipopadrao in (1,2) and s.situacao =' +
         ' '#39'N'#39
+      'and s.baixaestoque = '#39'S'#39
       'order by s.saida desc')
     Left = 85
     Top = 150
@@ -1239,7 +1240,7 @@ inherited DlgUltimasVendasProd: TDlgUltimasVendasProd
   end
   object Q_VendasDS: TDataSource
     DataSet = C_Vendas
-    Left = 114
+    Left = 146
     Top = 176
   end
 end

@@ -1,16 +1,16 @@
 inherited FrmFormasPagamento: TFrmFormasPagamento
-  Left = 442
-  Top = 158
+  Left = 402
+  Top = 132
   Width = 584
-  Height = 420
+  Height = 465
   Caption = 'Financeiro'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 453
-    Height = 339
+    Left = 461
+    Height = 394
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 305
+      Top = 360
     end
     inherited pnAvancaRecua: TTS_Panel
       inherited btUltimoReg: TTS_SpeedButton
@@ -19,11 +19,11 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 453
-    Height = 339
+    Width = 461
+    Height = 394
     inherited Grid: TTS_QDBGrid
-      Width = 451
-      Height = 337
+      Width = 459
+      Height = 392
       KeyField = 'FORMAPAGAMENTO'
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'DESCRICAO'
@@ -222,16 +222,16 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 451
-      Height = 337
+      Width = 459
+      Height = 392
     end
     inherited sbDados: TTS_Panel
-      Width = 451
-      Height = 337
+      Width = 459
+      Height = 392
       Color = 15724519
       object TS_Shape2: TTS_Shape
         Left = 8
-        Top = 88
+        Top = 85
         Width = 420
         Height = 3
         Brush.Color = 14078909
@@ -240,7 +240,7 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object Label1: TTS_Label
         Left = 73
-        Top = 35
+        Top = 28
         Width = 71
         Height = 13
         Caption = 'Descri'#231#227'o:'
@@ -250,7 +250,7 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object Label2: TTS_Label
         Left = 118
-        Top = 56
+        Top = 49
         Width = 26
         Height = 13
         Caption = 'Sigla:'
@@ -260,7 +260,7 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object lbTipoFormaPagamento: TTS_Label
         Left = 8
-        Top = 14
+        Top = 7
         Width = 135
         Height = 13
         Caption = 'Tipo Forma Pagamento:'
@@ -276,7 +276,7 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object TS_Shape1: TTS_Shape
         Left = 16
-        Top = 80
+        Top = 78
         Width = 117
         Height = 19
         Brush.Color = 14078909
@@ -286,7 +286,7 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object TS_Label7: TTS_Label
         Left = 12
-        Top = 82
+        Top = 79
         Width = 113
         Caption = 'Dados Espec'#237'ficos'
         Font.Charset = ANSI_CHARSET
@@ -298,10 +298,20 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
         FormatoTabela = False
         LinkToResult = 0
       end
+      object TS_Label17: TTS_Label
+        Left = 194
+        Top = 49
+        Width = 91
+        Height = 13
+        Caption = 'Chave Pgto NF-e :'
+        FocusControl = dfSigla
+        FormatoTabela = False
+        LinkToResult = 0
+      end
       object dfDescricao: TTS_DBEdit
         Left = 146
-        Top = 33
-        Width = 211
+        Top = 26
+        Width = 287
         TabOrder = 1
         DataField = 'Descricao'
         DataSource = DMFormasPagamento.C_TabelaDS
@@ -311,8 +321,8 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object dfSigla: TTS_DBEdit
         Left = 146
-        Top = 54
-        Width = 48
+        Top = 47
+        Width = 39
         TabOrder = 2
         DataField = 'Sigla'
         DataSource = DMFormasPagamento.C_TabelaDS
@@ -322,8 +332,8 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
       end
       object cmbTipoFormaPagamento: TTS_DBLookupComboBox
         Left = 146
-        Top = 12
-        Width = 211
+        Top = 5
+        Width = 287
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -348,12 +358,12 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
         Top = 104
         Width = 457
         Height = 231
-        ActivePage = tsCartao
+        ActivePage = tsChequeEletronico
         OwnerDraw = True
         Style = tsButtons
         TabOrder = 3
         TabStop = False
-        ActivePageIndex = 0
+        ActivePageIndex = 3
         Transparent = False
         TabColor = clBlack
         TabColorActive = clBlack
@@ -1644,13 +1654,36 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
           end
         end
       end
+      object TS_DBLookupComboBox1: TTS_DBLookupComboBox
+        Left = 288
+        Top = 49
+        Width = 146
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 4
+        DataField = 'lkTipoPagamentoNFE'
+        DataSource = DMFormasPagamento.C_TabelaDS
+        StyleController = DMProjeto.esFinanceiro
+        OnChange = cmbTipoFormaPagamentoChange
+        DropDownRows = 15
+        ClearKey = 32
+        ListFieldName = 'DESCRICAO'
+        KeyFieldName = 'ESPECIE'
+        ListSource = DMFormasPagamento.C_EspeciesDS
+        LookupKeyValue = Null
+        Height = 19
+      end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 451
+      Width = 459
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 568
+    Width = 576
     Gradient.ColorStart = 13223591
     inherited lbCaption: TdxfLabel
       Width = 212
@@ -1659,20 +1692,20 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
     end
   end
   inherited DlgMsg: TDlgMsg
-    Left = 411
-    Top = 86
+    Left = 483
+    Top = 6
   end
   inherited LastDataObject: TTS_LastDataObject
-    Left = 256
-    Top = 95
+    Left = 128
+    Top = 15
   end
   inherited ppmPadrao: TTS_PopupMenu
-    Left = 365
-    Top = 36
+    Left = 341
+    Top = 4
   end
   inherited ImgPadrao: TImageList
-    Left = 181
-    Top = 77
+    Left = 61
+    Top = 21
   end
   inherited FormComponent: TFormComponent
     BeforeClearParams = FormComponentBeforeClearParams
@@ -1697,23 +1730,31 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
     OnEstado_Navegacao = FormComponentEstado_Navegacao
     OnRefresh = FormComponentRefresh
     FirstEditField = dfDescricao
-    Left = 224
-    Top = 67
+    Left = 96
+    Top = 11
   end
   inherited ppmHelp: TTS_PopupMenu
-    Left = 290
-    Top = 60
+    Left = 218
+    Top = 4
     inherited Ajuda1: TMenuItem
       HelpContext = 478
     end
   end
   inherited ppmGridPadrao: TTS_PopupMenu
-    Left = 369
-    Top = 131
+    Left = 465
+    Top = 115
+  end
+  inherited Beep: TBTBeeper
+    Left = 24
+    Top = 16
+  end
+  inherited FormStorage: TFormStorage
+    Left = 80
+    Top = 8
   end
   inherited ppmIR_Para: TTS_PopupMenu
-    Left = 326
-    Top = 104
+    Left = 454
+    Top = 8
   end
   object dlgFoto: TOpenPictureDialog
     Filter = 
@@ -1727,8 +1768,8 @@ inherited FrmFormasPagamento: TFrmFormasPagamento
   end
   object ppmFoto: TTS_PopupMenu
     TrackButton = tbLeftButton
-    Left = 272
-    Top = 119
+    Left = 280
+    Top = 15
     object CarregarFoto: TMenuItem
       Caption = 'Carregar Foto...'
       ShortCut = 16454

@@ -1,6 +1,6 @@
 inherited DMAjustesItens: TDMAjustesItens
-  Left = 374
-  Top = 102
+  Left = 792
+  Top = 194
   Height = 365
   Width = 412
   inherited SaveDialog: TSaveDialog
@@ -19,7 +19,8 @@ inherited DMAjustesItens: TDMAjustesItens
         'cia, i.Codigo,'
       
         'ai.Almoxarifado, ai.Unidade as UnidadeOld, i.FatorUndVenda,ai.Em' +
-        'presa, i.ultimofornecedor, i.fornecpreferencia'
+        'presa, i.ultimofornecedor, i.fornecpreferencia, AI.USUARIO, ai.l' +
+        'oginname'
       'from AjustesItens ai inner join Itens i on ai.item = i.item')
     Left = 31
     Top = 1
@@ -55,20 +56,24 @@ inherited DMAjustesItens: TDMAjustesItens
       '  VALIDADE = :VALIDADE,'
       '  UNIDADE = :UNIDADE,'
       '  FATOR = :FATOR,'
-      '  ALMOXARIFADO = :ALMOXARIFADO'
+      '  ALMOXARIFADO = :ALMOXARIFADO, '
+      ' USUARIO = :USUARIO, '
+      ' LOGINNAME = :LOGINNAME'
       'where'
       '  AJUSTEITEM = :OLD_IDMESTRE')
     InsertSQL.Strings = (
       'insert into AjustesItens'
       '  (AJUSTEITEM, ITEM, NUMERO, DATA, QUANTIDADE, CUSTO, CONTA, '
-      'MOTIVO, NUMEROLOTE, VALIDADE, UNIDADE, FATOR, ALMOXARIFADO)'
+      'MOTIVO, NUMEROLOTE, VALIDADE, UNIDADE, FATOR, ALMOXARIFADO, '
+      'USUARIO, LOGINNAME)'
       'values'
       
         '  (:IDMESTRE, :ITEM, :NUMERO, :DATA, :QUANTIDADE, :CUSTO, :CONTA' +
         ', '
       
         ':MOTIVO, :NUMEROLOTE, :VALIDADE, :UNIDADE, :FATOR, :ALMOXARIFADO' +
-        ')')
+        ', '
+      ':USUARIO, :LOGINNAME)')
     DeleteSQL.Strings = (
       'delete from AjustesItens'
       'where'
@@ -99,20 +104,25 @@ inherited DMAjustesItens: TDMAjustesItens
     Top = 159
     object C_TabelaCONTA: TIntegerField
       FieldName = 'CONTA'
+      Origin = 'AJUSTESITENS.CONTA'
     end
     object C_TabelaIDMESTRE: TIntegerField
       FieldName = 'IDMESTRE'
+      Origin = 'AJUSTESITENS.IDMESTRE'
       Required = True
     end
     object C_TabelaDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
+      Origin = 'ITENS.DESCRICAO'
       Size = 50
     end
     object C_TabelaDATA: TDateField
       FieldName = 'DATA'
+      Origin = 'AJUSTESITENS.DATA'
     end
     object C_TabelaQUANTIDADE: TBCDField
       FieldName = 'QUANTIDADE'
+      Origin = 'AJUSTESITENS.QUANTIDADE'
       OnChange = C_TabelaQUANTIDADEChange
       OnSetText = C_TabelaQUANTIDADESetText
       Precision = 18
@@ -120,38 +130,47 @@ inherited DMAjustesItens: TDMAjustesItens
     end
     object C_TabelaCUSTO: TFloatField
       FieldName = 'CUSTO'
+      Origin = 'AJUSTESITENS.CUSTO'
     end
     object C_TabelaITEM: TIntegerField
       FieldName = 'ITEM'
+      Origin = 'AJUSTESITENS.ITEM'
       OnChange = C_TabelaITEMChange
     end
     object C_TabelaMOTIVO: TStringField
       FieldName = 'MOTIVO'
+      Origin = 'AJUSTESITENS.MOTIVO'
       Size = 150
     end
     object C_TabelaNUMERO: TStringField
       FieldName = 'NUMERO'
+      Origin = 'AJUSTESITENS.NUMERO'
       Size = 12
     end
     object C_TabelaNUMEROLOTE: TStringField
       FieldName = 'NUMEROLOTE'
+      Origin = 'AJUSTESITENS.NUMEROLOTE'
       Size = 12
     end
     object C_TabelaVALIDADE: TDateField
       FieldName = 'VALIDADE'
+      Origin = 'AJUSTESITENS.VALIDADE'
     end
     object C_TabelaCONTROLEVALIDADE: TStringField
       FieldName = 'CONTROLEVALIDADE'
+      Origin = 'ITENS.CONTROLEVALIDADE'
       Size = 1
     end
     object C_TabelaUNIDADE: TStringField
       FieldName = 'UNIDADE'
+      Origin = 'AJUSTESITENS.UNIDADE'
       OnChange = C_TabelaUNIDADEChange
       OnValidate = C_TabelaUNIDADEValidate
       Size = 6
     end
     object C_TabelaFATOR: TFloatField
       FieldName = 'FATOR'
+      Origin = 'AJUSTESITENS.FATOR'
     end
     object C_TabelalkUnidade: TStringField
       FieldKind = fkLookup
@@ -203,16 +222,20 @@ inherited DMAjustesItens: TDMAjustesItens
     end
     object C_TabelaCODIGO: TStringField
       FieldName = 'CODIGO'
+      Origin = 'ITENS.CODIGO'
       Size = 13
     end
     object C_TabelaREFERENCIA: TStringField
       FieldName = 'REFERENCIA'
+      Origin = 'ITENS.REFERENCIA'
     end
     object C_TabelaFATORUNDVENDA: TFloatField
       FieldName = 'FATORUNDVENDA'
+      Origin = 'ITENS.FATORUNDVENDA'
     end
     object C_TabelaALMOXARIFADO: TIntegerField
       FieldName = 'ALMOXARIFADO'
+      Origin = 'AJUSTESITENS.ALMOXARIFADO'
     end
     object C_TabelalkAlmoxarifado: TStringField
       FieldKind = fkLookup
@@ -226,6 +249,7 @@ inherited DMAjustesItens: TDMAjustesItens
     end
     object C_TabelaUnidadeOld: TStringField
       FieldName = 'UnidadeOld'
+      Origin = 'AJUSTESITENS.UNIDADEOLD'
       Size = 6
     end
     object C_TabelalkUnidadeInteira: TStringField
@@ -239,15 +263,24 @@ inherited DMAjustesItens: TDMAjustesItens
     end
     object C_TabelaULTIMOFORNECEDOR: TIntegerField
       FieldName = 'ULTIMOFORNECEDOR'
+      Origin = 'ITENS.ULTIMOFORNECEDOR'
       Required = True
     end
     object C_TabelaFORNECPREFERENCIA: TIntegerField
       FieldName = 'FORNECPREFERENCIA'
+      Origin = 'ITENS.FORNECPREFERENCIA'
       Required = True
     end
     object C_TabelaEMPRESA: TIntegerField
       FieldName = 'EMPRESA'
+      Origin = 'AJUSTESITENS.EMPRESA'
       Required = True
+    end
+    object C_TabelaUSUARIO: TIntegerField
+      FieldName = 'USUARIO'
+    end
+    object C_TabelaLOGINNAME: TStringField
+      FieldName = 'LOGINNAME'
     end
   end
   inherited C_TabelaDS: TDataSource
@@ -280,6 +313,7 @@ inherited DMAjustesItens: TDMAjustesItens
     Top = 53
   end
   object C_Contas: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Contas'
@@ -323,6 +357,7 @@ inherited DMAjustesItens: TDMAjustesItens
     Top = 159
   end
   object C_Unidades: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Unidades'
@@ -330,20 +365,24 @@ inherited DMAjustesItens: TDMAjustesItens
     Top = 101
     object C_UnidadesUNIDADE: TStringField
       FieldName = 'UNIDADE'
+      Origin = 'UNIDADES.UNIDADE'
       Required = True
       Size = 6
     end
     object C_UnidadesDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
+      Origin = 'UNIDADES.DESCRICAO'
       Required = True
       Size = 30
     end
     object C_UnidadesINTEIRA: TStringField
       FieldName = 'INTEIRA'
+      Origin = 'UNIDADES.INTEIRA'
       Size = 1
     end
     object C_UnidadesCOMQTD: TStringField
       FieldName = 'COMQTD'
+      Origin = 'UNIDADES.COMQTD'
       Size = 1
     end
   end
@@ -400,6 +439,7 @@ inherited DMAjustesItens: TDMAjustesItens
   end
   object C_Almoxarifados: TClientDataSet
     Tag = 100
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Almoxarifados'

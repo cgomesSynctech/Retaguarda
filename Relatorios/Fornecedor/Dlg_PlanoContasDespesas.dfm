@@ -7,11 +7,11 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 1082
+    Left = 1090
     Top = 57
-    Height = 411
+    Height = 422
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 377
+      Top = 388
     end
     inherited btComando2: TTS_SpeedButton
       Top = 107
@@ -255,7 +255,7 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 1200
+    Width = 1208
     Height = 57
     Gradient.ColorStart = 11775972
     inherited lbEstadoForm: TTS_Label
@@ -441,14 +441,14 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
   end
   inherited pnDados: TTS_Panel
     Top = 57
-    Width = 1082
-    Height = 411
+    Width = 1090
+    Height = 422
     Color = 15196656
     object pcDespesas: TTS_PageControl
       Left = 1
       Top = 1
-      Width = 1080
-      Height = 391
+      Width = 1088
+      Height = 402
       ActivePage = tsMesAtual
       Align = alClient
       OwnerDraw = True
@@ -476,8 +476,8 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
         object DBMesAtual: TdxDBTreeList
           Left = 0
           Top = 0
-          Width = 1080
-          Height = 389
+          Width = 1088
+          Height = 400
           Bands = <
             item
               Caption = 'Plano de Despesas - M'#234's Atual'
@@ -728,8 +728,8 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
     end
     object TS_PanelCorner1: TTS_PanelCorner
       Left = 1
-      Top = 392
-      Width = 1080
+      Top = 403
+      Width = 1088
       Height = 18
       Align = alBottom
       Color = 15196656
@@ -738,7 +738,7 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
       Visible = False
       BoxWithShadow = False
       DesignSize = (
-        1080
+        1088
         18)
       object lbValorTotal: TTS_Label
         Left = 851
@@ -868,7 +868,7 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
       Active = True
       Caption = 'New Report'
       Component = DBMesAtual
-      DateTime = 42592.665259456
+      DateTime = 44796.5936592708
       DesignerHelpContext = 0
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 250
@@ -949,7 +949,7 @@ inherited DlgPlanoContasDespesas: TDlgPlanoContasDespesas
       Active = True
       Caption = 'New Report'
       Component = DBUlt12Meses
-      DateTime = 42592.6652594792
+      DateTime = 44796.5936592708
       DesignerHelpContext = 0
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 250

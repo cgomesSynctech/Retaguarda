@@ -10,7 +10,7 @@ uses
   dxDBCtrl, dxDBGrid, TS_QDBGrid, TS_Bevel, Buttons, TS_SpeedButton,
   teCtrls, TS_EffectsPanel, dxEdLib, TS_CheckBox, ExtDlgs, dxEditor,
   dxDBELib, TS_DBEdit, TS_DBSpinEdit, TS_DBCheckBox, dxDBTLCl, dxGrClms,
-  Mask, DBCtrls;
+  Mask, DBCtrls, dxfProgressBar;
 
 type
   TFrmPropagandas = class(TFrmPadrao)
@@ -29,7 +29,6 @@ type
     dfTempo: TTS_DBSpinEdit;
     dfOrdem: TTS_DBSpinEdit;
     TS_Label6: TTS_Label;
-    btEfeito: TTS_SpeedButton;
     cbStrech: TTS_DBCheckBox;
     cbTransparent: TTS_DBCheckBox;
     GridPROPAGANDA: TdxDBGridMaskColumn;

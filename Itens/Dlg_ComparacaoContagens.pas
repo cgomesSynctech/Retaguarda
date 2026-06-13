@@ -460,10 +460,10 @@ begin
   if cmbContagem1.Items.count > 0 then
     cmbContagem1.ItemIndex := 0;
 
-  if cmbContagem2.Items.count > 1 then
-    cmbContagem2.ItemIndex := 1
-  else if cmbContagem2.Items.count > 0 then
-    cmbContagem2.ItemIndex := 0;
+//  if cmbContagem2.Items.count > 1 then
+//    cmbContagem2.ItemIndex := 1
+//  else if cmbContagem2.Items.count > 0 then
+ //   cmbContagem2.ItemIndex := 0;
 
   C_ContagensItens.close;
 end;

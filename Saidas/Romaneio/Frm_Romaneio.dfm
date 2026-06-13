@@ -1,14 +1,13 @@
 inherited FrmRomaneio: TFrmRomaneio
   Left = 204
-  Top = 88
   Width = 678
   Caption = 'Cadastros Gerais'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 547
+    Left = 555
     Top = 47
-    Height = 362
+    Height = 373
     inherited btComando1: TTS_SpeedButton
       Caption = '&Imprimir'
       Glyph.Data = {
@@ -146,16 +145,16 @@ inherited FrmRomaneio: TFrmRomaneio
       OnClick = btComando1Click
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 328
+      Top = 339
     end
   end
   inherited pnDados: TTS_Panel
     Top = 47
-    Width = 547
-    Height = 362
+    Width = 555
+    Height = 373
     inherited Grid: TTS_QDBGrid
-      Width = 545
-      Height = 360
+      Width = 553
+      Height = 371
       DataSource = DMRomaneio.C_TabelaDS
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'ROMANEIO'
@@ -212,12 +211,12 @@ inherited FrmRomaneio: TFrmRomaneio
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 545
-      Height = 360
+      Width = 553
+      Height = 371
     end
     inherited sbDados: TTS_Panel
-      Width = 545
-      Height = 360
+      Width = 553
+      Height = 371
       Color = 14542583
       object TS_Label3: TTS_Label
         Left = 8
@@ -538,8 +537,8 @@ inherited FrmRomaneio: TFrmRomaneio
       end
       object TS_Panel1: TTS_Panel
         Left = 0
-        Top = 162
-        Width = 545
+        Top = 173
+        Width = 553
         Height = 198
         Align = alBottom
         BevelOuter = bvNone
@@ -551,7 +550,7 @@ inherited FrmRomaneio: TFrmRomaneio
         object dbgItens: TTS_QDBGrid
           Left = 0
           Top = 0
-          Width = 545
+          Width = 553
           Height = 198
           Bands = <
             item
@@ -2617,11 +2616,11 @@ inherited FrmRomaneio: TFrmRomaneio
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 545
+      Width = 553
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 662
+    Width = 670
     Height = 47
     Gradient.ColorStart = 11911142
     inherited lbCaption: TdxfLabel
@@ -2830,7 +2829,7 @@ inherited FrmRomaneio: TFrmRomaneio
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 215900
     PrinterSetup.mmPaperWidth = 355601
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 5
     DeviceType = 'Screen'
     Left = 412
     Top = 60
@@ -3203,6 +3202,24 @@ inherited FrmRomaneio: TFrmRomaneio
         mmLeft = 258498
         mmTop = 5027
         mmWidth = 10319
+        BandType = 4
+      end
+      object ppDBText30: TppDBText
+        UserName = 'DBText30'
+        OnGetText = ppDBText19GetText
+        DataField = 'PONTOREFERENCIA'
+        DataPipeline = ppDBManifesto
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBManifesto'
+        mmHeight = 3969
+        mmLeft = 188384
+        mmTop = 5556
+        mmWidth = 80433
         BandType = 4
       end
     end
@@ -3927,8 +3944,31 @@ inherited FrmRomaneio: TFrmRomaneio
     CachedUpdates = False
     SQL.Strings = (
       'select r.romaneio, r.data, fu.nome as nomefunc,'
-      'v.descricao as descveiculo, s.numero,'
-      'f.nome, f.endereco, f.bairro, f.cidade, f.uf, f.NRO,'
+      'v.descricao as descveiculo, s.numero, f.nome, '
+      
+        'case when ( s.localentrega > 0 ) then (select fe.enderecoentrega' +
+        ' from favorecidosentrega fe where fe.entrega = s.localentrega ) ' +
+        'else ( f.endereco) end as endereco ,'
+      
+        'case when ( s.localentrega > 0 ) then (select fe.bairroentrega f' +
+        'rom favorecidosentrega fe where fe.entrega = s.localentrega ) el' +
+        'se ( f.bairro) end as bairro ,'
+      
+        'case when ( s.localentrega > 0 ) then (select fe.cidadeentrega f' +
+        'rom favorecidosentrega fe where fe.entrega = s.localentrega ) el' +
+        'se ( f.cidade) end as cidade ,'
+      
+        'case when ( s.localentrega > 0 ) then (select fe.ufentrega from ' +
+        'favorecidosentrega fe where fe.entrega = s.localentrega ) else (' +
+        ' f.uf) end as uf ,'
+      
+        'case when ( s.localentrega > 0 ) then ('#39'SN'#39') else ( f.nro) end a' +
+        's nro ,'
+      
+        'case when ( s.localentrega > 0 ) then (select fe.pontoreferencia' +
+        'entrega from favorecidosentrega fe where fe.entrega = s.localent' +
+        'rega ) else ( '#39#39') end as PontoReferencia ,'
+      ''
       'z.descricao as desczona, pp.descricao as planopag,'
       's.pesobruto, s.pesoliquido, s.data as datasaida,'
       's.total as total, vend.nome as vendedor, s.campo01 as volumes'
@@ -4056,6 +4096,10 @@ inherited FrmRomaneio: TFrmRomaneio
     end
     object C_ManifestoTOTAL: TFloatField
       FieldName = 'TOTAL'
+    end
+    object C_ManifestoPONTOREFERENCIA: TStringField
+      FieldName = 'PONTOREFERENCIA'
+      Size = 40
     end
   end
   object C_ManifestoDS: TDataSource
@@ -4212,10 +4256,17 @@ inherited FrmRomaneio: TFrmRomaneio
       DisplayWidth = 50
       Position = 18
     end
+    object ppDBManifestoppField20: TppField
+      FieldAlias = 'PONTOREFERENCIA'
+      FieldName = 'PONTOREFERENCIA'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 19
+    end
   end
   object ppmGridRomaneio: TTS_PopupMenu
-    Left = 410
-    Top = 5
+    Left = 442
+    Top = 65533
   end
   object ppDBSeparacao: TppDBPipeline
     DataSource = Q_SeparacaoDs
@@ -4237,7 +4288,7 @@ inherited FrmRomaneio: TFrmRomaneio
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
     Left = 288
     Top = 120

@@ -177,6 +177,7 @@ begin
 end;
 
 procedure TFrmAcertoConsigSaid.MescConsig(tipo:integer);
+VAR resultado: TModalResult;
 begin
   if DMAcertoConsigSaid.C_TabelaSituacao.Value = 'C' then
     exit;
@@ -198,7 +199,7 @@ begin
     DlgMescSaidConsig.GridAcerto.Visible := False;
     DlgMescSaidConsig.GridMovs.Visible := True;
   end;
-  DlgMescSaidConsig.ShowModal;
+  resultado := DlgMescSaidConsig.ShowModal;
   DlgMescSaidConsig.Release;
 
   //Para Atualizar Ordem de digitação e sequencial;
@@ -211,6 +212,10 @@ begin
   end;
   pgItens.ActivePageIndex := 0;
   ActiveControl := nil;
+  if resultado = mrOk then
+     begin
+       dxBarUltimoClick(Self);
+     end;
 
   PostMessage(Handle, PM_Foco, 0, 0);
 end;

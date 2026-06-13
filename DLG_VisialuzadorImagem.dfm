@@ -1,28 +1,30 @@
 object DLGVisialuzadorImagem: TDLGVisialuzadorImagem
-  Left = 331
-  Top = 129
-  Align = alClient
-  BorderStyle = bsNone
+  Left = 514
+  Top = 114
+  Width = 443
+  Height = 435
+  ActiveControl = btnFechar
+  Align = alTop
+  AutoSize = True
   Caption = 'Visualiza'#231#227'o da Imagem'
-  ClientHeight = 505
-  ClientWidth = 715
   Color = clHighlightText
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
+  WindowState = wsMaximized
   OnCreate = FormCreate
   DesignSize = (
-    715
-    505)
+    435
+    408)
   PixelsPerInch = 96
   TextHeight = 13
   object btnFechar: TTS_BitBtn
-    Left = 628
+    Left = 348
     Top = 1
     Anchors = [akTop, akRight]
     Caption = '&Fechar'
@@ -164,16 +166,16 @@ object DLGVisialuzadorImagem: TDLGVisialuzadorImagem
   object TS_PanelCorner1: TTS_PanelCorner
     Left = 0
     Top = 0
-    Width = 715
-    Height = 430
+    Width = 435
+    Height = 333
     Align = alClient
     TabOrder = 1
     BoxWithShadow = False
     object ImagemAmpliada: TTS_Image
       Left = 1
       Top = 1
-      Width = 713
-      Height = 428
+      Width = 433
+      Height = 331
       Align = alClient
       Center = True
       Transparent = True
@@ -183,8 +185,8 @@ object DLGVisialuzadorImagem: TDLGVisialuzadorImagem
   end
   object TS_PanelCorner2: TTS_PanelCorner
     Left = 0
-    Top = 430
-    Width = 715
+    Top = 333
+    Width = 435
     Height = 75
     Align = alBottom
     TabOrder = 2
@@ -192,7 +194,7 @@ object DLGVisialuzadorImagem: TDLGVisialuzadorImagem
     object dfDescricaoTecnica: TTS_Memo
       Left = 1
       Top = 1
-      Width = 713
+      Width = 433
       Align = alClient
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET

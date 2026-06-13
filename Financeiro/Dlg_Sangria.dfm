@@ -1,7 +1,7 @@
 inherited DlgSangria: TDlgSangria
   Tag = -2
-  Left = 340
-  Top = 70
+  Left = 428
+  Top = 24
   Width = 757
   Height = 553
   HelpContext = -2
@@ -3262,9 +3262,9 @@ inherited DlgSangria: TDlgSangria
       object pnlSelecionados: TTS_Panel
         Tag = -1
         Left = 0
-        Top = 281
+        Top = 280
         Width = 635
-        Height = 20
+        Height = 21
         HelpContext = -1
         Align = alBottom
         Alignment = taLeftJustify
@@ -3273,7 +3273,7 @@ inherited DlgSangria: TDlgSangria
         TabOrder = 2
         DesignSize = (
           635
-          20)
+          21)
         object shpTitulos: TShape
           Left = 469
           Top = -1
@@ -3292,7 +3292,7 @@ inherited DlgSangria: TDlgSangria
         Left = 0
         Top = 114
         Width = 635
-        Height = 167
+        Height = 166
         HelpContext = -2
         Bands = <
           item
@@ -4364,8 +4364,8 @@ inherited DlgSangria: TDlgSangria
     BeforePost = C_ChequesBeforePost
     AfterPost = C_ChequesAfterPost
     OnNewRecord = C_ChequesNewRecord
-    Left = 316
-    Top = 331
+    Left = 396
+    Top = 243
     object C_ChequesNumCheque: TIntegerField
       FieldName = 'NumCheque'
     end

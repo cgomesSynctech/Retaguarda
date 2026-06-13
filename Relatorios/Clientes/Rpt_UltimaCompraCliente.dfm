@@ -14,7 +14,7 @@ inherited RptUltimaCompraCliente: TRptUltimaCompraCliente
     end
   end
   inherited pnGrid: TPanel
-    Height = 384
+    Height = 396
     inherited pnDados: TTS_Panel
       Height = 76
       Color = 16116702
@@ -234,7 +234,7 @@ inherited RptUltimaCompraCliente: TRptUltimaCompraCliente
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 76
-      Height = 289
+      Height = 301
       Bands = <
         item
           Caption = 'Dados Cadastrais'
@@ -332,16 +332,16 @@ inherited RptUltimaCompraCliente: TRptUltimaCompraCliente
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 365
+      Top = 377
       inherited cbFullSelect: TTS_CheckBox
         Height = 19
       end
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 384
+    Height = 396
     inherited btSair: TTS_SpeedButton
-      Top = 339
+      Top = 351
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick

@@ -43,7 +43,8 @@ inherited DMContas: TDMContas
       '  USUARIOCAIXA = :USUARIOCAIXA,'
       '  SINTETICO = :SINTETICO,'
       '  NIVEL = :NIVEL,'
-      '  DESPESAFIXA = :DESPESAFIXA'
+      '  DESPESAFIXA = :DESPESAFIXA,'
+      '  CRITICAFECHAMENTO = :CRITICAFECHAMENTO'
       'where'
       '  CONTA = :OLD_CONTA')
     InsertSQL.Strings = (
@@ -59,7 +60,7 @@ inherited DMContas: TDMContas
       
         '   CODIGOCONTA, DATACONCILIACAO, SALDOCONCILIACAO, USUARIOCAIXA,' +
         ' '
-      'SINTETICO, NIVEL, SALDO, DESPESAFIXA)'
+      'SINTETICO, NIVEL, SALDO, DESPESAFIXA, CRITICAFECHAMENTO)'
       'values'
       
         '  (:CONTA, :DESCRICAO, :BANCO, :NUMCONTA, :AGENCIA, :SALDOINICIA' +
@@ -71,7 +72,8 @@ inherited DMContas: TDMContas
       ':CONTAPAI, '
       '   :OBS, :CODIGOREDUZIDO, :CODIGOCONTA, :DATACONCILIACAO, '
       ':SALDOCONCILIACAO, '
-      '   :USUARIOCAIXA, :SINTETICO, :NIVEL, :SALDO, :DESPESAFIXA)')
+      '   :USUARIOCAIXA, :SINTETICO, :NIVEL, :SALDO, :DESPESAFIXA, '
+      ':CRITICAFECHAMENTO)')
     DeleteSQL.Strings = (
       'delete from Contas'
       'where'
@@ -251,6 +253,10 @@ inherited DMContas: TDMContas
     object C_TabelaDESPESAFIXA: TStringField
       FieldName = 'DESPESAFIXA'
       FixedChar = True
+      Size = 1
+    end
+    object C_TabelaCRITICAFECHAMENTO: TStringField
+      FieldName = 'CRITICAFECHAMENTO'
       Size = 1
     end
   end

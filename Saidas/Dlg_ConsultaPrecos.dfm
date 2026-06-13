@@ -1,6 +1,6 @@
 inherited DlgConsultaPrecos: TDlgConsultaPrecos
-  Left = 307
-  Top = 205
+  Left = 369
+  Top = 159
   HorzScrollBar.Range = 0
   VertScrollBar.Range = 0
   BorderStyle = bsDialog
@@ -590,33 +590,6 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
       FormatoTabela = False
       LinkToResult = 0
     end
-    object lblEstoqueFiscal: TTS_DBTextEffect
-      Left = 76
-      Top = 156
-      Width = 95
-      Height = 17
-      Color = 16116702
-      DataField = 'icESTOQUEFISCAL'
-      DataSource = C_ItensDS
-      Effects.ShadowColor = cl3DDkShadow
-      Effects.ShadowDepth = 2
-      Effects.Style = tsLowered
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      EditOffSet.x = 0
-      EditOffSet.y = 0
-      AllowEditOnClick = False
-      EditFont.Charset = DEFAULT_CHARSET
-      EditFont.Color = clGreen
-      EditFont.Height = -11
-      EditFont.Name = 'MS Sans Serif'
-      EditFont.Style = []
-    end
     object lbDifEstoque: TTS_Label
       Left = 13
       Top = 176
@@ -733,6 +706,7 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      Visible = False
       FormatoTabela = False
       LinkToResult = 0
     end
@@ -752,6 +726,75 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
+      EditOffSet.x = 0
+      EditOffSet.y = 0
+      AllowEditOnClick = False
+      EditFont.Charset = DEFAULT_CHARSET
+      EditFont.Color = clWindowText
+      EditFont.Height = -11
+      EditFont.Name = 'MS Sans Serif'
+      EditFont.Style = []
+    end
+    object lbVol: TTS_Label
+      Left = 2
+      Top = 214
+      Width = 72
+      Height = 15
+      Caption = 'Volumes : '
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+      FormatoTabela = False
+      LinkToResult = 0
+    end
+    object lbVolumes: TTS_DBTextEffect
+      Left = 76
+      Top = 212
+      Width = 102
+      Height = 17
+      DataField = 'ESTOQUEVOLUME'
+      DataSource = C_ItensDS
+      Effects.ShadowColor = cl3DDkShadow
+      Effects.ShadowDepth = 2
+      Effects.Style = tsLowered
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Visible = False
+      EditOffSet.x = 0
+      EditOffSet.y = 0
+      AllowEditOnClick = False
+      EditFont.Charset = DEFAULT_CHARSET
+      EditFont.Color = clWindowText
+      EditFont.Height = -11
+      EditFont.Name = 'MS Sans Serif'
+      EditFont.Style = []
+    end
+    object lblEstoqueFiscal: TTS_DBTextEffect
+      Left = 77
+      Top = 155
+      Width = 95
+      Height = 17
+      DataField = 'icESTOQUEFISCAL'
+      DataSource = C_ItensDS
+      Effects.ShadowColor = cl3DDkShadow
+      Effects.ShadowDepth = 2
+      Effects.Style = tsLowered
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnDblClick = lblEstoqueDblClick
       EditOffSet.x = 0
       EditOffSet.y = 0
       AllowEditOnClick = False
@@ -819,15 +862,15 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
     end
     object pcConsulta: TTS_PageControl
       Left = 1
-      Top = 223
+      Top = 232
       Width = 582
-      Height = 164
-      ActivePage = tsDadosPrinc
+      Height = 155
+      ActivePage = tsDadosCustom
       Align = alBottom
       OwnerDraw = True
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 2
-      ActivePageIndex = 0
+      ActivePageIndex = 2
       Transparent = False
       TabColor = 16116702
       TabColorActive = 14859922
@@ -937,7 +980,7 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
           Left = 332
           Top = 0
           Width = 242
-          Height = 136
+          Height = 127
           Align = alRight
           BevelOuter = bvNone
           Color = 16116702
@@ -1190,7 +1233,7 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
           Left = 0
           Top = 0
           Width = 291
-          Height = 136
+          Height = 127
           Bands = <
             item
             end>
@@ -1567,8 +1610,8 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
-          Width = 539
-          Height = 136
+          Width = 574
+          Height = 127
           HorzScrollBar.Visible = False
           Align = alClient
           BorderStyle = bsNone
@@ -2477,19 +2520,19 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
   end
   object C_ItensDS: TDataSource
     DataSet = C_Itens
-    Left = 11
-    Top = 170
+    Left = 19
+    Top = 122
   end
   object C_ProdutosPrecoDS: TDataSource
     DataSet = C_ProdutosPreco
-    Left = 93
-    Top = 168
+    Left = 421
+    Top = 184
   end
   object P_Itens: TDataSetProvider
     DataSet = Q_Itens
     Constraints = True
-    Left = 13
-    Top = 123
+    Left = 45
+    Top = 67
   end
   object C_Itens: TClientDataSet
     Aggregates = <>
@@ -2497,7 +2540,7 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
     ProviderName = 'P_Itens'
     OnCalcFields = C_ItensCalcFields
     Left = 12
-    Top = 77
+    Top = 53
     object C_ItensCODIGO: TStringField
       FieldName = 'CODIGO'
       Size = 13
@@ -2726,6 +2769,11 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
       FieldName = 'DESCRICAOTECNICA'
       Size = 255
     end
+    object C_ItensESTOQUEVOLUME: TBCDField
+      FieldName = 'ESTOQUEVOLUME'
+      Precision = 18
+      Size = 3
+    end
   end
   object Q_Itens: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -2749,8 +2797,8 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
         'o'
       '        '
       'where i.item is null and pp.tabelapreco = 0')
-    Left = 11
-    Top = 12
+    Left = 35
+    Top = 4
   end
   object Q_ProdutosPreco: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -2823,8 +2871,8 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
   object P_Unidades: TDataSetProvider
     DataSet = Q_Unidades
     Constraints = True
-    Left = 164
-    Top = 123
+    Left = 460
+    Top = 51
   end
   object ppmUnidades: TTS_PopupMenu
     Left = 516
@@ -2865,7 +2913,7 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
     Aggregates = <>
     Params = <>
     ProviderName = 'P_TabelasPreco'
-    Left = 95
+    Left = 135
     Top = 63
     object C_TabelasPrecoTABELAPRECO: TIntegerField
       FieldName = 'TABELAPRECO'
@@ -2892,8 +2940,8 @@ inherited DlgConsultaPrecos: TDlgConsultaPrecos
     DataSet = Q_TabelasPreco
     Constraints = True
     Options = [poDisableInserts, poDisableDeletes]
-    Left = 98
-    Top = 118
+    Left = 82
+    Top = 46
   end
   object C_ProdutosPreco: TClientDataSet
     Aggregates = <>

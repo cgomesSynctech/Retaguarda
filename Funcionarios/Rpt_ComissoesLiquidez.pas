@@ -93,8 +93,8 @@ begin
               's.numero, t.titulo, s.data, f.nome, p.descricao, c.perccomissao, '+
               'max(dt.valor) as valorpago,'+
               'c.valorvenda, '+
-              'Max(coalesce((select sum(x.valorpago)'+
-              'from titulosareceber x where x.venda = s.saida and t.datapago is not null),0)) as JaRecebido, '+
+              //'Max(coalesce((select sum(x.valorpago) from titulosareceber x where x.venda = s.saida and t.datapago is not null),0)) as JaRecebido, '+
+              'Max( coalesce( (select sum(x.valorpago) from titulosareceber x where x.venda = s.saida and x.datapago < t.datapago),0)) as JaRecebido, ' +
               'cast(((c.perccomissao * dt.valor) / 100) as Decimal(15,3)) as valorcomissao '+
               'from comissoes c  '+
               'inner join saidas s on c.venda = s.saida  '+
@@ -134,23 +134,23 @@ begin
                         //'/* O valor pago deve ser obtido pela tabela de DepositosDoc que registra cada pagamento feito em uma tupla (Felipe 26/10/2016) */ ' +
                         'sum(dt.valor) as valorpago, ' +
                         'c.valorvenda, ' +
-                        'Max( coalesce( (select sum(x.valorpago) from titulosareceber x where x.venda = s.saida and x.datapago < t.datapago),0)) as JaRecebido, ' +
+                        'Max( coalesce( (select sum(x.valorpago + X.creditoutilizado) from titulosareceber x where x.venda = s.saida and x.datapago < t.datapago),0)) as JaRecebido, ' +
                         //'--sum(c.valorcomissao) as valorcomissao ' +
                         //'--sum( cast(((c.perccomissao * t.valorpago) / 100) as Decimal(15, 3))) as valorcomissao ' +
                         //'/* O valor pago deve ser obtido pela tabela de DepositosDoc que registra cada pagamento feito em uma tupla (Felipe 26/10/2016) */ ' +
-                        'sum(cast(((c.perccomissao * dt.valor) / 100) as Decimal(15, 3))) as valorcomissao ' +
+                        'sum(cast(((c.perccomissao * (dt.valor +DT.creditoutilizado) ) / 100) as Decimal(15, 3))) as valorcomissao ' +
                         'from comissoes c inner join saidas s on c.venda = s.saida ' +
                         'inner join planospagamento p on p.planopagamento = s.planopagamento ' +
                         'inner join favorecidos f on s.favorecido = f.favorecido ' +
                         'inner join favorecidos u on u.favorecido = c.funcionario ' +
                         'left Join titulosareceber t on t.venda = s.saida ' +
                         'inner join depositostitulos dt on t.id = dt.titulo ' +
-                        'where dt.data >= :datai and dt.data <= :dataf and c.data >= :datac ' +
+                        'where dt.data >= :datai and dt.data <= :dataf and c.data >= :datac AND (dt.status > 49 and dt.status < 62) ' +
                         //'--where t.datapago >= :datai and t.datapago <= :dataf and c.data >= :datac ' +
                         'group by u.nome , c.data , t.datapago, t.vencimento , s.numero, ' +
                         't.titulo, s.data, f.nome, p.descricao, c.perccomissao, t.valorpago, c.valorvenda ' +
                         //'--having  sum( cast(((c.perccomissao * t.valorpago ) / 100) as Decimal(15,3))) > 0 ' +
-                        'having sum(cast(((c.perccomissao * dt.valor) / 100) as Decimal(15,3))) > 0 ' +
+                        'having sum(cast(((c.perccomissao * (dt.valor +DT.creditoutilizado)) / 100) as Decimal(15,3))) > 0 ' +
                         'union ' +
                         'select u.nome as Funcionario, c.data as Competencia,t.datapago as DataPago , ' +
                         't.vencimento, s.numero, t.titulo, s.data, f.nome, p.descricao, ' +

@@ -4,6 +4,7 @@ inherited DMSaidasReferenciadas: TDMSaidasReferenciadas
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
       'Select * from saidasreferenciadas')
+    UpdateObject = nil
   end
   inherited U_Tabela: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -22,18 +23,28 @@ inherited DMSaidasReferenciadas: TDMSaidasReferenciadas
       '  CHAVEACESSO = :CHAVEACESSO,'
       '  MODELO = :MODELO,'
       '  ECF = :ECF,'
-      '  COO = :COO'
+      '  COO = :COO,'
+      '  NUMERO = :NUMERO,'
+      '  IND_OPER = :IND_OPER,'
+      '  IND_EMIT = :IND_EMIT,'
+      '  COD_PART = :COD_PART,'
+      '  SER = :SER,'
+      '  DT_DOC = :DT_DOC'
       'where'
       '  SAIDAREFERENCIADA = :OLD_SAIDAREFERENCIADA')
     InsertSQL.Strings = (
       'insert into saidasreferenciadas'
       '  (SAIDAREFERENCIADA, EMPRESA, SAIDA, PDV, TIPODOCUMENTO, '
       'CHAVEACESSO, '
-      '   MODELO, ECF, COO)'
+      '   MODELO, ECF, COO, NUMERO, IND_OPER, IND_EMIT, COD_PART, SER, '
+      'DT_DOC)'
       'values'
       '  (:SAIDAREFERENCIADA, :EMPRESA, :SAIDA, :PDV, :TIPODOCUMENTO, '
       ':CHAVEACESSO, '
-      '   :MODELO, :ECF, :COO)')
+      
+        '   :MODELO, :ECF, :COO, :NUMERO, :IND_OPER, :IND_EMIT, :COD_PART' +
+        ', :SER, '
+      '   :DT_DOC)')
     DeleteSQL.Strings = (
       'delete from saidasreferenciadas'
       'where'
@@ -83,5 +94,44 @@ inherited DMSaidasReferenciadas: TDMSaidasReferenciadas
       FieldName = 'COO'
       Size = 6
     end
+    object C_TabelaNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Size = 10
+    end
+    object C_TabelaCOD_PART: TIntegerField
+      FieldName = 'COD_PART'
+    end
+    object C_TabelaSER: TStringField
+      FieldName = 'SER'
+      Size = 4
+    end
+    object C_TabelaDT_DOC: TDateField
+      FieldName = 'DT_DOC'
+    end
+    object C_TabelaIND_OPER: TIntegerField
+      FieldName = 'IND_OPER'
+    end
+    object C_TabelaIND_EMIT: TIntegerField
+      FieldName = 'IND_EMIT'
+    end
+    object C_TabelaNOMEPART: TStringField
+      FieldName = 'NOMEPART'
+      Size = 100
+    end
+  end
+  object Q_Aux: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      'Select * from saidasreferenciadas')
+    UpdateObject = U_Tabela
+    Left = 192
+    Top = 51
   end
 end

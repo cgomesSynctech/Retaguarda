@@ -811,6 +811,7 @@ type
     ZRLabel93: TZRLabel;
     zrLabelSeparador: TZRLabel;
     zrLabelPontoSubDetail: TZRLabel;
+    ZRLabel1: TZRLabel;
         procedure ppStatusGetText(Sender: TObject; var Text: string);
         procedure ppDBText7GetText(Sender: TObject; var Text: string);
         procedure ppDetailBand2BeforePrint(Sender: TObject);

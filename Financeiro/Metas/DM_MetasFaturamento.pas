@@ -26,6 +26,7 @@ type
     C_DetalheMETADIARIA: TBCDField;
     C_DetalheNOME: TStringField;
     Q_GetVendedor: TIBQuery;
+    C_TabelaTITULO: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DMComponentGravar1_Iniciar(Sender: TObject;
       var bSkip: Boolean);

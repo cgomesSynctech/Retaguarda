@@ -5,9 +5,9 @@ uses
     Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
     DM_ITENSMOVIMENTO, Db, DBClient, Provider, DlgMsg, DMComponent,
     IBCustomDataSet, IBUpdateSQL, IBQuery, DM_Contabilidade, TDM_PadraoManutencao, Variants,
-    IBEvents, DateUtils, Math;
+    IBEvents, DateUtils, Math, ActnList;
 
-const
+const                                                                    
     SInicioGravacao = '%s: Gravação de %s #%s  ';
     SValidaGravacao = '%s: Validação Concluida ';
     SChavesGravacao = '%s: Chave Gerada = %s ';
@@ -545,6 +545,12 @@ type
         C_ItensPRECOVENDA: TBCDField;
         C_ItensPRECOVENDAPRODUTOSPRECO: TBCDField;
         C_TiposMovimentoTIPOIMPRESSAO_OP: TStringField;
+    C_ItensCLASFISCAL: TStringField;
+    C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO: TStringField;
+    C_TiposMovimentoCB_CSTPISCOFINSPADRAO: TStringField;
+    C_ItensCOMPENSACAOCUSTOMOEDA: TFloatField;
+    C_ItensCSTIBS: TStringField;
+    C_ItensCLASSTRIB: TStringField;
         procedure DMComponentModoInclusao1_Iniciar(Sender: TObject);
         procedure C_TabelaTIPOMOVIMENTOChange(Sender: TField);
         procedure C_TabelaNewRecord(DataSet: TDataSet);
@@ -936,6 +942,11 @@ begin
     if (C_TiposMovimentoCB_CSTPADRAO.Value = 'S') then
         C_ItensCST.value := C_TiposMovimentoCST_PADRAO.value;
 
+    if (C_TiposMovimentoCB_CSTPISCOFINSPADRAO.Value = 'S') then
+        C_ItensCSTPISCOFINS.value := C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO.value;
+
+
+
     if C_TabelaUFOrigem.value <> DMProjeto.sUFEmpresa then
         begin
             sL := '2';
@@ -964,6 +975,14 @@ begin
             C_ItensIPI.value := DMProjeto.C_LocalizarItensIPICompra.value;
             C_ItensALIQIPI.Value := DMProjeto.C_LocalizarItensIPICompra.value;
         end;
+    { acrescentado por cesar 25-09-2023 }
+    if C_TiposMovimentoCALCULAPISCOFINS.Value <> 'S' then begin
+        C_ItensALIQPIS.Value :=0 ;
+        C_ItensALIQCOFINS.Value := 0; 
+        C_ItensVALORPISPROD.Value := 0;
+        C_ItensVALORCOFINSPROD.Value := 0;
+
+    end;
 
     C_ItensI_PesoBruto.value := DMProjeto.C_LocalizarItensPesoBruto.value;
     C_ItensI_PesoLiquido.value := DMProjeto.C_LocalizarItensPesoLiquido.value;
@@ -993,10 +1012,17 @@ begin
 //                C_ItensAliqICMS.AsVariant := 0;
 //            end;
 
-    { Felipe - 11/05/2016 }
+    { Felipe - 11/05/2016 alterado por cesar 25-09-2023}
+   if ( C_TiposMovimentoPOSSUIICMS.Value <> 'S') then begin
+        C_ItensBASECALCICMSPROD.Value := 0 ;
+        C_ItensALIQICMS.Value :=0;
+        C_ItensVALORICMSPROD.Value := 0 ;
+    end
+    else begin
     C_ItensBASECALCICMSPROD.Value := IIF(C_ItensSITUACAOECF.Value = 'T', C_ItensSubTotal.Value, 0);
     C_ItensAliqICMS.AsVariant := IIF(C_ItensSITUACAOECF.Value = 'T', C_ItensALIQICMS.Value, 0);
-
+    end ;
+    
     with Q_SQL do
         begin
             Close;
@@ -1344,17 +1370,36 @@ begin
                                 end; // if (DMProjeto.sTipoTributEmpresa = 'P') then
 
                             if (DMProjeto.sTipoTributEmpresa = 'N') then
-                                begin // LUCRO Simples Nacional
-
+                                begin // LUCRO                           Simples Nacional
                                     yImpostosFederais := 0; // Simples não tem credito de Imposto federal
+                                    nICMSAplicEntrada := DMProjeto.AliquotaEstadoExterno(C_TabelaUFORIGEM.Value);
+
                                     if (TempDS.FieldByName('SITUACAOECF').AsString = 'F') or (TempDS.FieldByName('SITUACAOECF').AsString = 'I') then // SE O PRODUTO FOR 'F' ou 'I' NÃO TEM CREDITO DE ICMS
                                         nICMSAplicEntrada := 0;
-                                    nCustoContabil := ((nPrecoUnit * (1 + (DMProjeto.nICMSInterno - nICMSAplicEntrada) / 100)) +
-                                        (nRateioDescItem / TempDS.FieldByName('QUANTIDADE').asCurrency)) +
-                                        (TempDS.FieldByName('RATEIOFRETE').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
-                                        (TempDS.FIELDBYNAME('VALORICMSSUBSTPROD').ASCURRENCY / TempDS.FieldByName('QUANTIDADE').asCurrency) +
-                                        (TempDS.FieldByName('RATEIODESPESAS').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
-                                        (TempDS.FieldByName('VALORIPIPROD').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency);
+
+                                    if DMProjeto.Parametro('ContalizaImpEntradaSimplesN') = 'N' then
+                                     begin
+                                            nCustoContabil := (((nPrecoUnit) + TempDS.FieldByName('COMPENSACAOCUSTOMOEDA').asCurrency) +
+                                                (nRateioDescItem / TempDS.FieldByName('QUANTIDADE').asCurrency)) +
+                                                (TempDS.FieldByName('RATEIOFRETE').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FIELDBYNAME('VALORICMSSUBSTPROD').ASCURRENCY / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FieldByName('RATEIODESPESAS').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FieldByName('VALORIPIPROD').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency);
+                                     end
+                                     else
+                                     begin
+                                         nICMSAplicEntrada := DMProjeto.AliquotaEstadoExterno(C_TabelaUFORIGEM.Value);
+                                         nCustoContabil := (((nPrecoUnit + TempDS.FieldByName('COMPENSACAOCUSTOMOEDA').asCurrency ) * (1 + (DMProjeto.nICMSInterno - nICMSAplicEntrada) / 100)) +
+                                                (nRateioDescItem / TempDS.FieldByName('QUANTIDADE').asCurrency)) +
+                                                (TempDS.FieldByName('RATEIOFRETE').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FIELDBYNAME('VALORICMSSUBSTPROD').ASCURRENCY / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FieldByName('RATEIODESPESAS').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FieldByName('VALORIPIPROD').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency);
+                                    end;
+
+
+
+
 
                                 end; // if (DMProjeto.sTipoTributEmpresa = 'N') then
 
@@ -1850,6 +1895,15 @@ begin
             SQL.Text := 'Execute procedure PP_StatusEntrada :E ';
             params[0].asInteger := C_TabelaIDMestre.Value;
             ExecSQL;
+            if (C_TabelaTIPOPADRAO.Value = 107) then begin
+              Close;
+              SQL.Text := 'Execute procedure PP_STATUSSAIDACONSIGNACAO :S , :E, :P ';
+              params[0].asInteger := C_TabelaIDMESTRE.Value;
+              params[1].asInteger := C_TabelaEMPRESA.Value;
+              params[2].asInteger := C_TabelaPDV.Value;
+              ExecSQL;                                     
+            end
+
         end;
     // Sera feito na hora da geracao do arquivo
     //  if (C_TabelaPossuiICMS.value = 'S') and (TipoMovimento('CB_CFOP') = 'S') then begin
@@ -4103,20 +4157,22 @@ end;
 
 function TDMEntradas.AtualizarDataHoraAlteracao_Item(idItem: integer): boolean;
 begin
-    try
-        with Q_SQL do
-            begin
-                Close;
-                SQL.Text := 'update itens ii set ii.data_hora_alteracao = :dt_now where ii.item = :iditem';
-                ParamByName('dt_now').AsDateTime := Now;
-                ParamByName('iditem').AsInteger := idItem;
-                ExecSQL;
-
-                Result := True;
-            end;
-    except
-        Result := False;
-    end;
+//   esse trecho foi comentado porque esta gerando replicação nfc-e antes de salvar ... ocorria porque o banco acionava o trigger de itens para
+//   outros comando ... o banco de dados ficou responsavel por atuaçizar essa data na hora da gravação do registro
+//  try
+//      with Q_SQL do
+//          begin
+//              Close;
+//              SQL.Text := 'update itens ii set ii.data_hora_alteracao = :dt_now where ii.item = :iditem';
+//              ParamByName('dt_now').AsDateTime := Now;
+//              ParamByName('iditem').AsInteger := idItem;
+//              ExecSQL;
+//
+//              Result := True;
+//          end;
+//  except
+//      Result := False;
+//  end;
 end;
 
 end.

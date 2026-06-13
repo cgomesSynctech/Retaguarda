@@ -822,11 +822,15 @@ begin
       	i := 40;
     		while not EOF do begin
 
-       		DMFinanceiro.ReceberDoc(aIDDoc[i], 2, IDDeposito, 4, C_ChequesEletronicoValor.Value,
+       		DMFinanceiro.ReceberDoc(aIDDoc[i], 2, IDDeposito, DMFinanceiro.C_ChequesEletFORMAPAGAMENTO.Value, C_ChequesEletronicoValor.Value,
        											 			C_ChequesEletronicoVencimento.Value,
                                   iif(C_ChequesEletronicoObs.value='',C_DepositosHistorico.Value,C_ChequesEletronicoObs.value),
                                   0, 0, '', 0, 0, C_ChequesEletronicoContaReceber.Value );
         	aIDDocAtualizado[i] := 'S';
+
+                DMFinanceiro.RetiraDocEletronico(aIDDoc[i], 2, IDDeposito, DMFinanceiro.C_ChequesEletFORMAPAGAMENTO.Value, C_ChequesEletronicoValor.Value,
+                                                 C_ChequesEletronicoVencimento.Value, iif(C_ChequesEletronicoObs.value='',C_DepositosHistorico.Value,C_ChequesEletronicoObs.value),
+                                                 0, 0, '', 0, 0, C_ChequesEletronicoContaReceber.Value );
         	inc(i);
           Next;
 
@@ -1728,15 +1732,6 @@ procedure TDlgDepositosInstantaneos.btGravarClick(Sender: TObject);
 begin
   inherited;
   Try
-//Paulo Remoção do DMECF 22/08/2012
-
-//      if (DMPRojeto.PAFObrigatorio) Then Begin
-//        if (DMECF.ECF1.Suprimento(FormatFloat('0.00',C_DepositosValor.Value-C_DepositosCreditoUtilizado.Value), 'Recebimento')) Then
-//           DMProjeto.ReducaoZ_R06('CN')
-//        Else
-//           raise Exception.Create('Impressora Desligada.'+#13+'O deposito não será efetuado pelo sistema.');
-//      End;
-
       if not DMProjeto.DlgAutorizacao.ExecuteX( self.name, 'S' ) then
                     exit;
       if (DepositoHist <> 0) and (not DMProjeto.DlgAutorizacao.ExecuteX( self.name, 'A' )) then

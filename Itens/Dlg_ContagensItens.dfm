@@ -7,10 +7,10 @@ inherited DlgContagensItens: TDlgContagensItens
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 524
-    Height = 323
+    Left = 532
+    Height = 334
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 289
+      Top = 300
     end
     inherited btComando2: TTS_SpeedButton
       Top = 172
@@ -376,7 +376,7 @@ inherited DlgContagensItens: TDlgContagensItens
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 642
+    Width = 650
     Gradient.ColorStart = 9027548
     inherited lbUpperHint: TTS_Label
       Left = 642
@@ -392,8 +392,8 @@ inherited DlgContagensItens: TDlgContagensItens
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 524
-    Height = 323
+    Width = 532
+    Height = 334
     Color = 14019327
     object TS_Label1: TTS_Label
       Left = 31
@@ -504,8 +504,8 @@ inherited DlgContagensItens: TDlgContagensItens
     end
     object dbgItens: TTS_QDBGrid
       Left = 1
-      Top = 104
-      Width = 522
+      Top = 115
+      Width = 530
       Height = 218
       Bands = <
         item
@@ -967,7 +967,7 @@ inherited DlgContagensItens: TDlgContagensItens
     DataPipeline = ppDBFichaBalanco
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -975,7 +975,7 @@ inherited DlgContagensItens: TDlgContagensItens
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 279401
     PrinterSetup.mmPaperWidth = 215900
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 313
     Top = 99

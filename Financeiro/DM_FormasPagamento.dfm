@@ -41,7 +41,8 @@ inherited DMFormasPagamento: TDMFormasPagamento
       '  CONTAPAGAR = :CONTAPAGAR,'
       '  INTERVALOPARCELAS = :INTERVALOPARCELAS,'
       '  CARTAOTEF = :CARTAOTEF,'
-      '  BANDEIRACARTAO = :BANDEIRACARTAO'
+      '  BANDEIRACARTAO = :BANDEIRACARTAO,'
+      'TPAG = :TPAG'
       'where'
       '  FORMAPAGAMENTO = :OLD_FORMAPAGAMENTO')
     InsertSQL.Strings = (
@@ -51,7 +52,8 @@ inherited DMFormasPagamento: TDMFormasPagamento
       '   DESATIVADO, MENORPARCELA, ENCARGOS, SIGLA, CODIGOECF, '
       'MELHORDIACOMPRA, '
       '   FORNECEDOR, CONTA, CONTARECEBER, '
-      'CONTAPAGAR,INTERVALOPARCELAS,   CARTAOTEF, BANDEIRACARTAO)'
+      'CONTAPAGAR,INTERVALOPARCELAS,   CARTAOTEF, BANDEIRACARTAO, '
+      'TPAG)'
       'values'
       '  (:FORMAPAGAMENTO, :DESCRICAO, :ESPECIE, :REFCREDITO, '
       ':CARENCIACREDITO, '
@@ -60,7 +62,8 @@ inherited DMFormasPagamento: TDMFormasPagamento
         'A, '
       ':CODIGOECF, '
       '   :MELHORDIACOMPRA, :FORNECEDOR, :CONTA, :CONTARECEBER, '
-      ':CONTAPAGAR,:INTERVALOPARCELAS, :CARTAOTEF, :BANDEIRACARTAO)')
+      ':CONTAPAGAR,:INTERVALOPARCELAS, :CARTAOTEF, :BANDEIRACARTAO, '
+      ':TPAG)')
     DeleteSQL.Strings = (
       'delete from FormasPagamento'
       'where'
@@ -226,6 +229,19 @@ inherited DMFormasPagamento: TDMFormasPagamento
       LookupResultField = 'DESCRICAO'
       KeyFields = 'BANDEIRACARTAO'
       Size = 50
+      Lookup = True
+    end
+    object C_TabelaTPAG: TStringField
+      FieldName = 'TPAG'
+      Size = 2
+    end
+    object C_TabelalkTipoPagamentoNFE: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkTipoPagamentoNFE'
+      LookupDataSet = C_pagamentosNFEDS
+      LookupKeyFields = 'ID'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'TPAG'
       Lookup = True
     end
   end
@@ -442,6 +458,37 @@ inherited DMFormasPagamento: TDMFormasPagamento
       FieldName = 'DESATIVADO'
       FixedChar = True
       Size = 1
+    end
+  end
+  object Q_pagamentosNFE: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select * from TIPOSPAGAMENTONFE')
+    Left = 437
+    Top = 213
+  end
+  object P_pagamentosNFE: TDataSetProvider
+    DataSet = Q_pagamentosNFE
+    Constraints = True
+    Left = 437
+    Top = 264
+  end
+  object C_pagamentosNFEDS: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_pagamentosNFE'
+    Left = 437
+    Top = 314
+    object C_pagamentosNFEDSID: TStringField
+      FieldName = 'ID'
+      Size = 2
+    end
+    object C_pagamentosNFEDSDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 40
     end
   end
 end

@@ -203,11 +203,11 @@ begin
     if DMBalancoFichas.C_BalancoFichasItens.State in [dsedit, dsinsert] then
         DMBalancoFichas.C_BalancoFichasItens.post;
 
-    if DMBalancoFichas.C_BalancoFichasItens.recordcount <> ContaStrings(dbgItens.Distinct('item'), ',') then
-        begin
-            DlgMsg.ShowMsg(6024);
-            exit;
-        end;
+ //   if DMBalancoFichas.C_BalancoFichasItens.recordcount <> ContaStrings(dbgItens.Distinct('item'), ',') then
+ //       begin
+ //           DlgMsg.ShowMsg(6024);
+ //           exit;
+ //       end;
     inherited;
 end;
 

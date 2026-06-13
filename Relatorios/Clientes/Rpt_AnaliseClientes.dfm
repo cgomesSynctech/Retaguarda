@@ -1,13 +1,13 @@
 inherited RptAnaliseClientes: TRptAnaliseClientes
-  Left = 169
-  Top = 65
+  Left = 396
+  Top = 52
   Width = 799
   Height = 477
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 783
+    Width = 791
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 399
@@ -22,10 +22,10 @@ inherited RptAnaliseClientes: TRptAnaliseClientes
     end
   end
   inherited pnGrid: TPanel
-    Width = 730
-    Height = 401
+    Width = 738
+    Height = 412
     inherited pnDados: TTS_Panel
-      Width = 730
+      Width = 738
       Height = 26
       Color = 16116702
       object btGravar: TTS_SpeedButton
@@ -158,8 +158,8 @@ inherited RptAnaliseClientes: TRptAnaliseClientes
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 26
-      Width = 730
-      Height = 356
+      Width = 738
+      Height = 367
       KeyField = 'FAVORECIDO'
       Filter.Criteria = {00000000}
       OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
@@ -335,8 +335,8 @@ inherited RptAnaliseClientes: TRptAnaliseClientes
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 382
-      Width = 730
+      Top = 393
+      Width = 738
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -344,9 +344,9 @@ inherited RptAnaliseClientes: TRptAnaliseClientes
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 401
+    Height = 412
     inherited btSair: TTS_SpeedButton
-      Top = 356
+      Top = 367
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick

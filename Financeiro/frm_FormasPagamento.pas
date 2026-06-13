@@ -111,6 +111,8 @@ type
         cbCartaoTEF: TTS_DBCheckBox;
         lblBandeiraCartao: TTS_Label;
         cmbBandeirasCartao: TTS_DBLookupComboBox;
+    TS_DBLookupComboBox1: TTS_DBLookupComboBox;
+    TS_Label17: TTS_Label;
         procedure FormClose(Sender: TObject; var Action: TCloseAction);
         procedure FormComponentEstado_Navegacao(Sender: TObject;
             var bSkip: Boolean);

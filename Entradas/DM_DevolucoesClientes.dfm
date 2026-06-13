@@ -5,7 +5,8 @@ inherited DMDevolucoesClientes: TDMDevolucoesClientes
   Width = 1001
   inherited Q_Tabela: TIBQuery
     SQL.Strings = (
-      'Select '#9't.Entrada'#9#9'as IDMESTRE,'
+      'Select '#9
+      't.Entrada'#9#9'as IDMESTRE,'
       #9't.Favorecido'#9'as Favorecido,'
       #9't.Numero'#9#9'as Numero,'
       '       '#9't.Data'#9#9'as Data,'
@@ -316,6 +317,7 @@ inherited DMDevolucoesClientes: TDMDevolucoesClientes
         'NFE )')
   end
   inherited C_Tabela: TClientDataSet
+    Active = False
     object C_TabelaCHAVENFE: TStringField
       FieldName = 'CHAVENFE'
       Origin = 'ENTRADAS.CHAVENFE'
@@ -331,7 +333,13 @@ inherited DMDevolucoesClientes: TDMDevolucoesClientes
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
-      'Select t.EntradaItem    as IDITEM,'
+      'Select '
+      't.cstibs, '
+      't.classtrib,'
+      'T.COMPENSACAOCUSTOMOEDA, '
+      'T.clasfiscal,'
+      't.customanual,'
+      't.EntradaItem    as IDITEM,'
       't.Entrada        as IDMestre,'
       't.Sequencia    as Sequencia,'
       't.Descricao              as Descricao,'
@@ -648,8 +656,14 @@ inherited DMDevolucoesClientes: TDMDevolucoesClientes
   inherited C_PlanosPagamento: TClientDataSet
     Left = 630
   end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
+  end
   inherited C_Mesclagens: TClientDataSet
     Left = 363
+  end
+  inherited C_Unidades: TClientDataSet
+    Active = True
   end
   inherited Q_MensagensOperacoes: TIBQuery
     SQL.Strings = (
@@ -660,7 +674,22 @@ inherited DMDevolucoesClientes: TDMDevolucoesClientes
   inherited C_MensagensOperacoes: TClientDataSet
     Left = 264
   end
+  inherited C_SitECF: TClientDataSet
+    Active = True
+  end
+  inherited C_Almoxarifado: TClientDataSet
+    Active = True
+  end
   inherited C_Vendedores: TClientDataSet
     Top = 408
+  end
+  inherited C_CSTs: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_IPI: TClientDataSet
+    Active = True
+  end
+  inherited C_CSTs_PisCofins: TClientDataSet
+    Active = True
   end
 end

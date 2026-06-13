@@ -184,6 +184,77 @@ type
     ppLabel20: TppLabel;
     ppLine9: TppLine;
     ppLine10: TppLine;
+    ppRepasseSemSaldo: TppReport;
+    ppHeaderBand2: TppHeaderBand;
+    ppShape14: TppShape;
+    ppRegion1: TppRegion;
+    ppLabel21: TppLabel;
+    ppLabel22: TppLabel;
+    ppLabel23: TppLabel;
+    ppShape19: TppShape;
+    ppShape20: TppShape;
+    ppShape21: TppShape;
+    ppLabel39: TppLabel;
+    ppLabel40: TppLabel;
+    ppLabel41: TppLabel;
+    ppLabel42: TppLabel;
+    ppLabel43: TppLabel;
+    ppLine12: TppLine;
+    ppDetailBand3: TppDetailBand;
+    ppSubReport3: TppSubReport;
+    ppChildReport1: TppChildReport;
+    ppTitleBand3: TppTitleBand;
+    ppLabel49: TppLabel;
+    ppLabel50: TppLabel;
+    ppLabel51: TppLabel;
+    ppLabel52: TppLabel;
+    ppLabel53: TppLabel;
+    ppLine14: TppLine;
+    ppLine15: TppLine;
+    ppLine16: TppLine;
+    ppLine28: TppLine;
+    ppLine29: TppLine;
+    ppLine30: TppLine;
+    ppLine31: TppLine;
+    ppLine32: TppLine;
+    ppDetailBand5: TppDetailBand;
+    ppDBText5: TppDBText;
+    ppDBText6: TppDBText;
+    ppDBText7: TppDBText;
+    ppDBText8: TppDBText;
+    ppSummaryBand4: TppSummaryBand;
+    ppDBCalc3: TppDBCalc;
+    ppDBCalc4: TppDBCalc;
+    ppSubReport4: TppSubReport;
+    ppChildReport2: TppChildReport;
+    ppTitleBand4: TppTitleBand;
+    ppLabel54: TppLabel;
+    ppLabel55: TppLabel;
+    ppLabel56: TppLabel;
+    ppLabel57: TppLabel;
+    ppLabel58: TppLabel;
+    ppLine33: TppLine;
+    ppLine34: TppLine;
+    ppLine35: TppLine;
+    ppLine36: TppLine;
+    ppLine37: TppLine;
+    ppLine38: TppLine;
+    ppLine39: TppLine;
+    ppLine40: TppLine;
+    ppDetailBand6: TppDetailBand;
+    ppDBText13: TppDBText;
+    ppDBText14: TppDBText;
+    ppDBText15: TppDBText;
+    ppDBText16: TppDBText;
+    ppSummaryBand5: TppSummaryBand;
+    ppDBCalc7: TppDBCalc;
+    ppDBCalc8: TppDBCalc;
+    ppFooterBand2: TppFooterBand;
+    ppSummaryBand6: TppSummaryBand;
+    ppLabel59: TppLabel;
+    ppLabel60: TppLabel;
+    ppLine41: TppLine;
+    ppLine42: TppLine;
     procedure RepassarTodos1Click(Sender: TObject);
     procedure NoRepassar1Click(Sender: TObject);
     procedure edFicareiChange(Sender: TObject);
@@ -329,7 +400,17 @@ begin
 
     if ckbImprimir.Checked then begin
     	DMProjeto.ImprimirCabecalho( regCab );
-      ppRepasse.Print;
+        //retirado por solicitacao de Gleuson PanCor
+ //   if ((DMProjeto.Parametro('VisualizarSaldoDinheiro') = 'N') and ( DMProjeto.nPerfil <> 1 ) )Then
+ //           ppRepasseSemSaldo.Print
+ //       else
+ //           ppRepasse.Print;
+ // colocado teste porque não esva imprimindo o repasse para os outros clientes !
+     if (DMProjeto.Parametro('VisualizarSaldoDinheiro') <> 'N') Then
+            ppRepasse.Print;
+
+
+
     end;
 
     try
@@ -538,6 +619,12 @@ begin
   if DMProjeto.bBrasil then
     btContabilidade.visible := false;
   // Adriano
+  if ((DMProjeto.Parametro('VisualizarSaldoDinheiro') = 'N') and ( DMProjeto.nPerfil <> 1 ) )Then Begin
+        TS_Label1.Visible := false ;
+        lbCaixaDin.Visible := false ;
+        TS_Label2.Visible := false ;
+        edFicarei.Visible := false ;
+  end;
   DMContabil := TDMContabilidade.Create(self);
 end;
 

@@ -309,6 +309,8 @@ type
         dbgItensCST: TdxDBGridLookupColumn;
         dbgItensCSTIPI: TdxDBGridLookupColumn;
         dbgItensCSTPISCOFINS: TdxDBGridLookupColumn;
+    dbgItensCSTIBS: TdxDBGridMaskColumn;
+    dbgItensClassTrib: TdxDBGridMaskColumn;
         procedure FormCreate(Sender: TObject);
         procedure dbtObsMouseMove(Sender: TObject; Shift: TShiftState; X,
             Y: Integer);
@@ -495,6 +497,7 @@ type
         procedure btLimparClick(Sender: TObject);
         procedure dbgItensDESCRICAOValidate(Sender: TObject;
             var ErrorText: string; var Accept: Boolean);
+    procedure UltimoGravado1Click(Sender: TObject);
     private
         { Private declarations }
         sFoto: string;
@@ -549,7 +552,7 @@ uses teRender, teBkgrnd, DM_Projeto, Funcoes, {Rpt_Invoices,} Frm_Contabilidade,
 
 procedure TFrmSaidas.FormCreate(Sender: TObject);
 begin
-
+    
     DMSaida := TDMSaidas(DMJanela);
 
     DMSaida.sForm := Self.Name;
@@ -1249,6 +1252,7 @@ begin
             if not DMSaida.bAlteracao and (DMSaida.C_TabelaF_Situacao.Value = 'B') then
                 DlgMsg.ShowMsg(2152, [DMSaida.C_TabelaF_OBS.Value]);
 
+
             if pnLocalEntrega.Visible then
                 with DMSaida do
                     begin
@@ -1514,6 +1518,13 @@ begin
         dbgParcelasSaldo.Visible := True;
 
     cmbTipoMovimento.ReadOnly := true;
+    if pnLocalEntrega.Visible then begin
+       DMsaida.C_LocaisEntrega.Close;
+       DMsaida.C_LocaisEntrega.Open;
+       if (DMSaida.C_LocaisEntrega.Locate('Entrega', DMSaida.C_TabelaLocalEntrega.Value, [])) then
+       lcbLocaisEntrega.Text := DMSaida.C_LocaisEntrega.FieldByname('Descricao').AsString ;
+    end;
+
 
 end;
 
@@ -3631,11 +3642,15 @@ procedure TFrmSaidas.CopiarItensdaOperao1Click(Sender: TObject);
 var
     nOp: Integer;
     Q_Filhos: TIBQuery;
+    aux : String ;
     bValorPorCusto: boolean; { Felipe - Variável para indicar que o preço do item deve ser o custo contábil (sem imposto) para emitir Nota de Reclassificação)
     Implementação para Center Bike (01/12/2016) }
 begin
     inherited;
     {Escolhendo a operação}
+      if not DMProjeto.dlgAutorizacao.ExecuteX(Self.Name,'CopItensOp') then
+    exit;
+
 
     bValorPorCusto := False;
 
@@ -3660,6 +3675,7 @@ begin
                                 DMSaida.C_Itens.Append;
                                 dbgItens.TS_ID := Q_SQLt.FieldByName('Item').asInteger; //Localiza o Item.
 
+                                DMSaida.C_ItensEMPRESA.Value := -1 ;
                                 DMSaida.C_ItensTabelaPreco.Value := Q_SQLt.FieldByName('TabelaPreco').AsInteger;
                                 DMSaida.C_ItensPrecoTabela.Value := Q_SQLt.FieldByName('PrecoTabela').asCurrency;
 
@@ -3688,6 +3704,8 @@ begin
                                 {Copiando os Filhos}
                                 if (DMSaida.C_ItensHASCHILDREN.VAlue = 'S') then
                                     begin
+
+
                                         if Q_Filhos = nil then
                                             begin
                                                 Q_Filhos := TIBQuery.Create(self);
@@ -3703,15 +3721,23 @@ begin
 
                                         Q_Filhos.First;
                                         DMSaida.bPopulando := true; // para não ocorrer o change.
+                                        if not (DMsaida.C_SaidasItensFilhos.State in [dsInsert, dsEdit]) then
+                                                DMsaida.C_SaidasItensFilhos.Edit;
                                         while not Q_Filhos.EOF do
                                             begin
+
                                                 DMSaida.C_SaidasItensFilhos.Append;
+                                                DMSaida.C_SaidasItensFilhosEMPRESA.Value := -1 ;
                                                 DMSaida.C_SaidasItensFilhosCODIGO.Value := Q_Filhos.FieldByName('Codigo').asString;
                                                 DMSaida.C_SaidasItensFilhosCUSTOMEDIO.Value := Q_Filhos.FieldByName('CustoMedio').asCurrency;
                                                 DMSaida.C_SaidasItensFilhosCUSTOCONTABIL.Value := Q_Filhos.FieldByName('CustoContabil').asCurrency;
                                                 DMSaida.C_SaidasItensFilhosDESCRICAO.Value := Q_Filhos.FieldByName('Descricao').asString;
                                                 DMSaida.C_SaidasItensFilhosQUANTIDADE.Value := Q_Filhos.FieldByName('Quantidade').asFloat;
-                                                DMSaida.C_SaidasItensFilhosUNIDADE.Value := Q_Filhos.FieldByName('unidade').asstring;
+// Comentei a linha abaixo porque estava dando erro quando ia copiar itens da operacao , transferi a responsabilidade para o banco de dados na trigger de Before Inser , new.unidade , new.preco
+//                                               DMSaida.C_SaidasItensFilhosUNIDADE.Value := Q_Filhos.FieldByName('Unidade').asString;
+
+
+                                               // DMSaida.C_SaidasItensFilhosUNIDADE.Value := 'UN';
                                                 DMSaida.C_SaidasItensFilhosFATOR.Value := Q_Filhos.FieldByName('Fator').asFloat;
 
                                                 DMSaida.C_SaidasItensFilhosITEM.Value := Q_Filhos.FieldByName('ITEM').asInteger;
@@ -4186,6 +4212,21 @@ end;
 
 procedure TFrmSaidas.btGravarClick(Sender: TObject);
 begin
+
+
+
+//comentado 01-01-2026 estava dando ero em algumas bases como necessartio atualizacao por conta rtc . 
+//  if pnLocalEntrega.Visible then
+//  begin
+//          if ( lcbLocaisEntrega.Text = '' )  then
+//                if not (DMSaida.C_LocaisEntrega.State in [dsEdit, dsInsert]) then
+//                begin
+//                  DMSaida.C_LocaisEntrega.edit;
+//                  DMSaida.C_LocaisEntregaENTREGA.Value := 0;
+//                end;
+//  end;
+
+
     if Name <> 'FrmEmpresa' then
         begin
             if (DMProject.TipoSituacaoCliente = 2) then
@@ -4326,6 +4367,12 @@ begin
         begin
             dbgItensDESCRICAO.Field.Text := DMSaida.C_ItensI_DESCRICAO.AsString;
         end;
+end;
+
+procedure TFrmSaidas.UltimoGravado1Click(Sender: TObject);
+begin
+  inherited;
+   lcbLocaisEntrega.SelText := DMSaida.C_LocaisEntregaDESCRICAO.Value ;
 end;
 
 end.

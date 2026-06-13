@@ -7,7 +7,7 @@ inherited FrmOutrasEntradas: TFrmOutrasEntradas
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 910
-    Height = 560
+    Height = 559
     inherited btComando1: TTS_SpeedButton
       Caption = 'Pedidos'
       OnClick = btComando1Click
@@ -16,24 +16,24 @@ inherited FrmOutrasEntradas: TFrmOutrasEntradas
       Caption = 'Contabilidade'
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 526
+      Top = 525
     end
   end
   inherited pnDados: TTS_Panel
     Width = 910
-    Height = 560
+    Height = 559
     inherited Grid: TTS_QDBGrid
       Width = 908
-      Height = 558
+      Height = 557
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 908
-      Height = 558
+      Height = 557
     end
     inherited sbDados: TTS_Panel
       Width = 908
-      Height = 558
+      Height = 557
       inherited TS_Shape1: TTS_Shape
         Width = 908
       end
@@ -49,6 +49,7 @@ inherited FrmOutrasEntradas: TFrmOutrasEntradas
         Left = 690
         DataSource = DMOutrasEntradas.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMOutrasEntradas.C_TiposMovimentoDS
         Height = 19
       end
@@ -83,10 +84,8 @@ inherited FrmOutrasEntradas: TFrmOutrasEntradas
         Left = 2
         Width = 896
         Height = 222
-        ActivePage = tsFiscal
         Style = tsTabs
-        TabIndex = 1
-        ActivePageIndex = 1
+        TabIndex = 0
         TabColor = 15196656
         TabColorActive = 11775972
         inherited tsCabecalho: TTS_TabSheet
@@ -2019,9 +2018,6 @@ inherited FrmOutrasEntradas: TFrmOutrasEntradas
         Top = 256
         Width = 897
         Height = 292
-        ActivePage = tsItens
-        TabIndex = 0
-        ActivePageIndex = 0
         inherited tsItens: TTS_TabSheet
           BevelInner = bvRaised
           BevelOuter = bvLowered
@@ -2623,6 +2619,10 @@ inherited FrmOutrasEntradas: TFrmOutrasEntradas
   inherited ppmOutros: TTS_PopupMenu
     inherited ReceberPagamento1: TMenuItem
       Caption = 'Fazer Pagamentos'
+    end
+    object ReferenciarNotas1: TMenuItem
+      Caption = 'Referenciar Notas'
+      OnClick = ReferenciarNotas1Click
     end
   end
   inherited ppmGrid: TTS_PopupMenu

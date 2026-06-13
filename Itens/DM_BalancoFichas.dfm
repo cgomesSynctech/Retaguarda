@@ -1,6 +1,6 @@
 inherited DMBalancoFichas: TDMBalancoFichas
-  Left = 57
-  Top = 89
+  Left = 498
+  Top = 144
   Height = 479
   Width = 741
   inherited Q_Tabela: TIBQuery
@@ -53,7 +53,6 @@ inherited DMBalancoFichas: TDMBalancoFichas
     Left = 38
   end
   inherited C_Tabela: TClientDataSet
-    Active = True
     OnCalcFields = C_TabelaCalcFields
     Top = 166
     object C_TabelaBALANCOFICHA: TIntegerField
@@ -130,7 +129,6 @@ inherited DMBalancoFichas: TDMBalancoFichas
     Top = 6
   end
   object C_Usuarios: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'Q_UsuariosProvider'
@@ -194,7 +192,6 @@ inherited DMBalancoFichas: TDMBalancoFichas
       end>
   end
   object C_BalancoFichasItens: TClientDataSet
-    Active = True
     Aggregates = <>
     DataSetField = C_TabelaQ_BalancoFichasItens
     Params = <>
@@ -246,12 +243,15 @@ inherited DMBalancoFichas: TDMBalancoFichas
     end
     object C_BalancoFichasItensCONTAGEM1: TFloatField
       FieldName = 'CONTAGEM1'
+      Origin = 'BALANCOCONTAGEMITENS.CONTAGEM1'
     end
     object C_BalancoFichasItensCONTAGEM2: TFloatField
       FieldName = 'CONTAGEM2'
+      Origin = 'BALANCOCONTAGEMITENS.CONTAGEM2'
     end
     object C_BalancoFichasItensCONTAGEM3: TFloatField
       FieldName = 'CONTAGEM3'
+      Origin = 'BALANCOCONTAGEMITENS.CONTAGEM3'
     end
     object C_BalancoFichasItensCODIGOBARRAS: TStringField
       FieldName = 'CODIGOBARRAS'
@@ -299,7 +299,6 @@ inherited DMBalancoFichas: TDMBalancoFichas
     Top = 183
   end
   object C_Almoxarifados: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Almoxarifados'

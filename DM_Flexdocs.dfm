@@ -16,18 +16,19 @@ inherited DMFlexdocs: TDMFlexdocs
       'set'
       '  CSC = :CSC,'
       '  FLEXDOCS = :FLEXDOCS,'
-      '  IDTOKEN = :IDTOKEN'
+      '  IDTOKEN = :IDTOKEN,'
+      '  SENHA = :SENHA'
       'where'
       '  FAVORECIDO = :OLD_FAVORECIDO')
     InsertSQL.Strings = (
       'insert into empresas'
-      '  (CSC, FLEXDOCS, IDTOKEN)'
+      '  (CSC, FLEXDOCS, IDTOKEN, SENHA)'
       'values'
-      '  (:CSC, :FLEXDOCS, :IDTOKEN) '
+      '  (:CSC, :FLEXDOCS, :IDTOKEN, :SENHA)')
+    DeleteSQL.Strings = (
+      'delete from empresas'
       'where'
       '  FAVORECIDO = :OLD_FAVORECIDO')
-    DeleteSQL.Strings = (
-      '')
   end
   inherited DMComponent: TDMComponent
     KeyForIDs = 'Favorecido'
@@ -50,6 +51,10 @@ inherited DMFlexdocs: TDMFlexdocs
     object C_TabelaIDTOKEN: TStringField
       FieldName = 'IDTOKEN'
       Size = 6
+    end
+    object C_TabelaSENHA: TStringField
+      FieldName = 'SENHA'
+      Size = 50
     end
   end
 end

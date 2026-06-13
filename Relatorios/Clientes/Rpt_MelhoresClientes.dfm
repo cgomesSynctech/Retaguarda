@@ -18,7 +18,7 @@ inherited RptMelhoresClientes: TRptMelhoresClientes
     end
   end
   inherited pnGrid: TPanel
-    Height = 383
+    Height = 394
     inherited pnDados: TTS_Panel
       Height = 23
       Color = 16116702
@@ -112,7 +112,7 @@ inherited RptMelhoresClientes: TRptMelhoresClientes
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 23
-      Height = 341
+      Height = 352
       Bands = <
         item
           Caption = 'Dados do Cliente'
@@ -207,9 +207,23 @@ inherited RptMelhoresClientes: TRptMelhoresClientes
         RowIndex = 0
         FieldName = 'VOLUME61_90'
       end
+      object dbgConsultaColumn13: TdxDBGridMaskColumn
+        Caption = 'Fone2'
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FONE2'
+      end
+      object dbgConsultaColumn14: TdxDBGridMaskColumn
+        Caption = 'Celular'
+        Visible = False
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CELULAR'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 364
+      Top = 375
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -217,9 +231,9 @@ inherited RptMelhoresClientes: TRptMelhoresClientes
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 383
+    Height = 394
     inherited btSair: TTS_SpeedButton
-      Top = 338
+      Top = 349
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick
@@ -244,7 +258,7 @@ inherited RptMelhoresClientes: TRptMelhoresClientes
     SQL.Strings = (
       
         'select f.favorecido, f.codigo, f.nome, f.fone1, f.endereco, f.ci' +
-        'dade, f.uf, f.cep, f.fax, f.fone2, '
+        'dade, f.uf, f.cep, f.fax, f.fone2, f.celular, '
       '    (select sum(total) from saidas where tipopadrao=1'
       '    and Situacao='#39'N'#39' and favorecido=f.favorecido)'
       '    as TotalAteHoje,'
@@ -455,6 +469,9 @@ inherited RptMelhoresClientes: TRptMelhoresClientes
     end
     object C_ConsultaVOLUME61_90: TFloatField
       FieldName = 'VOLUME61_90'
+    end
+    object C_ConsultaCELULAR: TStringField
+      FieldName = 'CELULAR'
     end
   end
   inherited ppmLayout: TTS_PopupMenu

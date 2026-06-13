@@ -279,7 +279,6 @@ inherited FrmAcertoConsigSaid: TFrmAcertoConsigSaid
           Color = 14859922
           ParentColor = False
           inherited dbgItens: TTS_QDBGrid
-            Top = 3
             DataSource = DMAcertoConsigSaid.C_ItensDS
             Filter.Criteria = {00000000}
             HeaderColor = 14859922
@@ -396,15 +395,17 @@ inherited FrmAcertoConsigSaid: TFrmAcertoConsigSaid
             end
             inherited dbgItensTipoItem: TdxDBGridColumn [21]
             end
-            inherited dbgItensI_DescricaoCompra: TdxDBGridColumn
-              Width = 234
+            inherited dbgItensQUANTIDADEVOLUME: TdxDBGridMaskColumn [22]
             end
-            inherited dbgItensQUANTIDADEVOLUME: TdxDBGridMaskColumn [23]
+            inherited dbgItensFABRICACAO: TdxDBGridDateColumn [23]
             end
-            inherited dbgItensFABRICACAO: TdxDBGridDateColumn [24]
-            end
-            inherited dbgItensATUALIZOUPRECO: TdxDBGridColumn [25]
+            inherited dbgItensATUALIZOUPRECO: TdxDBGridColumn [24]
               Width = 76
+            end
+            inherited dbgItensPRECOVENDA: TdxDBGridColumn [25]
+            end
+            inherited dbgItensI_DescricaoCompra: TdxDBGridColumn [26]
+              Width = 234
             end
           end
         end
@@ -632,7 +633,7 @@ inherited FrmAcertoConsigSaid: TFrmAcertoConsigSaid
     Height = 18
     Width = 18
     Left = 307
-    Top = 325
+    Top = 309
     Bitmap = {
       494C010105000900040012001200FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000048000000360000000100200000000000C03C
@@ -1156,6 +1157,7 @@ inherited FrmAcertoConsigSaid: TFrmAcertoConsigSaid
     end
     object Movimentos1: TMenuItem
       Caption = 'Movimentos'
+      Visible = False
       OnClick = Movimentos1Click
     end
   end

@@ -6,7 +6,7 @@ uses
     Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
     DM_Saidas, Db, DBClient, Provider, DlgMsg, DMComponent, IBCustomDataSet,
     IBUpdateSQL, IBQuery, IBEvents, Dlg_InplacePgtos, TS_QDBGrid, Variants,
-    Math, BTOdeum,  T_TefDiscado;
+    Math, BTOdeum,  T_TefDiscado, IBStoredProc, ActnList;
 
 type
     TModelo = (Nenhuma,Bematech,Corisco,Schalter,Urano,Afrac,Elgin,Sweda,Daruma,Yanco,Sweda100,Quattro,ElginMFD);
@@ -18,7 +18,6 @@ type
     C_ParcelasValorAReceber: TCurrencyField;
     C_ParcelasPagamento: TCurrencyField;
     C_ParcelasJuros: TCurrencyField;
-    C_ParcelasVENDA: TIntegerField;
     C_TabelaLabelMsg: TStringField;
     C_TabelaicNomeTabelaPadrao: TStringField;
     C_PlanosPagamentoicResumo: TStringField;
@@ -38,7 +37,6 @@ type
     C_PrecosDESCITEM: TStringField;
     C_PrecosPRECO_NORMAL: TBCDField;
     C_PrecosPRECO: TCurrencyField;
-    TEF2: TTEFDiscado;
     C_TabelaNUMEROECF: TStringField;
     C_TabelaCCF: TStringField;
     C_TabelaCRZ: TStringField;

@@ -2,17 +2,17 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
   Left = 394
   Top = 150
   Width = 696
-  Height = 382
+  Height = 387
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 569
+    Left = 577
     Top = 42
     Width = 111
-    Height = 301
+    Height = 317
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 267
+      Top = 283
       Width = 109
     end
     inherited btComando2: TTS_SpeedButton
@@ -51,14 +51,14 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
   end
   inherited pnDados: TTS_Panel [1]
     Top = 42
-    Width = 569
-    Height = 301
+    Width = 577
+    Height = 317
     Color = 16116702
     object mvUltimasVendas: TdxMasterView
       Left = 1
       Top = 33
-      Width = 567
-      Height = 267
+      Width = 575
+      Height = 283
       Align = alClient
       TabOrder = 0
       OptionsView = [movAnimation, movAutoColumnWidth, movHideFocusRect, movHideSelection, movKeepColumnWidths, movTransparentDragAndDrop, movUseBitmapToDrawPreview]
@@ -231,7 +231,7 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
     object pnPesquisaFavorecido: TTS_Panel
       Left = 1
       Top = 1
-      Width = 567
+      Width = 575
       Height = 32
       Align = alTop
       BevelOuter = bvNone
@@ -375,7 +375,7 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
     end
   end
   inherited pnTitulo: TTS_MaxPanel [2]
-    Width = 680
+    Width = 688
     Height = 42
     Gradient.ColorStart = 14859922
     inherited btHelp: TTS_SpeedButton
@@ -470,6 +470,12 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
     object C_VendasSALDOINVOICE: TFloatField
       FieldName = 'SALDOINVOICE'
     end
+    object C_VendasTIPOMOVIMENTO: TIntegerField
+      FieldName = 'TIPOMOVIMENTO'
+    end
+    object C_VendasTIPOPADRAO: TIntegerField
+      FieldName = 'TIPOPADRAO'
+    end
   end
   object Q_VendasProvider: TDataSetProvider
     DataSet = Q_Vendas
@@ -492,7 +498,9 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
       ''
       '        (Total - TotalPgtos) as SaldoInvoice,'
       ''
-      '        f.tipofavorecido'
+      '        f.tipofavorecido,'
+      '    S.TipoPadrao, '
+      '     s.tipomovimento'
       'From Saidas s'
       'Left Join Favorecidos f On s.Vendedor=f.Favorecido'
       'Left Join TiposEntrega te On s.TipoEntrega=te.TipoEntrega'
@@ -588,8 +596,8 @@ inherited DlgUltimasVendas: TDlgUltimasVendas
   end
   object C_VendasDS: TDataSource
     DataSet = C_Vendas
-    Left = 170
-    Top = 239
+    Left = 250
+    Top = 247
   end
   object Q_VendasProdProvider: TDataSetProvider
     DataSet = Q_VendasProd

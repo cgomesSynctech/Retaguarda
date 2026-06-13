@@ -1,12 +1,11 @@
 inherited RptVendas: TRptVendas
-  Left = 111
-  Top = 167
-  Width = 1065
+  Top = 152
+  Width = 1216
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 1049
+    Width = 1208
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 174
@@ -14,16 +13,16 @@ inherited RptVendas: TRptVendas
       Effect3D.ShadowedColor = 14859922
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 1023
+      Left = 1174
     end
     inherited btTemplates: TTS_SpeedButton
-      Left = 996
+      Left = 1147
     end
   end
   inherited pnGrid: TPanel
-    Width = 996
+    Width = 1155
     inherited pnDados: TTS_Panel
-      Width = 996
+      Width = 1155
       Color = 16116702
       object TS_Label1: TTS_Label
         Left = -2
@@ -42,7 +41,7 @@ inherited RptVendas: TRptVendas
         LinkToResult = 0
       end
       object btClientes: TTS_SpeedButton
-        Left = 484
+        Left = 471
         Top = 2
         Width = 82
         Height = 20
@@ -100,7 +99,7 @@ inherited RptVendas: TRptVendas
         Border = True
       end
       object btVendedor: TTS_SpeedButton
-        Left = 571
+        Left = 556
         Top = 2
         Width = 77
         Height = 20
@@ -285,7 +284,7 @@ inherited RptVendas: TRptVendas
         Height = 19
       end
       object rbCustoMedio: TTS_RadioButton
-        Left = 758
+        Left = 735
         Top = 3
         Width = 97
         Height = 17
@@ -294,7 +293,7 @@ inherited RptVendas: TRptVendas
         Transparent = False
       end
       object rbPrecoCompra: TTS_RadioButton
-        Left = 660
+        Left = 641
         Top = 3
         Width = 97
         Height = 17
@@ -305,7 +304,7 @@ inherited RptVendas: TRptVendas
         Transparent = False
       end
       object rbCustoManual: TTS_RadioButton
-        Left = 857
+        Left = 819
         Top = 3
         Width = 97
         Height = 17
@@ -313,9 +312,25 @@ inherited RptVendas: TRptVendas
         TabOrder = 5
         Transparent = False
       end
+      object cbServicos: TTS_CheckBox
+        Left = 916
+        Top = 4
+        Width = 189
+        Style.BorderStyle = xbsNone
+        Style.ButtonStyle = btsSimple
+        Style.HotTrack = False
+        TabOrder = 6
+        Caption = 'Incluir Itens de Servi'#231'o'
+        StyleController = DMProjeto.esClientes
+        OnChange = cbServicosChange
+        NullStyle = nsUnchecked
+        State = cbsChecked
+        DisableEdit = False
+        Height = 17
+      end
     end
     inherited dbgConsulta: TTS_QDBGrid
-      Width = 996
+      Width = 1155
       KeyField = 'SAIDA'
       SummaryGroups = <
         item
@@ -537,15 +552,15 @@ inherited RptVendas: TRptVendas
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Width = 996
+      Width = 1155
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
       end
     end
     object clbTipoOperacao: TTS_CheckListBox
-      Left = 433
-      Top = 90
+      Left = 713
+      Top = 114
       Width = 174
       Height = 147
       BorderStyle = bsNone
@@ -749,7 +764,7 @@ inherited RptVendas: TRptVendas
     SQL.Strings = (
       
         'Select TIPOMOVIMENTO, DESCRICAO from TIPOSMOVIMENTO where   TIPO' +
-        'PADRAO in (1) order by DESCRICAO')
+        'PADRAO in (1,2) order by DESCRICAO')
     Left = 495
     Top = 116
     object Q_TiposMovimentosTIPOMOVIMENTO: TIntegerField

@@ -12,7 +12,7 @@ uses
     StdCtrls, ppRichTx, OleServer, PDFCreatorPilotLib_TLB;
 
 type
-    TRptInvoices = class(TForm)
+    TRptInvoices = class(TForm)   
         rbInvoice: TppReport;
         C_InvoiceDS: TDataSource;
         Q_Invoice: TIBQuery;
@@ -5122,7 +5122,6 @@ type
     ppLabel293: TppLabel;
     ppDBText718: TppDBText;
     C_InvoiceOBSCLIENTE: TStringField;
-    dbpInvoiceppField318: TppField;
     rppedidograde: TppReport;
     ppHeaderBand30: TppHeaderBand;
     ppRegion51: TppRegion;
@@ -5227,20 +5226,12 @@ type
     ppDBText751: TppDBText;
     C_InvoiceEMAIL: TStringField;
     C_InvoiceCELULAR: TStringField;
-    dbpInvoiceppField320: TppField;
-    dbpInvoiceppField319: TppField;
     C_InvoiceREFFONE: TStringField;
     C_InvoiceREFNOME: TStringField;
     C_InvoiceREFNOME2: TStringField;
     C_InvoiceREFFONE2: TStringField;
     C_InvoiceREFNOME3: TStringField;
     C_InvoiceREFFONE3: TStringField;
-    dbpInvoiceppField321: TppField;
-    dbpInvoiceppField322: TppField;
-    dbpInvoiceppField323: TppField;
-    dbpInvoiceppField324: TppField;
-    dbpInvoiceppField325: TppField;
-    dbpInvoiceppField326: TppField;
     rppedidogradePrecoTabela: TppReport;
     ppHeaderBand31: TppHeaderBand;
     ppRegion52: TppRegion;
@@ -5361,6 +5352,2081 @@ type
     zrvField1UF: TZRField;
     zrvField1CEP: TZRField;
     zrvField1FONE1: TZRField;
+    ZReport5: TZReport;
+    ZRField554: TZRField;
+    ZRField555: TZRField;
+    ZRField556: TZRField;
+    ZRField601: TZRField;
+    ZRField602: TZRField;
+    ZRField603: TZRField;
+    ZRField604: TZRField;
+    ZRField605: TZRField;
+    ZRField606: TZRField;
+    ZRField607: TZRField;
+    ZRField608: TZRField;
+    ZRField609: TZRField;
+    ZRField610: TZRField;
+    ZRField611: TZRField;
+    ZRField612: TZRField;
+    ZRAggregator17: TZRAggregator;
+    ZRAggregator18: TZRAggregator;
+    ZRField613: TZRField;
+    ZRField614: TZRField;
+    ZRField615: TZRField;
+    ZRField616: TZRField;
+    ZRField617: TZRField;
+    ZRField618: TZRField;
+    ZRField619: TZRField;
+    ZRField620: TZRField;
+    ZRField621: TZRField;
+    ZRField622: TZRField;
+    ZRField623: TZRField;
+    ZRField624: TZRField;
+    ZRField625: TZRField;
+    ZRField626: TZRField;
+    ZRField627: TZRField;
+    ZRField628: TZRField;
+    ZRField629: TZRField;
+    ZRField630: TZRField;
+    ZRField631: TZRField;
+    ZRField632: TZRField;
+    ZRField633: TZRField;
+    ZRField634: TZRField;
+    ZRField635: TZRField;
+    ZRField636: TZRField;
+    ZRField637: TZRField;
+    ZRField638: TZRField;
+    ZRField639: TZRField;
+    ZRField640: TZRField;
+    ZRGroup4: TZRGroup;
+    ZRBand101: TZRBand;
+    ZRLabel1050: TZRLabel;
+    ZRLabel1051: TZRLabel;
+    ZRLabel1052: TZRLabel;
+    ZRLabel1053: TZRLabel;
+    ZRBand102: TZRBand;
+    ZRLabel1054: TZRLabel;
+    ZRLabel1055: TZRLabel;
+    ZRSystemLabel12: TZRSystemLabel;
+    ZRLabel1056: TZRLabel;
+    ZRBand103: TZRBand;
+    ZRLabel1057: TZRLabel;
+    ZRLabel1058: TZRLabel;
+    ZRLabel1059: TZRLabel;
+    ZRLabel1060: TZRLabel;
+    ZRLabel1061: TZRLabel;
+    ZRLabel1062: TZRLabel;
+    ZRLabel1063: TZRLabel;
+    ZRBand104: TZRBand;
+    ZRLabel1064: TZRLabel;
+    ZRBand105: TZRBand;
+    ZRLabel1065: TZRLabel;
+    ZRLabel1066: TZRLabel;
+    ZRLabel1067: TZRLabel;
+    ZRLabel1068: TZRLabel;
+    ZRLabel1069: TZRLabel;
+    ZRLabel1070: TZRLabel;
+    ZRLabel1071: TZRLabel;
+    ZRLabel1072: TZRLabel;
+    ZRLabel1073: TZRLabel;
+    ZRBand106: TZRBand;
+    ZRBand107: TZRBand;
+    ZRLabel1074: TZRLabel;
+    ZRTotalLabel25: TZRTotalLabel;
+    ZRLabel1075: TZRLabel;
+    ZRLabel1076: TZRLabel;
+    ZRLabel1077: TZRLabel;
+    ZRLabel1078: TZRLabel;
+    ZRLabel1079: TZRLabel;
+    ZRLabel1080: TZRLabel;
+    ZRLabel1081: TZRLabel;
+    ZRLabel1082: TZRLabel;
+    ZRTotalLabel26: TZRTotalLabel;
+    ZRLabel1083: TZRLabel;
+    ZRLabel1084: TZRLabel;
+    ZRLabel1085: TZRLabel;
+    ZRLabel1086: TZRLabel;
+    ZRLabel1087: TZRLabel;
+    ZRLabel1088: TZRLabel;
+    ZRLabel1089: TZRLabel;
+    ZRLabel1090: TZRLabel;
+    ZRLabel1091: TZRLabel;
+    ZRTotalLabel27: TZRTotalLabel;
+    ZRLabel1092: TZRLabel;
+    ZRLabel1093: TZRLabel;
+    ZRLabel1094: TZRLabel;
+    ZRLabel1095: TZRLabel;
+    ZRLabel1096: TZRLabel;
+    ZRLabel1097: TZRLabel;
+    ZRLabel1098: TZRLabel;
+    ZRLabel1099: TZRLabel;
+    ZRLabel1100: TZRLabel;
+    ZRLabel1101: TZRLabel;
+    ZRLabel1102: TZRLabel;
+    ZRLabel1103: TZRLabel;
+    ZRLabel1104: TZRLabel;
+    ZRLabel1105: TZRLabel;
+    ZRLabel1106: TZRLabel;
+    ZRLabel1107: TZRLabel;
+    ZRSubDetail17: TZRSubDetail;
+    ZRField641: TZRField;
+    ZRField642: TZRField;
+    ZRField643: TZRField;
+    ZRField644: TZRField;
+    ZRField645: TZRField;
+    ZRField646: TZRField;
+    ZRField647: TZRField;
+    ZRField648: TZRField;
+    ZRLabel1108: TZRLabel;
+    ZRLabel1109: TZRLabel;
+    ZRLabel1110: TZRLabel;
+    ZRLabel1111: TZRLabel;
+    ZRLabel1112: TZRLabel;
+    ZRLabel1113: TZRLabel;
+    ZRBand108: TZRBand;
+    ZRLabel1114: TZRLabel;
+    ZRLabel1115: TZRLabel;
+    ZRLabel1116: TZRLabel;
+    ZRLabel1117: TZRLabel;
+    ZRLabel1118: TZRLabel;
+    ZRLabel1119: TZRLabel;
+    ZRLabel1120: TZRLabel;
+    ZRBand109: TZRBand;
+    ZRLabel1121: TZRLabel;
+    ZRLabel1122: TZRLabel;
+    ZRLabel1123: TZRLabel;
+    ZRLabel1124: TZRLabel;
+    ZRLabel1125: TZRLabel;
+    ZRLabel1126: TZRLabel;
+    ZReport6: TZReport;
+    ZRField649: TZRField;
+    ZRField650: TZRField;
+    ZRField651: TZRField;
+    ZRField652: TZRField;
+    ZRField653: TZRField;
+    ZRField654: TZRField;
+    ZRField655: TZRField;
+    ZRField656: TZRField;
+    ZRField657: TZRField;
+    ZRField658: TZRField;
+    ZRField659: TZRField;
+    ZRField660: TZRField;
+    ZRField661: TZRField;
+    ZRField662: TZRField;
+    ZRField663: TZRField;
+    ZRAggregator21: TZRAggregator;
+    ZRAggregator22: TZRAggregator;
+    ZRField664: TZRField;
+    ZRField665: TZRField;
+    ZRField666: TZRField;
+    ZRField667: TZRField;
+    ZRField668: TZRField;
+    ZRField669: TZRField;
+    ZRField670: TZRField;
+    ZRField671: TZRField;
+    ZRField672: TZRField;
+    ZRField673: TZRField;
+    ZRField674: TZRField;
+    ZRField675: TZRField;
+    ZRField676: TZRField;
+    ZRField677: TZRField;
+    ZRField678: TZRField;
+    ZRField679: TZRField;
+    ZRField680: TZRField;
+    ZRField681: TZRField;
+    ZRField682: TZRField;
+    ZRField683: TZRField;
+    ZRField684: TZRField;
+    ZRField685: TZRField;
+    ZRField686: TZRField;
+    ZRField687: TZRField;
+    ZRField688: TZRField;
+    ZRField689: TZRField;
+    ZRField690: TZRField;
+    ZRField691: TZRField;
+    ZRGroup5: TZRGroup;
+    ZRBand110: TZRBand;
+    ZRLabel1127: TZRLabel;
+    ZRLabel1128: TZRLabel;
+    ZRLabel1129: TZRLabel;
+    ZRLabel1130: TZRLabel;
+    ZRBand111: TZRBand;
+    ZRLabel1131: TZRLabel;
+    ZRLabel1132: TZRLabel;
+    ZRSystemLabel13: TZRSystemLabel;
+    ZRLabel1133: TZRLabel;
+    ZRBand112: TZRBand;
+    ZRLabel1134: TZRLabel;
+    ZRLabel1135: TZRLabel;
+    ZRLabel1136: TZRLabel;
+    ZRLabel1137: TZRLabel;
+    ZRLabel1138: TZRLabel;
+    ZRLabel1139: TZRLabel;
+    ZRLabel1140: TZRLabel;
+    ZRBand113: TZRBand;
+    ZRLabel1141: TZRLabel;
+    ZRBand114: TZRBand;
+    ZRLabel1142: TZRLabel;
+    ZRLabel1143: TZRLabel;
+    ZRLabel1144: TZRLabel;
+    ZRLabel1145: TZRLabel;
+    ZRLabel1146: TZRLabel;
+    ZRLabel1147: TZRLabel;
+    ZRLabel1148: TZRLabel;
+    ZRLabel1149: TZRLabel;
+    ZRLabel1150: TZRLabel;
+    ZRBand115: TZRBand;
+    ZRBand116: TZRBand;
+    ZRLabel1151: TZRLabel;
+    ZRTotalLabel28: TZRTotalLabel;
+    ZRLabel1152: TZRLabel;
+    ZRLabel1153: TZRLabel;
+    ZRLabel1154: TZRLabel;
+    ZRLabel1155: TZRLabel;
+    ZRLabel1156: TZRLabel;
+    ZRLabel1157: TZRLabel;
+    ZRLabel1158: TZRLabel;
+    ZRLabel1159: TZRLabel;
+    ZRTotalLabel29: TZRTotalLabel;
+    ZRLabel1160: TZRLabel;
+    ZRLabel1161: TZRLabel;
+    ZRLabel1162: TZRLabel;
+    ZRLabel1163: TZRLabel;
+    ZRLabel1164: TZRLabel;
+    ZRLabel1165: TZRLabel;
+    ZRLabel1166: TZRLabel;
+    ZRLabel1167: TZRLabel;
+    ZRLabel1168: TZRLabel;
+    ZRTotalLabel30: TZRTotalLabel;
+    ZRLabel1169: TZRLabel;
+    ZRLabel1170: TZRLabel;
+    ZRLabel1171: TZRLabel;
+    ZRLabel1172: TZRLabel;
+    ZRLabel1173: TZRLabel;
+    ZRLabel1174: TZRLabel;
+    ZRLabel1175: TZRLabel;
+    ZRLabel1176: TZRLabel;
+    ZRLabel1177: TZRLabel;
+    ZRLabel1178: TZRLabel;
+    ZRLabel1179: TZRLabel;
+    ZRLabel1180: TZRLabel;
+    ZRLabel1181: TZRLabel;
+    ZRLabel1182: TZRLabel;
+    ZRLabel1183: TZRLabel;
+    ZRLabel1184: TZRLabel;
+    ZRSubDetail18: TZRSubDetail;
+    ZRField692: TZRField;
+    ZRField693: TZRField;
+    ZRField694: TZRField;
+    ZRField695: TZRField;
+    ZRField696: TZRField;
+    ZRField697: TZRField;
+    ZRField698: TZRField;
+    ZRField699: TZRField;
+    ZRLabel1185: TZRLabel;
+    ZRLabel1186: TZRLabel;
+    ZRLabel1187: TZRLabel;
+    ZRLabel1188: TZRLabel;
+    ZRLabel1189: TZRLabel;
+    ZRLabel1190: TZRLabel;
+    ZRBand117: TZRBand;
+    ZRLabel1191: TZRLabel;
+    ZRLabel1192: TZRLabel;
+    ZRLabel1193: TZRLabel;
+    ZRLabel1194: TZRLabel;
+    ZRLabel1195: TZRLabel;
+    ZRLabel1196: TZRLabel;
+    ZRLabel1197: TZRLabel;
+    ZRBand118: TZRBand;
+    ZRLabel1198: TZRLabel;
+    ZRLabel1199: TZRLabel;
+    ZRLabel1200: TZRLabel;
+    ZRLabel1201: TZRLabel;
+    ZRLabel1202: TZRLabel;
+    ZRLabel1203: TZRLabel;
+    ZReport7: TZReport;
+    ZRField700: TZRField;
+    ZRField701: TZRField;
+    ZRField702: TZRField;
+    ZRField703: TZRField;
+    ZRField704: TZRField;
+    ZRField705: TZRField;
+    ZRField706: TZRField;
+    ZRField707: TZRField;
+    ZRField708: TZRField;
+    ZRField709: TZRField;
+    ZRField710: TZRField;
+    ZRField711: TZRField;
+    ZRField712: TZRField;
+    ZRField713: TZRField;
+    ZRField714: TZRField;
+    ZRAggregator23: TZRAggregator;
+    ZRAggregator24: TZRAggregator;
+    ZRField715: TZRField;
+    ZRField716: TZRField;
+    ZRField717: TZRField;
+    ZRField718: TZRField;
+    ZRField719: TZRField;
+    ZRField720: TZRField;
+    ZRField721: TZRField;
+    ZRField722: TZRField;
+    ZRField723: TZRField;
+    ZRField724: TZRField;
+    ZRField725: TZRField;
+    ZRField726: TZRField;
+    ZRField727: TZRField;
+    ZRField728: TZRField;
+    ZRField729: TZRField;
+    ZRField730: TZRField;
+    ZRField731: TZRField;
+    ZRField732: TZRField;
+    ZRField733: TZRField;
+    ZRField734: TZRField;
+    ZRField735: TZRField;
+    ZRField736: TZRField;
+    ZRField737: TZRField;
+    ZRField738: TZRField;
+    ZRField739: TZRField;
+    ZRField740: TZRField;
+    ZRField741: TZRField;
+    ZRField742: TZRField;
+    ZRGroup6: TZRGroup;
+    ZRBand119: TZRBand;
+    ZRLabel1204: TZRLabel;
+    ZRLabel1205: TZRLabel;
+    ZRLabel1206: TZRLabel;
+    ZRLabel1207: TZRLabel;
+    ZRBand120: TZRBand;
+    ZRLabel1208: TZRLabel;
+    ZRLabel1209: TZRLabel;
+    ZRSystemLabel14: TZRSystemLabel;
+    ZRLabel1210: TZRLabel;
+    ZRBand121: TZRBand;
+    ZRLabel1211: TZRLabel;
+    ZRLabel1212: TZRLabel;
+    ZRLabel1213: TZRLabel;
+    ZRLabel1214: TZRLabel;
+    ZRLabel1215: TZRLabel;
+    ZRLabel1216: TZRLabel;
+    ZRLabel1217: TZRLabel;
+    ZRBand122: TZRBand;
+    ZRLabel1218: TZRLabel;
+    ZRBand123: TZRBand;
+    ZRLabel1219: TZRLabel;
+    ZRLabel1220: TZRLabel;
+    ZRLabel1221: TZRLabel;
+    ZRLabel1222: TZRLabel;
+    ZRLabel1223: TZRLabel;
+    ZRLabel1224: TZRLabel;
+    ZRLabel1225: TZRLabel;
+    ZRLabel1226: TZRLabel;
+    ZRLabel1227: TZRLabel;
+    ZRBand124: TZRBand;
+    ZRBand125: TZRBand;
+    ZRLabel1228: TZRLabel;
+    ZRTotalLabel31: TZRTotalLabel;
+    ZRLabel1229: TZRLabel;
+    ZRLabel1230: TZRLabel;
+    ZRLabel1231: TZRLabel;
+    ZRLabel1232: TZRLabel;
+    ZRLabel1233: TZRLabel;
+    ZRLabel1234: TZRLabel;
+    ZRLabel1235: TZRLabel;
+    ZRLabel1236: TZRLabel;
+    ZRTotalLabel32: TZRTotalLabel;
+    ZRLabel1237: TZRLabel;
+    ZRLabel1238: TZRLabel;
+    ZRLabel1239: TZRLabel;
+    ZRLabel1240: TZRLabel;
+    ZRLabel1241: TZRLabel;
+    ZRLabel1242: TZRLabel;
+    ZRLabel1243: TZRLabel;
+    ZRLabel1244: TZRLabel;
+    ZRLabel1245: TZRLabel;
+    ZRTotalLabel33: TZRTotalLabel;
+    ZRLabel1246: TZRLabel;
+    ZRLabel1247: TZRLabel;
+    ZRLabel1248: TZRLabel;
+    ZRLabel1249: TZRLabel;
+    ZRLabel1250: TZRLabel;
+    ZRLabel1251: TZRLabel;
+    ZRLabel1252: TZRLabel;
+    ZRLabel1253: TZRLabel;
+    ZRLabel1254: TZRLabel;
+    ZRLabel1255: TZRLabel;
+    ZRLabel1256: TZRLabel;
+    ZRLabel1257: TZRLabel;
+    ZRLabel1258: TZRLabel;
+    ZRLabel1259: TZRLabel;
+    ZRLabel1260: TZRLabel;
+    ZRLabel1261: TZRLabel;
+    ZRSubDetail19: TZRSubDetail;
+    ZRField743: TZRField;
+    ZRField744: TZRField;
+    ZRField745: TZRField;
+    ZRField746: TZRField;
+    ZRField747: TZRField;
+    ZRField748: TZRField;
+    ZRField749: TZRField;
+    ZRField750: TZRField;
+    ZRLabel1262: TZRLabel;
+    ZRLabel1263: TZRLabel;
+    ZRLabel1264: TZRLabel;
+    ZRLabel1265: TZRLabel;
+    ZRLabel1266: TZRLabel;
+    ZRLabel1267: TZRLabel;
+    ZRBand126: TZRBand;
+    ZRLabel1268: TZRLabel;
+    ZRLabel1269: TZRLabel;
+    ZRLabel1270: TZRLabel;
+    ZRLabel1271: TZRLabel;
+    ZRLabel1272: TZRLabel;
+    ZRLabel1273: TZRLabel;
+    ZRLabel1274: TZRLabel;
+    ZRBand127: TZRBand;
+    ZRLabel1275: TZRLabel;
+    ZRLabel1276: TZRLabel;
+    ZRLabel1277: TZRLabel;
+    ZRLabel1278: TZRLabel;
+    ZRLabel1279: TZRLabel;
+    ZRLabel1280: TZRLabel;
+    ZReport8: TZReport;
+    ZRField751: TZRField;
+    ZRField752: TZRField;
+    ZRField753: TZRField;
+    ZRField754: TZRField;
+    ZRField755: TZRField;
+    ZRField756: TZRField;
+    ZRField757: TZRField;
+    ZRField758: TZRField;
+    ZRField759: TZRField;
+    ZRField760: TZRField;
+    ZRField761: TZRField;
+    ZRField762: TZRField;
+    ZRField763: TZRField;
+    ZRField764: TZRField;
+    ZRField765: TZRField;
+    ZRAggregator25: TZRAggregator;
+    ZRAggregator26: TZRAggregator;
+    ZRField766: TZRField;
+    ZRField767: TZRField;
+    ZRField768: TZRField;
+    ZRField769: TZRField;
+    ZRField770: TZRField;
+    ZRField771: TZRField;
+    ZRField772: TZRField;
+    ZRField773: TZRField;
+    ZRField774: TZRField;
+    ZRField775: TZRField;
+    ZRField776: TZRField;
+    ZRField777: TZRField;
+    ZRField778: TZRField;
+    ZRField779: TZRField;
+    ZRField780: TZRField;
+    ZRField781: TZRField;
+    ZRField782: TZRField;
+    ZRField783: TZRField;
+    ZRField784: TZRField;
+    ZRField785: TZRField;
+    ZRField786: TZRField;
+    ZRField787: TZRField;
+    ZRField788: TZRField;
+    ZRField789: TZRField;
+    ZRField790: TZRField;
+    ZRField791: TZRField;
+    ZRField792: TZRField;
+    ZRField793: TZRField;
+    ZRGroup7: TZRGroup;
+    ZRBand128: TZRBand;
+    ZRLabel1281: TZRLabel;
+    ZRLabel1282: TZRLabel;
+    ZRLabel1283: TZRLabel;
+    ZRLabel1284: TZRLabel;
+    ZRBand129: TZRBand;
+    ZRLabel1285: TZRLabel;
+    ZRLabel1286: TZRLabel;
+    ZRSystemLabel15: TZRSystemLabel;
+    ZRLabel1287: TZRLabel;
+    ZRBand130: TZRBand;
+    ZRLabel1288: TZRLabel;
+    ZRLabel1289: TZRLabel;
+    ZRLabel1290: TZRLabel;
+    ZRLabel1291: TZRLabel;
+    ZRLabel1292: TZRLabel;
+    ZRLabel1293: TZRLabel;
+    ZRLabel1294: TZRLabel;
+    ZRBand131: TZRBand;
+    ZRLabel1295: TZRLabel;
+    ZRBand132: TZRBand;
+    ZRLabel1296: TZRLabel;
+    ZRLabel1297: TZRLabel;
+    ZRLabel1298: TZRLabel;
+    ZRLabel1299: TZRLabel;
+    ZRLabel1300: TZRLabel;
+    ZRLabel1301: TZRLabel;
+    ZRLabel1302: TZRLabel;
+    ZRLabel1303: TZRLabel;
+    ZRLabel1304: TZRLabel;
+    ZRBand133: TZRBand;
+    ZRBand134: TZRBand;
+    ZRLabel1305: TZRLabel;
+    ZRTotalLabel34: TZRTotalLabel;
+    ZRLabel1306: TZRLabel;
+    ZRLabel1307: TZRLabel;
+    ZRLabel1308: TZRLabel;
+    ZRLabel1309: TZRLabel;
+    ZRLabel1310: TZRLabel;
+    ZRLabel1311: TZRLabel;
+    ZRLabel1312: TZRLabel;
+    ZRLabel1313: TZRLabel;
+    ZRTotalLabel35: TZRTotalLabel;
+    ZRLabel1314: TZRLabel;
+    ZRLabel1315: TZRLabel;
+    ZRLabel1316: TZRLabel;
+    ZRLabel1317: TZRLabel;
+    ZRLabel1318: TZRLabel;
+    ZRLabel1319: TZRLabel;
+    ZRLabel1320: TZRLabel;
+    ZRLabel1321: TZRLabel;
+    ZRLabel1322: TZRLabel;
+    ZRTotalLabel36: TZRTotalLabel;
+    ZRLabel1323: TZRLabel;
+    ZRLabel1324: TZRLabel;
+    ZRLabel1325: TZRLabel;
+    ZRLabel1326: TZRLabel;
+    ZRLabel1327: TZRLabel;
+    ZRLabel1328: TZRLabel;
+    ZRLabel1329: TZRLabel;
+    ZRLabel1330: TZRLabel;
+    ZRLabel1331: TZRLabel;
+    ZRLabel1332: TZRLabel;
+    ZRLabel1333: TZRLabel;
+    ZRLabel1334: TZRLabel;
+    ZRLabel1335: TZRLabel;
+    ZRLabel1336: TZRLabel;
+    ZRLabel1337: TZRLabel;
+    ZRLabel1338: TZRLabel;
+    ZRSubDetail20: TZRSubDetail;
+    ZRField794: TZRField;
+    ZRField795: TZRField;
+    ZRField796: TZRField;
+    ZRField797: TZRField;
+    ZRField798: TZRField;
+    ZRField799: TZRField;
+    ZRField800: TZRField;
+    ZRField801: TZRField;
+    ZRLabel1339: TZRLabel;
+    ZRLabel1340: TZRLabel;
+    ZRLabel1341: TZRLabel;
+    ZRLabel1342: TZRLabel;
+    ZRLabel1343: TZRLabel;
+    ZRLabel1344: TZRLabel;
+    ZRBand135: TZRBand;
+    ZRLabel1345: TZRLabel;
+    ZRLabel1346: TZRLabel;
+    ZRLabel1347: TZRLabel;
+    ZRLabel1348: TZRLabel;
+    ZRLabel1349: TZRLabel;
+    ZRLabel1350: TZRLabel;
+    ZRLabel1351: TZRLabel;
+    ZRBand136: TZRBand;
+    ZRLabel1352: TZRLabel;
+    ZRLabel1353: TZRLabel;
+    ZRLabel1354: TZRLabel;
+    ZRLabel1355: TZRLabel;
+    ZRLabel1356: TZRLabel;
+    ZRLabel1357: TZRLabel;
+    ZReport9: TZReport;
+    ZRField802: TZRField;
+    ZRField803: TZRField;
+    ZRField804: TZRField;
+    ZRField805: TZRField;
+    ZRField806: TZRField;
+    ZRField807: TZRField;
+    ZRField808: TZRField;
+    ZRField809: TZRField;
+    ZRField810: TZRField;
+    ZRField811: TZRField;
+    ZRField812: TZRField;
+    ZRField813: TZRField;
+    ZRField814: TZRField;
+    ZRField815: TZRField;
+    ZRField816: TZRField;
+    ZRAggregator27: TZRAggregator;
+    ZRAggregator28: TZRAggregator;
+    ZRField817: TZRField;
+    ZRField818: TZRField;
+    ZRField819: TZRField;
+    ZRField820: TZRField;
+    ZRField821: TZRField;
+    ZRField822: TZRField;
+    ZRField823: TZRField;
+    ZRField824: TZRField;
+    ZRField825: TZRField;
+    ZRField826: TZRField;
+    ZRField827: TZRField;
+    ZRField828: TZRField;
+    ZRField829: TZRField;
+    ZRField830: TZRField;
+    ZRField831: TZRField;
+    ZRField832: TZRField;
+    ZRField833: TZRField;
+    ZRField834: TZRField;
+    ZRField835: TZRField;
+    ZRField836: TZRField;
+    ZRField837: TZRField;
+    ZRField838: TZRField;
+    ZRField839: TZRField;
+    ZRField840: TZRField;
+    ZRField841: TZRField;
+    ZRField842: TZRField;
+    ZRField843: TZRField;
+    ZRField844: TZRField;
+    ZRGroup8: TZRGroup;
+    ZRBand137: TZRBand;
+    ZRLabel1358: TZRLabel;
+    ZRLabel1359: TZRLabel;
+    ZRLabel1360: TZRLabel;
+    ZRLabel1361: TZRLabel;
+    ZRBand138: TZRBand;
+    ZRLabel1362: TZRLabel;
+    ZRLabel1363: TZRLabel;
+    ZRSystemLabel16: TZRSystemLabel;
+    ZRLabel1364: TZRLabel;
+    ZRBand139: TZRBand;
+    ZRLabel1365: TZRLabel;
+    ZRLabel1366: TZRLabel;
+    ZRLabel1367: TZRLabel;
+    ZRLabel1368: TZRLabel;
+    ZRLabel1369: TZRLabel;
+    ZRLabel1370: TZRLabel;
+    ZRLabel1371: TZRLabel;
+    ZRBand140: TZRBand;
+    ZRLabel1372: TZRLabel;
+    ZRBand141: TZRBand;
+    ZRLabel1373: TZRLabel;
+    ZRLabel1374: TZRLabel;
+    ZRLabel1375: TZRLabel;
+    ZRLabel1376: TZRLabel;
+    ZRLabel1377: TZRLabel;
+    ZRLabel1378: TZRLabel;
+    ZRLabel1379: TZRLabel;
+    ZRLabel1380: TZRLabel;
+    ZRLabel1381: TZRLabel;
+    ZRBand142: TZRBand;
+    ZRBand143: TZRBand;
+    ZRLabel1382: TZRLabel;
+    ZRTotalLabel37: TZRTotalLabel;
+    ZRLabel1383: TZRLabel;
+    ZRLabel1384: TZRLabel;
+    ZRLabel1385: TZRLabel;
+    ZRLabel1386: TZRLabel;
+    ZRLabel1387: TZRLabel;
+    ZRLabel1388: TZRLabel;
+    ZRLabel1389: TZRLabel;
+    ZRLabel1390: TZRLabel;
+    ZRTotalLabel38: TZRTotalLabel;
+    ZRLabel1391: TZRLabel;
+    ZRLabel1392: TZRLabel;
+    ZRLabel1393: TZRLabel;
+    ZRLabel1394: TZRLabel;
+    ZRLabel1395: TZRLabel;
+    ZRLabel1396: TZRLabel;
+    ZRLabel1397: TZRLabel;
+    ZRLabel1398: TZRLabel;
+    ZRLabel1399: TZRLabel;
+    ZRTotalLabel39: TZRTotalLabel;
+    ZRLabel1400: TZRLabel;
+    ZRLabel1401: TZRLabel;
+    ZRLabel1402: TZRLabel;
+    ZRLabel1403: TZRLabel;
+    ZRLabel1404: TZRLabel;
+    ZRLabel1405: TZRLabel;
+    ZRLabel1406: TZRLabel;
+    ZRLabel1407: TZRLabel;
+    ZRLabel1408: TZRLabel;
+    ZRLabel1409: TZRLabel;
+    ZRLabel1410: TZRLabel;
+    ZRLabel1411: TZRLabel;
+    ZRLabel1412: TZRLabel;
+    ZRLabel1413: TZRLabel;
+    ZRLabel1414: TZRLabel;
+    ZRLabel1415: TZRLabel;
+    ZRSubDetail21: TZRSubDetail;
+    ZRField845: TZRField;
+    ZRField846: TZRField;
+    ZRField847: TZRField;
+    ZRField848: TZRField;
+    ZRField849: TZRField;
+    ZRField850: TZRField;
+    ZRField851: TZRField;
+    ZRField852: TZRField;
+    ZRLabel1416: TZRLabel;
+    ZRLabel1417: TZRLabel;
+    ZRLabel1418: TZRLabel;
+    ZRLabel1419: TZRLabel;
+    ZRLabel1420: TZRLabel;
+    ZRLabel1421: TZRLabel;
+    ZRBand144: TZRBand;
+    ZRLabel1422: TZRLabel;
+    ZRLabel1423: TZRLabel;
+    ZRLabel1424: TZRLabel;
+    ZRLabel1425: TZRLabel;
+    ZRLabel1426: TZRLabel;
+    ZRLabel1427: TZRLabel;
+    ZRLabel1428: TZRLabel;
+    ZRBand145: TZRBand;
+    ZRLabel1429: TZRLabel;
+    ZRLabel1430: TZRLabel;
+    ZRLabel1431: TZRLabel;
+    ZRLabel1432: TZRLabel;
+    ZRLabel1433: TZRLabel;
+    ZRLabel1434: TZRLabel;
+    ZReport10: TZReport;
+    ZRField853: TZRField;
+    ZRField854: TZRField;
+    ZRField855: TZRField;
+    ZRField856: TZRField;
+    ZRField857: TZRField;
+    ZRField858: TZRField;
+    ZRField859: TZRField;
+    ZRField860: TZRField;
+    ZRField861: TZRField;
+    ZRField862: TZRField;
+    ZRField863: TZRField;
+    ZRField864: TZRField;
+    ZRField865: TZRField;
+    ZRField866: TZRField;
+    ZRField867: TZRField;
+    ZRAggregator29: TZRAggregator;
+    ZRAggregator30: TZRAggregator;
+    ZRField868: TZRField;
+    ZRField869: TZRField;
+    ZRField870: TZRField;
+    ZRField871: TZRField;
+    ZRField872: TZRField;
+    ZRField873: TZRField;
+    ZRField874: TZRField;
+    ZRField875: TZRField;
+    ZRField876: TZRField;
+    ZRField877: TZRField;
+    ZRField878: TZRField;
+    ZRField879: TZRField;
+    ZRField880: TZRField;
+    ZRField881: TZRField;
+    ZRField882: TZRField;
+    ZRField883: TZRField;
+    ZRField884: TZRField;
+    ZRField885: TZRField;
+    ZRField886: TZRField;
+    ZRField887: TZRField;
+    ZRField888: TZRField;
+    ZRField889: TZRField;
+    ZRField890: TZRField;
+    ZRField891: TZRField;
+    ZRField892: TZRField;
+    ZRField893: TZRField;
+    ZRField894: TZRField;
+    ZRField895: TZRField;
+    ZRGroup9: TZRGroup;
+    ZRBand146: TZRBand;
+    ZRLabel1435: TZRLabel;
+    ZRLabel1436: TZRLabel;
+    ZRLabel1437: TZRLabel;
+    ZRLabel1438: TZRLabel;
+    ZRBand147: TZRBand;
+    ZRLabel1439: TZRLabel;
+    ZRLabel1440: TZRLabel;
+    ZRSystemLabel17: TZRSystemLabel;
+    ZRLabel1441: TZRLabel;
+    ZRBand148: TZRBand;
+    ZRLabel1442: TZRLabel;
+    ZRLabel1443: TZRLabel;
+    ZRLabel1444: TZRLabel;
+    ZRLabel1445: TZRLabel;
+    ZRLabel1446: TZRLabel;
+    ZRLabel1447: TZRLabel;
+    ZRLabel1448: TZRLabel;
+    ZRBand149: TZRBand;
+    ZRLabel1449: TZRLabel;
+    ZRBand150: TZRBand;
+    ZRLabel1450: TZRLabel;
+    ZRLabel1451: TZRLabel;
+    ZRLabel1452: TZRLabel;
+    ZRLabel1453: TZRLabel;
+    ZRLabel1454: TZRLabel;
+    ZRLabel1455: TZRLabel;
+    ZRLabel1456: TZRLabel;
+    ZRLabel1457: TZRLabel;
+    ZRLabel1458: TZRLabel;
+    ZRBand151: TZRBand;
+    ZRBand152: TZRBand;
+    ZRLabel1459: TZRLabel;
+    ZRTotalLabel40: TZRTotalLabel;
+    ZRLabel1460: TZRLabel;
+    ZRLabel1461: TZRLabel;
+    ZRLabel1462: TZRLabel;
+    ZRLabel1463: TZRLabel;
+    ZRLabel1464: TZRLabel;
+    ZRLabel1465: TZRLabel;
+    ZRLabel1466: TZRLabel;
+    ZRLabel1467: TZRLabel;
+    ZRTotalLabel41: TZRTotalLabel;
+    ZRLabel1468: TZRLabel;
+    ZRLabel1469: TZRLabel;
+    ZRLabel1470: TZRLabel;
+    ZRLabel1471: TZRLabel;
+    ZRLabel1472: TZRLabel;
+    ZRLabel1473: TZRLabel;
+    ZRLabel1474: TZRLabel;
+    ZRLabel1475: TZRLabel;
+    ZRLabel1476: TZRLabel;
+    ZRTotalLabel42: TZRTotalLabel;
+    ZRLabel1477: TZRLabel;
+    ZRLabel1478: TZRLabel;
+    ZRLabel1479: TZRLabel;
+    ZRLabel1480: TZRLabel;
+    ZRLabel1481: TZRLabel;
+    ZRLabel1482: TZRLabel;
+    ZRLabel1483: TZRLabel;
+    ZRLabel1484: TZRLabel;
+    ZRLabel1485: TZRLabel;
+    ZRLabel1486: TZRLabel;
+    ZRLabel1487: TZRLabel;
+    ZRLabel1488: TZRLabel;
+    ZRLabel1489: TZRLabel;
+    ZRLabel1490: TZRLabel;
+    ZRLabel1491: TZRLabel;
+    ZRLabel1492: TZRLabel;
+    ZRSubDetail22: TZRSubDetail;
+    ZRField896: TZRField;
+    ZRField897: TZRField;
+    ZRField898: TZRField;
+    ZRField899: TZRField;
+    ZRField900: TZRField;
+    ZRField901: TZRField;
+    ZRField902: TZRField;
+    ZRField903: TZRField;
+    ZRLabel1493: TZRLabel;
+    ZRLabel1494: TZRLabel;
+    ZRLabel1495: TZRLabel;
+    ZRLabel1496: TZRLabel;
+    ZRLabel1497: TZRLabel;
+    ZRLabel1498: TZRLabel;
+    ZRBand153: TZRBand;
+    ZRLabel1499: TZRLabel;
+    ZRLabel1500: TZRLabel;
+    ZRLabel1501: TZRLabel;
+    ZRLabel1502: TZRLabel;
+    ZRLabel1503: TZRLabel;
+    ZRLabel1504: TZRLabel;
+    ZRLabel1505: TZRLabel;
+    ZRBand154: TZRBand;
+    ZRLabel1506: TZRLabel;
+    ZRLabel1507: TZRLabel;
+    ZRLabel1508: TZRLabel;
+    ZRLabel1509: TZRLabel;
+    ZRLabel1510: TZRLabel;
+    ZRLabel1511: TZRLabel;
+    ZReport11: TZReport;
+    ZRField904: TZRField;
+    ZRField905: TZRField;
+    ZRField906: TZRField;
+    ZRField907: TZRField;
+    ZRField908: TZRField;
+    ZRField909: TZRField;
+    ZRField910: TZRField;
+    ZRField911: TZRField;
+    ZRField912: TZRField;
+    ZRField913: TZRField;
+    ZRField914: TZRField;
+    ZRField915: TZRField;
+    ZRField916: TZRField;
+    ZRField917: TZRField;
+    ZRField918: TZRField;
+    ZRAggregator31: TZRAggregator;
+    ZRAggregator32: TZRAggregator;
+    ZRField919: TZRField;
+    ZRField920: TZRField;
+    ZRField921: TZRField;
+    ZRField922: TZRField;
+    ZRField923: TZRField;
+    ZRField924: TZRField;
+    ZRField925: TZRField;
+    ZRField926: TZRField;
+    ZRField927: TZRField;
+    ZRField928: TZRField;
+    ZRField929: TZRField;
+    ZRField930: TZRField;
+    ZRField931: TZRField;
+    ZRField932: TZRField;
+    ZRField933: TZRField;
+    ZRField934: TZRField;
+    ZRField935: TZRField;
+    ZRField936: TZRField;
+    ZRField937: TZRField;
+    ZRField938: TZRField;
+    ZRField939: TZRField;
+    ZRField940: TZRField;
+    ZRField941: TZRField;
+    ZRField942: TZRField;
+    ZRField943: TZRField;
+    ZRField944: TZRField;
+    ZRField945: TZRField;
+    ZRField946: TZRField;
+    ZRGroup10: TZRGroup;
+    ZRBand155: TZRBand;
+    ZRLabel1512: TZRLabel;
+    ZRLabel1513: TZRLabel;
+    ZRLabel1514: TZRLabel;
+    ZRLabel1515: TZRLabel;
+    ZRBand156: TZRBand;
+    ZRLabel1516: TZRLabel;
+    ZRLabel1517: TZRLabel;
+    ZRSystemLabel18: TZRSystemLabel;
+    ZRLabel1518: TZRLabel;
+    ZRBand157: TZRBand;
+    ZRLabel1519: TZRLabel;
+    ZRLabel1520: TZRLabel;
+    ZRLabel1521: TZRLabel;
+    ZRLabel1522: TZRLabel;
+    ZRLabel1523: TZRLabel;
+    ZRLabel1524: TZRLabel;
+    ZRLabel1525: TZRLabel;
+    ZRBand158: TZRBand;
+    ZRLabel1526: TZRLabel;
+    ZRBand159: TZRBand;
+    ZRLabel1527: TZRLabel;
+    ZRLabel1528: TZRLabel;
+    ZRLabel1529: TZRLabel;
+    ZRLabel1530: TZRLabel;
+    ZRLabel1531: TZRLabel;
+    ZRLabel1532: TZRLabel;
+    ZRLabel1533: TZRLabel;
+    ZRLabel1534: TZRLabel;
+    ZRLabel1535: TZRLabel;
+    ZRBand160: TZRBand;
+    ZRBand161: TZRBand;
+    ZRLabel1536: TZRLabel;
+    ZRTotalLabel43: TZRTotalLabel;
+    ZRLabel1537: TZRLabel;
+    ZRLabel1538: TZRLabel;
+    ZRLabel1539: TZRLabel;
+    ZRLabel1540: TZRLabel;
+    ZRLabel1541: TZRLabel;
+    ZRLabel1542: TZRLabel;
+    ZRLabel1543: TZRLabel;
+    ZRLabel1544: TZRLabel;
+    ZRTotalLabel44: TZRTotalLabel;
+    ZRLabel1545: TZRLabel;
+    ZRLabel1546: TZRLabel;
+    ZRLabel1547: TZRLabel;
+    ZRLabel1548: TZRLabel;
+    ZRLabel1549: TZRLabel;
+    ZRLabel1550: TZRLabel;
+    ZRLabel1551: TZRLabel;
+    ZRLabel1552: TZRLabel;
+    ZRLabel1553: TZRLabel;
+    ZRTotalLabel45: TZRTotalLabel;
+    ZRLabel1554: TZRLabel;
+    ZRLabel1555: TZRLabel;
+    ZRLabel1556: TZRLabel;
+    ZRLabel1557: TZRLabel;
+    ZRLabel1558: TZRLabel;
+    ZRLabel1559: TZRLabel;
+    ZRLabel1560: TZRLabel;
+    ZRLabel1561: TZRLabel;
+    ZRLabel1562: TZRLabel;
+    ZRLabel1563: TZRLabel;
+    ZRLabel1564: TZRLabel;
+    ZRLabel1565: TZRLabel;
+    ZRLabel1566: TZRLabel;
+    ZRLabel1567: TZRLabel;
+    ZRLabel1568: TZRLabel;
+    ZRLabel1569: TZRLabel;
+    ZRSubDetail23: TZRSubDetail;
+    ZRField947: TZRField;
+    ZRField948: TZRField;
+    ZRField949: TZRField;
+    ZRField950: TZRField;
+    ZRField951: TZRField;
+    ZRField952: TZRField;
+    ZRField953: TZRField;
+    ZRField954: TZRField;
+    ZRLabel1570: TZRLabel;
+    ZRLabel1571: TZRLabel;
+    ZRLabel1572: TZRLabel;
+    ZRLabel1573: TZRLabel;
+    ZRLabel1574: TZRLabel;
+    ZRLabel1575: TZRLabel;
+    ZRBand162: TZRBand;
+    ZRLabel1576: TZRLabel;
+    ZRLabel1577: TZRLabel;
+    ZRLabel1578: TZRLabel;
+    ZRLabel1579: TZRLabel;
+    ZRLabel1580: TZRLabel;
+    ZRLabel1581: TZRLabel;
+    ZRLabel1582: TZRLabel;
+    ZRBand163: TZRBand;
+    ZRLabel1583: TZRLabel;
+    ZRLabel1584: TZRLabel;
+    ZRLabel1585: TZRLabel;
+    ZRLabel1586: TZRLabel;
+    ZRLabel1587: TZRLabel;
+    ZRLabel1588: TZRLabel;
+    pp40ColunasGraficoPrintID: TppReport;
+    ppHeaderBand32: TppHeaderBand;
+    ppMovimento: TppLabel;
+    ppPIDNomeCliente: TppLabel;
+    ppPIDEnderecoCliente: TppLabel;
+    ppPIDCidadeCliente: TppLabel;
+    ppLabel358: TppLabel;
+    ppPIDFoneCliente: TppLabel;
+    ppPIDEmpresa: TppLabel;
+    ppPIDEndereco: TppLabel;
+    ppPIDCidade: TppLabel;
+    ppDetailBand49: TppDetailBand;
+    ppDBText786: TppDBText;
+    ppDBText787: TppDBText;
+    ppDBText788: TppDBText;
+    ppDBText789: TppDBText;
+    ppDBText790: TppDBText;
+    ppDBText791: TppDBText;
+    ppLabel365: TppLabel;
+    ppLabel366: TppLabel;
+    ppSummaryBand25: TppSummaryBand;
+    ppDBText792: TppDBText;
+    ppDBText793: TppDBText;
+    ppDBText794: TppDBText;
+    ppDBText795: TppDBText;
+    ppDBText796: TppDBText;
+    ppLine266: TppLine;
+    ppGroup5: TppGroup;
+    ppGroupHeaderBand4: TppGroupHeaderBand;
+    ppGroupFooterBand4: TppGroupFooterBand;
+    ppPIDFone: TppLabel;
+    ppLabel353: TppLabel;
+    ppLabel354: TppLabel;
+    ppLabel355: TppLabel;
+    ppDBText797: TppDBText;
+    ppLabel356: TppLabel;
+    ppDBText798: TppDBText;
+    ppLabel357: TppLabel;
+    ppLabel359: TppLabel;
+    ppLabel360: TppLabel;
+    ppSubReport13: TppSubReport;
+    ppChildReport30: TppChildReport;
+    ppTitleBand8: TppTitleBand;
+    ppDetailBand50: TppDetailBand;
+    ppSummaryBand26: TppSummaryBand;
+    ppLabel361: TppLabel;
+    ppDBText799: TppDBText;
+    ppDBText800: TppDBText;
+    ppLabel362: TppLabel;
+    ppLabel363: TppLabel;
+    ppDBText801: TppDBText;
+    ppLabel364: TppLabel;
+    ppLabel367: TppLabel;
+    ppLabel368: TppLabel;
+    ppLabel369: TppLabel;
+    ppLabel370: TppLabel;
+    ppLabel371: TppLabel;
+    ppLine267: TppLine;
+    ppLine268: TppLine;
+    ppLine269: TppLine;
+    pp40ColunasGraficoEpson: TppReport;
+    ppHeaderBand33: TppHeaderBand;
+    ppEPSMovimento: TppLabel;
+    ppEPSNomeCliente: TppLabel;
+    ppEPSEnderecoCliente: TppLabel;
+    ppEPSCidadeCliente: TppLabel;
+    ppLabel376: TppLabel;
+    ppEPSFoneCliente: TppLabel;
+    ppEPSEmpresa: TppLabel;
+    ppEPSEndereco: TppLabel;
+    ppEPSCidade: TppLabel;
+    ppEPSFone: TppLabel;
+    ppLabel382: TppLabel;
+    ppLabel383: TppLabel;
+    ppLabel384: TppLabel;
+    ppLabel385: TppLabel;
+    ppLabel386: TppLabel;
+    ppLabel387: TppLabel;
+    ppLine270: TppLine;
+    ppLine271: TppLine;
+    ppLine272: TppLine;
+    ppDetailBand51: TppDetailBand;
+    ppDBText802: TppDBText;
+    ppDBText803: TppDBText;
+    ppDBText804: TppDBText;
+    ppDBText805: TppDBText;
+    ppDBText806: TppDBText;
+    ppDBText807: TppDBText;
+    ppLabel388: TppLabel;
+    ppLabel389: TppLabel;
+    ppSummaryBand27: TppSummaryBand;
+    ppDBText808: TppDBText;
+    ppDBText809: TppDBText;
+    ppDBText810: TppDBText;
+    ppDBText811: TppDBText;
+    ppDBText812: TppDBText;
+    ppLine273: TppLine;
+    ppLabel390: TppLabel;
+    ppLabel391: TppLabel;
+    ppLabel392: TppLabel;
+    ppDBText813: TppDBText;
+    ppLabel393: TppLabel;
+    ppDBText814: TppDBText;
+    ppLabel394: TppLabel;
+    ppLabel395: TppLabel;
+    ppLabel396: TppLabel;
+    ppSubReport14: TppSubReport;
+    ppChildReport31: TppChildReport;
+    ppTitleBand9: TppTitleBand;
+    ppLabel397: TppLabel;
+    ppLabel398: TppLabel;
+    ppLabel399: TppLabel;
+    ppDetailBand52: TppDetailBand;
+    ppDBText815: TppDBText;
+    ppDBText816: TppDBText;
+    ppDBText817: TppDBText;
+    ppSummaryBand28: TppSummaryBand;
+    ppGroup6: TppGroup;
+    ppGroupHeaderBand5: TppGroupHeaderBand;
+    ppGroupFooterBand5: TppGroupFooterBand;
+    pp40ColunasGraficoEpsonvolumes: TppReport;
+    ppHeaderBand34: TppHeaderBand;
+    ppEPSVMovimento: TppLabel;
+    ppEPSVNomeCliente: TppLabel;
+    ppEPSVEnderecoCliente: TppLabel;
+    ppEPSVCidadeCliente: TppLabel;
+    ppLabel377: TppLabel;
+    ppEPSVFoneCliente: TppLabel;
+    ppEPSVEmpresa: TppLabel;
+    ppEPSVEndereco: TppLabel;
+    ppEPSVCidade: TppLabel;
+    ppEPSVFone: TppLabel;
+    ppLabel401: TppLabel;
+    ppLabel402: TppLabel;
+    ppLabel403: TppLabel;
+    ppLabel404: TppLabel;
+    ppLabel405: TppLabel;
+    ppLabel406: TppLabel;
+    ppLine274: TppLine;
+    ppLine275: TppLine;
+    ppLine276: TppLine;
+    ppDetailBand53: TppDetailBand;
+    ppDBText818: TppDBText;
+    ppDBText819: TppDBText;
+    ppDBText820: TppDBText;
+    ppDBText821: TppDBText;
+    ppDBText822: TppDBText;
+    ppDBText823: TppDBText;
+    ppLabel407: TppLabel;
+    ppLabel408: TppLabel;
+    ppSummaryBand29: TppSummaryBand;
+    ppDBText824: TppDBText;
+    ppDBText825: TppDBText;
+    ppDBText826: TppDBText;
+    ppDBText827: TppDBText;
+    ppDBText828: TppDBText;
+    ppLine277: TppLine;
+    ppLabel409: TppLabel;
+    ppLabel410: TppLabel;
+    ppLabel411: TppLabel;
+    ppDBText829: TppDBText;
+    ppLabel412: TppLabel;
+    ppDBText830: TppDBText;
+    ppLabel413: TppLabel;
+    ppLabel414: TppLabel;
+    ppLabel415: TppLabel;
+    ppSubReport15: TppSubReport;
+    ppChildReport32: TppChildReport;
+    ppTitleBand10: TppTitleBand;
+    ppLabel416: TppLabel;
+    ppLabel417: TppLabel;
+    ppLabel418: TppLabel;
+    ppDetailBand54: TppDetailBand;
+    ppDBText831: TppDBText;
+    ppDBText832: TppDBText;
+    ppDBText833: TppDBText;
+    ppSummaryBand30: TppSummaryBand;
+    ppGroup7: TppGroup;
+    ppGroupHeaderBand6: TppGroupHeaderBand;
+    ppGroupFooterBand6: TppGroupFooterBand;
+    ppLabel419: TppLabel;
+    ppDBText834: TppDBText;
+    ppNotaEntrega: TppReport;
+    ppHeaderBand35: TppHeaderBand;
+    ppNEMovimento: TppLabel;
+    ppNENomeCliente: TppLabel;
+    ppNEEnderecoCliente: TppLabel;
+    ppNECidadeCliente: TppLabel;
+    ppLabel378: TppLabel;
+    ppNEFoneCliente: TppLabel;
+    ppNEEmpresa: TppLabel;
+    ppNEEndereco: TppLabel;
+    ppNECidade: TppLabel;
+    ppNEFone: TppLabel;
+    ppLabel421: TppLabel;
+    ppLabel422: TppLabel;
+    ppLabel423: TppLabel;
+    ppLine278: TppLine;
+    ppLine279: TppLine;
+    ppDetailBand55: TppDetailBand;
+    ppDBText835: TppDBText;
+    ppDBText836: TppDBText;
+    ppDBText837: TppDBText;
+    ppDBText838: TppDBText;
+    ppDBText839: TppDBText;
+    ppDBText840: TppDBText;
+    ppLabel427: TppLabel;
+    ppLabel428: TppLabel;
+    ppSummaryBand31: TppSummaryBand;
+    ppDBText841: TppDBText;
+    ppDBText843: TppDBText;
+    ppDBText844: TppDBText;
+    ppDBText845: TppDBText;
+    ppLine281: TppLine;
+    ppLabel429: TppLabel;
+    ppLabel430: TppLabel;
+    ppLabel431: TppLabel;
+    ppDBText846: TppDBText;
+    ppLabel432: TppLabel;
+    ppDBText847: TppDBText;
+    ppLabel433: TppLabel;
+    ppLabel435: TppLabel;
+    ppSubReport16: TppSubReport;
+    ppChildReport33: TppChildReport;
+    ppTitleBand11: TppTitleBand;
+    ppDetailBand56: TppDetailBand;
+    ppSummaryBand32: TppSummaryBand;
+    ppGroup8: TppGroup;
+    ppGroupHeaderBand7: TppGroupHeaderBand;
+    ppGroupFooterBand7: TppGroupFooterBand;
+    C_InvoiceCB_NOTAENTREGA: TStringField;
+    ppShape124: TppShape;
+    ppLabel372: TppLabel;
+    ppDBText851: TppDBText;
+    ppLabel373: TppLabel;
+    ppLine280: TppLine;
+    ppLabel374: TppLabel;
+    ppNEData: TppLabel;
+    ppLabel375: TppLabel;
+    ppDBText842: TppDBText;
+    ppLabel379: TppLabel;
+    ppDBText852: TppDBText;
+    ppLine282: TppLine;
+    ppLine283: TppLine;
+    raCodeModule3: TraCodeModule;
+    ppShape125: TppShape;
+    ppShape126: TppShape;
+    ppLabel380: TppLabel;
+    ppLabel381: TppLabel;
+    ppDBText849: TppDBText;
+    ppDBCalc6: TppDBCalc;
+    ppDBCalc7: TppDBCalc;
+    ppLabel400: TppLabel;
+    ppShape127: TppShape;
+    ppReport2: TppReport;
+    ppHeaderBand36: TppHeaderBand;
+    ppShape128: TppShape;
+    ppShape129: TppShape;
+    ppShape130: TppShape;
+    ppShape131: TppShape;
+    ppShape132: TppShape;
+    ppShape133: TppShape;
+    ppDBText848: TppDBText;
+    ppDBText850: TppDBText;
+    ppDBText853: TppDBText;
+    ppDBText854: TppDBText;
+    ppDBText855: TppDBText;
+    ppDBText856: TppDBText;
+    ppDBText857: TppDBText;
+    ppDBText858: TppDBText;
+    ppLabel420: TppLabel;
+    ppDBText859: TppDBText;
+    ppDBText860: TppDBText;
+    ppDBText861: TppDBText;
+    ppDBText862: TppDBText;
+    ppLine284: TppLine;
+    ppLine285: TppLine;
+    ppLine286: TppLine;
+    ppLine287: TppLine;
+    ppLine288: TppLine;
+    ppLine289: TppLine;
+    ppLine290: TppLine;
+    ppLine291: TppLine;
+    ppLine292: TppLine;
+    ppLine293: TppLine;
+    ppLine294: TppLine;
+    ppLine295: TppLine;
+    ppLine296: TppLine;
+    ppLine297: TppLine;
+    ppLine298: TppLine;
+    ppLine299: TppLine;
+    ppLine300: TppLine;
+    ppLine301: TppLine;
+    ppLine302: TppLine;
+    ppLine303: TppLine;
+    ppLine304: TppLine;
+    ppLine305: TppLine;
+    ppLine306: TppLine;
+    ppLine307: TppLine;
+    ppLine308: TppLine;
+    ppLine309: TppLine;
+    ppDBText863: TppDBText;
+    ppDBText864: TppDBText;
+    ppDBText865: TppDBText;
+    ppLabel424: TppLabel;
+    ppLabel425: TppLabel;
+    ppLabel426: TppLabel;
+    ppDBText866: TppDBText;
+    ppLabel434: TppLabel;
+    ppDBText867: TppDBText;
+    ppDBText868: TppDBText;
+    ppDBText869: TppDBText;
+    ppLabel436: TppLabel;
+    ppLabel437: TppLabel;
+    ppLabel438: TppLabel;
+    ppLabel439: TppLabel;
+    ppLabel440: TppLabel;
+    ppDBText870: TppDBText;
+    ppDBText871: TppDBText;
+    ppDBText872: TppDBText;
+    ppLabel441: TppLabel;
+    ppDBText873: TppDBText;
+    ppLabel442: TppLabel;
+    ppDBText874: TppDBText;
+    ppDBText875: TppDBText;
+    ppDBText876: TppDBText;
+    ppDBText877: TppDBText;
+    ppDBText878: TppDBText;
+    ppDBText879: TppDBText;
+    ppDBText880: TppDBText;
+    ppDBText881: TppDBText;
+    ppDetailBand57: TppDetailBand;
+    ppRegion58: TppRegion;
+    myDBCheckBox3: TmyDBCheckBox;
+    ppDBText882: TppDBText;
+    ppDBText883: TppDBText;
+    ppDBText884: TppDBText;
+    ppDBText885: TppDBText;
+    ppDBText886: TppDBText;
+    ppDBText887: TppDBText;
+    ppDBText888: TppDBText;
+    ppDBText889: TppDBText;
+    ppDBText890: TppDBText;
+    ppDBText891: TppDBText;
+    ppDBText892: TppDBText;
+    ppDBMemo29: TppDBMemo;
+    ppDBMemo30: TppDBMemo;
+    ppSubReport17: TppSubReport;
+    ppChildReport34: TppChildReport;
+    ppHeaderBand37: TppHeaderBand;
+    ppDetailBand58: TppDetailBand;
+    ppDBText893: TppDBText;
+    ppDBText894: TppDBText;
+    ppDBMemo31: TppDBMemo;
+    ppFooterBand30: TppFooterBand;
+    ppFooterBand31: TppFooterBand;
+    ppSummaryBand33: TppSummaryBand;
+    ppLine310: TppLine;
+    ppRegion59: TppRegion;
+    ppShape134: TppShape;
+    ppDBText895: TppDBText;
+    ppDBMemo32: TppDBMemo;
+    ppSubReport18: TppSubReport;
+    ppChildReport35: TppChildReport;
+    ppColumnHeaderBand16: TppColumnHeaderBand;
+    ppShape135: TppShape;
+    ppLabel443: TppLabel;
+    ppLabel444: TppLabel;
+    ppLine311: TppLine;
+    ppLabel445: TppLabel;
+    ppLine312: TppLine;
+    ppDetailBand59: TppDetailBand;
+    ppDBText896: TppDBText;
+    ppDBText897: TppDBText;
+    ppDBText898: TppDBText;
+    ppLine313: TppLine;
+    ppLine314: TppLine;
+    ppLine315: TppLine;
+    ppLine316: TppLine;
+    ppLine317: TppLine;
+    ppImage23: TppImage;
+    ppImage24: TppImage;
+    ppColumnFooterBand16: TppColumnFooterBand;
+    ppDBText899: TppDBText;
+    ppDBText900: TppDBText;
+    ppLabel446: TppLabel;
+    ppLabel447: TppLabel;
+    ppDBText901: TppDBText;
+    ppDBText902: TppDBText;
+    ppDBText903: TppDBText;
+    ppLabel448: TppLabel;
+    ppDBText904: TppDBText;
+    ppLabel449: TppLabel;
+    ppLabel450: TppLabel;
+    ppDBText905: TppDBText;
+    ppImage25: TppImage;
+    ppLine318: TppLine;
+    ppLabel451: TppLabel;
+    ppLine319: TppLine;
+    C_InvoicePERCENTUALDESCONTO: TFloatField;
+    ppDBText906: TppDBText;
+    ppLabel452: TppLabel;
+    C_ItensOBSERVACAO: TStringField;
+    dbpInvItensppField54: TppField;
+    ppRepGodola: TppReport;
+    ppHeaderBand38: TppHeaderBand;
+    ppRegion60: TppRegion;
+    ppLine320: TppLine;
+    ppLabel453: TppLabel;
+    ppLabel454: TppLabel;
+    ppLine321: TppLine;
+    ppLine322: TppLine;
+    ppLine323: TppLine;
+    ppLine324: TppLine;
+    ppLabel456: TppLabel;
+    ppLabel458: TppLabel;
+    ppRegion61: TppRegion;
+    ppDBText907: TppDBText;
+    ppLabel459: TppLabel;
+    ppLabel461: TppLabel;
+    ppLabel468: TppLabel;
+    ppDBText917: TppDBText;
+    ppDBText918: TppDBText;
+    ppDBText919: TppDBText;
+    ppDetailBand60: TppDetailBand;
+    ppRegion62: TppRegion;
+    ppLine325: TppLine;
+    ppLine326: TppLine;
+    ppDBText921: TppDBText;
+    ppDBText922: TppDBText;
+    ppDBText923: TppDBText;
+    ppDBText925: TppDBText;
+    ppLine328: TppLine;
+    ppLine329: TppLine;
+    ppDBMemo33: TppDBMemo;
+    ppFooterBand32: TppFooterBand;
+    ppSummaryBand34: TppSummaryBand;
+    ppLine340: TppLine;
+    ppLabel455: TppLabel;
+    ppLabel460: TppLabel;
+    ppLine343: TppLine;
+    ppDBText908: TppDBText;
+    ppLabel462: TppLabel;
+    ppDBText909: TppDBText;
+    ppLine327: TppLine;
+    rbPedidoPromissoria: TppReport;
+    ppHeaderBand39: TppHeaderBand;
+    ppShape140: TppShape;
+    ppShape141: TppShape;
+    ppDBText910: TppDBText;
+    ppDBText911: TppDBText;
+    ppDBText912: TppDBText;
+    ppLabel463: TppLabel;
+    ppLabel464: TppLabel;
+    ppLabel465: TppLabel;
+    ppDBText932: TppDBText;
+    ppLabel466: TppLabel;
+    ppDBText933: TppDBText;
+    ppDBText934: TppDBText;
+    ppDBText935: TppDBText;
+    ppLabel467: TppLabel;
+    ppLabel469: TppLabel;
+    ppLabel470: TppLabel;
+    ppLabel471: TppLabel;
+    ppLabel472: TppLabel;
+    ppDBText936: TppDBText;
+    ppDBText937: TppDBText;
+    ppDBText938: TppDBText;
+    ppLabel473: TppLabel;
+    ppDBText939: TppDBText;
+    ppLabel474: TppLabel;
+    ppImage26: TppImage;
+    ppDetailBand61: TppDetailBand;
+    ppRegion63: TppRegion;
+    myDBCheckBox4: TmyDBCheckBox;
+    ppDBText949: TppDBText;
+    ppDBText950: TppDBText;
+    ppDBText951: TppDBText;
+    ppDBText952: TppDBText;
+    ppDBText953: TppDBText;
+    ppDBText958: TppDBText;
+    ppDBMemo34: TppDBMemo;
+    ppSubReport19: TppSubReport;
+    ppChildReport36: TppChildReport;
+    ppHeaderBand40: TppHeaderBand;
+    ppDetailBand62: TppDetailBand;
+    ppDBText959: TppDBText;
+    ppDBText960: TppDBText;
+    ppDBMemo36: TppDBMemo;
+    ppFooterBand33: TppFooterBand;
+    ppFooterBand34: TppFooterBand;
+    ppSummaryBand35: TppSummaryBand;
+    ppLine358: TppLine;
+    ppRegion64: TppRegion;
+    ppShape142: TppShape;
+    ppDBText961: TppDBText;
+    ppDBMemo37: TppDBMemo;
+    ppSubReport20: TppSubReport;
+    ppChildReport37: TppChildReport;
+    ppDetailBand63: TppDetailBand;
+    ppDBText962: TppDBText;
+    ppDBText963: TppDBText;
+    ppDBText964: TppDBText;
+    ppDBText965: TppDBText;
+    ppDBText966: TppDBText;
+    ppLabel478: TppLabel;
+    ppLabel479: TppLabel;
+    ppDBText967: TppDBText;
+    ppDBText968: TppDBText;
+    ppDBText969: TppDBText;
+    ppLabel480: TppLabel;
+    ppDBText970: TppDBText;
+    ppLabel481: TppLabel;
+    ppLabel482: TppLabel;
+    ppDBText971: TppDBText;
+    ppLabel457: TppLabel;
+    ppDBText913: TppDBText;
+    ppLabel483: TppLabel;
+    ppDBText914: TppDBText;
+    ppLabel484: TppLabel;
+    ppDBText915: TppDBText;
+    ppShape144: TppShape;
+    ppLabel475: TppLabel;
+    ppLabel476: TppLabel;
+    ppLabel477: TppLabel;
+    ppLabel485: TppLabel;
+    ppLabel486: TppLabel;
+    ppDBText916: TppDBText;
+    ppLabel487: TppLabel;
+    ppLine331: TppLine;
+    ppLine332: TppLine;
+    ppLine333: TppLine;
+    ppLine334: TppLine;
+    ppLine335: TppLine;
+    ppLine336: TppLine;
+    ppLine337: TppLine;
+    ppLine338: TppLine;
+    ppLine339: TppLine;
+    ppLine341: TppLine;
+    ppLine342: TppLine;
+    ppLine344: TppLine;
+    ppLine345: TppLine;
+    ppLine346: TppLine;
+    ppLine348: TppLine;
+    ppLine351: TppLine;
+    ppLine352: TppLine;
+    ppLine353: TppLine;
+    ppLine355: TppLine;
+    ppLine359: TppLine;
+    ppLabel489: TppLabel;
+    ppLabel490: TppLabel;
+    ppLabel491: TppLabel;
+    ppLabel488: TppLabel;
+    ppLabel492: TppLabel;
+    ppLabel493: TppLabel;
+    ppLabel494: TppLabel;
+    ppDBText920: TppDBText;
+    ppLine347: TppLine;
+    ppSubReport21: TppSubReport;
+    ppChildReport38: TppChildReport;
+    ppTitleBand12: TppTitleBand;
+    ppDetailBand64: TppDetailBand;
+    ppSummaryBand36: TppSummaryBand;
+    ppDBText926: TppDBText;
+    ppDBText927: TppDBText;
+    ppDBText928: TppDBText;
+    ppDBText929: TppDBText;
+    ppDBText930: TppDBText;
+    ppLine349: TppLine;
+    ppDBCalc8: TppDBCalc;
+    rppedidogradeVolumes: TppReport;
+    ppHeaderBand41: TppHeaderBand;
+    ppRegion65: TppRegion;
+    ppLine330: TppLine;
+    ppLabel495: TppLabel;
+    ppLabel496: TppLabel;
+    ppLine350: TppLine;
+    ppLine354: TppLine;
+    ppLine356: TppLine;
+    ppLine357: TppLine;
+    ppLabel497: TppLabel;
+    ppLabel498: TppLabel;
+    ppLabel499: TppLabel;
+    ppLabel500: TppLabel;
+    ppRegion66: TppRegion;
+    ppDBText924: TppDBText;
+    ppDBText931: TppDBText;
+    ppDBText940: TppDBText;
+    ppDBText941: TppDBText;
+    ppLabel501: TppLabel;
+    ppDBText942: TppDBText;
+    ppDBText943: TppDBText;
+    ppLabel502: TppLabel;
+    ppLabel503: TppLabel;
+    ppLabel504: TppLabel;
+    ppLabel505: TppLabel;
+    ppLabel506: TppLabel;
+    ppDBText944: TppDBText;
+    ppLabel507: TppLabel;
+    ppLabel508: TppLabel;
+    ppLabel509: TppLabel;
+    ppLabel510: TppLabel;
+    ppDBText945: TppDBText;
+    ppDBText946: TppDBText;
+    ppDBText947: TppDBText;
+    ppDBText948: TppDBText;
+    ppDBText954: TppDBText;
+    ppDBText955: TppDBText;
+    ppLabel511: TppLabel;
+    ppDBText956: TppDBText;
+    ppDetailBand65: TppDetailBand;
+    ppRegion67: TppRegion;
+    ppLine360: TppLine;
+    ppLine361: TppLine;
+    ppLine362: TppLine;
+    ppDBText957: TppDBText;
+    ppDBText972: TppDBText;
+    ppDBText973: TppDBText;
+    ppDBText974: TppDBText;
+    ppDBText975: TppDBText;
+    ppLine363: TppLine;
+    ppLine364: TppLine;
+    ppDBMemo35: TppDBMemo;
+    ppFooterBand35: TppFooterBand;
+    ppSummaryBand37: TppSummaryBand;
+    ppSubReport22: TppSubReport;
+    ppChildReport39: TppChildReport;
+    ppColumnHeaderBand17: TppColumnHeaderBand;
+    ppShape136: TppShape;
+    ppLabel512: TppLabel;
+    ppLabel513: TppLabel;
+    ppLine365: TppLine;
+    ppLabel514: TppLabel;
+    ppLine366: TppLine;
+    ppLabel515: TppLabel;
+    ppLine367: TppLine;
+    ppLine368: TppLine;
+    ppDetailBand66: TppDetailBand;
+    ppDBText976: TppDBText;
+    ppDBText977: TppDBText;
+    ppDBText978: TppDBText;
+    ppLine369: TppLine;
+    ppLine370: TppLine;
+    ppLine371: TppLine;
+    ppLine372: TppLine;
+    ppLine373: TppLine;
+    ppImage27: TppImage;
+    ppImage28: TppImage;
+    ppDBText979: TppDBText;
+    ppLine374: TppLine;
+    ppColumnFooterBand17: TppColumnFooterBand;
+    ppDBText980: TppDBText;
+    ppDBText981: TppDBText;
+    ppLabel516: TppLabel;
+    ppLabel517: TppLabel;
+    ppLabel518: TppLabel;
+    ppDBText982: TppDBText;
+    ppLine375: TppLine;
+    ppRegion68: TppRegion;
+    ppLine376: TppLine;
+    ppDBText983: TppDBText;
+    ppLabel519: TppLabel;
+    ppDBText984: TppDBText;
+    ppLabel520: TppLabel;
+    ppDBText985: TppDBText;
+    ppDBText986: TppDBText;
+    ppLabel521: TppLabel;
+    ppDBText987: TppDBText;
+    ppLabel522: TppLabel;
+    ppDBText988: TppDBText;
+    ppLabel523: TppLabel;
+    ppDBText989: TppDBText;
+    ppLine377: TppLine;
+    ppLabel524: TppLabel;
+    ppDBText990: TppDBText;
+    ppLine378: TppLine;
+    pp40ColunasGraficoEpson1Linha: TppReport;
+    ppHeaderBand42: TppHeaderBand;
+    ppLabel525: TppLabel;
+    ppLabel526: TppLabel;
+    ppLabel527: TppLabel;
+    ppLabel528: TppLabel;
+    ppLabel529: TppLabel;
+    ppLabel530: TppLabel;
+    ppLabel531: TppLabel;
+    ppLabel532: TppLabel;
+    ppLabel533: TppLabel;
+    ppLabel534: TppLabel;
+    ppLabel535: TppLabel;
+    ppLabel536: TppLabel;
+    ppLabel537: TppLabel;
+    ppLabel538: TppLabel;
+    ppLabel539: TppLabel;
+    ppLabel540: TppLabel;
+    ppLine379: TppLine;
+    ppLine380: TppLine;
+    ppLine381: TppLine;
+    ppDetailBand67: TppDetailBand;
+    ppDBText991: TppDBText;
+    ppDBText992: TppDBText;
+    ppDBText993: TppDBText;
+    ppDBText994: TppDBText;
+    ppDBText995: TppDBText;
+    ppDBText996: TppDBText;
+    ppLabel541: TppLabel;
+    ppLabel542: TppLabel;
+    ppSummaryBand38: TppSummaryBand;
+    ppShape137: TppShape;
+    ppDBText997: TppDBText;
+    ppDBText998: TppDBText;
+    ppDBText999: TppDBText;
+    ppDBText1000: TppDBText;
+    ppDBText1001: TppDBText;
+    ppLine382: TppLine;
+    ppLabel543: TppLabel;
+    ppLabel544: TppLabel;
+    ppLabel545: TppLabel;
+    ppDBText1002: TppDBText;
+    ppLabel546: TppLabel;
+    ppDBText1003: TppDBText;
+    ppLabel547: TppLabel;
+    ppLabel548: TppLabel;
+    ppLabel549: TppLabel;
+    ppSubReport23: TppSubReport;
+    ppChildReport40: TppChildReport;
+    ppTitleBand13: TppTitleBand;
+    ppLabel550: TppLabel;
+    ppLabel551: TppLabel;
+    ppLabel552: TppLabel;
+    ppDetailBand68: TppDetailBand;
+    ppDBText1004: TppDBText;
+    ppDBText1005: TppDBText;
+    ppDBText1006: TppDBText;
+    ppSummaryBand39: TppSummaryBand;
+    ppLabel553: TppLabel;
+    ppLabel554: TppLabel;
+    ppDBText1007: TppDBText;
+    ppDBCalc9: TppDBCalc;
+    ppDBCalc10: TppDBCalc;
+    ppLabel555: TppLabel;
+    ppLabel556: TppLabel;
+    ppLine383: TppLine;
+    ppDBText1008: TppDBText;
+    ppLabel557: TppLabel;
+    ppGroup9: TppGroup;
+    ppGroupHeaderBand8: TppGroupHeaderBand;
+    ppGroupFooterBand8: TppGroupFooterBand;
+    ZRLabel1589: TZRLabel;
+    ZRLabel1590: TZRLabel;
+    ZRLabel1591: TZRLabel;
+    zrvFieldFRETE: TZRField;
+    zrvFieldOBSINV: TZRField;
+    zrvField3: TZRField;
+    zrvField4: TZRField;
+    ZRLabel1592: TZRLabel;
+    ppReport3: TppReport;
+    ppHeaderBand43: TppHeaderBand;
+    ppRegion69: TppRegion;
+    ppLabel558: TppLabel;
+    ppLabel559: TppLabel;
+    ppLine385: TppLine;
+    ppLine386: TppLine;
+    ppLine387: TppLine;
+    ppLine388: TppLine;
+    ppLabel560: TppLabel;
+    ppLabel561: TppLabel;
+    ppLabel562: TppLabel;
+    ppLabel563: TppLabel;
+    ppRegion70: TppRegion;
+    ppDBText1009: TppDBText;
+    ppDBText1010: TppDBText;
+    ppDBText1011: TppDBText;
+    ppDBText1012: TppDBText;
+    ppLabel564: TppLabel;
+    ppDBText1013: TppDBText;
+    ppDBText1014: TppDBText;
+    ppLabel565: TppLabel;
+    ppLabel566: TppLabel;
+    ppLabel567: TppLabel;
+    ppLabel568: TppLabel;
+    ppLabel569: TppLabel;
+    ppDBText1015: TppDBText;
+    ppLabel570: TppLabel;
+    ppLabel571: TppLabel;
+    ppLabel572: TppLabel;
+    ppLabel573: TppLabel;
+    ppDBText1016: TppDBText;
+    ppDBText1017: TppDBText;
+    ppDBText1018: TppDBText;
+    ppDBText1019: TppDBText;
+    ppDBText1020: TppDBText;
+    ppDBText1021: TppDBText;
+    ppDetailBand69: TppDetailBand;
+    ppRegion71: TppRegion;
+    ppLine389: TppLine;
+    ppLine390: TppLine;
+    ppLine391: TppLine;
+    ppDBText1023: TppDBText;
+    ppDBText1024: TppDBText;
+    ppDBText1025: TppDBText;
+    ppDBText1026: TppDBText;
+    ppDBText1027: TppDBText;
+    ppLine392: TppLine;
+    ppLine393: TppLine;
+    ppDBMemo38: TppDBMemo;
+    ppFooterBand36: TppFooterBand;
+    ppSummaryBand40: TppSummaryBand;
+    ppSubReport24: TppSubReport;
+    ppChildReport41: TppChildReport;
+    ppColumnHeaderBand18: TppColumnHeaderBand;
+    ppShape138: TppShape;
+    ppLabel575: TppLabel;
+    ppLabel576: TppLabel;
+    ppLine394: TppLine;
+    ppLabel577: TppLabel;
+    ppLine395: TppLine;
+    ppLine396: TppLine;
+    ppDetailBand70: TppDetailBand;
+    ppDBText1028: TppDBText;
+    ppDBText1029: TppDBText;
+    ppDBText1030: TppDBText;
+    ppLine398: TppLine;
+    ppLine399: TppLine;
+    ppLine400: TppLine;
+    ppLine401: TppLine;
+    ppLine402: TppLine;
+    ppColumnFooterBand18: TppColumnFooterBand;
+    ppDBText1032: TppDBText;
+    ppDBText1033: TppDBText;
+    ppLabel579: TppLabel;
+    ppLabel580: TppLabel;
+    ppLabel581: TppLabel;
+    ppDBText1034: TppDBText;
+    ppRegion72: TppRegion;
+    ppLine405: TppLine;
+    ppDBText1035: TppDBText;
+    ppLabel582: TppLabel;
+    ppDBText1036: TppDBText;
+    ppLabel583: TppLabel;
+    ppDBText1037: TppDBText;
+    ppDBText1038: TppDBText;
+    ppLabel584: TppLabel;
+    ppDBText1039: TppDBText;
+    ppLabel585: TppLabel;
+    ppDBText1040: TppDBText;
+    ppLabel586: TppLabel;
+    ppDBText1041: TppDBText;
+    ppLine406: TppLine;
+    ppLine407: TppLine;
+    ppLabel587: TppLabel;
+    ppLine408: TppLine;
+    ppDBText1042: TppDBText;
+    ppReport4: TppReport;
+    ppHeaderBand44: TppHeaderBand;
+    ppShape139: TppShape;
+    ppRegion73: TppRegion;
+    ppDBText1022: TppDBText;
+    ppShape143: TppShape;
+    ppLabel574: TppLabel;
+    ppShape145: TppShape;
+    ppShape146: TppShape;
+    ppDBText1031: TppDBText;
+    ppDBText1043: TppDBText;
+    ppDBText1044: TppDBText;
+    ppDBText1045: TppDBText;
+    ppDBText1046: TppDBText;
+    ppDBText1047: TppDBText;
+    ppDBText1048: TppDBText;
+    ppRegion74: TppRegion;
+    ppShape147: TppShape;
+    ppDBText1049: TppDBText;
+    ppDBText1050: TppDBText;
+    ppRegion75: TppRegion;
+    ppShape148: TppShape;
+    ppDBText1051: TppDBText;
+    ppDBText1052: TppDBText;
+    ppRegion76: TppRegion;
+    ppShape149: TppShape;
+    ppDBText1053: TppDBText;
+    ppDBText1054: TppDBText;
+    ppRegion77: TppRegion;
+    ppShape150: TppShape;
+    ppDBText1055: TppDBText;
+    ppDBText1056: TppDBText;
+    ppRegion78: TppRegion;
+    ppShape151: TppShape;
+    ppDBText1057: TppDBText;
+    ppDBText1058: TppDBText;
+    ppRegion79: TppRegion;
+    ppShape152: TppShape;
+    ppDBText1059: TppDBText;
+    ppDBText1060: TppDBText;
+    ppDBText1061: TppDBText;
+    ppLabel578: TppLabel;
+    ppRegion80: TppRegion;
+    ppShape153: TppShape;
+    ppDBText1062: TppDBText;
+    ppDBText1063: TppDBText;
+    ppDBText1064: TppDBText;
+    ppRegion81: TppRegion;
+    ppShape154: TppShape;
+    ppDBText1065: TppDBText;
+    ppDBText1066: TppDBText;
+    ppShape155: TppShape;
+    ppDBText1067: TppDBText;
+    ppDBText1068: TppDBText;
+    ppShape156: TppShape;
+    ppDBText1069: TppDBText;
+    ppDBText1070: TppDBText;
+    ppDBText1071: TppDBText;
+    ppLabel588: TppLabel;
+    ppDBText1072: TppDBText;
+    ppDBText1073: TppDBText;
+    ppLabel589: TppLabel;
+    ppDetailBand71: TppDetailBand;
+    ppRegion82: TppRegion;
+    ppLine384: TppLine;
+    ppLine397: TppLine;
+    ppLine403: TppLine;
+    ppLine404: TppLine;
+    ppLine409: TppLine;
+    ppDBText1074: TppDBText;
+    ppDBText1075: TppDBText;
+    ppDBText1076: TppDBText;
+    ppDBText1077: TppDBText;
+    ppDBText1078: TppDBText;
+    ppDBText1079: TppDBText;
+    ppDBText1080: TppDBText;
+    ppDBText1081: TppDBText;
+    ppDBText1082: TppDBText;
+    ppDBText1083: TppDBText;
+    ppLine410: TppLine;
+    ppLine411: TppLine;
+    ppLine412: TppLine;
+    ppLine413: TppLine;
+    ppLine414: TppLine;
+    ppLine415: TppLine;
+    ppLine416: TppLine;
+    ppDBText1084: TppDBText;
+    ppDBMemo39: TppDBMemo;
+    ppDBMemo40: TppDBMemo;
+    ppSubReport25: TppSubReport;
+    ppChildReport42: TppChildReport;
+    ppHeaderBand45: TppHeaderBand;
+    ppDetailBand72: TppDetailBand;
+    ppDBText1085: TppDBText;
+    ppDBText1086: TppDBText;
+    ppDBMemo41: TppDBMemo;
+    ppDBText1087: TppDBText;
+    ppFooterBand37: TppFooterBand;
+    ppDBMemo42: TppDBMemo;
+    ppSubReport26: TppSubReport;
+    ppChildReport43: TppChildReport;
+    ppTitleBand14: TppTitleBand;
+    ppColumnHeaderBand19: TppColumnHeaderBand;
+    ppDetailBand73: TppDetailBand;
+    ppDBText1088: TppDBText;
+    ppColumnFooterBand19: TppColumnFooterBand;
+    ppSummaryBand41: TppSummaryBand;
+    ppFooterBand38: TppFooterBand;
+    ppRegion83: TppRegion;
+    ppShape157: TppShape;
+    ppDBText1089: TppDBText;
+    ppDBMemo43: TppDBMemo;
+    ppSummaryBand42: TppSummaryBand;
+    ppSubReport27: TppSubReport;
+    ppChildReport44: TppChildReport;
+    ppColumnHeaderBand20: TppColumnHeaderBand;
+    ppShape158: TppShape;
+    ppLabel590: TppLabel;
+    ppLabel591: TppLabel;
+    ppLine417: TppLine;
+    ppLabel592: TppLabel;
+    ppLine418: TppLine;
+    ppLabel593: TppLabel;
+    ppLine419: TppLine;
+    ppLine420: TppLine;
+    ppDetailBand74: TppDetailBand;
+    ppDBText1090: TppDBText;
+    ppDBText1091: TppDBText;
+    ppDBText1092: TppDBText;
+    ppLine421: TppLine;
+    ppLine422: TppLine;
+    ppLine423: TppLine;
+    ppLine424: TppLine;
+    ppLine425: TppLine;
+    ppImage29: TppImage;
+    ppImage30: TppImage;
+    ppDBText1093: TppDBText;
+    ppLine426: TppLine;
+    ppColumnFooterBand20: TppColumnFooterBand;
+    ppRegion84: TppRegion;
+    ppDBText1094: TppDBText;
+    ppLine427: TppLine;
+    ppDBText1095: TppDBText;
+    ppRegion85: TppRegion;
+    ppDBText1096: TppDBText;
+    ppLine428: TppLine;
+    ppDBText1097: TppDBText;
+    ppRegion86: TppRegion;
+    ppDBText1098: TppDBText;
+    ppLine429: TppLine;
+    ppDBText1099: TppDBText;
+    ppRegion87: TppRegion;
+    ppDBText1100: TppDBText;
+    ppLine430: TppLine;
+    ppDBText1101: TppDBText;
+    ppRegion88: TppRegion;
+    ppShape159: TppShape;
+    ppShape160: TppShape;
+    ppDBText1102: TppDBText;
+    ppDBText1103: TppDBText;
+    ppRegion89: TppRegion;
+    ppShape161: TppShape;
+    ppShape162: TppShape;
+    ppDBText1104: TppDBText;
+    ppDBText1105: TppDBText;
+    ppRegion90: TppRegion;
+    ppShape163: TppShape;
+    ppShape164: TppShape;
+    ppDBText1106: TppDBText;
+    ppDBText1107: TppDBText;
+    ppPageStyle5: TppPageStyle;
+    ppShape165: TppShape;
+    ppShape166: TppShape;
+    ppShape167: TppShape;
+    ppShape168: TppShape;
+    ppShape169: TppShape;
+    ppShape170: TppShape;
+    ppShape171: TppShape;
+    ppShape172: TppShape;
+    ppShape173: TppShape;
+    ppShape174: TppShape;
+    ppShape175: TppShape;
+    ppDBText1108: TppDBText;
+    ppDBText1109: TppDBText;
+    ppDBText1110: TppDBText;
+    ppDBText1111: TppDBText;
+    ppDBText1112: TppDBText;
+    ppShape176: TppShape;
+    ppDBText1113: TppDBText;
+    ppDBText1114: TppDBText;
+    ppLine431: TppLine;
+    ppShape177: TppShape;
+    ppDBText1115: TppDBText;
+    ppDBText1116: TppDBText;
+    ppShape178: TppShape;
+    ppDBText1117: TppDBText;
+    ppDBText1118: TppDBText;
+    ppDBText1119: TppDBText;
+    ppDBText1120: TppDBText;
+    ppDBText1121: TppDBText;
+    ppDBText1122: TppDBText;
         procedure rbRodapeBeforePrint(Sender: TObject);
         procedure ppDBText7GetText(Sender: TObject; var Text: string);
         procedure ppDetailBand2BeforePrint(Sender: TObject);
@@ -6017,8 +8083,8 @@ begin
                             'si.cfopnota, si.basecalcsubstprod, si.valoripiprod, si.tva, si.numeroitem, ' +
                             'si.registro, si.valoricmsprod, si.valorisentasprod, si.valoricmssubstprod, ' +
                             'fab.descricao as fabricante, si.desconto, si.pdesconto, si.cfopcst, si.fator, si.almoxarifado, ' +
-                            'l.descricao as Local, s.descricao as StatusItem , si.taxavel, SI.ordem, si.sequencia, si.precotabela, si.QUANTIDADEVOLUME, ' +
-                            'si.precocustolicitacao ' +
+                            'l.descricao as Local, s.descricao as StatusItem , si.taxavel, SI.ordem, si.sequencia, si.QUANTIDADEVOLUME, si.Observacao, ' +
+                            'si.precocustolicitacao, si.precotabela ' +
                             'From saidasitens si ' +
                             'Inner Join itens i on si.item=i.item ' +
                             'Inner Join tipositens ti on ti.tipoitem = i.tipoitem ' +
@@ -6042,15 +8108,13 @@ begin
                         C_Itens.Fields.Remove(C_ItensSTATUSITEM);
                         C_Itens.Fields.Remove(C_ItensTAXAVEL);
                         C_Itens.Fields.Remove(C_ItensSEQUENCIA);
-                        C_Itens.Fields.Remove(C_ItensPRECOTABELA);
+                        //C_Itens.Fields.Remove(C_ItensPRECOTABELA);
                         subComposicaoItens.DataPipeline := nil;
                         subComposicaoItens2.DataPipeline := nil;
                         subComposicaoItens3.DataPipeline := nil;
                         subComposicaoItens4.DataPipeline := nil;
                         SQL.Text := 'Select i.codigo, si.Saida, si.empresa, si.pdv, si.saidaitem, si.descricao as itemdesc, ' +
-                            // Felipe - Comentado trecho abaixo pois retorna espaço em branco, não utilizado (09/10/2014)
-//+ QuotedStr(StrRepeat(' ', 50)) + ' as NomeFuncionario, ' +
-                        ' i.tipoitem, si.unidade, i.referencia, si.Coluna1, si.Coluna2, si.Coluna3, si.Coluna4, ' +
+                            ' i.tipoitem, si.unidade, i.referencia, si.Coluna1, si.Coluna2, si.Coluna3, si.Coluna4, ' +
                             ' si.basecalcicmsprod, si.ipi, si.aliqicms, si.cst, si.reducaocst, si.situacaoecf, ' +
                             ' si.cfopnota, si.basecalcsubstprod, si.valoripiprod, si.tva, si.numeroitem, ' +
                             ' si.registro, si.valoricmsprod, si.valorisentasprod, si.valoricmssubstprod, ' +
@@ -6058,7 +8122,7 @@ begin
                             ' si.desconto, si.pdesconto, ' +
                             ' si.descricaocomplementar, sum(si.quantidade) as quantidade, sum(si.subtotalitem) as total, ' +
                             ' si.fator, si.almoxarifado, l.descricao as Local, si.ordem , si.QUANTIDADEVOLUME, ' +
-                            ' si.precocustolicitacao ' +
+                            ' si.precocustolicitacao, si.observacao, si.precotabela ' +
                             ' from saidasitens si ' +
                             ' left Join itens i on si.item = i.item ' +
                             ' inner Join tipositens ti on ti.tipoitem = i.tipoitem ' +
@@ -6076,7 +8140,7 @@ begin
                             ' si.preco, ti.descricao, fab.descricao, si.numerolote, ' +
                             ' si.desconto, si.pdesconto, ' +
                             ' si.descricaocomplementar, ' +
-                            ' si.fator, si.almoxarifado, l.descricao, si.ordem , si.QUANTIDADEVOLUME, si.precocustolicitacao ';
+                            ' si.fator, si.almoxarifado, l.descricao, si.ordem , si.QUANTIDADEVOLUME, si.precocustolicitacao, si.observacao , si.precotabela ';
                     end;
             end;
 
@@ -7583,6 +9647,8 @@ begin
                 //else if (CB_Documento = 'S') and (Copy(sModelo, 1, 1) = 'S') then
         else if (CB_Documento = 'S') and (sModelo = 'S') then
             begin
+                if FileExists(DMProjeto.ImgPath + 'Logo.jpg') then
+                   ppImage25.Picture.LoadFromFile(DMProjeto.ImgPath + 'Logo.jpg');
                 if Template <> 0 then
                     begin
                         rbMeiaFolha.Template.FileName := sArquivo;
@@ -7692,6 +9758,69 @@ begin
                 else
                     EnviarEmail(rbMeiaFolha, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
             end
+//            XXXXXXX
+        else if (CB_Documento = 'S') and (sModelo = 'SX') then
+            begin
+                if FileExists(DMProjeto.ImgPath + 'Logo.jpg') then
+                   ppImage26.Picture.LoadFromFile(DMProjeto.ImgPath + 'Logo.jpg');
+                if Template <> 0 then
+                    begin
+                        rbPedidoPromissoria.Template.FileName := sArquivo;
+                        if fileexists(rbPedidoPromissoria.Template.FileName) then
+                            rbPedidoPromissoria.Template.LoadFromFile
+                        else
+                            rbPedidoPromissoria.Template.FileName := '';
+                    end
+                else
+                    rbPedidoPromissoria.Template.FileName := '';
+
+
+                ppLabel466.Visible := C_InvoiceSITUACAO.Value = 'C';
+
+                DefineColunas(RptInvoices, 6, getColunasMeiaFolha(C_InvoiceTipoMovimento.Value, sTipoImpressao), true);
+
+               // DMProjeto.ImprimirCabecalho(rgCab3, sFormName);
+
+                if not rgCab3.Visible then
+                    DetalheSimples.PrintCount := DetalheSimples.PrintCount + 5;
+
+                ppLabel463.Caption := DMProjeto.sNomeEmpresa;
+                ppLabel464.Caption := DMProjeto.sEnderecoEmpresa;
+                ppLabel465.Caption := DMProjeto.sFone1Empresa;
+
+                if (impressaoPadrao = 'S') then
+                    begin
+                        rbPedidoPromissoria.PrinterSetup.PrinterName := nomeImpressora;
+                        rbPedidoPromissoria.PrinterSetup.PaperName := papelImpressora;
+                    end;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        rbPedidoPromissoria.DeviceType := 'Printer';
+                        rbPedidoPromissoria.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                rbPedidoPromissoria.DeviceType := 'Printer';
+                                rbPedidoPromissoria.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        rbPedidoPromissoria.DeviceType := 'Screen';
+                        rbPedidoPromissoria.Print;
+                    end
+                else
+                    EnviarEmail(rbPedidoPromissoria, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+            end
+
+//            XXXXXXX
+
+
+
+
                 {Felipe - Adicionado "rbPedMeiaFolhaLX300" para imprimir em meia folha de papel continuo}
         else if (CB_Documento = 'S') and (sModelo = 'SMF') then
             begin
@@ -7794,6 +9923,66 @@ begin
 
        { fINAL cESAR 10-10-2017 AQUI. }
   ////
+              //inicio  pedido com localizacao
+          else if (CB_Documento = 'S') and (sModelo = 'P1L') then
+            begin
+                if Template <> 0 then
+                    begin
+                        ppReport3.Template.FileName := sArquivo;
+                        if fileexists(ppReport3.Template.FileName) then
+                            ppReport3.Template.LoadFromFile
+                        else
+                            ppReport3.Template.FileName := '';
+                    end
+                else
+                    ppReport3.Template.FileName := '';
+
+                lbCancelado.Visible := C_InvoiceSITUACAO.Value = 'C';
+//                dbtDescComplementar4.Visible := (C_InvoiceCB_DescricaoComplementar.Value = 'S');
+//                subComposicaoItens4.Visible := (C_InvoiceCB_ComposicaoItens.Value = 'S');
+
+                DMProjeto.ImprimirCabecalho(ppRegion70, sFormName);
+
+                if not ppRegion70.Visible then
+                    DetalheSimples.PrintCount := DetalheSimples.PrintCount + 5;
+
+                lbEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                lbEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                lbTelefone.Caption := DMProjeto.sFone1Empresa;
+
+                if (impressaoPadrao = 'S') then
+                    begin
+                        ppReport3.PrinterSetup.PrinterName := nomeImpressora;
+                        ppReport3.PrinterSetup.PaperName := papelImpressora;
+                    end;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        ppReport3.DeviceType := 'Printer';
+                        ppReport3.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                ppReport3.DeviceType := 'Printer';
+                                ppReport3.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        ppReport3.DeviceType := 'Screen';
+                        ppReport3.Print;
+                    end
+                else
+                    EnviarEmail(ppReport3, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+            end
+            //fim pedido com localizacao
+
+
+
+
+
         else if (CB_Documento = 'S') and (sModelo = 'PG') then
             begin
                 if Template <> 0 then
@@ -7849,6 +10038,59 @@ begin
             end
 
   /////
+  else if (CB_Documento = 'S') and (sModelo = 'PGV') then
+            begin
+                if Template <> 0 then
+                    begin
+                        rppedidogradeVolumes.Template.FileName := sArquivo;
+                        if fileexists(rppedidogradeVolumes.Template.FileName) then
+                            rppedidogradeVolumes.Template.LoadFromFile
+                        else
+                            rppedidogradeVolumes.Template.FileName := '';
+                    end
+                else
+                    rppedidogradeVolumes.Template.FileName := '';
+
+                ppLabel501.Visible := C_InvoiceSITUACAO.Value = 'C';
+//                dbtDescComplementar4.Visible := (C_InvoiceCB_DescricaoComplementar.Value = 'S');
+//                subComposicaoItens4.Visible := (C_InvoiceCB_ComposicaoItens.Value = 'S');
+
+                DMProjeto.ImprimirCabecalho(ppRegion66, sFormName);
+
+                if not rbCabecalhopp.Visible then
+                    DetalheSimples.PrintCount := DetalheSimples.PrintCount + 5;
+
+                lbEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                lbEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                lbTelefone.Caption := DMProjeto.sFone1Empresa;
+
+                if (impressaoPadrao = 'S') then
+                    begin
+                        rppedidogradeVolumes.PrinterSetup.PrinterName := nomeImpressora;
+                        rppedidogradeVolumes.PrinterSetup.PaperName := papelImpressora;
+                    end;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        rppedidogradeVolumes.DeviceType := 'Printer';
+                        rppedidogradeVolumes.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                rppedidogradeVolumes.DeviceType := 'Printer';
+                                rppedidogradeVolumes.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        rppedidogradeVolumes.DeviceType := 'Screen';
+                        rppedidogradeVolumes.Print;
+                    end
+                else
+                    EnviarEmail(rppedidogradeVolumes, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+            end
 
 ////ZZZZZ
 
@@ -7907,6 +10149,62 @@ begin
             end
 
   /////
+  else if (CB_Documento = 'S') and (sModelo = 'FAC') then
+            begin
+                if Template <> 0 then
+                    begin
+                        ppRepGodola.Template.FileName := sArquivo;
+                        if fileexists(ppRepGodola.Template.FileName) then
+                            ppRepGodola.Template.LoadFromFile
+                        else
+                            ppRepGodola.Template.FileName := '';
+                    end
+                else
+                    ppRepGodola.Template.FileName := '';
+
+                ppLabel459.Visible := C_InvoiceSITUACAO.Value = 'C';
+//                dbtDescComplementar4.Visible := (C_InvoiceCB_DescricaoComplementar.Value = 'S');
+//                subComposicaoItens4.Visible := (C_InvoiceCB_ComposicaoItens.Value = 'S');
+
+                DMProjeto.ImprimirCabecalho(ppRegion61, sFormName);
+
+                if not ppRegion61.Visible then
+                    DetalheSimples.PrintCount := DetalheSimples.PrintCount + 5;
+
+                lbEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                lbEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                lbTelefone.Caption := DMProjeto.sFone1Empresa;
+
+                if (impressaoPadrao = 'S') then
+                    begin
+                        ppRepGodola.PrinterSetup.PrinterName := nomeImpressora;
+                        ppRepGodola.PrinterSetup.PaperName := papelImpressora;
+                    end;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        ppRepGodola.DeviceType := 'Printer';
+                        ppRepGodola.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                ppRepGodola.DeviceType := 'Printer';
+                                ppRepGodola.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        ppRepGodola.DeviceType := 'Screen';
+                        ppRepGodola.Print;
+                    end
+                else
+                    EnviarEmail(ppRepGodola, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+            end
+
+  /////
+
 ////ZZZZZ
 
 
@@ -8137,6 +10435,272 @@ begin
                         EnviarEmail(pp40ColunasGrafico, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
                     end;
             end
+
+            // - Pedido PrinID
+            else if (CB_Documento = 'S') and (Copy(sModelo, 1, 3) = 'PID') then
+            begin
+                C_Servicos.CreateDataSet;
+                with C_Itens do
+                    begin
+                        First;
+                        while not EOF do
+                            begin
+                                if C_ItensTipoItem.Value = 3 then
+                                    begin
+                                        with C_Servicos do
+                                            begin
+                                                Append;
+                                                FieldByName('Codigo').AsString := C_ItensCodigo.AsString;
+                                                FieldByName('Descricao').AsString := C_ItensItemDesc.AsString;
+                                                FieldByName('Und').AsString := C_ItensUnidade.AsString;
+                                                FieldByName('Quantidade').AsCurrency := C_ItensQuantidade.AsCurrency;
+                                                FieldByName('Preco').AsCurrency := C_ItensPreco.AsCurrency;
+                                                FieldByName('SubTotal').AsCurrency := C_ItensTotal.AsCurrency;
+                                                Post;
+                                                nTotalServ := nTotalServ + C_ItensTotal.AsCurrency;
+                                            end;
+                                    end
+                                else
+                                    nTotalProd := nTotalProd + C_ItensTotal.AsCurrency;
+                                Next;
+                            end;
+                    end;
+                ppPIDEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                ppPIDEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                ppPIDCidade.Caption := DMProjeto.sCidadeEmpresa + '-' + DMProjeto.sUFEmpresa;
+                ppPIDFone.Caption := 'Fone: ' + DMProjeto.sFone1Empresa;
+                ppMovimento.Caption := UpperCase(C_InvoiceDescricao.AsString) + ' #' + C_InvoiceInvoice.AsString + Chr(32) + C_InvoiceDATA.AsString;
+                ppPIDNomeCliente.Caption := C_InvoiceNOME.AsString;
+                ppPIDEnderecoCliente.Caption := C_InvoiceENDERECO.AsString;
+                ppPIDCidadeCliente.Caption := C_InvoiceCIDADEUFZIP.AsString;
+                ppPIDFoneCliente.Caption := C_InvoiceFONE1.AsString;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        pp40ColunasGraficoPrintID.DeviceType := 'Printer';
+                        pp40ColunasGraficoPrintID.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                pp40ColunasGraficoPrintID.DeviceType := 'Printer';
+                                pp40ColunasGraficoPrintID.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        pp40ColunasGraficoPrintID.DeviceType := 'Screen';
+                        pp40ColunasGraficoPrintID.Print;
+                    end
+                else
+                    begin
+                        EnviarEmail(pp40ColunasGraficoPrintID, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+                    end;
+            end
+
+            // Fim - pedido PrintID
+
+            // Inicio 40 Colunas Epson
+            else if (CB_Documento = 'S') and (Copy(sModelo, 1, 3) = 'PPS') then
+            begin
+                C_Servicos.CreateDataSet;
+                with C_Itens do
+                    begin
+                        First;
+                        while not EOF do
+                            begin
+                                if C_ItensTipoItem.Value = 3 then
+                                    begin
+                                        with C_Servicos do
+                                            begin
+                                                Append;
+                                                FieldByName('Codigo').AsString := C_ItensCodigo.AsString;
+                                                FieldByName('Descricao').AsString := C_ItensItemDesc.AsString;
+                                                FieldByName('Und').AsString := C_ItensUnidade.AsString;
+                                                FieldByName('Quantidade').AsCurrency := C_ItensQuantidade.AsCurrency;
+                                                FieldByName('Preco').AsCurrency := C_ItensPreco.AsCurrency;
+                                                FieldByName('SubTotal').AsCurrency := C_ItensTotal.AsCurrency;
+                                                Post;
+                                                nTotalServ := nTotalServ + C_ItensTotal.AsCurrency;
+                                            end;
+                                    end
+                                else
+                                    nTotalProd := nTotalProd + C_ItensTotal.AsCurrency;
+                                Next;
+                            end;
+                    end;
+                ppEPSEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                ppEPSEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                ppEPSCidade.Caption := DMProjeto.sCidadeEmpresa + '-' + DMProjeto.sUFEmpresa;
+                ppEPSFone.Caption := 'Fone: ' + DMProjeto.sFone1Empresa;
+                ppEPSMovimento.Caption := UpperCase(C_InvoiceDescricao.AsString) + ' #' + C_InvoiceInvoice.AsString + Chr(32) + C_InvoiceDATA.AsString;
+                ppEPSNomeCliente.Caption := C_InvoiceCODIGOCLIENTE.AsString + ' - ' + C_InvoiceNOME.AsString;
+                ppLabel451.Caption := C_InvoiceNOME.AsString;
+                ppEPSEnderecoCliente.Caption := C_InvoiceENDERECO.AsString;
+                ppEPSCidadeCliente.Caption := C_InvoiceCIDADEUFZIP.AsString;
+                ppEPSFoneCliente.Caption := C_InvoiceFONE1.AsString;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        pp40ColunasGraficoEpson.DeviceType := 'Printer';
+                        pp40ColunasGraficoEpson.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                pp40ColunasGraficoEpson.DeviceType := 'Printer';
+                                pp40ColunasGraficoEpson.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        pp40ColunasGraficoEpson.DeviceType := 'Screen';
+                        pp40ColunasGraficoEpson.Print;
+                    end
+                else
+                    begin
+                        EnviarEmail(pp40ColunasGraficoEpson, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+                    end;
+            end
+
+
+            // Final 40 ColunasEpson
+
+            // Inicio 40 Colunas Epson  Item em uma Linha
+            else if (CB_Documento = 'S') and (Copy(sModelo, 1, 3) = 'P1S') then
+            begin
+                C_Servicos.CreateDataSet;
+                with C_Itens do
+                    begin
+                        First;
+                        while not EOF do
+                            begin
+                                if C_ItensTipoItem.Value = 3 then
+                                    begin
+                                        with C_Servicos do
+                                            begin
+                                                Append;
+                                                FieldByName('Codigo').AsString := C_ItensCodigo.AsString;
+                                                FieldByName('Descricao').AsString := C_ItensItemDesc.AsString;
+                                                FieldByName('Und').AsString := C_ItensUnidade.AsString;
+                                                FieldByName('Quantidade').AsCurrency := C_ItensQuantidade.AsCurrency;
+                                                FieldByName('Preco').AsCurrency := C_ItensPreco.AsCurrency;
+                                                FieldByName('SubTotal').AsCurrency := C_ItensTotal.AsCurrency;
+                                                Post;
+                                                nTotalServ := nTotalServ + C_ItensTotal.AsCurrency;
+                                            end;
+                                    end
+                                else
+                                    nTotalProd := nTotalProd + C_ItensTotal.AsCurrency;
+                                Next;
+                            end;
+                    end;
+                ppLabel531.Caption := DMProjeto.sNomeEmpresa;
+                ppLabel532.Caption := DMProjeto.sEnderecoEmpresa;
+                ppLabel533.Caption := DMProjeto.sCidadeEmpresa + '-' + DMProjeto.sUFEmpresa;
+                ppLabel534.Caption := 'Fone: ' + DMProjeto.sFone1Empresa;
+                ppLabel525.Caption := UpperCase(C_InvoiceDescricao.AsString) + ' #' + C_InvoiceInvoice.AsString + Chr(32) + C_InvoiceDATA.AsString;
+                ppLabel526.Caption := C_InvoiceCODIGOCLIENTE.AsString + ' - ' + C_InvoiceNOME.AsString;
+                ppLabel556.Caption := C_InvoiceNOME.AsString;
+                ppLabel527.Caption := C_InvoiceENDERECO.AsString;
+                ppLabel528.Caption := C_InvoiceCIDADEUFZIP.AsString;
+                ppLabel530.Caption := C_InvoiceFONE1.AsString;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        pp40ColunasGraficoEpson1Linha.DeviceType := 'Printer';
+                        pp40ColunasGraficoEpson1Linha.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                pp40ColunasGraficoEpson1Linha.DeviceType := 'Printer';
+                                pp40ColunasGraficoEpson1Linha.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        pp40ColunasGraficoEpson1Linha.DeviceType := 'Screen';
+                        pp40ColunasGraficoEpson1Linha.Print;
+                    end
+                else
+                    begin
+                        EnviarEmail(pp40ColunasGraficoEpson1Linha, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+                    end;
+            end
+
+
+            // Final 40 ColunasEpson  Item em uma Linha
+
+
+            // ePSON cOM vOLUMES
+            else if (CB_Documento = 'S') and (Copy(sModelo, 1, 3) = 'EPV') then
+            begin
+                C_Servicos.CreateDataSet;
+                with C_Itens do
+                    begin
+                        First;
+                        while not EOF do
+                            begin
+                                if C_ItensTipoItem.Value = 3 then
+                                    begin
+                                        with C_Servicos do
+                                            begin
+                                                Append;
+                                                FieldByName('Codigo').AsString := C_ItensCodigo.AsString;
+                                                FieldByName('Descricao').AsString := C_ItensItemDesc.AsString;
+                                                FieldByName('Und').AsString := C_ItensUnidade.AsString;
+                                                FieldByName('Quantidade').AsCurrency := C_ItensQuantidade.AsCurrency;
+                                                FieldByName('Preco').AsCurrency := C_ItensPreco.AsCurrency;
+                                                FieldByName('SubTotal').AsCurrency := C_ItensTotal.AsCurrency;
+                                                Post;
+                                                nTotalServ := nTotalServ + C_ItensTotal.AsCurrency;
+                                            end;
+                                    end
+                                else
+                                    nTotalProd := nTotalProd + C_ItensTotal.AsCurrency;
+                                Next;
+                            end;
+                    end;
+                ppEPSVEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                ppEPSVEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                ppEPSVCidade.Caption := DMProjeto.sCidadeEmpresa + '-' + DMProjeto.sUFEmpresa;
+                ppEPSVFone.Caption := 'Fone: ' + DMProjeto.sFone1Empresa;
+                ppEPSVMovimento.Caption := UpperCase(C_InvoiceDescricao.AsString) + ' #' + C_InvoiceInvoice.AsString + Chr(32) + C_InvoiceDATA.AsString;
+                ppEPSVNomeCliente.Caption := C_InvoiceNOME.AsString;
+                ppEPSVEnderecoCliente.Caption := C_InvoiceENDERECO.AsString;
+                ppEPSVCidadeCliente.Caption := C_InvoiceCIDADEUFZIP.AsString;
+                ppEPSVFoneCliente.Caption := C_InvoiceFONE1.AsString;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        pp40ColunasGraficoEpsonvolumes.DeviceType := 'Printer';
+                        pp40ColunasGraficoEpsonvolumes.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                pp40ColunasGraficoEpsonvolumes.DeviceType := 'Printer';
+                                pp40ColunasGraficoEpsonvolumes.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        pp40ColunasGraficoEpsonvolumes.DeviceType := 'Screen';
+                        pp40ColunasGraficoEpsonvolumes.Print;
+                    end
+                else
+                    begin
+                        EnviarEmail(pp40ColunasGraficoEpsonvolumes, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+                    end;
+            end
+            //Final Epson Com Vulomes
+
+
 
         else if (CB_Documento = 'S') and (Copy(sModelo, 1, 3) = 'PFX') then
             begin
@@ -8416,6 +10980,74 @@ begin
             end;
         //Marcos
         {Escrever aki o Codigo de inpressao da solicitação de almox.}
+
+        // Nota de Entrega Cesar 18-01-2022
+        if ( C_InvoiceCB_NOTAENTREGA.Value = 'S') then Begin
+                with C_Itens do
+                    begin
+                        First;
+                        while not EOF do
+                            begin
+                                if C_ItensTipoItem.Value = 3 then
+                                    begin
+                                        with C_Servicos do
+                                            begin
+                                                Append;
+                                                FieldByName('Codigo').AsString := C_ItensCodigo.AsString;
+                                                FieldByName('Descricao').AsString := C_ItensItemDesc.AsString;
+                                                FieldByName('Und').AsString := C_ItensUnidade.AsString;
+                                                FieldByName('Quantidade').AsCurrency := C_ItensQuantidade.AsCurrency;
+                                                FieldByName('Preco').AsCurrency := C_ItensPreco.AsCurrency;
+                                                FieldByName('SubTotal').AsCurrency := C_ItensTotal.AsCurrency;
+                                                Post;
+                                                nTotalServ := nTotalServ + C_ItensTotal.AsCurrency;
+                                            end;
+                                    end
+                                else
+                                    nTotalProd := nTotalProd + C_ItensTotal.AsCurrency;
+                                Next;
+                            end;
+                    end;
+                ppNEEmpresa.Caption := DMProjeto.sNomeEmpresa;
+                ppNEEndereco.Caption := DMProjeto.sEnderecoEmpresa;
+                ppNECidade.Caption := DMProjeto.sCidadeEmpresa + '-' + DMProjeto.sUFEmpresa;
+                ppNEFone.Caption := 'Fone: ' + DMProjeto.sFone1Empresa;
+                ppNEMovimento.Caption := UpperCase(C_InvoiceDescricao.AsString) + ' #' + C_InvoiceInvoice.AsString + Chr(32);
+                ppNEData.Caption := 'Data:'+ UpperCase(C_InvoiceDATA.AsString);
+                ppNENomeCliente.Caption := C_InvoiceNOME.AsString;
+                ppNEEnderecoCliente.Caption := C_InvoiceENDERECO.AsString;
+                ppNECidadeCliente.Caption := C_InvoiceCIDADEUFZIP.AsString;
+                ppNEFoneCliente.Caption := C_InvoiceFONE1.AsString;
+
+                if ImpressaoPara = 'S' then
+                    begin
+                        ppNotaEntrega.DeviceType := 'Printer';
+                        ppNotaEntrega.Print;
+                    end
+                else if ImpressaoPara = 'C' then
+                    begin
+                        if DlgMsg.ShowMsg(8016, ['Op.Num.: ' + C_InvoiceINVOICE.AsString]) = 100 then
+                            begin
+                                ppNotaEntrega.DeviceType := 'Printer';
+                                ppNotaEntrega.Print;
+                            end;
+                    end
+                else if ImpressaoPara = 'N' then
+                    begin
+                        ppNotaEntrega.DeviceType := 'Screen';
+                        ppNotaEntrega.Print;
+                    end
+                else
+                    begin
+                        EnviarEmail(ppNotaEntrega, DMProjeto.RelPath + C_InvoiceDescricao.asString + ' ' + C_InvoiceInvoice.asstring + '.jpg');
+                    end;
+
+
+
+        end; // Nota de Entrega Cesar 18-01-2022
+        // FIM Nota de Entrega Cesar 18-01-2022
+
+
         if (DMProjeto.Parametro('MultiAlmox') = 'S') and (C_InvoiceCB_SOLICITACAOALMOX.Value = 'S') then
             begin
                 with DMProjeto.q_sql do

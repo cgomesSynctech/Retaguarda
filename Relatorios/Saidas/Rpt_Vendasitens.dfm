@@ -1,35 +1,36 @@
 inherited RptVendasItens: TRptVendasItens
-  Left = 36
-  Top = 88
-  Width = 1264
-  Height = 647
+  Left = 183
+  Top = 35
+  Width = 1080
+  Height = 556
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 1256
+    Width = 1072
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
+      Left = 9
       Width = 266
       Caption = 'Itens Vendidos no Periodo :'
       Effect3D.ShadowedColor = 14859922
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 1222
+      Left = 1038
     end
     inherited btTemplates: TTS_SpeedButton
-      Left = 1195
+      Left = 1011
     end
   end
   inherited pnGrid: TPanel
-    Width = 1203
-    Height = 582
+    Width = 1019
+    Height = 491
     inherited pnDados: TTS_Panel
-      Width = 1203
+      Width = 1019
       Height = 49
       Color = 16116702
       DesignSize = (
-        1203
+        1019
         49)
       object TS_Label1: TTS_Label
         Left = 3
@@ -368,7 +369,7 @@ inherited RptVendasItens: TRptVendasItens
         Height = 19
       end
       object cbCanceladas: TTS_CheckBox
-        Left = 958
+        Left = 774
         Top = 11
         Width = 98
         Hint = 'Marque para ver as Vendas Canceladas'
@@ -394,7 +395,7 @@ inherited RptVendasItens: TRptVendasItens
         Height = 19
       end
       object cbItensCancelados: TTS_CheckBox
-        Left = 1023
+        Left = 839
         Top = 30
         Width = 153
         Hint = 'Marque para ver os Itens Cancelados'
@@ -410,8 +411,8 @@ inherited RptVendasItens: TRptVendasItens
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 49
-      Width = 1203
-      Height = 514
+      Width = 1019
+      Height = 423
       KeyField = 'ITEM'
       SummaryGroups = <
         item
@@ -423,76 +424,69 @@ inherited RptVendasItens: TRptVendasItens
               SummaryType = cstSum
             end
             item
-              SummaryField = 'VALORFINAL'
-              SummaryFormat = '>VALORFINAL=#,###,##0.00'
+              SummaryField = 'QTDDEV'
+              SummaryFormat = '>QTDDEV=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'RATEIODESCONTO'
-              SummaryFormat = '>RATEIODESCONTO=#,###,##0.00'
+              SummaryField = 'SUBTOTALVENDAITEN'
+              SummaryFormat = '>SUBTOTALVENDAITEN=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'TOTPRECOCOMPRA'
-              SummaryFormat = '>TOTPRECOCOMPRA=#,###,##0.00'
+              SummaryField = 'TotalPrecoCompra'
+              SummaryFormat = '>TotalPrecoCompra=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'TOTCUSTOMEDIO'
-              SummaryFormat = '>TOTCUSTOMEDIO=#,###,##0.00'
+              SummaryField = 'ApuracaoFinal'
+              SummaryFormat = '>ApuracaoFinal=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'SUBTOTALITEM'
-              SummaryFormat = '>SUBTOTALITEM=#,###,##0.00'
+              SummaryField = 'ApFinalManual'
+              SummaryFormat = '>ApFinalManual=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'CUSTOMANUAL'
-              SummaryFormat = '>CUSTOMANUAL=#,###,##0.00'
+              SummaryField = 'TotalCustoManual'
+              SummaryFormat = '>TotalCustoManual=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'CUSTOMEDIO'
-              SummaryFormat = '>CUSTOMEDIO=#,###,##0.00'
+              SummaryField = 'TotalCustomedio'
+              SummaryFormat = '>TotalCustomedio=#,###,##0.00'
               SummaryType = cstSum
             end
             item
-              SummaryField = 'CUSTOCONTABIL'
-              SummaryFormat = '>CUSTOCONTABIL=#,###,##0.00'
-              SummaryType = cstSum
-            end
-            item
-              SummaryField = 'PRECOCOMPRA'
-              SummaryFormat = '>PRECOCOMPRA=#,###,##0.00'
+              SummaryField = 'ApuracaoCustoMedio'
+              SummaryFormat = '>ApuracaoCustoMedio=#,###,##0.00'
               SummaryType = cstSum
             end>
           Name = 'Default'
         end>
       Filter.Criteria = {00000000}
+      ShowGrid = True
       TS_SelectedColumn = 'CODIGO'
       TS_SummaryFields.Strings = (
         'Quantidade;Sum'
-        'VALORFINAL;SUM'
-        'RATEIODESCONTO;SUM'
-        'TOTCUSTO;SUM'
-        'TOTPRECOCOMPRA;SUM'
-        'TOTCUSTOMEDIO;SUM'
-        'SUBTOTALITEM;SUM'
-        'CUSTOMANUAL;SUM'
-        'CUSTOMEDIO;SUM'
-        'CUSTOCONTABIL;SUM'
-        'PRECOCOMPRA;SUM')
+        'QTDDEV;SUM'
+        'SUBTOTALVENDAITEN;sum'
+        'TotalPrecoCompra;sum'
+        'ApuracaoFinal;sum'
+        'ApFinalManual;sum'
+        'TotalCustoManual;sum'
+        'TotalCustomedio;sum'
+        'ApuracaoCustoMedio;sum')
       object dbgConsultaITEM: TdxDBGridMaskColumn
         Visible = False
-        Width = 78
+        Width = 61
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ITEM'
       end
       object dbgConsultaCODIGO: TdxDBGridMaskColumn
         Caption = 'Codigo'
-        Sorted = csUp
         Width = 88
         BandIndex = 0
         RowIndex = 0
@@ -505,126 +499,183 @@ inherited RptVendasItens: TRptVendasItens
         RowIndex = 0
         FieldName = 'DESCRICAO'
       end
+      object dbgConsultaREFERENCIA: TdxDBGridMaskColumn
+        Caption = 'Referencia'
+        Width = 114
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'REFERENCIA'
+      end
       object dbgConsultaUNIDADE: TdxDBGridMaskColumn
-        Caption = 'Unid'
-        Width = 65
+        Caption = 'Und'
+        Width = 40
         BandIndex = 0
         RowIndex = 0
         FieldName = 'UNIDADE'
       end
       object dbgConsultaPISCOFINS: TdxDBGridMaskColumn
         Visible = False
-        Width = 80
+        Width = 62
         BandIndex = 0
         RowIndex = 0
         FieldName = 'PISCOFINS'
       end
       object dbgConsultaGRUPO: TdxDBGridMaskColumn
         Visible = False
-        Width = 229
+        Width = 178
         BandIndex = 0
         RowIndex = 0
         FieldName = 'GRUPO'
       end
       object dbgConsultaQUANTIDADE: TdxDBGridMaskColumn
-        Caption = 'Quant'
+        Caption = 'Qtd Vendas'
+        Width = 70
         BandIndex = 0
         RowIndex = 0
         FieldName = 'QUANTIDADE'
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
       end
-      object dbgConsultaSUBTOTALITEM: TdxDBGridMaskColumn
-        Caption = 'Total Item'
-        Width = 122
+      object dbgConsultaPrecoVendaMedio: TdxDBGridColumn
+        Caption = 'Pr Venda Medio'
         BandIndex = 0
         RowIndex = 0
-        FieldName = 'SUBTOTALITEM'
+        FieldName = 'PrecoVendaMedio'
+      end
+      object dbgConsultaSUBTOTALVENDAITEN: TdxDBGridMaskColumn
+        Caption = 'Sub Venda'
+        Width = 125
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'SUBTOTALVENDAITEN'
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
       end
-      object dbgConsultaTOTCUSTOMEDIO: TdxDBGridMaskColumn
-        Caption = 'Custo Total'
-        Width = 123
+      object dbgConsultaPRECOCOMPRA: TdxDBGridMaskColumn
+        Caption = 'Ult Pr Compra'
+        Sorted = csUp
+        Width = 131
         BandIndex = 0
         RowIndex = 0
-        FieldName = 'TOTCUSTOMEDIO'
-        SummaryFooterType = cstSum
+        FieldName = 'PRECOCOMPRA'
         SummaryFooterFormat = '#,###,##0.00'
       end
-      object dbgConsultaTOTPRECOCOMPRA: TdxDBGridMaskColumn
-        Caption = 'Total Pre'#231'o Compra'
-        Width = 149
+      object dbgConsultaTotalPrecoCompra: TdxDBGridColumn
+        Caption = 'Sub Pr Compra'
         BandIndex = 0
         RowIndex = 0
-        FieldName = 'TOTPRECOCOMPRA'
-        SummaryFooterType = cstSum
-        SummaryFooterFormat = '#,###,##0.00'
-      end
-      object dbgConsultaRATEIODESCONTO: TdxDBGridMaskColumn
-        Caption = 'Desconto'
-        Visible = False
-        Width = 78
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'RATEIODESCONTO'
-        SummaryFooterType = cstSum
-        SummaryFooterFormat = '#,###,##0.00'
-      end
-      object dbgConsultaVALORFINAL: TdxDBGridMaskColumn
-        Caption = 'Total Final'
-        Width = 94
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'VALORFINAL'
+        FieldName = 'TotalPrecoCompra'
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
       end
       object dbgConsultaCUSTOMANUAL: TdxDBGridCurrencyColumn
         Caption = 'Custo Manual'
-        Visible = False
-        Width = 147
+        Width = 118
         BandIndex = 0
         RowIndex = 0
         FieldName = 'CUSTOMANUAL'
+        SummaryFooterFormat = '#,###,##0.00'
+        Nullable = False
+      end
+      object dbgConsultaTotalCustoManual: TdxDBGridColumn
+        Caption = 'Sub Custo Manual'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TotalCustoManual'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaApuracaoFinal: TdxDBGridColumn
+        Caption = 'Ap Venda/Compra'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ApuracaoFinal'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaColumn21: TdxDBGridColumn
+        Caption = '% Venda/Compra'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PerApuracaoFinal'
+      end
+      object dbgConsultaApFinalManual: TdxDBGridColumn
+        Caption = 'Ap Venda/C Manual'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ApFinalManual'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaColumn23: TdxDBGridColumn
+        Caption = '% Venda/C Manual'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'PerApuracaoFinalManual'
+      end
+      object dbgConsultaQTDDEV: TdxDBGridCurrencyColumn
+        Caption = 'Qtd Devol'
+        Visible = False
+        Width = 118
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'QTDDEV'
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
         Nullable = False
       end
-      object dbgConsultaCUSTOMEDIO: TdxDBGridMaskColumn
-        Caption = 'Custo Medio'
+      object dbgConsultaTOTALCUSTODEVOLUCAO: TdxDBGridCurrencyColumn
+        Caption = 'Tot Pr Devol.'
         Visible = False
-        Width = 93
+        Width = 91
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TOTALCUSTODEVOLUCAO'
+        Nullable = False
+      end
+      object dbgConsultaCUSTOMEDIO: TdxDBGridMaskColumn
+        Caption = 'C Medio'
+        Width = 79
         BandIndex = 0
         RowIndex = 0
         FieldName = 'CUSTOMEDIO'
-        SummaryFooterType = cstSum
-        SummaryFooterFormat = '#,###,##0.00'
-      end
-      object dbgConsultaPRECOCOMPRA: TdxDBGridMaskColumn
-        Caption = 'Pre'#231'o Compra'
-        Visible = False
-        Width = 106
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'PRECOCOMPRA'
-        SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
       end
       object dbgConsultaCUSTOCONTABIL: TdxDBGridMaskColumn
         Caption = 'Custo Contabil'
         Visible = False
-        Width = 108
+        Width = 97
         BandIndex = 0
         RowIndex = 0
         FieldName = 'CUSTOCONTABIL'
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaTotalCustomedio: TdxDBGridColumn
+        Caption = 'Sub C Medio'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TotalCustomedio'
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
       end
+      object dbgConsultaApuracaoCustoMedio: TdxDBGridColumn
+        Caption = 'Ap Venda/C Medio'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ApuracaoCustoMedio'
+        SummaryFooterType = cstSum
+        SummaryFooterFormat = '#,###,##0.00'
+      end
+      object dbgConsultaperApCustoMedio: TdxDBGridColumn
+        Caption = '% Venda/C Medio'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'perApCustoMedio'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 563
-      Width = 1203
+      Top = 472
+      Width = 1019
       inherited cbFullSelect: TTS_CheckBox
         Height = 19
       end
@@ -661,9 +712,9 @@ inherited RptVendasItens: TRptVendasItens
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 582
+    Height = 491
     inherited btSair: TTS_SpeedButton
-      Top = 537
+      Top = 446
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick
@@ -683,27 +734,47 @@ inherited RptVendasItens: TRptVendasItens
     SQL.Strings = (
       'select'
       
-        'si.item, i.codigo, i.descricao, i.unidade, I.piscofins, gi.descr' +
-        'icaogrupo as grupo, i.customanual, i.customedio, i.precocompra, ' +
-        'i.custocontabil,'
+        'si.item, i.codigo, i.descricao, i.referencia, i.unidade, I.pisco' +
+        'fins, gi.descricaogrupo as grupo,i.customanual, i.customedio, ma' +
+        'x(si.preco) as PrecoVenda ,'
+      'i.precocompra, i.custocontabil,'
       
-        'sum(cast(cast(si.quantidade as Numeric(15,4)) * si.fator / i.fat' +
-        'orundvenda as Float)) as quantidade,'
-      'sum(si.subtotalitem) as SubtotalItem,'
+        'sum(cast(cast(si.quantidade as Numeric(15,3)) * si.fator  as Flo' +
+        'at)) as quantidade,'
+      'sum(si.subtotalitem) as SubtotalVendaIten,'
+      ''
+      ' coalesce((select sum(cast(ee.quantidade as Numeric(15,3)))'
       
-        'sum(cast(si.Quantidade as numeric(15,4))  * cast(si.customedio a' +
-        's numeric(15,4))  * si.fator) as TotCustomedio,'
+        ' from entradas e inner join entradasitens ee on ee.entrada = e.e' +
+        'ntrada'
       
-        'sum(cast(si.Quantidade as numeric(15,4))  * cast(i.precocompra a' +
-        's numeric(15,4))  * si.fator) as TotPrecoCompra,'
-      'sum(si.rateiodesconto) as rateiodesconto,'
+        ' inner join tiposmovimento t on t.tipomovimento = e.tipomoviment' +
+        'o'
+      ' inner join itens i on i.item = ee.item and si.item = ee.item'
       
-        'sum(Cast(si.subtotalitem - si.rateiodesconto as float)) AS Valor' +
-        'Final'
+        ' where t.tipomovimento = 8 and e.data >= :datai and e.data <= :d' +
+        'ataf  ),0) as QTDDev,'
+      ''
+      
+        '  coalesce((select sum(cast(ee.quantidade * ee.preco as Numeric(' +
+        '15,3)))'
+      
+        ' from entradas e inner join entradasitens ee on ee.entrada = e.e' +
+        'ntrada'
+      
+        ' inner join tiposmovimento t on t.tipomovimento = e.tipomoviment' +
+        'o'
+      ' inner join itens i on i.item = ee.item and si.item = ee.item'
+      
+        ' where t.tipomovimento = 8 and e.data >= :datai and e.data <= :d' +
+        'ataf  ),0) as TotalCustoDevolucao'
+      ''
+      ''
       'from'
+      'Saidas s'
       
-        'Saidas s inner join SaidasItens si on s.empresa = si.empresa and' +
-        ' s.saida = si.saida and s.pdv = si.pdv'
+        'inner join SaidasItens si on s.empresa = si.empresa and s.saida ' +
+        '= si.saida and s.pdv = si.pdv'
       
         'inner join Itens i on si.empresa = i.empresa and si.item = i.ite' +
         'm'
@@ -712,12 +783,45 @@ inherited RptVendasItens: TRptVendasItens
         'o = f.favorecido'
       'left join Favorecidos v on s.vendedor = v.favorecido'
       'left join Grupos gi on i.grupo = gi.grupo'
+      'where'
+      's.data >= :datai and s.data <= :dataf'
       
-        'group by si.item, i.codigo, i.descricao, i.unidade, I.piscofins,' +
-        ' gi.descricaogrupo, i.customanual, i.customedio, i.precocompra, ' +
-        'i.custocontabil')
+        'group by si.item, i.codigo, i.descricao, i.referencia, i.unidade' +
+        ', I.piscofins, gi.descricaogrupo, i.customanual, i.customedio, i' +
+        '.precocompra, i.custocontabil')
     Left = 316
     Top = 144
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'datai'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataf'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'datai'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataf'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'datai'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataf'
+        ParamType = ptUnknown
+      end>
   end
   inherited C_ConsultaDS: TDataSource
     Left = 315
@@ -754,23 +858,10 @@ inherited RptVendasItens: TRptVendasItens
       FieldName = 'GRUPO'
       Size = 30
     end
-    object C_ConsultaQUANTIDADE: TFloatField
-      FieldName = 'QUANTIDADE'
-    end
-    object C_ConsultaSUBTOTALITEM: TFloatField
-      FieldName = 'SUBTOTALITEM'
-    end
-    object C_ConsultaTOTCUSTOMEDIO: TFloatField
-      FieldName = 'TOTCUSTOMEDIO'
-    end
-    object C_ConsultaTOTPRECOCOMPRA: TFloatField
-      FieldName = 'TOTPRECOCOMPRA'
-    end
-    object C_ConsultaRATEIODESCONTO: TFloatField
-      FieldName = 'RATEIODESCONTO'
-    end
-    object C_ConsultaVALORFINAL: TFloatField
-      FieldName = 'VALORFINAL'
+    object C_ConsultaCUSTOMANUAL: TBCDField
+      FieldName = 'CUSTOMANUAL'
+      Precision = 18
+      Size = 3
     end
     object C_ConsultaCUSTOMEDIO: TFloatField
       FieldName = 'CUSTOMEDIO'
@@ -781,10 +872,65 @@ inherited RptVendasItens: TRptVendasItens
     object C_ConsultaCUSTOCONTABIL: TFloatField
       FieldName = 'CUSTOCONTABIL'
     end
-    object C_ConsultaCUSTOMANUAL: TBCDField
-      FieldName = 'CUSTOMANUAL'
+    object C_ConsultaQUANTIDADE: TFloatField
+      FieldName = 'QUANTIDADE'
+    end
+    object C_ConsultaSUBTOTALVENDAITEN: TFloatField
+      FieldName = 'SUBTOTALVENDAITEN'
+    end
+    object C_ConsultaQTDDEV: TBCDField
+      FieldName = 'QTDDEV'
       Precision = 18
       Size = 3
+    end
+    object C_ConsultaTOTALCUSTODEVOLUCAO: TBCDField
+      FieldName = 'TOTALCUSTODEVOLUCAO'
+      Precision = 18
+      Size = 3
+    end
+    object C_ConsultaREFERENCIA: TStringField
+      FieldName = 'REFERENCIA'
+      Size = 25
+    end
+    object C_ConsultaPrecoVendaMedio: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'PrecoVendaMedio'
+    end
+    object C_ConsultaTotalCustoManual: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'TotalCustoManual'
+    end
+    object C_ConsultaApuracaoFinal: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'ApuracaoFinal'
+    end
+    object C_ConsultaPerApuracaoFinal: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'PerApuracaoFinal'
+    end
+    object C_ConsultaPerApuracaoFinalManual: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'PerApuracaoFinalManual'
+    end
+    object C_ConsultaTotalPrecoCompra: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'TotalPrecoCompra'
+    end
+    object C_ConsultaApFinalManual: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'ApFinalManual'
+    end
+    object C_ConsultaTotalCustomedio: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'TotalCustomedio'
+    end
+    object C_ConsultaApuracaoCustoMedio: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'ApuracaoCustoMedio'
+    end
+    object C_ConsultaperApCustoMedio: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'perApCustoMedio'
     end
   end
   inherited ppmDados: TTS_PopupMenu

@@ -1,8 +1,8 @@
 inherited DMItens: TDMItens
-  Left = 341
-  Top = 32
+  Left = 426
+  Top = 103
   Height = 722
-  Width = 1116
+  Width = 1371
   inherited OpenDialog: TOpenDialog
     Left = 236
     Top = 432
@@ -66,13 +66,36 @@ inherited DMItens: TDMItens
       'I.PGNV,'
       'I.PGLP,'
       'I.materiaprima,'
-      'i.cubagem'
+      'i.cubagem, '
+      'i.DESONERACAOICMS,'
+      'I.TIPOITEMSPED,'
+      'fc.data as fc_data, fc.precocompra as fc_precocompra,'
+      
+        ' fc.frete as fc_frete, fc.bonificacao as fc_bonificacao , fc.cus' +
+        'tofinanceiro as fc_custofinanceiro,'
+      ' fc.icmscompra as fc_icmscompra, fc.ipicompra as fc_ipicompra,'
+      
+        ' fc.precocalculado as fc_precocalculado, fc.icmssubstituto as fc' +
+        '_icmssubstituto,'
+      
+        ' fc.despesas as fc_despesas, fc.encargos as fc_encargos, fc.comi' +
+        'ssao as fc_comissao,'
+      
+        '  fc.custosadicionais as fc_custosadicionais, fc.lucro as fc_luc' +
+        'ro, fc.impfederalsaida as fc_impfederalsaida,'
+      
+        '  fc.icmsfrete as fc_icmsfrete, fc.impfederalentrada as fc_impfe' +
+        'deralentrada, fc.icmsvenda as fc_icmsvenda,'
+      
+        '  fc.ipivenda as fc_ipivenda, fc.mva as fc_mva, fc.reducaocst as' +
+        ' fc_reducaocst, i.bemusado, i.cstibs, i.classtrib'
       'from itens i'
       
         'inner join produtospreco pp on i.item = pp.item and pp.unidade =' +
         ' i.unidade and pp.tabelapreco = 0'
       'inner JOIN Favorecidos uf ON uf.Favorecido = i.ULTIMOFORNECEDOR'
-      'inner JOIN Favorecidos fp ON fp.Favorecido = i.FORNECPREFERENCIA')
+      'inner JOIN Favorecidos fp ON fp.Favorecido = i.FORNECPREFERENCIA'
+      'left join formacaocustos fc on fc.item = i.item')
     Left = 14
     Top = 19
   end
@@ -218,7 +241,12 @@ inherited DMItens: TDMItens
       '  PGNV = :PGNV,'
       '  PGLP = :PGLP,'
       '  MATERIAPRIMA = :MATERIAPRIMA,'
-      ' CUBAGEM = :CUBAGEM'
+      ' CUBAGEM = :CUBAGEM,'
+      '  DESONERACAOICMS  = :DESONERACAOICMS ,'
+      ' TIPOITEMSPED = :TIPOITEMSPED, '
+      ' BEMUSADO = :BEMUSADO, '
+      ' CSTIBS = :CSTIBS, '
+      ' CLASSTRIB = :CLASSTRIB'
       'where'
       '  ITEM = :OLD_ITEM')
     InsertSQL.Strings = (
@@ -272,7 +300,9 @@ inherited DMItens: TDMItens
         ','
       '   TIPOMATERIAPRIMA, CODIGOVENDA, CSTIPIENTRADA, CENQIPICOMPRA, '
       'CENQIPIVENDA, CEST_OPC, FABRICACAOPROPRIA, DESCRICAOANP, PGNV , '
-      'PGLP, MATERIAPRIMA, CUBAGEM )'
+      
+        'PGLP, MATERIAPRIMA, CUBAGEM, DESONERACAOICMS, TIPOITEMSPED, BEMU' +
+        'SADO, CSTIBS, CLASSTRIB  )'
       'values'
       
         '  (:ITEM,:TIPOITEM, :CODIGO, :DESCRICAOCOMPRA, :GRUPO, :DESCRICA' +
@@ -326,7 +356,9 @@ inherited DMItens: TDMItens
       ':PESAVEL,:ITEMMVA, :TIPOMATERIAPRIMA, :CODIGOVENDA, '
       ':CSTIPIENTRADA, :CENQIPICOMPRA, :CENQIPIVENDA, :CEST_OPC, '
       ':FABRICACAOPROPRIA, :DESCRICAOANP, :PGNV, :PGLP, :MATERIAPRIMA, '
-      ':CUBAGEM )')
+      
+        ':CUBAGEM, :DESONERACAOICMS, :TIPOITEMSPED, :BEMUSADO, :CSTIBS, :' +
+        'CLASSTRIB  )')
     DeleteSQL.Strings = (
       'delete from itens'
       'where'
@@ -1480,7 +1512,158 @@ inherited DMItens: TDMItens
     object C_TabelaCUBAGEM: TBCDField
       FieldName = 'CUBAGEM'
       Precision = 18
+      Size = 2
+    end
+    object C_TabelaDESONERACAOICMS: TStringField
+      FieldName = 'DESONERACAOICMS'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TabelaFC_DATA: TDateField
+      FieldName = 'FC_DATA'
+    end
+    object C_TabelaFC_PRECOCOMPRA: TBCDField
+      FieldName = 'FC_PRECOCOMPRA'
+      Precision = 18
       Size = 3
+    end
+    object C_TabelaFC_FRETE: TBCDField
+      FieldName = 'FC_FRETE'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_BONIFICACAO: TBCDField
+      FieldName = 'FC_BONIFICACAO'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_CUSTOFINANCEIRO: TBCDField
+      FieldName = 'FC_CUSTOFINANCEIRO'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_ICMSCOMPRA: TBCDField
+      FieldName = 'FC_ICMSCOMPRA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_IPICOMPRA: TBCDField
+      FieldName = 'FC_IPICOMPRA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_PRECOCALCULADO: TBCDField
+      FieldName = 'FC_PRECOCALCULADO'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_ICMSSUBSTITUTO: TBCDField
+      FieldName = 'FC_ICMSSUBSTITUTO'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_DESPESAS: TBCDField
+      FieldName = 'FC_DESPESAS'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_ENCARGOS: TBCDField
+      FieldName = 'FC_ENCARGOS'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_COMISSAO: TBCDField
+      FieldName = 'FC_COMISSAO'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_CUSTOSADICIONAIS: TBCDField
+      FieldName = 'FC_CUSTOSADICIONAIS'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_LUCRO: TBCDField
+      FieldName = 'FC_LUCRO'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_IMPFEDERALSAIDA: TBCDField
+      FieldName = 'FC_IMPFEDERALSAIDA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_ICMSFRETE: TBCDField
+      FieldName = 'FC_ICMSFRETE'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_IMPFEDERALENTRADA: TBCDField
+      FieldName = 'FC_IMPFEDERALENTRADA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_ICMSVENDA: TBCDField
+      FieldName = 'FC_ICMSVENDA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_IPIVENDA: TBCDField
+      FieldName = 'FC_IPIVENDA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_MVA: TBCDField
+      FieldName = 'FC_MVA'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaFC_REDUCAOCST: TBCDField
+      FieldName = 'FC_REDUCAOCST'
+      Precision = 18
+      Size = 3
+    end
+    object C_TabelaTIPOITEMSPED: TStringField
+      FieldName = 'TIPOITEMSPED'
+      Size = 2
+    end
+    object C_TabelalkTipoItemSped: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkTipoItemSped'
+      LookupDataSet = C_TipoItemSped
+      LookupKeyFields = 'TIPO'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'TIPOITEMSPED'
+      Lookup = True
+    end
+    object C_TabelaBEMUSADO: TStringField
+      FieldName = 'BEMUSADO'
+      Size = 1
+    end
+    object C_TabelaCSTIBS: TStringField
+      FieldName = 'CSTIBS'
+      Size = 3
+    end
+    object C_TabelalkCSTIBS: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCSTIBS'
+      LookupDataSet = C_CSTIBS
+      LookupKeyFields = 'CST'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CSTIBS'
+      Lookup = True
+    end
+    object C_TabelaCLASSTRIB: TStringField
+      FieldName = 'CLASSTRIB'
+      Size = 6
+    end
+    object C_TabelalkCLASSTRIB: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCLASSTRIB'
+      LookupDataSet = C_ClassTrib
+      LookupKeyFields = 'CODIGO'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CLASSTRIB'
+      Lookup = True
     end
   end
   inherited C_TabelaDS: TDataSource
@@ -4128,5 +4311,183 @@ inherited DMItens: TDMItens
     Constraints = True
     Left = 1141
     Top = 111
+  end
+  object Q_Fat: TIBQuery
+    Database = DMProject.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      'SELECT * FROM FATURAMENTOSIMPLESRESUMO')
+    Left = 734
+    Top = 363
+  end
+  object P_Fat: TDataSetProvider
+    DataSet = Q_Fat
+    Constraints = True
+    Options = [poIncFieldProps, poCascadeDeletes, poCascadeUpdates, poPropogateChanges, poAllowCommandText]
+    Left = 732
+    Top = 415
+  end
+  object C_Fat: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_Fat'
+    OnCalcFields = C_FatCalcFields
+    Left = 732
+    Top = 466
+    object IntegerField2: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_FatINICIO: TStringField
+      FieldName = 'INICIO'
+      Size = 10
+    end
+    object C_FatFIM: TStringField
+      FieldName = 'FIM'
+      Size = 10
+    end
+    object C_FatVALORMESINICIAL: TBCDField
+      FieldName = 'VALORMESINICIAL'
+      Precision = 18
+      Size = 2
+    end
+    object C_FatVALORFINAL: TBCDField
+      FieldName = 'VALORFINAL'
+      Precision = 18
+      Size = 2
+    end
+    object C_FatVALORACUMULADOMES: TBCDField
+      FieldName = 'VALORACUMULADOMES'
+      Precision = 18
+      Size = 2
+    end
+    object C_FatMESATUAL: TStringField
+      FieldName = 'MESATUAL'
+      Size = 10
+    end
+    object C_FaticPrevisaoFatProxPeriodo: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'icPrevisaoFatProxPeriodo'
+      Calculated = True
+    end
+    object C_FaticVariacao: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'icVariacao'
+      Calculated = True
+    end
+  end
+  object C_FatDS: TDataSource
+    DataSet = C_Fat
+    Left = 736
+    Top = 517
+  end
+  object Q_TipoItemSped: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = C_TabelaDS
+    SQL.Strings = (
+      'select n.tipo, n.tipo||'#39'-'#39'||n.descricao as descricao'
+      'from tipoitemsped n'
+      'order by n.tipo')
+    Left = 842
+    Top = 201
+  end
+  object C_TipoItemSped: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_TipoItemSped'
+    Left = 857
+    Top = 249
+    object C_TipoItemSpedTIPO: TStringField
+      FieldName = 'TIPO'
+      Size = 2
+    end
+    object C_TipoItemSpedDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 33
+    end
+  end
+  object P_TipoItemSped: TDataSetProvider
+    DataSet = Q_TipoItemSped
+    Constraints = True
+    Left = 867
+    Top = 294
+  end
+  object Q_CSTIBS: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select c.cst , c.descricao'
+      'from cstibs c'
+      '')
+    Left = 1200
+    Top = 293
+  end
+  object P_CSTIBS: TDataSetProvider
+    DataSet = Q_CSTIBS
+    Constraints = True
+    Left = 1200
+    Top = 343
+  end
+  object C_CSTIBS: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_CSTIBS'
+    BeforeOpen = C_CSTsBeforeOpen
+    Left = 1201
+    Top = 393
+    object C_CSTIBSCST: TStringField
+      FieldName = 'CST'
+      Size = 3
+    end
+    object C_CSTIBSDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 40
+    end
+  end
+  object Q_ClassTrib: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select c.codigo , C.descricao ||'#39' - '#39'|| c.nome as descricao'
+      'from classtrib c'
+      '')
+    Left = 1168
+    Top = 456
+  end
+  object P_ClassTrib: TDataSetProvider
+    DataSet = Q_ClassTrib
+    Constraints = True
+    Left = 1168
+    Top = 503
+  end
+  object C_ClassTrib: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_ClassTrib'
+    BeforeOpen = C_CSTsBeforeOpen
+    Left = 1169
+    Top = 553
+    object C_ClassTribCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Required = True
+      Size = 6
+    end
+    object C_ClassTribDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 203
+    end
   end
 end

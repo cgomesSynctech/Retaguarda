@@ -1,16 +1,15 @@
 inherited DlgMescAcertSaida: TDlgMescAcertSaida
-  Left = 340
-  Top = 225
+  Top = 158
   Width = 750
   Height = 413
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 616
-    Height = 332
+    Left = 624
+    Height = 343
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 298
+      Top = 309
     end
     inherited btLimpar: TTS_SpeedButton
       Hint = 'Faz uma c'#243'pia do Movimento selecionado para a opera'#231#227'o corrente.'
@@ -205,7 +204,7 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 734
+    Width = 742
     Gradient.ColorStart = 14859922
     inherited lbEstadoForm: TTS_Label
       Top = 24
@@ -224,8 +223,8 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 616
-    Height = 332
+    Width = 624
+    Height = 343
     Color = 16116702
     object dbtForn: TTS_DBTextEffect
       Left = 6
@@ -749,8 +748,8 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     end
     object gridAcerto: TTS_QDBGrid
       Left = 7
-      Top = 42
-      Width = 611
+      Top = 46
+      Width = 610
       Height = 283
       Bands = <
         item
@@ -1008,6 +1007,16 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
       Color = 16247774
       TabOrder = 2
       Visible = False
+      object pbBar: TProgressBar
+        Left = 1
+        Top = 1
+        Width = 609
+        Height = 6
+        Align = alClient
+        Min = 0
+        Max = 100
+        TabOrder = 0
+      end
     end
   end
   inherited DlgMsg: TDlgMsg
@@ -1051,7 +1060,7 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     BufferChunks = 1000
     CachedUpdates = False
     SQL.Strings = (
-      'Select '#9'e.*,'
+      'Select '#9'0 as seq, e.*,'
       #9'f.Nome, t.Descricao as DescTipoMov, '
       #9'tp.Descricao as DescTipoPadrao'
       
@@ -1071,8 +1080,8 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
       ''
       '')
     UniDirectional = True
-    Left = 53
-    Top = 180
+    Left = 69
+    Top = 164
   end
   object P_Movimentos: TDataSetProvider
     DataSet = Q_Movimentos
@@ -1620,6 +1629,9 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
       FieldName = 'LICITACAOICMS'
       Origin = 'SAIDAS.LICITACAOICMS'
     end
+    object C_Movimentosseq: TIntegerField
+      FieldName = 'seq'
+    end
   end
   object C_MovimentosDS: TDataSource
     DataSet = C_Movimentos
@@ -1638,8 +1650,8 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     DataSource = Q_MovimentosDS
     SQL.Strings = (
       
-        'Select ei.*, i.TipoItem, i.Codigo, ei.QtdFaturada as OldQtdReceb' +
-        'ida'
+        'Select 0 as seq, ei.*, i.TipoItem, i.Codigo, ei.QtdFaturada as O' +
+        'ldQtdRecebida'
       
         'from SAIDAS S INNER JOIN SaidasItens ei ON S.SAIDA = EI.SAIDA  L' +
         'EFT JOIN Itens i ON ei.Item = i.Item'
@@ -1892,6 +1904,9 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     object C_ItensOLDQTDRECEBIDA: TFloatField
       FieldName = 'OLDQTDRECEBIDA'
     end
+    object C_Itensseq: TIntegerField
+      FieldName = 'seq'
+    end
   end
   object C_ItensDS: TDataSource
     DataSet = C_Itens
@@ -1999,11 +2014,23 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     object C_AcertoQTDACERT: TFloatField
       FieldName = 'QTDACERT'
     end
+    object C_Acertoseq: TIntegerField
+      FieldName = 'seq'
+    end
+    object C_AcertoQtdSelect: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'QtdSelect'
+    end
+    object C_AcertolistaMovimentos: TStringField
+      FieldKind = fkInternalCalc
+      FieldName = 'listaMovimentos'
+      Size = 2000
+    end
   end
   object C_AcertoDS: TDataSource
     DataSet = C_Acerto
-    Left = 280
-    Top = 117
+    Left = 352
+    Top = 149
   end
   object Q_Acerto: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -2012,8 +2039,8 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
     CachedUpdates = False
     SQL.Strings = (
       
-        'select e.tipomovimento, e.favorecido, f.nome, ei.item, i.codigo,' +
-        ' i.descricao,'
+        'select 0 as seq, e.tipomovimento, e.favorecido, f.nome, ei.item,' +
+        ' i.codigo, i.descricao,'
       'i.unidade, i.referencia, i.estoqueconsigsaida, i.estoque,'
       'sum(ei.quantidade) as qtd,'
       'sum(ei.qtddevolvido) as qtddev, sum(ei.qtdacertado) as qtdacert,'
@@ -2035,5 +2062,13 @@ inherited DlgMescAcertSaida: TDlgMescAcertSaida
   object ppmAcerto: TTS_PopupMenu
     Left = 457
     Top = 230
+  end
+  object Q_Aux: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Left = 364
+    Top = 266
   end
 end

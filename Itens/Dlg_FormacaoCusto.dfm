@@ -1,6 +1,6 @@
 inherited DlgFormacaoCusto: TDlgFormacaoCusto
-  Left = 360
-  Top = 0
+  Left = 25
+  Top = 2
   Width = 584
   Height = 619
   ActiveControl = dfPrecoCompra
@@ -9,9 +9,9 @@ inherited DlgFormacaoCusto: TDlgFormacaoCusto
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 458
-    Height = 545
+    Height = 549
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 511
+      Top = 515
     end
     inherited btLimpar: TTS_SpeedButton
       Visible = False
@@ -172,7 +172,7 @@ inherited DlgFormacaoCusto: TDlgFormacaoCusto
   end
   inherited pnDados: TTS_Panel
     Width = 458
-    Height = 545
+    Height = 549
     Color = 14019327
     object lbTipoTributacao: TTS_Label
       Left = 5

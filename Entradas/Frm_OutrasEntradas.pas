@@ -113,6 +113,7 @@ type
     TS_Shape33: TTS_Shape;
     TS_Label27: TTS_Label;
     dfPesoLiquido: TTS_DBEditNumber;
+    ReferenciarNotas1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormComponentEstado_Inicial(Sender: TObject;
       var bSkip: Boolean);
@@ -131,6 +132,7 @@ type
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxDBTreeListColumn;
       const AText: String; AFont: TFont; var AColor: TColor; ASelected,
       AFocused: Boolean; var ADone: Boolean);
+    procedure ReferenciarNotas1Click(Sender: TObject);
   private
     DlgCFOPs, DlgCFOPs2 : TDlgCFOPs;
   protected
@@ -314,6 +316,13 @@ begin
   inherited;
 //  if (trim(dfFavorecido.text) <> '') and  (trim(dfNotaFiscal.text) <> '') and  (trim(dftotal.text) <> '0')then
 //    dbgItens.Enabled := true;
+end;
+
+procedure TFrmOutrasEntradas.ReferenciarNotas1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.SetParametrosForm([DMOutrasEntradas.C_Tabela.FieldByName('IDMESTRE').Value, DMOutrasEntradas.C_Tabela.FieldByName('EMPRESA').Value, DMOutrasEntradas.C_Tabela.FieldByName('PDV').Value]);
+    Dmprojeto.CriarForm('FrmEntradasReferenciadas', Self, True);
 end;
 
 end.

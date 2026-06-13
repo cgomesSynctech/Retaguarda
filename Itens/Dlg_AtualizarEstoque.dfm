@@ -116,7 +116,7 @@ inherited DlgAtualizarEstoque: TDlgAtualizarEstoque
     inherited lbCaption: TdxfLabel
       Width = 429
       AutoSize = True
-      Caption = 'Atualizar Estoque (Processar Movimenta'#231#227'o)'
+      Caption = 'Atualizar Estoque (Proc Mov.)'
     end
   end
   inherited pnDados: TTS_Panel
@@ -140,7 +140,7 @@ inherited DlgAtualizarEstoque: TDlgAtualizarEstoque
     Top = 166
   end
   inherited FormsComponent: TFormsComponent
-    Caption = 'Atualizar Estoque (Processar Movimenta'#231#227'o)'
+    Caption = 'Atualizar Estoque (Proc Mov.)'
     Left = 170
     Top = 86
   end

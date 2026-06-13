@@ -19,7 +19,6 @@ type
         lb_Modelo: TTS_Label;
         df_Modelo: TTS_DBEdit;
         lb_ECF: TTS_Label;
-        df_ECF: TTS_DBEdit;
         TS_Label1: TTS_Label;
         df_COO: TTS_DBEdit;
         Grid_icSelecionado: TdxDBGridColumn;
@@ -32,6 +31,9 @@ type
         GridMODELO: TdxDBGridMaskColumn;
         GridECF: TdxDBGridMaskColumn;
         GridCOO: TdxDBGridMaskColumn;
+    TS_DBEdit2: TTS_DBEdit;
+    TS_Label2: TTS_Label;
+    TS_DBEdit1: TTS_DBEdit;
         procedure FormComponentBeforeClearParams(Sender: TObject);
         procedure df_ChaveAcessoKeyPress(Sender: TObject; var Key: Char);
         procedure df_ECFKeyPress(Sender: TObject; var Key: Char);
@@ -40,6 +42,7 @@ type
         function Validar(): Boolean;
         procedure FormCreate(Sender: TObject);
         procedure btPesquisarClick(Sender: TObject);
+    procedure df_ChaveAcessoExit(Sender: TObject);
     private
         { Private declarations }
     public
@@ -101,29 +104,9 @@ var
     isValido: boolean;
 begin
     isValido := True;
+      DMSaidasReferenciadas.AcharRereferencia(df_ChaveAcesso.Text);
 
-    if (DMSaidasReferenciadas.C_TabelaTIPODOCUMENTO.Value = 1) then
-        begin
-            if not ((Length(DMSaidasReferenciadas.C_TabelaMODELO.Value) = 2) and (Length(DMSaidasReferenciadas.C_TabelaECF.Value) = 3) and
-                (Length(DMSaidasReferenciadas.C_TabelaCOO.Value) = 6)) then
-                begin
-                    isValido := False;
-                    DlgMsg.ShowMsg(50, ['Para o tipo de documento "Cupom" deve-se informar o valor correto para os campos abaixo: ' + #13 +
-                        '* Modelo (02 caracteres)' + #13 +
-                            '* Número ECF (03 caracteres)' + #13 +
-                            '* Número COO (06 caracteres)']);
-                end;
-        end
-    else
-        begin
-            if not ((Length(DMSaidasReferenciadas.C_TabelaCHAVEACESSO.Value) = 44)) then
-                begin
-                    isValido := False;
-                    DlgMsg.ShowMsg(50, ['Para o tipo de documento "Nota Fiscal" deve-se informar o valor correto para os campos abaixo: ' + #13 +
-                        '* Chave Acesso (44 caracteres)']);
-                end;
-        end;
-
+     // ShowMessage('Fatores de Custos não encontrados!');
     Result := isValido;
 end;
 
@@ -138,7 +121,18 @@ begin
     ActiveControl := df_ChaveAcesso;
     inherited;
 
+
 end;
+
+procedure TFrmSaidasReferenciadas.df_ChaveAcessoExit(Sender: TObject);
+begin
+  inherited;
+   //   DMSaidasReferenciadas.AcharRereferencia(df_ChaveAcesso.Text);
+   //   lbPart.Caption := DMSaidasReferenciadas.C_TabelaNOMEPART.Value ;
+
+end;
+
+
 
 end.
 

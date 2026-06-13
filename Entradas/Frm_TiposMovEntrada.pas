@@ -249,6 +249,10 @@ type
     TS_DBCheckBox22: TTS_DBCheckBox;
     ckbDocumento: TTS_DBCheckBox;
     cmbTipoImpressao: TTS_DBLookupComboBox;
+    cmbCstPisCofinsPadrao: TTS_DBLookupComboBox;
+    TS_DBCheckBox25: TTS_DBCheckBox;
+    TS_DBCheckBox35: TTS_DBCheckBox;
+    TS_DBLookupComboBox1: TTS_DBLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure btLimparClick(Sender: TObject);
     procedure TS_SpeedButton1Click(Sender: TObject);
@@ -268,6 +272,7 @@ type
     procedure TS_Label8Click(Sender: TObject);
     procedure TS_Label11Click(Sender: TObject);
     procedure TS_DBCheckBox40Change(Sender: TObject);
+    procedure TS_DBCheckBox25Change(Sender: TObject);
   private
     { Private declarations }
 
@@ -521,7 +526,8 @@ begin
     Q.Free;
     
   end;
-  cmbCstPadrao.Visible := TS_DBCheckBox40.Checked;
+//  cmbCstPadrao.Visible := TS_DBCheckBox40.Checked;
+//  cmbCstPisCofinsPadrao.Visible := TS_DBCheckBox25.Checked;
 end;
 
 procedure TFrmTiposMovEntrada.FormComponentBeforeClearParams(
@@ -595,7 +601,13 @@ end;
 procedure TFrmTiposMovEntrada.TS_DBCheckBox40Change(Sender: TObject);
 begin
   inherited;
-  cmbCstPadrao.Visible := TS_DBCheckBox40.Checked;
+ // cmbCstPadrao.Visible := TS_DBCheckBox40.Checked;
+end;
+
+procedure TFrmTiposMovEntrada.TS_DBCheckBox25Change(Sender: TObject);
+begin
+  inherited;
+ // cmbCstPisCofinsPadrao.Visible := TS_DBCheckBox25.Checked;
 end;
 
 end.

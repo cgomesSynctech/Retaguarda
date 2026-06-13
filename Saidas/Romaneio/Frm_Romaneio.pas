@@ -477,6 +477,9 @@ type
     C_ManifestoPESOLIQUIDO: TFloatField;
     C_ManifestoTOTAL: TFloatField;
     Q_SeparacaoQTDITEM: TFloatField;
+    C_ManifestoPONTOREFERENCIA: TStringField;
+    ppDBManifestoppField20: TppField;
+    ppDBText30: TppDBText;
     procedure FormComponentEstado_Inicial(Sender: TObject;
       var bSkip: Boolean);
     procedure TS_DBLVeiculosChange(Sender: TObject);

@@ -91,6 +91,10 @@ type
     C_ConsultaFRETE: TFloatField;
     C_ConsultaDESCTABELAPRECO: TStringField;
     C_ConsultaCUSTO: TBCDField;
+    C_ConsultaBASECALCICMS: TFloatField;
+    C_ConsultaVALORICMS: TFloatField;
+    dbgConsultaBASECALCICMS: TdxDBGridMaskColumn;
+    dbgConsultaVALORICMS: TdxDBGridMaskColumn;
     procedure btAtualizarClick(Sender: TObject);
     procedure DataIDateChange(Sender: TObject);
     procedure FormsComponentBeforeClearParams(Sender: TObject);

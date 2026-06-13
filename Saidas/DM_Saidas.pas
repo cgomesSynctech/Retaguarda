@@ -1,5 +1,5 @@
 unit DM_Saidas;
-
+                 
 interface
 
 uses
@@ -7,7 +7,7 @@ uses
     Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
     DM_ITENSMOVIMENTO, Db, DBClient, Provider, DlgMsg, DMComponent, Variants,
     IBCustomDataSet, IBUpdateSQL, IBQuery, DM_Contabilidade, TDM_PadraoManutencao,
-    IBEvents, Math, DateUtils, BTOdeum;
+    IBEvents, Math, DateUtils, BTOdeum, IBStoredProc, ActnList;
                                          
 const
     SInicioGravacao = '%s: Iniciando Gravação da %s ';
@@ -676,6 +676,40 @@ type
         C_TabelaF_PESSOA_FJ: TStringField;
         C_TiposMovimentoCALCULAICMSSUBST: TStringField;
     C_TiposMovimentoCB_MENSAGEMTRIBUTOS: TStringField;
+    C_ItensicUltPrecoCliente: TCurrencyField;
+    StoreProcedure: TIBStoredProc;
+    C_ItensCUBAGEMTOTALITEM: TBCDField;
+    C_TabelaCUBAGEMTOTAL: TBCDField;
+    C_TabelaICMSDESONERADO: TFloatField;
+    C_TabelaREDUCOESBASESUBST: TFloatField;
+    Q_Profissional: TIBQuery;
+    P_Profissional: TDataSetProvider;
+    C_Profissional: TClientDataSet;
+    C_ProfissionalNOME: TStringField;
+    C_ProfissionalPROFISSAO: TStringField;
+    C_TabelaPROFISSIONAL: TIntegerField;
+    C_TabelalkProfissional: TStringField;
+    C_ProfissionalID: TIntegerField;
+    C_ProfissionalEMAIL: TStringField;
+    C_ProfissionalFONE: TStringField;
+    C_TiposMovimentoCB_CSTPISCOFINSPADRAO: TStringField;
+    C_TiposMovimentoCB_CSTIPIPADRAO: TStringField;
+    C_TiposMovimentoCST_IPI_PADRAO: TStringField;
+    C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO: TStringField;
+    Q_entrega: TIBQuery;
+    P_Entrega: TDataSetProvider;
+    C_entrega: TClientDataSet;
+    C_entregaENTREGA: TIntegerField;
+    C_entregaFAVORECIDO: TIntegerField;
+    C_entregaDESCRICAO: TStringField;
+    C_TabelalkEntrega: TStringField;
+    C_ItensSubTotal_1: TFloatField;
+    C_ItensCSTIBS: TStringField;
+    C_ItensCLASSTRIB: TStringField;
+    C_TiposMovimentoCST_RTC_PADRAO: TStringField;
+    C_TiposMovimentoCB_CST_RTC_PADRAO: TStringField;
+    C_TiposMovimentoCB_CLASSTRIB_RTC_PADRAO: TStringField;
+    C_TiposMovimentoCLASSTRIB_RTC_PADRAO: TStringField;
         procedure DMComponentModoInclusao1_Iniciar(Sender: TObject);
         procedure C_TabelaTIPOMOVIMENTOChange(Sender: TField);
         procedure C_TabelaNewRecord(DataSet: TDataSet);
@@ -771,7 +805,7 @@ type
 
         sForm: string;
 
-        bDisableItensAfterPost, bDECRETO25905: boolean;
+        bDisableItensAfterPost, bDECRETO25905, bIndustriaSubstitutaSimples: boolean;
 
         nOrdemDigItens, nTipoMovimento, idItem, idTipoCobranca, idOficina, idMontagemProduto: Integer;
 
@@ -782,6 +816,10 @@ type
         volumeEdit: double;
         bFaturandoOperacao, bPopulando, bMesclando, bFromPlanoPg, bGeraBoleto, bBloquearVendedor: Boolean;
         sPerformance: string;
+        proporcaodesconto : Double ;
+        nSubTotalItensSubst, gValorICMSBaseSubstTotal, gValorSubstItens, aliqIcmsUFDestinoInterna, gBCICMSTotal, gValorICMSTotal, gBCSubstTotal, gValorICMSSTTotal : Currency ;
+
+
         function MensagemItens(Id: Integer): string;
         function ControlePosVenda(nItem: Integer): Boolean;
         function NomeTabelaPreco(nTable: Integer): string;
@@ -1194,6 +1232,8 @@ begin
         else
             C_TabelaAliqICMSVenda.value := DMProjeto.AliquotaEstadoExterno(C_TabelaUFDestino.value);
 
+            aliqIcmsUFDestinoInterna := DMProjeto.AliquotaEstado(C_TabelaUFDESTINO.Value);
+
     if (C_TabelaTipoPadrao.value = 3) then
         begin
             //if (C_TabelaATratar.value = '') then
@@ -1220,7 +1260,48 @@ end;
 procedure TDMSaidas.C_ItensITEMChange(Sender: TField);
 var
     sTipoDesc, sN: string;
+    nValor : Currency ;
 begin
+
+//    with StoreProcedure do Begin
+//      try
+//        StoredProcName :=  'PP_ULTIMOPRECOCLIENTE';
+//        Close;
+//        paramByName('Favorecido').asInteger := C_TabelaFAVORECIDO.Value;
+//        paramByName('Item').asInteger := C_ItensItem.Value;
+//        Prepare;
+//        ExecProc;
+//        nvalor := parambyName('Valor').Value;
+//      except
+//        nvalor := 0.00
+//      End;
+//    end;
+//    C_ItensicUltPrecoCliente.AsCurrency := nvalor;
+
+// Cesar 24-05-2023 --- Solicitação DISSAN para pegar o ultimo preço que foi vendido para o cliente do produto
+
+ if ((DMProjeto.Parametro('BuscaUltPrecoVendaCliente') = 'S') and (C_TabelaFAVORECIDO.Value > 1000) ) then
+ begin
+  with Q_SQL do begin
+     try
+         close;
+         sql.text:= 'select first 1  ss.preco  From saidasitens ss inner join saidas s on s.saida = ss.saida '+
+                    'where s.favorecido = :favorecido and ss.item = :item and s.tipopadrao = 2 Order by s.SAIDA desc  ';
+         paramByName('Favorecido').asInteger := C_TabelaFAVORECIDO.Value;
+         paramByName('Item').asInteger := C_ItensItem.Value;
+         open ;
+         if (Q_Sql.Fields[0].value <> Null ) then
+            C_ItensicUltPrecoCliente.AsCurrency := Q_SQL.Fields[0].value
+         else
+            C_ItensicUltPrecoCliente.AsCurrency := 0 ;
+       except
+         C_ItensicUltPrecoCliente.AsCurrency := 0;
+      end; // try
+    end; // with Q_SQL do begin
+ end ;   // if C_ItensI_TIPOITEM <> 'S' then
+
+
+
 
     //sPerformance := sPerformance + Format('[%s] - Iniciando ItemChange', [TimeToStr(Now)])+#13;
 
@@ -1254,10 +1335,42 @@ begin
     else
         C_ItensMaxDesconto.Value := 0;
 
+        // cesar para não lançar Impostos Federais na Venda
+    if (C_TiposMovimentoCALCULAPISCOFINS.Value <> 'S') then begin
+        C_ItensALIQPIS.Value := 0 ;
+        C_ItensALIQCOFINS.Value := 0 ;
+    end else begin
+        C_ItensALIQPIS.Value := DMProjeto.C_LocalizarItensALIQPISSAIDA.Value;
+        C_ItensALIQCOFINS.Value := DMProjeto.C_LocalizarItensALIQCOFINSSAIDA.Value;
+    end ;
+
+    if (C_TiposMovimentoCB_CSTPISCOFINSPADRAO.Value = 'S') then
+        C_ItensCSTPISCOFINS.Value := C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO.Value
+    else
+        C_ItensCSTPISCOFINS.Value := DMProjeto.C_LocalizarItensCSTPISCOFINSSAIDA.Value;
+
+    if (C_TiposMovimentoCB_CST_RTC_PADRAO.Value = 'S') then
+        C_ItensCSTIBS.Value := C_TiposMovimentoCST_RTC_PADRAO.Value
+    else
+        C_ItensCSTIBS.Value := DMProjeto.C_LocalizarItensCSTIBS.Value;
+
+    if (C_TiposMovimentoCB_CLASSTRIB_RTC_PADRAO.Value = 'S') then
+        C_ItensCLASSTRIB.Value := C_TiposMovimentoCLASSTRIB_RTC_PADRAO.Value
+    else
+        C_ItensCLASSTRIB.Value := DMProjeto.C_LocalizarItensCLASSTRIB.Value;
+
+
+
+    if (C_TiposMovimentoCB_CSTIPIPADRAO.Value = 'S') then
+        C_ItensCSTIPI.Value := C_TiposMovimentoCST_IPI_PADRAO.Value
+    else
+    C_ItensCSTIPI.Value := DMProjeto.C_LocalizarItensCSTIPI.Value;
+
+    C_ItensCSTIBS.Value := DMProjeto.C_LocalizarItensCSTIBS.Value;
+    C_ItensCLASSTRIB.Value := DMProjeto.C_LocalizarItensCLASSTRIB.Value;
+    
+
     C_ItensI_CLASFISCAL.Value := DMProjeto.C_LocalizarItensCLASFISCAL.value;
-    C_ItensALIQPIS.Value := DMProjeto.C_LocalizarItensALIQPISSAIDA.Value;
-    C_ItensALIQCOFINS.Value := DMProjeto.C_LocalizarItensALIQCOFINSSAIDA.Value;
-    C_ItensCSTPISCOFINS.Value := DMProjeto.C_LocalizarItensCSTPISCOFINSSAIDA.Value;
     C_ItensALIQIPI.Value := DMProjeto.C_LocalizarItensALIQIPI.Value;
 
     C_ItensVALORPISPROD.Value := (C_ItensALIQPIS.Value / 100.00) * C_ItensSubTotal.Value;
@@ -1287,7 +1400,7 @@ begin
             if C_TiposMovimentoTIPOPADRAO.Value = 5 then
                 begin
                     C_ItensPrecoTabela.Value := DMProjeto.C_LocalizarItensPRECO.AsCurrency;
-                    C_ItensPrecoSemPromocao.Value := DMProjeto.C_LocalizarItensPRECO.AsCurrency;
+                    C_ItensPrecoSemPromocao.Value := DMProjeto.C_LocalizarItensPRECONORMAL.AsCurrency;
                     C_ItensMaxDesconto.Value := 0;
                 end;
         end
@@ -1305,7 +1418,7 @@ begin
                         begin
                             C_ItensPrecoTabela.Value := C_ProdutosPrecoPrecoPromocao.asCurrency;
                             C_ItensPromocao.Value := IIF(C_TiposMovimentoTIPOPADRAO.Value in [5, 6], 'N', 'S');
-                            C_ItensPrecoSemPromocao.Value := C_ProdutosPrecoPreco.asCurrency;
+                            C_ItensPrecoSemPromocao.Value := C_ProdutosPrecoPRECO_NORMAL.asCurrency;
                             C_ItensMaxDesconto.Value := 0;
                         end
                     else
@@ -1369,8 +1482,43 @@ begin
     if Sender.asVariant = null then
         exit;
     // Atribuindo CST para o item
-    C_ItensCSTIPI.value := DMProjeto.C_LocalizarItensCSTIPI.value;
-    C_ItensCSTPISCOFINS.value := DMProjeto.C_LocalizarItensCSTPISCOFINSSAIDA.value;
+   if (C_TiposMovimentoCB_CSTIPIPADRAO.Value = 'S') then
+       C_ItensCSTIPI.Value := C_TiposMovimentoCST_IPI_PADRAO.Value
+   else
+      C_ItensCSTIPI.Value := DMProjeto.C_LocalizarItensCSTIPI.Value;
+
+    if DMProjeto.C_LocalizarFavSUFRAMA.AsString = 'ZFM' then
+    begin
+      C_ItensCSTPISCOFINS.value := '060' ;
+      C_ItensALIQPIS.value := 0.00 ;
+      C_ItensALIQCOFINS.Value := 0.00 ;
+      C_ItensCST.Value := '040' ;
+    end
+    else begin
+        if (C_TiposMovimentoCB_CSTPISCOFINSPADRAO.Value = 'S') then
+                C_ItensCSTPISCOFINS.Value := C_TiposMovimentoCST_PIS_COFINS_MOVIMENTO.Value
+        else
+                C_ItensCSTPISCOFINS.Value := DMProjeto.C_LocalizarItensCSTPISCOFINSSAIDA.Value;
+    end;
+
+        if (C_TiposMovimentoCB_CST_RTC_PADRAO.Value = 'S') then
+        C_ItensCSTIBS.Value := C_TiposMovimentoCST_RTC_PADRAO.Value
+    else
+        C_ItensCSTIBS.Value := DMProjeto.C_LocalizarItensCSTIBS.Value;
+
+    if (C_TiposMovimentoCB_CLASSTRIB_RTC_PADRAO.Value = 'S') then
+        C_ItensCLASSTRIB.Value := C_TiposMovimentoCLASSTRIB_RTC_PADRAO.Value
+    else
+        C_ItensCLASSTRIB.Value := DMProjeto.C_LocalizarItensCLASSTRIB.Value;
+
+
+
+//    else begin
+//        if (C_TiposMovimentoCB_CSTIPIPADRAO.Value = 'S') then
+//        C_ItensCSTIPI.Value := C_TiposMovimentoCST_IPI_PADRAO.Value
+//         else
+//        C_ItensCSTIPI.Value := DMProjeto.C_LocalizarItensCSTIPI.Value;
+//    end ;
 
     // LegisFiscal
     C_ItensSituacaoECF.value := IIF(DMProjeto.C_LocalizarItensSituacaoECF.value = '',
@@ -1432,8 +1580,8 @@ begin
 
     C_ItensI_PesoBruto.value := DMProjeto.C_LocalizarItensPesoBruto.value;
     C_ItensI_PesoLiquido.value := DMProjeto.C_LocalizarItensPesoLiquido.value;
-
     C_ItensI_GRUPOCOMISSAO.Value := DMProjeto.C_LocalizarItensGRUPOCOMISSAO.Value;
+    C_ItensCUBAGEMTOTALITEM.value := DMProjeto.C_LocalizarItensCUBAGEM.Value;
 
     if (C_TabelaPossuiICMS.value = 'S') then
         if C_ItensI_TipoItem.value in [1, 2] then
@@ -1488,7 +1636,9 @@ begin
             if (C_ItensBaixaEstoque.value = 'S') and (C_ItensHasChildren.value = 'S') and (C_ItensMesclado.value = 'N') and
                 (C_ItensOrdemMontagem.value <> 'X') and (C_ItensOrdemMontagem.value <> 'S') and (C_ItensI_TipoItem.value = 1) and ((C_ItensQuantidade.value * C_ItensFator.value) > C_ItensI_Estoque.value) then
                 begin
-                    if (DMProjeto.Parametro('AutoOrdemProducao') = 'S') or (DlgMsg.ShowMsg(3110) = 100) then
+//                    if (DMProjeto.Parametro('AutoOrdemProducao') = 'S') or (DlgMsg.ShowMsg(3110) = 100) then
+// a mensagem foi retirada do teste abaixo,  a pedido do suporte, o procedimento de ordem automatica esta zezando o estoque das materias primas Cesar 17-05-2022
+                    if (DMProjeto.Parametro('AutoOrdemProducao') = 'S')  then
                         begin
                             if not (C_Itens.state in [dsEdit, dsInsert]) then
                                 C_Itens.edit;
@@ -1502,6 +1652,49 @@ begin
 
         end;
     C_ItensPCOMISSAO.Value := iif(DMProjeto.C_LocalizarItensCOMISSAO.Value < 0, 0.00, DMProjeto.C_LocalizarItensCOMISSAO.Value);
+
+// Cesar 01-07-2022 - tratando as bases de calculos para quando o item é lançado sem apagar o anterior ...
+// o sistema estava deixando os valores de base ( ICMS e Substituicao ), do item anterior tratamento rapido com alteração de valores para
+// ser contabilizado na procedure Afterpost do Item
+
+  if (C_TabelaPossuiICMS.value = 'S') then
+  Begin
+      if DMProjeto.C_LocalizarItensCST.AsString = '000' then begin
+        C_ItensBASECALCICMSPROD.Value := C_ItensSUBTOTALITEM.Value  ;
+        C_ItensBASECALCSUBSTPROD.Value := 0 ;
+        C_ItensVALORICMSSUBSTPROD.Value := 0 ;
+      end ;
+    if DMProjeto.C_LocalizarItensCST.AsString = '010' then begin
+        C_ItensBASECALCICMSPROD.Value := C_ItensSUBTOTALITEM.Value  ;
+        C_ItensBASECALCSUBSTPROD.Value := C_ItensSUBTOTALITEM.Value *(1 + (C_ItensTVA.Value/100))  ;
+        C_ItensVALORICMSSUBSTPROD.Value := truncar((C_ItensBASECALCSUBSTPROD.Value * C_TabelaAliqICMSVenda.value/100) - (C_ItensSUBTOTALITEM.Value * C_TabelaAliqICMSVenda.value/100),2) ;
+    end;
+    if DMProjeto.C_LocalizarItensCST.AsString = '020' then begin
+        C_ItensBASECALCICMSPROD.Value := C_ItensSUBTOTALITEM.Value * (1 - ( C_ItensREDUCAOCST.Value/100)) ;
+        C_ItensBASECALCSUBSTPROD.Value := 0  ;
+        C_ItensVALORICMSSUBSTPROD.Value := 0 ;
+    end ;
+    if DMProjeto.C_LocalizarItensSITUACAOECF.AsString = 'F' then begin
+        C_ItensBASECALCICMSPROD.Value := 0;
+        C_ItensBASECALCSUBSTPROD.Value := 0  ;
+        C_ItensVALORICMSSUBSTPROD.Value := 0 ;
+    end ;
+
+  end ;
+
+  if (DMProjeto.sTipoTributEmpresa = 'N') then
+  begin
+    C_ItensBASECALCICMSPROD.Value := 0  ;
+    C_ItensBASECALCSUBSTPROD.Value := 0 ;
+    C_ItensVALORICMSSUBSTPROD.Value := 0 ;
+
+    if (bIndustriaSubstitutaSimples ) then begin
+        if DMProjeto.C_LocalizarItensCST.AsString = '202' then begin
+           C_ItensBASECALCSUBSTPROD.Value := C_ItensSUBTOTALITEM.Value *(1 + (C_ItensTVA.Value/100))  ;
+           C_ItensVALORICMSSUBSTPROD.Value := Truncar((C_ItensBASECALCSUBSTPROD.Value * C_TabelaAliqICMSVenda.Value/100) - (C_ItensSUBTOTALITEM.Value * C_TabelaAliqICMSVenda.Value/100),2);
+        end ;
+     end ;
+  end;
 
 end;
 
@@ -1762,6 +1955,7 @@ begin
     C_Itens.FieldByName('icPercComissao').AsCurrency := nPComissao;
     C_Itens.FieldByName('icGrupoDesconto').AsString := sGrupoDesconto;
     {Primeiro Valida o Desconto para poder ocorrer o PrecoChange da SuperClasse.}
+
     inherited;
 end;
 
@@ -1818,7 +2012,7 @@ begin
 
     CalcReducoesPorDesconto;
 
-    AtualizaTotalFinal(True); //que chama CalcularImposto com atualizacao de IPI e Substituicao
+    AtualizaTotalFinal(True); // C_TabelaDESCONTOChange que chama CalcularImposto com atualizacao de IPI e Substituicao
 
 end;
 
@@ -1830,12 +2024,17 @@ begin
         begin
             nProp := ((C_TabelaDesconto.asCurrency + C_TabelaDescontoItens.asCurrency) / C_TabelaTotalItens123.asCurrency);
             nProp := ABS(nProp);
+
         end;
 
     {Definindo ReducoesBase - Este campo serve para registrar as reduções externas à base de calculo normal dos Itens}
     if C_Tabela.State = dsBrowse then
         C_Tabela.Edit;
     C_TabelaReducoesBase.asCurrency := (C_TabelaBaseCalcICMSItens.asCurrency) * nProp;
+    C_TabelaReducoesBase.asCurrency := (C_TabelaTOTALITENS.asCurrency) * nProp;
+
+    C_TabelaREDUCOESBASESUBST.asCurrency := (C_TabelaBASECALCSUBSTITENS.asCurrency) * nProp;
+    proporcaodesconto := nProp ;
 end;
 
 function TDMSaidas.ValorMaxDesconto;
@@ -1911,7 +2110,7 @@ end;
 procedure TDMSaidas.C_ItensBeforePost(DataSet: TDataSet);
 var
     nMenorPV, precoItem: Currency;
-    aliqIcmsInterno, aliqIcmsExterna: Currency;
+    aliqIcmsInterno, aliqIcmsExterna, aliqIcmsSubsExterna : Currency;
 
 begin;
     if (C_ItensQuantidade.asVariant = null) and (C_ItensI_TIPOITEM.Value in [1, 2]) then
@@ -1920,20 +2119,23 @@ begin;
         C_ItensPreco.Value := 0.00;
 
     aliqIcmsExterna := DMProjeto.AliquotaEstadoExterno(C_TabelaUFDestino.value);
+    aliqIcmsSubsExterna := DMProjeto.AlicotaIcmsSubInterestadual(C_TabelaUFDestino.value);
 
     { Felipe - Truncando campos para a quantidade de casas de acordo com o parâmetro "CasasDecimais" (27/01/2016) }
     C_ItensPRECO.Value := Truncar(C_ItensPRECO.Value, DMProjeto.nCasasDecimais);
-    C_ItensSUBTOTALITEM.Value := Truncar(C_ItensSUBTOTALITEM.Value, 2);
+    C_ItensSUBTOTALITEM.Value := Truncar(C_ItensSUBTOTALITEM.Value, 3);
 
     inherited;
     // LegisFiscal
-    C_ItensSubTotal.AsVariant := Truncar(C_ItensSubTotal.AsVariant, 2);
+   C_ItensSubTotal.AsVariant := Truncar(C_ItensSubTotal.AsVariant, 3);
 
     if (TipoMovimento('CB_CSTPADRAO') = 'S') then
         C_ItensCST.Value := TipoMovimento('CST_PADRAO');
 
     if C_ItensSituacaoECF.value = 'T' then
         begin
+            if ((C_TabelaPossuiIPI.value = 'S') and (C_ItensIPI.Value <> null)) then
+               C_ItensValorIPIProd.value := Truncar(((C_ItensSubTotal.value - C_ItensRATEIODESCONTO.Value) * C_ItensIPI.value) / 100, 2);
             if (bDECRETO25905) then
                 begin
                     if (C_TabelaPossuiICMS.value = 'S') then
@@ -1942,27 +2144,19 @@ begin;
                                 if C_ItensReducaoCST.value > 0 then
                                     C_ItensBaseCalcICMSProd.AsVariant := C_ItensSubTotal.AsVariant - ((C_ItensSubTotal.AsVariant * C_ItensReducaoCST.value) / 100)
                                 else
-                                    C_ItensBaseCalcICMSProd.AsVariant := C_ItensSubTotal.AsVariant;
+                                    C_ItensBaseCalcICMSProd.AsVariant := C_ItensSubTotal.AsVariant ;
 
                                 if (C_TabelaPossuiICMS.value = 'S') then
-                                    C_ItensValorICMSProd.value := ((C_ItensBaseCalcICMSProd.value * C_ItensAliqICMS.value) / 100);
+                                    C_ItensValorICMSProd.value := truncar(((C_ItensBaseCalcICMSProd.value * C_ItensAliqICMS.value) / 100),DMProjeto.nCasasDecimais);
 
                                 if (DMProjeto.sTipoTributEmpresa = 'N') and (sTipoEmpresa = 'F') then
-                                    CalcularIcmsSubstParaFabricante(aliqIcmsExterna)
+                                    CalcularIcmsSubstParaFabricante(aliqIcmsSubsExterna)
                                 else if (C_TiposMovimentoCALCULAICMSSUBST.Value = 'S') and (C_ItensTVA.Value > 0) then
                                     begin
-                                        C_ItensBaseCalcSubstProd.value := C_ItensSubTotal.value + ((C_ItensSubTotal.value * C_ItensTVA.value) / 100);
-                                        C_ItensVALORICMSSUBSTPROD.Value := (C_ItensBASECALCSUBSTPROD.Value * C_ItensALIQICMS.Value / 100) - (C_ItensSubTotal.Value * aliqIcmsExterna / 100);
+                                        C_ItensBaseCalcSubstProd.value := truncar(C_ItensSubTotal.value + ((C_ItensSubTotal.value * C_ItensTVA.value) / 100),2);
+                                        C_ItensVALORICMSSUBSTPROD.Value := truncar((C_ItensBASECALCSUBSTPROD.Value * C_ItensALIQICMS.Value / 100) - (C_ItensSubTotal.Value * aliqIcmsExterna / 100),2);
                                     end;
 
-                                {
-                                if (C_ItensTVA.value > 0) then
-                                    begin
-                                        C_ItensBaseCalcSubstProd.value := C_ItensSubTotal.value + ((C_ItensSubTotal.value * C_ItensTVA.value) / 100);
-                                        C_ItensVALORICMSSUBSTPROD.Value := (C_ItensBASECALCSUBSTPROD.Value * C_ItensALIQICMS.Value / 100) - (C_ItensSubTotal.Value * aliqIcmsExterna / 100);
-                                        //C_ItensValorICMSSubstProd.value := (((C_ItensBaseCalcSubstProd.value * C_ItensAliqICMS.value) / 100) - C_ItensValorICMSProd.Value);
-                                    end;
-                                }
                             end
                         else
                             begin
@@ -1973,20 +2167,13 @@ begin;
                                     end;
 
                                 if (DMProjeto.sTipoTributEmpresa = 'N') and (sTipoEmpresa = 'F') then
-                                    CalcularIcmsSubstParaFabricante(aliqIcmsExterna)
+                                    CalcularIcmsSubstParaFabricante(aliqIcmsSubsExterna)
                                 else if (C_TiposMovimentoCALCULAICMSSUBST.Value = 'S') and (C_ItensTVA.Value > 0) then
                                     begin
                                         C_ItensBaseCalcSubstProd.value := 0.00;
                                         C_ItensValorICMSSubstProd.value := 0.00;
                                     end;
 
-                                {
-                                if (C_ItensTVA.value > 0) then
-                                    begin
-                                        C_ItensBaseCalcSubstProd.value := 0.00;
-                                        C_ItensValorICMSSubstProd.value := 0.00;
-                                    end;
-                                }
                             end;
                 end
             else
@@ -1994,20 +2181,20 @@ begin;
                     if (C_TabelaPossuiICMS.value = 'S') then
                         begin
                             if C_ItensReducaoCST.value > 0 then
-                                C_ItensBaseCalcICMSProd.AsVariant := C_ItensSubTotal.AsVariant - ((C_ItensSubTotal.AsVariant * C_ItensReducaoCST.value) / 100)
+                                C_ItensBaseCalcICMSProd.AsVariant := truncar(C_ItensSubTotal.AsVariant - ((C_ItensSubTotal.AsVariant * C_ItensReducaoCST.value) / 100),2)
                             else
-                                C_ItensBaseCalcICMSProd.AsVariant := C_ItensSubTotal.AsVariant;
+                                C_ItensBaseCalcICMSProd.AsVariant := truncar(C_ItensSubTotal.AsVariant - C_ItensRATEIODESCONTO.Value ,2);
 
-                            C_ItensValorICMSProd.value := ((C_ItensBaseCalcICMSProd.value * C_ItensAliqICMS.value) / 100);
+                            C_ItensValorICMSProd.value := truncar(((C_ItensBaseCalcICMSProd.value * C_ItensAliqICMS.value) / 100),2);
                         end;
 
                     {Calculo do Item com Substituição}
                     if (DMProjeto.sTipoTributEmpresa = 'N') and (sTipoEmpresa = 'F') then
-                        CalcularIcmsSubstParaFabricante(aliqIcmsExterna)
+                        CalcularIcmsSubstParaFabricante(aliqIcmsSubsExterna)
                     else if (C_TiposMovimentoCALCULAICMSSUBST.Value = 'S') and (C_ItensTVA.Value > 0) then
                         begin
-                            C_ItensBaseCalcSubstProd.value := (C_ItensSubTotal.value + C_ItensVALORIPIPROD.Value) * ((100 + C_ItensTVA.value) / 100);
-                            C_ItensVALORICMSSUBSTPROD.Value := (C_ItensBASECALCSUBSTPROD.Value * C_ItensALIQICMS.Value / 100) - (C_ItensSubTotal.Value * aliqIcmsExterna / 100);
+                            C_ItensBaseCalcSubstProd.value := truncar((C_ItensSubTotal.value + C_ItensVALORIPIPROD.Value - C_ItensRATEIODESCONTO.Value) * ((100 + C_ItensTVA.value) / 100),2);
+                            C_ItensVALORICMSSUBSTPROD.Value := truncar((C_ItensBASECALCSUBSTPROD.Value * aliqIcmsUFDestinoInterna / 100) - (C_ItensSubTotal.Value * aliqIcmsExterna / 100),2);
                         end;
 
                     {
@@ -2035,12 +2222,24 @@ begin;
                             C_ItensValorICMSSubstProd.value := 0.00;
                         end;
                 end;
-        end
-    else if (C_ItensSituacaoECF.value = 'I') then
-        C_ItensValorIsentasProd.value := C_ItensSubTotal.value;
+        if ( bIndustriaSubstitutaSimples) then
+        Begin
+           C_ItensBaseCalcSubstProd.value := (C_ItensSubTotal.value - C_ItensRATEIODESCONTO.Value) + ( (C_ItensSubTotal.value - C_ItensRATEIODESCONTO.Value) * C_ItensTVA.Value / 100 );
 
-    if ((C_TabelaPossuiIPI.value = 'S') and (C_ItensIPI.Value <> null)) then
-        C_ItensValorIPIProd.value := Truncar((C_ItensSubTotal.value * C_ItensIPI.value) / 100, 2);
+           C_ItensValorICMSSubstProd.value := truncar( ( C_ItensBaseCalcSubstProd.value * DMProjeto.nICMSInterno / 100) - ( (C_ItensSubTotal.value - C_ItensRATEIODESCONTO.Value) * aliqIcmsExterna / 100 ),2)
+
+        end // if ( bIndustriaSubstitutaSimples) then
+
+        end
+    else if (C_ItensSituacaoECF.value = 'I') then begin
+           C_ItensValorIsentasProd.value := C_ItensSubTotal.value;
+           C_ItensBASECALCICMSPROD.Value := 0 ;
+           C_ItensVALORICMSPROD.value := 0 ;
+         end
+     else if (C_ItensSituacaoECF.value = 'N') then begin
+           C_ItensBASECALCICMSPROD.Value := 0 ;
+           C_ItensVALORICMSPROD.value := 0 ;
+         end;
 
     C_ItensSubTotalItem.AsVariant := C_ItensSubTotal.AsVariant;
 
@@ -2134,11 +2333,27 @@ begin;
         end;
 
     // Felipe - Adicionado em 23/09/2014 (Calcula valor de Pis e Cofins e atribui valor para os campos de SaidasItens)
-    if (C_TiposMovimentoCALCULAPISCOFINS.Value = 'S') then
+        //alterado por cesar , porque não estava comtemplando quando o valor era N
+
+    //    if (C_TiposMovimentoCALCULAPISCOFINS.Value = 'S') then
+        //        begin
+        //            C_ItensVALORPISPROD.Value := Truncar(((C_ItensSubTotal.Value - C_ItensRATEIODESCONTO.Value) * C_ItensALIQPIS.Value) / 100, 2);
+        //            C_ItensVALORCOFINSPROD.Value := Truncar(((C_ItensSubTotal.Value - C_ItensRATEIODESCONTO.value) * C_ItensALIQCOFINS.Value) / 100, 2);
+        //        end;
+
+
+    if (C_TiposMovimentoCALCULAPISCOFINS.Value <> 'S') then
         begin
-            C_ItensVALORPISPROD.Value := Truncar((C_ItensSubTotal.Value * C_ItensALIQPIS.Value) / 100, 2);
-            C_ItensVALORCOFINSPROD.Value := Truncar((C_ItensSubTotal.Value * C_ItensALIQCOFINS.Value) / 100, 2);
-        end;
+            C_ItensALIQPIS.Value := 0 ;
+            C_ItensALIQCOFINS.Value := 0 ;
+            C_ItensVALORPISPROD.Value := 0;
+            C_ItensVALORCOFINSPROD.Value := 0;
+        end
+    else
+       begin
+        C_ItensVALORPISPROD.Value := Truncar(((C_ItensSubTotal.Value - C_ItensRATEIODESCONTO.Value) * C_ItensALIQPIS.Value) / 100, 2);
+        C_ItensVALORCOFINSPROD.Value := Truncar(((C_ItensSubTotal.Value - C_ItensRATEIODESCONTO.value) * C_ItensALIQCOFINS.Value) / 100, 2);
+       end;
 
     if (C_ItensI_IDENTIFICACAO.Value = 'S') then
         begin
@@ -2369,7 +2584,7 @@ var
     nBaseCalcICMS, nValorICMS, nValorIsentas, nValorOutrasICMS, nTotalServicos: currency;
     nUso, nJurosDescSub, nJurosDescBase, nJurosDescBaseSubs, nBasePeNota, nValorIPI, nBaseSubst, nValorICMSSubst, nRetidoICMS: Currency;
     nIDItem: Integer;
-    nVolumes, nPesoBruto, nPesoLiquido, nDescProporcional: double;
+    nVolumes,nCubagem, nPesoBruto, nPesoLiquido, nDescProporcional: double;
 
 begin
     inherited;
@@ -2388,6 +2603,8 @@ begin
             nBaseImposto := 0;
             nBaseIncluso := 0;
             nTotal123 := 0;
+            gValorICMSBaseSubstTotal := 0 ;// zerando variavel geral para não acumular valor
+            gValorSubstItens := 0 ;
 
             nJurosDescSub := 0;
             nJurosDescBase := 0; //Para computar os Juros e Descontos Percentuais;
@@ -2395,6 +2612,7 @@ begin
 
             nBasePeNota := 0;
             nVolumes := 0;
+            nCubagem := 0;
 
             nBaseCalcICMS := 0;
             nValorICMS := 0;
@@ -2404,9 +2622,14 @@ begin
             nValorIPI := 0;
             nBaseSubst := 0;
             nValorICMSSubst := 0;
+            nSubTotalItensSubst := 0 ;
             nPesoBruto := 0;
             nPesoLiquido := 0;
             nRetidoICMS := 0;
+            gBCICMSTotal := 0;
+            gValorICMSTotal := 0;
+            gBCSubstTotal := 0 ;
+            gValorICMSSTTotal := 0;
             First;
             while not EOF do
                 begin
@@ -2425,6 +2648,7 @@ begin
                     if FieldByName('I_TipoItem').asInteger = 1 then
                         nVolumes := nVolumes + IIF(FieldByName('UnidadeInteira').AsString = 'S', FieldByName('Quantidade').asFloat, 1);
 
+
                     {Reduzindo Desconto Percentual ou Acrescentando Juros Percentual}
                     if FieldByName('UsoTipoItem').asString <> '' then
                         begin
@@ -2434,17 +2658,43 @@ begin
                             nJurosDescBaseSubs := FieldByName('BaseCalcSubstProd').asCurrency * (nUso / 100);
                         end;
 
+
                     if (FieldByName('I_TipoItem').asInteger in [1, 2]) then
                         nTotalProdutos := nTotalProdutos + FieldByName('SubTotal').asCurrency + nJurosDescSub;
 
                     // LegisFiscal
                     if (C_TabelaPossuiICMS.value = 'S') then
                         begin
-                            nBaseCalcICMSProd := FieldByName('BaseCalcICMSProd').asCurrency + nJurosDescBase;
+                        if ( FieldByName('SituacaoECF').AsString = 'T') then
+                            nBaseCalcICMSProd := FieldByName('BaseCalcICMSProd').asCurrency + nJurosDescBase
+                       else
+                            nBaseCalcICMSProd := 0 ;
+
                             nBaseCalcICMS := nBaseCalcICMS + nBaseCalcICMSProd;
                             nBaseSubst := nBaseSubst + FieldByName('BaseCalcSubstProd').asCurrency + nJurosDescBaseSubs;
+                           // nBaseSubst := nBaseSubst + (FieldByName('SubTotal').asCurrency + (FieldByName('SubTotal').asCurrency * FieldByName('TVA').asCurrency ))+ nJurosDescBaseSubs;
+//                            C_ItensSubTotal.value + ((C_ItensSubTotal.value * C_ItensTVA.value) / 100);
                             nValorICMSSubst := nValorICMSSubst + FieldByName('VALORICMSSUBSTPROD').AsCurrency;
+                            if ( FieldByName('CST').AsString = '010') then
+                            gValorICMSBaseSubstTotal := gValorICMSBaseSubstTotal +  FieldByName('SUBTOTALITEM').asCurrency  ;
+
+                            gBCICMSTotal := nBaseCalcICMS;
+                            //nValorICMS
+                            gBCSubstTotal := nBaseSubst ;
+                            gValorICMSSTTotal := nValorICMSSubst ;
+
                         end;
+
+                        // colocar aqui o teste para industria simples e setar a base subst. e ICMS subst.
+                        if (bIndustriaSubstitutaSimples) and ( FieldByName('SituacaoECF').AsString = 'F')  then
+                        begin
+                          nSubTotalItensSubst := nSubTotalItensSubst + FieldByName('SubTotal').asCurrency ;
+//                          if ( FieldByName('SituacaoECF').AsString = 'F') then begin
+                            nBaseSubst := nBaseSubst + (FieldByName('SubTotal').asCurrency + (FieldByName('SubTotal').asCurrency * FieldByName('TVA').asCurrency /100 ))+ nJurosDescBaseSubs;
+                            nValorICMSSubst := nValorICMSSubst + FieldByName('VALORICMSSUBSTPROD').AsCurrency;
+                            gValorSubstItens := nValorICMSSubst;
+//                          end;
+                        end ;
 
                     if (C_TabelaPOSSUIIPI.Value = 'S') then
                         nValorIPI := nValorIPI + FieldByName('ValorIPIProd').asCurrency;
@@ -2459,6 +2709,7 @@ begin
                                 begin
                                     nValorOutrasICMS := nValorOutrasICMS + (FieldByName('SubTotal').asCurrency - nBaseCalcICMSProd);
                                     nValorICMS := nValorICMS + (nBaseCalcICMSProd * FieldByName('AliqICMS').asCurrency) / 100;
+                                    gValorICMSTotal := nValorICMS ;
                                 end;
                         end;
 
@@ -2474,6 +2725,7 @@ begin
                                 IIF(FieldByName('I_FatorUndVenda').Value > 0, FieldByName('I_FatorUndVenda').Value, 1)) *
                                 FieldByName('I_PesoLiquido').asFloat);
                         end;
+                     nCubagem := nCubagem + (FieldByName('Quantidade').Value * FieldByName('CUBAGEMTOTALITEM').Value );
 
                     Next;
                 end;
@@ -2515,14 +2767,14 @@ begin
             C_TabelaPesoBruto.value := nPesoBruto;
             C_TabelaPesoLiquido.value := nPesoLiquido;
         end;
-
+    C_TabelaCUBAGEMTOTAL.Value := nCubagem ;
     // Desconto Padrão do Cliente...
     if (DMProjeto.Parametro('DescontoAuto') = 'S') and (C_TabelaF_PERCDESCONTO.Value > 0) then
         C_TabelaDESCONTO.Value := nTotalItens * C_TabelaF_PERCDESCONTO.Value / 100;
 
     CalcReducoesPorDesconto;
 
-    AtualizaTotalFinal(True); //Com IPI e Substituicao recalculados
+    AtualizaTotalFinal(True); // C_ItensAfterPost    Com IPI e Substituicao recalculados
 
     {Ajustando Itens de Desconto - para que não fiquem com valor acima do maxdesconto.  Isto acontece
     quando o ítem de desconto já foi digitado e o usuário altera o preço de um item participante deste
@@ -2574,6 +2826,15 @@ begin
 
         {Outras despesas não incluem os juros cobrados pelo plano de pgto, este valor agora é o campo Juros}
 
+        if (DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') then
+           C_TabelaICMSDESONERADO.Value := C_TabelaTOTALITENS.Value * ( C_TabelaALIQICMSVENDA.Value / 100)
+        else
+          C_TabelaICMSDESONERADO.Value := 0 ;
+        if ((DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') and (DMProjeto.Parametro('TareTexil') = 'S')) then
+           C_TabelaICMSDESONERADO.Value := C_TabelaTOTALITENS.Value * ( 1 / 100);
+
+
+
         if (C_TabelaTipoPadrao.value = 1) and (C_TabelaSerieNota.value = 'ECF') and (DMProjeto.Parametro('FaturaServico') <> 'S') then
             C_TabelaTOTAL.asCurrency := C_TabelaTOTALPRODUTOS.asCurrency +
                 C_TabelaDESCONTO.asCurrency + {O Desconto é negativo}
@@ -2587,7 +2848,8 @@ begin
             C_TabelaFRETE.asCurrency +
                 C_TabelaVALORSEGURO.asCurrency +
                 C_TabelaOUTRASDESPESAS.asCurrency +
-                C_TabelaJUROS.asCurrency;
+                C_TabelaJUROS.asCurrency -
+                C_TabelaICMSDESONERADO.AsCurrency ;
 
         C_TabelaTOTAL.AsCurrency := Truncar(C_TabelaTOTAL.AsCurrency, 2);
 
@@ -2834,6 +3096,11 @@ var
 begin
     if not ConsultaStatusSaida(C_TabelaIDMESTRE.AsInteger, C_TabelaEMPRESA.AsInteger, C_TabelaPDV.AsInteger) then
         begin
+        {Cesar -- Incluido o teste para consignação, estava sendo alterada consignação com devolução ja feita ,
+        ver tambem procedue PP_STATUSCONSIGNACAO e PP_INICIARDIASISTEMA QUE CHAMA A DE STATUS. FEITO EM 25-05-2021}
+            if (C_TabelaTIPOMOVIMENTO.Value = 11 ) then
+              DlgMsg.ShowMsg(50, ['Essa Consignação ja possui Item com Devolução/Faturamento, o que impede a alteração de valores da mesma.']);
+
             DlgMsg.ShowMsg(50, ['A operação possui status que não permite salvar e/ou alterar. Favor reabrir novamente a operação.']);
             bSkip := true;
             Exit;
@@ -3095,6 +3362,15 @@ begin
             exit;
         end;
 
+        {Bloquear por Cheque Devolvido}
+    if (GetDevolvidos > 0 ) and not (DMProjeto.DlgAutorizacao.ExecuteX(sForm, 'LIMCHQDEV', '', False, 'Cliente:' + C_TabelaF_NOME.AsString + #13#10 +
+        'Valor:' + C_TabelaTOTAL.AsString, C_TabelaFAVORECIDO.AsInteger,
+        'DlgSitCliente')) then
+        begin
+            bSkip := true;
+            exit;
+        end;
+
     {Bloquear se Atrasado}
     if (C_TabelaF_LIMITECREDITO.AsCurrency > 0) and (TipoMovimento('LimiteFavorecido') = 'S') then
         begin
@@ -3141,10 +3417,10 @@ begin
                         '       (select sum(dd.valor) ' +
                         '       from formaspagamento fp inner join depositosdoc dd on fp.formapagamento = dd.formapagamento ' +
                         '       inner join depositos d on dd.deposito = d.deposito ' +
-                        '       where d.favorecido = ' + C_TabelaFAVORECIDO.AsString + ' and dd.vencimento < ' + QuotedStr(MesDiaAno(DMProjeto.dDataSistema)) + '' +
-                        '       and dd.status < 50 and fp.especie = 1) as ChqPre ' +
+                        '       where d.favorecido = ' + C_TabelaFAVORECIDO.AsString + ' and dd.status < 50 and fp.especie = 1) as ChqPre ' +
                         '       From Favorecidos f Where Favorecido = ' + C_TabelaFAVORECIDO.AsString + '';
                     Open;
+                    // and dd.vencimento < ' + QuotedStr(MesDiaAno(DMProjeto.dDataSistema)) + '' + --> retirado do sql de ChqPre
                     nBalance := FieldByNAme('PAReceber').asCurrency +
                         FieldByName('ChqPre').asCurrency;
                     Close;
@@ -3256,6 +3532,24 @@ begin
         end;
 
     sPerformance := sPerformance + Format(SEstoqueOk, [DateTimeToStr(Now)]) + #13;
+
+    
+  // VERIFICACAO DE PARCELAS COM COBRANCA JUDIAL, ESTA COM PROBLEMA, NAO DEIXA ALTERAR VENDA ALGUMA
+//  if bAlteracao then begin
+//   while  not C_Parcelas.Eof do
+//     begin
+//       if ((C_ParcelasSTATUS.Value <= -1) or (C_ParcelasSTATUS.Value >= 4)  ) then
+//        begin
+//                DlgMsg.ShowMsg(50, ['Existe Parcelas lançadas com Reparcelamento, Cobrança Extra Judicial ou Suspensos. Tais Titulos Impedem que o Movimento seja Alterado']);
+//                bSkip := true;
+//               exit;
+//        end;
+
+//        C_Parcelas.Next;
+//    end;
+//    end;
+//    if (C_ParcelasSTATUS.Value = -2) then
+//      ShowMessage('achou');
 
     {Verificando Balance das Parcelas x Total Final}
     if C_Parcelas.RecordCount > 0 then
@@ -4008,8 +4302,12 @@ begin
     C_LocaisEntrega.close;
     C_LocaisEntrega.Params.ParamByName('Favorecido').Value := C_TabelaFavorecido.Value;
     C_LocaisEntrega.open;
-    if C_TabelaLOCALENTREGA.Value > 0 then
+ //   if C_TabelaLOCALENTREGA.Value > 0 then
+ //       C_LocaisEntrega.Locate('Entrega', C_TabelaLocalEntrega.Value, []);
+     if C_TabelaLOCALENTREGA.Value > 0 then
         C_LocaisEntrega.Locate('Entrega', C_TabelaLocalEntrega.Value, []);
+
+        
 
 end;
 
@@ -4061,6 +4359,14 @@ procedure TDMSaidas.C_ItensQUANTIDADEChange(Sender: TField);
 var
     nDif, nAcrescimo, nOldQtd, nMaxMescla: double;
 begin
+
+  if ( (C_ItensQUANTIDADE.Value <> Truncar(C_ItensQUANTIDADE.Value,0)) and (C_ItensUNIDADEINTEIRA.Value = 'S') ) then
+    begin
+     ShowMessage('Unidade Inteira, o valor da quantidade digitada sera considerado o valor Inteiro Digitado!');
+     ShowMessage('Verifique a Quantidade que ficou lançada para o item !');
+     C_ItensQUANTIDADE.Value := Truncar(C_ItensQUANTIDADE.Value,0);
+    end;
+    
     if (Sender.asFloat < 0) or ((Sender.asVariant = null) and not (C_ItensI_TipoItem.Value in [0, 4..7])) then
         begin
             Sender.asFloat := 0;
@@ -4187,7 +4493,10 @@ begin
             if (C_ItensBaixaEstoque.value = 'S') and (C_ItensHasChildren.value = 'S') and (C_ItensOrdemMontagem.value <> 'X') and (C_ItensOrdemMontagem.value <> 'S') and (C_ItensMesclado.value = 'N') and
                 (C_ItensI_TipoItem.value = 1) and ((C_ItensQuantidade.value * C_ItensFator.value) > C_ItensI_Estoque.value) then
                 begin
-                    if (DMProjeto.Parametro('AutoOrdemProducao') = 'S') or (DlgMsg.ShowMsg(3110) = 100) then
+//                    if (DMProjeto.Parametro('AutoOrdemProducao') = 'S') or (DlgMsg.ShowMsg(3110) = 100) then
+// a mensagem foi retirada do teste abaixo,  a pedido do suporte, o procedimento de ordem automatica esta zezando o estoque das materias primas Cesar 17-05-2022
+
+                    if (DMProjeto.Parametro('AutoOrdemProducao') = 'S')  then
                         begin
                             if not (C_Itens.state in [dsEdit, dsInsert]) then
                                 C_Itens.edit;
@@ -4757,7 +5066,7 @@ begin
         begin
             Close;
             SQL.Text := 'Select Count(*) as Movimentos from Saidas where TipoPadrao in (' + sTipo + ') ' +
-                'and Situacao = ''N'' and Status in (''P'', ''L'', ''V'', ''X'') and Favorecido = :C ';
+                'and Situacao = ''N'' and Status in (''P'', ''L'', ''V'', ''X'', ''Z'') and Favorecido = :C ';
             if sSerie <> '' then
                 SQL.Add(' and SerieNota = ' + QuotedStr(sSerie));
             if nTipoOp > 0 then
@@ -4853,10 +5162,24 @@ begin
     C_ItensTVA.value := 0;
 
     C_ItensPDV.Value := C_TabelaPDV.Value; // Felipe       -       Pegar o valor do PDV do registro de Saidas e coloca no PDV de SAIDASITENS
-    if (DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') then
+
+
+ if ((DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') and (DMProjeto.C_LocalizarItensDESONERACAOICMS.Value = 'S' ))   then
         begin
             C_ItensCST.value := '040';
             C_ItensSituacaoECF.value := 'I';
+            C_ItensALIQPIS.Value := 0.00 ;
+            C_ItensALIQCOFINS.Value := 0.00 ;
+            C_ItensCSTPISCOFINS.Value := '06' ;
+        end;
+ if ((DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') and (DMProjeto.Parametro('TareTexil') = 'S'))   then
+        begin
+            C_ItensCST.value := '040';
+            C_ItensSituacaoECF.value := 'I';
+            C_ItensALIQPIS.Value := 0.00 ;
+            C_ItensALIQCOFINS.Value := 0.00 ;
+            C_ItensCSTPISCOFINS.Value := '08' ;
+            C_ItensALIQICMS.Value := 0;
         end;
     C_ItensPRECOCUSTOLICITACAO.Value := 0;
     C_ItensCalcSubTotalPrecoLicitacao.Value := 0;
@@ -4926,15 +5249,22 @@ end;
 
 procedure TDMSaidas.CalcularImposto;
 var
-    nBaseImposto, nReducoes: Currency;
-    nProporcao, nPropReducoes: Double;
+    nBaseImposto, nReducoes, nReducoesSubst, nBaseImpostoSubst, aliqIcmsExterna: Currency;
+    nProporcao,nProporcaoSubst, nPropReducoes, nPropReducoesSubst: Double;
 begin
+    aliqIcmsExterna := DMProjeto.AliquotaEstadoExterno(C_TabelaUFDestino.value);
     {Aplicando as Reducoes nas Bases de Calculo.
      Os acrescimos são sempre aplicados à baseimposto, visto que será um valor destacado}
     nReducoes := C_TabelaReducoesBase.asCurrency;
+    nReducoesSubst := C_TabelaREDUCOESBASESUBST.asCurrency;
     nBaseImposto := C_TabelaBaseCalcICMSItens.asCurrency;
+    {calculando nreduções sobre a base de substituição para o caso das empresas simples nacional que calcula substituição , como a base de calculo
+    vem zerada por conta do simples e possuiicms = N , se vez necessario acrescentar }
+    nBaseImpostoSubst := C_TabelaBASECALCSUBST.AsCurrency ;
+
 
     {No Caso de Simples Remessa o Valor da Base de Calculo deverá Ser zerada}
+
     if C_TabelaTIPOPADRAO.Value = 40 then
         nBaseImposto := 0;
 
@@ -4943,10 +5273,21 @@ begin
     else
         nProporcao := 0;
 
+    if nBaseImpostoSubst > 0 then
+        nProporcaoSubst := C_TabelaVALORICMSSUBST.Value / nBaseImpostoSubst
+    else
+        nProporcaoSubst := 0;
+
     if C_TabelaBaseCalcICMSItens.asCurrency > 0 then
         nPropReducoes := nReducoes / C_TabelaBaseCalcICMSItens.asCurrency
     else
         nPropReducoes := 0;
+
+    if C_TabelaBASECALCSUBSTITENS.asCurrency > 0 then
+        nPropReducoesSubst := nReducoesSubst / C_TabelaBASECALCSUBSTITENS.asCurrency
+    else
+        nPropReducoesSubst := 0;
+
 
     if nBaseImposto > C_TabelaReducoesBase.asCurrency then
         begin
@@ -4954,18 +5295,33 @@ begin
             nReducoes := 0;
         end;
 
+    if nBaseImpostoSubst > C_TabelaReducoesBase.asCurrency then
+        begin
+            nBaseImpostoSubst := nBaseImpostoSubst - nReducoesSubst;
+            nReducoesSubst := 0;
+        end;
+
+
     if C_Tabela.State = dsBrowse then
         C_Tabela.Edit;
 
     {O Valor da Base de Calculo do ICMS so levara em consideração a variavel
     nBaseImposto, abaixo Codigo Original:}
     if (C_TabelaPossuiICMS.value = 'S') then
-        C_TabelaBaseCalcICMS.value :=
-            nBaseImposto +
+       C_TabelaBaseCalcICMS.value := gBCICMSTotal + C_TabelaFrete.value + C_TabelaValorSeguro.value + C_TabelaOutrasDespesas.value + C_TabelaJuros.value;
+
+
+    //        C_TabelaBaseCalcICMS.value := nBaseImposto + C_TabelaFrete.value + C_TabelaValorSeguro.value +C_TabelaOutrasDespesas.value +
+    //                                      C_TabelaJuros.value;
+
+    if (bIndustriaSubstitutaSimples) then
+        C_TabelaBASECALCSUBST.value :=
+            nBaseImpostoSubst +
             C_TabelaFrete.value +
             C_TabelaValorSeguro.value +
             C_TabelaOutrasDespesas.value +
             C_TabelaJuros.value;
+
     {(Motivo: O Valor adicional de boletos colocados no campo Despesas em Termos contabilizava em
              C_TabelaBaseCalcICMS.value,}
 //    If C_TabelaValorICMSSubst.Value > 0 Then
@@ -4978,9 +5334,13 @@ begin
    //                     C_TabelaJuros.value + C_TabelaValorSeguro.value) * C_TabelaAliqICMSVenda.value)/100),2);
 
     if (C_TabelaPossuiICMS.value = 'S') then
-        C_TabelaValorICMS.value := Truncar((nBaseImposto * nProporcao) +
-            (((C_TabelaFrete.Value + C_TabelaOutrasDespesas.Value +
-            C_TabelaJuros.value + C_TabelaValorSeguro.value) * C_TabelaAliqICMSVenda.value) / 100), 2);
+      C_TabelaValorICMS.value := gValorICMSTotal ; 
+
+
+//        C_TabelaValorICMS.value := Truncar((nBaseImposto * nProporcao) +
+//            (((C_TabelaFrete.Value + C_TabelaOutrasDespesas.Value +
+//            C_TabelaJuros.value + C_TabelaValorSeguro.value) * C_TabelaAliqICMSVenda.value) / 100), 2);
+
 
     if bCalc_IPI_ICMSSUBST then
         begin
@@ -5012,8 +5372,30 @@ begin
                 end
             else
                 begin
-                    C_TabelaBaseCalcSubst.Value := C_TabelaBaseCalcSubstItens.Value * (1 - nPropReducoes);
-                    C_TabelaValorIPI.Value := C_TabelaValorIPIItens.Value * (1 - nPropReducoes);
+                    C_TabelaBaseCalcSubst.Value := C_TabelaBaseCalcSubstItens.Value * (1 - nPropReducoesSubst);
+                    C_TabelaBaseCalcSubst.Value := gBCSubstTotal ;
+
+ //               C_TabelaBaseCalcSubst.Value := ( C_ItensSUBTOTALITEM.Value + ( C_ItensSUBTOTALITEM.Value * C_ItensTVA.Value /100 ) )* (1 - nPropReducoesSubst);
+                    if (C_TabelaBASECALCSUBST.Value > 0 ) and not bIndustriaSubstitutaSimples then
+                        C_TabelaVALORICMSSUBST.Value := truncar((C_TabelaBASECALCSUBST.Value * aliqIcmsUFDestinoInterna / 100) - ((gValorICMSBaseSubstTotal * (1 - nPropReducoesSubst))* C_ItensALIQICMS.Value / 100),2);
+//                        C_TabelaVALORICMSSUBST.Value := (C_TabelaBASECALCSUBST.Value * C_ItensALIQICMS.Value / 100) - (C_ItensSubTotal.Value * C_ItensALIQICMS.Value / 100);
+
+                     C_TabelaVALORICMSSUBST.Value :=  gValorICMSSTTotal ;
+                     
+                    if (C_TabelaBASECALCSUBST.Value > 0 ) and bIndustriaSubstitutaSimples then  begin
+                       C_TabelaVALORICMSSUBST.Value := truncar((C_TabelaBaseCalcSubst.Value * DMProjeto.nICMSInterno / 100)
+                       - ( (nSubTotalItensSubst * ( 1 - proporcaodesconto) * aliqIcmsExterna / 100 )),2) ;
+//                       - ((C_ItensSubTotal.Value  - (C_ItensSubTotal.Value * proporcaodesconto)) * aliqIcmsExterna / 100);
+
+//                       C_ItensValorICMSSubstProd.value :=  ( C_ItensBaseCalcSubstProd.value * DMProjeto.nICMSInterno / 100) - ( C_ItensSubTotal.value * aliqIcmsExterna / 100 )
+
+                       C_TabelaVALORICMSSUBST.Value :=  gValorSubstItens ;
+
+                       end   ;
+
+
+//                    C_TabelaValorIPI.Value := C_TabelaValorIPIItens.Value * (1 - nPropReducoes);
+                    C_TabelaValorIPI.Value := C_TabelaValorIPIItens.Value ;
 
                     {
                     if (C_TabelaPossuiICMS.value = 'S') then
@@ -5165,6 +5547,7 @@ begin
             begin
                 if (C_TabelaOBS.AsString <> null) then
                     begin
+                    C_TabelaOBS.Value := Copy(C_tabelaObs.AsString, Pos('^',C_tabelaObs.AsString)+ 1, Length(C_tabelaObs.AsString));
                         with Q_SQL do
                             begin
                                 {Calculando o Imposto do Decreto }
@@ -5181,11 +5564,12 @@ begin
                                     if (RecordCount > 0)  then
                                         begin
                                             sOBS := 'Valor aprox. dos Tributos: ' + CurrToStrF(Fields[0].Value, ffCurrency, 2) + ' ('
-                                                + CurrToStrF((Fields[0].Value / C_TabelaTOTAL.Value) * 100.00, ffFixed, 2) + '%) Fonte IBPT. ';
+                                                + CurrToStrF((Fields[0].Value / C_TabelaTOTAL.Value) * 100.00, ffFixed, 2) + '%) Fonte IBPT.^';
                                         end;
                                 except
                                     sOBS := ' ';
                                 end;
+
 
                                 try
                                     Close;
@@ -5208,14 +5592,14 @@ begin
                                         begin
                                             sOBS := sOBS + 'Permite aproveitamento do Credito ICMS no valor de: ' + CurrtoStr(Fields[1].Value) + '. ' +
                                                 'Correspondente a Aliquota de: ' + CurrtoStr(Fields[0].Value) + '%. Nos termos do Art. 23 ' +
-                                                'da Lei Complementar N. 123, de 2006.';
+                                                'da Lei Complementar N. 123, de 2006. ';
                                         end;
                                 except
 
                                 end;
 
                                 if (Length(sOBS) > 0) then
-                                    sOBS := sOBS + ' - ' + C_TabelaOBS.AsString
+                                    sOBS := sOBS + ' ' + C_TabelaOBS.AsString
                                 else
                                     sOBS := C_TabelaOBS.AsString;
 
@@ -5406,6 +5790,7 @@ begin
     sForm := 'FrmSaidas';
     IBEventos_Saidas.RegisterEvents;
     bDECRETO25905 := (DMProjeto.Parametro('DECRETO25905') = 'S');
+    bIndustriaSubstitutaSimples := (DMProjeto.Parametro('IndustriaSubstitutaSimples') = 'S');
     { Felipe - Parâmetro criado para bloquear/desbloquear o combobox do vendedor nas operações de saída (12/07/2016) }
     bBloquearVendedor := (DMProjeto.Parametro('BloquearVendedor') = 'S');
     { Felipe - Parâmetro criado para informar o tipo (ramo) da empresa (03/03/2017) }
@@ -5933,7 +6318,7 @@ end;
 procedure TDMSaidas.C_ItensSITUACAOECFChange(Sender: TField);
 begin
     inherited;
-    if (DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') then
+     if (DMProjeto.C_LocalizarFav.FieldByName('DECRETO24755').AsString = 'S') then
         begin
             C_ItensCST.value := '040';
         end
@@ -5968,6 +6353,7 @@ begin
     inherited;
     if C_TabelaLOCALENTREGA.Value > 0 then
         C_LocaisEntrega.Locate('Entrega', C_TabelaLocalEntrega.Value, []);
+
 end;
 
 function TDMSaidas.MensagemItens;

@@ -583,9 +583,10 @@ type
         DlgPopup: TDlgPopupContas;
     private
         { Private declarations }
-        nSaldoAnt, nSaldoAtual, nSaldoConta, nCreditos, nDebitos, nLimiteCredito: single;
+        nSaldoAtual, nSaldoAnt, nSaldoConta, nCreditos, nDebitos, nLimiteCredito : Currency ;
         nSaldoPre, nSaldoPre30, nSaldoPre60, nSaldoPreMaior60: single;
         nTipoConta, nConta: Integer;
+
         procedure CalculaSaldos;
         procedure ImprimirCronologico;
         procedure ImprimirTransacional;
@@ -630,7 +631,7 @@ begin
             parambyname('DataF').asDate := Trunc(dtDataF.Date);
             open;
         end;
-    lbSaldoFinal.Caption := formatfloat('###,###,##0.00', nSaldoConta);
+    lbSaldoFinal.Caption := formatfloat('###,###,###,##0.00', nSaldoConta);
     DMProjeto.ImprimirCabecalho(regCab2);
     Barra.Position := Barra.Position + 1;
     Application.ProcessMessages;
@@ -659,7 +660,7 @@ begin
             }
         end;
     Barra.Position := Barra.Position + 1;
-    lbSaldoFinal.Caption := formatfloat('###,###,##0.00', nSaldoConta);
+    lbSaldoFinal.Caption := formatfloat('###,###,###,##0.00', nSaldoConta);
     DMProjeto.ImprimirCabecalho(regCab);
     Barra.Position := Barra.Position + 1;
     Application.ProcessMessages;
@@ -786,7 +787,7 @@ procedure TDlgExtratoContas.dbtSaldoAtualGetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoAtual);
+    Text := formatfloat('###,###,###,##0.00', nSaldoAtual);
 end;
 
 procedure TDlgExtratoContas.dbtSaldoAtualPrint(Sender: TObject);
@@ -832,14 +833,14 @@ procedure TDlgExtratoContas.lbTotalDebitosGetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nDebitos);
+    Text := formatfloat('###,###,###,##0.00', nDebitos);
 end;
 
 procedure TDlgExtratoContas.lbTotCreditosGetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nCreditos);
+    Text := formatfloat('###,###,###,##0.00', nCreditos);
 end;
 
 procedure TDlgExtratoContas.lbSaldoAtualGetText(Sender: TObject;
@@ -849,7 +850,7 @@ begin
     if nTipoConta = 1 then
         Text := ''
     else
-        Text := formatfloat('###,###,##0.00', nSaldoAtual);
+        Text := formatfloat('###,###,###,##0.00', nSaldoAtual);
     if (nSaldoAtual) < 0 then
         TppLabel(Sender).font.color := clRed
     else
@@ -899,7 +900,7 @@ procedure TDlgExtratoContas.ppLabel21GetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoAnt);
+    Text := formatfloat('###,###,###,##0.00', nSaldoAnt);
     dbtSaldo.Value := nSaldoAnt + Q_CronologicoValor.Value;
     if nSaldoAnt >= 0 then
         ppLabel21.font.color := clBlue
@@ -912,13 +913,13 @@ procedure TDlgExtratoContas.ppSaldoDisponivelGetText(Sender: TObject;
 begin
     inherited;
     if DMFinanceiro.C_ContasCxBcTipoConta.Value = 1 then
-        Text := formatfloat('###,###,##0.00', nSaldoAtual)
+        Text := formatfloat('###,###,###,##0.00', nSaldoAtual)
     else
         begin
             if (nSaldoAtual + nLimiteCredito) > 0 then
-                Text := formatfloat('###,###,##0.00', nSaldoAtual + nLimiteCredito)
+                Text := formatfloat('###,###,###,##0.00', nSaldoAtual + nLimiteCredito)
             else
-                Text := formatfloat('###,###,##0.00', 0);
+                Text := formatfloat('###,###,###,##0.00', 0);
         end;
     if (nSaldoAtual + nLimiteCredito) < 0 then
         ppSaldoDisponivel.font.color := clRed
@@ -999,7 +1000,7 @@ procedure TDlgExtratoContas.lbSaldoContaGetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoAtual);
+    Text := formatfloat('###,###,###,##0.00', nSaldoAtual);
     if (nSaldoAtual) < 0 then
         TppLabel(Sender).font.color := clRed
     else
@@ -1024,28 +1025,28 @@ procedure TDlgExtratoContas.lbPreDatadosGetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoPre);
+    Text := formatfloat('###,###,###,##0.00', nSaldoPre);
 end;
 
 procedure TDlgExtratoContas.lbPre30GetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoPre30);
+    Text := formatfloat('###,###,###,##0.00', nSaldoPre30);
 end;
 
 procedure TDlgExtratoContas.lbPre60GetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoPre60);
+    Text := formatfloat('###,###,###,##0.00', nSaldoPre60);
 end;
 
 procedure TDlgExtratoContas.lbPreMaior60GetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nSaldoPreMaior60);
+    Text := formatfloat('###,###,###,##0.00', nSaldoPreMaior60);
 end;
 
 procedure TDlgExtratoContas.ppShape30DrawCommandCreate(Sender,
@@ -1278,7 +1279,7 @@ procedure TDlgExtratoContas.ppLimiteCreditoGetText(Sender: TObject;
     var Text: string);
 begin
     inherited;
-    Text := formatfloat('###,###,##0.00', nLimiteCredito);
+    Text := formatfloat('###,###,###,##0.00', nLimiteCredito);
 end;
 
 procedure TDlgExtratoContas.ppLabel5GetText(Sender: TObject;

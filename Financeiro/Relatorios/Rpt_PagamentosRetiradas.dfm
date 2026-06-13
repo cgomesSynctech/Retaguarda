@@ -5,7 +5,7 @@ inherited RptPagamentosRetiradas: TRptPagamentosRetiradas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 942
+    Width = 950
     Gradient.ColorStart = 11775972
     inherited lbCaption: TdxfLabel
       Width = 226
@@ -20,9 +20,9 @@ inherited RptPagamentosRetiradas: TRptPagamentosRetiradas
     end
   end
   inherited pnGrid: TPanel
-    Width = 889
+    Width = 897
     inherited pnDados: TTS_Panel
-      Width = 889
+      Width = 897
       Height = 23
       Color = 15196656
       object lbPeriodo: TTS_Label
@@ -257,8 +257,8 @@ inherited RptPagamentosRetiradas: TRptPagamentosRetiradas
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 23
-      Width = 889
-      Height = 355
+      Width = 897
+      Height = 376
       KeyField = 'IDDOC'
       SummaryGroups = <
         item
@@ -418,7 +418,7 @@ inherited RptPagamentosRetiradas: TRptPagamentosRetiradas
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Width = 889
+      Width = 897
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -442,7 +442,7 @@ inherited RptPagamentosRetiradas: TRptPagamentosRetiradas
       'rd.favorecidodoc as favorecido,'
       
         'f.tipofavorecido, tf.descricao as desctipofav, rd.chequenominal,' +
-        ' ct.descricao as DescContaDespesa, d.obs'
+        ' ct.descricao as DescContaDespesa, d.obs, d.titulo'
       'from retiradasdoc rd'
       'inner join retiradas r on rd.retirada = r.retirada'
       'inner join retiradasduplicatas rdp on rdp.retirada = r.retirada'

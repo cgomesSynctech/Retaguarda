@@ -16,6 +16,7 @@ inherited FrmEstimates: TFrmEstimates
       inherited cmbTipoMovimento: TTS_DBLookupComboBox
         DataSource = DMEstimates.C_TabelaDS
         ClearKey = 32
+        ListFieldName = 'DESCRICAO'
         ListSource = DMEstimates.C_TiposMovimentoDS
         Height = 19
       end
@@ -214,6 +215,8 @@ inherited FrmEstimates: TFrmEstimates
                 Height = 34
               end
               inherited TS_DBEditDate1: TTS_DBEditDate
+                Left = 9
+                Top = 15
                 DataSource = DMEstimates.C_TabelaDS
                 Height = 17
               end

@@ -74,6 +74,7 @@ type
     C_TabelaSaldoAtual: TCurrencyField;
     C_ContasCODIGOREDUZIDO: TStringField;
     C_TabelaDESPESAFIXA: TStringField;
+    C_TabelaCRITICAFECHAMENTO: TStringField;
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure DMComponentExclusao(Sender: TObject; var bSkip: Boolean);

@@ -8,9 +8,9 @@ inherited DlgReparcelamento: TDlgReparcelamento
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 499
-    Height = 402
+    Height = 401
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 368
+      Top = 367
     end
     inherited btComando2: TTS_SpeedButton
       Top = 139
@@ -479,7 +479,7 @@ inherited DlgReparcelamento: TDlgReparcelamento
   end
   inherited pnDados: TTS_Panel
     Width = 499
-    Height = 402
+    Height = 401
     Color = 15724519
     object TS_Panel1: TTS_Panel
       Left = 1
@@ -504,9 +504,11 @@ inherited DlgReparcelamento: TDlgReparcelamento
         Top = 3
         Width = 242
         Hint = 
-          '#C'#243'digo => Pesquisa pelo c'#243'digo. Ex: #100, #DAP'#13'SSN:N'#250'mero SSN =' +
-          '> Pesquisa pelo SSN. Ex: SSN:123366642'#13'EIN:N'#250'mero EIN => Pesquis' +
-          'a pelo EIN. Ex: EIN:6719034663'
+          'Para cadastrar um novo, pressione a tecla F7.'#13'# -> No in'#237'cio do ' +
+          'Texto for'#231'a a pesquisa pelo c'#243'digo. Ex: #100, #DAP'#13'CPF:N'#250'mero do' +
+          ' CPF => Pesquisa pelo CPF. Ex: CPF:123366642'#13'CNPJ:N'#250'mero do CNPJ' +
+          ' => Pesquisa pelo CNPJ. Ex: CNPJ:6719034663'#13'R: Pesquisa Pela Raz' +
+          #227'o'
         Style.ButtonStyle = btsFlat
         TabOrder = 1
         DataField = 'Nome'
@@ -688,7 +690,7 @@ inherited DlgReparcelamento: TDlgReparcelamento
       Left = 1
       Top = 26
       Width = 497
-      Height = 201
+      Height = 200
       Bands = <
         item
         end>
@@ -892,7 +894,7 @@ inherited DlgReparcelamento: TDlgReparcelamento
     end
     object TS_Panel2: TTS_Panel
       Left = 1
-      Top = 227
+      Top = 226
       Width = 497
       Height = 174
       Align = alBottom

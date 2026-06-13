@@ -28,27 +28,6 @@ type
         C_FormaPgto: TClientDataSet;
         C_ConsultaicSubTotal: TCurrencyField;
         cbCobranca: TTS_CheckBox;
-    C_ConsultaNUMERO: TStringField;
-    C_ConsultaDATA: TDateField;
-    C_ConsultaTOTAL: TFloatField;
-    C_ConsultaFORMAPGTO: TStringField;
-    C_ConsultaPARCELAS: TIntegerField;
-    C_ConsultaVALORFORMA: TBCDField;
-    C_ConsultaDESCCONTA: TStringField;
-    C_ConsultaCLIENTE: TStringField;
-    C_ConsultaVENDEDOR: TStringField;
-    dbgConsultaicSubTotal: TdxDBGridColumn;
-    dbgConsultaNUMERO: TdxDBGridMaskColumn;
-    dbgConsultaDATA: TdxDBGridDateColumn;
-    dbgConsultaTOTAL: TdxDBGridMaskColumn;
-    dbgConsultaFORMAPGTO: TdxDBGridMaskColumn;
-    dbgConsultaPARCELAS: TdxDBGridMaskColumn;
-    dbgConsultaVALORFORMA: TdxDBGridCurrencyColumn;
-    dbgConsultaDESCCONTA: TdxDBGridMaskColumn;
-    dbgConsultaCLIENTE: TdxDBGridMaskColumn;
-    dbgConsultaVENDEDOR: TdxDBGridMaskColumn;
-    C_ConsultaTOTALFORMA: TBCDField;
-    dbgConsultaTOTALFORMA: TdxDBGridColumn;
     clbTipoOperacao: TTS_CheckListBox;
     TS_Label3: TTS_Label;
     ppeTipoOperacao: TTS_PopupEdit;
@@ -60,6 +39,30 @@ type
     C_TiposMovimentosTIPOMOVIMENTO: TIntegerField;
     C_TiposMovimentosDESCRICAO: TStringField;
     C_TipoMovimentoDS: TDataSource;
+    C_ConsultaNUMERO: TStringField;
+    C_ConsultaDATA: TDateField;
+    C_ConsultaTOTAL: TFloatField;
+    C_ConsultaFORMAPGTO: TStringField;
+    C_ConsultaPARCELAS: TIntegerField;
+    C_ConsultaVALORFORMA: TBCDField;
+    C_ConsultaTOTALFORMA: TBCDField;
+    C_ConsultaDESCCONTA: TStringField;
+    C_ConsultaCLIENTE: TStringField;
+    C_ConsultaVENDEDOR: TStringField;
+    dbgConsultaicSubTotal: TdxDBGridColumn;
+    dbgConsultaNUMERO: TdxDBGridMaskColumn;
+    dbgConsultaDATA: TdxDBGridDateColumn;
+    dbgConsultaTOTAL: TdxDBGridMaskColumn;
+    dbgConsultaFORMAPGTO: TdxDBGridMaskColumn;
+    dbgConsultaPARCELAS: TdxDBGridMaskColumn;
+    dbgConsultaVALORFORMA: TdxDBGridCurrencyColumn;
+    dbgConsultaTOTALFORMA: TdxDBGridCurrencyColumn;
+    dbgConsultaDESCCONTA: TdxDBGridMaskColumn;
+    dbgConsultaCLIENTE: TdxDBGridMaskColumn;
+    dbgConsultaVENDEDOR: TdxDBGridMaskColumn;
+    dbgConsultaColumn13: TdxDBGridColumn;
+    C_ConsultaPDV: TIntegerField;
+    dbgConsultaPDV: TdxDBGridColumn;
         procedure btAtualizarClick(Sender: TObject);
         procedure FormsComponentBeforeClearParams(Sender: TObject);
         procedure C_ConsultaCalcFields(DataSet: TDataSet);
@@ -102,19 +105,41 @@ begin
                 begin
                     Sql.Text := 'Select ' + getCampos + ' ' +
                         'From ' + getTabelas + ' ' +
-                        'Where  s.data >= :datai and s.data <= :dataf and s.situacao = ''N'' ' + sFormaPgto + sTipoOperacao;
+                        'Where s.situacao = ''N'' and s.data >= :datai and s.data <= :dataf and s.situacao = ''N'' ' + sFormaPgto + sTipoOperacao;
 
-                    SQL.Text := SQL.Text + ' group by s.numero, s.data, s.total, fp.Descricao, c.Descricao, f.nome, v.nome ';
+                    SQL.Text := SQL.Text + ' group by s.numero, s.data, s.total, fp.Descricao, c.Descricao, f.nome, v.nome, dd.valor, tr.parcela, s.PDV';
 
                     Sql.Text := Sql.Text + ' Order by s.data';
                 end
             else
                 begin
-                    Sql.Text := 'select   NUMERO,    DATA,    TOTAL,    DESCRICAO as FormaPgto,   coalesce( TIPOPARCELAS ,0) as Parcelas,    ITENSVALORFORMA as ValorForma, ' +
-                        ' DESCRICAOCONTA as DescConta,    CLIENTE,   VENDEDOR FROM visao_formascobranca WHERE DATA >= :DATAI AND DATA <= :DATAF';
-                                            
-                    Sql.Text := Sql.Text + ' Order by data';
-                end;
+                // acrescentado a clausula where and dt.status <> 70 estava pegando os recebimentos cancelados
+
+               Sql.Text := ' Select  s.numero,s.data,s.total,fp.Descricao as FormaPgto, count(*) as Parcelas,Max(dd.valor) as ValorForma, '+
+               ' Max(dd.valor) * count(*) as TotalForma, c.Descricao as DescConta, f.nome as Cliente, v.nome as Vendedor, s.pdv '+
+               ' From saidas s inner join titulosareceber tr on  s.empresa = tr.empresa and s.pdv = tr.pdv and s.saida = tr.venda '+
+               ' left join depositostitulos dt on  tr.empresa = dt.empresa and tr.pdv = dt.pdv and tr.id = dt.titulo '+
+               ' left join depositosdoc dd on dt.empresa = dd.empresa and dt.pdv = dd.pdv and dt.deposito = dd.deposito '+
+               ' left join Depositos d on d.empresa = dd.empresa and d.pdv = dd.pdv and d.deposito = dd.deposito '+
+               ' left join FormasPagamento fp on dd.formapagamento = fp.formapagamento '+
+               ' left join Contas c on d.Conta = c.Conta left join favorecidos f on f.favorecido = d.favorecido '+
+               ' left join favorecidos v on v.favorecido = s.vendedor '+
+               ' Where  s.data >= :datai and s.data <= :dataf and s.situacao = ''N'' and fp.especie in (1,3,5,10,20,30,40,50,6,7,2,8,17) and dt.status <> 70 '+
+               ' and s.tipomovimento in ( 7,700,2366,-1,-3,1,22,23,11,14,18,17) group by s.numero, s.data, s.total, fp.Descricao, c.Descricao, f.nome, '+
+               ' v.nome, dd.valor, tr.parcela, s.PDV '+
+               ' union '+
+               ' select  s.numero,s.data,s.total,''Doc Cobranca'' as FormaPgto, count(*) as Parcelas,0 as ValorForma,0 as TotalForma, '+
+               ' ''A receber'' as DescConta, f.nome as Cliente, v.nome as Vendedor, s.PDV '+
+               ' From saidas s inner join titulosareceber tr on  s.empresa = tr.empresa and s.pdv = tr.pdv and s.saida = tr.venda '+
+               ' left join depositostitulos dt on  tr.empresa = dt.empresa and tr.pdv = dt.pdv and tr.id = dt.titulo '+
+               ' left join depositosdoc dd on dt.empresa = dd.empresa and dt.pdv = dd.pdv and dt.deposito = dd.deposito '+
+               ' left join Depositos d on d.empresa = dd.empresa and d.pdv = dd.pdv and d.deposito = dd.deposito '+
+               ' left join FormasPagamento fp on dd.formapagamento = fp.formapagamento '+
+               ' left join Contas c on d.Conta = c.Conta left join favorecidos f on f.favorecido = s.favorecido '+
+               ' left join favorecidos v on v.favorecido = s.vendedor Where  s.data >= :datai and s.data <= :dataf and s.situacao = ''N'' and fp.especie is null and dt.status <> 70'+
+               ' and s.tipomovimento in ( 7,700,2366,-1,-3,1,22,23,11,14,18,17) group by s.numero, s.data, s.total, fp.Descricao, c.Descricao, f.nome, '+
+               ' v.nome, dd.valor, tr.parcela, s.PDV ';
+               end;
 
             ParamByName('DataI').AsDateTime := DataI.Date;
             ParamByName('DataF').AsDateTime := DataF.Date;

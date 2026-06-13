@@ -1,17 +1,31 @@
 inherited RptFabricantesMaisVendido: TRptFabricantesMaisVendido
+  Left = -4
+  Top = -4
+  Width = 1288
+  Height = 764
   Caption = 'M'#243'dulo de Itens'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
+    Width = 1280
     Gradient.ColorStart = 9027548
     inherited lbCaption: TdxfLabel
       Width = 284
       Caption = 'Os Fabricantes mais vendidos'
       Effect3D.ShadowedColor = 9027548
     end
+    inherited btHelp: TTS_SpeedButton
+      Left = 1238
+    end
+    inherited btTemplates: TTS_SpeedButton
+      Left = 1211
+    end
   end
   inherited pnGrid: TPanel
+    Width = 1227
+    Height = 699
     inherited pnDados: TTS_Panel
+      Width = 1227
       Color = 14019327
       object TS_Label1: TTS_Label
         Left = 8
@@ -239,6 +253,8 @@ inherited RptFabricantesMaisVendido: TRptFabricantesMaisVendido
       end
     end
     inherited dbgConsulta: TTS_QDBGrid
+      Width = 1227
+      Height = 658
       KeyField = 'FABRICANTE'
       SummaryGroups = <
         item
@@ -305,6 +321,8 @@ inherited RptFabricantesMaisVendido: TRptFabricantesMaisVendido
       end
     end
     inherited PainelFullSelect: TTS_Panel
+      Top = 680
+      Width = 1227
       inherited cbFullSelect: TTS_CheckBox
         Style.ButtonStyle = btsSimple
         Height = 19
@@ -312,6 +330,10 @@ inherited RptFabricantesMaisVendido: TRptFabricantesMaisVendido
     end
   end
   inherited TS_Panel1: TTS_Panel
+    Height = 699
+    inherited btSair: TTS_SpeedButton
+      Top = 654
+    end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick
     end
@@ -358,11 +380,6 @@ inherited RptFabricantesMaisVendido: TRptFabricantesMaisVendido
       FieldName = 'DESCRICAO'
       Size = 30
     end
-    object C_ConsultaTOTAL: TBCDField
-      FieldName = 'TOTAL'
-      Precision = 18
-      Size = 3
-    end
     object C_ConsultaRanking: TIntegerField
       FieldKind = fkInternalCalc
       FieldName = 'Ranking'
@@ -374,6 +391,9 @@ inherited RptFabricantesMaisVendido: TRptFabricantesMaisVendido
       FieldKind = fkInternalCalc
       FieldName = 'PorCento'
       DisplayFormat = '##0.00 %'
+    end
+    object C_ConsultaTOTAL: TFloatField
+      FieldName = 'TOTAL'
     end
   end
   inherited GridPrinter: TdxComponentPrinter

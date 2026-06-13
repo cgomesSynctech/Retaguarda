@@ -50,32 +50,50 @@ type
     C_ConsultaUNIDADE: TStringField;
     C_ConsultaPISCOFINS: TStringField;
     C_ConsultaGRUPO: TStringField;
-    C_ConsultaQUANTIDADE: TFloatField;
-    C_ConsultaSUBTOTALITEM: TFloatField;
-    C_ConsultaTOTCUSTOMEDIO: TFloatField;
-    C_ConsultaTOTPRECOCOMPRA: TFloatField;
-    C_ConsultaRATEIODESCONTO: TFloatField;
-    C_ConsultaVALORFINAL: TFloatField;
+    C_ConsultaCUSTOMANUAL: TBCDField;
     C_ConsultaCUSTOMEDIO: TFloatField;
     C_ConsultaPRECOCOMPRA: TFloatField;
     C_ConsultaCUSTOCONTABIL: TFloatField;
+    C_ConsultaQUANTIDADE: TFloatField;
+    C_ConsultaSUBTOTALVENDAITEN: TFloatField;
+    C_ConsultaQTDDEV: TBCDField;
+    C_ConsultaTOTALCUSTODEVOLUCAO: TBCDField;
+    C_ConsultaREFERENCIA: TStringField;
     dbgConsultaITEM: TdxDBGridMaskColumn;
     dbgConsultaCODIGO: TdxDBGridMaskColumn;
     dbgConsultaDESCRICAO: TdxDBGridMaskColumn;
     dbgConsultaUNIDADE: TdxDBGridMaskColumn;
     dbgConsultaPISCOFINS: TdxDBGridMaskColumn;
     dbgConsultaGRUPO: TdxDBGridMaskColumn;
-    dbgConsultaQUANTIDADE: TdxDBGridMaskColumn;
-    dbgConsultaSUBTOTALITEM: TdxDBGridMaskColumn;
-    dbgConsultaTOTCUSTOMEDIO: TdxDBGridMaskColumn;
-    dbgConsultaTOTPRECOCOMPRA: TdxDBGridMaskColumn;
-    dbgConsultaRATEIODESCONTO: TdxDBGridMaskColumn;
-    dbgConsultaVALORFINAL: TdxDBGridMaskColumn;
     dbgConsultaCUSTOMANUAL: TdxDBGridCurrencyColumn;
     dbgConsultaCUSTOMEDIO: TdxDBGridMaskColumn;
     dbgConsultaPRECOCOMPRA: TdxDBGridMaskColumn;
     dbgConsultaCUSTOCONTABIL: TdxDBGridMaskColumn;
-    C_ConsultaCUSTOMANUAL: TBCDField;
+    dbgConsultaQUANTIDADE: TdxDBGridMaskColumn;
+    dbgConsultaSUBTOTALVENDAITEN: TdxDBGridMaskColumn;
+    dbgConsultaQTDDEV: TdxDBGridCurrencyColumn;
+    dbgConsultaTOTALCUSTODEVOLUCAO: TdxDBGridCurrencyColumn;
+    dbgConsultaREFERENCIA: TdxDBGridMaskColumn;
+    C_ConsultaPrecoVendaMedio: TFloatField;
+    C_ConsultaTotalCustoManual: TFloatField;
+    C_ConsultaApuracaoFinal: TFloatField;
+    C_ConsultaPerApuracaoFinal: TFloatField;
+    C_ConsultaPerApuracaoFinalManual: TFloatField;
+    C_ConsultaTotalPrecoCompra: TFloatField;
+    C_ConsultaApFinalManual: TFloatField;
+    dbgConsultaTotalPrecoCompra: TdxDBGridColumn;
+    dbgConsultaTotalCustoManual: TdxDBGridColumn;
+    dbgConsultaApuracaoFinal: TdxDBGridColumn;
+    dbgConsultaColumn21: TdxDBGridColumn;
+    dbgConsultaApFinalManual: TdxDBGridColumn;
+    dbgConsultaColumn23: TdxDBGridColumn;
+    dbgConsultaPrecoVendaMedio: TdxDBGridColumn;
+    C_ConsultaTotalCustomedio: TFloatField;
+    C_ConsultaApuracaoCustoMedio: TFloatField;
+    C_ConsultaperApCustoMedio: TFloatField;
+    dbgConsultaApuracaoCustoMedio: TdxDBGridColumn;
+    dbgConsultaperApCustoMedio: TdxDBGridColumn;
+    dbgConsultaTotalCustomedio: TdxDBGridColumn;
     procedure FormsComponentBeforeClearParams(Sender: TObject);
     procedure btAtualizarClick(Sender: TObject);
     procedure DataIDateChange(Sender: TObject);
@@ -172,7 +190,7 @@ begin
                        'Where '+PopupFiltrarItens.getSQL(False)+iif(PopupFiltrarItens.getSQL(False)<>'',' and ', '')+
                        ' s.data >= :datai and s.data <= :dataf  '
                        +sSituacao
-                       +nTP_MV + ' group by si.item, i.codigo, i.descricao, i.unidade, I.piscofins, gi.descricaogrupo, i.customanual, i.customedio, i.precocompra, i.custocontabil' ;
+                       +nTP_MV + ' group by si.item, i.codigo, i.descricao, i.referencia, i.unidade, I.piscofins, gi.descricaogrupo, i.customanual, i.customedio, i.precocompra, i.custocontabil' ;
 
  //       if sClientes <> '' then begin
  //          CommandText := CommandText + ' and s.favorecido in (' + sClientes +')';
@@ -187,6 +205,23 @@ begin
         Params.ParamByName('DataI').AsDateTime := DataI.Date;
         Params.ParamByName('DataF').AsDateTime := DataF.Date;
      Open;
+     while not(Eof) do begin
+     edit;
+     C_ConsultaTotalPrecoCompra.Value := C_ConsultaQUANTIDADE.Value * C_ConsultaPRECOCOMPRA.Value;
+     C_ConsultaPrecoVendaMedio.Value := C_ConsultaSUBTOTALVENDAITEN.Value / C_ConsultaQUANTIDADE.Value ;
+     C_ConsultaTotalCustoManual.Value := C_ConsultaCUSTOMANUAL.Value * C_ConsultaQUANTIDADE.Value ;
+     C_ConsultaApuracaoFinal.Value := C_ConsultaSUBTOTALVENDAITEN.Value - C_ConsultaTotalPrecoCompra.Value;
+     C_ConsultaApFinalManual.Value := C_ConsultaSUBTOTALVENDAITEN.Value - C_ConsultaTotalCustoManual.Value ;
+     C_ConsultaPerApuracaoFinalManual.Value := ( C_ConsultaApFinalManual.Value *100) / C_ConsultaSUBTOTALVENDAITEN.Value  ;
+     C_ConsultaPerApuracaoFinal.Value := ( C_ConsultaApuracaoFinal.Value * 100) / C_ConsultaSUBTOTALVENDAITEN.Value ;
+     C_ConsultaTotalCustomedio.Value := C_ConsultaQUANTIDADE.Value * C_ConsultaCUSTOMEDIO.Value;
+     C_ConsultaApuracaoCustoMedio.Value := C_ConsultaSUBTOTALVENDAITEN.Value - C_ConsultaTotalCustomedio.Value;
+     C_ConsultaperApCustoMedio.Value := ( C_ConsultaApuracaoCustoMedio.Value * 100) / C_ConsultaSUBTOTALVENDAITEN.Value ;
+
+     //C_ConsultaTotalGeral.Value := C_ConsultaSUBTOTALITEM.Value - C_ConsultaTOTPRECOCOMPRA.Value;
+
+     next;
+     end;
 
      end;
   with dbgConsulta do begin

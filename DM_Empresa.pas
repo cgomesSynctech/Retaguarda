@@ -189,6 +189,7 @@ type
     C_EmpresasESTACOES: TIntegerField;
     C_EmpresasCSC: TStringField;
     C_EmpresasFLEXDOCS: TStringField;
+    C_EmpresasSENHA: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure DMComponentGravar1_Iniciar(Sender: TObject;
@@ -306,7 +307,14 @@ begin
   C_Tabela.ApplyUpdates(0);
   If C_Empresas.State in [dsEdit,dsInsert] Then
     C_Empresas.Post;
-  C_Empresas.ApplyUpdates(0);
+
+    If C_Empresas.State in [dsBrowse] Then
+    begin
+    C_Empresas.Edit ;
+    C_Empresas.Post;
+    end     ;
+
+      C_Empresas.ApplyUpdates(0);
   if DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
     DMProjeto.DB_Projeto.DefaultTransaction.Commit;
 end;

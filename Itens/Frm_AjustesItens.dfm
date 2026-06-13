@@ -6,7 +6,7 @@ inherited FrmAjustesItens: TFrmAjustesItens
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Height = 335
+    Height = 346
     inherited btComando1: TTS_SpeedButton
       Hint = 
         'Permite mostrar como ser'#227'o os lan'#231'amentoi contab'#233'is, podendo alt' +
@@ -152,13 +152,13 @@ inherited FrmAjustesItens: TFrmAjustesItens
       OnClick = TS_SpeedButton1Click
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 301
+      Top = 312
     end
   end
   inherited pnDados: TTS_Panel
-    Height = 335
+    Height = 346
     inherited Grid: TTS_QDBGrid
-      Height = 333
+      Height = 344
       KeyField = 'IDMESTRE'
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'NUMERO'
@@ -260,10 +260,10 @@ inherited FrmAjustesItens: TFrmAjustesItens
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Height = 333
+      Height = 344
     end
     inherited sbDados: TTS_Panel
-      Height = 333
+      Height = 344
       Color = 14019327
       object shpQtdeAtual: TTS_Shape
         Left = 114

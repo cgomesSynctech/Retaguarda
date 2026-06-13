@@ -274,6 +274,9 @@ inherited FrmSaidasConsignadas: TFrmSaidasConsignadas
         DataSource = DMSaidasConsignadas.C_TabelaDS
       end
       inherited pgItens: TTS_PageControl
+        ActivePage = tsItens
+        TabIndex = 0
+        ActivePageIndex = 0
         inherited tsItens: TTS_TabSheet
           BevelInner = bvRaised
           BevelOuter = bvLowered
@@ -377,6 +380,7 @@ inherited FrmSaidasConsignadas: TFrmSaidasConsignadas
             inherited dbgItensPRECO: TdxDBGridPopupColumn [20]
               Visible = True
               Width = 45
+              OnChange = dbgItensPRECOChange
             end
             inherited dbgItensBaixoEstoque: TdxDBGridColumn [21]
               Width = 74
@@ -476,7 +480,7 @@ inherited FrmSaidasConsignadas: TFrmSaidasConsignadas
         inherited tsContrato: TTS_TabSheet
           inherited TS_Panel1: TTS_Panel
             inherited TS_DBMemo1: TTS_DBMemo
-              Top = 66
+              Top = 94
               DataSource = DMSaidasConsignadas.C_TabelaDS
               Height = 128
             end

@@ -1,17 +1,17 @@
 inherited dlgEtiquetaItem: TdlgEtiquetaItem
-  Left = 187
-  Top = 44
-  Width = 977
-  Height = 570
+  Left = 261
+  Top = 191
+  Width = 1107
+  Height = 763
   Caption = 'M'#243'dulo de Itens'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 852
+    Left = 982
     Width = 117
-    Height = 500
+    Height = 692
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 466
+      Top = 658
       Width = 115
     end
     inherited btComando2: TTS_SpeedButton
@@ -108,13 +108,13 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 969
+    Width = 1099
     Gradient.ColorStart = 9027548
     inherited imgModulo: TTS_Image
       Height = 39
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 933
+      Left = 1063
     end
     inherited lbCaption: TdxfLabel
       Width = 186
@@ -124,8 +124,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 852
-    Height = 500
+    Width = 982
+    Height = 692
     Color = 14019327
     object TS_Label1: TTS_Label
       Left = 5
@@ -136,18 +136,55 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       LinkToResult = 0
     end
     object Label1: TLabel
-      Left = 439
-      Top = 91
+      Left = 652
+      Top = 115
       Width = 59
       Height = 13
       Caption = 'Linha Inicial:'
     end
     object Label2: TLabel
-      Left = 583
+      Left = 420
       Top = 91
       Width = 110
       Height = 13
       Caption = 'Desconto A Vista (%) :'
+    end
+    object Label3: TLabel
+      Left = 427
+      Top = 113
+      Width = 28
+      Height = 13
+      Caption = 'Lote :'
+    end
+    object Label4: TLabel
+      Left = 531
+      Top = 115
+      Width = 47
+      Height = 13
+      Caption = 'Validade :'
+    end
+    object Label5: TLabel
+      Left = 589
+      Top = 91
+      Width = 99
+      Height = 13
+      Caption = 'Desc. Atacado (%) :'
+    end
+    object Label6: TLabel
+      Left = 11
+      Top = 105
+      Width = 35
+      Height = 13
+      Caption = 'Login : '
+      Visible = False
+    end
+    object Label7: TLabel
+      Left = 11
+      Top = 121
+      Width = 37
+      Height = 13
+      Caption = 'Senha :'
+      Visible = False
     end
     object PopupFiltroItens: TTS_PopupFiltrarItens
       Left = 106
@@ -191,8 +228,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     end
     object dbgItens: TTS_QDBGrid
       Left = 1
-      Top = 279
-      Width = 850
+      Top = 471
+      Width = 980
       Height = 220
       Bands = <
         item
@@ -299,7 +336,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         FieldName = 'REFERENCIA'
       end
       object dbgItensDESCRICAO: TdxDBGridMaskColumn
-        Sorted = csUp
+        Sorted = csDown
         Width = 181
         BandIndex = 0
         RowIndex = 0
@@ -414,7 +451,25 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
           'C2 - Etiqueta Ribon Duas Colunas'
           'L2 - Etiqueta Duas Colunas Elgin L42'
           'O1 - Etiqueta Joia (imp Zebra)'
-          'G1 - Etiqueta Gondola ( 7cm x 3cm )  ')
+          'G1 - Etiqueta Gondola ( 7cm x 3cm )  '
+          'G2 - Etiqueta Gondola ( 7cm x 3cm )  - Modelo 2'
+          'K1 - 03.3 Cm X 02.1 3 Colunas (Ribon - Elgin)'
+          'Z1 - Etiqueta Joia Imp Jato de Tinta ( C'#243'digo e Referencia )'
+          'Q1 - Gondola Horizontal - Lote e Validade'
+          'A1 - 3 Colunas ribon Loja'
+          'A2 - 03.3 Cm X 02.1 3 Colunas Com Data de entrada'
+          'G3 - Etiqueta Gondola ( 7cm x 3cm )  - Modelo 3'
+          'A.2 - 03.3 Cm X 02.1 3 Colunas (Ribon) ( sem Preco)'
+          'K2 - 03.3 Cm X 02.1 3 Colunas sem Preco (Ribon - Elgin)'
+          'S1 - 3 Colunas jato de tinta '
+          'S2 - ETIQUETAS PIMACO A4255 3 COLUNAS Com Logo'
+          'S3 - ETIQUETAS 3 COLUNAS Com Logo '
+          'M1 - Etiqueta Gondola 10cm ( Elgin ) '
+          'G3- Etiqueta Gondola ( 7cm x 3cm )  - Elgin'
+          'G4 - Gondolas 2 Colunas com Logo '
+          'G5 - Gondola 10x5 Atacado'
+          'C3 - Ribon Duas Colunas 42 x 24'
+          'C40 - 40 x 40 ')
         Height = 19
       end
       object cbUmaEtiqueta: TTS_CheckBox
@@ -691,13 +746,14 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       end
     end
     object edNumeroSaida: TTS_Edit
-      Left = 756
-      Top = 18
+      Left = 428
+      Top = 138
       Width = 176
       Hint = 
         'Digite o n'#250'mero da opera'#231#227'o de sa'#237'da.'#13#10'* Para cupom fiscal digit' +
         'e no formato: COO:999999'
       TabOrder = 6
+      Visible = False
       OnKeyDown = edNumeroSaidaKeyDown
       StyleController = DMProjeto.esItens
       Height = 19
@@ -725,20 +781,63 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       Transparent = True
     end
     object LInhaInicial: TTS_Edit
-      Left = 507
-      Top = 88
-      Width = 63
+      Left = 714
+      Top = 112
+      Width = 41
       TabOrder = 8
       Text = '1'
       StyleController = DMProjeto.esItens
       Height = 18
     end
     object TS_Edit1: TTS_Edit
-      Left = 698
+      Left = 535
       Top = 89
-      Width = 63
+      Width = 42
       TabOrder = 9
       Text = '0'
+      StyleController = DMProjeto.esItens
+      Height = 18
+    end
+    object TS_Validade: TTS_Edit
+      Left = 585
+      Top = 112
+      Width = 63
+      TabOrder = 11
+      StyleController = DMProjeto.esItens
+      Height = 18
+    end
+    object TS_Lote: TTS_Edit
+      Left = 464
+      Top = 112
+      Width = 63
+      TabOrder = 10
+      StyleController = DMProjeto.esItens
+      Height = 18
+    end
+    object TS_Edit2: TTS_Edit
+      Left = 695
+      Top = 89
+      Width = 50
+      TabOrder = 12
+      Text = '0'
+      StyleController = DMProjeto.esItens
+      Height = 18
+    end
+    object TS_Edit3: TTS_Edit
+      Left = 48
+      Top = 104
+      Width = 63
+      TabOrder = 13
+      Visible = False
+      StyleController = DMProjeto.esItens
+      Height = 18
+    end
+    object TS_Edit4: TTS_Edit
+      Left = 48
+      Top = 128
+      Width = 63
+      TabOrder = 14
+      Visible = False
       StyleController = DMProjeto.esItens
       Height = 18
     end
@@ -798,8 +897,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       'FROM ITENS I'
       '    LEFT JOIN fabricantes F ON F.fabricante = I.fabricante')
     UpdateObject = U_itens
-    Left = 560
-    Top = 153
+    Left = 368
+    Top = 193
     object Q_ItensITEM: TIntegerField
       FieldName = 'ITEM'
       Origin = 'ITENS.ITEM'
@@ -968,8 +1067,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       '       f.descricao AS FABRICANTE'
       'FROM ITENS I'
       '    LEFT JOIN fabricantes F ON F.fabricante = I.fabricante')
-    Left = 597
-    Top = 106
+    Left = 373
+    Top = 138
   end
   object Q_Etiquetas: TIBQuery
     Database = DMProjeto.DB_Projeto
@@ -979,8 +1078,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     CachedUpdates = True
     SQL.Strings = (
       '')
-    Left = 508
-    Top = 155
+    Left = 308
+    Top = 187
     object Q_EtiquetasEmpresa: TStringField
       FieldKind = fkCalculated
       FieldName = 'Empresa'
@@ -1012,9 +1111,10 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       Required = True
     end
     object Q_EtiquetasCODIGOBARRAS: TIBStringField
+      DisplayWidth = 13
       FieldName = 'CODIGOBARRAS'
       Origin = 'ITENS.CODIGOBARRAS'
-      Size = 13
+      Size = 14
     end
     object Q_EtiquetasESTOQUE: TIBBCDField
       FieldName = 'ESTOQUE'
@@ -1106,6 +1206,10 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     object Q_EtiquetasPRECODESCONTO: TFloatField
       FieldName = 'PRECODESCONTO'
     end
+    object Q_Etiquetasultimacompra: TDateField
+      FieldName = 'ultimacompra'
+      Origin = 'ITENS.ultimacompra'
+    end
   end
   object Q_GerarEtiquetasDs: TDataSource
     DataSet = Q_GerarEtiquetas
@@ -1115,8 +1219,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
   object ppDBEtiquetas: TppDBPipeline
     DataSource = Q_EtiquetasDs
     UserName = 'DBEtiquetas'
-    Left = 495
-    Top = 215
+    Left = 519
+    Top = 7
     object ppDBEtiquetasppField1: TppField
       FieldAlias = 'Empresa'
       FieldName = 'Empresa'
@@ -1364,6 +1468,28 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       DisplayWidth = 10
       Position = 24
     end
+    object ppDBEtiquetasppField26: TppField
+      FieldAlias = 'LOTE'
+      FieldName = 'LOTE'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 25
+    end
+    object ppDBEtiquetasppField27: TppField
+      FieldAlias = 'VALIDADE'
+      FieldName = 'VALIDADE'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 26
+    end
+    object ppDBEtiquetasppField28: TppField
+      FieldAlias = 'ultimacompra'
+      FieldName = 'ultimacompra'
+      FieldLength = 10
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 27
+    end
   end
   object Q_EtiquetasDs: TDataSource
     DataSet = Q_Etiquetas
@@ -1379,7 +1505,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 4000
     PrinterSetup.mmMarginLeft = 4000
@@ -1624,7 +1750,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 15000
@@ -1761,7 +1887,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 0
@@ -2030,7 +2156,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6000
     PrinterSetup.mmMarginLeft = 4000
@@ -2137,7 +2263,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6000
     PrinterSetup.mmMarginLeft = 4000
@@ -2228,7 +2354,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       end
       object ppDBText61: TppDBText
         UserName = 'DBText601'
-        DataField = 'QTDEMBALAGEM'
+        DataField = 'CODIGO'
         DataPipeline = ppDBEtiquetas
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2238,14 +2364,14 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 3969
-        mmLeft = 35983
+        mmLeft = 17992
         mmTop = 12171
         mmWidth = 17198
         BandType = 4
       end
       object ppLabel16: TppLabel
         UserName = 'Label16'
-        Caption = 'Qtd por Embalagem:'
+        Caption = 'CODIGO :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -2253,10 +2379,10 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Style = [fsBold]
         TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 3969
-        mmLeft = 794
+        mmHeight = 4233
+        mmLeft = 1058
         mmTop = 12171
-        mmWidth = 34660
+        mmWidth = 16404
         BandType = 4
       end
     end
@@ -2278,7 +2404,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6000
     PrinterSetup.mmMarginLeft = 10000
@@ -2420,7 +2546,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 30000
     PrinterSetup.mmPaperWidth = 60000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 132
@@ -2528,11 +2654,11 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 20000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 124
-    Top = 457
+    Left = 116
+    Top = 441
     Version = '6.02'
     mmColumnWidth = 36666
     DataPipelineName = 'ppDBEtiquetas'
@@ -2646,7 +2772,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 0
@@ -2771,7 +2897,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 3000
     PrinterSetup.mmPaperHeight = 279000
     PrinterSetup.mmPaperWidth = 224000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 537
@@ -2883,8 +3009,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       'select indexador, descricao, cifrao'
       'from indexadores '
       'order by descricao')
-    Left = 626
-    Top = 153
+    Left = 442
+    Top = 185
   end
   object P_Indexadores: TDataSetProvider
     DataSet = Q_Indexadores
@@ -2916,8 +3042,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     Transaction = DMProjeto.IBT_Projeto
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 457
-    Top = 155
+    Left = 257
+    Top = 163
   end
   object ppEtiquetas6X4_A4: TppReport
     AutoStop = False
@@ -2929,7 +3055,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 8000
@@ -3097,7 +3223,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 12700
     PrinterSetup.mmPaperWidth = 51857
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     DeviceType = 'Screen'
     Left = 889
     Top = 330
@@ -3202,7 +3328,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 0
@@ -3311,11 +3437,11 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 279000
     PrinterSetup.mmPaperWidth = 224000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 754
-    Top = 52
+    Left = 810
+    Top = 44
     Version = '6.02'
     mmColumnWidth = 110000
     DataPipelineName = 'ppDBEtiquetas'
@@ -3442,7 +3568,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 80000
     PrinterSetup.mmPaperWidth = 108000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 31
@@ -3651,8 +3777,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.PaperSize = 256
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 755
-    Top = 203
+    Left = 731
+    Top = 163
     Version = '6.02'
     mmColumnWidth = 116000
     DataPipelineName = 'ppDBEtiquetas'
@@ -3780,8 +3906,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.PaperSize = 256
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 763
-    Top = 253
+    Left = 803
+    Top = 245
     Version = '6.02'
     mmColumnWidth = 116000
     DataPipelineName = 'ppDBEtiquetas'
@@ -3886,7 +4012,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 20000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 249
@@ -3991,7 +4117,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 60000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 149
@@ -4147,7 +4273,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.PaperSize = 256
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 751
+    Left = 799
     Top = 151
     Version = '6.02'
     mmColumnWidth = 116000
@@ -4182,19 +4308,20 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         AutoSize = True
         DataField = 'PRECO'
         DataPipeline = ppDBEtiquetas
+        DisplayFormat = '#,##0.00'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 36
+        Font.Size = 32
         Font.Style = []
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 15081
-        mmLeft = 34396
+        mmHeight = 13229
+        mmLeft = 44715
         mmTop = 2646
-        mmWidth = 61119
+        mmWidth = 40481
         BandType = 4
       end
       object ppDBBarCode5: TppDBBarCode
@@ -4233,9 +4360,9 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 6615
-        mmLeft = 96309
-        mmTop = 6615
-        mmWidth = 20108
+        mmLeft = 93927
+        mmTop = 6879
+        mmWidth = 13758
         BandType = 4
       end
     end
@@ -4258,7 +4385,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 68000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 33
@@ -4416,7 +4543,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 68000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 37
@@ -4556,7 +4683,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 49000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 26
@@ -4696,7 +4823,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.PaperSize = 256
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 753
+    Left = 825
     Top = 103
     Version = '6.02'
     mmColumnWidth = 116000
@@ -4713,14 +4840,14 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 14
+        Font.Size = 13
         Font.Style = []
         Transparent = True
         WordWrap = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 12171
-        mmLeft = 7938
-        mmTop = 14817
+        mmHeight = 11377
+        mmLeft = 7408
+        mmTop = 15610
         mmWidth = 88636
         BandType = 4
       end
@@ -4733,16 +4860,16 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 18
+        Font.Size = 26
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 11113
-        mmLeft = 38100
+        mmHeight = 12435
+        mmLeft = 42069
         mmTop = 2646
-        mmWidth = 44186
+        mmWidth = 46038
         BandType = 4
       end
       object ppDBBarCode6: TppDBBarCode
@@ -4755,12 +4882,12 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Name = 'Arial'
-        Font.Size = 14
+        Font.Size = 16
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 11906
-        mmLeft = 7673
+        mmLeft = 7408
         mmTop = 2646
         mmWidth = 32544
         BandType = 4
@@ -4775,15 +4902,15 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial Narrow'
-        Font.Size = 12
+        Font.Size = 10
         Font.Style = [fsBold]
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 5292
-        mmLeft = 81492
+        mmHeight = 4233
+        mmLeft = 88371
         mmTop = 4763
-        mmWidth = 15346
+        mmWidth = 8467
         BandType = 4
       end
     end
@@ -4797,7 +4924,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -4808,8 +4935,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.PaperSize = 1
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 352
-    Top = 355
+    Left = 328
+    Top = 339
     Version = '6.02'
     mmColumnWidth = 101600
     DataPipelineName = 'ppDBEtiquetas'
@@ -4987,8 +5114,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         'left Join TIPOTRIBUTACAOFEDERAL tf on si.IDTRIBFEDERAL = tf.IDTR' +
         'IBFEDERAL'
       'where s.NUMERO = :NUMERO')
-    Left = 408
-    Top = 155
+    Left = 200
+    Top = 187
     ParamData = <
       item
         DataType = ftUnknown
@@ -4998,8 +5125,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
   end
   object Q_SAIDASDS: TDataSource
     DataSet = Q_SAIDAS
-    Left = 410
-    Top = 209
+    Left = 506
+    Top = 281
   end
   object C_SAIDAS: TClientDataSet
     Aggregates = <>
@@ -5198,7 +5325,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 30000
     PrinterSetup.mmPaperWidth = 50000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 572
@@ -5294,7 +5421,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 67000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 34
@@ -5327,7 +5454,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 7408
         mmLeft = 1323
-        mmTop = 32015
+        mmTop = 30956
         mmWidth = 33338
         BandType = 4
       end
@@ -5345,8 +5472,8 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 3969
-        mmLeft = 7408
-        mmTop = 52652
+        mmLeft = 7673
+        mmTop = 51594
         mmWidth = 15346
         BandType = 4
       end
@@ -5365,7 +5492,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 9790
         mmLeft = 2117
-        mmTop = 14288
+        mmTop = 12700
         mmWidth = 32015
         BandType = 4
       end
@@ -5405,7 +5532,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 3378
         mmLeft = 2381
-        mmTop = 24077
+        mmTop = 23019
         mmWidth = 32015
         BandType = 4
       end
@@ -5414,7 +5541,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         MaintainAspectRatio = False
         mmHeight = 10848
         mmLeft = 794
-        mmTop = 2381
+        mmTop = 1323
         mmWidth = 33338
         BandType = 4
       end
@@ -5433,7 +5560,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 9790
         mmLeft = 1058
-        mmTop = 43127
+        mmTop = 41540
         mmWidth = 32015
         BandType = 4
       end
@@ -5452,7 +5579,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         DataPipelineName = 'ppDBEtiquetas'
         mmHeight = 5556
         mmLeft = 529
-        mmTop = 61119
+        mmTop = 60061
         mmWidth = 32015
         BandType = 4
       end
@@ -5465,43 +5592,29 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Size = 6
         Font.Style = []
         Transparent = True
-        mmHeight = 3969
+        mmHeight = 3175
         mmLeft = 265
-        mmTop = 27781
+        mmTop = 26988
         mmWidth = 34660
-        BandType = 4
-      end
-      object ppLabel33: TppLabel
-        UserName = 'Label33'
-        Caption = 'A Vista : R$'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = [fsBold]
-        Transparent = True
-        mmHeight = 3440
-        mmLeft = 794
-        mmTop = 57150
-        mmWidth = 16404
         BandType = 4
       end
       object ppDBText112: TppDBText
         UserName = 'DBText112'
-        DataField = 'PRECOPROMOCAO'
+        OnGetText = ppDBText10GetText
+        DataField = 'CODIGO'
         DataPipeline = ppDBEtiquetas
-        DisplayFormat = '$#,0.00;($#,0.00)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
-        Font.Style = [fsBold]
+        Font.Style = []
+        TextAlignment = taCentered
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3969
-        mmLeft = 17463
-        mmTop = 56886
-        mmWidth = 15081
+        mmHeight = 3440
+        mmLeft = 794
+        mmTop = 56092
+        mmWidth = 32015
         BandType = 4
       end
     end
@@ -5525,7 +5638,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 15000
@@ -5656,7 +5769,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Carta (8,5 x 11 pol.; 216 x 279 mm)'
+    PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 0
     PrinterSetup.mmMarginLeft = 15000
@@ -5776,10 +5889,10 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 12700
     PrinterSetup.mmPaperWidth = 68580
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     DeviceType = 'Screen'
-    Left = 889
-    Top = 226
+    Left = 897
+    Top = 170
     Version = '6.02'
     mmColumnWidth = 51857
     DataPipelineName = 'ppDBEtiquetas'
@@ -5922,7 +6035,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 12700
     PrinterSetup.mmPaperWidth = 68580
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     DeviceType = 'Screen'
     Left = 889
     Top = 378
@@ -6022,11 +6135,11 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 20000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 660
-    Top = 481
+    Left = 684
+    Top = 473
     Version = '6.02'
     mmColumnWidth = 36666
     DataPipelineName = 'ppDBEtiquetas'
@@ -6173,11 +6286,11 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 30000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 564
-    Top = 473
+    Left = 548
+    Top = 457
     Version = '6.02'
     mmColumnWidth = 55000
     DataPipelineName = 'ppDBEtiquetas'
@@ -6324,7 +6437,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 10000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 445
@@ -6427,389 +6540,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       mmPrintPosition = 0
     end
   end
-  object ppReport1: TppReport
-    AutoStop = False
-    Columns = 2
-    ColumnPositions.Strings = (
-      '0'
-      '50005')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 0
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 23813
-    PrinterSetup.mmPaperWidth = 100013
-    PrinterSetup.PaperSize = 256
-    DeviceType = 'Screen'
-    Left = 305
-    Top = 82
-    Version = '6.02'
-    mmColumnWidth = 50005
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand27: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand37: TppDetailBand
-      mmBottomOffset = 76200
-      mmHeight = 12171
-      mmPrintPosition = 0
-      object ppDBText133: TppDBText
-        UserName = 'DBText46'
-        DataField = 'PRECO'
-        DataPipeline = ppDBEtiquetas
-        DisplayFormat = 'R$#,0.00;-R$#,0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 6
-        Font.Style = [fsBold]
-        TextAlignment = taCentered
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 2910
-        mmLeft = 16404
-        mmTop = 7938
-        mmWidth = 19579
-        BandType = 4
-      end
-      object ppLabel26: TppLabel
-        UserName = 'Cifrao'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 6
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
-        mmHeight = 2646
-        mmLeft = 5556
-        mmTop = 7408
-        mmWidth = 8202
-        BandType = 4
-      end
-      object ppDBBarCode13: TppDBBarCode
-        UserName = 'DBBarCode10'
-        AutoEncode = True
-        AutoSizeFont = False
-        BarCodeType = bcCode128
-        BarColor = clWindowText
-        DataField = 'CODIGO'
-        DataPipeline = ppDBEtiquetas
-        Alignment = taCenter
-        AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Courier New'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 6879
-        mmLeft = 4233
-        mmTop = 265
-        mmWidth = 28310
-        BandType = 4
-        mmBarWidth = 254
-        mmWideBarRatio = 76200
-      end
-    end
-    object ppColumnFooterBand27: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-  end
-  object ppReport2: TppReport
-    AutoStop = False
-    Columns = 2
-    ColumnPositions.Strings = (
-      '0'
-      '41000')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 0
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 10000
-    PrinterSetup.mmPaperWidth = 86000
-    PrinterSetup.PaperSize = 256
-    Units = utMillimeters
-    DeviceType = 'Screen'
-    Left = 329
-    Top = 90
-    Version = '6.02'
-    mmColumnWidth = 41000
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand28: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand38: TppDetailBand
-      mmBottomOffset = 0
-      mmHeight = 12171
-      mmPrintPosition = 0
-      object ppDBText137: TppDBText
-        UserName = 'DBText44'
-        CharWrap = True
-        DataField = 'DESCRICAO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 5
-        Font.Style = []
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3175
-        mmLeft = 7408
-        mmTop = 529
-        mmWidth = 28575
-        BandType = 4
-      end
-      object ppDBBarCode14: TppDBBarCode
-        UserName = 'DBBarCode9'
-        AutoEncode = True
-        AutoSizeFont = False
-        BarCodeType = bcCode128
-        BarColor = clWindowText
-        DataField = 'CODIGO'
-        DataPipeline = ppDBEtiquetas
-        Alignment = taCenter
-        AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Courier New'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 6879
-        mmLeft = 5556
-        mmTop = 3969
-        mmWidth = 24342
-        BandType = 4
-        mmBarWidth = 254
-        mmWideBarRatio = 76200
-      end
-    end
-    object ppColumnFooterBand28: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-  end
-  object ppReport3: TppReport
-    AutoStop = False
-    Columns = 2
-    ColumnPositions.Strings = (
-      '4000'
-      '57000')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 4000
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 67000
-    PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
-    Units = utMillimeters
-    DeviceType = 'Screen'
-    Left = 346
-    Top = 138
-    Version = '6.02'
-    mmColumnWidth = 53000
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand29: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand39: TppDetailBand
-      ColumnTraversal = ctLeftToRight
-      mmBottomOffset = 0
-      mmHeight = 49742
-      mmPrintPosition = 0
-      object ppDBText139: TppDBText
-        UserName = 'DBText9'
-        CharWrap = True
-        DataField = 'DESCRICAO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 4233
-        mmLeft = 1588
-        mmTop = 2117
-        mmWidth = 32015
-        BandType = 4
-      end
-      object ppDBText141: TppDBText
-        UserName = 'DBText92'
-        OnGetText = ppDBText10GetText
-        DataField = 'CODIGO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        TextAlignment = taCentered
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3440
-        mmLeft = 1323
-        mmTop = 7673
-        mmWidth = 32015
-        BandType = 4
-      end
-      object ppLabel27: TppLabel
-        UserName = 'Label22'
-        Caption = 'Em Caso de Troca Manter a Etiqueta'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Times New Roman'
-        Font.Size = 6
-        Font.Style = []
-        Transparent = True
-        mmHeight = 3969
-        mmLeft = 529
-        mmTop = 12171
-        mmWidth = 34660
-        BandType = 4
-      end
-    end
-    object ppColumnFooterBand29: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object raCodeModule6: TraCodeModule
-      ProgramStream = {00}
-    end
-  end
-  object ppReport4: TppReport
-    AutoStop = False
-    Columns = 3
-    ColumnPositions.Strings = (
-      '4000'
-      '39333'
-      '74666')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 4000
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 67000
-    PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 256
-    Units = utMillimeters
-    DeviceType = 'Screen'
-    Left = 370
-    Top = 98
-    Version = '6.02'
-    mmColumnWidth = 35333
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand30: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand40: TppDetailBand
-      ColumnTraversal = ctLeftToRight
-      mmBottomOffset = 0
-      mmHeight = 49742
-      mmPrintPosition = 0
-      object ppDBText136: TppDBText
-        UserName = 'DBText9'
-        CharWrap = True
-        DataField = 'DESCRICAO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 4233
-        mmLeft = 1588
-        mmTop = 2117
-        mmWidth = 32015
-        BandType = 4
-      end
-      object ppDBText138: TppDBText
-        UserName = 'DBText92'
-        OnGetText = ppDBText10GetText
-        DataField = 'CODIGO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        TextAlignment = taCentered
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3440
-        mmLeft = 1323
-        mmTop = 7673
-        mmWidth = 32015
-        BandType = 4
-      end
-      object ppLabel28: TppLabel
-        UserName = 'Label22'
-        Caption = 'Em Caso de Troca Manter a Etiqueta'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Times New Roman'
-        Font.Size = 6
-        Font.Style = []
-        Transparent = True
-        mmHeight = 3969
-        mmLeft = 529
-        mmTop = 12171
-        mmWidth = 34660
-        BandType = 4
-      end
-    end
-    object ppColumnFooterBand30: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object raCodeModule7: TraCodeModule
-      ProgramStream = {00}
-    end
-  end
-  object ppReport5: TppReport
+  object pp2ColunasElginL42: TppReport
     AutoStop = False
     Columns = 2
     ColumnPositions.Strings = (
@@ -6826,11 +6557,11 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 30000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     Units = utMillimeters
     DeviceType = 'Screen'
-    Left = 348
-    Top = 105
+    Left = 76
+    Top = 393
     Version = '6.02'
     mmColumnWidth = 39500
     DataPipelineName = 'ppDBEtiquetas'
@@ -6941,394 +6672,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
       mmPrintPosition = 0
     end
   end
-  object ppReport6: TppReport
-    AutoStop = False
-    Columns = 2
-    ColumnPositions.Strings = (
-      '1000'
-      '50500')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 1000
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 30000
-    PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 256
-    Units = utMillimeters
-    DeviceType = 'Screen'
-    Left = 396
-    Top = 89
-    Version = '6.02'
-    mmColumnWidth = 49500
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand32: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand42: TppDetailBand
-      ColumnTraversal = ctLeftToRight
-      mmBottomOffset = 0
-      mmHeight = 28046
-      mmPrintPosition = 0
-      object ppDBText144: TppDBText
-        UserName = 'DBText2'
-        DataField = 'PRECO'
-        DataPipeline = ppDBEtiquetas
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3440
-        mmLeft = 37306
-        mmTop = 23813
-        mmWidth = 11113
-        BandType = 4
-      end
-      object ppDBText145: TppDBText
-        UserName = 'DBText27'
-        OnGetText = ppDBText27GetText
-        DataField = 'CODIGOBARRAS'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'C39HrP24DhTt'
-        Font.Size = 30
-        Font.Style = []
-        TextAlignment = taCentered
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 5292
-        mmLeft = 2910
-        mmTop = 16404
-        mmWidth = 26988
-        BandType = 4
-      end
-      object ppDBText146: TppDBText
-        UserName = 'DBText140'
-        DataField = 'DESCRICAO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Times New Roman'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 4498
-        mmLeft = 6879
-        mmTop = 21696
-        mmWidth = 28840
-        BandType = 4
-      end
-    end
-    object ppColumnFooterBand32: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-  end
-  object ppReport7: TppReport
-    AutoStop = False
-    Columns = 2
-    ColumnPositions.Strings = (
-      '1000'
-      '40500')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 1000
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 30000
-    PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 256
-    Units = utMillimeters
-    DeviceType = 'Screen'
-    Left = 316
-    Top = 121
-    Version = '6.02'
-    mmColumnWidth = 39500
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand33: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand43: TppDetailBand
-      ColumnTraversal = ctLeftToRight
-      mmBottomOffset = 0
-      mmHeight = 28046
-      mmPrintPosition = 0
-      object ppDBText147: TppDBText
-        UserName = 'DBText2'
-        DataField = 'PRECO'
-        DataPipeline = ppDBEtiquetas
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3440
-        mmLeft = 25929
-        mmTop = 24077
-        mmWidth = 8996
-        BandType = 4
-      end
-      object ppDBText148: TppDBText
-        UserName = 'DBText27'
-        OnGetText = ppDBText27GetText
-        DataField = 'CODIGOBARRAS'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'C39HrP24DhTt'
-        Font.Size = 30
-        Font.Style = []
-        TextAlignment = taCentered
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 5292
-        mmLeft = 2910
-        mmTop = 22754
-        mmWidth = 22225
-        BandType = 4
-      end
-      object ppDBText149: TppDBText
-        UserName = 'DBText140'
-        DataField = 'DESCRICAO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Times New Roman'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 4498
-        mmLeft = 2910
-        mmTop = 18785
-        mmWidth = 32544
-        BandType = 4
-      end
-    end
-    object ppColumnFooterBand33: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-  end
-  object ppReport8: TppReport
-    AutoStop = False
-    Columns = 2
-    ColumnPositions.Strings = (
-      '1000'
-      '40500')
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 1000
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 30000
-    PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 256
-    Units = utMillimeters
-    DeviceType = 'Screen'
-    Left = 380
-    Top = 145
-    Version = '6.02'
-    mmColumnWidth = 39500
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppColumnHeaderBand34: TppColumnHeaderBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-    object ppDetailBand44: TppDetailBand
-      ColumnTraversal = ctLeftToRight
-      mmBottomOffset = 0
-      mmHeight = 28046
-      mmPrintPosition = 0
-      object ppDBText143: TppDBText
-        UserName = 'DBText2'
-        DataField = 'PRECO'
-        DataPipeline = ppDBEtiquetas
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3440
-        mmLeft = 25929
-        mmTop = 24077
-        mmWidth = 8996
-        BandType = 4
-      end
-      object ppDBText151: TppDBText
-        UserName = 'DBText140'
-        DataField = 'DESCRICAO'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Times New Roman'
-        Font.Size = 5
-        Font.Style = []
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 3175
-        mmLeft = 2910
-        mmTop = 18785
-        mmWidth = 32544
-        BandType = 4
-      end
-      object ppDBText152: TppDBText
-        UserName = 'DBText150'
-        OnGetText = ppDBText10GetText
-        DataField = 'CODIGOBARRAS'
-        DataPipeline = ppDBEtiquetas
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'C39HrP24DhTt'
-        Font.Size = 16
-        Font.Style = []
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 7673
-        mmLeft = 2910
-        mmTop = 21696
-        mmWidth = 23019
-        BandType = 4
-      end
-    end
-    object ppColumnFooterBand34: TppColumnFooterBand
-      mmBottomOffset = 0
-      mmHeight = 0
-      mmPrintPosition = 0
-    end
-  end
-  object ppReport9: TppReport
-    AutoStop = False
-    DataPipeline = ppDBEtiquetas
-    PrinterSetup.BinName = 'Default'
-    PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
-    PrinterSetup.PrinterName = 'Default'
-    PrinterSetup.mmMarginBottom = 0
-    PrinterSetup.mmMarginLeft = 0
-    PrinterSetup.mmMarginRight = 0
-    PrinterSetup.mmMarginTop = 0
-    PrinterSetup.mmPaperHeight = 38100
-    PrinterSetup.mmPaperWidth = 246380
-    PrinterSetup.PaperSize = 256
-    DeviceType = 'Screen'
-    Left = 425
-    Top = 130
-    Version = '6.02'
-    mmColumnWidth = 51857
-    DataPipelineName = 'ppDBEtiquetas'
-    object ppDetailBand45: TppDetailBand
-      mmBottomOffset = 0
-      mmHeight = 12171
-      mmPrintPosition = 0
-      object ppDBText154: TppDBText
-        UserName = 'DBText46'
-        DataField = 'PRECO'
-        DataPipeline = ppDBEtiquetas
-        DisplayFormat = 'R$#,0.00;-R$#,0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 6
-        Font.Style = [fsBold]
-        TextAlignment = taCentered
-        Transparent = True
-        WordWrap = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 2910
-        mmLeft = 74348
-        mmTop = 8202
-        mmWidth = 19579
-        BandType = 4
-      end
-      object ppLabel30: TppLabel
-        UserName = 'Cifrao'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Tahoma'
-        Font.Size = 6
-        Font.Style = [fsBold]
-        TextAlignment = taRightJustified
-        Transparent = True
-        mmHeight = 2646
-        mmLeft = 65617
-        mmTop = 7938
-        mmWidth = 8202
-        BandType = 4
-      end
-      object ppImage6: TppImage
-        UserName = 'Image3'
-        MaintainAspectRatio = False
-        mmHeight = 9260
-        mmLeft = 178065
-        mmTop = 1058
-        mmWidth = 29898
-        BandType = 4
-      end
-      object ppDBBarCode15: TppDBBarCode
-        UserName = 'DBBarCode10'
-        AutoEncode = True
-        AutoSizeFont = False
-        BarCodeType = bcCode128
-        BarColor = clWindowText
-        DataField = 'CODIGO'
-        DataPipeline = ppDBEtiquetas
-        Alignment = taCenter
-        AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Name = 'Courier New'
-        Font.Size = 8
-        Font.Style = []
-        Transparent = True
-        DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 6879
-        mmLeft = 211932
-        mmTop = 529
-        mmWidth = 28310
-        BandType = 4
-        mmBarWidth = 254
-        mmWideBarRatio = 76200
-      end
-    end
-  end
-  object ppReport10: TppReport
+  object ppEtiquetaJoia303012: TppReport
     AutoStop = False
     DataPipeline = ppDBEtiquetas
     PrinterSetup.BinName = 'Default'
@@ -7341,10 +6685,10 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 15240
     PrinterSetup.mmPaperWidth = 114300
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 119
     DeviceType = 'Screen'
-    Left = 305
-    Top = 170
+    Left = 33
+    Top = 306
     Version = '6.02'
     mmColumnWidth = 55880
     DataPipelineName = 'ppDBEtiquetas'
@@ -7442,7 +6786,7 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
     Units = utMillimeters
     DeviceType = 'Screen'
     Left = 767
-    Top = 303
+    Top = 367
     Version = '6.02'
     mmColumnWidth = 116000
     DataPipelineName = 'ppDBEtiquetas'
@@ -7587,6 +6931,2399 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         mmLeft = 35719
         mmTop = 12171
         mmWidth = 29369
+        BandType = 4
+      end
+    end
+  end
+  object ppEtiquetas33X21_3Col_Elgin: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '0'
+      '36666'
+      '73332')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 20000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 353
+    Top = 480
+    Version = '6.02'
+    mmColumnWidth = 36666
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand35: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand49: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 20000
+      mmPrintPosition = 0
+      object ppDBText166: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 6
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5292
+        mmLeft = 5556
+        mmTop = 529
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBText167: TppDBText
+        UserName = 'DBText29'
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$ ###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5005
+        mmLeft = 9525
+        mmTop = 5821
+        mmWidth = 25400
+        BandType = 4
+      end
+      object ppDBBarCode18: TppDBBarCode
+        UserName = 'DBBarCode1'
+        AutoEncode = True
+        AutoSizeFont = False
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Alignment = taCenter
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 7408
+        mmLeft = 9525
+        mmTop = 10319
+        mmWidth = 25400
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+    end
+    object ppColumnFooterBand35: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppEtiquetaJoiaJatoTinta2: TppReport
+    AutoStop = False
+    Columns = 2
+    ColumnPositions.Strings = (
+      '15000'
+      '97000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 15000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 14000
+    PrinterSetup.mmPaperHeight = 279000
+    PrinterSetup.mmPaperWidth = 216000
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'S:\Fontes\Retaguarda\ilton.rtm'
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 889
+    Top = 232
+    Version = '6.02'
+    mmColumnWidth = 82000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand36: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand48: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 12800
+      mmPrintPosition = 0
+      object ppDBText162: TppDBText
+        UserName = 'DBText7'
+        OnGetText = ppDBText7GetText
+        DataField = 'REFERENCIA'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3175
+        mmLeft = 11642
+        mmTop = 1323
+        mmWidth = 19315
+        BandType = 4
+      end
+      object ppDBText163: TppDBText
+        UserName = 'DBText8'
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3440
+        mmLeft = 18785
+        mmTop = 4763
+        mmWidth = 11906
+        BandType = 4
+      end
+      object ppDBText165: TppDBText
+        UserName = 'DBText9'
+        CharWrap = True
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 6879
+        mmLeft = 39952
+        mmTop = 1852
+        mmWidth = 27781
+        BandType = 4
+      end
+      object ppLabel34: TppLabel
+        OnPrint = ppMonetarioPrint
+        UserName = 'Monetario'
+        AutoSize = False
+        Caption = 'R$'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 14023
+        mmTop = 4763
+        mmWidth = 4498
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand36: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppGondolaPequenaModelo2: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 29000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 767
+    Top = 423
+    Version = '6.02'
+    mmColumnWidth = 116000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand50: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 28000
+      mmPrintPosition = 0
+      object ppDBText168: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 9790
+        mmLeft = 2910
+        mmTop = 0
+        mmWidth = 65352
+        BandType = 4
+      end
+      object ppDBText169: TppDBText
+        UserName = 'DBText6'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5027
+        mmLeft = 47890
+        mmTop = 11113
+        mmWidth = 20638
+        BandType = 4
+      end
+      object ppDBBarCode17: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 16140
+        mmLeft = 3175
+        mmTop = 10583
+        mmWidth = 25135
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppLabel35: TppLabel
+        UserName = 'Label32'
+        Caption = #192' Vista :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 11
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5292
+        mmLeft = 35454
+        mmTop = 18521
+        mmWidth = 11113
+        BandType = 4
+      end
+      object ppDBText172: TppDBText
+        UserName = 'DBText164'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECOPROMOCAO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$,0.00;-R$,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5027
+        mmLeft = 47890
+        mmTop = 18785
+        mmWidth = 20638
+        BandType = 4
+      end
+      object ppLabel36: TppLabel
+        UserName = 'Label36'
+        Caption = 'Cart'#227'o :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 11
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5292
+        mmLeft = 35454
+        mmTop = 11113
+        mmWidth = 11377
+        BandType = 4
+      end
+    end
+  end
+  object ppGondolaHorizontalLote: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 29000
+    PrinterSetup.mmPaperWidth = 100000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 529
+    Top = 175
+    Version = '6.02'
+    mmColumnWidth = 116000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand51: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 28000
+      mmPrintPosition = 0
+      object ppDBText170: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 13494
+        mmLeft = 3175
+        mmTop = 265
+        mmWidth = 93663
+        BandType = 4
+      end
+      object ppDBBarCode19: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGOBARRAS'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 11906
+        mmLeft = 51065
+        mmTop = 15610
+        mmWidth = 44186
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppLabel37: TppLabel
+        UserName = 'Label37'
+        Caption = 'Lote :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 11
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 11642
+        mmTop = 16140
+        mmWidth = 9525
+        BandType = 4
+      end
+      object ppLabel38: TppLabel
+        UserName = 'Label38'
+        Caption = 'Val :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 11
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 13494
+        mmTop = 22754
+        mmWidth = 7144
+        BandType = 4
+      end
+      object ppLabel40: TppLabel
+        UserName = 'Cifrao1'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 22490
+        mmTop = 15610
+        mmWidth = 21696
+        BandType = 4
+      end
+      object ppLabel41: TppLabel
+        UserName = 'Label41'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4763
+        mmLeft = 22490
+        mmTop = 22754
+        mmWidth = 22490
+        BandType = 4
+      end
+    end
+  end
+  object ppLoja: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '0'
+      '36666'
+      '73332')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 20000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 172
+    Top = 497
+    Version = '6.02'
+    mmColumnWidth = 36666
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand37: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand52: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 20000
+      mmPrintPosition = 0
+      object ppDBText171: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 6
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5292
+        mmLeft = 2646
+        mmTop = 3969
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBText173: TppDBText
+        UserName = 'DBText29'
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$ ###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4163
+        mmLeft = 2646
+        mmTop = 8996
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBText174: TppDBText
+        UserName = 'DBText94'
+        DataField = 'Empresa'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 6
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3175
+        mmLeft = 2646
+        mmTop = 794
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBText175: TppDBText
+        UserName = 'DBText175'
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4163
+        mmLeft = 2646
+        mmTop = 14023
+        mmWidth = 29633
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand37: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppEtiquetas33X21_3Col_DataEntrada: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '0'
+      '36666'
+      '73332')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 20000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 436
+    Top = 361
+    Version = '6.02'
+    mmColumnWidth = 36666
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand38: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand53: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 20000
+      mmPrintPosition = 0
+      object ppDBText176: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 6
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5292
+        mmLeft = 2646
+        mmTop = 3969
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBText177: TppDBText
+        UserName = 'DBText29'
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$ ###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3302
+        mmLeft = 2646
+        mmTop = 8996
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBBarCode20: TppDBBarCode
+        UserName = 'DBBarCode1'
+        AutoEncode = True
+        AutoSizeFont = False
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Alignment = taCenter
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 6879
+        mmLeft = 3175
+        mmTop = 12700
+        mmWidth = 28310
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppDBText178: TppDBText
+        UserName = 'DBText94'
+        DataField = 'ultimacompra'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 6
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3175
+        mmLeft = 2646
+        mmTop = 794
+        mmWidth = 29633
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand38: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppGondolaPequenaModelo3: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 29000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 767
+    Top = 479
+    Version = '6.02'
+    mmColumnWidth = 110000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand54: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 28000
+      mmPrintPosition = 0
+      object ppDBText179: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 9790
+        mmLeft = 2910
+        mmTop = 0
+        mmWidth = 65352
+        BandType = 4
+      end
+      object ppDBText180: TppDBText
+        UserName = 'DBText6'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5027
+        mmLeft = 46831
+        mmTop = 9790
+        mmWidth = 20638
+        BandType = 4
+      end
+      object ppDBBarCode21: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 16140
+        mmLeft = 3175
+        mmTop = 10583
+        mmWidth = 25135
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppLabel33: TppLabel
+        UserName = 'Label32'
+        Caption = #192' Vista :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 34660
+        mmTop = 15610
+        mmWidth = 10848
+        BandType = 4
+      end
+      object ppLabel39: TppLabel
+        UserName = 'Label36'
+        Caption = 'Cart'#227'o :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 34925
+        mmTop = 10054
+        mmWidth = 11113
+        BandType = 4
+      end
+      object ppLabel42: TppLabel
+        UserName = 'Label42'
+        Caption = 'Atacado :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 33867
+        mmTop = 21167
+        mmWidth = 11642
+        BandType = 4
+      end
+      object ppDBText183: TppDBText
+        UserName = 'DBText183'
+        DataField = 'PRECODESCONTO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$,0.00;-R$,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 11
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4498
+        mmLeft = 46038
+        mmTop = 20902
+        mmWidth = 22490
+        BandType = 4
+      end
+      object ppDBText181: TppDBText
+        UserName = 'DBText181'
+        DataField = 'PRECOPROMOCAO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$,0.00;-R$,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 11
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4498
+        mmLeft = 46567
+        mmTop = 15346
+        mmWidth = 21431
+        BandType = 4
+      end
+    end
+  end
+  object ppEtiquetaA1sempreco: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '0'
+      '36666'
+      '73332')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 20000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 620
+    Top = 465
+    Version = '6.02'
+    mmColumnWidth = 36666
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand39: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand55: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 20000
+      mmPrintPosition = 0
+      object ppDBText182: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Bodoni MT'
+        Font.Size = 5
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 7144
+        mmLeft = 2646
+        mmTop = 1588
+        mmWidth = 20902
+        BandType = 4
+      end
+      object ppDBBarCode22: TppDBBarCode
+        UserName = 'DBBarCode1'
+        AutoEncode = True
+        AutoSizeFont = False
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Alignment = taCenter
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 6879
+        mmLeft = 3175
+        mmTop = 9260
+        mmWidth = 28310
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppDBText186: TppDBText
+        UserName = 'DBText126'
+        CharWrap = True
+        DataField = 'REFERENCIA'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Bodoni MT'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3175
+        mmLeft = 3704
+        mmTop = 16404
+        mmWidth = 18256
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand39: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppEtiquetas33X21_3Col_Elgin_Sem_Preco: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '0'
+      '34000'
+      '68000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 20000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 481
+    Top = 504
+    Version = '6.02'
+    mmColumnWidth = 36666
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand40: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand56: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 20000
+      mmPrintPosition = 0
+      object ppDBText184: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 7
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5292
+        mmLeft = 4763
+        mmTop = 529
+        mmWidth = 29633
+        BandType = 4
+      end
+      object ppDBBarCode23: TppDBBarCode
+        UserName = 'DBBarCode1'
+        AutoEncode = True
+        AutoSizeFont = False
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'REFERENCIA'
+        DataPipeline = ppDBEtiquetas
+        Alignment = taCenter
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10054
+        mmLeft = 4763
+        mmTop = 6085
+        mmWidth = 23813
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+    end
+    object ppColumnFooterBand40: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppPimaco3Colunas: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '6000'
+      '73500'
+      '143000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4 210 x 297 mm'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 8000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 11000
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 151
+    Top = 167
+    Version = '6.02'
+    mmColumnWidth = 63500
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand41: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand57: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 25665
+      mmPrintPosition = 0
+      object ppDBText185: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10054
+        mmLeft = 1058
+        mmTop = 15081
+        mmWidth = 59531
+        BandType = 4
+      end
+      object ppDBText187: TppDBText
+        UserName = 'DBText6'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4498
+        mmLeft = 529
+        mmTop = 1058
+        mmWidth = 22754
+        BandType = 4
+      end
+      object ppDBBarCode24: TppDBBarCode
+        OnPrint = ppDBBarCode7Print
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGOBARRAS'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 8467
+        mmLeft = 2381
+        mmTop = 5821
+        mmWidth = 58208
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppDBText188: TppDBText
+        UserName = 'DBText188'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        DataField = 'REFERENCIA'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4498
+        mmLeft = 28046
+        mmTop = 1058
+        mmWidth = 27517
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand41: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppPimaco3ColunasLogo: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '6000'
+      '73500'
+      '143000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4 210 x 297 mm'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 8000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 11000
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 159
+    Top = 215
+    Version = '6.02'
+    mmColumnWidth = 63500
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand42: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand58: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 26458
+      mmPrintPosition = 0
+      object ppDBText189: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 8467
+        mmLeft = 1852
+        mmTop = 11377
+        mmWidth = 57415
+        BandType = 4
+      end
+      object ppDBBarCode25: TppDBBarCode
+        OnPrint = ppDBBarCode7Print
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 8467
+        mmLeft = 2381
+        mmTop = 1323
+        mmWidth = 21431
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppImage7: TppImage
+        UserName = 'Image7'
+        MaintainAspectRatio = False
+        mmHeight = 10848
+        mmLeft = 26458
+        mmTop = 529
+        mmWidth = 33338
+        BandType = 4
+      end
+      object ppLabel43: TppLabel
+        UserName = 'Label43'
+        Caption = 'R$ '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 28840
+        mmTop = 20108
+        mmWidth = 5292
+        BandType = 4
+      end
+      object ppDBText190: TppDBText
+        UserName = 'DBText190'
+        CharWrap = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4763
+        mmLeft = 34660
+        mmTop = 20108
+        mmWidth = 17463
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand42: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object pp3ColunasLogo: TppReport
+    AutoStop = False
+    Columns = 3
+    ColumnPositions.Strings = (
+      '8000'
+      '75000'
+      '140000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4 210 x 297 mm'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 8000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 11000
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 199
+    Top = 271
+    Version = '6.02'
+    mmColumnWidth = 62500
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand43: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand59: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 30692
+      mmPrintPosition = 0
+      object ppDBText191: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 8996
+        mmLeft = 1852
+        mmTop = 14552
+        mmWidth = 57415
+        BandType = 4
+      end
+      object ppDBBarCode26: TppDBBarCode
+        OnPrint = ppDBBarCode7Print
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10319
+        mmLeft = 2381
+        mmTop = 1323
+        mmWidth = 21431
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppImage8: TppImage
+        UserName = 'Image7'
+        MaintainAspectRatio = False
+        mmHeight = 12700
+        mmLeft = 26458
+        mmTop = 529
+        mmWidth = 33338
+        BandType = 4
+      end
+      object ppLabel44: TppLabel
+        UserName = 'Label43'
+        Caption = 'R$ '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 28840
+        mmTop = 24077
+        mmWidth = 5292
+        BandType = 4
+      end
+      object ppDBText192: TppDBText
+        UserName = 'DBText190'
+        CharWrap = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4763
+        mmLeft = 34660
+        mmTop = 24077
+        mmWidth = 17463
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand43: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppGondolaHorizontalElgin: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 29000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 815
+    Top = 199
+    Version = '6.02'
+    mmColumnWidth = 116000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand60: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 28000
+      mmPrintPosition = 0
+      object ppDBText193: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 16
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 8202
+        mmLeft = 3969
+        mmTop = 18521
+        mmWidth = 94986
+        BandType = 4
+      end
+      object ppDBText194: TppDBText
+        UserName = 'DBText6'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 26
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10848
+        mmLeft = 48683
+        mmTop = 2646
+        mmWidth = 32544
+        BandType = 4
+      end
+      object ppDBBarCode27: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGOBARRAS'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10848
+        mmLeft = 4498
+        mmTop = 2646
+        mmWidth = 29104
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppDBText195: TppDBText
+        UserName = 'DBText76'
+        AutoSize = True
+        DataField = 'UNIDADE'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 16
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 6615
+        mmLeft = 84402
+        mmTop = 3969
+        mmWidth = 20108
+        BandType = 4
+      end
+    end
+  end
+  object ppReport11: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 29000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 791
+    Top = 303
+    Version = '6.02'
+    mmColumnWidth = 116000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand61: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 28000
+      mmPrintPosition = 0
+      object ppDBBarCode28: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGOBARRAS'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10848
+        mmLeft = 13229
+        mmTop = 15346
+        mmWidth = 18256
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppLabel45: TppLabel
+        UserName = 'Label45'
+        Caption = 'Label45'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'C39HrP24DhTt'
+        Font.Size = 48
+        Font.Style = []
+        Transparent = True
+        mmHeight = 8996
+        mmLeft = 32544
+        mmTop = 17463
+        mmWidth = 52388
+        BandType = 4
+      end
+      object ppLabel46: TppLabel
+        UserName = 'Label46'
+        Caption = 'Label46'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'C39P36DmTt'
+        Font.Size = 36
+        Font.Style = []
+        Transparent = True
+        mmHeight = 13229
+        mmLeft = 35190
+        mmTop = 1058
+        mmWidth = 44979
+        BandType = 4
+      end
+    end
+  end
+  object ppGondolaPequenaElgin: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 29000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 895
+    Top = 487
+    Version = '6.02'
+    mmColumnWidth = 116000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand62: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 28000
+      mmPrintPosition = 0
+      object ppDBText196: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 9790
+        mmLeft = 7673
+        mmTop = 0
+        mmWidth = 67998
+        BandType = 4
+      end
+      object ppDBText197: TppDBText
+        UserName = 'DBText6'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5027
+        mmLeft = 55033
+        mmTop = 11113
+        mmWidth = 20638
+        BandType = 4
+      end
+      object ppDBBarCode29: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 16140
+        mmLeft = 10054
+        mmTop = 10583
+        mmWidth = 25135
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppLabel47: TppLabel
+        UserName = 'Label32'
+        Caption = #192' Vista :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 11
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5292
+        mmLeft = 42598
+        mmTop = 18521
+        mmWidth = 11113
+        BandType = 4
+      end
+      object ppDBText198: TppDBText
+        UserName = 'DBText164'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECOPROMOCAO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$,0.00;-R$,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5027
+        mmLeft = 55033
+        mmTop = 18785
+        mmWidth = 20638
+        BandType = 4
+      end
+      object ppLabel48: TppLabel
+        UserName = 'Label36'
+        Caption = 'Cart'#227'o :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 11
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5292
+        mmLeft = 42598
+        mmTop = 11113
+        mmWidth = 11377
+        BandType = 4
+      end
+    end
+  end
+  object ppGondolaComLogo: TppReport
+    AutoStop = False
+    Columns = 2
+    ColumnPositions.Strings = (
+      '8000'
+      '108000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'A4 210 x 297 mm'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 8000
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 11000
+    PrinterSetup.mmPaperHeight = 297000
+    PrinterSetup.mmPaperWidth = 210000
+    PrinterSetup.PaperSize = 9
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 343
+    Top = 271
+    Version = '6.02'
+    mmColumnWidth = 100000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand44: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand63: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 39158
+      mmPrintPosition = 0
+      object ppDBText199: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 18
+        Font.Style = []
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 16669
+        mmLeft = 17198
+        mmTop = 265
+        mmWidth = 77788
+        BandType = 4
+      end
+      object ppDBBarCode30: TppDBBarCode
+        OnPrint = ppDBBarCode7Print
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10319
+        mmLeft = 68263
+        mmTop = 19315
+        mmWidth = 21431
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppImage9: TppImage
+        UserName = 'Image7'
+        MaintainAspectRatio = False
+        mmHeight = 34660
+        mmLeft = 1058
+        mmTop = 529
+        mmWidth = 12965
+        BandType = 4
+      end
+      object ppDBText200: TppDBText
+        UserName = 'DBText190'
+        CharWrap = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 24
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 12700
+        mmLeft = 17198
+        mmTop = 17727
+        mmWidth = 45773
+        BandType = 4
+      end
+      object ppLabel50: TppLabel
+        UserName = 'Label50'
+        Caption = 'Pre'#231'o Equivalente a Unidade'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 26458
+        mmTop = 32808
+        mmWidth = 53711
+        BandType = 4
+      end
+    end
+    object ppColumnFooterBand44: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object ppGondolaAtacado: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 1000
+    PrinterSetup.mmPaperHeight = 50000
+    PrinterSetup.mmPaperWidth = 110000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 447
+    Top = 7
+    Version = '6.02'
+    mmColumnWidth = 116000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand64: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 47890
+      mmPrintPosition = 0
+      object ppDBText201: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 9790
+        mmLeft = 3440
+        mmTop = 2910
+        mmWidth = 102923
+        BandType = 4
+      end
+      object ppDBText202: TppDBText
+        UserName = 'DBText6'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 26
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 10848
+        mmLeft = 4233
+        mmTop = 19844
+        mmWidth = 49742
+        BandType = 4
+      end
+      object ppDBBarCode31: TppDBBarCode
+        UserName = 'DBBarCode5'
+        AutoEncode = True
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGOBARRAS'
+        DataPipeline = ppDBEtiquetas
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 12965
+        mmLeft = 8731
+        mmTop = 31750
+        mmWidth = 48683
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppDBText203: TppDBText
+        UserName = 'DBText76'
+        AutoSize = True
+        DataField = 'UNIDADE'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5292
+        mmLeft = 19315
+        mmTop = 265
+        mmWidth = 15081
+        BandType = 4
+      end
+      object ppLabel49: TppLabel
+        UserName = 'Label32'
+        Caption = 'Pre'#231'o Atacado Avista'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 64029
+        mmTop = 13229
+        mmWidth = 39688
+        BandType = 4
+      end
+      object ppDBText204: TppDBText
+        UserName = 'DBText161'
+        AutoSize = True
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 12
+        Font.Style = []
+        Transparent = True
+        Visible = False
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5292
+        mmLeft = 17727
+        mmTop = 1058
+        mmWidth = 13494
+        BandType = 4
+      end
+      object ppDBText205: TppDBText
+        UserName = 'DBText164'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECOPROMOCAO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$,0.00;-R$,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 6085
+        mmLeft = 61913
+        mmTop = 18785
+        mmWidth = 43392
+        BandType = 4
+      end
+      object ppLabel51: TppLabel
+        UserName = 'Label51'
+        Caption = 'Pre'#231'o Varejo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 14
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 6085
+        mmLeft = 14023
+        mmTop = 13229
+        mmWidth = 29104
+        BandType = 4
+      end
+      object ppLabel52: TppLabel
+        UserName = 'Label52'
+        Caption = 'Pre'#231'o Atacado Cart'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 12
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        mmHeight = 5027
+        mmLeft = 63236
+        mmTop = 28310
+        mmWidth = 41275
+        BandType = 4
+      end
+      object ppDBText206: TppDBText
+        UserName = 'DBText206'
+        CharWrap = True
+        OnGetText = ppDBText21GetText
+        AutoSize = True
+        DataField = 'PRECODESCONTO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$,0.00;-R$,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 14
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 6085
+        mmLeft = 65881
+        mmTop = 34131
+        mmWidth = 37571
+        BandType = 4
+      end
+    end
+  end
+  object ppDuascol42x24ribon: TppReport
+    AutoStop = False
+    Columns = 2
+    ColumnPositions.Strings = (
+      '2000'
+      '49000')
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.Collation = False
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Screen'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 24000
+    PrinterSetup.mmPaperWidth = 93000
+    PrinterSetup.PaperSize = 256
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 316
+    Top = 17
+    Version = '6.02'
+    mmColumnWidth = 42000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppColumnHeaderBand27: TppColumnHeaderBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+    object ppDetailBand37: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 22490
+      mmPrintPosition = 0
+      object ppDBText133: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Bodoni MT'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 8202
+        mmLeft = 1588
+        mmTop = 1323
+        mmWidth = 39952
+        BandType = 4
+      end
+      object ppDBText136: TppDBText
+        UserName = 'DBText29'
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$ ###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 9
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3969
+        mmLeft = 8996
+        mmTop = 17727
+        mmWidth = 19844
+        BandType = 4
+      end
+      object ppDBBarCode13: TppDBBarCode
+        UserName = 'DBBarCode1'
+        AutoEncode = True
+        AutoSizeFont = False
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Alignment = taCenter
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Courier New'
+        Font.Size = 7
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 7408
+        mmLeft = 3440
+        mmTop = 10583
+        mmWidth = 35719
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+    end
+    object ppColumnFooterBand27: TppColumnFooterBand
+      mmBottomOffset = 0
+      mmHeight = 0
+      mmPrintPosition = 0
+    end
+  end
+  object pp40x40: TppReport
+    AutoStop = False
+    DataPipeline = ppDBEtiquetas
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 0
+    PrinterSetup.mmMarginLeft = 0
+    PrinterSetup.mmMarginRight = 0
+    PrinterSetup.mmMarginTop = 0
+    PrinterSetup.mmPaperHeight = 40000
+    PrinterSetup.mmPaperWidth = 40000
+    PrinterSetup.PaperSize = 119
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 636
+    Top = 531
+    Version = '6.02'
+    mmColumnWidth = 40000
+    DataPipelineName = 'ppDBEtiquetas'
+    object ppDetailBand38: TppDetailBand
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 29369
+      mmPrintPosition = 0
+      object ppDBText137: TppDBText
+        UserName = 'DBText1'
+        CharWrap = True
+        DataField = 'Empresa'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 5821
+        mmLeft = 2910
+        mmTop = 1058
+        mmWidth = 34660
+        BandType = 4
+      end
+      object ppDBText138: TppDBText
+        UserName = 'DBText29'
+        DataField = 'PRECO'
+        DataPipeline = ppDBEtiquetas
+        DisplayFormat = 'R$ ###,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 4233
+        mmLeft = 3175
+        mmTop = 15875
+        mmWidth = 31485
+        BandType = 4
+      end
+      object ppDBBarCode14: TppDBBarCode
+        UserName = 'DBBarCode1'
+        AutoEncode = True
+        AutoSizeFont = False
+        BarCodeType = bcCode128
+        BarColor = clWindowText
+        DataField = 'CODIGO'
+        DataPipeline = ppDBEtiquetas
+        Alignment = taCenter
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Name = 'Courier New'
+        Font.Size = 16
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 7144
+        mmLeft = 6615
+        mmTop = 21167
+        mmWidth = 23548
+        BandType = 4
+        mmBarWidth = 254
+        mmWideBarRatio = 76200
+      end
+      object ppDBText139: TppDBText
+        UserName = 'DBText139'
+        CharWrap = True
+        DataField = 'DESCRICAO'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 7673
+        mmLeft = 1588
+        mmTop = 7144
+        mmWidth = 36777
         BandType = 4
       end
     end

@@ -260,6 +260,17 @@ end;
 procedure TRptItensEstoque.btAtualizarClick(Sender: TObject);
 begin
     inherited;
+  if DMProjeto.Parametro('BaixaEstoqueOnLine') = 'N' then
+  begin
+     if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
+      DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
+   With DMPRojeto.StoreProcedure do Begin
+      StoredProcName := 'PP_BAIXAESTOQUEOFFLINE';
+      ExecProc;
+   End;
+   DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+  end ;
+
     AtualizaItens;
 end;
 

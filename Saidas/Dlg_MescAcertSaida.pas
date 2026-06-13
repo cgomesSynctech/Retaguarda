@@ -10,7 +10,7 @@ uses
   Buttons, TS_SpeedButton, teCtrls, TS_EffectsPanel, DM_Saidas, dxCntner,
   dxTL, dxDBCtrl, dxDBGrid, TS_QDBGrid, Db, IBCustomDataSet, IBQuery,
   DBText, TS_DBTextEffect, dxDBTLCl, dxGrClms, DBClient, Provider, dxGrClEx,
-  dxfProgressBar, Variants, dxExEdtr, Placemnt, BTOdeum;
+  dxfProgressBar, Variants, dxExEdtr, Placemnt, BTOdeum, ComCtrls;
 
 type
   TDlgMescAcertSaida = class(TFrmModeloCadastros)
@@ -282,13 +282,20 @@ type
     C_AcertoQTD: TFloatField;
     C_AcertoQTDDEV: TFloatField;
     C_AcertoQTDACERT: TFloatField;
+    C_Movimentosseq: TIntegerField;
+    C_Acertoseq: TIntegerField;
+    C_Itensseq: TIntegerField;
+    C_AcertoQtdSelect: TFloatField;
+    C_AcertolistaMovimentos: TStringField;
+    pbBar: TProgressBar;
+    Q_Aux: TIBQuery;
     procedure FormShow(Sender: TObject);
     procedure Q_MovimentosBeforeOpen(DataSet: TDataSet);
     procedure GridMovsTS_OnAfterSelection(Sender: TObject;
       bSelected: Boolean; QtdSel: Integer);
     procedure dbgItensTS_OnAfterSelection(Sender: TObject;
       bSelected: Boolean; QtdSel: Integer);
-    procedure GridMovsItensCloseUp(Sender: TObject; var Text: String;
+    procedure GridMovsItensCloseUp(Sender: TObject; var Text: string;
       var Accept: Boolean);
     procedure dbgItensEditing(Sender: TObject; Node: TdxTreeListNode;
       var Allow: Boolean);
@@ -299,38 +306,46 @@ type
       var bCanSelect: Boolean);
     procedure gridAcertoCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
-      ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
+      ASelected, AFocused, ANewItemRow: Boolean; var AText: string;
       var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
       var ADone: Boolean);
     procedure C_AcertoQtddevolvidaValidate(Sender: TField);
   private
     { Private declarations }
-    sFavs : String;
-    bDeleteItens : boolean;
-
-    procedure JoinItemToOperation( nIDItem : Integer );
+    sFavs: string;
+    bDeleteItens: boolean;
+    gravando: boolean;
+    sequenciaItem: integer;
+    mSaida: integer;
+    nTotalItens: double;
+    nTotalProdutos: double;
+    procedure JoinItemToOperation(nIDItem: Integer);
     procedure AtualizarSelecionados;
 
   public
     { Public declarations }
-    sTipos : String;
-    DM : TDMSaidas;
+    sTipos: string;
+    DM: TDMSaidas;
 
-    GridItens : TTS_QDBGrid;
+    GridItens: TTS_QDBGrid;
   end;
 
 var
   DlgMescAcertSaida: TDlgMescAcertSaida;
 
 implementation
-  uses DM_Projeto, Funcoes;
+uses DM_Projeto, Funcoes, DM_ItensFavorecido;
 
 {$R *.DFM}
 
 procedure TDlgMescAcertSaida.FormShow(Sender: TObject);
-var est,qtdconsig,qtddev,qtdacert: currency;
+var est, qtdconsig, qtddev, qtdacert: currency;
+aux : integer;
+  seq: integer;
+  
 begin
   inherited;
+  gravando := false;
   Screen.Cursor := crHourGlass;
 
   sFavs := DM.C_TabelaFavorecido.asString;
@@ -338,9 +353,12 @@ begin
   bDeleteItens := false;
 
   try
+    DM.C_Itens.DisableControls;
+    C_Movimentos.DisableControls;
+    C_Itens.DisableControls;
+    C_Acerto.DisableControls;
     C_Movimentos.Open;
 
-    DM.C_Itens.DisableControls;
     DM.C_Itens.First;
     while not DM.C_Itens.EOF do begin
       if DM.C_Itens.FieldByName('Mesclado').asString = 'S' then begin
@@ -372,14 +390,10 @@ begin
     end;
 
     C_Movimentos.First;
-  finally
-    Screen.Cursor := crDefault;
-    DM.C_Itens.EnableControls;
-  end;
-  Q_Acerto.SQL.Text := replace(Q_Acerto.SQL.Text, 'XX', sFavs);
-  try
+    Q_Acerto.SQL.Text := replace(Q_Acerto.SQL.Text, 'XX', sFavs);
     C_Acerto.Open;
     C_Acerto.First;
+    seq := 1;
     while not C_Acerto.EOF do begin
       qtdconsig := C_Acerto.FieldByName('qtd').AsCurrency;
       qtddev := C_Acerto.FieldByName('qtddev').AsCurrency;
@@ -387,30 +401,38 @@ begin
       C_Acerto.Edit;
       C_Acerto.FieldByName('qtdvalidar').Value := qtdconsig - qtddev - qtdacert;
       C_Acerto.FieldByName('qtddevolvida').Value := qtdconsig - qtddev - qtdacert;
+      C_Acerto.FieldByName('qtdselect').Value := C_Acerto.FieldByName('qtddevolvida').Value;
+      C_Acerto.FieldByName('seq').Value := seq;
       C_Acerto.Post;
       C_Acerto.Next;
+      inc(seq);
     end;
-  finally
-    Screen.Cursor := crDefault;
-  end;
-  C_Acerto.First;
+    C_Acerto.First;
   while not C_Acerto.EOF do begin
     if C_AcertoQtddevolvida.Value = 0 then C_Acerto.Delete
     else C_Acerto.Next;
   end;
-  GridMovs.ExpandirGrupos;
-  GridAcerto.GoToFirst;
+    GridMovs.ExpandirGrupos;
+    GridAcerto.GoToFirst;
+
+  finally
+    Screen.Cursor := crDefault;
+    DM.C_Itens.EnableControls;
+    C_Movimentos.EnableControls;
+    C_Itens.EnableControls;
+    C_Acerto.EnableControls;
+  end;
 end;
 
 procedure TDlgMescAcertSaida.Q_MovimentosBeforeOpen(DataSet: TDataSet);
 var
-  sEntradasOriginais : String;
+  sEntradasOriginais: string;
 begin
   inherited;
   {Substituindo Tipo Padrao e Favorecido}
   if not DM.bAlteracao then begin
     if GridAcerto.Visible then
-     Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' e.Status in (''P'', ''L'',''H'') ')
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' e.Status in (''P'', ''L'',''H'') ')
     else
       Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' e.Status in (''P'', ''L'') ');
   end
@@ -418,11 +440,11 @@ begin
     sEntradasOriginais := '';
     with DM.Q_SQL do begin
       Close;
-      SQL.Text := 'Select distinct SAIDA_Original from saidasitensmescla '+
-                  'where saidaitem in (select saidaitem from saidasitens where saida = '+ DM.C_TabelaIDMestre.asString+') ';
+      SQL.Text := 'Select distinct SAIDA_Original from saidasitensmescla ' +
+        'where saidaitem in (select saidaitem from saidasitens where saida = ' + DM.C_TabelaIDMestre.asString + ') ';
       Open;
       while not eof do begin
-        sEntradasOriginais := CExp(sEntradasOriginais,',') + FieldByName('Saida_Original').asString;
+        sEntradasOriginais := CExp(sEntradasOriginais, ',') + FieldByName('Saida_Original').asString;
         Next;
       end;
 
@@ -431,7 +453,7 @@ begin
     end;
 
     if sEntradasOriginais <> '' then
-      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' (e.Status in (''P'', ''L'') or e.Saida in ('+sEntradasOriginais+') ) ')
+      Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' (e.Status in (''P'', ''L'') or e.Saida in (' + sEntradasOriginais + ') ) ')
     else
       Q_Movimentos.SQL.Text := replace(Q_Movimentos.SQL.Text, 'KK', ' e.Status in (''P'', ''L'') ');
 
@@ -474,7 +496,7 @@ procedure TDlgMescAcertSaida.dbgItensTS_OnAfterSelection(
 begin
   inherited;
 
-  if (C_ItensTipoItem.Value in [1,2,3]) then begin
+  if (C_ItensTipoItem.Value in [1, 2, 3]) then begin
     C_Itens.Edit;
 
     if bSelected then
@@ -490,7 +512,7 @@ begin
 end;
 
 procedure TDlgMescAcertSaida.GridMovsItensCloseUp(Sender: TObject;
-  var Text: String; var Accept: Boolean);
+  var Text: string; var Accept: Boolean);
 begin
   inherited;
   AtualizarSelecionados;
@@ -522,12 +544,12 @@ end;
 
 procedure TDlgMescAcertSaida.dbgItensEditing(Sender: TObject;
   Node: TdxTreeListNode; var Allow: Boolean);
-var nTipo : Integer;
+var nTipo: Integer;
 begin
   inherited;
   if (dbgItens.TS_SelectedColumn = 'icQtdMesclar') then begin
-    nTipo := dbgItens.GetFieldValue( Node, 'TipoItem', 1 );
-    Allow := nTipo in [1,2,3];
+    nTipo := dbgItens.GetFieldValue(Node, 'TipoItem', 1);
+    Allow := nTipo in [1, 2, 3];
   end;
 end;
 
@@ -536,7 +558,7 @@ procedure TDlgMescAcertSaida.dbgItensEdited(Sender: TObject;
 begin
   inherited;
   if dbgItens.TS_SelectedColumn = 'icQtdMesclar' then begin
-    if not dbgItens.Selecionado and (StrToFloatDef(dbgItens.GetFieldValue(Node,'icQtdMesclar',0, true),0) > 0) then
+    if not dbgItens.Selecionado and (StrToFloatDef(dbgItens.GetFieldValue(Node, 'icQtdMesclar', 0, true), 0) > 0) then
       dbgItens.Selecionar;
   end;
 end;
@@ -545,9 +567,9 @@ procedure TDlgMescAcertSaida.C_ItensicQtdMesclarValidate(
   Sender: TField);
 begin
   inherited;
-  if (C_ItensItem.Value > 0) and (C_ItensTipoItem.Value in [1,2,3]) and
-     (C_ItensQuantidade.Value > 0) and (Sender.asFloat > 0) and
-     (Sender.asFloat - (C_ItensQuantidade.Value - C_ItensQtdFaturada.Value) > 0.01) then begin
+  if (C_ItensItem.Value > 0) and (C_ItensTipoItem.Value in [1, 2, 3]) and
+    (C_ItensQuantidade.Value > 0) and (Sender.asFloat > 0) and
+    (Sender.asFloat - (C_ItensQuantidade.Value - C_ItensQtdFaturada.Value) > 0.01) then begin
     DlgMsg.ShowMsg(2189);
     raise Exception.Create('@@');
   end;
@@ -555,47 +577,65 @@ end;
 
 procedure TDlgMescAcertSaida.btGravarClick(Sender: TObject);
 var
-  m, i : Integer;
-  nDesconto, nFrete, nDespesa, nPJuros, nJuros, nSaldo : Currency;
-  nPlano : Integer;
-  sMessage : String;
+  m, i: Integer;
+  nDesconto, nFrete, nDespesa, nPJuros, nJuros, nSaldo: Currency;
+  nPlano, contador: Integer;
+  sMessage, pedido: string;
+  sair: boolean;
 begin
   nSaldo := 0;
   Screen.Cursor := crHourGlass;
+  gravando := true;
   C_Acerto.DisableControls;
+  C_Movimentos.DisableControls;
+  C_Itens.DisableControls;
   C_Movimentos.First;
-  While not C_Movimentos.Eof do begin
+  while not C_Movimentos.Eof do begin
     C_Itens.First;
-    While not C_Itens.Eof do begin
+    while not C_Itens.Eof do begin
       C_Acerto.First;
-      While not C_Acerto.Eof do begin
+      while not C_Acerto.Eof do begin
         if C_ItensItem.Value = C_AcertoItem.Value then begin
           if C_Acerto.FieldByName('_icSelecionado').AsInteger = 1 then begin
             if C_AcertoQtddevolvida.Value > 0 then begin
               if C_AcertoQtddevolvida.Value <= C_ItensQuantidade.Value - C_ItensQtdFaturada.Value then begin
                 C_Movimentos.Edit;
                 C_Movimentos.FieldByName('_icSelecionado').Value := 1;
+                C_Movimentos.FieldByName('seq').Value := C_Acertoseq.Value;
 //                C_Movimentos.Post;
 //                C_Itens.Locate('ITEM',C_AcertoItem.Value,[]);
                 C_Itens.Edit;
                 C_Itens.FieldByName('_icSelecionado').Value := 1;
+                c_Itens.FieldByName('seq').Value := C_Acertoseq.Value;
                 C_ItensicQtdMesclar.Value := C_AcertoQtddevolvida.Value;
                 C_Itens.Post;
                 C_Acerto.Edit;
                 C_AcertoQtddevolvida.Value := 0;
+
+                if C_AcertolistaMovimentos.Value = '' then
+                  C_AcertolistaMovimentos.Value := C_MovimentosSAIDA.AsString
+                else
+                  C_AcertolistaMovimentos.Value := C_AcertolistaMovimentos.Value + ', ' + C_MovimentosSAIDA.AsString;
                 C_Acerto.Post;
               end
               else begin
                 C_Movimentos.Edit;
-                C_Movimentos.FieldByName('_icSelecionado').Value := 1;
 //                C_Movimentos.Post;
                 C_Itens.Edit;
-                C_Itens.FieldByName('_icSelecionado').Value := 1;
                 C_ItensicQtdMesclar.Value := C_ItensQuantidade.Value - C_ItensQtdFaturada.Value;
+                C_Itens.FieldByName('_icSelecionado').Value := 1;
+                C_Itens.FieldByName('seq').Value := C_Acertoseq.Value;
+                C_Movimentos.FieldByName('_icSelecionado').Value := 1;
+                C_Movimentos.FieldByName('seq').Value := C_Acertoseq.Value;
                 C_Itens.Post;
                 nSaldo := C_AcertoQtddevolvida.Value;
                 C_Acerto.Edit;
                 C_AcertoQtddevolvida.Value := nSaldo - (C_ItensQuantidade.Value - C_ItensQtdFaturada.Value);
+
+                if C_AcertolistaMovimentos.Value = '' then
+                  C_AcertolistaMovimentos.Value := C_MovimentosSAIDA.AsString
+                else
+                  C_AcertolistaMovimentos.Value := C_AcertolistaMovimentos.Value + ', ' + C_MovimentosSAIDA.AsString;
                 C_Acerto.Post;
               end;
             end;
@@ -608,6 +648,8 @@ begin
     C_Movimentos.Next;
   end;
   C_Acerto.EnableControls;
+  C_Movimentos.EnableControls;
+  C_Itens.EnableControls;
   Screen.Cursor := crDefault;
   inherited;
   if C_Movimentos.State <> dsBrowse then
@@ -616,334 +658,220 @@ begin
   { Mesclar os Itens escolhidos na invoice }
   if (GridMovs.Visible) and (GridMovs.nQuantidadeSelecionada = 0) then begin
     DlgMsg.ShowMsg(2300);
+    gravando := false;
     exit;
   end
   else if (GridAcerto.Visible) and (GridAcerto.nQuantidadeSelecionada = 0) then begin
-    DlgMsg.ShowMsg( 2300 );
+    DlgMsg.ShowMsg(2300);
+    gravando := false;
     Exit;
   end;
 
   {Confirmação}
   if DlgMsg.ShowMsg(2309) = 200 then
+  begin
+    gravando := false;
     exit;
-
-  {Iniciando processo de mesclagem}
-  Screen.Cursor := crHourGlass;
-{  pnBar.Position := 0;
-  pnBar.Visible := true;
-
-  pnBar.Max := Trunc(GridMovsQtdItensSel.SummaryFooterValue);}
-
-  if bDeleteItens then begin
-//    pBar.Max := pBar.Max + 1;
-    with DM.C_Itens do begin
-      First;
-      try
-        DisableControls;
-        while not EOF do begin
-          if FieldByName('Mesclado').asString = 'S' then
-            Delete  {Verificar se os itens filhos são deletados e se Entradassitensmescla também}
-          else
-            Next;
-        end;
-      finally
-        EnableControls;
-      end;
-    end;
-  //  pBar.Position := 1;
   end;
 
-
-  GridMovs.FirstSelected;
-
-  with DM do begin
-    C_Tabela.Edit;
-    C_TabelaCAMPO01.asVariant := C_Movimentos.FieldByName('Campo01').Value;
-    C_TabelaCAMPO02.asVariant := C_Movimentos.FieldByName('Campo02').Value;
-    C_TabelaCAMPO03.asVariant := C_Movimentos.FieldByName('Campo03').Value;
-    C_TabelaCAMPO04.asVariant := C_Movimentos.FieldByName('Campo04').Value;
-//    C_TabelaTAX.asVariant     := C_Movimentos.FieldByName('Tax').Value;
-//    C_TabelaPercentualTax.Value   := C_Movimentos.FieldByName('PercentualTax').asFloat;
-    C_TabelaTIPOENTREGA.asVariant := C_Movimentos.FieldByName('TipoEntrega').Value;
-    C_TabelaLOCALENTREGA.asVariant := C_Movimentos.FieldByName('LocalEntrega').Value;
-//    C_TabelaDATAENTREGA.asVariant := C_Movimentos.FieldByName('DataEntrega').Value;
-  end;
-
-  nDesconto := C_Movimentos.FieldByName('Desconto').asCurrency;
-  nFrete    := C_Movimentos.FieldByName('Frete').asCurrency;
-  nDespesa  := C_Movimentos.FieldByName('OutrasDespesas').asCurrency;
-
-  nPlano    := C_Movimentos.FieldByName('PlanoPagamento').asInteger;
-  nPJuros   := C_Movimentos.FieldByName('PJuros').asCurrency;
-  nJuros    := C_Movimentos.FieldByName('Juros').asCurrency;
-  sMessage  := C_Movimentos.FieldByName('OBS').asString;
-
-
-  for m := 1 to GridMovs.nQuantidadeSelecionada do begin
-    dbgItens.FirstSelected;
-
-    For i := 1 to dbgItens.nQuantidadeSelecionada do begin
-      JoinItemToOperation(C_ItensSaidaItem.Value) ;
-//      pBar.Position := pBar.Position + 1;
-
-      dbgItens.NextSelected;
-    end;
-
-    GridMovs.NextSelected;
-  end;
-
-  {Completando com mais dados o faturamento}
+  if not DMProjeto.IBT_Projeto.InTransaction then
+    DMProjeto.IBT_Projeto.StartTransaction;
   try
-    if GridMovs.nQuantidadeSelecionada = 1 then with DM do begin
-      bFaturandoOperacao := true;
 
-      C_TabelaDesconto.Value := nDesconto;
-      C_TabelaFrete.Value := nFrete;
-      C_TabelaOutrasDespesas.Value := nDespesa;
-      C_TabelaJuros.Value := nJuros;
-      C_TabelaOBS.Value := sMessage;
+    GridMovs.FirstSelected;
+    pedido := 'V-' + inttostr(DMProjeto.Gen_ID('GENSIST_TIPOMOVIMENTO_1'));
+    mSaida := DMProjeto.Gen_ID('GEN_IDGLOBAL');
 
-      if nPlano > 0 then begin
-        C_PlanosPagamento.Locate('PlanoPagamento', nPlano, []);
-        C_TabelaPlanoPagamento.Value := nPlano;
-        C_TabelaPJuros.Value := nPJuros; //Não gera as Parcelas (bFaturandoOperacao = true).
+    c_movimentos.DisableControls;
+    C_Itens.DisableControls;
+    C_Acerto.DisableControls;
+    dm.C_Itens.DisableControls;
+
+    GridAcerto.FirstSelected;
+    pnBar.Visible := true;
+    pbBar.Max := GridAcerto.nQuantidadeSelecionada;
+    pbBar.Min := 0;
+    pbBar.Position := 0;
+    pbBar.Step := 10;
+    contador := 10;
+    sequenciaItem := 1;
+    nTotalItens := 0;
+    nTotalProdutos := 0;
+
+    for m := 1 to GridAcerto.nQuantidadeSelecionada do begin
+      if (C_AcertoQtdSelect.Value > 0) then
+      begin
+        C_Movimentos.Filtered := false;
+        C_Itens.Filtered := false;
+        C_Movimentos.Filter := '_icSelecionado = 1 and SAIDA in (' + C_AcertolistaMovimentos.AsString + ')';
+        C_Itens.Filter := '_icSelecionado = 1 and icQtdMesclar > 0 and item = ' + C_AcertoITEM.AsString;
+        C_Movimentos.Filtered := true;
+        C_Itens.Filtered := true;
+        C_Movimentos.First;
+        sair := false;
+        while not C_Movimentos.Eof do
+        begin
+          if sair then break;
+          C_Itens.First;
+          while not C_Itens.Eof do
+          begin
+            if C_Itens.RecordCount > 0 then
+            begin
+              JoinItemToOperation(C_AcertoITEM.Value);
+              sair := true;
+              break;
+            end;
+            C_Itens.Next;
+          end;
+          C_Movimentos.Next;
+        end;
       end;
-
-      {***Parcelas da Operação - Mesclando}
-      Q_SQL.Close;
-      Q_SQL.SQL.Text := 'Select * from DuplicatasAPagar where Compra = :E ';
-      Q_SQL.Params[0].asInteger := C_MovimentosSaida.Value;
-      Q_SQL.Open;
-
-      While not Q_SQL.EOF do begin
-        C_Parcelas.Append;
-        C_ParcelasParcela.asInteger := Q_SQL.FieldByName('Parcela').asInteger;
-
-        //Data do Vencimento
-        C_ParcelasVencimento.Value := Q_SQL.FieldByName('Vencimento').asDateTime;
-
-        //Valor da Parcela
-        C_ParcelasValor.asCurrency := Q_SQL.FieldByName('Valor').asCurrency;
-
-        C_ParcelasCompetencia.Value := Q_SQL.FieldByName('Competencia').asDateTime;
-
-        C_ParcelasJurosPlano.asCurrency := Q_SQL.FieldByName('JurosPlano').asCurrency;
-
-        C_ParcelasDATAANTECIPACAO.asVariant := Q_SQL.FieldByName('DataAntecipacao').Value;
-        C_ParcelasVALORDESCANTECIPADO.asCurrency := Q_SQL.FieldByName('ValorDescAntecipado').asCurrency;
-
-        C_Parcelas.Post;
-
-        Q_SQL.Next;
+      GridAcerto.NextSelected;
+      inc(sequenciaItem);
+      if m = contador then
+      begin
+        pbBar.StepIt;
+        contador := contador + 10;
+        Application.ProcessMessages;
       end;
-      Q_SQL.Close;
+    end;
+    Q_Aux.SQL.Clear;
+    Q_Aux.SQL.Add('INSERT INTO SAIDAS (EMPRESA, SAIDA, PDV, NUMERO, DATA, FAVORECIDO, VENDEDOR, SITUACAO,');
+    Q_Aux.SQL.Add('TIPOMOVIMENTO, BAIXAESTOQUE, CALCCOMISSAO, POSSUIENTREGA, IMPRESSO, CAIXA, TIPOPADRAO, CAMPO01, ');
+    Q_Aux.SQL.Add('CAMPO02, CAMPO03, CAMPO04, TIPOENTREGA, LOCALENTREGA, DESCONTO, FRETE, OUTRASDESPESAS,');
+    Q_Aux.SQL.Add('PJUROS, JUROS, OBS, TOTALITENS, TOTALITENS123, TOTALPRODUTOS, TOTAL, CUBAGEMTOTAL) values (');
+    Q_Aux.SQL.Add(':EMPRESA, :SAIDA, :PDV, :NUMERO, :DATA, :FAVORECIDO, :VENDEDOR, :SITUACAO,');
+    Q_Aux.SQL.Add(':TIPOMOVIMENTO, :BAIXAESTOQUE, :CALCCOMISSAO, :POSSUIENTREGA, :IMPRESSO, :CAIXA, :TIPOPADRAO, :CAMPO01, ');
+    Q_Aux.SQL.Add(':CAMPO02, :CAMPO03, :CAMPO04, :TIPOENTREGA, :LOCALENTREGA, :DESCONTO, :FRETE, :OUTRASDESPESAS,');
+    Q_Aux.SQL.Add(':PJUROS, :JUROS, :OBS, :TOTALITENS, :TOTALITENS123, :TOTALPRODUTOS, :TOTAL, :CUBAGEMTOTAL);');
+    Q_Aux.ParamByName('EMPRESA').AsInteger := C_AcertoEMPRESA.AsInteger;
+    Q_Aux.ParamByName('SAIDA').AsInteger := mSaida;
+    Q_Aux.ParamByName('PDV').AsInteger := C_AcertoPDV.AsInteger;
+    Q_Aux.ParamByName('NUMERO').AsString := Pedido;
+    Q_Aux.ParamByName('DATA').Asdatetime := now;
+    Q_Aux.ParamByName('FAVORECIDO').AsInteger := DM.C_TabelaFAVORECIDO.Value;
+    //Q_Aux.ParamByName('PLANOPAGAMENTO').AsInteger := -1;
+    Q_Aux.ParamByName('VENDEDOR').AsInteger := DM.C_TabelaVENDEDOR.Value; ;
+    Q_Aux.ParamByName('SITUACAO').AsString := 'N';
+    Q_Aux.ParamByName('TIPOMOVIMENTO').AsInteger := 1;
+    Q_Aux.ParamByName('BAIXAESTOQUE').AsString := 'S';
+    Q_Aux.ParamByName('CALCCOMISSAO').AsString := 'S';
+    Q_Aux.ParamByName('POSSUIENTREGA').AsString := 'N';
+    Q_Aux.ParamByName('IMPRESSO').AsString := 'N';
+    Q_Aux.ParamByName('CAIXA').AsInteger := 1;
+    Q_Aux.ParamByName('TIPOPADRAO').AsInteger := 1;
 
-    end; //if uma operacao selecionada
-  finally
-    DM.bFaturandoOperacao := false;
+    Q_Aux.ParamByName('CAMPO01').AsString := C_Movimentos.FieldByName('Campo01').AsString;
+    Q_Aux.ParamByName('CAMPO02').AsString := C_Movimentos.FieldByName('Campo02').AsString;
+    Q_Aux.ParamByName('CAMPO03').AsString := C_Movimentos.FieldByName('Campo03').AsString;
+    Q_Aux.ParamByName('CAMPO04').AsString := C_Movimentos.FieldByName('Campo04').AsString;
+    Q_Aux.ParamByName('TIPOENTREGA').AsInteger := C_Movimentos.FieldByName('TipoEntrega').AsInteger;
+    Q_Aux.ParamByName('LOCALENTREGA').AsInteger := C_Movimentos.FieldByName('LocalEntrega').AsInteger;
+    Q_Aux.ParamByName('Desconto').asCurrency := C_Movimentos.FieldByName('Desconto').asCurrency;
+    Q_Aux.ParamByName('Frete').asCurrency := C_Movimentos.FieldByName('Frete').asCurrency;
+    Q_Aux.ParamByName('OutrasDespesas').asCurrency := C_Movimentos.FieldByName('OutrasDespesas').asCurrency;
+    Q_Aux.ParamByName('PJuros').asCurrency := C_Movimentos.FieldByName('PJuros').asCurrency;
+    Q_Aux.ParamByName('Juros').asCurrency := C_Movimentos.FieldByName('Juros').asCurrency;
+    Q_Aux.ParamByName('OBS').AsString := C_Movimentos.FieldByName('OBS').asString;
+    Q_Aux.ParamByName('TOTALITENS').AsCurrency := nTotalItens;
+    Q_Aux.ParamByName('TOTALITENS123').AsCurrency := nTotalItens;
+    Q_Aux.ParamByName('TOTALPRODUTOS').AsCurrency := nTotalItens;
+    Q_Aux.ParamByName('TOTAL').AsCurrency := nTotalItens;
+    Q_Aux.ParamByName('CUBAGEMTOTAL').AsCurrency := 0.00 ;
+
+
+    Q_Aux.ExecSQL;
+
+    DMProjeto.IBT_Projeto.Commit;
+    showmessage('Pedido "'+Pedido+'" gerado com sucesso!');
+    ModalResult := mrOk;
+  except
+    on E: Exception do
+    begin
+      DMProjeto.IBT_Projeto.Rollback;
+      showmessage('Erro ao gerar o pedido!'+#13#10+E.Message);
+    end;
   end;
+  pnBar.Visible := false;
+
+  c_movimentos.EnableControls;
+  C_Itens.EnableControls;
+  C_Acerto.EnableControls;
+  dm.C_Itens.EnableControls;
+
   Screen.Cursor := crDefault;
-  ModalResult := mrOk;
 end;
 
 procedure TDlgMescAcertSaida.JoinItemToOperation;
-  Function ItemExatamenteIgual : Boolean;
-  var
-    nMatchFilhos, nFilhos, nFilhosExistente, nIDItemMatch : Integer;
-  begin
-    result := false;
-
-    {Determinando se o Item é exatamente igual a um que já exista em DMSaidas.C_Itens}
-    {Se o Item não existe em DM.C_Itens não precisa continuar}
-    if not DM.C_Itens.Locate('ITEM;UNIDADE;MESCLADO', VarArrayOf([C_ItensItem.Value,C_ItensUNIDADE.Value,'S']), []) then
-      exit;
-
-    try
-      {Se localizou faz-se um filtro para poder varrer todos os itens até encontrar um igual, ou não}
-      DM.C_Itens.Filter := ' ITEM = '+ C_ItensItem.asString + ' and Mesclado = ''S'' ';
-      DM.C_Itens.Filtered := true;
-
-      {Se o item possui filhos, validar logo estes, pois a probabilidade de serem diferentes é maior}
-      while not DM.C_Itens.EOF do begin
-        nIDItemMatch := DM.C_ItensIDItem.Value;
-        nMatchFilhos := 0;
-        nFilhos := 0;
-        nFilhosExistente := DM.C_SaidasItensFilhos.RecordCount;
-        if Q_Filhos.Active then with Q_Filhos do begin
-          Last; //Para atualizar o RecordCount;
-          nFilhos := RecordCount;
-
-          First;
-          while not EOF do begin
-            if DM.C_SaidasItensFilhos.Locate('ITEM', Q_Filhos.FieldByName('ITEM').asInteger, []) and
-               (DM.C_SaidasItensFilhosQuantidade.asFloat = Q_Filhos.FieldByName('Quantidade').asFloat) then
-              inc(nMatchFilhos)
-            else
-              Break;
-
-            Next;
-          end;
-        end;
-
-        if (nMatchFilhos = nFilhos) and (nFilhos = nFilhosExistente) then begin
-          if (C_ItensPreco.Value = DM.C_ItensPreco.Value) and (C_ItensDESCRICAO.Value = DM.C_ItensDESCRICAO.Value) and
-             (C_ItensUSOTIPOITEM.Value = DM.C_ItensUSOTIPOITEM.Value) then
-            result := true;
-        end;
-
-        DM.C_Itens.Next;
-      end; //while Filter
-    finally
-      if DM.C_Itens.Filtered then begin
-        DM.C_Itens.Filtered := false;
-        DM.C_Itens.Filter := '';
-        DM.C_Itens.Locate('IDITEM', nIDITEMMatch, []); //Pois o Filtered False move o record para o primeiro;
-      end;
-    end;
-
-  end;
-
-  procedure CopiarItem;
-  begin
-    DM.C_ItensMESCLADO.Value       := 'S';
-
-    DM.C_ItensUnidade.asVariant    := C_ItensUnidade.asVariant;
-    DM.C_ItensFator.Value          := C_ItensFator.Value;
-
-    DM.C_ItensPreco.Value          := C_ItensPreco.Value;
-    DM.C_ItensQuantidade.Value     := C_ItensicQtdMesclar.Value;
-
-    DM.C_ItensDESCRICAO.Value      := C_ItensDESCRICAO.Value;
-    DM.C_ItensUSOTIPOITEM.asVariant:= C_ItensUSOTIPOITEM.asVariant;
-
-    DM.C_ItensCOLUNA1.asVariant    := C_ItensCOLUNA1.asVariant;
-    DM.C_ItensCOLUNA2.asVariant    := C_ItensCOLUNA2.asVariant;
-    DM.C_ItensCOLUNA3.asVariant    := C_ItensCOLUNA3.asVariant;
-    DM.C_ItensCOLUNA4.asVariant    := C_ItensCOLUNA4.asVariant;
-
-//    DM.C_ItensClienteRef.asVariant := C_ItensClienteRef.asVariant;
-    DM.C_ItensHASCHILDREN.Value    := C_ItensHASCHILDREN.Value;
-    DM.C_ItensBAIXAESTOQUE.Value   := 'N';
-
-//    DM.C_ItensVALIDADE.asVariant   := C_ItensVALIDADE.asVariant;
-//    DM.C_ItensNUMEROLOTE.asVariant := C_ItensNUMEROLOTE.asVariant;
-
-    {Copiando os Filhos}
-{    if (DM.C_ItensHASCHILDREN.VAlue = 'S') and (Q_Filhos.Active) then begin
-      Q_Filhos.First;
-      DM.bPopulando := true;  // para não ocorrer o change.
-      while not Q_Filhos.EOF do begin
-        DM.C_SaidasItensFilhos.Append;
-        DM.C_SaidasItensFilhosITEM.Value := Q_Filhos.FieldByName('ITEM').asInteger;
-        DM.C_EntradasItensFilhosCODIGO.Value := Q_Filhos.FieldByName('Codigo').asString;
-        DM.C_EntradasItensFilhosCUSTOMEDIO.Value := Q_Filhos.FieldByName('CustoMedio').asCurrency;
-        DM.C_EntradasItensFilhosCUSTOCONTABIL.Value := Q_Filhos.FieldByName('CustoContabil').asCurrency;
-        DM.C_EntradasItensFilhosDESCRICAO.Value := Q_Filhos.FieldByName('Descricao').asString;
-        DM.C_EntradasItensFilhosQUANTIDADE.Value := Q_Filhos.FieldByName('Quantidade').asFloat;
-        DM.C_EntradasItensFilhosUNIDADE.Value := Q_Filhos.FieldByName('Unidade').asstring;
-        DM.C_EntradasItensFilhosFATOR.Value := Q_Filhos.FieldByName('Fator').asFloat;
-
-        DM.C_EntradasItensFilhos.Post;
-
-        Q_Filhos.Next;
-      end;
-      DM.bPopulando := False;
-    end;
-        }
-    {Copiando os Filhos}
-    if (DM.C_ItensHASCHILDREN.VAlue = 'S') and (Q_Filhos.Active) then begin
-      Q_Filhos.First;
-      DM.bPopulando := true;  // para não ocorrer o change.
-      while not Q_Filhos.EOF do begin
-        DM.C_SaidasItensFilhos.Append;
-        DM.C_SaidasItensFilhosITEM.Value := Q_Filhos.FieldByName('ITEM').asInteger;
-        DM.C_SaidasItensFilhosCODIGO.Value := Q_Filhos.FieldByName('Codigo').asString;
-        DM.C_SaidasItensFilhosCUSTOMEDIO.Value := Q_Filhos.FieldByName('CustoMedio').asCurrency;
-        DM.C_SaidasItensFilhosCUSTOCONTABIL.Value := Q_Filhos.FieldByName('CustoContabil').asCurrency;
-        DM.C_SaidasItensFilhosDESCRICAO.Value := Q_Filhos.FieldByName('Descricao').asString;
-        DM.C_SaidasItensFilhosQUANTIDADE.Value := Q_Filhos.FieldByName('Quantidade').asFloat;
-        DM.C_SaidasItensFilhosUNIDADE.Value := Q_Filhos.FieldByName('Unidade').asstring;
-        DM.C_SaidasItensFilhosFATOR.Value := Q_Filhos.FieldByName('Fator').asFloat;
-        DM.C_SaidasItensFilhosEMPRESA.Value := C_AcertoEMPRESA.Value;
-        DM.C_SaidasItensFilhosPDV.Value := C_AcertoPDV.Value;
-
-        DM.C_SaidasItensFilhos.Post;
-
-        Q_Filhos.Next;
-      end;
-      DM.bPopulando := False;
-    end;
-
-
-  end;
-
+var
+  nSaidaItem: integer;
 begin
   {Ao entrar nesta função, tanto C_Movimentos como C_Itens já estão posicionados corretamente}
   DM.bMesclando := true;
 
-  try
-    {Capturando os Itens-Filhos (se existir) para o Item que será mesclado}
-    Q_Filhos.Close;
-    if C_ItensHasChildren.Value = 'S' then begin
-      Q_Filhos.Params[0].asInteger := nIDITem;
-      Q_Filhos.Open;
-    end;
+  Q_Aux.SQL.Clear;
+  Q_Aux.SQL.Add('INSERT INTO SAIDASITENS (SUBTOTALITEM, EMPRESA, SAIDA, SAIDAITEM, PDV, SEQUENCIA, ITEM, DESCRICAO, QUANTIDADE, PRECO, UNIDADE,');
+  Q_Aux.SQL.Add('MESCLADO, FATOR, USOTIPOITEM, COLUNA1, COLUNA2, COLUNA3, COLUNA4, HASCHILDREN, BAIXAESTOQUE ) values (');
+  Q_Aux.SQL.Add(':SUBTOTALITEM, :EMPRESA, :SAIDA, :SAIDAITEM, :PDV, :SEQUENCIA, :ITEM, :DESCRICAO, :QUANTIDADE, :PRECO, :UNIDADE,');
+  Q_Aux.SQL.Add(':MESCLADO, :FATOR, :USOTIPOITEM, :COLUNA1, :COLUNA2, :COLUNA3, :COLUNA4, :HASCHILDREN, :BAIXAESTOQUE);');
 
-    {Verificando se o Item já existe em GridItens - se existe, o sistema irá verificar se é exatamente igual;
-     caso seja, será adicionada a quantidade apenas, caso não seja, será adicionado novo item.}
-    if ItemExatamenteIgual then begin  //Já posiciona DM.C_Itens no item que será adicionado
-      {Adicionando quantidade}
-      DM.C_Itens.Edit;
-      DM.C_ItensQuantidade.Value := DM.C_ItensQuantidade.Value + C_ItensicQtdMesclar.Value;
-      DM.C_Itens.Post;
 
-      {Adicionando em C_Mesclagens}
-      with DM.C_Mesclagens do begin
-        Append;
-        FieldByName('SAIDAITEM_ORIGINAL').asInteger := nIDItem;
-        FieldByName('SAIDA_ORIGINAL').asInteger := C_ItensSaida.Value;
-        FieldByName('Quantidade').asFloat := C_ItensicQtdMesclar.Value;
-        FieldByName('OldQuantidade').asFloat := C_ItensOldQtdRecebida.Value;
-        FieldByName('QtdMaxima').asFloat := C_ItensQuantidade.Value - C_ItensQtdFaturada.Value;
-        FieldByName('Fechar_Original').asString := IIF(C_MovimentosStatus.value = 'H', 'S', 'N');
-        FieldByName('Unidade').asString := C_ItensUnidade.value;
-        FieldByName('Fator').asFloat := C_ItensFator.value;
-        FieldByName('PDV').AsString := InttoStr(C_AcertoPDV.Value);
-        FieldByName('Empersa').AsInteger := C_AcertoEMPRESA.Value;
-        Post;
+  nSaidaItem := DMProjeto.Gen_ID('GEN_IDGLOBAL');
+  DM.C_Itens.Append;
+  Q_Aux.ParamByName('EMPRESA').AsInteger := C_AcertoEMPRESA.Value;
+  Q_Aux.ParamByName('SAIDA').AsInteger := mSaida;
+  Q_Aux.ParamByName('SAIDAITEM').AsInteger := nSaidaItem;
+  Q_Aux.ParamByName('PDV').AsInteger := C_AcertoPDV.Value;
+  Q_Aux.ParamByName('SEQUENCIA').AsInteger := sequenciaItem;
+  Q_Aux.ParamByName('ITEM').AsInteger := C_AcertoITEM.Value;
+  Q_Aux.ParamByName('DESCRICAO').AsString := C_AcertoDESCRICAO.Value;
+  Q_Aux.ParamByName('QUANTIDADE').AsFloat := C_AcertoQtdSelect.Value;
+  Q_Aux.ParamByName('SUBTOTALITEM').AsFloat := C_AcertoQtdSelect.Value * C_ItensPRECO.Value;
+  nTotalItens := nTotalItens + C_AcertoQtdSelect.Value * C_ItensPRECO.Value;
+  nTotalProdutos := nTotalProdutos + C_AcertoQtdSelect.Value * C_ItensPRECO.Value;
+  Q_Aux.ParamByName('PRECO').AsFloat := C_ItensPRECO.Value;
+  Q_Aux.ParamByName('UNIDADE').AsString := C_ItensUNIDADE.Value;
+  Q_Aux.ParamByName('MESCLADO').AsString := 'S';
+  Q_Aux.ParamByName('FATOR').AsFloat := C_ItensFATOR.Value;
+  Q_Aux.ParamByName('USOTIPOITEM').AsString := C_ItensUSOTIPOITEM.AsString;
+  Q_Aux.ParamByName('COLUNA1').AsString := C_ItensCOLUNA1.AsString;
+  Q_Aux.ParamByName('COLUNA2').AsString := C_ItensCOLUNA2.AsString;
+  Q_Aux.ParamByName('COLUNA3').AsString := C_ItensCOLUNA3.AsString;
+  Q_Aux.ParamByName('COLUNA4').AsString := C_ItensCOLUNA4.AsString;
+  Q_Aux.ParamByName('HASCHILDREN').AsString := C_ItensHASCHILDREN.AsString;
+  Q_Aux.ParamByName('BAIXAESTOQUE').AsString := 'N';
+  Q_Aux.ExecSQL;
+
+  C_Movimentos.First;
+  while not C_Movimentos.Eof do
+  begin
+    C_Itens.First;
+    while not C_Itens.Eof do
+    begin
+      Q_Aux.SQL.Clear;
+      Q_Aux.SQL.Add('INSERT INTO SAIDASITENSMESCLA (Empersa, PDV, SAIDAITEMMESCLA,SAIDAITEM, SAIDAITEM_ORIGINAL,SAIDA_ORIGINAL, Quantidade,');
+      Q_Aux.SQL.Add('QtdMaxima, Fechar_Original,Unidade, Fator) values (');
+      Q_Aux.SQL.Add(':Empersa, :PDV, :SAIDAITEMMESCLA, :SAIDAITEM, :SAIDAITEM_ORIGINAL,:SAIDA_ORIGINAL, :Quantidade,');
+      Q_Aux.SQL.Add(':QtdMaxima, :Fechar_Original,:Unidade, :Fator);');
+
+          {Adicionando em C_Mesclagens}
+      with Q_Aux do begin
+        ParamByName('SAIDAITEMMESCLA').asInteger := DMProjeto.Gen_ID('GEN_IDGLOBAL');
+        ParamByName('SAIDAITEM_ORIGINAL').asInteger := C_ItensSAIDAITEM.Value;
+        ParamByName('SAIDAITEM').asInteger := nSaidaItem;
+        ParamByName('SAIDA_ORIGINAL').asInteger := C_ItensSAIDA.Value;
+        ParamByName('Quantidade').asFloat := C_ItensicQtdMesclar.Value;
+        ParamByName('QtdMaxima').asFloat := C_ItensQuantidade.Value - C_ItensQtdFaturada.Value;
+        ParamByName('Fechar_Original').asString := IIF(C_MovimentosStatus.value = 'H', 'S', 'N');
+        ParamByName('Unidade').asString := C_ItensUnidade.value;
+        ParamByName('Fator').asFloat := C_ItensFator.value;
+        ParamByName('PDV').AsString := InttoStr(C_AcertoPDV.Value);
+        ParamByName('Empersa').AsInteger := C_AcertoEMPRESA.Value;
+        ExecSQL;
       end;
-      end //exatamenteigual;
-    else begin //Item é diferente;
-      DM.C_Itens.Append;
-      // Setando antes devido à multi-unidade...
-      DM.C_ItensITEM.Value := C_ItensITEM.Value;
-      DM.C_ItensUNIDADE.Value := C_ItensUNIDADE.Value;
-      DM.C_ItensMESCLADO.Value := 'S';
-      //
-      GridItens.TS_ID := C_ItensITEM.Value;
-      CopiarItem;
-
-      DM.C_Itens.Post;
-
-      {Adicionando em C_Mesclagens}
-      with DM.C_Mesclagens do begin
-        Append;
-        FieldByName('SAIDAITEM_ORIGINAL').asInteger := nIDItem;
-        FieldByName('SAIDA_ORIGINAL').asInteger := C_ItensSAIDA.Value;
-        FieldByName('Quantidade').asFloat := C_ItensicQtdMesclar.Value;
-        FieldByName('OldQuantidade').asFloat := C_ItensOldQtdRecebida.Value;
-        FieldByName('QtdMaxima').asFloat := C_ItensQuantidade.Value - C_ItensQtdFaturada.Value;
-        FieldByName('Fechar_Original').asString := IIF(C_MovimentosStatus.value = 'H', 'S', 'N');
-        FieldByName('Unidade').asString := C_ItensUnidade.value;
-        FieldByName('Fator').asFloat := C_ItensFator.value;
-        FieldByName('PDV').AsString := InttoStr(C_AcertoPDV.Value);
-        FieldByName('Empersa').AsInteger := C_AcertoEMPRESA.Value;
-        Post;
-      end;
-
+      C_Itens.Next;
     end;
-  finally
-    DM.bMesclando := false;
+    C_Movimentos.Next;
   end;
 
 end;
@@ -959,7 +887,7 @@ end;
 procedure TDlgMescAcertSaida.gridAcertoCustomDrawCell(Sender: TObject;
   ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
   AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
-  var AText: String; var AColor: TColor; AFont: TFont;
+  var AText: string; var AColor: TColor; AFont: TFont;
   var AAlignment: TAlignment; var ADone: Boolean);
 begin
   inherited;
@@ -973,6 +901,7 @@ begin
     DlgMsg.ShowMsg(2189);
     raise Exception.Create('@@');
   end;
+  if gravando = false then C_AcertoQtdSelect.Value := Sender.AsCurrency;
 end;
 
 end.
@@ -984,5 +913,25 @@ end.
 {
 Where 	s.Situacao = 'N'  and KK and  s.TipoPadrao in (ZZ)
 and 	s.Favorecido in (XX)
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
 
 }

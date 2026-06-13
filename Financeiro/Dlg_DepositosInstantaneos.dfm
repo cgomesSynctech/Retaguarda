@@ -11,11 +11,11 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Tag = -1
-    Left = 675
-    Height = 363
+    Left = 683
+    Height = 374
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 327
+      Top = 338
       Height = 35
     end
     inherited btComando2: TTS_SpeedButton
@@ -280,7 +280,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   end
   inherited pnTitulo: TTS_MaxPanel
     Tag = -1
-    Width = 793
+    Width = 801
     HelpContext = -1
     Gradient.ColorStart = 14859922
     inherited lbEstadoForm: TTS_Label
@@ -362,16 +362,16 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   end
   inherited pnDados: TTS_Panel
     Tag = -1
-    Width = 675
-    Height = 363
+    Width = 683
+    Height = 374
     HelpContext = -1
     Color = 16116702
     object TS_Panel1: TTS_Panel
       Tag = -1
       Left = 1
       Top = 1
-      Width = 673
-      Height = 361
+      Width = 681
+      Height = 372
       HelpContext = -1
       Align = alClient
       BevelOuter = bvNone
@@ -382,7 +382,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
         Tag = -1
         Left = 1
         Top = 1
-        Width = 671
+        Width = 679
         Height = 52
         HelpContext = -1
         Align = alTop
@@ -391,7 +391,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
         ParentCtl3D = False
         TabOrder = 0
         DesignSize = (
-          671
+          679
           52)
         object Label1: TTS_Label
           Left = -9
@@ -693,7 +693,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
         Tag = -1
         Left = 1
         Top = 53
-        Width = 671
+        Width = 679
         Height = 81
         HelpContext = -1
         Align = alTop
@@ -703,7 +703,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
         object TS_Panel2: TTS_Panel
           Left = 0
           Top = 0
-          Width = 671
+          Width = 679
           Height = 23
           Align = alTop
           BevelOuter = bvNone
@@ -855,7 +855,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
         object pnMemo: TTS_Panel
           Left = 0
           Top = 79
-          Width = 671
+          Width = 679
           Height = 2
           Align = alClient
           BevelOuter = bvNone
@@ -921,7 +921,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
         object pnChequesDev: TTS_Panel
           Left = 0
           Top = 23
-          Width = 671
+          Width = 679
           Height = 56
           Align = alTop
           BevelOuter = bvNone
@@ -929,7 +929,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
           TabOrder = 2
           Visible = False
           DesignSize = (
-            671
+            679
             56)
           object TS_Label7: TTS_Label
             Left = 0
@@ -1194,15 +1194,15 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
       end
       object TS_Panel3: TTS_Panel
         Left = 1
-        Top = 171
-        Width = 671
+        Top = 182
+        Width = 679
         Height = 189
         Align = alBottom
         BevelOuter = bvNone
         Color = 16247774
         TabOrder = 2
         DesignSize = (
-          671
+          679
           189)
         object pgPrincipal: TTS_PageControl
           Tag = -1
@@ -1367,7 +1367,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
               Items.Strings = (
                 '1. Dinheiro'
                 '2. Cheque'
-                '3. Cheque Eletr'#244'nico'
+                '3. PIX'
                 '4. Cart'#227'o de Cr'#233'dito'
                 '5. Utilizar Cr'#233'dito'
                 '6. Dep'#243'sito Banc'#225'rio'
@@ -1381,11 +1381,11 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
             object pgForma: TTS_PageControl
               Tag = -1
               Left = 127
-              Top = 3
+              Top = 8
               Width = 540
-              Height = 154
+              Height = 149
               HelpContext = -1
-              ActivePage = tabCheque
+              ActivePage = tabChequeEletronico
               Anchors = [akLeft, akTop, akRight, akBottom]
               HotTrack = True
               OwnerDraw = True
@@ -1394,7 +1394,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
               TabOrder = 1
               TabStop = False
               Visible = False
-              ActivePageIndex = 1
+              ActivePageIndex = 2
               BorderInvisible = True
               Transparent = False
               TabColor = 16247774
@@ -1688,7 +1688,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
                 end
               end
               object tabChequeEletronico: TTS_TabSheet
-                Caption = 'Cheque Eletr'#244'nico'
+                Caption = 'PIX'
                 TabVisible = False
                 TabColor = clBtnFace
                 TabFontColor = clBlack
@@ -1697,8 +1697,8 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
                 object DBChequesEletronico: TTS_QDBGrid
                   Left = 0
                   Top = 0
-                  Width = 354
-                  Height = 152
+                  Width = 540
+                  Height = 147
                   Bands = <
                     item
                     end>
@@ -1798,6 +1798,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
                   end
                   object DBChequesEletronicoVencimento: TdxDBGridDateColumn
                     HeaderAlignment = taCenter
+                    Sorted = csUp
                     Width = 66
                     BandIndex = 0
                     RowIndex = 0
@@ -3134,12 +3135,12 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
     Top = 227
   end
   inherited LastDataObject: TTS_LastDataObject
-    Left = 537
-    Top = 274
+    Left = 409
+    Top = 210
   end
   inherited ppmPadrao: TTS_PopupMenu
-    Left = 535
-    Top = 223
+    Left = 599
+    Top = 143
     object Salvar1: TMenuItem [0]
       Caption = 'Salvar'
       Default = True
@@ -3181,12 +3182,12 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
     Modulo = 'Clientes / Vendas'
     Caption = 'Recebimento R'#225'pido'
     OnRefresh = FormsComponentRefresh
-    Left = 192
-    Top = 58
+    Left = 232
+    Top = 34
   end
   inherited ppmHelp: TTS_PopupMenu
-    Left = 575
-    Top = 219
+    Left = 631
+    Top = 147
     inherited Ajuda1: TMenuItem
       HelpContext = 227
     end
@@ -3439,8 +3440,8 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   end
   object C_ChequesDS: TDataSource
     DataSet = C_Cheques
-    Left = 337
-    Top = 123
+    Left = 401
+    Top = 131
   end
   object C_ContasOperacao: TClientDataSet
     Aggregates = <>
@@ -3491,8 +3492,8 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
     end
   end
   object TransitionList1: TTransitionList
-    Left = 577
-    Top = 269
+    Left = 593
+    Top = 181
     object TranShape: TRadialTransition
       Milliseconds = 400
       Style = 4
@@ -3509,8 +3510,8 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
     Params = <>
     AfterDelete = C_CartoesAfterDelete
     OnNewRecord = C_CartoesNewRecord
-    Left = 393
-    Top = 105
+    Left = 465
+    Top = 89
     object C_CartoesCartao: TIntegerField
       FieldName = 'Cartao'
       OnChange = C_CartoesCartaoChange
@@ -3553,19 +3554,19 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   end
   object C_CartoesDS: TDataSource
     DataSet = C_Cartoes
-    Left = 339
-    Top = 285
+    Left = 147
+    Top = 181
   end
   object ppmContas: TTS_PopupMenu
-    Left = 496
-    Top = 272
+    Left = 544
+    Top = 208
   end
   object C_ChequesEletronico: TClientDataSet
     Aggregates = <>
     Params = <>
     OnNewRecord = C_ChequesEletronicoNewRecord
-    Left = 273
-    Top = 246
+    Left = 297
+    Top = 198
     object C_ChequesEletronicoID: TIntegerField
       FieldName = 'ID'
     end
@@ -3600,11 +3601,11 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   object C_ChequesEletronicoDS: TDataSource
     DataSet = C_ChequesEletronico
     Left = 440
-    Top = 237
+    Top = 173
   end
   object ppmChequesElet: TTS_PopupMenu
-    Left = 372
-    Top = 227
+    Left = 364
+    Top = 171
   end
   object ppmCartoes: TTS_PopupMenu
     Left = 214

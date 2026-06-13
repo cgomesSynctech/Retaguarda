@@ -66,6 +66,8 @@ type
     C_VendasProdQUANTIDADE: TFloatField;
     C_VendasProdPRECO: TFloatField;
     C_VendasProdSUBTOTAL: TFloatField;
+    C_VendasTIPOMOVIMENTO: TIntegerField;
+    C_VendasTIPOPADRAO: TIntegerField;
     procedure mvUltimasVendasDblClick(Sender: TObject);
     procedure FormsComponentBeforeLoadKey(Sendet: TObject;
       var Where: String);
@@ -113,15 +115,20 @@ end;
 
 procedure TDlgUltimasVendas.mvUltimasVendasDblClick(Sender: TObject);
 var ID: integer;
+
 begin
   inherited;
   if C_VendasSaida.value > 0 then with mvUltimasVendas do begin
     // Vendas
     if FocusedNode.Level.Tag = 1 then begin
       ID := FocusedNode.Level.DataSet.Fieldbyname('SAIDA').AsInteger;
+
       if ID <> 0 then begin
         DMProjeto.SetParametrosForm([ID]);
-        DMProjeto.CriarForm('FrmInvoices',self,true);
+        if C_VendasTIPOPADRAO.value = 2 then
+          DMProjeto.CriarForm('FrmSalesOrder',self,true)
+        else
+         DMProjeto.CriarForm('FrmInvoices',self,true);
       end;
     end else if FocusedNode.Level.Tag = 2 then begin
         DMProjeto.SetParametrosForm([FocusedNode.Level.DataSet.Fieldbyname('Item').AsInteger]);

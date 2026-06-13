@@ -338,7 +338,7 @@ type
         function ReceberTitulos(Deposito: integer; sItens: string; Favorecido, Conta: integer;
             Data: TDateTime; CreditoUtilizado, CreditoGerado: Currency;
             Historico: string;
-            Vendedor: integer = 0; Troco: Currency = 0): integer;
+            Vendedor: integer = 0; Troco: Currency = 0; Retencao: Currency = 0 ): integer;
 
         function ReceberDoc(IDDoc, TipoOperacao, Deposito, FormaPagamento: integer;
             Valor: Currency;
@@ -400,6 +400,19 @@ type
             NFiscal, FromBanco: string;
             nFavorec: integer; IDDoc: integer = 0; Conciliado: string = 'N'; sRepasse: string = ''): Integer;
 
+        function RetiraDocEletronico(IDDoc, TipoOperacao, Deposito, FormaPagamento: integer;
+            Valor: Currency;
+            Data: TDateTime;
+            Historico: string = '';
+            NumCheque: integer = 0;
+            Banco: integer = 0;
+            TitularCheque: string = ''; ContaTEF: integer = 0;
+            ModoCartao: integer = 0; ContaReceber: integer = 0;
+            NumeroCartao: string = '';
+            Validade: string = '';
+            sInfoAdicionais: string = ''): integer;
+
+
         procedure AtualizaConsumidorFinal(IDGerador, Favorecido: integer);
 
         {Operações com Cheques}
@@ -459,6 +472,133 @@ uses funcoes, Util2, Dlg_AlterarConta, DM_Projeto, TDM_Projeto;
 {$R *.DFM}
 
 {Início da Implementação}
+
+
+// Cesar -- função feita separada para transferir os creditos dos PIX -- Ch Eletronico para a conta banco correspondente
+function TDMFinanceiro.RetiraDocEletronico;
+var Especie, Conta, Favorecido, Tipo, Status, nResposta, nTipoConta, iddeposito : integer;
+    bLancarTransacoes, bAtualizarDoc, bCancelarOperacoes: boolean;
+    ValorOperacaoDoc: Currency;
+    dtData, DataDeposito: TDateTime;
+    sNomeConta: string;
+begin
+    try
+    DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+
+    // RECUPERANDO DADOS DA TABELA DE TRANSACOES
+   with Q_Sql do
+   begin
+        close;
+        sql.Text := 'select t.conta, t.iddoc, t.favorecido, t.data, t.conta  from transacoes t where t.idgerador = :idgerador ' ;
+        ParamByName('idgerador').AsInteger := Deposito;
+        open;
+        iddeposito := fieldbyname('iddoc').AsInteger;
+        Favorecido := fieldbyname('favorecido').AsInteger;
+        dtData := fieldbyname('data').AsDateTime;
+        Conta := fieldbyname('conta').Asinteger;
+        close;
+   end;
+
+    // ATUALIZANDO A TABELA DE DEPOSITOS
+    with Q_SQL do
+    begin
+        close;
+        sql.Text := 'update depositosdoc d set d.localtitulo = :Loc , d.foradaempresa = ''S'' , d.status = 2 , '+
+        ' d.contaatual = :contaatual, d.datarepasse = :datarepasse  where d.deposito = :deposito ';
+        ParamByName('Loc').asString := C_ChequesEletDESCRICAO.Value ;
+        ParamByName('contaatual').AsInteger := C_ChequesEletCONTALIBERACAO.Value ;
+        parambyname('deposito').asInteger := Deposito ;
+        parambyname('datarepasse').AsDateTime := dtData ;
+
+        ExecSQL;
+        DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+   end;
+   if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
+        DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
+
+
+   // RECUPERANDO DADOS DA TABELA DE TRANSACOES
+   with Q_Sql do
+   begin
+        close;
+        sql.Text := 'select t.conta, t.iddoc, t.favorecido, t.data, t.conta  from transacoes t where t.idgerador = :idgerador ' ;
+        ParamByName('idgerador').AsInteger := Deposito;
+        open;
+        iddeposito := fieldbyname('iddoc').AsInteger;
+        Favorecido := fieldbyname('favorecido').AsInteger;
+        dtData := fieldbyname('data').AsDateTime;
+        Conta := fieldbyname('conta').Asinteger;
+        close;
+
+        // GERANDO DEBITO PARA A CONTA DE RECEBIMENTO
+        SQL.Text := 'Insert into transacoes ' +
+                    '    (Conta,Data,Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
+                    '     Historico, FromBanco, Favorecido, Hora, Usuario, TipoOperacao, pdv, empresa) values ' +
+                    '    (:Conta, :Data, :Valor, :Tipo, :NumCheque, :FormaPagamento, :Deposito, :IDDoc, ' +
+                    '     :Historico, :FromBanco, :Favorecido, CURRENT_TIME, :Usuario, :TipoOperacao, :PDV, :empresa )';
+        ParamByName('Conta').AsInteger := Conta;
+        ParamByName('Data').AsDateTime := dtData;
+        ParamByName('Valor').AsCurrency := Valor * -1;
+        ParamByName('Tipo').AsString := 'D';
+        ParamByName('PDV').AsInteger := DMProjeto.nPDV;
+        ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;
+        if NumCheque = 0 then
+          SQL.Text := replace(SQL.Text, ':NumCheque', 'null')
+        else
+          ParamByName('NumCheque').AsInteger := NumCheque;
+
+        ParamByName('FormaPagamento').AsInteger := FormaPagamento;
+        ParamByName('Deposito').AsInteger := Deposito;
+        ParamByName('IDDoc').AsInteger := iddeposito;
+        ParamByName('Favorecido').AsInteger := Favorecido;
+        ParamByName('TipoOperacao').AsInteger := TipoOperacao;
+        ParamByName('Historico').AsString := 'Transferencia automatica para Conta-Banco';
+        ParamByName('FromBanco').AsString := 'N';
+        ParamByName('Usuario').AsInteger := DMProjeto.nFuncionario;
+        ExecSQL;
+        close;
+
+        // GERANDO CREDITO PARA A CONTA BANCO CORRESPONDENTE A FORMA DE PAGAMENTO
+        SQL.Text := 'Insert into transacoes ' +
+                    '    (Conta,Data,Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
+                    '     Historico, FromBanco, Favorecido, Hora, Usuario, TipoOperacao, pdv, empresa, ContaOrigem) values ' +
+                    '    (:Conta, :Data, :Valor, :Tipo, :NumCheque, :FormaPagamento, :Deposito, :IDDoc, ' +
+                    '     :Historico, :FromBanco, :Favorecido, CURRENT_TIME, :Usuario, :TipoOperacao, :PDV, :empresa, :ContaOrigem )';
+        ParamByName('Conta').AsInteger := C_ChequesEletCONTALIBERACAO.Value;
+        ParamByName('ContaOrigem').AsInteger := Conta;
+        ParamByName('Data').AsDateTime := dtData;
+        ParamByName('Valor').AsCurrency := Valor;
+        ParamByName('Tipo').AsString := 'C';
+        ParamByName('PDV').AsInteger := DMProjeto.nPDV;
+        ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;
+        if NumCheque = 0 then
+          SQL.Text := replace(SQL.Text, ':NumCheque', '999999')
+        else
+          ParamByName('NumCheque').AsInteger := NumCheque;
+
+        ParamByName('FormaPagamento').AsInteger := FormaPagamento;
+        ParamByName('Deposito').AsInteger := Deposito;
+        ParamByName('IDDoc').AsInteger := iddeposito;
+        ParamByName('Favorecido').AsInteger := Favorecido;
+        ParamByName('TipoOperacao').AsInteger := TipoOperacao;
+        ParamByName('Historico').AsString := 'Credito PIX para Conta-Banco';
+        ParamByName('FromBanco').AsString := 'N';
+        ParamByName('Usuario').AsInteger := DMProjeto.nFuncionario;
+        ExecSQL;
+        close;
+
+       DMProjeto.DB_Projeto.DefaultTransaction.Commit;
+   end;
+    except
+        on E: Exception do
+            begin
+                DlgMsg.ShowMsg(1, ' ReceberDoc - ' + e.message, '');
+            end;
+    end;
+
+end ;
+
+
 
 function TDMFinanceiro.ValoresEstoque(): TValoresEstoque;
 var
@@ -1333,7 +1473,7 @@ begin
                     SQL.Text := 'Insert into Transacoes ' +
                         '    (Conta, ContaOrigem, Data,Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
                         '     Historico,Favorecido,Usuario,Hora,TipoOperacao, pdv, empresa) ' +
-                        'Select dd.ContaAtual, dd.ContaAtual, :Data, (-1) * Valor, ''D'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDDoc, ' +
+                        'Select dd.ContaAtual, dd.ContaAtual, :Data, (-1) * dd.Valor, ''D'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDDoc, ' +
                         '''Transferência p/ ' + sNomeEmpresa + ''', ' +
                         IntToStr(Empresa) + ' , :Usuario, CURRENT_TIME, 58, dd.pdv , dd.empresa' +
                         'From DepositosDoc dd ' +
@@ -1425,12 +1565,13 @@ begin
             SQL.Text := ' Insert into Transacoes ' +
                 '    (Conta, ContaOrigem, Data,Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
                 '     Situacao, Historico,Favorecido,Usuario,Hora, TipoOperacao, pdv, empresa) ' +
-                ' Select dd.ContaAtual, 1, :Data, (-1) * Valor, ''D'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDDoc, ' +
+                ' Select dd.ContaAtual, 1, :Data, (-1) * dd.Valor, ''D'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDDoc, ' +
                 '       ''R'', ''Repasse p/ Cx. Principal'', ' +
                 '       -1, :Usuario, CURRENT_TIME, 20, dd.pdv , dd.empresa ' +
                 ' From DepositosDoc dd ' +
+                ' inner Join Depositos d on d.deposito = dd.deposito '+
                 ' Inner join FormasPagamento fp on dd.formapagamento = fp.formapagamento ' +
-                ' Where dd.ContaAtual = :Conta and fp.especie = 3 ';
+                ' Where dd.ContaAtual = :Conta and fp.especie in(2,3) and d.situacao <> ''C''  ';
 
             SQL.Text := replace(SQL.Text, ':Conta', IntToStr(nContaPadrao));
             SQL.Text := replace(SQL.Text, ':Operacao', IntToStr(IDOperacao));
@@ -1444,12 +1585,13 @@ begin
             SQL.Text := 'Insert into Transacoes ' +
                 ' (Conta,ContaOrigem,Data,Valor,TipoTransacao,NumCheque,FormaPagamento,IDGerador, IDDoc, ' +
                 ' Situacao, Historico,Favorecido,Usuario,Hora, TipoOperacao, pdv, empresa) ' +
-                ' Select 1 ,:ContaOrigem,:Data, Valor,''C'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDdoc, ' +
+                ' Select 1 ,:ContaOrigem,:Data, dd.Valor,''C'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDdoc, ' +
                 '''R'', ''Repasse  '' || :NomeCaixa, ' +
                 '-1, :Usuario, CURRENT_TIME, 20, dd.pdv , dd.empresa ' +
                 ' From DepositosDoc dd ' +
                 ' Inner join FormasPagamento fp on dd.formapagamento = fp.formapagamento ' +
-                ' Where dd.ContaAtual = :Conta and fp.especie = 3 ';
+                ' inner Join Depositos d on d.deposito = dd.deposito '+
+                ' Where dd.ContaAtual = :Conta and fp.especie in(2,3) and d.situacao <> ''C'' ';
             SQL.Text := replace(SQL.Text, ':Conta', IntToStr(nContaPadrao));
             SQL.Text := replace(SQL.Text, ':Operacao', IntToStr(IDOperacao));
             SQL.Text := replace(SQL.Text, ':ContaOrigem', IntToStr(nContaPadrao));
@@ -1461,7 +1603,8 @@ begin
             Close;
             SQL.Text := 'Select iddoc from DepositosDoc dd ' +
                 'Inner join FormasPagamento fp on dd.formapagamento = fp.formapagamento ' +
-                'Where dd.ContaAtual = :Conta and fp.especie = 3 ';
+                ' inner Join Depositos d on d.deposito = dd.deposito '+
+                'Where dd.ContaAtual = :Conta and fp.especie in(2,3)  and d.situacao <> ''C'' ';
             ParamByName('Conta').AsInteger := nContaPadrao;
             Open;
             while not eof do
@@ -1489,7 +1632,7 @@ begin
                     {Retirando do Caixa}
                     Close;
                     SQL.Text := 'Insert into Transacoes ' +
-                        '    (Conta, ContaOrigem, Data,Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
+                        '    (Conta, ContaOrigem, Data, Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
                         '     Situacao, Historico,Favorecido,Usuario,Hora,TipoOperacao, pdv, empresa) ' +
                         ' Select dd.ContaAtual, 1, :Data, (-1) * Valor, ''D'', dd.NumCheque, dd.FormaPagamento, :Operacao, dd.IDDoc, ' +
                         '       ''R'', ''Repasse p/ Cx. Principal'', ' +
@@ -1571,7 +1714,7 @@ begin
                     SQL.Text := 'Insert into Transacoes ' +
                         '    (Conta, ContaOrigem, Data,Valor,TipoTransacao,NumCheque,FormaPagamento, IDGerador, IDDoc, ' +
                         '     Situacao, Historico,Favorecido,Usuario,Hora, pdv, empresa) ' +
-                        'Select dd.ContaAtual, 1, :Data, (-1) * Valor, ''D'', dd.NumCheque, dd.FormaPagamento, dd.Deposito, dd.IDDoc, ' +
+                        'Select dd.ContaAtual, 1, :Data, (-1) * dd.Valor, ''D'', dd.NumCheque, dd.FormaPagamento, dd.Deposito, dd.IDDoc, ' +
                         '       ''R'', ''Repasse p/ Cx. Principal'', ' +
                         '       -1, :Usuario, CURRENT_TIME, dd.pdv , dd.empresa' +
                         'From DepositosDoc dd ' +
@@ -1649,17 +1792,18 @@ begin
                             end;
                         Close;
                         Repasse(nDinheiro, nCheques, sIDDoc);
-                    end;
+
                 Close;
                 SQL.Text := 'update depositosdoc dd ' +
                     'set dd.contaatual = 1 ' +
                     'where dd.contaatual = :C and ' +
                     'dd.formapagamento IN (' +
-                    'select formapagamento from formaspagamento where especie IN (3,10)) ';
+                    'select formapagamento from formaspagamento where especie IN (2,3,10)) ';
                 ParamByName('C').AsInteger := DMFinanceiro.nContaPadrao;
                 ExecSQL;
-
                 Close;
+                end;  // Cesar - 30-04-21 .. esse end estava deixando o Update de depositosdoc fora do parametro de repasse automatico,
+                // foi colocado depois porque os cartoes de cretido estavam mudando o campo de conta atual sem ter sido feito o repasse ! 
                 {Fechando o Caixa}
                 SQL.Text := 'Update Contas set ' +
                     '    Situacao = ''Fechado'' ' +
@@ -2228,7 +2372,7 @@ end;
 
 function TDMFinanceiro.ReceberTitulos(Deposito: integer; sItens: string; Favorecido, Conta: integer;
     Data: TDateTime; CreditoUtilizado, CreditoGerado: Currency; Historico: string;
-    Vendedor: integer = 0; Troco: Currency = 0): integer;
+    Vendedor: integer = 0; Troco: Currency = 0; Retencao: Currency = 0): integer;
 var i: integer;
     Valor, ValorAReceber, Pagamento, Juros, Descontos, nSomaCredUtilizado, nSomaCredGerado: Currency;
     slItens: TStringList;
@@ -2249,11 +2393,16 @@ begin
                         Close;
                         SQL.Text := 'Update TitulosAReceber Set ValorJurosMora = ValorJurosMora + :J, ' +
                             'percentualmora = (select case when t.percentualmora > 0 then t.percentualmora else :percentual end from titulosareceber t where t.id = :ID),' +
-                            'obs =  '' Set ValorJurosMora = ValorJurosMora'' ' +
+  //                          'obs =  '' Set ValorJurosMora = ValorJurosMora'' ' +
+                             'obs = :OBS, '+
+                             'retencao =:retencao '+
                             'Where ID = :ID ';
                         ParamByName('percentual').AsCurrency := StrToFloatDef(SeparaStrings(slItens[i], '|||', IndiceString(slItens[1], '|||', 'PERCENTUALMORA')), 0);
                         ParamByName('J').AsCurrency := StrToFloatDef(SeparaStrings(slItens[i], '|||', IndiceString(slItens[1], '|||', 'Juros')), 0);
                         ParamByName('ID').AsInteger := StrToInt(SeparaStrings(slItens[0], ',', i - 1));
+                        ParamByName('OBS').AsString := Historico ;
+                        ParamByName('retencao').AsCurrency := Retencao ;
+
                         nTentativas := 0;
                         bGravouSaida := False;
                         repeat
@@ -2773,7 +2922,7 @@ begin
 
                     ExecSQL;
 
-                    if (bLancarTransacoes) then
+                    if (bLancarTransacoes) and (FormaPagamento <> -2)   then
                         begin
 
                             Close;
@@ -3509,7 +3658,7 @@ begin
                         dtData := fields[0].AsDatetime;
                         {Lançando em Transações}
                         bLancarTransacoes := ((nTipoConta = 1) or ((getTransacaoEspecie(Especie) = 'S') or (FormaPagamento = 2))) and (FormaPagamento > 0);
-                        if bLancarTransacoes then
+                        if (bLancarTransacoes) and (FormaPagamento <> -2)   then
                             begin
                                 SQL.Text :=
                                     'Insert into transacoes ' +
@@ -3624,9 +3773,8 @@ begin
                                     '       CreditoUtilizado = :CredUti, ' +
                                     '       CreditoGerado = :CredGerado, ' +
                                     '       Descontos = :Descontos, ' +
-                                    '       DataPago = :D, ' +
-                                    '       Status = :Status, ' +
-                                    '       obs = '' DataPago = :D '' ' +
+                                    '       DataPago = :D , ' +
+                                    '       Status = :Status ' +
                                     'Where c.ID = :Titulo ';
                                 ParamByName('Valor').AsCurrency := ValorPago;
                                 ParamByName('Juros').AsCurrency := Juros;
@@ -4072,7 +4220,7 @@ end;
 
 function TDMFinanceiro.EspecieDocumento;
 begin
-    result := (nEspecie in [1, 3, 5, 17, 20, 23]);
+    result := (nEspecie in [1,2, 3, 5, 17, 20, 23]);
 end;
 
 function TDMFinanceiro.EspecieAVista; //Implica que liquida o pagamento
@@ -4167,6 +4315,7 @@ begin
     result := 0;
     try
         sHist := Copy(sHist, 1, 80);
+
         if sRepasse = '' then
             begin
                 if Operacao = 0 then
@@ -5753,7 +5902,10 @@ var
     sFavorec: string;
 begin
     result := -1;
-
+     // Cesar 14-07-2023 atualmente quando é feita uma transferecai de dinheiro o sistema no relatorio de caixa mostra como pagamento. foi alterado as consultas do relatorio de caixa
+     // para colocar como repasse e foi necesario colocar o campo situacao da tabela de transacoes para R , assim os demais relatorios e consultas tratam como repasse.
+     if ( TipoOperacao = 8 ) then
+       sRepasse := 'R' ; 
     nEspecie := -1;
 
     with Q_ComandoSQL do
@@ -6121,7 +6273,9 @@ begin
                                                                 'Descontos = :D, ' +
                                                                 'JurosRecebidos = :J, ' +
                                                                 'ValorJurosMora = 0, ' +
-                                                                'Status = 1 ' +
+                                                                'Status = 1, ' +
+                                                                'OBS = :Usuario || '' Cancelou o recebimento '' , ' +
+                                                                'datapago = null ' +
                                                                 'Where ID = :T  ';
                                                             Q_SQL2.ParamByName('V').AsCurrency := FieldByName('TotalPago').AsCurrency;
                                                             Q_SQL2.ParamByName('CU').AsCurrency := FieldByName('CU').AsCurrency;
@@ -6129,6 +6283,7 @@ begin
                                                             Q_SQL2.ParamByName('D').AsCurrency := FieldByName('D').AsCurrency;
                                                             Q_SQL2.ParamByName('J').AsCurrency := FieldByName('J').AsCurrency;
                                                             Q_SQL2.ParamByName('T').asInteger := StrToInt(SeparaStrings(sTitulos, ',', k));
+                                                            Q_SQL2.ParamByName('Usuario').AsString := DMProjeto.sLoginName ;
                                                             nTentativas := 0;
                                                             bGravouSaida := False;
                                                             repeat

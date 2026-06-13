@@ -1,8 +1,8 @@
 inherited DMClientes: TDMClientes
-  Left = 229
-  Top = 1
-  Height = 746
-  Width = 1164
+  Left = 222
+  Top = 157
+  Height = 438
+  Width = 1028
   inherited OpenDialog: TOpenDialog
     Left = 24
     Top = 435
@@ -1660,19 +1660,21 @@ inherited DMClientes: TDMClientes
       '  PAISENTREGA = :PAISENTREGA,'
       '  DESCRICAO = :DESCRICAO,'
       '  FONEENTREGA = :FONEENTREGA,'
-      '  PONTOREFERENCIAENTREGA = :PONTOREFERENCIAENTREGA'
+      '  PONTOREFERENCIAENTREGA = :PONTOREFERENCIAENTREGA, '
+      '  BAIRROENTREGA = :BAIRROENTREGA'
       'where'
       '  ENTREGA = :OLD_ENTREGA')
     InsertSQL.Strings = (
       'insert into FAVORECIDOSENTREGA'
       '  (ENTREGA, FAVORECIDO, ENDERECOENTREGA, CIDADEENTREGA, '
       'UFENTREGA, CEPENTREGA, '
-      '   PAISENTREGA, DESCRICAO, FONEENTREGA, PONTOREFERENCIAENTREGA)'
+      '   PAISENTREGA, DESCRICAO, FONEENTREGA, '
+      'PONTOREFERENCIAENTREGA,BAIRROENTREGA)'
       'values'
       '  (:ENTREGA, :FAVORECIDO, :ENDERECOENTREGA, :CIDADEENTREGA, '
       ':UFENTREGA, '
       '   :CEPENTREGA, :PAISENTREGA, :DESCRICAO, :FONEENTREGA, '
-      ':PONTOREFERENCIAENTREGA)')
+      ':PONTOREFERENCIAENTREGA, :BAIRROENTREGA)')
     DeleteSQL.Strings = (
       'delete from FAVORECIDOSENTREGA'
       'where'
@@ -4174,5 +4176,15 @@ inherited DMClientes: TDMClientes
     DataSet = C_Municipios
     Left = 1048
     Top = 214
+  end
+  object IdHTTP1: TIdHTTP
+    Request.Accept = 'text/html, */*'
+    Request.ContentLength = 0
+    Request.ContentRangeEnd = 0
+    Request.ContentRangeStart = 0
+    Request.ProxyPort = 0
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    Left = 904
+    Top = 168
   end
 end

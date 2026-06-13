@@ -88,7 +88,9 @@ type
     C_ConsultaIMPOSTO: TFloatField;
     C_ConsultaTOTAL: TFloatField;
     C_ConsultaBASEIMPOSTO: TFloatField;
-    procedure AtualizaConsulta;    
+    cbCanceladas: TTS_CheckBox;
+    procedure AtualizaConsulta;
+    procedure cbCanceladasChange(Sender: TObject);
     procedure btClientesClick(Sender: TObject);
     procedure btAtualizarClick(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
@@ -123,10 +125,11 @@ uses DM_Projeto, funcoes;
 
 procedure TRptEstimates.AtualizaConsulta;
 var
-   sPrimeiroNome, sStatus, nTP_MV : String;
+   sPrimeiroNome, sStatus, nTP_MV, sSituacao : String;
    i : integer;
 begin
   nTP_MV := '';
+  sSituacao := ' and s.situacao = '+iif(cbCanceladas.Checked,'''C''','''N''');
   if TS_LCBTipoMovimento.LookupKeyValue <> null then begin
      nTP_MV := 'and s.tipomovimento = '+inttostr(TS_LCBTipoMovimento.LookupKeyValue);
   end;
@@ -134,7 +137,7 @@ begin
     Close;
     CommandText := 'Select ' + getCampos + ' ' +
                    'From ' + getTabelas + ' ' +
-                   'where s.tipopadrao = 3 and s.situacao = ''N'''+nTP_MV;
+                   'where s.tipopadrao = 3'+sSituacao  +nTP_MV;
 
     if sClientes <> '' then begin
       CommandText := CommandText + ' and s.favorecido in (' + sClientes +')';
@@ -220,6 +223,12 @@ begin
   end;
 
   end;
+
+procedure TRptEstimates.cbCanceladasChange(Sender: TObject);
+begin
+  inherited;
+  AtualizaConsulta;
+end;
 
 procedure TRptEstimates.FormsComponentRefresh(Sender: TObject);
 begin

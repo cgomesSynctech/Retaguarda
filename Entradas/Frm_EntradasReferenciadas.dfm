@@ -7,25 +7,25 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 505
-    Height = 203
+    Left = 513
+    Height = 213
     Color = 16116702
     inherited btPesquisar: TTS_SpeedButton
       Visible = False
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 169
+      Top = 179
     end
     inherited btIR_Para: TTS_SpeedButton
       Visible = False
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 505
-    Height = 203
+    Width = 513
+    Height = 213
     inherited Grid: TTS_QDBGrid
-      Width = 503
-      Height = 201
+      Width = 511
+      Height = 211
       KeyField = 'ENTRADAREFERENCIADA'
       DataSource = DMEntradasReferenciadas.C_TabelaDS
       Filter.Criteria = {00000000}
@@ -101,16 +101,16 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 503
-      Height = 201
+      Width = 511
+      Height = 211
     end
     inherited sbDados: TTS_Panel
-      Width = 503
-      Height = 201
+      Width = 511
+      Height = 211
       Color = 16116702
       object lb_ChaveAcesso: TTS_Label
         Left = 14
-        Top = 19
+        Top = 51
         Width = 167
         Height = 16
         Caption = 'Informe a Chave de Acesso:'
@@ -124,12 +124,12 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
         FormatoTabela = False
         LinkToResult = 0
       end
-      object lb_Modelo: TTS_Label
-        Left = 64
-        Top = 97
+      object TS_Label2: TTS_Label
+        Left = 32
+        Top = 105
         Width = 57
         Height = 16
-        Caption = 'Modelo:'
+        Caption = 'Numero :'
         FocusControl = df_ChaveAcesso
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -137,16 +137,15 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        Visible = False
         FormatoTabela = False
         LinkToResult = 0
       end
-      object lb_ECF: TTS_Label
-        Left = 184
-        Top = 97
-        Width = 81
+      object TS_Label3: TTS_Label
+        Left = 176
+        Top = 105
+        Width = 41
         Height = 16
-        Caption = 'N'#250'mero ECF:'
+        Caption = 'Serie :'
         FocusControl = df_ChaveAcesso
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -154,16 +153,15 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        Visible = False
         FormatoTabela = False
         LinkToResult = 0
       end
-      object TS_Label1: TTS_Label
-        Left = 352
-        Top = 96
-        Width = 81
+      object TS_Label4: TTS_Label
+        Left = 272
+        Top = 104
+        Width = 41
         Height = 16
-        Caption = 'N'#250'mero COO:'
+        Caption = 'Data :'
         FocusControl = df_ChaveAcesso
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -171,13 +169,28 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        Visible = False
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object TS_Label5: TTS_Label
+        Left = 32
+        Top = 129
+        Width = 74
+        Height = 16
+        Caption = 'Participante :'
+        FocusControl = df_ChaveAcesso
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         FormatoTabela = False
         LinkToResult = 0
       end
       object df_ChaveAcesso: TTS_DBEdit
         Left = 27
-        Top = 36
+        Top = 68
         Width = 442
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -195,77 +208,15 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
         Height = 19
         StoredValues = 2
       end
-      object df_Modelo: TTS_DBEdit
-        Left = 127
-        Top = 95
-        Width = 50
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        Visible = False
-        DataField = 'MODELO'
-        DataSource = DMEntradasReferenciadas.C_TabelaDS
-        MaxLength = 250
-        StyleController = DMProjeto.esFuncionarios
-        DistinctEditOn = False
-        Height = 19
-        StoredValues = 2
-      end
-      object df_ECF: TTS_DBEdit
-        Left = 274
-        Top = 94
-        Width = 71
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-        Visible = False
-        OnKeyPress = df_ECFKeyPress
-        DataField = 'ECF'
-        DataSource = DMEntradasReferenciadas.C_TabelaDS
-        MaxLength = 250
-        StyleController = DMProjeto.esFuncionarios
-        DistinctEditOn = False
-        Height = 19
-        StoredValues = 2
-      end
-      object df_COO: TTS_DBEdit
-        Left = 439
-        Top = 94
-        Width = 129
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 3
-        Visible = False
-        OnKeyPress = df_COOKeyPress
-        DataField = 'COO'
-        DataSource = DMEntradasReferenciadas.C_TabelaDS
-        MaxLength = 250
-        StyleController = DMProjeto.esFuncionarios
-        DistinctEditOn = False
-        Height = 19
-        StoredValues = 2
-      end
-      object rdGroupTipoDoc: TTS_DBRadioGroup
-        Left = 255
-        Top = 13
+      object TS_DBRadioGroup1: TTS_DBRadioGroup
+        Left = 21
+        Top = 7
         Width = 204
         Height = 36
-        Caption = ' Tipo Documento '
+        Caption = 'Tipo Emiss'#227'o '
         Columns = 2
         Ctl3D = True
-        DataField = 'TIPODOCUMENTO'
+        DataField = 'IND_EMIT'
         DataSource = DMEntradasReferenciadas.C_TabelaDS
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -273,24 +224,107 @@ inherited FrmEntradasReferenciadas: TFrmEntradasReferenciadas
         Font.Name = 'Tahoma'
         Font.Style = []
         Items.Strings = (
-          'Cupom'
-          'Nota Fiscal')
+          'Propria'
+          'Terceiros')
         ParentCtl3D = False
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 1
         TabStop = True
         Values.Strings = (
-          '1'
-          '2')
-        Visible = False
+          '0'
+          '1')
+      end
+      object TS_DBEdit1: TTS_DBEdit
+        Left = 95
+        Top = 103
+        Width = 74
+        Color = 14869218
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        DataField = 'NUMERO'
+        DataSource = DMEntradasReferenciadas.C_TabelaDS
+        MaxLength = 250
+        StyleController = DMProjeto.esFuncionarios
+        DistinctEditOn = False
+        Height = 19
+        StoredValues = 2
+      end
+      object TS_DBEdit2: TTS_DBEdit
+        Left = 223
+        Top = 103
+        Width = 34
+        Color = 14869218
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        OnKeyPress = df_COOKeyPress
+        DataField = 'SER'
+        DataSource = DMEntradasReferenciadas.C_TabelaDS
+        MaxLength = 250
+        StyleController = DMProjeto.esFuncionarios
+        DistinctEditOn = False
+        Height = 19
+        StoredValues = 2
+      end
+      object TS_DBEdit3: TTS_DBEdit
+        Left = 322
+        Top = 102
+        Width = 95
+        Color = 14869218
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnKeyPress = df_ECFKeyPress
+        DataField = 'DT_DOC'
+        DataSource = DMEntradasReferenciadas.C_TabelaDS
+        MaxLength = 250
+        StyleController = DMProjeto.esFuncionarios
+        DistinctEditOn = False
+        Height = 19
+        StoredValues = 2
+      end
+      object TS_DBEdit4: TTS_DBEdit
+        Left = 112
+        Top = 128
+        Width = 375
+        Color = 14869218
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        OnKeyPress = df_ChaveAcessoKeyPress
+        DataField = 'NOMEPART'
+        DataSource = DMEntradasReferenciadas.C_TabelaDS
+        MaxLength = 44
+        ReadOnly = True
+        StyleController = DMProjeto.esFuncionarios
+        DistinctEditOn = False
+        Height = 19
+        StoredValues = 66
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 503
+      Width = 511
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 620
+    Width = 628
     inherited lbCaption: TdxfLabel
       Width = 171
       Caption = 'Referenciar Notas'

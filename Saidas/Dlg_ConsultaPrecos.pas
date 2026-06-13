@@ -238,7 +238,6 @@ type
     C_ItensLOCALIZACAO: TIntegerField;
     C_ItensESTOQUEFISCAL: TBCDField;
     C_ItensicDIFESTOQUE: TFloatField;
-    lblEstoqueFiscal: TTS_DBTextEffect;
     lbDifEstoque: TTS_Label;
     lblDifEstoque: TTS_DBTextEffect;
     C_ItensicESTOQUEFISCAL: TFloatField;
@@ -268,6 +267,10 @@ type
     lblCustoManual: TTS_DBTextEffect;
     C_ItensCUSTOMANUAL: TBCDField;
     C_ItensDESCRICAOTECNICA: TStringField;
+    C_ItensESTOQUEVOLUME: TBCDField;
+    lbVol: TTS_Label;
+    lbVolumes: TTS_DBTextEffect;
+    lblEstoqueFiscal: TTS_DBTextEffect;
     procedure btGravarClick(Sender: TObject);
     procedure dfItemSelecionou(Sender: TObject);
     procedure btComando1Click(Sender: TObject);
@@ -756,9 +759,15 @@ Var
 begin
   {Verificando se os clientes possuem tabelas de preço associadas - Antes do inherited por causa do ClearParams}
   lbEstoqueFiscal.Visible := False;
+  lbVolumes.Visible := False;
+  lbVol.Visible := False ;
   lblEstoqueFiscal.Visible := False;
   lbDifEstoque.Visible := False;
   lblDifEstoque.Visible := False;
+  if DMProjeto.Parametro('QuantidadeVolume') = 'S' then begin
+   lbVolumes.Visible := True;
+   lbVol.Visible := True ;
+  end ; 
   if DMProjeto.Parametro('BaixaEstoqueFiscal') = 'S' then begin
    lbEstoqueFiscal.Visible := True;
    lblEstoqueFiscal.Visible := True;
@@ -1173,7 +1182,8 @@ end;
 procedure TDlgConsultaPrecos.TS_SpeedButton2Click(Sender: TObject);
 begin
   inherited;
-  if not DMProjeto.dlgAutorizacao.ExecuteX('FrmItens','UFORNEC') then
+  if not DMProjeto.dlgAutorizacao.ExecuteX('DlgConsultaPrecos','UFORNEC') then
+//  if not DMProjeto.dlgAutorizacao.ExecuteX('FrmItens','UFORNEC') then
     exit;
 
   DlgUltimosFornecimentos := TDlgUltimosFornecimentos.Create(self,dfItem.ID,dfItem.text);

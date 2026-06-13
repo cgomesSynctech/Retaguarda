@@ -103,6 +103,7 @@ type
     dbgItensValorCofinsProd: TdxDBGridMaskColumn;
     dbgItensESTOQUE: TdxDBGridMaskColumn;
     dbgItensCstIPI: TdxDBGridLookupColumn;
+    ReferenciarNotas1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormComponentEstado_Inicial(Sender: TObject;
       var bSkip: Boolean);
@@ -134,6 +135,8 @@ type
       const AText: String; AFont: TFont; var AColor: TColor; ASelected,
       AFocused: Boolean; var ADone: Boolean);
     procedure dfChaveNFeExit(Sender: TObject);
+    procedure ReferenciarNotas1Click(Sender: TObject);
+    procedure FormComponentAfterScroll(Sender: TObject);
   private
     DlgCFOPs, DlgCFOPs2: TDlgCFOPs;
     bNotaFrete: boolean;
@@ -185,6 +188,8 @@ begin
                                 (DMCompras.C_TabelaCB_ENTRADAPRECOVENDA.AsString = 'S') and
                                 (Not (DMEntrada.bPrecoVendaPP));
   dbgItensPRECOVENDA.Visible := ((dbgItensFATORPRECO.Visible) Or (DMEntrada.bPrecoVendaPP));
+  dbgItensI_NCM.Visible := true ;
+  dbgItensI_NCM.DisableCustomizing := true ;
 
   dbgItensFATORPRECO.DisableCustomizing := not dbgItensFATORPRECO.Visible;
   dbgItensPRECOVENDA.DisableCustomizing := not dbgItensFATORPRECO.Visible;
@@ -413,6 +418,8 @@ begin
 
   dbgItensFATORPRECO.DisableCustomizing := not dbgItensFATORPRECO.Visible;
   dbgItensPRECOVENDA.DisableCustomizing := not dbgItensFATORPRECO.Visible;
+  dbgItensI_NCM.Visible := true ;
+  dbgItensI_NCM.DisableCustomizing := true ;
 end;
 
 procedure TFrmCompras.DBEdit1Change(Sender: TObject);
@@ -423,6 +430,8 @@ begin
                                 (Not (DMEntrada.bPrecoVendaPP));
   dbgItensPRECOVENDA.Visible := ((dbgItensFATORPRECO.Visible) Or (DMEntrada.bPrecoVendaPP));
 
+    dbgItensI_NCM.Visible := true ;
+  dbgItensI_NCM.DisableCustomizing := true ;
   dbgItensFATORPRECO.DisableCustomizing := not dbgItensFATORPRECO.Visible;
   dbgItensPRECOVENDA.DisableCustomizing := not dbgItensFATORPRECO.Visible;
 end;
@@ -484,6 +493,24 @@ begin
     DlgMsg.ShowMsg( 50, [pChar('Chave de acesso inválida, a quantidade de números digitado está maior que a quantidade correta ( '+ IntToStr(Length(dfChaveNFe.Text))+' ) !')])
    else if ((Length(dfChaveNFe.Text) < 44) and (Trim(dfChaveNFe.Text) <> '')) then
     DlgMsg.ShowMsg( 50, [pChar('Chave de acesso inválida, a quantidade de números digitado está menor que a quantidade correta ( '+ IntToStr(Length(dfChaveNFe.Text))+' ) !')]);
+end;
+
+procedure TFrmCompras.ReferenciarNotas1Click(Sender: TObject);
+begin
+  inherited;
+    DMProjeto.SetParametrosForm([DMCompras.C_Tabela.FieldByName('IDMESTRE').Value, DMCompras.C_Tabela.FieldByName('EMPRESA').Value, DMCompras.C_Tabela.FieldByName('PDV').Value]);
+    Dmprojeto.CriarForm('FrmEntradasReferenciadas', Self, True);
+
+end;
+
+
+procedure TFrmCompras.FormComponentAfterScroll(
+    Sender: TObject);
+begin
+    if (DMCompras.C_Tabela.FieldByName('IDMESTRE').Value <= 0) then
+        ReferenciarNotas1.Visible := False
+    else
+        ReferenciarNotas1.Visible := True;
 end;
 
 end.

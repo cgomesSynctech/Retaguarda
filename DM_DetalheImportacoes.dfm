@@ -17,20 +17,45 @@ inherited DMDetalheImportacoes: TDMDetalheImportacoes
       'update DetalheImportacoes'
       'set'
       '  CODIGO = :CODIGO,'
+      '  DATA = :DATA,'
       '  LOCALDESEMBARACO = :LOCALDESEMBARACO,'
       '  UF = :UF,'
-      '  DATA = :DATA,'
+      '  DATADESEMBARACO = :DATADESEMBARACO,'
       '  CODIGOEXPORT = :CODIGOEXPORT,'
-      '  DATADESEMBARACO = :DATADESEMBARACO'
+      '  ORIGEMREPLIC = :ORIGEMREPLIC,'
+      '  TPVIATRANSP = :TPVIATRANSP,'
+      '  VAFRMMOPC = :VAFRMMOPC,'
+      '  TPINTERMEDIARIO = :TPINTERMEDIARIO,'
+      '  CNPJOPC = :CNPJOPC,'
+      '  UFTERCEIROOPC = :UFTERCEIROOPC,'
+      '  NADICAO = :NADICAO,'
+      '  NSEQADIC = :NSEQADIC,'
+      '  CFABRICANTE = :CFABRICANTE,'
+      '  VDESCDI = :VDESCDI,'
+      '  NDRAWOPC = :NDRAWOPC,'
+      '  VBC = :VBC,'
+      '  VDESPADU = :VDESPADU,'
+      '  VII = :VII,'
+      '  VIOF = :VIOF'
       'where'
       '  DETALHEIMPORTACAO = :OLD_DETALHEIMPORTACAO')
     InsertSQL.Strings = (
       'insert into DetalheImportacoes'
-      '  (DETALHEIMPORTACAO, CODIGO, LOCALDESEMBARACO, UF, DATA, '
-      'CODIGOEXPORT, DATADESEMBARACO)'
+      '  (CODIGO, DATA, LOCALDESEMBARACO, UF, DATADESEMBARACO, '
+      'CODIGOEXPORT, ORIGEMREPLIC, '
+      '   TPVIATRANSP, VAFRMMOPC, TPINTERMEDIARIO, CNPJOPC, '
+      'UFTERCEIROOPC, NADICAO, '
+      
+        '   NSEQADIC, CFABRICANTE, VDESCDI, NDRAWOPC, VBC, VDESPADU, VII,' +
+        ' VIOF)'
       'values'
-      '  (:DETALHEIMPORTACAO, :CODIGO, :LOCALDESEMBARACO, :UF, :DATA, '
-      ':CODIGOEXPORT, :DATADESEMBARACO)')
+      '  (:CODIGO, :DATA, :LOCALDESEMBARACO, :UF, :DATADESEMBARACO, '
+      ':CODIGOEXPORT, '
+      '   :ORIGEMREPLIC, :TPVIATRANSP, :VAFRMMOPC, :TPINTERMEDIARIO, '
+      ':CNPJOPC, '
+      '   :UFTERCEIROOPC, :NADICAO, :NSEQADIC, :CFABRICANTE, :VDESCDI, '
+      ':NDRAWOPC, '
+      '   :VBC, :VDESPADU, :VII, :VIOF)')
     DeleteSQL.Strings = (
       'delete from DetalheImportacoes'
       'where'
@@ -78,6 +103,60 @@ inherited DMDetalheImportacoes: TDMDetalheImportacoes
     end
     object C_TabelaDATADESEMBARACO: TDateField
       FieldName = 'DATADESEMBARACO'
+    end
+    object C_TabelaTPVIATRANSP: TIntegerField
+      FieldName = 'TPVIATRANSP'
+    end
+    object C_TabelaVAFRMMOPC: TFloatField
+      FieldName = 'VAFRMMOPC'
+    end
+    object C_TabelaTPINTERMEDIARIO: TIntegerField
+      FieldName = 'TPINTERMEDIARIO'
+    end
+    object C_TabelaCNPJOPC: TStringField
+      FieldName = 'CNPJOPC'
+      Size = 14
+    end
+    object C_TabelaUFTERCEIROOPC: TStringField
+      FieldName = 'UFTERCEIROOPC'
+      Size = 2
+    end
+    object C_TabelaNADICAO: TIntegerField
+      FieldName = 'NADICAO'
+    end
+    object C_TabelaNSEQADIC: TIntegerField
+      FieldName = 'NSEQADIC'
+    end
+    object C_TabelaCFABRICANTE: TStringField
+      FieldName = 'CFABRICANTE'
+      Size = 15
+    end
+    object C_TabelaVDESCDI: TFloatField
+      FieldName = 'VDESCDI'
+    end
+    object C_TabelaNDRAWOPC: TStringField
+      FieldName = 'NDRAWOPC'
+      Size = 11
+    end
+    object C_TabelaVBC: TBCDField
+      FieldName = 'VBC'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaVDESPADU: TBCDField
+      FieldName = 'VDESPADU'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaVII: TBCDField
+      FieldName = 'VII'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaVIOF: TBCDField
+      FieldName = 'VIOF'
+      Precision = 18
+      Size = 2
     end
   end
   object Q_UFS: TIBQuery

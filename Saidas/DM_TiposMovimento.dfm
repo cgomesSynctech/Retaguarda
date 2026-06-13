@@ -1,8 +1,8 @@
 inherited DMTiposMovimento: TDMTiposMovimento
-  Left = 229
-  Top = 149
+  Left = 418
+  Top = 112
   Height = 660
-  Width = 1049
+  Width = 1143
   inherited OpenDialog: TOpenDialog
     Left = 140
     Top = 275
@@ -242,7 +242,18 @@ inherited DMTiposMovimento: TDMTiposMovimento
       '  NOMEIMPRESSORA = :NOMEIMPRESSORA,'
       '  PAPELIMPRESSORA = :PAPELIMPRESSORA,'
       '  CALCULAICMSSUBST = :CALCULAICMSSUBST,'
-      '  CB_MENSAGEMTRIBUTOS = :CB_MENSAGEMTRIBUTOS'
+      '  CB_MENSAGEMTRIBUTOS = :CB_MENSAGEMTRIBUTOS,'
+      '  CB_NOTAENTREGA = :CB_NOTAENTREGA,'
+      ' CST_PIS_COFINS_MOVIMENTO = :CST_PIS_COFINS_MOVIMENTO, '
+      '  CB_CSTPISCOFINSPADRAO = :CB_CSTPISCOFINSPADRAO,'
+      '  CB_CSTIPIPADRAO = :CB_CSTIPIPADRAO,'
+      '  CST_IPI_PADRAO = :CST_IPI_PADRAO,'
+      ' CB_DOC2 = :CB_DOC2,'
+      ' TIPOIMPRESSAO_OP2 = :TIPOIMPRESSAO_OP2, '
+      ' CB_CST_RTC_PADRAO = :CB_CST_RTC_PADRAO, '
+      ' CST_RTC_PADRAO = :CST_RTC_PADRAO, '
+      ' CB_CLASSTRIB_RTC_PADRAO = :CB_CLASSTRIB_RTC_PADRAO, '
+      ' CLASSTRIB_RTC_PADRAO = :CLASSTRIB_RTC_PADRAO'
       'where'
       '  TIPOMOVIMENTO = :OLD_TIPOMOVIMENTO')
     InsertSQL.Strings = (
@@ -354,7 +365,13 @@ inherited DMTiposMovimento: TDMTiposMovimento
       'CB_SOLICITACAOALMOX , CB_CARNEIDENTIFICADO, LIVROFISCAL, '
       'CB_DESCONTOITEM,CB_CSTPADRAO, CST_PADRAO,ORDEM, '
       'CALCULAPISCOFINS, CB_IMPRESSORAPADRAO, NOMEIMPRESSORA, '
-      'PAPELIMPRESSORA, CALCULAICMSSUBST, CB_MENSAGEMTRIBUTOS)'
+      'PAPELIMPRESSORA, CALCULAICMSSUBST, CB_MENSAGEMTRIBUTOS, '
+      'CB_NOTAENTREGA,  CST_PIS_COFINS_MOVIMENTO,  '
+      '  CB_CSTPISCOFINSPADRAO,   CB_CSTIPIPADRAO,'
+      '  CST_IPI_PADRAO, CB_DOC2, TIPOIMPRESSAO_OP2, CST_RTC_PADRAO, '
+      
+        'CB_CST_RTC_PADRAO, CB_CLASSTRIB_RTC_PADRAO, CLASSTRIB_RTC_PADRAO' +
+        ' )'
       'values'
       
         '  (:TIPOMOVIMENTO, :DESCRICAO, :TIPO, :BAIXAESTOQUE, :CALCCOMISS' +
@@ -471,7 +488,14 @@ inherited DMTiposMovimento: TDMTiposMovimento
       ':LIVROFISCAL, :CB_DESCONTOITEM,:CB_CSTPADRAO,'
       ':CST_PADRAO,:ORDEM, :CALCULAPISCOFINS, :CB_IMPRESSORAPADRAO, '
       ':NOMEIMPRESSORA, :PAPELIMPRESSORA, :CALCULAICMSSUBST, '
-      ':CB_MENSAGEMTRIBUTOS)')
+      ':CB_MENSAGEMTRIBUTOS,  :CB_NOTAENTREGA,   '
+      ':CST_PIS_COFINS_MOVIMENTO,  :CB_CSTPISCOFINSPADRAO,    '
+      
+        ':CB_CSTIPIPADRAO, :CST_IPI_PADRAO, :CB_DOC2, :TIPOIMPRESSAO_OP2,' +
+        '  :CST_RTC_PADRAO, '
+      
+        ':CB_CST_RTC_PADRAO, :CB_CLASSTRIB_RTC_PADRAO, :CLASSTRIB_RTC_PAD' +
+        'RAO )')
     DeleteSQL.Strings = (
       'delete from TiposMovimento'
       'where'
@@ -1409,13 +1433,23 @@ inherited DMTiposMovimento: TDMTiposMovimento
       Origin = 'TIPOSMOVIMENTO.CB_IMPDOC'
       Size = 1
     end
-    object C_TabelaDescTipoImpressao: TStringField
+    object C_TabelaDescTipoImpressao2: TStringField
       FieldKind = fkLookup
       FieldName = 'DescTipoImpressao'
       LookupDataSet = C_TiposImpressao
       LookupKeyFields = 'TIPO'
       LookupResultField = 'TITULO'
       KeyFields = 'TIPOIMPRESSAO_OP'
+      Size = 50
+      Lookup = True
+    end
+    object C_TabelaDescTipoImpressao: TStringField
+      FieldKind = fkLookup
+      FieldName = 'DescTipoImpressao2'
+      LookupDataSet = C_TiposImpressao
+      LookupKeyFields = 'TIPO'
+      LookupResultField = 'TITULO'
+      KeyFields = 'TIPOIMPRESSAO_OP2'
       Size = 50
       Lookup = True
     end
@@ -1599,6 +1633,90 @@ inherited DMTiposMovimento: TDMTiposMovimento
       FieldName = 'CB_MENSAGEMTRIBUTOS'
       FixedChar = True
       Size = 1
+    end
+    object C_TabelaCB_NOTAENTREGA: TStringField
+      FieldName = 'CB_NOTAENTREGA'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TabelaCB_CSTPISCOFINSPADRAO: TStringField
+      FieldName = 'CB_CSTPISCOFINSPADRAO'
+      Size = 1
+    end
+    object C_TabelaCST_PIS_COFINS_MOVIMENTO: TStringField
+      FieldName = 'CST_PIS_COFINS_MOVIMENTO'
+      Size = 2
+    end
+    object C_TabelalkCST_PisCofinsPadrao: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCST_PisCofinsPadrao'
+      LookupDataSet = C_CSTPISCONFINS
+      LookupKeyFields = 'CSTPISCOFINS'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CST_PIS_COFINS_MOVIMENTO'
+      Lookup = True
+    end
+    object C_TabelaCB_CSTIPIPADRAO: TStringField
+      FieldName = 'CB_CSTIPIPADRAO'
+      Size = 1
+    end
+    object C_TabelaCST_IPI_PADRAO: TStringField
+      FieldName = 'CST_IPI_PADRAO'
+      Size = 2
+    end
+    object C_TabelalkCSTIPI: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCSTIPI'
+      LookupDataSet = C_CSTIPI
+      LookupKeyFields = 'CSTIPI'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CST_IPI_PADRAO'
+      Lookup = True
+    end
+    object C_TabelaCB_DOC2: TStringField
+      FieldName = 'CB_DOC2'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TabelaTIPOIMPRESSAO_OP2: TStringField
+      FieldName = 'TIPOIMPRESSAO_OP2'
+      Size = 3
+    end
+    object C_TabelaCST_RTC_PADRAO: TStringField
+      FieldName = 'CST_RTC_PADRAO'
+      Size = 3
+    end
+    object C_TabelaCB_CST_RTC_PADRAO: TStringField
+      FieldName = 'CB_CST_RTC_PADRAO'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TabelaCB_CLASSTRIB_RTC_PADRAO: TStringField
+      FieldName = 'CB_CLASSTRIB_RTC_PADRAO'
+      FixedChar = True
+      Size = 1
+    end
+    object C_TabelaCLASSTRIB_RTC_PADRAO: TStringField
+      FieldName = 'CLASSTRIB_RTC_PADRAO'
+      Size = 6
+    end
+    object C_TabelalkCST_RTC_PADRAO: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCST_RTC_PADRAO'
+      LookupDataSet = C_CSTRTC
+      LookupKeyFields = 'CST'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CST_RTC_PADRAO'
+      Lookup = True
+    end
+    object C_TabelalkCLASSTRIB_RTC: TStringField
+      FieldKind = fkLookup
+      FieldName = 'lkCLASSTRIB_RTC'
+      LookupDataSet = C_ClassTribRTC
+      LookupKeyFields = 'CODIGO'
+      LookupResultField = 'DESCRICAO'
+      KeyFields = 'CLASSTRIB_RTC_PADRAO'
+      Lookup = True
     end
   end
   inherited C_TabelaDS: TDataSource
@@ -2375,5 +2493,164 @@ inherited DMTiposMovimento: TDMTiposMovimento
     DataSet = C_CSTPADRAO
     Left = 898
     Top = 194
+  end
+  object Q_CSTPISCONFINS: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT C.cstpiscofins,C.cstpiscofins ||'#39' - '#39'|| C.descricao as de' +
+        'scricao  FROM cstspiscofins C  where c.cstpiscofins < 50')
+    Left = 1027
+    Top = 35
+  end
+  object P_CSTPISCONFINS: TDataSetProvider
+    DataSet = Q_CSTPISCONFINS
+    Constraints = True
+    Left = 1027
+    Top = 94
+  end
+  object C_CSTPISCONFINS: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_CSTPISCONFINS'
+    Left = 1029
+    Top = 144
+    object C_CSTPISCONFINSCSTPISCOFINS: TStringField
+      FieldName = 'CSTPISCOFINS'
+      Required = True
+      Size = 2
+    end
+    object C_CSTPISCONFINSDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 505
+    end
+  end
+  object C_CSTPISCONFINSDs: TDataSource
+    Tag = 100
+    DataSet = C_CSTPISCONFINS
+    Left = 1026
+    Top = 202
+  end
+  object Q_CSTIPI: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT C.cstipi,C.cstipi ||'#39' - '#39'|| C.descricao as descricao  FRO' +
+        'M cstsipi C where c.cstipi >= 50')
+    Left = 1043
+    Top = 267
+  end
+  object P_CSTIPI: TDataSetProvider
+    DataSet = Q_CSTIPI
+    Constraints = True
+    Left = 1043
+    Top = 326
+  end
+  object C_CSTIPI: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_CSTIPI'
+    Left = 1045
+    Top = 376
+    object C_CSTIPICSTIPI: TStringField
+      FieldName = 'CSTIPI'
+      Required = True
+      Size = 2
+    end
+    object C_CSTIPIDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 65
+    end
+  end
+  object C_CSTIPIDS: TDataSource
+    Tag = 100
+    DataSet = C_CSTIPI
+    Left = 1042
+    Top = 434
+  end
+  object Q_CSTRTC: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT C.cst ,C.cst ||'#39' - '#39'|| C.descricao as descricao  FROM cst' +
+        'ibs C')
+    Left = 891
+    Top = 275
+  end
+  object P_CSTRTC: TDataSetProvider
+    DataSet = Q_CSTRTC
+    Constraints = True
+    Left = 891
+    Top = 334
+  end
+  object C_CSTRTC: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_CSTRTC'
+    Left = 893
+    Top = 384
+    object C_CSTRTCCST: TStringField
+      FieldName = 'CST'
+      Size = 3
+    end
+    object C_CSTRTCDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 46
+    end
+  end
+  object C_CSTRTCds: TDataSource
+    Tag = 100
+    DataSet = C_CSTRTC
+    Left = 890
+    Top = 442
+  end
+  object Q_ClassTribRTC: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT C.codigo ,C.codigo ||'#39' - '#39'|| C.nome as descricao  FROM cl' +
+        'asstrib C')
+    Left = 963
+    Top = 275
+  end
+  object P_ClassTribRTC: TDataSetProvider
+    DataSet = Q_ClassTribRTC
+    Constraints = True
+    Left = 963
+    Top = 334
+  end
+  object C_ClassTribRTC: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'P_ClassTribRTC'
+    Left = 965
+    Top = 384
+    object C_ClassTribRTCCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Required = True
+      Size = 6
+    end
+    object C_ClassTribRTCDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Size = 109
+    end
+  end
+  object C_ClassTribRTCds: TDataSource
+    Tag = 100
+    DataSet = C_ClassTribRTC
+    Left = 962
+    Top = 442
   end
 end

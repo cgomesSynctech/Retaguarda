@@ -3,7 +3,12 @@ inherited DMEstimates: TDMEstimates
   Height = 597
   inherited Q_Tabela: TIBQuery
     SQL.Strings = (
-      'Select '#9't.Saida'#9#9'as IDMESTRE,'
+      'Select '#9
+      't.profissional ,'
+      't.REDUCOESBASESUBST as REDUCOESBASESUBST ,'
+      'T.ICMSDESONERADO AS ICMSDESONERADO ,'
+      'T.CUBAGEMTOTAL,'
+      't.Saida'#9#9'as IDMESTRE,'
       #9't.Favorecido'#9'as Favorecido,'
       #9't.Numero'#9'as Numero,'
       #9't.Data'#9#9'as Data,'
@@ -190,7 +195,7 @@ inherited DMEstimates: TDMEstimates
   inherited U_Tabela: TIBUpdateSQL
     ModifySQL.Strings = (
       'update SAIDAS'
-      'set'
+      'set '
       '  NUMERO = :NUMERO,'
       '  DATA = :DATA,'
       '  FAVORECIDO = :FAVORECIDO,'
@@ -309,6 +314,8 @@ inherited DMEstimates: TDMEstimates
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      ' T.CUSTOMANUAL,'
+      'T.CUBAGEMTOTALITEM,'
       't.SaidaItem    as IDITEM,'
       't.Saida        as IDMestre,'
       't.Sequencia    as Sequencia,'
@@ -443,7 +450,9 @@ inherited DMEstimates: TDMEstimates
       't.RATEIOFRETE,'
       'T.RATEIOSEGURO,'
       'T.QUANTIDADEVOLUME,'
-      'T.PRECOCUSTOLICITACAO   '
+      'T.PRECOCUSTOLICITACAO, '
+      't.cstibs, '
+      't.classtrib   '
       'from    (((SAIDASITENS t  LEFT JOIN  ITENS I on I.ITEM = t.ITEM)'
       '    left join UNIDADES u on I.Unidade = u.Unidade)'
       '    left join GRUPOS g on g.Grupo = i.Grupo)'
@@ -475,6 +484,7 @@ inherited DMEstimates: TDMEstimates
     ModifySQL.Strings = (
       'update SAIDASITENS'
       'set'
+      ' CUSTOMANUAL = :CUSTOMANUAL,'
       '  SEQUENCIA = :SEQUENCIA,'
       '  DESCRICAO = :DESCRICAO,'
       '  QUANTIDADE = :QUANTIDADE,'
@@ -576,7 +586,7 @@ inherited DMEstimates: TDMEstimates
       '  CSTPISCOFINS,   ALIQPIS,   ALIQCOFINS,   CSTIPI,   PDESCONTO, '
       'PDV, IMPORTACAO, PCOMISSAO,   EMPRESA, SITUACAO,VALORPISPROD,'
       '  VALORCOFINSPROD,RATEIODESPESAS,RATEIOFRETE,RATEIOSEGURO, '
-      'QUANTIDADEVOLUME )'
+      'QUANTIDADEVOLUME, CUSTOMANUAL)'
       'values'
       '  (:IDITEM, :IDMESTRE, :SEQUENCIA, :DESCRICAO, :QUANTIDADE,'
       '   :PRECO, :ITEM, :USOTIPOITEM, :SUBTOTALITEM, :ORDEM,'
@@ -603,7 +613,7 @@ inherited DMEstimates: TDMEstimates
         ', '
       ':PDV, :IMPORTACAO, :PCOMISSAO,  :EMPRESA, '
       ':SITUACAO,:VALORPISPROD,:VALORCOFINSPROD,:RATEIODESPESAS,'
-      ':RATEIOFRETE,:RATEIOSEGURO, :QUANTIDADEVOLUME)')
+      ':RATEIOFRETE,:RATEIOSEGURO, :QUANTIDADEVOLUME, :CUSTOMANUAL)')
     DeleteSQL.Strings = (
       'delete from SAIDASITENS'
       'where'

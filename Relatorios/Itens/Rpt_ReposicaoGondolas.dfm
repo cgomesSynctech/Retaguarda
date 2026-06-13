@@ -112,8 +112,8 @@ inherited RptReposicaoGondolas: TRptReposicaoGondolas
         'Repor,'
       'l.descricao as Localizacao'
       'from ITENS I '
-      'Left join localizacoes l on l.localizacao = i.localizacao'
-      'LEFT JOIN ItensAlmox ia on i.item = ia.item'
+      'inner join localizacoes l on l.localizacao = i.localizacao'
+      'inner JOIN ItensAlmox ia on i.item = ia.item'
       
         'where ia.almoxarifado = (select first 1 almoxarifado from almoxa' +
         'rifados a where a.controlegondola = '#39'S'#39')'

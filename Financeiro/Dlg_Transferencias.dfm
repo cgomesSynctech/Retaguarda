@@ -1,6 +1,6 @@
 inherited DlgTransferencias: TDlgTransferencias
   Tag = -2
-  Left = 411
+  Left = 457
   Top = 172
   Width = 576
   Height = 345
@@ -10,11 +10,11 @@ inherited DlgTransferencias: TDlgTransferencias
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Tag = -1
-    Left = 442
-    Height = 263
+    Left = 450
+    Height = 275
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 229
+      Top = 241
       Caption = 'Fechar'
     end
     inherited btComando2: TTS_SpeedButton
@@ -540,7 +540,7 @@ inherited DlgTransferencias: TDlgTransferencias
   end
   inherited pnTitulo: TTS_MaxPanel
     Tag = -1
-    Width = 560
+    Width = 568
     HelpContext = -1
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
@@ -582,8 +582,8 @@ inherited DlgTransferencias: TDlgTransferencias
   end
   inherited pnDados: TTS_Panel
     Tag = -1
-    Width = 442
-    Height = 263
+    Width = 450
+    Height = 275
     HelpContext = -1
     Color = 15724519
     object TS_Shape2: TTS_Shape
@@ -1176,7 +1176,7 @@ inherited DlgTransferencias: TDlgTransferencias
   object ppTransferencia: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4'
+    PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1184,7 +1184,7 @@ inherited DlgTransferencias: TDlgTransferencias
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 139
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Left = 288
     Top = 107
@@ -1444,6 +1444,21 @@ inherited DlgTransferencias: TDlgTransferencias
         mmLeft = 65617
         mmTop = 62442
         mmWidth = 59267
+        BandType = 4
+      end
+      object lbIDoc: TppLabel
+        UserName = 'lbData1'
+        Caption = 'lbIDoc'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 39423
+        mmTop = 1852
+        mmWidth = 11642
         BandType = 4
       end
     end

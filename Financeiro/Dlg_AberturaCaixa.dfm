@@ -8,11 +8,11 @@ inherited DlgAberturaCaixa: TDlgAberturaCaixa
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 336
+    Left = 344
     Width = 112
-    Height = 166
+    Height = 177
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 132
+      Top = 143
       Width = 110
       Caption = 'Cancelar'
       Glyph.Data = {
@@ -164,7 +164,7 @@ inherited DlgAberturaCaixa: TDlgAberturaCaixa
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 448
+    Width = 456
     Gradient.ColorStart = 9685651
     inherited lbEstadoForm: TTS_Label
       Width = 102
@@ -181,8 +181,8 @@ inherited DlgAberturaCaixa: TDlgAberturaCaixa
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 336
-    Height = 166
+    Width = 344
+    Height = 177
     Color = 14674655
     object TS_Shape1: TTS_Shape
       Left = 28

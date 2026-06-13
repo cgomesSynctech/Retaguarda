@@ -10,7 +10,8 @@ uses
   TS_SpeedButton, TS_MaxPanel, TS_Label, Mask, DBCtrls, TS_DBEdit,
   CheckLst, TS_CheckListBox, dxCntner, dxEditor, dxEdLib, dxDBELib,
   TS_Image, dxfLabel, dxTL, dxDBCtrl, dxDBGrid, TS_QDBGrid,
-  teCtrls, TS_EffectsPanel, dxTLClms;
+  teCtrls, TS_EffectsPanel, dxTLClms, dxExEdtr, Placemnt, BTOdeum,
+  dxfProgressBar;
 
 type
   TFrmPermissoes = class(TFrmPadrao)

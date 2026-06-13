@@ -9,12 +9,12 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Tag = -1
-    Left = 601
+    Left = 609
     Width = 113
-    Height = 412
+    Height = 423
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 378
+      Top = 389
       Width = 111
     end
     inherited btComando2: TTS_SpeedButton
@@ -636,7 +636,7 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
   end
   inherited pnTitulo: TTS_MaxPanel
     Tag = -1
-    Width = 714
+    Width = 722
     HelpContext = -1
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
@@ -681,8 +681,8 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
   end
   inherited pnDados: TTS_Panel
     Tag = -1
-    Width = 601
-    Height = 412
+    Width = 609
+    Height = 423
     HelpContext = -1
     Color = 15724519
     object TS_Label3: TTS_Label
@@ -696,8 +696,8 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
     object pnlSelecionados: TTS_Panel
       Tag = -1
       Left = 1
-      Top = 371
-      Width = 599
+      Top = 382
+      Width = 607
       Height = 40
       HelpContext = -1
       Align = alBottom
@@ -709,7 +709,7 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
       Tag = -1
       Left = 1
       Top = 1
-      Width = 599
+      Width = 607
       Height = 84
       HelpContext = -1
       Align = alTop
@@ -1035,8 +1035,8 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
       Tag = -2
       Left = 1
       Top = 85
-      Width = 599
-      Height = 286
+      Width = 607
+      Height = 297
       HelpContext = -2
       Bands = <
         item
@@ -1524,7 +1524,7 @@ inherited DlgApresentacaoCartao: TDlgApresentacaoCartao
     PrinterSetup.mmMarginTop = 10000
     PrinterSetup.mmPaperHeight = 280000
     PrinterSetup.mmPaperWidth = 216000
-    PrinterSetup.PaperSize = 1
+    PrinterSetup.PaperSize = 256
     DeviceType = 'Screen'
     Language = lgPortugueseBrazil
     SavePrinterSetup = True

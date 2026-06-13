@@ -1,6 +1,6 @@
 inherited DMAjustesItensFiscal: TDMAjustesItensFiscal
-  Left = 197
-  Top = 101
+  Left = 489
+  Top = 144
   Height = 365
   Width = 412
   inherited SaveDialog: TSaveDialog
@@ -19,7 +19,7 @@ inherited DMAjustesItensFiscal: TDMAjustesItensFiscal
         'cia, i.Codigo,'
       
         'ai.Almoxarifado, ai.Unidade as UnidadeOld, i.FatorUndVenda,ai.Em' +
-        'presa, i.ultimofornecedor, i.fornecpreferencia'
+        'presa, i.ultimofornecedor, i.fornecpreferencia, i.estoquefiscal'
       'from AjustesItensFiscal ai, Itens i'
       'where ai.item = i.item')
     Left = 31
@@ -251,6 +251,11 @@ inherited DMAjustesItensFiscal: TDMAjustesItensFiscal
     object C_TabelaFORNECPREFERENCIA: TIntegerField
       FieldName = 'FORNECPREFERENCIA'
       Required = True
+    end
+    object C_TabelaESTOQUEFISCAL: TBCDField
+      FieldName = 'ESTOQUEFISCAL'
+      Precision = 18
+      Size = 3
     end
   end
   inherited C_TabelaDS: TDataSource

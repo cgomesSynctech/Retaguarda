@@ -37,13 +37,13 @@ inherited DMPermissoes: TDMPermissoes
       '  PERMISSAO = :OLD_PERMISSAO')
   end
   inherited DMComponent: TDMComponent
-    Gravar1_Iniciar = DMComponentGravar1_Iniciar
     KeyForIDs = 'Permissoes'
     Tabela_Nome = 'Permissoes'
     Tabela_Chave = 'Permissao'
   end
   inherited C_Tabela: TClientDataSet
     object C_TabelaPERMISSAO: TIntegerField
+      DisplayWidth = 1000
       FieldName = 'PERMISSAO'
     end
     object C_TabelaSIGLA: TStringField

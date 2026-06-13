@@ -1,6 +1,6 @@
 inherited DlgItensFilhos: TDlgItensFilhos
-  Left = 61
-  Top = 127
+  Left = 23
+  Top = 38
   Width = 1183
   Height = 549
   Caption = 'M'#243'dulo de Itens'
@@ -84,12 +84,12 @@ inherited DlgItensFilhos: TDlgItensFilhos
           SummaryItems = <
             item
               SummaryField = 'icSubTotal'
-              SummaryFormat = '>icSubTotal=#,###,##0.00'
+              SummaryFormat = '>icSubTotal=#,###,###0.000'
               SummaryType = cstSum
             end
             item
               SummaryField = 'icSubTotalPreco'
-              SummaryFormat = '>icSubTotalPreco=#,###,##0.00'
+              SummaryFormat = '>icSubTotalPreco=#,###,###0.000'
               SummaryType = cstSum
             end>
           Name = 'Default'
