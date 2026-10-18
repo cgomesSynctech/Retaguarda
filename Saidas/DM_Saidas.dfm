@@ -1138,6 +1138,8 @@ inherited DMSaidas: TDMSaidas
     Transaction = DMProjeto.IBT_Projeto
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       't.CUSTOMANUAL,'
       'T.CUBAGEMTOTALITEM,'
       't.SaidaItem    as IDITEM,'
@@ -2105,11 +2107,20 @@ inherited DMSaidas: TDMSaidas
     end
     object C_ItensCSTIBS: TStringField
       FieldName = 'CSTIBS'
+      Origin = 'SAIDASITENS.CSTIBS'
       Size = 3
     end
     object C_ItensCLASSTRIB: TStringField
       FieldName = 'CLASSTRIB'
+      Origin = 'SAIDASITENS.CLASSTRIB'
       Size = 6
+    end
+    object C_ItensI_PRECOCOMPRA: TFloatField
+      FieldName = 'I_PRECOCOMPRA'
+      Origin = 'ITENS.I_PRECOCOMPRA'
+    end
+    object C_ItensSUBTOTALCOMPRA: TFloatField
+      FieldName = 'SUBTOTALCOMPRA'
     end
   end
   inherited C_ItensDS: TDataSource

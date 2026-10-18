@@ -733,7 +733,8 @@ uses
   Rpt_VendasCartoesDocs in 'Relatorios\Saidas\Rpt_VendasCartoesDocs.pas' {RptVendasCartoesDocs},
   Dlg_VendedorVMR in 'Saidas\Dlg_VendedorVMR.pas' {DlgVendedorVMR},
   Rpt_ApuracaoTabela in 'Relatorios\Saidas\Rpt_ApuracaoTabela.pas' {RptApuracaoTabela},
-  Rpt_ItensMenosVendido in 'Relatorios\Itens\Rpt_ItensMenosVendido.pas' {RptItensMenosVendido};
+  Rpt_ItensMenosVendido in 'Relatorios\Itens\Rpt_ItensMenosVendido.pas' {RptItensMenosVendido},
+  Dlg_RelcaixaC in 'Financeiro\Relatorios\Dlg_RelcaixaC.pas' {DlgRelcaixaC};
 
 {$R *.RES}
 

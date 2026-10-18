@@ -13,6 +13,7 @@ type
     C_TabelaFLEXDOCS: TStringField;
     C_TabelaFAVORECIDO: TIntegerField;
     C_TabelaIDTOKEN: TStringField;
+    C_TabelaSENHA: TStringField;
   private
     { Private declarations }
   public

@@ -197,6 +197,8 @@ inherited DMSaidasConsignadas: TDMSaidasConsignadas
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       't.cstibs, '
       't.classtrib,'
       't.CUSTOMANUAL,'

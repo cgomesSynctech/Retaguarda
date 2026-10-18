@@ -708,6 +708,10 @@ type
     TS_DBLookupComboBox6: TTS_DBLookupComboBox;
     TS_Label105: TTS_Label;
     TS_DBLookupComboBox7: TTS_DBLookupComboBox;
+    dfVlGarantia: TTS_DBEditNumber;
+    dfVlReposicao: TTS_DBEditNumber;
+    lbVlReposicao: TTS_Label;
+    lbVlgarantia: TTS_Label;
         procedure lbPrecoVenda1Click(Sender: TObject);
         procedure DBEdit14Change(Sender: TObject);
         procedure cmbCSTChange(Sender: TObject);
@@ -2328,6 +2332,13 @@ var i: integer;
     sCampo, sTitulo, sTipo: string;
 begin
 
+     if DMProjeto.Parametro('Muvestoque') = 'S' then
+     begin
+       dfVlGarantia.Visible := true ;
+       dfVlReposicao.Visible := true ;
+       lbVlReposicao.Visible := true ;
+       lbVlgarantia.Visible := true ;
+     end;
     sCamposDef := DMProjeto.Parametro('ItensCamposDefinidos');
     sCamposTit := DMProjeto.Parametro('ItensCamposTitulos');
     sCamposTipo := DMProjeto.Parametro('ItensCamposTipos');

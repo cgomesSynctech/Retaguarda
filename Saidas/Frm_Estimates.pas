@@ -51,6 +51,7 @@ type
         TS_Label16: TTS_Label;
         TS_DBEditDate2: TTS_DBEditDate;
     dbgItensQUANTIDADEVOLUME: TdxDBGridMaskColumn;
+    dbgItensSUBTOTALCOMPRA: TdxDBGridMaskColumn;
         procedure lbOperacaoSetParametrosForm(Sender: TObject);
         procedure FormCreate(Sender: TObject);
         procedure AmanhaClick(Sender: TObject);

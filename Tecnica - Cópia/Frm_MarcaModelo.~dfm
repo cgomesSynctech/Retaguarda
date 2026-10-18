@@ -1,0 +1,47 @@
+inherited FrmMarcaModelo: TFrmMarcaModelo
+  Left = 367
+  Top = 188
+  Height = 275
+  Caption = 'FrmMarcaModelo'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnNavigator: TTS_Panel
+    Height = 205
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 171
+    end
+  end
+  inherited pnDados: TTS_Panel
+    Height = 205
+    inherited Grid: TTS_QDBGrid
+      Height = 203
+      Filter.Criteria = {00000000}
+    end
+    inherited dxTreeListCampos: TdxTreeList
+      Height = 203
+    end
+    inherited sbDados: TTS_Panel
+      Height = 203
+      object lbDesc: TTS_Label
+        Left = 31
+        Top = 45
+        Width = 65
+        Caption = 'Descri'#231#227'o:'
+        FocusControl = dfDesc
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object dfDesc: TTS_DBEdit
+        Left = 99
+        Top = 42
+        Width = 301
+        TabOrder = 0
+        DataField = 'MODELO'
+        DataSource = DMMarcaModelo.C_TabelaDS
+        StyleController = DMProjeto.esRemessa
+        DistinctEditOn = False
+        Height = 19
+      end
+    end
+  end
+end

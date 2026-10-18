@@ -197,6 +197,8 @@ type
     dbgConsultaDESCONTOSPARCELAS: TdxDBGridMaskColumn;
     C_ConsultaTOTALPGTOS: TFloatField;
     dbgConsultaTOTALPGTOS: TdxDBGridMaskColumn;
+    C_ConsultaSTATUS_PAGAMENTO: TStringField;
+    dbgConsultaSTATUS_PAGAMENTO: TdxDBGridMaskColumn;
     procedure btAtualizarClick(Sender: TObject);
     procedure DataIDateChange(Sender: TObject);
     procedure FormsComponentBeforeClearParams(Sender: TObject);

@@ -651,6 +651,7 @@ type
     ppDBText138: TppDBText;
     ppDBBarCode14: TppDBBarCode;
     ppDBText139: TppDBText;
+    ppDBText141: TppDBText;
         procedure FormsComponentBeforeClearParams(Sender: TObject);
         procedure PopupFiltroItensSelecionou(Sender: TObject);
         procedure btGravarClick(Sender: TObject);

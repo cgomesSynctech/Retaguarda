@@ -204,6 +204,7 @@ inherited DMNotasCupons: TDMNotasCupons
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      'i.precocompra as I_precocompra,'
       't.cstibs, '
       't.classtrib,'
       'T.CUSTOMANUAL,'
@@ -490,6 +491,7 @@ inherited DMNotasCupons: TDMNotasCupons
       ':CUBAGEMTOTALITEM, :CUSTOMANUAL, :CSTIBS,  :CLASSTRIB)')
   end
   inherited C_Itens: TClientDataSet
+    Active = False
     inherited C_ItensSTATUS: TStringField
       OnValidate = C_ItensSTATUSValidate
     end
@@ -540,6 +542,9 @@ inherited DMNotasCupons: TDMNotasCupons
   inherited C_TiposEntrega: TClientDataSet
     Top = 300
   end
+  inherited C_SaidasItensFilhos: TClientDataSet
+    Active = False
+  end
   inherited Q_Funcs: TIBQuery
     Top = 200
   end
@@ -565,6 +570,7 @@ inherited DMNotasCupons: TDMNotasCupons
     Top = 347
   end
   inherited C_Mesclagens: TClientDataSet
+    Active = False
     Left = 303
     Top = 347
   end

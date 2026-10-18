@@ -316,6 +316,7 @@ inherited DMInvoices: TDMInvoices
       ':OLD_PDV')
   end
   inherited C_Tabela: TClientDataSet
+    Active = False
     Left = 27
     Top = 152
     inherited C_TabelaOBS: TStringField
@@ -342,6 +343,8 @@ inherited DMInvoices: TDMInvoices
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       't.cstibs,'
       't.classtrib,'
       'T.CUSTOMANUAL, '
@@ -627,6 +630,9 @@ inherited DMInvoices: TDMInvoices
       Size = 100
       Lookup = True
     end
+    inherited C_ItensSUBTOTALCOMPRA: TFloatField
+      Origin = 'SAIDASITENS.SUBTOTALCOMPRA'
+    end
   end
   inherited Q_TiposMovimento: TIBQuery
     SQL.Strings = (
@@ -637,6 +643,9 @@ inherited DMInvoices: TDMInvoices
         'ipo = '#39'S'#39'  '
       'Order by t.ordem, t.TipoPadrao, t.TipoMovimento')
   end
+  inherited C_TiposMovimento: TClientDataSet
+    Active = False
+  end
   inherited Q_PlanosPagamento: TIBQuery
     Top = 200
   end
@@ -644,6 +653,7 @@ inherited DMInvoices: TDMInvoices
     Top = 251
   end
   inherited C_PlanosPagamento: TClientDataSet
+    Active = False
     Left = 541
     Top = 300
   end
@@ -654,6 +664,7 @@ inherited DMInvoices: TDMInvoices
     Top = 251
   end
   inherited C_Vendedores: TClientDataSet
+    Active = False
     Top = 302
   end
   inherited Q_TiposEntrega: TIBQuery
@@ -680,6 +691,9 @@ inherited DMInvoices: TDMInvoices
       'delete from TitulosAReceber'
       'where'
       '  ID = :OLD_ID and EMPRESA = :OLD_EMPRESA and PDV = :OLD_PDV')
+  end
+  inherited C_Parcelas: TClientDataSet
+    Active = False
   end
   inherited Q_Funcs: TIBQuery
     Top = 200
@@ -725,6 +739,7 @@ inherited DMInvoices: TDMInvoices
     Top = 397
   end
   inherited C_Status: TClientDataSet
+    Active = False
     Left = 232
     Top = 446
   end
@@ -788,6 +803,7 @@ inherited DMInvoices: TDMInvoices
     Top = 397
   end
   inherited C_CFOPs: TClientDataSet
+    Active = False
     Top = 446
     object C_CFOPsCFOPDESC: TStringField
       FieldName = 'CFOPDESC'
@@ -840,6 +856,7 @@ inherited DMInvoices: TDMInvoices
     Top = 489
   end
   inherited C_Transp: TClientDataSet
+    Active = False
     Left = 27
     Top = 434
   end
@@ -851,12 +868,16 @@ inherited DMInvoices: TDMInvoices
     Top = 397
   end
   inherited C_TiposCobranca: TClientDataSet
+    Active = False
     Left = 308
     Top = 446
   end
   inherited C_TiposCobrancaDS: TDataSource
     Left = 304
     Top = 494
+  end
+  inherited C_Carteiras: TClientDataSet
+    Active = False
   end
   inherited C_Almoxarifado: TClientDataSet
     Left = 820
@@ -899,6 +920,12 @@ inherited DMInvoices: TDMInvoices
   inherited C_CSTIPIDS: TDataSource
     Left = 899
     Top = 511
+  end
+  inherited C_Profissional: TClientDataSet
+    Active = False
+  end
+  inherited C_entrega: TClientDataSet
+    Active = False
   end
   object Q_StatusNFe: TIBQuery
     Database = DMProjeto.DB_Projeto

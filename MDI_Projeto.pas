@@ -3896,9 +3896,9 @@ begin
         + #13 + #10 + 'Para o relatório do tipo "B", clique em "Não".'
         + #13 + #10 + 'Escolha o relatório.', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
         //    if DMProjeto.Parametro('ModeloFechamento') = 'A' then
-        DMProjeto.CriarForm('DlgRelCaixa', Self, False)
+        DMProjeto.CriarForm('DlgRelCaixaC', Self, False)
     else
-        DMProjeto.CriarForm('DlgRelCaixaB', Self, False);
+        DMProjeto.CriarForm('DlgRelCaixaA', Self, False);
 end;
 
 procedure TMDIProjeto.Mdicos1Click(Sender: TObject);

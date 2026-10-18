@@ -244,7 +244,7 @@ uses
    DM_AjustesVolumesItens, Frm_AjustesVolumesItens, DM_Indicacao, Frm_Indicacao, Rpt_ReposicaoAvulsa, Rpt_InventarioEstoqueNovo, Rpt_EstoqueFisicoFiscal, Rpt_EntradaItem,
    Rpt_ProdutosOrcamentos, dlg_AcompanhamentoMecanica, DM_MarcaModelo, Frm_MarcaModelo, Frm_EntradasMecanica, 
    DM_EntradasMecanica, rpt_ProdutosComprasGrupoPai, Frm_TransfereReposicao, dlg_ValoresFechaCaixa, Rpt_InvoicesDoc2, Rpt_GerencialSaidas, Dlg_VipShop, Rpt_VendasItensSimples,
-   Rpt_VendasCartoesDocs, Rpt_ApuracaoTabela, Rpt_ItensMenosVendido;
+   Rpt_VendasCartoesDocs, Rpt_ApuracaoTabela, Rpt_ItensMenosVendido, Dlg_RelcaixaC;
 
 
 implementation
@@ -870,8 +870,10 @@ initialization
    RegisterClass(TRptVendasCartoesDocs);
    RegisterClass(TRptApuracaoTabela);
    RegisterClass(TRptItensMenosVendido);
+   RegisterClass(TDlgRelCaixaC);
 
    finalization
+   unRegisterClass(TDlgRelCaixaC);
    unRegisterClass(TRptItensMenosVendido);
    unRegisterClass(TRptApuracaoTabela);
    unRegisterClass(TRptVendasCartoesDocs);

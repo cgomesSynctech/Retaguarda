@@ -640,6 +640,8 @@ type
     C_ClassTribDESCRICAO: TStringField;
     C_TabelaCLASSTRIB: TStringField;
     C_TabelalkCLASSTRIB: TStringField;
+    C_TabelaVALORGARANTIA: TBCDField;
+    C_TabelaVALORREPOSICAO: TBCDField;
 
         procedure DataModuleCreate(Sender: TObject);
         procedure C_TabelaNewRecord(DataSet: TDataSet);

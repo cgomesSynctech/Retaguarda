@@ -4,33 +4,32 @@ inherited FrmFlexdocs: TFrmFlexdocs
   Width = 511
   Height = 445
   Caption = 'Company'
-  Visible = True
   WindowMenu = UltimoGravado1
   OnShow = btPesquisarClick
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 388
-    Height = 375
+    Height = 374
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 341
+      Top = 340
     end
   end
   inherited pnDados: TTS_Panel
     Width = 388
-    Height = 375
+    Height = 374
     inherited Grid: TTS_QDBGrid
       Width = 386
-      Height = 373
+      Height = 372
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 386
-      Height = 373
+      Height = 372
     end
     inherited sbDados: TTS_Panel
       Width = 386
-      Height = 373
+      Height = 372
       Color = 14608375
       object lblCSC: TTS_Label
         Left = 40

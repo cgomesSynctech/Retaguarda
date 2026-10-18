@@ -204,11 +204,14 @@ inherited DMDevolucoesFornecedores: TDMDevolucoesFornecedores
     end
     object C_TabelaSTATUSNFE: TIntegerField
       FieldName = 'STATUSNFE'
+      Origin = 'RECIBOSNFE.STATUSNFE'
     end
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       't.cstibs, '
       't.classtrib,'
       't.CUSTOMANUAL,'

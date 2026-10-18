@@ -6866,14 +6866,14 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial Narrow'
-        Font.Size = 12
+        Font.Size = 9
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 5292
-        mmLeft = 18256
-        mmTop = 11113
-        mmWidth = 15081
+        mmHeight = 3969
+        mmLeft = 20108
+        mmTop = 9525
+        mmWidth = 14288
         BandType = 4
       end
       object ppLabel32: TppLabel
@@ -6900,14 +6900,14 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial Narrow'
-        Font.Size = 12
+        Font.Size = 9
         Font.Style = []
         Transparent = True
         DataPipelineName = 'ppDBEtiquetas'
-        mmHeight = 5292
-        mmLeft = 2910
-        mmTop = 11113
-        mmWidth = 13494
+        mmHeight = 3969
+        mmLeft = 2117
+        mmTop = 9525
+        mmWidth = 12700
         BandType = 4
       end
       object ppDBText164: TppDBText
@@ -6931,6 +6931,24 @@ inherited dlgEtiquetaItem: TdlgEtiquetaItem
         mmLeft = 35719
         mmTop = 12171
         mmWidth = 29369
+        BandType = 4
+      end
+      object ppDBText141: TppDBText
+        UserName = 'DBText141'
+        AutoSize = True
+        DataField = 'REFERENCIA'
+        DataPipeline = ppDBEtiquetas
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial Narrow'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBEtiquetas'
+        mmHeight = 3969
+        mmLeft = 1588
+        mmTop = 13758
+        mmWidth = 20373
         BandType = 4
       end
     end

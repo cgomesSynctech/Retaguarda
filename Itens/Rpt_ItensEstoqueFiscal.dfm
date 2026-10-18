@@ -7,7 +7,7 @@ inherited RptItensEstoqueFiscal: TRptItensEstoqueFiscal
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnTitulo: TTS_MaxPanel
-    Width = 1047
+    Width = 1055
     Gradient.ColorStart = 9027548
     inherited lbCaption: TdxfLabel
       Width = 285
@@ -22,10 +22,10 @@ inherited RptItensEstoqueFiscal: TRptItensEstoqueFiscal
     end
   end
   inherited pnGrid: TPanel
-    Width = 994
-    Height = 498
+    Width = 1002
+    Height = 508
     inherited pnDados: TTS_Panel
-      Width = 994
+      Width = 1002
       Height = 24
       Color = 14019327
       object lblAlmox: TTS_Label
@@ -117,8 +117,8 @@ inherited RptItensEstoqueFiscal: TRptItensEstoqueFiscal
     end
     inherited dbgConsulta: TTS_QDBGrid
       Top = 24
-      Width = 994
-      Height = 455
+      Width = 1002
+      Height = 465
       KeyField = 'ITEM'
       SummaryGroups = <
         item
@@ -636,17 +636,17 @@ inherited RptItensEstoqueFiscal: TRptItensEstoqueFiscal
       end
     end
     inherited PainelFullSelect: TTS_Panel
-      Top = 479
-      Width = 994
+      Top = 489
+      Width = 1002
       inherited cbFullSelect: TTS_CheckBox
         Height = 19
       end
     end
   end
   inherited TS_Panel1: TTS_Panel
-    Height = 498
+    Height = 508
     inherited btSair: TTS_SpeedButton
-      Top = 453
+      Top = 463
     end
     inherited btAtualizar: TTS_SpeedButton
       OnClick = btAtualizarClick

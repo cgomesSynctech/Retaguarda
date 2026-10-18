@@ -2969,7 +2969,7 @@ inherited FrmSaidas: TFrmSaidas
               Tag = -2
               Left = 1
               Top = 16
-              Width = 79
+              Width = 75
               HelpContext = -2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -3901,7 +3901,7 @@ inherited FrmSaidas: TFrmSaidas
               Tag = -2
               Left = -2
               Top = -2
-              Width = 79
+              Width = 75
               HelpContext = -2
               Color = 14859922
               Style.BorderStyle = xbsNone
@@ -3926,7 +3926,7 @@ inherited FrmSaidas: TFrmSaidas
               Tag = -2
               Left = 1
               Top = 20
-              Width = 268
+              Width = 264
               HelpContext = -2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -3941,7 +3941,7 @@ inherited FrmSaidas: TFrmSaidas
               DataSource = DMSaidas.C_TabelaDS
               MaxLength = 8000
               StyleController = esVendas
-              Height = 81
+              Height = 77
               StoredValues = 3
             end
           end
@@ -3974,7 +3974,7 @@ inherited FrmSaidas: TFrmSaidas
             object TS_DBMemo1: TTS_DBMemo
               Tag = -2
               Left = 1
-              Top = 246
+              Top = 250
               Width = 728
               HelpContext = -2
               Align = alBottom
@@ -3989,13 +3989,13 @@ inherited FrmSaidas: TFrmSaidas
               DataField = 'TERMOCONTRATO'
               DataSource = DMSaidas.C_TabelaDS
               StyleController = esVendas
-              Height = -24
+              Height = -28
             end
             object dfContrato: TTS_PopupEdit
               Tag = -2
               Left = -2
               Top = -2
-              Width = 199
+              Width = 195
               HelpContext = -2
               Color = 14859922
               Style.BorderStyle = xbsNone
@@ -4703,7 +4703,7 @@ inherited FrmSaidas: TFrmSaidas
     Top = 104
   end
   inherited ppmHelp: TTS_PopupMenu
-    Left = 656
+    Left = 520
     Top = 1
     inherited Ajuda1: TMenuItem
       HelpContext = 579

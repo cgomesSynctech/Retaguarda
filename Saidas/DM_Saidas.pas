@@ -1,5 +1,5 @@
 unit DM_Saidas;
-                 
+
 interface
 
 uses
@@ -710,6 +710,8 @@ type
     C_TiposMovimentoCB_CST_RTC_PADRAO: TStringField;
     C_TiposMovimentoCB_CLASSTRIB_RTC_PADRAO: TStringField;
     C_TiposMovimentoCLASSTRIB_RTC_PADRAO: TStringField;
+    C_ItensI_PRECOCOMPRA: TFloatField;
+    C_ItensSUBTOTALCOMPRA: TFloatField;
         procedure DMComponentModoInclusao1_Iniciar(Sender: TObject);
         procedure C_TabelaTIPOMOVIMENTOChange(Sender: TField);
         procedure C_TabelaNewRecord(DataSet: TDataSet);
@@ -2242,6 +2244,7 @@ begin;
          end;
 
     C_ItensSubTotalItem.AsVariant := C_ItensSubTotal.AsVariant;
+    C_ItensSUBTOTALCOMPRA.AsVariant := C_ItensQUANTIDADE.AsVariant * C_ItensI_PRECOCOMPRA.AsVariant;
 
     if (C_ItensUsoTipoItem.Value <> '') and (C_ItensUsoTipoItem.Value[1] <> 'D') then
         C_ItensN_UsoTipoItem.Value := -StrToFloatDef(SeparaStrings(C_ItensUsoTipoItem.Value, '=', 2), 0);

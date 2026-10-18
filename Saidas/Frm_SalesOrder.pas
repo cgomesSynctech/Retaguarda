@@ -190,6 +190,7 @@ type
     TS_Indicacao: TTS_Panel;
     TS_Label30: TTS_Label;
     TS_DBLookupComboBox1: TTS_DBLookupComboBox;
+    dbgItensSUBTOTALCOMPRA: TdxDBGridMaskColumn;
         procedure FormCreate(Sender: TObject);
         procedure lbOperacaoSetParametrosForm(Sender: TObject);
         procedure FormComponentEstado_Inicial(Sender: TObject;

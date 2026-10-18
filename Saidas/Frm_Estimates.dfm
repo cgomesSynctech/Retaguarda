@@ -640,6 +640,13 @@ inherited FrmEstimates: TFrmEstimates
               FieldName = 'QUANTIDADEVOLUME'
               SummaryFooterType = cstSum
             end
+            object dbgItensSUBTOTALCOMPRA: TdxDBGridMaskColumn
+              Caption = 'Sub Pr Compra'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SUBTOTALCOMPRA'
+              SummaryFooterType = cstSum
+            end
           end
           inherited pnVolumes: TTS_Panel
             Left = 527

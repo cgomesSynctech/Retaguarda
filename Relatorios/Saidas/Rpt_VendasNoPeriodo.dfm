@@ -1204,6 +1204,12 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         SummaryFooterType = cstSum
         SummaryFooterFormat = '#,###,##0.00'
       end
+      object dbgConsultaSTATUS_PAGAMENTO: TdxDBGridMaskColumn
+        Caption = 'Status Pgto'
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'STATUS_PAGAMENTO'
+      end
     end
     inherited PainelFullSelect: TTS_Panel
       Top = 419
@@ -1274,7 +1280,10 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         'e '#39'N'#227'o Definido'#39' end as tipopessoa, pf.nome, (select sum(t.valor' +
         'pago) from titulosareceber t where t.venda = s.saida) as PgtoPar' +
         'celas, (select sum(t.descontos) from titulosareceber t where t.v' +
-        'enda = s.saida) as DescontosParcelas, s.totalpgtos'
+        'enda = s.saida) as DescontosParcelas, s.totalpgtos, CASE WHEN s.' +
+        'total = s.totalpgtos THEN '#39'Liquidado'#39' WHEN s.totalpgtos > 0 AND ' +
+        's.total > s.totalpgtos THEN '#39' Pgto Parcial'#39' ELSE '#39'Sem Info'#39' END ' +
+        'AS status_pagamento'
       'from saidas s'
       'inner join favorecidos f on f.favorecido = s.favorecido'
       'left join favorecidos v on v.favorecido = s.vendedor'
@@ -1503,6 +1512,12 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
     end
     object C_ConsultaTOTALPGTOS: TFloatField
       FieldName = 'TOTALPGTOS'
+    end
+    object C_ConsultaSTATUS_PAGAMENTO: TStringField
+      FieldName = 'STATUS_PAGAMENTO'
+      Required = True
+      FixedChar = True
+      Size = 13
     end
   end
   inherited ppmDados: TTS_PopupMenu

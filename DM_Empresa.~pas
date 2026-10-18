@@ -189,6 +189,7 @@ type
     C_EmpresasESTACOES: TIntegerField;
     C_EmpresasCSC: TStringField;
     C_EmpresasFLEXDOCS: TStringField;
+    C_EmpresasSENHA: TStringField;
     procedure DataModuleCreate(Sender: TObject);
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure DMComponentGravar1_Iniciar(Sender: TObject;

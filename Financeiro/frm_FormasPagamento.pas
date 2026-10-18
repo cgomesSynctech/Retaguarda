@@ -158,7 +158,7 @@ procedure TFrmFormasPagamento.FormComponentEstado_Navegacao(
 begin
     inherited;
     Page.Visible := not (DMFormasPagamento.C_TabelaEspecie.Value in [5]) and not (DMFormasPagamento.C_TabelaFormaPagamento.Value = 2);
-    if DMFormasPagamento.C_TabelaEspecie.Value in [2, 3, 10, 30] then
+    if DMFormasPagamento.C_TabelaEspecie.Value in [2, 3, 10, 30, 17] then
         Page.ActivePage := tsCartao
     else if DMFormasPagamento.C_TabelaEspecie.Value in [50] then
         Page.ActivePage := tsCartaoEmpresa

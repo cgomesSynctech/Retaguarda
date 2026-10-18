@@ -1563,6 +1563,13 @@ inherited FrmSalesOrder: TFrmSalesOrder
               RowIndex = 0
               FieldName = 'icUltPrecoCliente'
             end
+            object dbgItensSUBTOTALCOMPRA: TdxDBGridMaskColumn
+              Caption = 'Sub Pr Compra'
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'SUBTOTALCOMPRA'
+              SummaryFooterType = cstSum
+            end
           end
           inherited pnVolumes: TTS_Panel
             Left = 817

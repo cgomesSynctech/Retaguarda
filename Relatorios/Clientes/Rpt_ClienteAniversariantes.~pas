@@ -1,0 +1,218 @@
+unit Rpt_ClienteAniversariantes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  RPT_PADRAO, FormsComponent, dxPSCore, dxPSdxTLLnk, dxPSdxDBCtrlLnk,
+  dxPSdxDBGrLnk, DBClient, Provider, Db, IBCustomDataSet, IBQuery,
+  TS_LastDataObject, DlgMsg, teCtrls, TS_EffectsPanel,
+  dxCntner, dxTL, dxDBCtrl, dxDBGrid, TS_QDBGrid, ExtCtrls, StdCtrls,
+  TS_Label, dxfLabel, TS_MaxPanel, dxDBTLCl, dxGrClms, dxExEdtr, dxEdLib,
+  TS_CheckBox, dxEditor, TS_DateTimePicker, Buttons, TS_SpeedButton, Menus,
+  TS_PopupMenu, TS_ComboBox, ComCtrls, dxPSGlbl, dxPSUtl, dxPSEngn,
+  dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, Placemnt, BTOdeum;
+
+type
+  TRptClienteAniversariantes = class(TRptPadrao)
+    C_ConsultaFAVORECIDO: TIntegerField;
+    C_ConsultaCODIGO: TStringField;
+    C_ConsultaNOME: TStringField;
+    C_ConsultaENDERECO: TStringField;
+    C_ConsultaCIDADE: TStringField;
+    C_ConsultaUF: TStringField;
+    C_ConsultaCEP: TStringField;
+    C_ConsultaCAIXAPOSTAL: TStringField;
+    C_ConsultaFONE1: TStringField;
+    C_ConsultaFONE2: TStringField;
+    C_ConsultaULTCOMPRA: TDateField;
+    C_ConsultaDESC_PAIS: TStringField;
+    dbgConsultaFAVORECIDO: TdxDBGridMaskColumn;
+    dbgConsultaCODIGO: TdxDBGridMaskColumn;
+    dbgConsultaNOME: TdxDBGridMaskColumn;
+    dbgConsultaFONE1: TdxDBGridMaskColumn;
+    dbgConsultaULTCOMPRA: TdxDBGridDateColumn;
+    dbgConsultaULTVALORCOMPRA: TdxDBGridMaskColumn;
+    dbgConsultaMEDIACOMPRA: TdxDBGridMaskColumn;
+    C_ConsultaPreviewEnd: TStringField;
+    C_ConsultaFAX: TStringField;
+    C_ConsultaCELULAR: TStringField;
+    C_ConsultaCONTATO: TStringField;
+    C_ConsultaEMAIL: TStringField;
+    C_ConsultaDATANASC: TDateField;
+    dbgConsultaDATANASC: TdxDBGridDateColumn;
+    Endereo1: TMenuItem;
+    Q_ULTCompra: TIBQuery;
+    N9: TMenuItem;
+    lbAniv: TTS_Label;
+    cmbPeriodo: TTS_ComboBox;
+    C_ConsultaULTVALORCOMPRA: TBCDField;
+    C_ConsultaMEDIACOMPRA: TBCDField;
+    C_ConsultaDiaMes: TStringField;
+    dbgConsultaFONE2: TdxDBGridColumn;
+    dbgConsultaCelular: TdxDBGridColumn;
+    C_ConsultaCONJUGUE_DATANASC: TDateField;
+    dbgConsultaConjNasc: TdxDBGridColumn;
+    C_ConsultaDiaMesConj: TStringField;
+    C_ConsultaicUltimaCompra: TDateTimeField;
+    procedure btAtualizarClick(Sender: TObject);
+    procedure dbgConsultaDblClick(Sender: TObject);
+    procedure dataiExit(Sender: TObject);
+    procedure Endereo1Click(Sender: TObject);
+    procedure FormsComponentRefresh(Sender: TObject);
+    procedure dataiDateChange(Sender: TObject);
+    procedure FormsComponentBeforeClearParams(Sender: TObject);
+    procedure cmbPeriodoChange(Sender: TObject);
+    procedure C_ConsultaCalcFields(DataSet: TDataSet);
+  private
+    { Private declarations }
+    procedure AtualizaDados;
+  public
+    { Public declarations }
+  end;
+
+var
+  RptClienteAniversariantes: TRptClienteAniversariantes;
+
+implementation
+
+uses DM_Projeto, funcoes;
+
+{$R *.DFM}
+
+procedure TRptClienteAniversariantes.AtualizaDados;
+var condicao : string;
+		dData : TDateTime;
+begin
+  ActiveControl := nil;
+  dData := DMProjeto.getDataServidor;
+  if cmbPeriodo.ItemIndex = 0 then begin
+    Condicao := '(extract(day from f.datanasc)='+formatdatetime('d',dData)+' '+
+                'and extract(month from f.datanasc)='+formatdatetime('m',dData)+') ';
+  end else if cmbPeriodo.ItemIndex = 1 then begin
+    Condicao := '((extract(day from f.datanasc)>='+formatdatetime('d',dData)+' '+
+                'and extract(month from f.datanasc)='+formatdatetime('m',dData)+') '+
+                iif(formatdatetime('m',dData)<>formatdatetime('m',dData+7),' or ',' and ')+
+                '(extract(day from f.datanasc)<='+formatdatetime('d',dData+7)+' '+
+                'and extract(month from f.datanasc)='+formatdatetime('m',dData+7)+')) ';
+  end else if cmbPeriodo.ItemIndex = 2 then begin
+    Condicao := '(extract(month from f.datanasc)='+formatdatetime('m ',dData)+') ';
+  end else if cmbPeriodo.ItemIndex = 3 then begin
+    Condicao := '(extract(month from f.datanasc)='+formatdatetime('m ',DateAdd('MM',1,dData))+') '
+ 	end else begin
+  	Condicao := '(extract(day from f.datanasc)='+IntToStr(cmbPeriodo.ItemIndex-3)+' '+
+                		'and extract(month from f.datanasc)='+formatdatetime('m',dData)+') ';
+  end;
+  with C_Consulta do  begin
+    Close;
+		CommandText := 'Select '+ getCampos + ' ' +
+    						 'From '+ getTabelas + ' ' +
+                'where f.tipofavorecido=1 and f.desativado = ''N'' and '+Condicao+' order by f.nome';
+    Open;
+  end;
+  with dbgConsulta do begin
+    TS_ReportFilter.Clear;
+    TS_ReportFilter.Add(lbAniv.caption+' '+cmbPeriodo.Text);
+  end;
+end;
+
+procedure TRptClienteAniversariantes.btAtualizarClick(Sender: TObject);
+begin
+  inherited;
+  AtualizaDados;
+end;
+
+procedure TRptClienteAniversariantes.dbgConsultaDblClick(Sender: TObject);
+var
+   nIdFav : Integer;
+begin
+  inherited;
+  if (dbgConsulta.FocusedField.FieldName = 'ULTCOMPRA')
+     or (dbgConsulta.FocusedField.FieldName = 'ULTVALORCOMPRA')  then begin
+    if dbgConsulta.getFieldValue(dbgConsulta.FocusedNode, 'ULTCOMPRA',StrToDateTime('1/1/1900')) = StrToDateTime('1/1/1900') then
+       exit; 
+    Q_ULTCompra.Close;
+    Q_ULTCompra.ParamByName('Data').AsDateTime := dbgConsulta.getFieldValue(dbgConsulta.FocusedNode, 'ULTCOMPRA',StrToDateTime('1/1/1900'));
+    Q_ULTCompra.ParamByName('Fav').AsInteger := dbgConsulta.getFieldValue(dbgConsulta.FocusedNode, 'favorecido','');
+    Q_ULTCompra.Open;
+    nIdFav := Q_ULTCompra.Fields[0].AsInteger;
+    DMProjeto.SetParametrosForm([nIdFav]);
+    DMProjeto.CriarForm('FrmInvoices',Self,true);
+    Q_ULTCompra.Close;
+  end
+  else begin
+    nIdFav := dbgConsulta.GetFieldValue(dbgConsulta.focusednode,'favorecido',0);
+    DMProjeto.SetParametrosForm([nIdFav]);
+    DMProjeto.CriarForm('FrmClientes',Self,true);  
+  end;
+end;
+
+procedure TRptClienteAniversariantes.dataiExit(Sender: TObject);
+begin
+  inherited;
+  AtualizaDados;
+end;
+
+procedure TRptClienteAniversariantes.Endereo1Click(Sender: TObject);
+begin
+  inherited;
+  Endereo1.Checked := not Endereo1.Checked;
+  if Endereo1.Checked then
+     dbgConsulta.OptionsView := dbgConsulta.OptionsView + [edgoPreview]
+  else
+     dbgConsulta.OptionsView := dbgConsulta.OptionsView - [edgoPreview];
+end;
+
+procedure TRptClienteAniversariantes.FormsComponentRefresh(
+  Sender: TObject);
+begin
+  inherited;
+  AtualizaDados;
+end;
+
+procedure TRptClienteAniversariantes.dataiDateChange(Sender: TObject);
+begin
+  inherited;
+  AtualizaDados;
+end;
+
+procedure TRptClienteAniversariantes.FormsComponentBeforeClearParams(
+  Sender: TObject);
+begin
+  inherited;
+  cmbPeriodo.Items.Text := replace(cmbPeriodo.Items.Text,'<mes>',DMProjeto.getDescricaoMes(Month(DMProjeto.dDataSistema)));
+  cmbPeriodo.ItemIndex := 0;
+end;
+
+procedure TRptClienteAniversariantes.cmbPeriodoChange(Sender: TObject);
+begin
+  inherited;
+	AtualizaDados;
+end;
+
+procedure TRptClienteAniversariantes.C_ConsultaCalcFields(
+  DataSet: TDataSet);
+Var
+ nCodUltVenda:Integer;
+ dDataUltVenda: TDateTime;
+ fValUltVenda: Currency;
+begin
+  inherited;
+  C_ConsultaPreviewEnd.AsString := DmProjeto.FormataEndereco(C_Consulta);
+
+  if (C_ConsultaDATANASC.IsNull) then
+    C_ConsultaDiaMes.AsString     := '00/00'
+  Else
+    C_ConsultaDiaMes.AsString     := SoNumeros(IntToStr(Day(C_ConsultaDATANASC.AsDateTime)),2)+'/'+
+                                     SoNumeros(IntToStr(Month(C_ConsultaDATANASC.AsDateTime)),2) ;
+  if (C_ConsultaCONJUGUE_DATANASC.IsNull) Then
+    C_ConsultaDiaMesConj.AsString     := '00/00'
+  Else
+    C_ConsultaDiaMesConj.AsString     := SoNumeros(IntToStr(Day(C_ConsultaCONJUGUE_DATANASC.AsDateTime)),2)+'/'+
+                                       SoNumeros(IntToStr(Month(C_ConsultaCONJUGUE_DATANASC.AsDateTime)),2) ;
+
+  DMProjeto.GetInformacoesUltVenda(C_ConsultaFAVORECIDO.Value,nCodUltVenda,dDataUltVenda,fValUltVenda);
+  DataSet.FieldByName('icUltimaCompra').Value := dDataUltVenda;
+end;
+
+end.

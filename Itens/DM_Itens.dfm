@@ -1,6 +1,6 @@
 inherited DMItens: TDMItens
-  Left = 426
-  Top = 103
+  Left = 195
+  Top = 124
   Height = 722
   Width = 1371
   inherited OpenDialog: TOpenDialog
@@ -88,7 +88,8 @@ inherited DMItens: TDMItens
         'deralentrada, fc.icmsvenda as fc_icmsvenda,'
       
         '  fc.ipivenda as fc_ipivenda, fc.mva as fc_mva, fc.reducaocst as' +
-        ' fc_reducaocst, i.bemusado, i.cstibs, i.classtrib'
+        ' fc_reducaocst, i.bemusado, i.cstibs, i.classtrib, i.valorgarant' +
+        'ia, i.valorreposicao'
       'from itens i'
       
         'inner join produtospreco pp on i.item = pp.item and pp.unidade =' +
@@ -246,7 +247,9 @@ inherited DMItens: TDMItens
       ' TIPOITEMSPED = :TIPOITEMSPED, '
       ' BEMUSADO = :BEMUSADO, '
       ' CSTIBS = :CSTIBS, '
-      ' CLASSTRIB = :CLASSTRIB'
+      ' CLASSTRIB = :CLASSTRIB, '
+      ' VALORGARANTIA = :VALORGARANTIA, '
+      ' VALORREPOSICAO = :valorreposicao'
       'where'
       '  ITEM = :OLD_ITEM')
     InsertSQL.Strings = (
@@ -300,9 +303,8 @@ inherited DMItens: TDMItens
         ','
       '   TIPOMATERIAPRIMA, CODIGOVENDA, CSTIPIENTRADA, CENQIPICOMPRA, '
       'CENQIPIVENDA, CEST_OPC, FABRICACAOPROPRIA, DESCRICAOANP, PGNV , '
-      
-        'PGLP, MATERIAPRIMA, CUBAGEM, DESONERACAOICMS, TIPOITEMSPED, BEMU' +
-        'SADO, CSTIBS, CLASSTRIB  )'
+      'PGLP, MATERIAPRIMA, CUBAGEM, DESONERACAOICMS, TIPOITEMSPED, '
+      'BEMUSADO, CSTIBS, CLASSTRIB, valorgarantia , valorreposicao )'
       'values'
       
         '  (:ITEM,:TIPOITEM, :CODIGO, :DESCRICAOCOMPRA, :GRUPO, :DESCRICA' +
@@ -356,9 +358,8 @@ inherited DMItens: TDMItens
       ':PESAVEL,:ITEMMVA, :TIPOMATERIAPRIMA, :CODIGOVENDA, '
       ':CSTIPIENTRADA, :CENQIPICOMPRA, :CENQIPIVENDA, :CEST_OPC, '
       ':FABRICACAOPROPRIA, :DESCRICAOANP, :PGNV, :PGLP, :MATERIAPRIMA, '
-      
-        ':CUBAGEM, :DESONERACAOICMS, :TIPOITEMSPED, :BEMUSADO, :CSTIBS, :' +
-        'CLASSTRIB  )')
+      ':CUBAGEM, :DESONERACAOICMS, :TIPOITEMSPED, :BEMUSADO, :CSTIBS, '
+      ':CLASSTRIB, :valorgarantia , :valorreposicao )')
     DeleteSQL.Strings = (
       'delete from itens'
       'where'
@@ -1664,6 +1665,16 @@ inherited DMItens: TDMItens
       LookupResultField = 'DESCRICAO'
       KeyFields = 'CLASSTRIB'
       Lookup = True
+    end
+    object C_TabelaVALORGARANTIA: TBCDField
+      FieldName = 'VALORGARANTIA'
+      Precision = 18
+      Size = 2
+    end
+    object C_TabelaVALORREPOSICAO: TBCDField
+      FieldName = 'VALORREPOSICAO'
+      Precision = 18
+      Size = 2
     end
   end
   inherited C_TabelaDS: TDataSource

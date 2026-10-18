@@ -1,4 +1,4 @@
-unit DM_Projeto;    
+unit DM_Projeto;
 interface
 
 uses
@@ -11,7 +11,7 @@ uses
     {PAF}
     FuncoesPAF, RegAuxiliar, Sintegra, Axexo_VI, RegReducaoZ, RegReducaoZ_R06,
     OleServer, PDFCreatorPilotLib_TLB;
-type
+type                                                             
     TpArray = array[1..16] of string;
 
 type
@@ -382,6 +382,13 @@ type
         C_LocalizarItensTABELAPRECO2: TBCDField;
         C_LocalizarItensTABELAPRECO3: TBCDField;
     C_LocalizarItensCSTIPIENTRADA: TStringField;
+    C_LocalizarItensCUBAGEM: TBCDField;
+    C_LocalizarFavSUFRAMA: TStringField;
+    C_LocalizarItensDESONERACAOICMS: TStringField;
+    Q_SQL4: TIBQuery;
+    C_LocalizarItensBEMUSADO: TStringField;
+    C_LocalizarItensCSTIBS: TStringField;
+    C_LocalizarItensCLASSTRIB: TStringField;
         procedure DataModuleCreate(Sender: TObject);
         procedure C_LocalizarItensCalcFields(DataSet: TDataSet);
         procedure C_LocalizarFavCPF_CNPJGetText(Sender: TField;
@@ -459,6 +466,7 @@ type
         function GetPDVMaq: integer;
         function AliquotaEstado(sUF: string): single;
         function AliquotaEstadoExterno(sUF: string): single;
+        function AlicotaIcmsSubInterestadual(sUF: string): single;
         function CST(sTipo, sCST: string; nAliqICMS, nReducao, nValor: currency): currency;
         function CSTIsentas(sCST: string): boolean;
         function CSTSubstTrib(sCST: string): boolean;
@@ -655,7 +663,8 @@ implementation
 uses Funcoes, Math, RegistroClasses, Dlg_InserirFator, Dlg_Recebido, Dlg_Pagamentos,
 
     dlg_AutorizacaoTabela, {dm_ECF,} Dlg_Campos, Dlg_ImpressaoDoc, Rpt_Invoices,
-    Rpt_DocCobranca, Util2, Dlg_Parcelas, DM_PDVs, DM_Financeiro, Form_RichEdit, MD5;
+    Rpt_DocCobranca, Util2, Dlg_Parcelas, DM_PDVs, DM_Financeiro, Form_RichEdit, MD5,
+  Rpt_InvoicesDoc2;
 
 {$R *.DFM}
 
@@ -691,284 +700,6 @@ var linha: string;
     CaminhoArquivo: string;
 begin
     result := true;
-    {Eliminação do DMECF.}
-    //  inherited;
-    //  try
-    //    CaminhoArquivo := ExtractFilePath(Application.ExeName) + trim(dmECF.ECF1.GetCodigoModeloFiscal()) + Copy(DMProjeto.PAFCampos.NroFabricacao_ECF,7,14) + FormatDateTime('DDMMYYYY',dtFim) +'.TXT';
-    //    AssignFile(f, CaminhoArquivo);
-    //    ReWrite(f);
-    //    DataInstal := Copy(DMProjeto.PAFCampos.DataInstalacaoSB,5,4)
-    //                 +Copy(DMProjeto.PAFCampos.DataInstalacaoSB,3,2)
-    //                 +Copy(DMProjeto.PAFCampos.DataInstalacaoSB,1,2);
-    //    linha:= 'R01'               {Identificação do ECF}
-    //      + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //      + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //      + PreencherSTR(DMProjeto.PAFCampos.TipoECF,' ',007)
-    //      + PreencherSTR(DMProjeto.PAFCampos.MarcaECF,' ',020)
-    //      + PreencherSTR(DMProjeto.PAFCampos.ModeloECF,' ',020)
-    //      + PreencherSTR(DMProjeto.PAFCampos.VersaoSB,' ',10)
-    //      + PreencherSTR(DataInstal,' ',008)
-    //      + PreencherSTR(DMProjeto.PAFCampos.HoraInstalacaoSB,' ',006)
-    //      + PreencherSTR(DMProjeto.PAFCampos.NumeroSeqECF,' ',003)
-    //      + PreencherSTR(RestringirCarac(DMProjeto.PAFCampos.CNPJ_Usuario),' ',014)
-    //      + SoNumeros(DMProjeto.PAFCampos.IE_Usuario,014)
-    //      + SoNumeros(DMProjeto.PAFCampos.CNPJ_Desenv,014)
-    //      + SoNumeros(DMProjeto.PAFCampos.IE_Desenv,014)
-    //      + SoNumeros(DMProjeto.PAFCampos.IM_Desenv,014)
-    //      + PreencherSTR(DMProjeto.PAFCampos.RAZAO_Desenv,' ',040)
-    //      + PreencherSTR(DMProjeto.PAFCampos.Systema,' ',040)
-    //      + PreencherSTR(DMProjeto.PAFCampos.Versao,' ',010)
-    //      + PreencherSTR(DMProjeto.PAFCampos.MD5_Exe,' ',032)
-    //      + PreencherSTR(FormatDateTime('YYYYMMDD', dtInicio),' ',008)
-    //      + PreencherSTR(FormatDateTime('YYYYMMDD', dtFim),' ',008)
-    //      + PreencherSTR(DMProjeto.PAFCampos.VersaoPAF,' ',004);
-    //      Writeln(f,linha);
-    //    With Q_R02 do Begin {Relação das Redução Z}
-    //      Close;
-    //      Sql.Text := 'select z.NROFABRICACAO,  z.nroordem, z.crz,  z.cro, z.crg, z.coo, z.datamovimento, z.dataemissao, z.horaemissao, '+
-    //                  ' (z.grandetotal - z.grandetotalinicial) as VendaBrutaDiaria, ''N'' as ECFISS, MD5Z, '+
-    //                  ' z.grandetotal , z.grandetotalinicial From reducaoz z where z.nrofabricacao = :nrofabricacao and z.datamovimento >= :DtInicio and z.datamovimento <= :DtFim ';
-    //      ParamByName('nrofabricacao').AsString := DMProjeto.PAFCampos.NroFabricacao_ECF;
-    //      ParamByName('DtInicio').AsString :=  FormatDateTime('DDMMYYYY', dtInicio );
-    //      ParamByName('DtFim').AsString :=  FormatDateTime('DDMMYYYY', dtFim );
-    //      Open;
-    //      While Not EOF do Begin
-    ////         MD5Z := MD5Print(MD5String(
-    ////          Trim(FieldByName('NROFABRICACAO').AsString)
-    ////          +SoNumeros(Trim(FieldByName('CRZ').AsString),6)
-    ////          +SoNumeros(Trim(FieldByName('COO').AsString),6)
-    ////          +SoNumeros(Trim(FieldByName('CRO').AsString),6)
-    ////          +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),5,4)
-    ////          +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),3,2)
-    ////          +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),1,2)
-    ////          +'20'+Copy(Trim(FieldByName('DATAEMISSAO').AsString),5,2)
-    ////          +Copy(Trim(FieldByName('DATAEMISSAO').AsString),3,2)
-    ////          +Copy(Trim(FieldByName('DATAEMISSAO').AsString),1,2)
-    ////          +Trim(FieldByName('HORAEMISSAO').AsString)
-    ////          +Trim(FieldByName('GrandeTotal').AsString)
-    ////          +Trim(FieldByName('GrandeTotalInicial').AsString)
-    ////          ));
-    ////        if (MD5Z = FieldByName('MD5Z').AsString) Then
-    //            linha:= 'R02'
-    //              + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //              + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //              + PreencherSTR( DMProjeto.PAFCampos.ModeloECF ,' ',020)
-    //              + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    //              + SoNumeros(Trim(FieldByName('CRZ').AsString),6)
-    //              + SoNumeros(Trim(FieldByName('COO').AsString),6)
-    //              + SoNumeros(Trim(FieldByName('CRO').AsString),6)
-    //              +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),5,4)
-    //              +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),3,2)
-    //              +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),1,2)
-    //              +'20'+Copy(Trim(FieldByName('DATAEMISSAO').AsString),5,2)
-    //              +Copy(Trim(FieldByName('DATAEMISSAO').AsString),3,2)
-    //              +Copy(Trim(FieldByName('DATAEMISSAO').AsString),1,2)
-    //              + FieldByName('HORAEMISSAO').AsString
-    //              + SoNumeros(FieldByName('VENDABRUTADIARIA').AsString,14)
-    //              + FieldByName('ECFISS').AsString;
-    ////         Else
-    ////            linha:= 'R02'
-    ////              + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    ////              + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    ////              + PreencherSTR(' ' ,'?',020)
-    ////              + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    ////              + SoNumeros(Trim(FieldByName('CRZ').AsString),6)
-    ////              + SoNumeros(Trim(FieldByName('COO').AsString),6)
-    ////              + SoNumeros(Trim(FieldByName('CRO').AsString),6)
-    ////              +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),5,4)
-    ////              +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),3,2)
-    ////              +Copy(Trim(FieldByName('DATAMOVIMENTO').AsString),1,2)
-    ////              +'20'+Copy(Trim(FieldByName('DATAEMISSAO').AsString),5,2)
-    ////              +Copy(Trim(FieldByName('DATAEMISSAO').AsString),3,2)
-    ////              +Copy(Trim(FieldByName('DATAEMISSAO').AsString),1,2)
-    ////              + FieldByName('HORAEMISSAO').AsString
-    ////              + SoNumeros(FieldByName('VENDABRUTADIARIA').AsString,14)
-    ////              + FieldByName('ECFISS').AsString;
-    //          Writeln(f,linha);
-    //          vArray := GetAliquotasZ(Q_R02.FieldByName('CRZ').AsString); {Building}
-    //          Next;
-    //      End; {While  Q_R02 Not EOF do Begin}
-    //    End; {With Q_R02 do Begin}
-    //    With Q_R03 do Begin   {Detalhe da Redução Z}
-    //      Close;
-    //      Sql.Text := 'select z.CRZ,z.tipototalizador, z.totalizador, z.valortotalizador, z.Md5 From reducaoz_r03 z '+
-    //                  ' where z.crz in (select y.crz From reducaoz y where y.nrofabricacao = :nrofabricacao and y.datamovimento >= :DtInicio and y.datamovimento <= :DtFim) ';      ParamByName('nrofabricacao').AsString := DMProjeto.PAFCampos.NroFabricacao_ECF;
-    //      ParamByName('DtInicio').AsString :=  FormatDateTime('DDMMYYYY', dtInicio );
-    //      ParamByName('DtFim').AsString :=  FormatDateTime('DDMMYYYY', dtFim );
-    //      Open;
-    //      While Not EOF do Begin
-    ////        MD5Z := MD5Print(MD5String(
-    ////            Trim(DMProjeto.PAFCampos.NroFabricacao_ECF)
-    ////            +Trim(FieldByName('CRZ').AsString)
-    ////            +Trim(FieldByName('TIPOTOTALIZADOR').AsString)
-    ////            +Trim(FieldByName('TOTALIZADOR').AsString)
-    ////            +Trim(SoNumeros(FieldByName('VALORTOTALIZADOR').AsString,13))
-    ////            ));
-    ////        if (MD5Z = FieldByName('MD5').AsString) Then
-    //            linha:= 'R03'
-    //              + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //              + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //              + PreencherSTR(DMProjeto.PAFCampos.ModeloECF,' ',020)
-    //              + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    //              + SoNumeros(FieldByName('CRZ').AsString,6)
-    //              +  PreencherSTR(FieldByName('TOTALIZADOR').AsString, ' ', 7)
-    //              + SoNumeros(FieldByName('VALORTOTALIZADOR').AsString,13);
-    ////        Else
-    ////            linha:= 'R03'
-    ////              + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    ////              + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    ////              + PreencherSTR(' ' ,'?',020)
-    ////              + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    ////              + SoNumeros(FieldByName('CRZ').AsString,6)
-    ////              +  PreencherSTR(FieldByName('TOTALIZADOR').AsString, ' ', 7)
-    ////              + SoNumeros(FieldByName('VALORTOTALIZADOR').AsString,13);
-    //        Writeln(f,linha);
-    //        Next;
-    //      End; {While R03 Not EOF do Begin}
-    //    End;  {With Q_R03 do Begin}
-    //    With Q_R04 do Begin {Cupom Fiscal Emitido}
-    //      Close;
-    //      Sql.Text := 'select  z.numeroserieecf , z.ccf, z.crz, z.numero, z.data, z.total, z.desconto, '+
-    //                  ' z.acrescimosbase, z.total - z.desconto as liquido, '+
-    //                  ' case when z.situacao = ''C'' Then ''S'' else ''N'' end as cancelado, f.razao, f.cpf_cnpj '+
-    //                  ' From saidas z inner join favorecidos f on f.favorecido = z.favorecido '+
-    //                  ' where z.crz in (select y.crz From reducaoz y where y.nrofabricacao = :nrofabricacao and y.datamovimento >= :DtInicio and y.datamovimento <= :DtFim) ';
-    //      ParamByName('nrofabricacao').AsString := DMProjeto.PAFCampos.NroFabricacao_ECF;
-    //      ParamByName('DtInicio').AsString :=  FormatDateTime('DDMMYYYY', dtInicio );
-    //      ParamByName('DtFim').AsString :=  FormatDateTime('DDMMYYYY', dtFim );
-    //      Open;
-    //      While Not EOF do Begin
-    //        linha:= 'R04'
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //          + PreencherSTR(DMProjeto.PAFCampos.ModeloECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    //          + FieldByName('CCF').AsString
-    //          + SoNumeros(FieldByName('NUMERO').AsString,6)
-    //          + FormatDateTime('YYYYMMDD', FieldByName('DATA').AsDateTime)
-    //          + SoNumeros(iif(FieldByName('CANCELADO').AsString = 'S', '0',FieldByName('TOTAL').AsString),14)
-    //          + SoNumeros(FieldByName('DESCONTO').AsString,13)
-    //          + 'V'
-    //          + SoNumeros(FieldByName('ACRESCIMOSBASE').AsString,13)
-    //          + 'V'
-    //          + SoNumeros(iif(FieldByName('CANCELADO').AsString = 'S', '0',FieldByName('LIQUIDO').AsString),14)
-    //          + FieldByName('CANCELADO').AsString
-    //          + SoNumeros(' ',13)
-    //          + 'D'
-    //          + PreencherSTR(Copy(FieldByName('RAZAO').AsString,1,40),' ',40)
-    //          + SoNumeros(FieldByName('CPF_CNPJ').AsString,14);
-    //        Writeln(f,linha);
-    //        Next; {R04}
-    //      End; {R04 Not EOF}
-    //    End; {With Q_R04 do Begin}
-    //
-    //
-    //    With Q_R05 do Begin {Detalhe do Cupom Fiscal }
-    //      Close;
-    //      Sql.Text := 'select z.numeroserieecf, z.numero, z.ccf, zi.sequencia, '+
-    //                  ' case when i.codigobarras is null then i.codigo else i.codigobarras end as Codigo, '+
-    //                  ' i.descricao, zi.quantidade, zi.unidade, zi.preco, zi.desconto, 0.00 as Acrescimo, zi.subtotalitem, zi.aliqicms, zi.situacaoecf, '+
-    //                  ' ''N'' as Cancelamento, 0 as QtdCancelada, 0.00 as VlrCancelada, 0.00 as VlrCancAcrescimo, ''T'' as IndArrTrun, i.ippt, ''2'' as CasasDecQtd, ''2'' as CasasDecVlr '+
-    //                  ' From saidas z inner join saidasitens zi on zi.saida = z.saida inner join itens i on i.item = zi.item '+
-    //                  ' where z.crz in (select y.crz From reducaoz y where y.nrofabricacao = :nrofabricacao and y.datamovimento >= :DtInicio and y.datamovimento <= :DtFim) ';      ParamByName('nrofabricacao').AsString := DMProjeto.PAFCampos.NroFabricacao_ECF;
-    //      ParamByName('DtInicio').AsString :=  FormatDateTime('DDMMYYYY', dtInicio );
-    //      ParamByName('DtFim').AsString :=  FormatDateTime('DDMMYYYY', dtFim );
-    //      Open;
-    //      While Not EOF do Begin
-    //        sTotalizador:= '';
-    //        for i:= 1 to 16 do Begin
-    //         if (FieldByName('AliqICMS').AsInteger = StrToInt(vArray[i])/100) Then
-    //            sTotalizador := SoNumeros(IntToStr(i),2) + FieldByName('situacaoECF').AsString + vArray[i];
-    //        End;
-    //        linha:= 'R05'
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //          + PreencherSTR(DMProjeto.PAFCampos.ModeloECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    //          + SoNumeros(FieldByName('NUMERO').AsString,6)
-    //          + SoNumeros(FieldByName('CCF').AsString,6)
-    //          + SoNumeros(FieldByName('SEQUENCIA').AsString,03)
-    //          + SoNumeros(FieldByName('CODIGO').AsString,14)
-    //          + PreencherSTR(FieldByName('DESCRICAO').AsString,' ',100)
-    //          + SoNumeros(FieldByName('QUANTIDADE').AsString,07)
-    //          + PreencherSTR(Copy(FieldByName('UNIDADE').AsString,1,3),' ',03)
-    //          + SoNumeros(FieldByName('PRECO').AsString,08)
-    //          + SoNumeros(FieldByName('DESCONTO').AsString,08)
-    //          + SoNumeros(FieldByName('ACRESCIMO').AsString,08)
-    //          + SoNumeros(FieldByName('SUBTOTALITEM').AsString,14)
-    //          + PreencherSTR(sTotalizador,' ',7)
-    //          + PreencherSTR(FieldByName('CANCELAMENTO').AsString,'N',01)
-    //          + SoNumeros(FieldByName('QtdCancelada').AsString,07)
-    //          + SoNumeros(FieldByName('VlrCancelada').AsString,13)
-    //          + SoNumeros(FieldByName('VlrCancAcrescimo').AsString,13)
-    //          + PreencherSTR(FieldByName('IndArrTrun').AsString,'T',01)
-    //          + PreencherSTR(FieldByName('IPPT').AsString,'T',01)
-    //          + SoNumeros(FieldByName('CasasDecQtd').AsString,01)
-    //          + SoNumeros(FieldByName('CasasDecVlr').AsString,01);
-    //        Writeln(f,linha);
-    //        Next;{R05}
-    //      End; {R05 Not EOF}
-    //    End; {With Q_R05 do Begin}
-    //    With Q_R06 do Begin {Outros Documentos }
-    //      Close;
-    //      Sql.Text := 'select z.crz, z.nrofabricacao, z.coo, z.gnf, case when z.denominacao = ''RG'' Then z.grg else ''000000'' end as GRG, '+
-    //                  ' case when z.denominacao = ''CC'' Then z.cdc else ''0000'' end as CDC, z.denominacao, z.datafinal, z.horafinal '+
-    //                  ' From reducaoz_r06 z '+
-    //                  ' where z.crz in (select y.crz From reducaoz y where y.nrofabricacao = :nrofabricacao and y.datamovimento >= :DtInicio and y.datamovimento <= :DtFim) ';      ParamByName('nrofabricacao').AsString := DMProjeto.PAFCampos.NroFabricacao_ECF;
-    //      ParamByName('DtInicio').AsString :=  FormatDateTime('DDMMYYYY', dtInicio );
-    //      ParamByName('DtFim').AsString :=  FormatDateTime('DDMMYYYY', dtFim );
-    //      Open;
-    //      While Not EOF do Begin
-    //        linha:= 'R06'
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //          + PreencherSTR(DMProjeto.PAFCampos.ModeloECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    //          + SoNumeros(FieldByName('COO').AsString,06)
-    //          + SoNumeros(FieldByName('GNF').AsString,06)
-    //          + SoNumeros(FieldByName('GRG').AsString,06)
-    //          + SoNumeros(FieldByName('CDC').AsString,04)
-    //          + PreencherSTR(FieldByName('DENOMINACAO').AsString,' ',02)
-    //          + Copy(Trim(FieldByName('DATAFINAL').AsString),5,4)
-    //          + Copy(Trim(FieldByName('DATAFINAL').AsString),3,2)
-    //          + Copy(Trim(FieldByName('DATAFINAL').AsString),1,2)
-    //          + SoNumeros(FieldByName('HORAFINAL').AsString,06);
-    //        Writeln(f,linha);
-    //        Next;{R06}
-    //      End; {R05 Not EOF}
-    //    End; {With Q_R06 do Begin}
-    //    With Q_R07 do Begin {Meios PGTO }
-    //      Close;
-    //      Sql.Text := 'select z.crz, z.nrofabricacao, z.coo, z.ccf, z.gnf, z.meiopgto, z.valor  '+
-    //                  ' From reducaoz_r07 z'+
-    //                  ' where z.crz in (select y.crz From reducaoz y where y.nrofabricacao = :nrofabricacao and y.datamovimento >= :DtInicio and y.datamovimento <= :DtFim) ';
-    //      ParamByName('nrofabricacao').AsString := DMProjeto.PAFCampos.NroFabricacao_ECF;
-    //      ParamByName('DtInicio').AsString :=  FormatDateTime('DDMMYYYY', dtInicio );
-    //      ParamByName('DtFim').AsString :=  FormatDateTime('DDMMYYYY', dtFim );
-    //      Open;
-    //      While Not EOF do Begin
-    //        linha:= 'R07'
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroFabricacao_ECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.MFDAdicional,' ',001)
-    //          + PreencherSTR(DMProjeto.PAFCampos.ModeloECF,' ',020)
-    //          + PreencherSTR(DMProjeto.PAFCampos.NroECF,' ',02)
-    //          + SoNumeros(FieldByName('COO').AsString,06)
-    //          + SoNumeros(FieldByName('CCF').AsString,06)
-    //          + SoNumeros(FieldByName('GNF').AsString,06)
-    //          + PreencherSTR(FieldByName('MEIOPGTO').AsString,' ',15)
-    //          + SoNumeros(FieldByName('VALOR').AsString,13)
-    //          + 'N' {Indicador de Estrorno}
-    //          + SoNumeros('0',13);
-    //        Writeln(f,linha);
-    //        Next;{R07}
-    //      End; {R07 Not EOF}
-    //    End; {With Q_R07 do Begin}
-    //    CloseFile(f);
-    //    dmECF.ECF1.AssinarAquivo(CaminhoArquivo);
-    //    Result := true;
-    //  Except
-    //    Result := false;
-    //  end;
 end;
 
 function TDMProjeto.VerificaMD5Itens(item: integer): Boolean;
@@ -1756,7 +1487,7 @@ begin
     nISS := DMProjeto.AliqISS(sUFEmpresa);
 
     if DMProjeto.Parametro('PesquisaMultiUnidade') = 'S' then
-        Q_LocalizarItens.SQL.Text := 'Select 	i.ITEM, i.TIPOITEM, i.CODIGO, i.DESCRICAOCOMPRA,' +
+        Q_LocalizarItens.SQL.Text := 'Select i.DESONERACAOICMS, i.cubagem, i.ITEM, i.TIPOITEM, i.CODIGO, i.DESCRICAOCOMPRA,' +
             'i.GRUPO, i.DESCRICAO, i.TAXAVEL, (cast(pr.preco as float) * cast(iu.fator as float) / cast(i.fatorundvenda as float)) as CUSTOMEDIO,' +
             'i.ULTIMOFORNECEDOR, i.QTDEMINIMO,i.QTDEMAXIMO, ' +
             'i.PONTOPEDIDO,i.PERCENTUAL,i.APLICARANTESTAX, ' +
@@ -1802,7 +1533,8 @@ begin
             'i.ALIQCOFINSSAIDA,i.VINCULOCREDITOPISCOFINS,i.BASECREDITOPISCOFINS, i.empresa, i.cstipi, i.cstipientrada, ' +
             'coalesce((select p1.preco from produtospreco p1 where p1.item = i.item and p1.tabelapreco = 111), 0) as tabelapreco1, ' +
             'coalesce((select p2.preco from produtospreco p2 where p2.item = i.item and p2.tabelapreco = 222), 0) as tabelapreco2, ' +
-            'coalesce((select p3.preco from produtospreco p3 where p3.item = i.item and p3.tabelapreco = 333), 0) as tabelapreco3 ' +
+            'coalesce((select p3.preco from produtospreco p3 where p3.item = i.item and p3.tabelapreco = 333), 0) as tabelapreco3, ' +
+            ' i.bemusado, i.cstibs, i.classtrib '+
             'from itens i ' +
             'inner join Favorecidos ultf ON ultf.Favorecido =  i.FornecPreferencia ' +
             'inner join Favorecidos fpf ON fpf.Favorecido = i.UltimoFornecedor ' +
@@ -1817,7 +1549,7 @@ begin
             'left join Fabricantes f ON f.Fabricante = i.Fabricante ' +
             '  /*$*/ ' // (Felipe - 29/03/2016) NÃO REMOVER ESSA LINHA. Implementacao para adicionar tabelas de preco de acordo com o parametro "VisualizarTabelasPrecos".
     else
-        Q_LocalizarItens.SQL.Text := 'Select i.ITEM, i.TIPOITEM, i.CODIGO, i.DESCRICAOCOMPRA, ' +
+        Q_LocalizarItens.SQL.Text := 'Select i.DESONERACAOICMS, i.cubagem,  i.ITEM, i.TIPOITEM, i.CODIGO, i.DESCRICAOCOMPRA, ' +
             'i.GRUPO, i.DESCRICAO, i.TAXAVEL, cast(i.CUSTOMEDIO as float) as CUSTOMEDIO, ' +
             'i.ULTIMOFORNECEDOR, i.QTDEMINIMO,i.QTDEMAXIMO, ' +
             'i.PONTOPEDIDO,i.PERCENTUAL,i.APLICARANTESTAX, ' +
@@ -1860,7 +1592,8 @@ begin
             'i.ALIQCOFINSSAIDA,i.VINCULOCREDITOPISCOFINS,i.BASECREDITOPISCOFINS, i.empresa,i.cstipi, i.cstipientrada,' +
             'coalesce((select p1.preco from produtospreco p1 where p1.item = i.item and p1.tabelapreco = 111), 0) as tabelapreco1, ' +
             'coalesce((select p2.preco from produtospreco p2 where p2.item = i.item and p2.tabelapreco = 222), 0) as tabelapreco2, ' +
-            'coalesce((select p3.preco from produtospreco p3 where p3.item = i.item and p3.tabelapreco = 333), 0) as tabelapreco3 ' +
+            'coalesce((select p3.preco from produtospreco p3 where p3.item = i.item and p3.tabelapreco = 333), 0) as tabelapreco3, ' +
+            ' i.bemusado, i.cstibs, i.classtrib '+
             'from itens i ' +
             'Left join tipositens t on t.tipoitem = i.tipoitem ' +
             'left join Grupos g on g.Grupo = i.Grupo ' +
@@ -3496,35 +3229,6 @@ begin
     DMProjeto.Q_ComandoSQL.close;
 end;
 
-(*
-procedure TDMProjeto.ConfigurarImpressao( Link : TBasedxReportLink; sTitulo : string);
-begin
-  with Link do begin
-   ReportTitle.Text := sTitulo+#13#10+#13#10;
-    with PrinterPage do begin
-      PageHeader.LeftTextAlignY 	 := taTop;
-      PageHeader.RightTextAlignY  := taTop;
-      PageHeader.CenterTextAlignY := taTop;
-      PageHeader.Font.Name := 'Tahoma';
-      PageHeader.Font.Size := 10;
-      {Lado Esquerdo}
-     PageHeader.LeftTitle.Clear;
-     PageHeader.LeftTitle.Add(DMProjeto.sNomeEmpresa);
-     PageHeader.LeftTitle.Add(DMProjeto.sEnderecoEmpresa);
-     PageHeader.LeftTitle.Add(DMProjeto.sCidadeEmpresa+iif(DMProjeto.sUFEmpresa<>'','-'+DMProjeto.sUFEmpresa,''));
-     if DMProjeto.sEINEmpresa<> '' then
-       PageHeader.LeftTitle.Add('EIN: '+DMProjeto.sEINEmpresa);
-     if DMProjeto.sEmailEmpresa<> '' then
-       PageHeader.LeftTitle.Add('Email: '+DMProjeto.sEmailEmpresa+iif(DMProjeto.sSiteEmpresa<>'','   Site: '+DMProjeto.sSiteEmpresa,''));
-      {Lado Direito}
-     PageHeader.RightTitle.Clear;
-     PageHeader.RightTitle.Add('[Date Printed][Time Printed]');
-     PageHeader.RightTitle.Add('Page [Page #] of [Total Pages]');
-     PageHeader.RightTitle.Add('by SyncTech');
-    end;
-  end;
-end;
-*)
 
 function TDMProjeto.AjusteItem;
 begin
@@ -5295,7 +4999,7 @@ begin
                 'Inner Join ItensUnidades iuv ON iuv.Item = i.Item and iuv.Unidade = i.Unidade ' +
                 'where pp.TabelaPreco = 0 and i.Desativado = ''N'' and i.TipoItem = 1 ' +
                 'and   i.Revenda = ''S'' and i.ComLucro < 100  ' +
-                'and   F_ABS(pp.Preco - ((' + sCusto + '*iuv.Fator) / ((100 - i.ComLucro) / 100))) >= 0.02 ';
+                'and   ABS(pp.Preco - ((' + sCusto + '*iuv.Fator) / ((100 - i.ComLucro) / 100))) >= 0.02 ';
             Open;
 
             if FieldByName('Existentes').asInteger > 0 then
@@ -5693,6 +5397,14 @@ begin
     result := q_sql.fieldbyname('icms_interno').asfloat;
     q_sql.close;
 end;
+function TDMProjeto.AlicotaIcmsSubInterestadual(sUF: string): single;
+begin
+    q_sql.Close;
+    q_sql.sql.text := 'select icms_sub_interestadual from ufs where uf = :uf';
+    q_sql.params[0].asstring := sUF;
+    q_sql.open;
+    result := q_sql.fieldbyname('icms_sub_interestadual').asfloat;
+end;
 
 function TDMProjeto.AliqISS;
 begin
@@ -5736,140 +5448,7 @@ end;
 procedure TDMProjeto.ConfiguraECF;
 var Habilita: Integer;
 begin
-    {Eliminação do DMECF.}
-    //    DMProjeto.Q_Sql.Close;
-    //    DMProjeto.Q_Sql.Sql.Clear;
-    //    DMProjeto.Q_Sql.Sql.Add('select * from pdvs where maquina = ''' + DMProjeto.Maquina + '''');
-    //    DMProjeto.Q_Sql.Open;
-    //    if DMProjeto.Q_Sql.RecordCount > 0 then begin
-    //        if DMProjeto.Q_Sql.FieldByName('Ativo').AsString = 'S' then Begin
-    //            DMProjeto.bECFAtivo := True;
-    //            bBematech25:= False;
-    //            case DMProjeto.Q_Sql.FieldByName('ECF').AsInteger of
-    //                0:
-    //                    begin
-    //                        DMProjeto.bECFAtivo := False;
-    //                        DMECF.ECF1.Modelo := Nenhuma;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 0;
-    //                    end;
-    //                1:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Bematech;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 1;
-    //                    end;
-    //                2:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Corisco;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 2;
-    //                    end;
-    //                3:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Schalter;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 3;
-    //                    end;
-    //                4:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Urano;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 4;
-    //                    end;
-    //                5:
-    //                    begin // AFRAC - Schalter
-    //                        DMECF.ECF1.Modelo := Afrac;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 5;
-    //                    end;
-    //                6:
-    //                    begin // AFRAC - Sweda
-    //                        DMECF.ECF1.Modelo := Afrac;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 5;
-    //                    end;
-    //                7:
-    //                    begin // AFRAC - Dataregis
-    //                        DMECF.ECF1.Modelo := Afrac;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 5;
-    //                    end;
-    //                8:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Elgin;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 6;
-    //                    end;
-    //                9:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Sweda;
-    //                        DMECF.ECF1.Sweda9000 := False;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_SQL.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 7;
-    //                    end;
-    //                10:
-    //                    begin
-    //                       DMECF.ECF1.Modelo := Daruma;
-    //                       DMECF.ECF1.Porta := DMProjeto.Q_SQL.FieldByName('PORTA').AsString;
-    //                       nModeloECF := 8;
-    //                    end;
-    //                11:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Sweda;
-    //                        DMECF.ECF1.Sweda9000 := True;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_SQL.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 7;
-    //                    end;
-    //                12:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Bematech;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_Sql.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 1;
-    //                        DMECF.ECF1.Bematech25  := True;
-    //                        bBematech25:= True;
-    //                    end;
-    //                13:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Sweda100;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_SQL.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 10;
-    //                    end;
-    //                14:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := Quattro;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_SQL.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 11;
-    //                    end;
-    //
-    //                15:
-    //                    begin
-    //                        DMECF.ECF1.Modelo := ElginMFD;
-    //                        DMECF.ECF1.Porta := DMProjeto.Q_SQL.FieldByName('PORTA').AsString;
-    //                        nModeloECF := 12;
-    //                    end;
-    //            end;
-    //        end else Begin
-    //            DMProjeto.bECFAtivo := False;
-    //            DMECF.ECF1.Modelo := Nenhuma;
-    //            DMECF.ECF1.Porta := 'COM1';
-    //            nModeloECF := 0;
-    //        End;
-    //    end;
-    //
-    ////  DMECF.ECF1.AtivoScan := (DMProjeto.Q_Sql.FieldByName('AtivoScan').AsString = 'S');
-    ////  If DMProjeto.Q_SQL.FieldByName('PORTAScan').IsNull Then
-    ////     DMECF.ECF1.PortaScan := 0
-    ////  Else
-    ////     DMECF.ECF1.PortaScan := StrToInt(Copy(DMProjeto.Q_SQL.FieldByName('PORTAScan').AsString,4,1));
-    ////  Habilita:=1;
-    ////  If DMECF.ECF1.AtivoScan Then
-    ////    If SW_FechaPortaScanner Then
-    ////      If SW_AbrePortaScanner(DMECF.ECF1.PortaScan) Then
-    ////        SW_HabilitaScanner(Habilita)
-    ////      Else
-    ////         Application.MessageBox('Ocorreu Falha na Conecção do Leitor de Código de Barras','Aviso',mb_ok);
-    //
+
 end;
 
 procedure TDMProjeto.C_LocalizarFavCPF_CNPJGetText(Sender: TField;
@@ -5918,8 +5497,8 @@ end;
 procedure TDMProjeto.ImprimirDocumentosSaida(Saida: integer; Empresa: integer; PDV: integer; bOpcoesImpressao: boolean = false);
 var CB_OpcoesImpressao, CB_NotaFiscal, CB_Documento,
     CB_Carne, CB_Recibo, CB_Duplicata, CB_Boleto, CB_FichaCliente,
-        CB_DUPLICATA_IMP: string;
-    TipoNotaFiscal, TipoImpressaoOperacao, Enviar: string;
+        CB_DUPLICATA_IMP, CB_Documento2: string;
+    TipoNotaFiscal, TipoImpressaoOperacao, Enviar, TipoImpressaoOperacaoDoc2: string;
     Favorecido, Template, TemplateNotaFiscal, TipoMovimento: integer;
     nValor: Currency;
     bGrava, bProxVez: boolean;
@@ -5934,7 +5513,7 @@ begin
                 't.CB_FICHACLIENTE, t.CB_CARNE, t.CB_RECIBO, t.CB_DUPLICATA, t.CB_BOLETO, ' +
                 't.TEMPLATE, t.TEMPLATENOTAFISCAL, t.TIPOIMPRESSAO_OP, ' +
                 't.CB_TOPRINTER, t.TIPONOTAFISCAL, t.CB_FICHACLIENTE, t.TIPOMOVIMENTO, ' +
-                's.FAVORECIDO, t.CB_DUPLICATA_IMPRESSA ' +
+                's.FAVORECIDO, t.CB_DUPLICATA_IMPRESSA, t.CB_DOC2, t.TIPOIMPRESSAO_OP2 ' +
                 'from saidas s, tiposmovimento t ' +
                 'where s.saida = :saida and s.tipomovimento = t.tipomovimento ';
             parambyname('Saida').AsInteger := Saida;
@@ -5955,6 +5534,9 @@ begin
             Enviar := FieldByName('cb_toprinter').AsString;
             TipoMovimento := FieldByName('tipomovimento').AsInteger;
             Favorecido := FieldByName('favorecido').AsInteger;
+            CB_Documento2 := FieldByName('CB_DOC2').AsString;
+            TipoImpressaoOperacaoDoc2 := FieldByName('TIPOIMPRESSAO_OP2').AsString;
+
             close;
         end;
     if bOpcoesImpressao or (CB_OpcoesImpressao = 'S') then
@@ -6005,6 +5587,8 @@ begin
     if (CB_Documento = 'S') or (CB_NotaFiscal = 'S') then
         begin
             RptInvoices := TRptInvoices.Create(self);
+            
+            RptInvoicesDoc2 := TRptInvoicesDoc2.Create(self);
 
             imprimirNovamente := mrYes;
 
@@ -6021,6 +5605,10 @@ begin
                             'Enviar=' + Enviar)
                     else
                         RptInvoices.ImprimeMovimento(Saida, Empresa, PDV);
+                    if (CB_Documento2 = 'S') then
+                    begin        
+                        RptInvoicesDoc2.ImprimeMovimento(Saida, Empresa, PDV);
+                    end;
 
                     imprimirNovamente := MessageDlg('Deseja imprimir novamente?', mtConfirmation, [mbYes, mbNo], 0);
 
@@ -6028,6 +5616,9 @@ begin
 
             RptInvoices.Release;
             RptInvoices := nil;
+            RptInvoicesDoc2.Release;
+            RptInvoicesDoc2 := nil;
+
         end;
 
     if (CB_Carne = 'S') then
@@ -6706,6 +6297,7 @@ begin
                 '      :Status, :NFiscal, :Tit, :DtAtras, :FuncLogin, :Venda, ' +
                 '      0, 0, 0, 0, 0, 0, 0, 0, 0, :Origem_AReceber, :IDGerador_AReceber, ' +
                 '      :Juros, :TIPOCOBRANCA, :pdv, 0 , :empresa) ';
+
             Params[0].asInteger := ID;
             Params[1].asInteger := Parcela;
             Params[2].AsCurrency := ValorAReceber;
@@ -6715,7 +6307,11 @@ begin
             Params[6].asInteger := Cliente;
             Params[15].AsCurrency := JurosParametrizado;
             Params[16].asInteger := TipoCobranca;
-            Params[17].asInteger := DMProjeto.nPDV;
+            if ( Params[5].asString = 'Título Gerado pela tela de Faturar Pedidos') then
+                Params[17].asInteger := 77
+            else
+              Params[17].asInteger := DMProjeto.nPDV;
+
             Params[18].asInteger := DMProjeto.nEmpresaLogada;
 
             //        comando := #13 + #10 + 'INSERT INTO TITULOSARECEBER ' +
@@ -6997,26 +6593,7 @@ begin
     Q_SQL.Close;
     QueryAuxiliar.Free;
 end;
-(*(Michel) Função sem uso. Marcada para exclusão. Foi substituida por BacthQuery
-procedure TDMProjeto.Importar(ArquivoOrigem: string);
-var comando: string;
-    tempSQL: TIBSQL;
-begin
-    tempSQL := TIBSQL.Create(self);
-    tempSQL.Database := DMProjeto.DB_Projeto;
 
-    LeArquivo(ArquivoOrigem, comando);
-
-    with tempSQL do
-    begin
-        Close;
-        SQL.Clear;
-        SQL.Text := comando;
-        ExecQuery;
-    end;
-
-    tempSQL.Free;
-end;*)
 
 procedure TDMProjeto.BatchQuery(caminho: string);
 var lista: TStringList;
@@ -7199,99 +6776,6 @@ var valores: array[0..7] of Currency;
     tentativas: Integer;
 begin
     Result := True;
-    {Eliminação do DMECF.}
-   //  C_Reimp.Close;
-   //  Q_Reimp.SQL.Text := 'select si.saidaitem, i.codigo, si.descricao, ' +
-   //                      'si.situacaoecf, si.reducaocst, si.aliqicms, ' +
-   //                      'si.quantidade, si.preco , si.Unidade ' +
-   //                      'from saidasitens si ' +
-   //                      'left join itens i on i.item = si.item ' +
-   //                      'where si.saida = ' + IntToStr(nSaida);
-   //  C_Reimp.Open;
-   //  C_Reimp.First;
-   //  if DMECF.ECF1.AbreCupom('') then begin
-   //    cTotal:=0;
-   //    while not C_Reimp.EOF do begin
-   //        imprimiu:=False;
-   //        tentativas:=1;
-   //        Repeat
-   //          Try
-   //            imprimiu := DMECF.ECF1.VendeItem(C_ReimpCODIGO.AsString,
-   //                                    RetiraAcentos(C_ReimpDESCRICAO.AsString),
-   //                                    C_ReimpSITUACAOECF.AsString,
-   //                                    iif((C_ReimpREDUCAOCST.Value > 0),FormatFloat('00.00',RoundTo((100-C_ReimpREDUCAOCST.Value)*C_ReimpALIQICMS.Value/100,-2)),
-   //                                    FormatFloat('00.00',C_ReimpALIQICMS.Value)),
-   //                                    'F',
-   //                                    FormatFloat('0.000',C_ReimpQUANTIDADE.Value),
-   //                                    DMProjeto.nCasasDecimais,
-   //                                    FormatFloat(DMProjeto.sCasasDecimais,C_ReimpPRECO.Value),
-   //                                    '$',
-   //                                    '0000', Copy(C_ReimpUnidade.AsString,1,2));
-   //            if imprimiu Then
-   //              tentativas := 6
-   //            Else Begin
-   //              inc(tentativas);
-   //              Sleep(10);
-   //            End;
-   //          Except
-   //          End;
-   //        Until (tentativas > 5);
-   //        //Sleep(1000); //Tentar eliminar o problema da velocidade de impressão;
-   //        if not (imprimiu) Then Begin
-   //          DlgMsg.ShowMsg(50,['Erro Ao Tentar Registrar o Item na Impressora Fiscal:'+#13+
-   //                             'Verifique as Informações do Item a seguir'+#13+
-   //                             'Item: '+RetiraAcentos(C_ReimpDESCRICAO.AsString)+#13+
-   //                             'Situação ECF:'+C_ReimpSITUACAOECF.AsString+#13+
-   //                             'Aliquota ICMS:'+C_ReimpALIQICMS.AsString]);
-   //        End;
-   //        cTotal:=cTotal+  (C_ReimpPRECO.Value *  C_ReimpQUANTIDADE.Value);
-   //        C_Reimp.Next;
-   //
-   //    end; // end do while
-   //    C_Reimp.Close;
-   //    C_Pgtos.Close;
-   //    Q_Pgtos.SQL.Text := 'select fp.especie, sum(dd.valor) as valor ' +
-   //                        'from saidas s ' +
-   //                        'left join titulosareceber tr on tr.venda = s.saida ' +
-   //                        'left join depositostitulos dt on dt.titulo = tr.id ' +
-   //                        'left join depositos d on d.deposito = dt.deposito ' +
-   //                        'left join depositosdoc dd on dd.deposito = d.deposito ' +
-   //                        'left join formaspagamento fp on fp.formapagamento = dd.formapagamento ' +
-   //                        'where s.saida = ' + IntToStr(nSaida) + ' ' +
-   //                        'group by fp.especie ';
-   //    C_Pgtos.Open;
-   //    C_Pgtos.First;
-   //    valores[0]:=0;valores[1]:=0;valores[2]:=0;valores[3]:=0;
-   //    valores[4]:=0;valores[5]:=0;valores[6]:=0;valores[7]:=0;
-   //    while not C_Pgtos.EOF do begin
-   //      if C_PgtosESPECIE.Value = 5 then valores[0] := C_PgtosVALOR.Value;
-   //      if C_PgtosESPECIE.Value = 1 then valores[1] := C_PgtosVALOR.Value;
-   //      if C_PgtosESPECIE.Value = 2 then valores[2] := C_PgtosVALOR.Value;
-   //      if C_PgtosESPECIE.Value = 3 then valores[3] := C_PgtosVALOR.Value;
-   //      C_Pgtos.Next;
-   //    end;
-   //    Cupom := TStringList.Create;
-   //    If valores[0]+valores[1]+valores[2]+valores[3]+valores[4]+valores[5]+valores[6]+valores[7] =0 Then
-   //       valores[0]:= cTotal;
-   //    if not DMECF.FechamentoCupomTEF(Cupom, valores, FormaPgto, nDesconto, sObs, sCliente, sVendedor, '', 0) then
-   //      Result := False
-   //    else begin
-   //      sCOO := DMECF.ECF1.COO;
-   //      with Q_SQL do begin
-   //        Close;
-   //        SQL.Text := 'update saidas set numero = :numero ' +
-   //                    'where saida = :saida ';
-   //        ParamByName('numero').AsString := 'COO:' + sCOO;
-   //        ParamByName('saida').AsInteger := nSaida;
-   //        ExecSQL;
-   //        if DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
-   //          DMProjeto.DB_Projeto.DefaultTransaction.CommitRetaining;
-   //      end;
-   //    end;
-   //  end
-   //  else begin
-   //    Result := False;
-   //  end;
 end;
 
 function TDMProjeto.GeraCodigoEquipamento;

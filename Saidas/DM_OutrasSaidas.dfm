@@ -400,12 +400,15 @@ inherited DMOutrasSaidas: TDMOutrasSaidas
     end
     object C_TabelaOBSVOLUMES: TStringField
       FieldName = 'OBSVOLUMES'
+      Origin = 'SAIDAS.OBSVOLUMES'
       Size = 100
     end
   end
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       't.cstibs, '
       't.classtrib,'
       'T.CUSTOMANUAL,'

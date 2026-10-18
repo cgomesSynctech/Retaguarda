@@ -1,0 +1,24 @@
+inherited RptVendasItensTabelaspreco: TRptVendasItensTabelaspreco
+  Caption = 'RptVendasItensTabelaspreco'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnGrid: TPanel
+    inherited dbgConsulta: TTS_QDBGrid
+      Filter.Criteria = {00000000}
+    end
+    inherited PainelFullSelect: TTS_Panel
+      inherited cbFullSelect: TTS_CheckBox
+        Height = 19
+      end
+    end
+  end
+  inherited GridPrinter: TdxComponentPrinter
+    PreviewOptions.PreviewBoundsRect = {00000000000000000000000000000000}
+    inherited GridPrinterLink: TdxDBGridReportLink
+      DateTime = 45835.443230706
+      PrinterPage._dxMeasurementUnits_ = 2
+      PrinterPage._dxLastMU_ = 2
+      BuiltInReportLink = True
+    end
+  end
+end

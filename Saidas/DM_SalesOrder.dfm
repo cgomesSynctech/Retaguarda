@@ -319,6 +319,8 @@ inherited DMSalesOrder: TDMSalesOrder
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       ' T.CUSTOMANUAL,'
       'T.CUBAGEMTOTALITEM, '
       't.SaidaItem as IDITEM,'
@@ -739,9 +741,6 @@ inherited DMSalesOrder: TDMSalesOrder
   inherited C_TiposCobrancaDS: TDataSource
     Left = 277
     Top = 454
-  end
-  inherited C_Carteiras: TClientDataSet
-    Active = True
   end
   inherited C_CarteirasDS: TDataSource
     Left = 617

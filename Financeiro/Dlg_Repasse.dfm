@@ -9,9 +9,9 @@ inherited DlgRepasse: TDlgRepasse
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 651
-    Height = 361
+    Height = 360
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 327
+      Top = 326
       Caption = 'Fechar'
       Glyph.Data = {
         0E100000424D0E100000000000003600000028000000340000001A0000000100
@@ -448,7 +448,7 @@ inherited DlgRepasse: TDlgRepasse
   end
   inherited pnDados: TTS_Panel
     Width = 651
-    Height = 361
+    Height = 360
     Color = 15724519
     object TS_Shape9: TTS_Shape
       Left = 12
@@ -1476,7 +1476,7 @@ inherited DlgRepasse: TDlgRepasse
   object ppRepasse: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1484,7 +1484,7 @@ inherited DlgRepasse: TDlgRepasse
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
     Left = 192
     Top = 275
@@ -1979,7 +1979,7 @@ inherited DlgRepasse: TDlgRepasse
           DataPipeline = dbNaoRepassados
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PaperName = 'A4'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -1987,7 +1987,7 @@ inherited DlgRepasse: TDlgRepasse
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 256
+          PrinterSetup.PaperSize = 9
           Left = 360
           Top = 208
           Version = '6.02'
@@ -2299,7 +2299,7 @@ inherited DlgRepasse: TDlgRepasse
           DataPipeline = dbRepassados
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PaperName = 'A4'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -2307,7 +2307,7 @@ inherited DlgRepasse: TDlgRepasse
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 256
+          PrinterSetup.PaperSize = 9
           Left = 400
           Top = 248
           Version = '6.02'
@@ -2863,7 +2863,7 @@ inherited DlgRepasse: TDlgRepasse
   object ppRepasseSemSaldo: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -2871,7 +2871,7 @@ inherited DlgRepasse: TDlgRepasse
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
     Left = 248
     Top = 251
@@ -3100,7 +3100,7 @@ inherited DlgRepasse: TDlgRepasse
           DataPipeline = dbNaoRepassados
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PaperName = 'A4'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -3108,7 +3108,7 @@ inherited DlgRepasse: TDlgRepasse
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 256
+          PrinterSetup.PaperSize = 9
           Left = 360
           Top = 208
           Version = '6.02'
@@ -3420,7 +3420,7 @@ inherited DlgRepasse: TDlgRepasse
           DataPipeline = dbRepassados
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'Custom'
+          PrinterSetup.PaperName = 'A4'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.mmMarginBottom = 6350
           PrinterSetup.mmMarginLeft = 6350
@@ -3428,7 +3428,7 @@ inherited DlgRepasse: TDlgRepasse
           PrinterSetup.mmMarginTop = 6350
           PrinterSetup.mmPaperHeight = 297000
           PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 256
+          PrinterSetup.PaperSize = 9
           Left = 400
           Top = 248
           Version = '6.02'

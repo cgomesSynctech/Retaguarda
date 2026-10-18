@@ -314,6 +314,8 @@ inherited DMEstimates: TDMEstimates
   inherited Q_Itens: TIBQuery
     SQL.Strings = (
       'Select '
+      't.subtotalcompra,'
+      'i.precocompra as I_precocompra,'
       ' T.CUSTOMANUAL,'
       'T.CUBAGEMTOTALITEM,'
       't.SaidaItem    as IDITEM,'
@@ -647,23 +649,6 @@ inherited DMEstimates: TDMEstimates
       
         'Where t.Venda = :IDMestre and t.empresa = :empresa and t.pdv = :' +
         'pdv and t.Status <> 0')
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'IDMESTRE'
-        ParamType = ptUnknown
-        Size = 4
-      end
-      item
-        DataType = ftUnknown
-        Name = 'empresa'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'pdv'
-        ParamType = ptUnknown
-      end>
   end
   inherited Q_Status: TIBQuery
     SQL.Strings = (

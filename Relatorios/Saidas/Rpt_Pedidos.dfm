@@ -1,6 +1,6 @@
 inherited RptPedidos: TRptPedidos
-  Left = 111
-  Top = 167
+  Left = 581
+  Top = 325
   Width = 904
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
