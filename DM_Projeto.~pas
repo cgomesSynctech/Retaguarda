@@ -9,7 +9,7 @@ uses
     IBStoredProc, dxCntner, ImgList, ppRichTx, IBSQL, Variants, ppViewr, {ECF,}
     IBServices, TDM_Manutencao, DateUtils, ZRCtrls, IB,
     {PAF}
-    FuncoesPAF, RegAuxiliar, Sintegra, Axexo_VI, RegReducaoZ, RegReducaoZ_R06,
+    FuncoesPAF, Sintegra, Axexo_VI, RegReducaoZ, RegReducaoZ_R06,
     OleServer, PDFCreatorPilotLib_TLB;
 type                                                             
     TpArray = array[1..16] of string;
@@ -451,7 +451,7 @@ type
         slPermissoesTiposMov, slPermissoesTabPreco: TStringList;
 
         {PAF}
-        PAFCampos: TCamposPAF;
+
         procedure ReducaoZ(datahora: string);
         procedure ReducaoZ_R06(denominacao: string);
         procedure ReducaoZ_R07(MeioPGTO: string; Valor: Currency);
@@ -664,7 +664,7 @@ uses Funcoes, Math, RegistroClasses, Dlg_InserirFator, Dlg_Recebido, Dlg_Pagamen
 
     dlg_AutorizacaoTabela, {dm_ECF,} Dlg_Campos, Dlg_ImpressaoDoc, Rpt_Invoices,
     Rpt_DocCobranca, Util2, Dlg_Parcelas, DM_PDVs, DM_Financeiro, Form_RichEdit, MD5,
-  Rpt_InvoicesDoc2;
+  Rpt_InvoicesDoc2, Rpt_InvoicesDoc3;
 
 {$R *.DFM}
 
@@ -836,10 +836,10 @@ begin
         with StoreProcedure do
             begin
                 StoredProcName := 'PP_REDUCAOZ';
-                ParamByName('NROFABRICACAO').Value := PAFCampos.NroFabricacao_ECF;
-                ParamByName('MFADICIONAL').Value := PAFCampos.MFDAdicional;
+//                ParamByName('NROFABRICACAO').Value := PAFCampos.NroFabricacao_ECF;
+//                ParamByName('MFADICIONAL').Value := PAFCampos.MFDAdicional;
                 ParamByName('MODELOECF').Value := '2D';
-                ParamByName('NROORDEM').Value := PAFCampos.NroECF;
+//                ParamByName('NROORDEM').Value := PAFCampos.NroECF;
                 ParamByName('DataMovimento').Value := ultz.DataMovimento;
                 ParamByName('DataEmissao').Value := Copy(datahora, 1, 6);
                 ParamByName('HoraEmissao').Value := Copy(datahora, 7, 6);
@@ -901,25 +901,25 @@ begin
                     begin
                         if ((Copy(ultz.Aliquotas, x, 1) = '1') or (Copy(ultz.Aliquotas, x, 1) = '2')) then
                             begin
-                                MD5Z := MD5Print(MD5String(
-                                    Trim(PAFCampos.NroFabricacao_ECF)
-                                    + Trim(ultz.CRZ)
-                                    + Trim(Copy(ultz.Aliquotas, x, 1))
-                                    + Trim(SoNumeros(IntToStr(i), 2) + iif(Copy(ultz.Aliquotas, x, 1) = '1', 'T', 'S') + Copy(ultz.Aliquotas, y, 4))
-                                    + Trim(ultz.TributadosICMSISS)
-                                    ));
+                              //  MD5Z := MD5Print(MD5String(
+                              //      Trim(PAFCampos.NroFabricacao_ECF)
+                              //      + Trim(ultz.CRZ)
+                              //      + Trim(Copy(ultz.Aliquotas, x, 1))
+                              //      + Trim(SoNumeros(IntToStr(i), 2) + iif(Copy(ultz.Aliquotas, x, 1) = '1', 'T', 'S') + Copy(ultz.Aliquotas, y, 4))
+                              //      + Trim(ultz.TributadosICMSISS)
+                              //      ));
 
-                                with StoreProcedure do
-                                    begin
-                                        StoredProcName := 'PP_REDUCAOZ_R03';
-                                        ParamByName('CRZ').AsString := ultz.CRZ;
-                                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                                        ParamByName('TIPOTOTALIZADOR').AsString := Copy(ultz.Aliquotas, x, 1);
-                                        ParamByName('TOTALIZADOR').AsString := SoNumeros(IntToStr(i), 2) + iif(Copy(ultz.Aliquotas, x, 1) = '1', 'T', 'S') + Copy(ultz.Aliquotas, y, 4);
-                                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToInt(Copy(ultz.TributadosICMSISS, z, 14)) / 100.00;
-                                        ParamByName('MD5').AsString := MD5Z;
-                                        ExecProc;
-                                    end; {With StoreProcedure do }
+                             //   with StoreProcedure do
+                               //     begin
+                                 //       StoredProcName := 'PP_REDUCAOZ_R03';
+                                  //      ParamByName('CRZ').AsString := ultz.CRZ;
+                                    //    ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
+                                      //  ParamByName('TIPOTOTALIZADOR').AsString := Copy(ultz.Aliquotas, x, 1);
+                                      //  ParamByName('TOTALIZADOR').AsString := SoNumeros(IntToStr(i), 2) + iif(Copy(ultz.Aliquotas, x, 1) = '1', 'T', 'S') + Copy(ultz.Aliquotas, y, 4);
+                                      //  ParamByName('VALORTOTALIZADOR').AsCurrency := StrToInt(Copy(ultz.TributadosICMSISS, z, 14)) / 100.00;
+                                      //  ParamByName('MD5').AsString := MD5Z;
+                                      //  ExecProc;
+                                   // end; {With StoreProcedure do }
                             end; {if ((relR03.TipoTotalizador = '1') or (relR03.TipoTotalizador = '2'))}
                         x := x + 5;
                         y := y + 5;
@@ -929,296 +929,7 @@ begin
                 if not DMProjeto.DB_Projeto.DefaultTransaction.InTransaction then
                     DMProjeto.DB_Projeto.DefaultTransaction.StartTransaction;
                 {Não ICMS/ISS}
-                with StoreProcedure do
-                    begin
-                        StoredProcName := 'PP_REDUCAOZ_R03';
-                        {F1ICMS}
 
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('F1')
-                            + Trim(ultz.F1ICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'F1';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.F1ICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {F2ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('F2')
-                            + Trim(ultz.F2ICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'F2';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.F2ICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {I1ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('I1')
-                            + Trim(ultz.I1ICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'I1';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.I1ICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {I2ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('I2')
-                            + Trim(ultz.I2ICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'I2';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.I2ICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {N1ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('N1')
-                            + Trim(ultz.N1ICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'N1';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.N1ICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {N2ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('N2')
-                            + Trim(ultz.N2ICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'N2';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.N2ICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {F1ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('FS1')
-                            + Trim(ultz.F1ISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'FS1';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.F1ISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {F2ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('FS2')
-                            + Trim(ultz.F2ISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'FS2';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.F2ISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {I1ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('IS1')
-                            + Trim(ultz.I1ISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'IS1';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.I1ISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {I2ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('IS2')
-                            + Trim(ultz.I2ISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'IS2';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.I2ISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {N1ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('NS1')
-                            + Trim(ultz.N1ISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'NS1';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.N1ISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {N2ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('NS2')
-                            + Trim(ultz.N2ISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'NS2';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.N2ISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {OPNF}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('0')
-                            + Trim('OPNF')
-                            + Trim(SoNumeros('0', 13))
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '0';
-                        ParamByName('TOTALIZADOR').AsString := 'OPNF';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := 0.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {Deconto ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('DT')
-                            + Trim(ultz.DescontosICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'DT';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.DescontosICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {Deconto ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('DS')
-                            + Trim(ultz.DescontosISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'DS';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.DescontosISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {Acrescimos ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('AT')
-                            + Trim(ultz.AcrescimosICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'AT';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.AcrescimosICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {Acrescimos ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('AS')
-                            + Trim(ultz.AcrescimosISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'AS';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.AcrescimosISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {Cancelamento ICMS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('1')
-                            + Trim('Can-T')
-                            + Trim(ultz.CancelamentosICMS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '1';
-                        ParamByName('TOTALIZADOR').AsString := 'Can-T';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.CancelamentosICMS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                        {Cancelamento ISS}
-                        MD5Z := MD5Print(MD5String(
-                            Trim(PAFCampos.NroFabricacao_ECF)
-                            + Trim(ultz.CRZ)
-                            + Trim('2')
-                            + Trim('Can-S')
-                            + Trim(ultz.CancelamentosISS)
-                            ));
-                        ParamByName('CRZ').AsString := ultz.CRZ;
-                        ParamByName('NROFABRICACAO').AsString := PAFCampos.NroFabricacao_ECF;
-                        ParamByName('TIPOTOTALIZADOR').AsString := '2';
-                        ParamByName('TOTALIZADOR').AsString := 'Can-S';
-                        ParamByName('VALORTOTALIZADOR').AsCurrency := StrToCurr(ultz.CancelamentosISS) / 100.00;
-                        ParamByName('MD5').AsString := MD5Z;
-                        ExecProc;
-                    end; {With StoreProcedure do }
             end;
         DMProjeto.DB_Projeto.DefaultTransaction.Commit;
     except on E: Exception do
@@ -5497,8 +5208,8 @@ end;
 procedure TDMProjeto.ImprimirDocumentosSaida(Saida: integer; Empresa: integer; PDV: integer; bOpcoesImpressao: boolean = false);
 var CB_OpcoesImpressao, CB_NotaFiscal, CB_Documento,
     CB_Carne, CB_Recibo, CB_Duplicata, CB_Boleto, CB_FichaCliente,
-        CB_DUPLICATA_IMP, CB_Documento2: string;
-    TipoNotaFiscal, TipoImpressaoOperacao, Enviar, TipoImpressaoOperacaoDoc2: string;
+        CB_DUPLICATA_IMP, CB_Documento2, CB_Documento3: string;
+    TipoNotaFiscal, TipoImpressaoOperacao, Enviar, TipoImpressaoOperacaoDoc2, TipoImpressaoOperacaoDoc3: string;
     Favorecido, Template, TemplateNotaFiscal, TipoMovimento: integer;
     nValor: Currency;
     bGrava, bProxVez: boolean;
@@ -5513,7 +5224,7 @@ begin
                 't.CB_FICHACLIENTE, t.CB_CARNE, t.CB_RECIBO, t.CB_DUPLICATA, t.CB_BOLETO, ' +
                 't.TEMPLATE, t.TEMPLATENOTAFISCAL, t.TIPOIMPRESSAO_OP, ' +
                 't.CB_TOPRINTER, t.TIPONOTAFISCAL, t.CB_FICHACLIENTE, t.TIPOMOVIMENTO, ' +
-                's.FAVORECIDO, t.CB_DUPLICATA_IMPRESSA, t.CB_DOC2, t.TIPOIMPRESSAO_OP2 ' +
+                's.FAVORECIDO, t.CB_DUPLICATA_IMPRESSA, t.CB_DOC2, t.TIPOIMPRESSAO_OP2, t.CB_DOC3, t.TIPOIMPRESSAO_OP3 ' +
                 'from saidas s, tiposmovimento t ' +
                 'where s.saida = :saida and s.tipomovimento = t.tipomovimento ';
             parambyname('Saida').AsInteger := Saida;
@@ -5536,6 +5247,8 @@ begin
             Favorecido := FieldByName('favorecido').AsInteger;
             CB_Documento2 := FieldByName('CB_DOC2').AsString;
             TipoImpressaoOperacaoDoc2 := FieldByName('TIPOIMPRESSAO_OP2').AsString;
+            CB_Documento3 := FieldByName('CB_DOC3').AsString;
+            TipoImpressaoOperacaoDoc3 := FieldByName('TIPOIMPRESSAO_OP3').AsString;
 
             close;
         end;
@@ -5589,6 +5302,7 @@ begin
             RptInvoices := TRptInvoices.Create(self);
             
             RptInvoicesDoc2 := TRptInvoicesDoc2.Create(self);
+            RptInvoicesDoc3 := TRptInvoicesDoc3.Create(self);
 
             imprimirNovamente := mrYes;
 
@@ -5605,9 +5319,15 @@ begin
                             'Enviar=' + Enviar)
                     else
                         RptInvoices.ImprimeMovimento(Saida, Empresa, PDV);
+
+
                     if (CB_Documento2 = 'S') then
-                    begin        
+                    begin
                         RptInvoicesDoc2.ImprimeMovimento(Saida, Empresa, PDV);
+                    end;
+                    if (CB_Documento3 = 'S') then
+                    begin
+                         RptInvoicesDoc3.ImprimeMovimento(Saida, Empresa, PDV);
                     end;
 
                     imprimirNovamente := MessageDlg('Deseja imprimir novamente?', mtConfirmation, [mbYes, mbNo], 0);
@@ -5965,7 +5685,7 @@ begin
                 ParamByName('PossuiIPI').AsString := sPossuiIPI;
                 ParamByName('PossuiISS').AsString := sPossuiISS;
                 ParamBYName('Modelo').ASString := sModeloDOC;
-                ParamByName('PDV').AsInteger := StrToInt(iif(PAFObrigatorio, DMProjeto.PAFCampos.NroECF, 0));
+                ParamByName('PDV').AsInteger := 0;
                 ParamByName('LicitacaoICMS').AsCurrency := DMProjeto.nICMSInterno;
                 ParamByName('TotalPRodutos').AsCurrency := TotalProdutos;
                 ParamByName('ValorIPIItens').ASCurrency := ValorIPI;
@@ -5978,20 +5698,20 @@ begin
                 ParamByName('Volumes').AsCurrency := Volumes;
                 ParamByName('UFDestino').AsString := sUFDestino;
                 ParamByname('status').AsString := statuspadraomovimento;
-                if (PAFObrigatorio) then
-                    begin
-                        ParamByName('NUMEROECF').AsString := PAFCampos.NroECF;
-                        ParamByName('NUMEROSERIEECF').AsString := PAFCampos.NroFabricacao_ECF;
-                        //ParamByName('CCF').AsString := SoNumeros( IntToStr(StrToInt(DMECF.ECF1.GetNumero_CCF()) + 1),6) ;
-                        ParamByName('CRZ').AsString := PAFCampos.ProximaZ;
-                    end
-                else
-                    begin
+                //if (PAFObrigatorio) then
+                //    begin
+                //        ParamByName('NUMEROECF').AsString := PAFCampos.NroECF;
+                //        ParamByName('NUMEROSERIEECF').AsString := PAFCampos.NroFabricacao_ECF;
+                //        //ParamByName('CCF').AsString := SoNumeros( IntToStr(StrToInt(DMECF.ECF1.GetNumero_CCF()) + 1),6) ;
+                //        ParamByName('CRZ').AsString := PAFCampos.ProximaZ;
+                //    end
+               // else
+                //  begin
                         ParamByName('NUMEROECF').AsString := '01';
                         ParamByName('NUMEROSERIEECF').AsString := '000';
                         ParamByName('CCF').AsString := '0000';
                         ParamByName('CRZ').AsString := '0000';
-                    end;
+                  //  end;
                 if DMProjeto.Parametro('TipoFrete') <> '' then
                     begin
                         ParamByName('TipoFrete').AsString := DMProjeto.Parametro('TipoFrete');
@@ -6187,7 +5907,7 @@ begin
                         ParamByName('rateiodesconto').AsCurrency := RateioDesconto;
                         ParamByName('cfopcst').AsString := sN + direita(sCFOP, 3);
                         ParamByName('idTribFederal').AsInteger := idTribFederal;
-                        ParamByName('PDV').AsInteger := StrToInt(iif(DMPRojeto.PAFObrigatorio, DMProjeto.PAFCampos.NroECF, 0));
+                        ParamByName('PDV').AsInteger := 0;
                         ParamByName('Empresa').Value := DMProjeto.nEmpresaLogada;
                         ParambyName('situacao').AsString := 'N';
                         nTentativas := 0;

@@ -39,6 +39,7 @@ type
     ppDBText6: TppDBText;
     ppLabel4: TppLabel;
     ppLabel5: TppLabel;
+    Edit1: TEdit;
     procedure btPesquisarClick(Sender: TObject);
     procedure btGravarClick(Sender: TObject);
     procedure dbVendaKeyPress(Sender: TObject; var Key: Char);

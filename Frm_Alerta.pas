@@ -14,7 +14,7 @@ uses
   TS_PopupMenu, dxDBELib, dxExEdtr, dxEdLib, dxEditor, dxDBCtrl, dxTL,
   dxCntner, dxfLabel, dxTLClms, dxGrClms, dxDBTLCl, BTOdeum, TS_Memo,
   TS_RadioButton, Placemnt, dxDBEdtr, TS_DBLookupComboBox, TS_DBMemo,
-  TS_PopupEdit, TS_PopupFiltrarItens;
+  TS_PopupEdit, TS_PopupFiltrarItens, dxfProgressBar;
 
 type
   TFrmAlerta = class(TFrmPadrao)

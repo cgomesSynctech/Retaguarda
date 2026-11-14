@@ -46,7 +46,7 @@ UnitOutputDir=
 PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=
-Packages=vcl;rtl;vclx;VclSmp;vclshlctrls;dbrtl;adortl;vcldb;qrpt;bdertl;vcldbx;dsnap;cds;bdecds;teeui;teedb;tee;teeqr;ibxpress;visualclx;visualdbclx;vclie;xmlrtl;inet;inetdbbde;inetdbxpress;inetdb;nmfast;dbexpress;dbxcds;indy;dclOffice2k;soaprtl;rbCIDE66;rbIDE66;rbRCL66;rbBDE66;rbRIDE66;rbRAP66;rbDBDE66;rbDAD66;rbDIDE66;rbUSER66;rbDB66;rbADO66;rbDBE66;rbIBE66;rbTDBC61;dxEdtrD6;dxELibD6;dxcomnd6;EQTLD6;ECQDBCD6;EQDBTLD6;EQGridD6;dxGrEdD6;dxExELD6;dxMasterViewD6;dxPSCoreD6;dxPSLnksD6;dxPSTLLnkD6;dxPSdxDBTLLnkD6;dxPSdxDBCtrlLnkD6;dxPSdxDBGrLnkD6;dxPSdxDBTVLnkD6;dxdbtrD6;dxPSdxMVLnkD6;dxPSTeeChartD6;dxDBEdD6;dxInsD6;dxExRwD6;dxmdsd6;dxtrmdD6;Components3P;RxCtl6;dxForumLibD6;TradeSoft;BE3;xtradev;Flash6;ZRpt6;dxPSDBTeeChartD6;CPortLib6;AndreTwain;PDBDataManD6;FreeBoleto_D7;gbCob6;TBalanca;synapse;Package1;vclZipForged6
+Packages=vcl;rtl;vclx;VclSmp;vclshlctrls;dbrtl;adortl;vcldb;qrpt;bdertl;vcldbx;dsnap;cds;bdecds;teeui;teedb;tee;teeqr;ibxpress;visualclx;visualdbclx;vclie;xmlrtl;inet;inetdbbde;inetdbxpress;inetdb;nmfast;dbexpress;dbxcds;indy;dclOffice2k;soaprtl;rbCIDE66;rbIDE66;rbRCL66;rbBDE66;rbRIDE66;rbRAP66;rbDBDE66;rbDAD66;rbDIDE66;rbUSER66;rbDB66;rbADO66;rbDBE66;rbIBE66;rbTDBC61;dxEdtrD6;dxELibD6;dxcomnd6;EQTLD6;ECQDBCD6;EQDBTLD6;EQGridD6;dxGrEdD6;dxExELD6;dxMasterViewD6;dxPSCoreD6;dxPSLnksD6;dxPSTLLnkD6;dxPSdxDBTLLnkD6;dxPSdxDBCtrlLnkD6;dxPSdxDBGrLnkD6;dxPSdxDBTVLnkD6;dxdbtrD6;dxPSdxMVLnkD6;dxPSTeeChartD6;dxDBEdD6;dxInsD6;dxExRwD6;dxmdsd6;dxtrmdD6;Components3P;RxCtl6;dxForumLibD6;TradeSoft;BE3;xtradev;Flash6;ZRpt6;dxPSDBTeeChartD6;CPortLib6;AndreTwain;PDBDataManD6;FreeBoleto_D7;gbCob6;TBalanca;synapse;Package1
 Conditionals=
 DebugSourceDirs=
 UsePackages=0
@@ -88,6 +88,7 @@ Comments=
 [Excluded Packages]
 c:\program files\borland\Bin\designdgm60.bpl=Borland Module Diagram Editview
 C:\Program Files\Borland\Bin\clxdesigner60.bpl=CLX Form designer and property and component editors
+C:\Program Files\ComponentAce\ZipForge\Lib\Delphi 6\dclZipForged6.bpl=ZipForge Package
 C:\Windows\system32\vclZipForged6.bpl=ZipForge Package
 c:\arquivos de programas\borland\delphi6\Bin\dclaxserver60.bpl=Microsoft Office 97 Sample Automation Server Wrapper Components
 k:\Classes\ClassesIB6\Billenium\Lib\BE2DsgD6.bpl=Billenium Effects 2.6

@@ -1356,7 +1356,16 @@ begin
 
                             if (DMProjeto.sTipoTributEmpresa = 'P') then
                                 begin // LUCRO Presumido
-
+                                if DMProjeto.Parametro('ContalizaImpEntradaSimplesN') = 'N' then
+                                     begin
+                                            nCustoContabil := (((nPrecoUnit) + TempDS.FieldByName('COMPENSACAOCUSTOMOEDA').asCurrency) +
+                                                (nRateioDescItem / TempDS.FieldByName('QUANTIDADE').asCurrency)) +
+                                                (TempDS.FieldByName('RATEIOFRETE').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FIELDBYNAME('VALORICMSSUBSTPROD').ASCURRENCY / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FieldByName('RATEIODESPESAS').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
+                                                (TempDS.FieldByName('VALORIPIPROD').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency);
+                                     end
+                                else begin
                                     yImpostosFederais := 0; // presumido não tem credito de Imposto Federal
                                     if (TempDS.FieldByName('SITUACAOECF').AsString = 'F') or (TempDS.FieldByName('SITUACAOECF').AsString = 'I') then // SE O PRODUTO FOR 'F' ou 'I' NÃO TEM CREDITO DE ICMS
                                         nICMSAplicEntrada := 0;
@@ -1366,7 +1375,7 @@ begin
                                         (TempDS.FIELDBYNAME('VALORICMSSUBSTPROD').ASCURRENCY / TempDS.FieldByName('QUANTIDADE').asCurrency) +
                                         (TempDS.FieldByName('RATEIODESPESAS').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency) +
                                         (TempDS.FieldByName('VALORIPIPROD').asCurrency / TempDS.FieldByName('QUANTIDADE').asCurrency);
-
+                                 end;
                                 end; // if (DMProjeto.sTipoTributEmpresa = 'P') then
 
                             if (DMProjeto.sTipoTributEmpresa = 'N') then

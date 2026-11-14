@@ -9,7 +9,7 @@ uses
   TS_CheckBox, TS_LastDataObject, dxCntner, dxExEdtr, dxEdLib,
   FormsComponent, ExtCtrls, TS_SpeedButton, 
   FRM_MODELOCADASTROS, TS_Label, TS_Image, dxfLabel, TS_MaxPanel,
-  TS_Bevel, teCtrls, TS_EffectsPanel, TS_PopupMenu;
+  TS_Bevel, teCtrls, TS_EffectsPanel, TS_PopupMenu, Placemnt, BTOdeum;
 
 type
   TDlgConfig_Altera = class(TFrmModeloCadastros)
@@ -32,7 +32,7 @@ var
 
 implementation
 
-uses DM_Projeto, Dlg_CalendarioMes, DM_Compromissos;
+uses DM_Projeto, DM_Compromissos;
 
 {$R *.DFM}
 

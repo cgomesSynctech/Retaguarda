@@ -10,7 +10,7 @@ inherited FrmEmbalagem3: TFrmEmbalagem3
   inherited pnNavigator: TTS_Panel
     Left = 408
     Top = 28
-    Height = 395
+    Height = 394
     inherited bv2: TTS_Bevel
       Visible = False
     end
@@ -18,7 +18,7 @@ inherited FrmEmbalagem3: TFrmEmbalagem3
       Visible = False
     end
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 361
+      Top = 360
     end
     inherited btIR_Para: TTS_SpeedButton
       Visible = False
@@ -41,20 +41,20 @@ inherited FrmEmbalagem3: TFrmEmbalagem3
   inherited pnDados: TTS_Panel
     Top = 28
     Width = 408
-    Height = 395
+    Height = 394
     Anchors = []
     inherited Grid: TTS_QDBGrid
       Width = 406
-      Height = 393
+      Height = 392
       Filter.Criteria = {00000000}
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 406
-      Height = 393
+      Height = 392
     end
     inherited sbDados: TTS_Panel
       Width = 406
-      Height = 393
+      Height = 392
       Anchors = []
       Color = 15456728
       object Label1: TLabel
@@ -145,6 +145,14 @@ inherited FrmEmbalagem3: TFrmEmbalagem3
         DataSource = DMEmbalagem3.C_TabelaDS
         DistinctEditOn = False
         Height = 19
+      end
+      object Edit1: TEdit
+        Left = 16
+        Top = 136
+        Width = 121
+        Height = 19
+        TabOrder = 5
+        Text = 'NumVenda'
       end
     end
     inherited dxF9Bar: TdxfProgressBar

@@ -287,6 +287,12 @@ begin
   cmbContaDep.Text := '';
   Valor.Value := 0;
   dtData.Date := DMProjeto.dDataSistema;
+   if DMProjeto.nPerfil <> 1 then
+   begin
+    dtData.ReadOnly := True ;
+    dtData.Color := cl3DLight;
+   end;
+
   Memo.Lines.Text := '';
   lblSaldoDestino.caption := DMProjeto.SetZero;
   OperacaoHist := 0;
@@ -410,6 +416,11 @@ begin
   cmbConta.LookupKeyValue := DMFinanceiro.nContaPadrao;
   C_ContasDestino.Open;
   dtData.Date := DMProjeto.dDataSistema;
+  if DMProjeto.nPerfil <> 1 then begin
+  dtData.ReadOnly := true ;
+  dtData.Color := cl3DLight;
+  end;
+
 
   with DMProjeto do begin
   	if ExisteParametrosForm then begin

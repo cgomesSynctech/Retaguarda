@@ -2830,7 +2830,7 @@ inherited FrmInvoices: TFrmInvoices
               object TS_Label5: TTS_Label
                 Left = 0
                 Top = 0
-                Width = 60
+                Width = 58
                 Height = 16
                 Alignment = taCenter
                 Anchors = [akLeft, akTop, akRight]
@@ -2851,7 +2851,7 @@ inherited FrmInvoices: TFrmInvoices
               object TS_DBDesoneracao: TTS_DBText
                 Left = 4
                 Top = 18
-                Width = 31
+                Width = 29
                 Height = 16
                 Alignment = taRightJustify
                 Anchors = [akLeft, akTop, akRight]

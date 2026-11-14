@@ -9,7 +9,7 @@ uses
   TS_LastDataObject, DlgMsg, StdCtrls, TS_Label,
   ExtCtrls, TS_Image, dxfLabel, TS_MaxPanel, TS_Bevel, Buttons,
   TS_SpeedButton, TS_BitBtn, TS_Panel, teCtrls, TS_EffectsPanel, Menus,
-  TS_PopupMenu, dxExEdtr, BTOdeum;
+  TS_PopupMenu, dxExEdtr, BTOdeum, Placemnt;
 
 type
   TDlgAlertaFiltro = class(TFrmModeloCadastros)

@@ -11,10 +11,10 @@ inherited DlgTransferencias: TDlgTransferencias
   inherited pnNavigator: TTS_Panel
     Tag = -1
     Left = 450
-    Height = 275
+    Height = 274
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 241
+      Top = 240
       Caption = 'Fechar'
     end
     inherited btComando2: TTS_SpeedButton
@@ -583,7 +583,7 @@ inherited DlgTransferencias: TDlgTransferencias
   inherited pnDados: TTS_Panel
     Tag = -1
     Width = 450
-    Height = 275
+    Height = 274
     HelpContext = -1
     Color = 15724519
     object TS_Shape2: TTS_Shape
@@ -1444,6 +1444,21 @@ inherited DlgTransferencias: TDlgTransferencias
         mmLeft = 65617
         mmTop = 62442
         mmWidth = 59267
+        BandType = 4
+      end
+      object lbIDoc: TppLabel
+        UserName = 'lbData1'
+        Caption = 'lbIDoc'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 39423
+        mmTop = 1852
+        mmWidth = 11642
         BandType = 4
       end
     end

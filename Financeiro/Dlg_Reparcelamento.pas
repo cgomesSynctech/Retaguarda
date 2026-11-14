@@ -264,7 +264,7 @@ type
   public
     { Public declarations }
   end;
-
+                                                                       
 var
   DlgReparcelamento: TDlgReparcelamento;
 

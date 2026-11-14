@@ -4,133 +4,6 @@ inherited DlgAlertaFiltro: TDlgAlertaFiltro
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnDados: TTS_Panel
-    Width = 434
-    Color = 16116702
-    object GridAlertaFiltro: TTS_QDBGrid
-      Left = 1
-      Top = 1
-      Width = 432
-      Height = 246
-      Bands = <
-        item
-        end>
-      DefaultLayout = True
-      HeaderPanelRowCount = 1
-      KeyField = 'CHAVE'
-      SummaryGroups = <>
-      SummarySeparator = '|'
-      Align = alClient
-      BorderStyle = bsNone
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      PopupMenu = ppmGridAFiltro
-      TabOrder = 0
-      AutoSearchColor = 6611199
-      AutoSearchTextColor = clBlue
-      BandFont.Charset = DEFAULT_CHARSET
-      BandFont.Color = clWindowText
-      BandFont.Height = -11
-      BandFont.Name = 'MS Sans Serif'
-      BandFont.Style = []
-      DataSource = C_AlertaDS
-      Filter.Criteria = {00000000}
-      HeaderColor = 15461355
-      HeaderFont.Charset = DEFAULT_CHARSET
-      HeaderFont.Color = clWindowText
-      HeaderFont.Height = -11
-      HeaderFont.Name = 'Tahoma'
-      HeaderFont.Style = []
-      HideFocusRect = True
-      HideSelection = True
-      OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoEnterThrough, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
-      OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoUseBookmarks]
-      OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoShowButtonAlways, edgoUseBitmap]
-      PreviewFont.Charset = DEFAULT_CHARSET
-      PreviewFont.Color = clBlue
-      PreviewFont.Height = -11
-      PreviewFont.Name = 'MS Sans Serif'
-      PreviewFont.Style = []
-      TS_DescriptionCanChange = False
-      TS_AppendOnEnter = False
-      RowFooterNodeFont.Charset = DEFAULT_CHARSET
-      RowFooterNodeFont.Color = clWindowText
-      RowFooterNodeFont.Height = -11
-      RowFooterNodeFont.Name = 'Tahoma'
-      RowFooterNodeFont.Style = [fsBold]
-      TS_AccountFooterStyle = False
-      TS_TipoLocalizar = tlFavorecidos
-      TS_HideGroupHeader = False
-      TS_AnotherColor = clWindow
-      TS_ReportHeaderStyle = False
-      GroupNodeFont.Charset = DEFAULT_CHARSET
-      GroupNodeFont.Color = clWindowText
-      GroupNodeFont.Height = -11
-      GroupNodeFont.Name = 'Tahoma'
-      GroupNodeFont.Style = []
-      TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
-      TS_SummaryFooterFont.Color = clWindowText
-      TS_SummaryFooterFont.Height = -11
-      TS_SummaryFooterFont.Name = 'Tahoma'
-      TS_SummaryFooterFont.Style = [fsBold]
-      TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
-      TS_SummaryFooterSelFont.Color = clWindowText
-      TS_SummaryFooterSelFont.Height = -11
-      TS_SummaryFooterSelFont.Name = 'Tahoma'
-      TS_SummaryFooterSelFont.Style = [fsBold]
-      TS_ShowSelectionColumn = True
-      TS_LikeString = False
-      TS_SelectionColor = 12054783
-      TS_SelectionFont.Charset = DEFAULT_CHARSET
-      TS_SelectionFont.Color = clWindowText
-      TS_SelectionFont.Height = -11
-      TS_SelectionFont.Name = 'Tahoma'
-      TS_SelectionFont.Style = []
-      TS_SelectedColumn = '_icSelecionado'
-      TS_ID = 0
-      TS_TipoDescricao = tdVenda
-      TS_SummaryFooterQtdText = 'Qtd. Geral:'
-      TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
-      object GridAlertaFiltroFAVORECIDO: TdxDBGridMaskColumn
-        DisableEditor = True
-        Visible = False
-        Width = 69
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'FAVORECIDO'
-      end
-      object GridAlertaFiltroCodigo: TdxDBGridColumn
-        Caption = 'C'#243'digo'
-        DisableEditor = True
-        HeaderAlignment = taCenter
-        Width = 79
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'CODIGO'
-      end
-      object GridAlertaFiltroNOME: TdxDBGridMaskColumn
-        Caption = 'Nome'
-        DisableEditor = True
-        HeaderAlignment = taCenter
-        Width = 315
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'NOME'
-      end
-      object GridAlertaFiltroTIPOFAVORECIDO: TdxDBGridMaskColumn
-        DisableEditor = True
-        Visible = False
-        Width = 91
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'TIPOFAVORECIDO'
-      end
-    end
-  end
   inherited pnNavigator: TTS_Panel
     Left = 434
     Width = 100
@@ -256,13 +129,143 @@ inherited DlgAlertaFiltro: TDlgAlertaFiltro
   inherited pnTitulo: TTS_MaxPanel
     Width = 534
     Gradient.ColorStart = 14859922
+    inherited lbUpperHint: TTS_Label
+      Left = 526
+    end
     inherited lbCaption: TdxfLabel
       Width = 128
+      AutoSize = True
       Caption = 'Alerta - Filtro'
       Effect3D.ShadowedColor = 14859922
     end
-    inherited lbUpperHint: TTS_Label
-      Left = 526
+  end
+  inherited pnDados: TTS_Panel
+    Width = 434
+    Color = 16116702
+    object GridAlertaFiltro: TTS_QDBGrid
+      Left = 1
+      Top = 1
+      Width = 432
+      Height = 239
+      Bands = <
+        item
+        end>
+      DefaultLayout = True
+      HeaderPanelRowCount = 1
+      KeyField = 'CHAVE'
+      SummaryGroups = <>
+      SummarySeparator = '|'
+      Align = alClient
+      BorderStyle = bsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      PopupMenu = ppmGridAFiltro
+      TabOrder = 0
+      AutoSearchColor = 6611199
+      AutoSearchTextColor = clBlue
+      BandFont.Charset = DEFAULT_CHARSET
+      BandFont.Color = clWindowText
+      BandFont.Height = -11
+      BandFont.Name = 'MS Sans Serif'
+      BandFont.Style = []
+      DataSource = C_AlertaDS
+      Filter.Criteria = {00000000}
+      GroupPanelColor = 15461355
+      HeaderColor = 15461355
+      HeaderFont.Charset = DEFAULT_CHARSET
+      HeaderFont.Color = clWindowText
+      HeaderFont.Height = -11
+      HeaderFont.Name = 'Tahoma'
+      HeaderFont.Style = []
+      HideFocusRect = True
+      HideSelection = True
+      OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoEnterThrough, edgoImmediateEditor, edgoMultiSort, edgoTabs, edgoTabThrough, edgoVertThrough]
+      OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoUseBookmarks]
+      OptionsView = [edgoAutoWidth, edgoBandHeaderWidth, edgoHotTrack, edgoShowButtonAlways, edgoUseBitmap]
+      PreviewFont.Charset = DEFAULT_CHARSET
+      PreviewFont.Color = clBlue
+      PreviewFont.Height = -11
+      PreviewFont.Name = 'MS Sans Serif'
+      PreviewFont.Style = []
+      TS_PermitirQuantidade = False
+      TS_DescriptionCanChange = False
+      TS_AppendOnEnter = False
+      RowFooterNodeFont.Charset = DEFAULT_CHARSET
+      RowFooterNodeFont.Color = clWindowText
+      RowFooterNodeFont.Height = -11
+      RowFooterNodeFont.Name = 'Tahoma'
+      RowFooterNodeFont.Style = [fsBold]
+      TS_AccountFooterStyle = False
+      TS_TipoLocalizar = tlFavorecidos
+      TS_HideGroupHeader = False
+      TS_AnotherColor = clWindow
+      TS_ReportHeaderStyle = False
+      GroupNodeFont.Charset = DEFAULT_CHARSET
+      GroupNodeFont.Color = clWindowText
+      GroupNodeFont.Height = -11
+      GroupNodeFont.Name = 'Tahoma'
+      GroupNodeFont.Style = []
+      TS_SummaryFooterFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterFont.Color = clWindowText
+      TS_SummaryFooterFont.Height = -11
+      TS_SummaryFooterFont.Name = 'Tahoma'
+      TS_SummaryFooterFont.Style = [fsBold]
+      TS_SummaryFooterSelFont.Charset = DEFAULT_CHARSET
+      TS_SummaryFooterSelFont.Color = clWindowText
+      TS_SummaryFooterSelFont.Height = -11
+      TS_SummaryFooterSelFont.Name = 'Tahoma'
+      TS_SummaryFooterSelFont.Style = [fsBold]
+      TS_ShowSelectionColumn = True
+      TS_LikeString = False
+      TS_SelectionColor = 12054783
+      TS_SelectionFont.Charset = DEFAULT_CHARSET
+      TS_SelectionFont.Color = clWindowText
+      TS_SelectionFont.Height = -11
+      TS_SelectionFont.Name = 'Tahoma'
+      TS_SelectionFont.Style = []
+      TS_SelectedColumn = '_icSelecionado'
+      TS_ID = 0
+      TS_TipoDescricao = tdVenda
+      TS_SummaryFooterQtdText = 'Qtd. Geral:'
+      TS_SummaryFooterQtdSelectedText = 'Qtd. Selecionada:'
+      object GridAlertaFiltroFAVORECIDO: TdxDBGridMaskColumn
+        DisableEditor = True
+        Visible = False
+        Width = 69
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'FAVORECIDO'
+      end
+      object GridAlertaFiltroCodigo: TdxDBGridColumn
+        Caption = 'C'#243'digo'
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 79
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'CODIGO'
+      end
+      object GridAlertaFiltroNOME: TdxDBGridMaskColumn
+        Caption = 'Nome'
+        DisableEditor = True
+        HeaderAlignment = taCenter
+        Width = 315
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'NOME'
+      end
+      object GridAlertaFiltroTIPOFAVORECIDO: TdxDBGridMaskColumn
+        DisableEditor = True
+        Visible = False
+        Width = 91
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'TIPOFAVORECIDO'
+      end
     end
   end
   inherited LastDataObject: TTS_LastDataObject

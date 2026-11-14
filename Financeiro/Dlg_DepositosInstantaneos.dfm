@@ -12,10 +12,10 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   inherited pnNavigator: TTS_Panel
     Tag = -1
     Left = 683
-    Height = 374
+    Height = 373
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 338
+      Top = 337
       Height = 35
     end
     inherited btComando2: TTS_SpeedButton
@@ -363,7 +363,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
   inherited pnDados: TTS_Panel
     Tag = -1
     Width = 683
-    Height = 374
+    Height = 373
     HelpContext = -1
     Color = 16116702
     object TS_Panel1: TTS_Panel
@@ -371,7 +371,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
       Left = 1
       Top = 1
       Width = 681
-      Height = 372
+      Height = 371
       HelpContext = -1
       Align = alClient
       BevelOuter = bvNone
@@ -1194,7 +1194,7 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
       end
       object TS_Panel3: TTS_Panel
         Left = 1
-        Top = 182
+        Top = 181
         Width = 679
         Height = 189
         Align = alBottom
@@ -3447,8 +3447,8 @@ inherited DlgDepositosInstantaneos: TDlgDepositosInstantaneos
     Aggregates = <>
     Params = <>
     OnNewRecord = C_ContasOperacaoNewRecord
-    Left = 132
-    Top = 55
+    Left = 36
+    Top = 143
     object C_ContasOperacaoConta: TIntegerField
       FieldName = 'Conta'
     end

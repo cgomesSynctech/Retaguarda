@@ -1833,6 +1833,11 @@ begin
     //btContabilidade.visible := false;
     pnCancelado.caption := 'Canc.';
   end;
+  if DMProjeto.nPerfil <> 1 then begin
+    dfData.Date := DMProjeto.dDataSistema ;
+    dfData.ReadOnly := True ;
+    dfData.Color := cl3DLight;
+  end;
   // Adriano
   DMContabil := TDMContabilidade.Create(self);
 end;

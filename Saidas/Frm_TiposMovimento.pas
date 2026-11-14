@@ -313,6 +313,8 @@ type
     cbClassTribRTCPadrao: TTS_DBCheckBox;
     cmbCSTRTCPadrao: TTS_DBLookupComboBox;
     cmbClassTribRTCPadrao: TTS_DBLookupComboBox;
+    TS_DBCheckBox49: TTS_DBCheckBox;
+    TS_DBPopupEdit1: TTS_DBPopupEdit;
         procedure FormCreate(Sender: TObject);
         procedure btLimparClick(Sender: TObject);
         procedure TS_SpeedButton1Click(Sender: TObject);
@@ -340,11 +342,16 @@ type
         procedure cmbTipoDoc2CloseUp(Sender: TObject; var Text: string;
             var Accept: Boolean);
 
+        procedure cmbTipoDoc3CloseUp(Sender: TObject; var Text: string;
+            var Accept: Boolean);
+
+
         procedure dbgImpressaoDblClick(Sender: TObject);
         procedure FormShow(Sender: TObject);
         procedure FormComponentAfterScroll(Sender: TObject);
         procedure cmbTipoDocPopup(Sender: TObject; const EditText: string);
         procedure cmbTipoDoc2Popup(Sender: TObject; const EditText: string);
+        procedure cmbTipoDoc3Popup(Sender: TObject; const EditText: string);
         procedure cmbTipoNotaFiscalChange(Sender: TObject);
         procedure TS_Label6Click(Sender: TObject);
         procedure lbTemplateBolClick(Sender: TObject);
@@ -352,8 +359,10 @@ type
         procedure tsImpressaoShow(Sender: TObject);
         procedure cmbTipoDocChange(Sender: TObject);
         procedure cmbTipoDoc2Change(Sender: TObject);
+        procedure cmbTipoDoc3Change(Sender: TObject);
         procedure cmbTipoDocSelectionChange(Sender: TObject);
         procedure cmbTipoDoc2SelectionChange(Sender: TObject);
+        procedure cmbTipoDoc3SelectionChange(Sender: TObject);
         procedure cmbTipoCobChange(Sender: TObject);
         //procedure cb15Change(Sender: TObject);
         //procedure cb16Change(Sender: TObject);
@@ -766,6 +775,35 @@ begin
     MostraModelo;
 end;
 
+procedure TFrmTiposMovimento.cmbTipoDoc3CloseUp(Sender: TObject;
+    var Text: string; var Accept: Boolean);
+begin
+    inherited;
+    Accept := true;
+    if DMTiposMovimento.C_Tabela.State in [dsBrowse] then
+        DMTiposMovimento.C_Tabela.Edit;
+    DMTiposMovimento.C_TabelaTIPOIMPRESSAO_OP3.Value := DMTiposMovimento.C_TiposImpressaoTipo.asString;
+    Text := DMTiposMovimento.C_TiposImpressaoTitulo.asString;
+
+    if DMTiposMovimento.C_TabelaTIPOIMPRESSAO_OP3.AsString = 'PL' then
+        begin
+            cb13.Font.Color := clWindowText;
+            cb14.Font.Color := clWindowText;
+            cb13.DisableEdit := false;
+            cb14.DisableEdit := false;
+        end
+    else
+        begin
+            cb13.Font.Color := $00A2999D;
+            cb14.Font.Color := $00A2999D;
+            cb13.DisableEdit := true;
+            cb14.DisableEdit := true;
+        end;
+    MostraModelo;
+end;
+
+
+
 procedure TFrmTiposMovimento.dbgImpressaoDblClick(Sender: TObject);
 begin
     inherited;
@@ -856,6 +894,14 @@ begin
         DMTiposMovimento.C_TiposImpressao.first;
 end;
 
+procedure TFrmTiposMovimento.cmbTipoDoc3Popup(Sender: TObject;
+    const EditText: string);
+begin
+    inherited;
+    if not DMTiposMovimento.C_TiposImpressao.Locate('TIPO', DMTiposMovimento.C_TabelaTIPOIMPRESSAO_OP3.value, []) then
+        DMTiposMovimento.C_TiposImpressao.first;
+end;
+
 procedure TFrmTiposMovimento.cmbTipoNotaFiscalChange(Sender: TObject);
 begin
     inherited;
@@ -915,6 +961,11 @@ begin
     inherited;
     MostraModelo;
 end;
+procedure TFrmTiposMovimento.cmbTipoDoc3Change(Sender: TObject);
+begin
+    inherited;
+    MostraModelo;
+end;
 
 procedure TFrmTiposMovimento.cmbTipoDocSelectionChange(Sender: TObject);
 begin
@@ -922,6 +973,11 @@ begin
     MostraModelo;
 end;
 procedure TFrmTiposMovimento.cmbTipoDoc2SelectionChange(Sender: TObject);
+begin
+    inherited;
+    MostraModelo;
+end;
+procedure TFrmTiposMovimento.cmbTipoDoc3SelectionChange(Sender: TObject);
 begin
     inherited;
     MostraModelo;

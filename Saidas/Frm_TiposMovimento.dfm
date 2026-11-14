@@ -1,7 +1,7 @@
 inherited FrmTiposMovimento: TFrmTiposMovimento
-  Left = 760
+  Left = 761
   Top = 44
-  Width = 643
+  Width = 642
   Height = 614
   Caption = 'Clientes / Vendas'
   PixelsPerInch = 96
@@ -42,7 +42,7 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
     LinkToResult = 0
   end
   inherited pnNavigator: TTS_Panel
-    Left = 520
+    Left = 519
     Height = 543
     inherited btComando1: TTS_SpeedButton
       Hint = 'Copiar Configura'#231#227'o'
@@ -126,10 +126,10 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 520
+    Width = 519
     Height = 543
     inherited Grid: TTS_QDBGrid
-      Width = 518
+      Width = 517
       Height = 541
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'DESCRICAO'
@@ -170,11 +170,11 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
       end
     end
     inherited dxTreeListCampos: TdxTreeList
-      Width = 518
+      Width = 517
       Height = 541
     end
     inherited sbDados: TTS_Panel
-      Width = 518
+      Width = 517
       Height = 541
       Color = 16116702
       object TS_Label1: TTS_Label
@@ -213,7 +213,7 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
         Top = 34
         Width = 510
         Height = 511
-        ActivePage = tsFiscal
+        ActivePage = tsImpressao
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -221,10 +221,10 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
         Font.Style = []
         OwnerDraw = True
         ParentFont = False
-        TabIndex = 1
+        TabIndex = 4
         TabOrder = 2
         TabWidth = 80
-        ActivePageIndex = 1
+        ActivePageIndex = 4
         Transparent = False
         TabColor = 16116702
         TabColorActive = 14859922
@@ -4307,7 +4307,7 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
             Height = 21
             Hint = 'Selecione a impressora padr'#227'o.'
             Style = csDropDownList
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 25
           end
           object cmbTiposPapeis: TComboBox
@@ -4317,7 +4317,7 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
             Height = 21
             Hint = 'Selecione o Tipo de Papel padr'#227'o.'
             Style = csDropDownList
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 26
           end
           object TS_DBCheckBox45: TTS_DBCheckBox
@@ -4376,6 +4376,41 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
             PopupClientEdge = True
             OnCloseUp = cmbTipoDoc2CloseUp
             OnPopup = cmbTipoDoc2Popup
+            Height = 19
+          end
+          object TS_DBCheckBox49: TTS_DBCheckBox
+            Left = 290
+            Top = 100
+            Width = 47
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.HotTrack = False
+            TabOrder = 30
+            Caption = 'Doc:'
+            DataField = 'CB_DOC3'
+            DataSource = DMTiposMovimento.C_TabelaDS
+            ValueChecked = 'S'
+            ValueUnchecked = 'N'
+            NullStyle = nsUnchecked
+            DisableEdit = False
+            Height = 19
+          end
+          object TS_DBPopupEdit1: TTS_DBPopupEdit
+            Left = 341
+            Top = 102
+            Width = 140
+            TabOrder = 31
+            DataField = 'DescTipoImpressao3'
+            DataSource = DMTiposMovimento.C_TabelaDS
+            StyleController = DMProjeto.esClientes
+            OnChange = cmbTipoDoc3Change
+            OnSelectionChange = cmbTipoDoc3SelectionChange
+            HideEditCursor = True
+            PopupControl = dbgImpressao
+            PopupFormBorderStyle = pbsSysPanel
+            PopupClientEdge = True
+            OnCloseUp = cmbTipoDoc3CloseUp
+            OnPopup = cmbTipoDoc3Popup
             Height = 19
           end
         end
@@ -4856,11 +4891,11 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
       end
     end
     inherited dxF9Bar: TdxfProgressBar
-      Width = 518
+      Width = 517
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 635
+    Width = 634
     Gradient.ColorStart = 14859922
     inherited lbCaption: TdxfLabel
       Width = 187
@@ -4872,7 +4907,7 @@ inherited FrmTiposMovimento: TFrmTiposMovimento
       Top = 50
     end
     inherited btHelp: TTS_SpeedButton
-      Left = 601
+      Left = 600
     end
   end
   inherited DlgMsg: TDlgMsg

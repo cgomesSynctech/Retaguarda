@@ -10,7 +10,8 @@ uses
   ExtCtrls, StdCtrls, dxfLabel, TS_Label, TS_MaxPanel,
   TS_LastDataObject, DlgMsg, dxmdaset, teCtrls, TS_EffectsPanel, Menus,
   TS_PopupMenu, Buttons, TS_SpeedButton, ComCtrls, dxPSGlbl, dxPSUtl,
-  dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxExEdtr, Placemnt, BTOdeum;
+  dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxExEdtr, Placemnt, BTOdeum,
+  dxEdLib, TS_CheckBox;
 
 type
   TRptContas = class(TRptPadrao)

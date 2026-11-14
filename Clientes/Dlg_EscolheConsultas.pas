@@ -13,7 +13,8 @@ uses
   Provider, Db, DBClient, TS_Edit,
   TS_Label, IBDatabase, FormsComponent, TS_Image, dxfLabel, dxCntner,
   dxEditor, dxEdLib, dxExEdtr, TS_DateTimePicker, teCtrls,
-  TS_EffectsPanel, TS_PopupMenu, TS_ComboBox, TS_CheckBox;
+  TS_EffectsPanel, TS_PopupMenu, TS_ComboBox, TS_CheckBox, Placemnt,
+  BTOdeum;
 
 type
   TDlgEscolheConsultas = class(TFrmModeloCadastros)

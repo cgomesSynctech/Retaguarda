@@ -11,10 +11,10 @@ inherited DlgTransferencias: TDlgTransferencias
   inherited pnNavigator: TTS_Panel
     Tag = -1
     Left = 450
-    Height = 275
+    Height = 274
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 241
+      Top = 240
       Caption = 'Fechar'
     end
     inherited btComando2: TTS_SpeedButton
@@ -583,7 +583,7 @@ inherited DlgTransferencias: TDlgTransferencias
   inherited pnDados: TTS_Panel
     Tag = -1
     Width = 450
-    Height = 275
+    Height = 274
     HelpContext = -1
     Color = 15724519
     object TS_Shape2: TTS_Shape
@@ -1176,7 +1176,7 @@ inherited DlgTransferencias: TDlgTransferencias
   object ppTransferencia: TppReport
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
-    PrinterSetup.PaperName = 'A4 (8.2 x 11.7 in; 210 x 297 mm)'
+    PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.mmMarginBottom = 6350
     PrinterSetup.mmMarginLeft = 6350
@@ -1184,7 +1184,7 @@ inherited DlgTransferencias: TDlgTransferencias
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 297000
     PrinterSetup.mmPaperWidth = 210000
-    PrinterSetup.PaperSize = 256
+    PrinterSetup.PaperSize = 9
     DeviceType = 'Screen'
     Left = 288
     Top = 107

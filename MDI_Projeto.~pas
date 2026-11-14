@@ -1513,7 +1513,7 @@ end;
 procedure TMDIProjeto.AbrirCaixaClick(Sender: TObject);
 begin
     inherited;
-    DMProjeto.CriarForm('DlgAberturaCaixa', self, true);
+    DMProjeto.CriarForm('DlgAberturaCaixa', self, true);  
     AtualizaMenu;
 end;
 
@@ -2090,7 +2090,7 @@ procedure TMDIProjeto.TiposdeOperaes1Click(Sender: TObject);
 begin
     inherited;
     DMProjeto.CriarForm('FrmTiposMovimento', Self, false);
-end;
+end;                                                                                      
 
 procedure TMDIProjeto.ReajustedePreos1Click(Sender: TObject);
 begin
@@ -5187,7 +5187,7 @@ end;
 procedure TMDIProjeto.ESTECONSI1Click(Sender: TObject);
 begin
   inherited;
-      DMProjeto.CriarForm('FrmSaidasConsignadas', self, false);
+      DMProjeto.CriarForm('DlgExpedicao', self, false);
 end;
 
 procedure TMDIProjeto.GerencialSaidas1Click(Sender: TObject);

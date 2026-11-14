@@ -258,7 +258,7 @@ type
         function ApagarTitulo(Titulo: integer): boolean;
         function ApagarDuplicata(Duplicata: integer): boolean;
         function ApagarDoc(IDDoc: integer; bApagarDoc: boolean = false): integer;
-        procedure InserirOperacoesDoc(IDDoc, IDGerador, TipoOperacao, FormaPagamento, Status: integer; Valor: Currency);
+        procedure InserirOperacoesDoc(IDDoc, IDGerador, TipoOperacao, FormaPagamento, Status: integer; Valor: Currency; Devolvidos: Boolean = False);
         function AlterarContaCheques(ContaAtual: integer; sSelecionados: string): integer;
         procedure RegistrarCredito(Favorecido, IDGerador: Integer; TipoOperacao: integer; EmpresaDevendo: boolean; CredMenos, CredMais: currency; OBS: string);
         procedure EstornarCredito(IDGerador: integer);
@@ -416,7 +416,7 @@ type
         procedure AtualizaConsumidorFinal(IDGerador, Favorecido: integer);
 
         {Operações com Cheques}
-        function DepositarCheques(Conta: integer; Data: TDatetime; ValorOperacao, ValorDinheiro: Currency; Historico: string; Liquidar: Boolean; sItemsSelecionados: string; OperacaoDinheiro: integer): integer;
+        function DepositarCheques(Conta: integer; Data: TDatetime; ValorOperacao, ValorDinheiro: Currency; Historico: string; Liquidar: Boolean; sItemsSelecionados: string; OperacaoDinheiro: integer; Devolvidos: boolean): integer;
         function SetChequesEmCustodia(Operacao, Conta: Integer; sCheques: string): boolean;
         function DepositarChequesEmCustodia: boolean;
         function ResgatarCheque(Operacao, Cheque, Conta: Integer; bCreditarNoCaixa: boolean = true): boolean;
@@ -3016,7 +3016,7 @@ begin
         end;
 end;
 
-procedure TDMFinanceiro.InserirOperacoesDoc(IDDoc, IDGerador, TipoOperacao, FormaPagamento, Status: integer; Valor: Currency);
+procedure TDMFinanceiro.InserirOperacoesDoc(IDDoc, IDGerador, TipoOperacao, FormaPagamento, Status: integer; Valor: Currency; Devolvidos : boolean);
 var Query: TIBQuery;
 begin
     Query := TIBQuery.Create(self);
@@ -3034,7 +3034,10 @@ begin
             ParamByName('Data').AsDateTime := DMProjeto.dDataSistema;
             ParamByName('Status').AsInteger := Status;
             ParamByName('Usuario').AsInteger := DMProjeto.nFuncionario;
-            ParamByName('Obs').Value := DMProjeto.getCampoTabela('TiposOrigens', 'Origem', 'Descricao', TipoOperacao);
+            if ( Devolvidos) then
+              ParamByName('Obs').Value := 'Dep. Valores C/ Dev.'
+            else
+              ParamByName('Obs').Value := DMProjeto.getCampoTabela('TiposOrigens', 'Origem', 'Descricao', TipoOperacao);
             ParamByName('PDV').AsInteger := DMProjeto.nPDV;
             ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;
             nTentativas := 0;
@@ -4846,6 +4849,7 @@ begin
     slItems := TStringList.Create;
     slItems.Text := sItemsSelecionados;
     try
+
         Operacao := DMProjeto.NextIDGlobal;
         with Q_SQL do
             begin
@@ -4861,7 +4865,10 @@ begin
                 ParamByName('ValorDin').AsCurrency := ValorDinheiro;
                 ParamByName('ContaDest').AsInteger := Conta;
                 ParamByName('OperacaoDinheiro').AsInteger := OperacaoDinheiro;
-                ParamByName('Historico').AsString := Historico;
+                if (Devolvidos) then
+                  ParamByName('Historico').AsString := (Historico + ' C/ Devolvidos')
+                else
+                  ParamByName('Historico').AsString := Historico;
                 ParamByName('Usuario').AsInteger := DMProjeto.nFuncionario;
                 ParamByName('PDV').AsInteger := DMProjeto.nPDV;
                 ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;
@@ -4917,7 +4924,7 @@ begin
                         ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;
                         ExecSQL;
 
-                        InserirOperacoesDoc(StrToInt(SeparaStrings(slItems[0], ',', i - 1)), Operacao, 7, FormaPagamento, 50, ValorDoc);
+                        InserirOperacoesDoc(StrToInt(SeparaStrings(slItems[0], ',', i - 1)), Operacao, 7, FormaPagamento, 50, ValorDoc, Devolvidos);
 
                         {Retirando os Cheques do Caixa}
                         Close;
@@ -4940,7 +4947,10 @@ begin
                         ParamByName('Deposito').AsInteger := Operacao;
                         ParamByName('TipoOperacao').AsInteger := 7;
                         ParamByName('IDDoc').AsInteger := StrToInt(SeparaStrings(slItems[0], ',', i - 1));
-                        ParamByName('Historico').AsString := Historico;
+                        if (Devolvidos) then
+                          ParamByName('Historico').AsString := (Historico + ' C/ Devolvidos')
+                        else
+                          ParamByName('Historico').AsString := Historico;
                         ParamByName('FuncLogin').AsInteger := DMProjeto.nFuncionario;
                         ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;
 
@@ -4962,7 +4972,10 @@ begin
                 ParamByName('Deposito').AsInteger := Operacao;
                 ParamByName('TipoOperacao').AsInteger := 7;
                 ParamByName('IDDoc').AsInteger := 0;
-                ParamByName('Historico').AsString := Historico;
+                if (Devolvidos) then
+                  ParamByName('Historico').AsString := (Historico + ' C/ Devolvidos')
+                else
+                  ParamByName('Historico').AsString := Historico;
                 ParamByName('FuncLogin').AsInteger := DMProjeto.nFuncionario;
                 ParamByName('PDV').AsInteger := DMProjeto.nPDV;
                 ParamByName('EMPRESA').asInteger := DMPRojeto.nEmpresaLogada;

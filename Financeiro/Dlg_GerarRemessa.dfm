@@ -1,16 +1,16 @@
 inherited DlgGerarRemessa: TDlgGerarRemessa
-  Left = 542
-  Top = 171
+  Left = 554
+  Top = 281
   Width = 667
   Height = 362
   Caption = 'Financeiro'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 533
-    Height = 281
+    Left = 541
+    Height = 291
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 247
+      Top = 257
     end
     inherited btLimpar: TTS_SpeedButton
       Top = 1
@@ -36,7 +36,7 @@ inherited DlgGerarRemessa: TDlgGerarRemessa
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 651
+    Width = 659
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
       Width = 495
@@ -55,14 +55,14 @@ inherited DlgGerarRemessa: TDlgGerarRemessa
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 533
-    Height = 281
+    Width = 541
+    Height = 291
     Color = 15724519
     object dbgTitulos: TTS_QDBGrid
       Left = 1
       Top = 25
-      Width = 531
-      Height = 255
+      Width = 539
+      Height = 265
       Bands = <
         item
         end>
@@ -237,7 +237,7 @@ inherited DlgGerarRemessa: TDlgGerarRemessa
     object TS_Panel1: TTS_Panel
       Left = 1
       Top = 1
-      Width = 531
+      Width = 539
       Height = 24
       Align = alTop
       BevelOuter = bvNone

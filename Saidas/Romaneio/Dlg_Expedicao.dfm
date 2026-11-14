@@ -1,0 +1,711 @@
+inherited DlgExpedicao: TDlgExpedicao
+  Left = 469
+  Top = 368
+  Width = 565
+  Height = 144
+  Caption = 'M'#243'dulo de Remessa'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnNavigator: TTS_Panel
+    Left = 439
+    Height = 73
+    inherited btFecharCadastro: TTS_SpeedButton
+      Top = 39
+    end
+    inherited btGravar: TTS_SpeedButton
+      Visible = False
+    end
+  end
+  inherited pnTitulo: TTS_MaxPanel
+    Width = 557
+    Gradient.ColorStart = 14003626
+    inherited lbEstadoForm: TTS_Label
+      Width = 182
+      Caption = 'Emiss'#227'o de Etiqueta para Expendi'#231#227'o '
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 521
+    end
+    inherited lbCaption: TdxfLabel
+      Width = 115
+      AutoSize = True
+      Caption = 'Expedi'#231#227'o'
+      Effect3D.ShadowedColor = 14003626
+    end
+  end
+  inherited pnDados: TTS_Panel
+    Width = 439
+    Height = 73
+    Color = 15456728
+    object Label4: TLabel
+      Left = 256
+      Top = 11
+      Width = 43
+      Height = 13
+      Caption = 'Volumes:'
+    end
+    object Label2: TLabel
+      Left = 41
+      Top = 48
+      Width = 30
+      Height = 13
+      Caption = 'Data :'
+    end
+    object Label3: TLabel
+      Left = 143
+      Top = 48
+      Width = 37
+      Height = 13
+      Caption = 'Cliente:'
+    end
+    object Label5: TLabel
+      Left = 20
+      Top = 10
+      Width = 94
+      Height = 13
+      Caption = 'Pedido / Venda N'#186' :'
+    end
+    object lbData: TLabel
+      Left = 76
+      Top = 48
+      Width = 31
+      Height = 13
+      Caption = 'lbData'
+    end
+    object lbCliente: TLabel
+      Left = 185
+      Top = 48
+      Width = 41
+      Height = 13
+      Caption = 'lbCliente'
+    end
+    object NSaida: TEdit
+      Left = 121
+      Top = 8
+      Width = 121
+      Height = 21
+      TabOrder = 0
+      OnKeyPress = NSaidaKeyPress
+    end
+    object Vol: TEdit
+      Left = 305
+      Top = 8
+      Width = 121
+      Height = 21
+      TabOrder = 1
+      Visible = False
+      OnKeyPress = VolKeyPress
+    end
+  end
+  inherited ppmPadrao: TTS_PopupMenu
+    Left = 568
+    Top = 410
+  end
+  inherited Beep: TBTBeeper
+    Left = 256
+    Top = 336
+  end
+  inherited FormStorage: TFormStorage
+    Left = 656
+    Top = 312
+  end
+  inherited FormsComponent: TFormsComponent
+    ModuloStyle = DMProjeto.msRemessa
+    BarEndColor = 14003626
+    CaptionShadow = 14003626
+    FormColor = 15456728
+    Modulo = 'M'#243'dulo de Remessa'
+    Caption = 'Expedi'#231#227'o'
+    Left = 138
+    Top = 314
+  end
+  object ppEtiquetaItens: TppReport
+    AutoStop = False
+    DataPipeline = ppDBItensSaida
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 1588
+    PrinterSetup.mmMarginLeft = 1588
+    PrinterSetup.mmMarginRight = 1588
+    PrinterSetup.mmMarginTop = 1588
+    PrinterSetup.mmPaperHeight = 110000
+    PrinterSetup.mmPaperWidth = 100000
+    PrinterSetup.PaperSize = 119
+    Template.FileName = 'E:\tmp\rptDuasVias.rtm'
+    Units = utMillimeters
+    DeviceType = 'Screen'
+    Left = 578
+    Top = 129
+    Version = '6.02'
+    mmColumnWidth = 212724
+    DataPipelineName = 'ppDBItensSaida'
+    object ppHeaderBand38: TppHeaderBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 29104
+      mmPrintPosition = 0
+      object ppLabel6: TppLabel
+        UserName = 'Label6'
+        Caption = 'Ordem de Expedi'#231#227'o '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 18
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 7673
+        mmLeft = 8996
+        mmTop = 1323
+        mmWidth = 67204
+        BandType = 0
+      end
+      object ppLabel7: TppLabel
+        UserName = 'Label7'
+        Caption = 'Volumes:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3810
+        mmLeft = 5556
+        mmTop = 12965
+        mmWidth = 12996
+        BandType = 0
+      end
+      object ppLabel8: TppLabel
+        UserName = 'Label8'
+        Caption = 'Mov.:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 47890
+        mmTop = 11906
+        mmWidth = 7938
+        BandType = 0
+      end
+      object ppLabel9: TppLabel
+        UserName = 'Label9'
+        Caption = 'Cliente :'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 9
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3810
+        mmLeft = 5292
+        mmTop = 18785
+        mmWidth = 11599
+        BandType = 0
+      end
+      object ppLabel10: TppLabel
+        UserName = 'Label10'
+        Caption = 'Codigo    Descri'#231#227'o                 Unid.          Qtde.     '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 11
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4699
+        mmLeft = 3440
+        mmTop = 24077
+        mmWidth = 90721
+        BandType = 0
+      end
+      object ppDBText7: TppDBText
+        UserName = 'DBText7'
+        DataField = 'RAZAO'
+        DataPipeline = ppDBItensSaida
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBItensSaida'
+        mmHeight = 4233
+        mmLeft = 18256
+        mmTop = 19050
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppDBText8: TppDBText
+        UserName = 'DBText8'
+        DataField = 'DATA'
+        DataPipeline = ppDBItensSaida
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        ParentDataPipeline = False
+        Transparent = True
+        DataPipelineName = 'ppDBItensSaida'
+        mmHeight = 4233
+        mmLeft = 58738
+        mmTop = 11906
+        mmWidth = 17198
+        BandType = 0
+      end
+      object ppVol: TppLabel
+        UserName = 'Vol'
+        Caption = 'Vol'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 24606
+        mmTop = 13494
+        mmWidth = 4826
+        BandType = 0
+      end
+    end
+    object ppDetailBand60: TppDetailBand
+      PrintCount = 48
+      mmBottomOffset = 0
+      mmHeight = 4763
+      mmPrintPosition = 0
+      object ppRegion62: TppRegion
+        UserName = 'rbshItens2'
+        KeepTogether = True
+        Brush.Style = bsClear
+        Stretch = True
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 1323
+        mmTop = 265
+        mmWidth = 96838
+        BandType = 4
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        object ppDBText921: TppDBText
+          UserName = 'DBText24'
+          DataField = 'CODIGO'
+          DataPipeline = ppDBItensSaida
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 6
+          Font.Style = []
+          ParentDataPipeline = False
+          Transparent = True
+          DataPipelineName = 'ppDBItensSaida'
+          mmHeight = 4233
+          mmLeft = 794
+          mmTop = 265
+          mmWidth = 7938
+          BandType = 4
+        end
+        object ppDBText922: TppDBText
+          UserName = 'dbtUnidade3'
+          DataField = 'UNIDADE'
+          DataPipeline = ppDBItensSaida
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 6
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'ppDBItensSaida'
+          mmHeight = 4233
+          mmLeft = 64029
+          mmTop = 265
+          mmWidth = 13494
+          BandType = 4
+        end
+        object ppDBText923: TppDBText
+          UserName = 'DBText26'
+          DataField = 'QUANTIDADE'
+          DataPipeline = ppDBItensSaida
+          DisplayFormat = '###,0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 6
+          Font.Style = []
+          ParentDataPipeline = False
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'ppDBItensSaida'
+          mmHeight = 4233
+          mmLeft = 79375
+          mmTop = 265
+          mmWidth = 9790
+          BandType = 4
+        end
+        object ppLine328: TppLine
+          UserName = 'lnUnidade2'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 62706
+          mmTop = 265
+          mmWidth = 1323
+          BandType = 4
+        end
+        object ppDBMemo33: TppDBMemo
+          UserName = 'dbtDescricao2'
+          CharWrap = True
+          DataField = 'DESCRICAO'
+          DataPipeline = ppDBItensSaida
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Tahoma'
+          Font.Size = 6
+          Font.Style = []
+          ParentDataPipeline = False
+          Stretch = True
+          Transparent = True
+          DataPipelineName = 'ppDBItensSaida'
+          mmHeight = 4233
+          mmLeft = 11113
+          mmTop = 265
+          mmWidth = 50271
+          BandType = 4
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmLeading = 0
+        end
+        object ppLine343: TppLine
+          UserName = 'Line343'
+          Pen.Color = clGray
+          Position = lpLeft
+          Weight = 0.75
+          mmHeight = 3969
+          mmLeft = 18521
+          mmTop = 794
+          mmWidth = 529
+          BandType = 4
+        end
+      end
+    end
+    object ppFooterBand32: TppFooterBand
+      mmBottomOffset = 0
+      mmHeight = 1323
+      mmPrintPosition = 0
+    end
+    object ppSummaryBand34: TppSummaryBand
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 12700
+      mmPrintPosition = 0
+      object ppLabel1: TppLabel
+        UserName = 'Label1'
+        Caption = 'Ordem de Expedi'#231#227'o '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 18
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 7673
+        mmLeft = 11113
+        mmTop = 2117
+        mmWidth = 67204
+        BandType = 7
+      end
+    end
+  end
+  object ppDBItensSaida: TppDBPipeline
+    DataSource = C_TabelaDS
+    UserName = 'DBItensSaida'
+    Left = 655
+    Top = 127
+    object ppDBItensSaidappField1: TppField
+      Alignment = taRightJustify
+      FieldAlias = '_icSelecionado'
+      FieldName = '_icSelecionado'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 0
+      Position = 0
+    end
+    object ppDBItensSaidappField2: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'SAIDA'
+      FieldName = 'SAIDA'
+      FieldLength = 0
+      DataType = dtInteger
+      DisplayWidth = 10
+      Position = 1
+    end
+    object ppDBItensSaidappField3: TppField
+      FieldAlias = 'NUMERO'
+      FieldName = 'NUMERO'
+      FieldLength = 12
+      DisplayWidth = 12
+      Position = 2
+    end
+    object ppDBItensSaidappField4: TppField
+      FieldAlias = 'DATA'
+      FieldName = 'DATA'
+      FieldLength = 0
+      DataType = dtDate
+      DisplayWidth = 10
+      Position = 3
+    end
+    object ppDBItensSaidappField5: TppField
+      FieldAlias = 'RAZAO'
+      FieldName = 'RAZAO'
+      FieldLength = 50
+      DisplayWidth = 50
+      Position = 4
+    end
+    object ppDBItensSaidappField6: TppField
+      FieldAlias = 'CPF_CNPJ'
+      FieldName = 'CPF_CNPJ'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 5
+    end
+    object ppDBItensSaidappField7: TppField
+      FieldAlias = 'CODIGO'
+      FieldName = 'CODIGO'
+      FieldLength = 14
+      DisplayWidth = 14
+      Position = 6
+    end
+    object ppDBItensSaidappField8: TppField
+      FieldAlias = 'DESCRICAO'
+      FieldName = 'DESCRICAO'
+      FieldLength = 255
+      DisplayWidth = 255
+      Position = 7
+    end
+    object ppDBItensSaidappField9: TppField
+      Alignment = taRightJustify
+      FieldAlias = 'QUANTIDADE'
+      FieldName = 'QUANTIDADE'
+      FieldLength = 0
+      DataType = dtDouble
+      DisplayWidth = 10
+      Position = 8
+    end
+    object ppDBItensSaidappField10: TppField
+      FieldAlias = 'UNIDADE'
+      FieldName = 'UNIDADE'
+      FieldLength = 6
+      DisplayWidth = 6
+      Position = 9
+    end
+  end
+  object C_TabelaDS: TDataSource
+    Tag = 100
+    DataSet = C_Tabela
+    Left = 352
+    Top = 396
+  end
+  object C_Tabela: TClientDataSet
+    Tag = 100
+    Active = True
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'saida'
+        ParamType = ptUnknown
+      end>
+    ProviderName = 'P_Tabela'
+    Left = 353
+    Top = 332
+    object C_Tabela_icSelecionado: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_TabelaSAIDA: TIntegerField
+      FieldName = 'SAIDA'
+      Origin = 'SAIDAS.SAIDA'
+      Required = True
+    end
+    object C_TabelaNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'SAIDAS.NUMERO'
+      Size = 12
+    end
+    object C_TabelaDATA: TDateField
+      FieldName = 'DATA'
+      Origin = 'SAIDAS.DATA'
+    end
+    object C_TabelaRAZAO: TStringField
+      FieldName = 'RAZAO'
+      Origin = 'FAVORECIDOS.RAZAO'
+      Size = 50
+    end
+    object C_TabelaCPF_CNPJ: TStringField
+      FieldName = 'CPF_CNPJ'
+      Origin = 'FAVORECIDOS.CPF_CNPJ'
+      Size = 14
+    end
+    object C_TabelaCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Origin = 'ITENS.CODIGO'
+      Size = 14
+    end
+    object C_TabelaDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'SAIDASITENS.DESCRICAO'
+      Size = 255
+    end
+    object C_TabelaQUANTIDADE: TFloatField
+      FieldName = 'QUANTIDADE'
+      Origin = 'SAIDASITENS.QUANTIDADE'
+    end
+    object C_TabelaUNIDADE: TStringField
+      FieldName = 'UNIDADE'
+      Origin = 'SAIDASITENS.UNIDADE'
+      Size = 6
+    end
+  end
+  object P_Tabela: TDataSetProvider
+    DataSet = Q_Tabela
+    Constraints = True
+    Options = [poIncFieldProps, poCascadeDeletes, poCascadeUpdates, poPropogateChanges, poAllowCommandText]
+    Left = 352
+    Top = 285
+  end
+  object U_Tabela: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      'from saidas '
+      'where'
+      '  SAIDA = :SAIDA')
+    ModifySQL.Strings = (
+      'update saidas'
+      'set'
+      '  EMBALAGENS = :EMBALAGENS'
+      'where'
+      '  SAIDA = :OLD_SAIDA')
+    InsertSQL.Strings = (
+      'insert into saidas'
+      '  (EMBALAGENS)'
+      'values'
+      '  (:EMBALAGENS)')
+    DeleteSQL.Strings = (
+      'delete from saidas'
+      'where'
+      '  SAIDA = :OLD_SAIDA')
+    Left = 352
+    Top = 240
+  end
+  object Q_Tabela: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      'select '
+      
+        's.saida, s.numero, s.data, f.razao , f.cpf_cnpj , i.codigo , ss.' +
+        'descricao , ss.quantidade , ss.unidade'
+      'from saidas s inner join saidasitens ss on ss.saida = s.saida'
+      'inner join favorecidos f on f.favorecido = s.favorecido'
+      'inner join itens i on ss.item = i.item'
+      'where s.Numero = :nsaida')
+    Left = 352
+    Top = 187
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'saida'
+        ParamType = ptUnknown
+      end>
+  end
+  object Q_MasterDS: TDataSource
+    DataSet = Q_Tabela
+    Left = 579
+    Top = 235
+  end
+  object ResultSet: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 626
+    Top = 356
+  end
+  object Q_Aux: TIBQuery
+    Database = DMProjeto.DB_Projeto
+    Transaction = DMProjeto.IBT_Projeto
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    SQL.Strings = (
+      ''
+      'Select count(*),'
+      's.Data , f.razao'
+      
+        'from saidas s inner join favorecidos f on f.favorecido = s.favor' +
+        'ecido '
+      'where s.numero = :nSaida'
+      'group by s.Data , f.razao')
+    UpdateObject = U_Tabela
+    Left = 480
+    Top = 179
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'nSaida'
+        ParamType = ptUnknown
+      end>
+  end
+  object P_Aux: TDataSetProvider
+    DataSet = Q_Aux
+    Constraints = True
+    Options = [poIncFieldProps, poCascadeDeletes, poCascadeUpdates, poPropogateChanges, poAllowCommandText]
+    Left = 480
+    Top = 229
+  end
+  object C_Aux: TClientDataSet
+    Tag = 100
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'saida'
+        ParamType = ptUnknown
+      end>
+    ProviderName = 'P_Aux'
+    Left = 481
+    Top = 340
+    object IntegerField1: TIntegerField
+      FieldKind = fkInternalCalc
+      FieldName = '_icSelecionado'
+    end
+    object C_AuxDATA: TDateField
+      FieldName = 'DATA'
+    end
+    object C_AuxRAZAO: TStringField
+      FieldName = 'RAZAO'
+      Size = 50
+    end
+  end
+  object C_AuxDS: TDataSource
+    Tag = 100
+    DataSet = C_Aux
+    Left = 480
+    Top = 284
+  end
+end

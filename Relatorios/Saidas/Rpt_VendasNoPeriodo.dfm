@@ -1280,10 +1280,10 @@ inherited RptVendasNoPeriodo: TRptVendasNoPeriodo
         'e '#39'N'#227'o Definido'#39' end as tipopessoa, pf.nome, (select sum(t.valor' +
         'pago) from titulosareceber t where t.venda = s.saida) as PgtoPar' +
         'celas, (select sum(t.descontos) from titulosareceber t where t.v' +
-        'enda = s.saida) as DescontosParcelas, s.totalpgtos, CASE WHEN s.' +
-        'total = s.totalpgtos THEN '#39'Liquidado'#39' WHEN s.totalpgtos > 0 AND ' +
-        's.total > s.totalpgtos THEN '#39' Pgto Parcial'#39' ELSE '#39'Sem Info'#39' END ' +
-        'AS status_pagamento'
+        'enda = s.saida) as DescontosParcelas, s.totalpgtos, CASE WHEN S.' +
+        'stastustitulos = '#39'L'#39' THEN '#39'Liquidado'#39' WHEN S.stastustitulos = '#39'A' +
+        #39' THEN '#39'Aberto/Sem Rec.'#39' WHEN S.stastustitulos = '#39'R'#39' THEN '#39'Com R' +
+        'eparcelamento'#39' ELSE '#39'Sem Info'#39' END AS status_pagamento'
       'from saidas s'
       'inner join favorecidos f on f.favorecido = s.favorecido'
       'left join favorecidos v on v.favorecido = s.vendedor'

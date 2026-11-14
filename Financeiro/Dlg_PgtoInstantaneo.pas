@@ -1645,6 +1645,11 @@ begin
      spSaldoDinheiroValor.Visible := False;
      spSaldoDinheiroLabel.Visible := False;
   End;
+  if DMProjeto.nPerfil <> 1 then begin
+    dfData.Date := DMProjeto.dDataSistema ;
+    dfData.ReadOnly := True ;
+    dfData.Color := cl3DLight;
+  end;
 end;
 
 procedure TDlgPgtoInstantaneo.btContabilidadeClick(Sender: TObject);

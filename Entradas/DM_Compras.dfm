@@ -1,6 +1,6 @@
 inherited DMCompras: TDMCompras
-  Left = 283
-  Top = 171
+  Left = 426
+  Top = 168
   Height = 650
   Width = 1102
   inherited Q_Tabela: TIBQuery
@@ -315,7 +315,6 @@ inherited DMCompras: TDMCompras
       ',:IMPRESSO)')
   end
   inherited C_Tabela: TClientDataSet
-    Active = False
     Left = 28
     Top = 155
     object C_TabelaCHAVENFE: TStringField
@@ -616,9 +615,6 @@ inherited DMCompras: TDMCompras
   inherited C_TiposEntrega: TClientDataSet
     Left = 369
   end
-  inherited C_Parcelas: TClientDataSet
-    Active = False
-  end
   inherited C_Mesclagens: TClientDataSet
     Top = 102
   end
@@ -626,7 +622,7 @@ inherited DMCompras: TDMCompras
     Top = 7
   end
   inherited C_Unidades: TClientDataSet
-    Active = True
+    Active = False
   end
   inherited C_MensagensOperacoes: TClientDataSet
     Left = 258
@@ -641,7 +637,6 @@ inherited DMCompras: TDMCompras
     Top = 244
   end
   inherited C_CFOPs_CSTs: TClientDataSet
-    Active = True
     Left = 761
     Top = 301
   end
@@ -650,12 +645,8 @@ inherited DMCompras: TDMCompras
     Top = 362
   end
   inherited C_SitECF: TClientDataSet
-    Active = True
     Left = 450
     Top = 315
-  end
-  inherited C_Almoxarifado: TClientDataSet
-    Active = True
   end
   inherited C_Vendedores: TClientDataSet
     Left = 986
@@ -670,7 +661,6 @@ inherited DMCompras: TDMCompras
     Top = 236
   end
   inherited C_CSTs: TClientDataSet
-    Active = True
     Left = 857
     Top = 287
   end
@@ -687,7 +677,6 @@ inherited DMCompras: TDMCompras
     Top = 268
   end
   inherited C_CSTs_IPI: TClientDataSet
-    Active = True
     Left = 986
     Top = 319
   end
@@ -704,7 +693,6 @@ inherited DMCompras: TDMCompras
     Top = 460
   end
   inherited C_CSTs_PisCofins: TClientDataSet
-    Active = True
     Left = 874
     Top = 511
   end

@@ -192,6 +192,9 @@ type
     C_ChequesDepositoFAVORECIDO: TIntegerField;
     C_ChequesDepositoTIPODEPOSITO: TIntegerField;
     C_ChequesDepositoFORMAPAGAMENTO: TIntegerField;
+    cbDevolvidos: TTS_CheckBox;
+    plMasterppField1: TppField;
+    ppDevolvidos: TppLabel;
     procedure ckDinheiroClick(Sender: TObject);
     procedure cmbContaOrigemClick(Sender: TObject);
     procedure dbDinheiroChange(Sender: TObject);
@@ -257,6 +260,10 @@ uses DM_Projeto, funcoes, Dlg_CoresStatus, DM_Financeiro, Frm_Contabilidade;
 procedure TDlgDepositoCheques.ImprimirBordero;
 begin
   ppDBComplemento.Visible := false;
+  if  (cbDevolvidos.Checked) then
+    ppDevolvidos.Caption := ' Deposito de Chq Devolvidos'
+  else
+    ppDevolvidos.Caption := ' ';
 
   With Q_Master do begin
     Close;
@@ -477,7 +484,7 @@ begin
     {Deposito em Cheques e atualização dos Flags (Status, LocalTitulo e ForaDaEmpresa) em DepositosDoc}
      if C_OperacoesValorOperacao.Value <> C_OperacoesValorDinheiro.Value then
     	Operacao := DMFinanceiro.DepositarCheques( C_OperacoesContaDestino.Value, C_OperacoesData.Value, C_OperacoesValorOperacao.Value, C_OperacoesValorDinheiro.Value,
-                                 							C_OperacoesHistorico.Value, cbLiquidar.Checked, DBCheques.ItensSelecionados, OperacaoDinheiro  );
+                                 							C_OperacoesHistorico.Value, cbLiquidar.Checked, DBCheques.ItensSelecionados, OperacaoDinheiro, cbDevolvidos.Checked  );
 
     if Operacao > 0 then
       nOperacao := Operacao
@@ -750,6 +757,11 @@ begin
     pnCancelado.caption := 'Canc.';
     ppLblObs.caption := 'Obs.';
   end;
+  dfData.Date := DMProjeto.dDataSistema;
+    if DMProjeto.nPerfil <> 1 then begin
+      dfData.ReadOnly := True ;
+      dfData.Color := cl3DLight;
+    end ;
   // Adriano
   DMContabil := TDMContabilidade.Create(self);
 end;

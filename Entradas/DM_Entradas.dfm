@@ -359,7 +359,6 @@ inherited DMEntradas: TDMEntradas
     Left = 22
   end
   inherited C_Tabela: TClientDataSet
-    Active = True
     AfterScroll = C_TabelaAfterScroll
     OnCalcFields = C_TabelaCalcFields
     Left = 26
@@ -1766,17 +1765,21 @@ inherited DMEntradas: TDMEntradas
     end
     object C_ItensCLASFISCAL: TStringField
       FieldName = 'CLASFISCAL'
+      Origin = 'ENTRADASITENS.CLASFISCAL'
       Size = 15
     end
     object C_ItensCOMPENSACAOCUSTOMOEDA: TFloatField
       FieldName = 'COMPENSACAOCUSTOMOEDA'
+      Origin = 'ENTRADASITENS.COMPENSACAOCUSTOMOEDA'
     end
     object C_ItensCSTIBS: TStringField
       FieldName = 'CSTIBS'
+      Origin = 'ENTRADASITENS.CSTIBS'
       Size = 3
     end
     object C_ItensCLASSTRIB: TStringField
       FieldName = 'CLASSTRIB'
+      Origin = 'ENTRADASITENS.CLASSTRIB'
       Size = 6
     end
   end
@@ -1799,7 +1802,6 @@ inherited DMEntradas: TDMEntradas
     Left = 538
   end
   inherited C_TiposMovimento: TClientDataSet
-    Active = True
     Left = 540
     Top = 101
     inherited C_TiposMovimentoDESCRICAO: TStringField
@@ -2494,7 +2496,6 @@ inherited DMEntradas: TDMEntradas
     Top = 260
   end
   object C_PlanosPagamento: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_PlanosPagamento'
@@ -2609,7 +2610,6 @@ inherited DMEntradas: TDMEntradas
     Top = 260
   end
   object C_TiposEntrega: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_TiposEntrega'
@@ -2790,7 +2790,6 @@ inherited DMEntradas: TDMEntradas
     Top = 253
   end
   object C_Parcelas: TClientDataSet
-    Active = True
     Aggregates = <>
     DataSetField = C_TabelaQ_Parcelas
     Params = <>
@@ -3190,7 +3189,6 @@ inherited DMEntradas: TDMEntradas
     Top = 51
   end
   object C_Status: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Status'
@@ -3226,6 +3224,7 @@ inherited DMEntradas: TDMEntradas
     Top = 278
   end
   object C_Unidades: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Unidades'
@@ -3460,7 +3459,6 @@ inherited DMEntradas: TDMEntradas
     Top = 5
   end
   object C_CFOPs: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_CFOPs'
@@ -3653,7 +3651,6 @@ inherited DMEntradas: TDMEntradas
     Top = 64
   end
   object C_Indexadores: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Indexadores'
@@ -3696,7 +3693,6 @@ inherited DMEntradas: TDMEntradas
     Top = 71
   end
   object C_Vendedores: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'P_Vendedores'

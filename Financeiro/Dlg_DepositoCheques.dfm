@@ -10,11 +10,11 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Tag = -1
-    Left = 579
-    Height = 385
+    Left = 587
+    Height = 395
     HelpContext = -1
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 351
+      Top = 361
     end
     inherited btComando2: TTS_SpeedButton
       Top = 73
@@ -419,7 +419,7 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
   end
   inherited pnTitulo: TTS_MaxPanel
     Tag = -1
-    Width = 697
+    Width = 705
     HelpContext = -1
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
@@ -464,8 +464,8 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
   end
   inherited pnDados: TTS_Panel
     Tag = -1
-    Width = 579
-    Height = 385
+    Width = 587
+    Height = 395
     HelpContext = -1
     Color = 15724519
     object TS_Shape9: TTS_Shape
@@ -1188,6 +1188,23 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
       Height = 19
       StoredValues = 1
     end
+    object cbDevolvidos: TTS_CheckBox
+      Tag = -2
+      Left = 368
+      Top = 321
+      Width = 213
+      HelpContext = -2
+      Color = 15724519
+      ParentColor = False
+      Style.BorderStyle = xbsNone
+      Style.ButtonStyle = btsSimple
+      Style.HotTrack = False
+      TabOrder = 10
+      Caption = '&Possui Chq Devolvidos'
+      StyleController = DMProjeto.esFinanceiro
+      DisableEdit = False
+      Height = 21
+    end
   end
   inherited DlgMsg: TDlgMsg
     Left = 598
@@ -1437,7 +1454,6 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
     PrinterSetup.mmPaperWidth = 216000
     PrinterSetup.PaperSize = 1
     DeviceType = 'Screen'
-    Language = lgPortugueseBrazil
     SavePrinterSetup = True
     Left = 476
     Top = 118
@@ -1706,6 +1722,21 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
         mmLeft = 75142
         mmTop = 19844
         mmWidth = 1323
+        BandType = 0
+      end
+      object ppDevolvidos: TppLabel
+        UserName = 'Devolvidos'
+        Caption = 'Devolvidos '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Tahoma'
+        Font.Size = 14
+        Font.Style = []
+        Transparent = True
+        mmHeight = 6085
+        mmLeft = 1058
+        mmTop = 10319
+        mmWidth = 33338
         BandType = 0
       end
     end
@@ -1980,117 +2011,14 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
     DataSource = Q_MasterDS
     OpenDataSource = False
     UserName = 'plMaster'
-    Left = 468
-    Top = 144
+    Left = 452
+    Top = 200
     object plMasterppField1: TppField
-      FieldAlias = 'DATA'
-      FieldName = 'DATA'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
+      FieldAlias = 'MasterppField1'
+      FieldName = 'MasterppField1'
+      FieldLength = 10
+      DisplayWidth = 10
       Position = 0
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField2: TppField
-      FieldAlias = 'CONTADESTINO'
-      FieldName = 'CONTADESTINO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 1
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField3: TppField
-      FieldAlias = 'NOME'
-      FieldName = 'NOME'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 2
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField4: TppField
-      FieldAlias = 'NOMEBANCO'
-      FieldName = 'NOMEBANCO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 3
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField5: TppField
-      FieldAlias = 'VALOROPERACAO'
-      FieldName = 'VALOROPERACAO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 4
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField6: TppField
-      FieldAlias = 'NUMCHEQUE'
-      FieldName = 'NUMCHEQUE'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 5
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField7: TppField
-      FieldAlias = 'VALORDINHEIRO'
-      FieldName = 'VALORDINHEIRO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 6
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField8: TppField
-      FieldAlias = 'VALOR'
-      FieldName = 'VALOR'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 7
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField9: TppField
-      FieldAlias = 'DATADEPOSITO'
-      FieldName = 'DATADEPOSITO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 8
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField10: TppField
-      FieldAlias = 'HISTORICO'
-      FieldName = 'HISTORICO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 9
-      Searchable = False
-      Sortable = False
-    end
-    object plMasterppField11: TppField
-      FieldAlias = 'LOGINNAME'
-      FieldName = 'LOGINNAME'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 10
-      Searchable = False
-      Sortable = False
     end
   end
   object Q_Master: TIBQuery
@@ -2122,8 +2050,8 @@ inherited DlgDepositoCheques: TDlgDepositoCheques
         '                  LEFT JOIN Usuarios u ON u.usuario = opf.usuari' +
         'o'
       'Where opf.Operacao = :Operacao')
-    Left = 462
-    Top = 221
+    Left = 478
+    Top = 261
     ParamData = <
       item
         DataType = ftUnknown

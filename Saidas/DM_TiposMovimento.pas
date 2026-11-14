@@ -386,6 +386,9 @@ type
     C_TabelaCLASSTRIB_RTC_PADRAO: TStringField;
     C_TabelalkCST_RTC_PADRAO: TStringField;
     C_TabelalkCLASSTRIB_RTC: TStringField;
+    C_TabelaCB_DOC3: TStringField;
+    C_TabelaTIPOIMPRESSAO_OP3: TStringField;
+    C_TabelaDescTipoImpressao3: TStringField;
     procedure C_TabelaNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure C_TabelaPOSSUIENTREGAChange(Sender: TField);

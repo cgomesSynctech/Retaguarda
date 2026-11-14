@@ -9,98 +9,12 @@ inherited DlgEscolheConsultas: TDlgEscolheConsultas
   Constraints.MinWidth = 472
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnDados: TTS_Panel
-    Width = 387
-    Height = 203
-    Color = 16116702
-    object pnAdicionais: TTS_Panel
-      Left = 1
-      Top = 169
-      Width = 385
-      Height = 33
-      Align = alBottom
-      BevelOuter = bvNone
-      Color = 16247774
-      TabOrder = 0
-      Visible = False
-      DesignSize = (
-        385
-        33)
-      object TS_Label1: TTS_Label
-        Left = 7
-        Top = 12
-        Width = 98
-        Caption = 'Quantidade de Dias:'
-        FormatoTabela = False
-        LinkToResult = 0
-      end
-      object edDias: TTS_Edit
-        Left = 109
-        Top = 10
-        Width = 64
-        TabOrder = 1
-        Text = '60'
-        Alignment = taRightJustify
-        StyleController = DMProjeto.esClientes
-        Height = 20
-        StoredValues = 1
-      end
-      object pnDatas: TTS_Panel
-        Left = 136
-        Top = 5
-        Width = 353
-        Height = 28
-        Anchors = [akLeft, akTop, akRight, akBottom]
-        BevelOuter = bvNone
-        Color = 16247774
-        TabOrder = 0
-        Visible = False
-        object TS_Label2: TTS_Label
-          Left = 6
-          Top = 7
-          Width = 84
-          Caption = 'Aniversariantes:'
-          FormatoTabela = False
-          LinkToResult = 0
-        end
-        object cmbPeriodo: TTS_ComboBox
-          Left = 92
-          Top = 5
-          Width = 213
-          TabOrder = 0
-          StyleController = DMProjeto.esClientes
-          DropDownListStyle = True
-          Items.Strings = (
-            'de hoje'
-            'da Semana'
-            'do M'#234's'
-            'do Pr'#243'ximo M'#234's'
-            '')
-          Height = 19
-        end
-      end
-    end
-    object DF_Consultas: TDBLookupListBox
-      Left = 1
-      Top = 1
-      Width = 385
-      Height = 119
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      Ctl3D = False
-      KeyField = 'CONSULTA'
-      ListField = 'TITULO'
-      ListSource = C_ConsultasDS
-      ParentCtl3D = False
-      TabOrder = 1
-      OnClick = DF_ConsultasClick
-    end
-  end
   inherited pnNavigator: TTS_Panel
     Left = 387
     Width = 108
-    Height = 203
+    Height = 202
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 172
+      Top = 171
       Width = 106
       Height = 30
     end
@@ -300,17 +214,104 @@ inherited DlgEscolheConsultas: TDlgEscolheConsultas
   inherited pnTitulo: TTS_MaxPanel
     Width = 495
     Gradient.ColorStart = 14859922
-    inherited lbCaption: TdxfLabel
-      Width = 173
-      Caption = 'Escolhe Consultas'
-      Effect3D.ShadowedColor = 14859922
-    end
     inherited lbEstadoForm: TTS_Label
       Width = 153
       Caption = 'Consultas relacionada a clientes'
     end
     inherited btHelp: TTS_SpeedButton
       Left = 459
+    end
+    inherited lbCaption: TdxfLabel
+      Width = 173
+      AutoSize = True
+      Caption = 'Escolhe Consultas'
+      Effect3D.ShadowedColor = 14859922
+    end
+  end
+  inherited pnDados: TTS_Panel
+    Width = 387
+    Height = 202
+    Color = 16116702
+    object pnAdicionais: TTS_Panel
+      Left = 1
+      Top = 168
+      Width = 385
+      Height = 33
+      Align = alBottom
+      BevelOuter = bvNone
+      Color = 16247774
+      TabOrder = 0
+      Visible = False
+      DesignSize = (
+        385
+        33)
+      object TS_Label1: TTS_Label
+        Left = 7
+        Top = 12
+        Width = 98
+        Caption = 'Quantidade de Dias:'
+        FormatoTabela = False
+        LinkToResult = 0
+      end
+      object edDias: TTS_Edit
+        Left = 109
+        Top = 10
+        Width = 64
+        TabOrder = 1
+        Text = '60'
+        Alignment = taRightJustify
+        StyleController = DMProjeto.esClientes
+        Height = 20
+        StoredValues = 1
+      end
+      object pnDatas: TTS_Panel
+        Left = 136
+        Top = 5
+        Width = 353
+        Height = 28
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        BevelOuter = bvNone
+        Color = 16247774
+        TabOrder = 0
+        Visible = False
+        object TS_Label2: TTS_Label
+          Left = 6
+          Top = 7
+          Width = 84
+          Caption = 'Aniversariantes:'
+          FormatoTabela = False
+          LinkToResult = 0
+        end
+        object cmbPeriodo: TTS_ComboBox
+          Left = 92
+          Top = 5
+          Width = 213
+          TabOrder = 0
+          StyleController = DMProjeto.esClientes
+          DropDownListStyle = True
+          Items.Strings = (
+            'de hoje'
+            'da Semana'
+            'do M'#234's'
+            'do Pr'#243'ximo M'#234's'
+            '')
+          Height = 19
+        end
+      end
+    end
+    object DF_Consultas: TDBLookupListBox
+      Left = 1
+      Top = 1
+      Width = 385
+      Height = 106
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Ctl3D = False
+      KeyField = 'CONSULTA'
+      ListField = 'TITULO'
+      ListSource = C_ConsultasDS
+      ParentCtl3D = False
+      TabOrder = 1
+      OnClick = DF_ConsultasClick
     end
   end
   inherited DlgMsg: TDlgMsg

@@ -1,18 +1,18 @@
 inherited DlgMarcarDevolvido: TDlgMarcarDevolvido
   Left = 345
   Top = 221
-  Width = 479
-  Height = 184
+  Width = 513
+  Height = 289
   Caption = 'Financeiro'
   Color = clWhite
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
-    Left = 345
-    Height = 105
+    Left = 387
+    Height = 218
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 71
+      Top = 184
     end
     inherited btComando1: TTS_SpeedButton
       Caption = 'Contabilidade'
@@ -311,8 +311,8 @@ inherited DlgMarcarDevolvido: TDlgMarcarDevolvido
   object Panel1: TTS_Panel [1]
     Left = 0
     Top = 43
-    Width = 345
-    Height = 105
+    Width = 387
+    Height = 218
     Align = alClient
     BevelOuter = bvNone
     Color = 15724519
@@ -899,11 +899,14 @@ inherited DlgMarcarDevolvido: TDlgMarcarDevolvido
     end
   end
   inherited pnTitulo: TTS_MaxPanel
-    Width = 463
+    Width = 505
     Gradient.ColorStart = 13223591
     inherited lbEstadoForm: TTS_Label
       Width = 105
       Caption = 'Devolu'#231#227'o de Cheque'
+    end
+    inherited btHelp: TTS_SpeedButton
+      Left = 456
     end
     inherited lbUpperHint: TTS_Label
       Left = 463
@@ -916,8 +919,8 @@ inherited DlgMarcarDevolvido: TDlgMarcarDevolvido
     end
   end
   inherited pnDados: TTS_Panel
-    Width = 345
-    Height = 105
+    Width = 387
+    Height = 218
     Color = 15724519
   end
   inherited DlgMsg: TDlgMsg

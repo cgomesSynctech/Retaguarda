@@ -26,8 +26,6 @@ uses
   Frm_Grupos in 'Itens\Frm_Grupos.pas' {FrmGrupos},
   DM_TaxAgencias in 'DM_TaxAgencias.pas' {DMTaxAgencias: TDataModule},
   Frm_TaxAgencias in 'Frm_TaxAgencias.pas' {FrmTaxAgencias},
-  DM_Taxs in 'DM_Taxs.pas' {DMTaxs: TDataModule},
-  Frm_Taxs in 'Frm_Taxs.pas' {FrmTaxs},
   DM_Itens in 'Itens\DM_Itens.pas' {DMItens: TDataModule},
   Frm_Itens in 'Itens\Frm_Itens.pas' {FrmItens},
   Dlg_Modal in 'K:\ClassesIB6\DLG_MODAL.pas' {DlgModal},
@@ -76,33 +74,17 @@ uses
   Frm_Textos in 'Geral\Frm_Textos.pas' {FrmTextos},
   DM_Textos in 'Geral\DM_Textos.pas' {DMTextos: TDataModule},
   Dlg_Campos in 'Geral\Dlg_Campos.pas' {DlgCampos},
-  Frm_Consultas in 'Frm_Consultas.pas' {FrmConsultas},
-  DM_Consultas in 'DM_Consultas.pas' {DMConsultas: TDataModule},
   Dlg_HistoricoOperacoes in 'Financeiro\Dlg_HistoricoOperacoes.pas' {DlgHistoricoOperacoes},
   Dlg_HistoricoRetiradas in 'Financeiro\Dlg_HistoricoRetiradas.pas' {DlgHistoricoRetiradas},
   Dlg_HistoricoDepositos in 'Financeiro\Dlg_HistoricoDepositos.pas' {DlgHistoricoDepositos},
   Dlg_EscreverCheque in 'Financeiro\Dlg_EscreverCheque.pas' {DlgEscreverCheque},
   Dlg_ExtratoContas in 'Financeiro\Dlg_ExtratoContas.pas' {DlgExtratoContas},
   Dlg_SitCliente in 'Clientes\Dlg_SitCliente.pas' {DlgSitCliente},
-  Dlg_Calendario in 'Agenda\Dlg_Calendario.pas' {DlgCalendario},
-  Dlg_CalendarioMes in 'Agenda\Dlg_CalendarioMes.pas' {DlgCalendarioMes},
-  Dlg_Config_Altera in 'Agenda\Dlg_Config_Altera.pas' {DlgConfig_Altera},
   Dlg_Consulta in 'Agenda\Dlg_Consulta.pas' {DlgConsulta},
   Dlg_DescricaoCompromissos in 'Agenda\Dlg_DescricaoCompromissos.pas' {DlgDescricaoCompromissos},
   Dlg_Legendas in 'Agenda\Dlg_Legendas.pas' {DlgLegendas},
-  Dlg_AgOpcoes in 'Agenda\Dlg_AgOpcoes.pas' {DlgAgOpcoes},
-  Frm_Tarefas in 'Agenda\Frm_Tarefas.pas' {FrmTarefas},
-  Dlg_Recados in 'Agenda\Dlg_Recados.pas' {DlgRecados},
-  Dlg_Tarefas in 'Agenda\Dlg_Tarefas.pas' {DlgTarefas},
-  DM_AgendaTelefones in 'Agenda\DM_AgendaTelefones.pas' {DMAgendaTelefones: TDataModule},
   DM_Categorias in 'Agenda\DM_Categorias.pas' {DMCategorias: TDataModule},
-  DM_Compromissos in 'Agenda\DM_Compromissos.pas' {DMCompromissos: TDataModule},
-  DM_Recados in 'Agenda\DM_Recados.pas' {DMRecados: TDataModule},
-  DM_Tarefas in 'Agenda\DM_Tarefas.pas' {DMTarefas: TDataModule},
-  Frm_AgendaTelefones in 'Agenda\Frm_AgendaTelefones.pas' {FrmAgendaTelefones},
   Frm_Categorias in 'Agenda\Frm_Categorias.pas' {FrmCategorias},
-  Frm_Compromissos in 'Agenda\Frm_Compromissos.pas' {FrmCompromissos},
-  Frm_Recados in 'Agenda\Frm_Recados.pas' {FrmRecados},
   DM_DIGITACAOITENS in 'K:\ClassesIB6\DM_DIGITACAOITENS.pas' {DMDigitacaoItens: TDataModule},
   DM_ITENSFAVORECIDO in 'K:\ClassesIB6\DM_ITENSFAVORECIDO.pas' {DMItensFavorecido: TDataModule},
   FRM_DIGITACAOITENS in 'K:\ClassesIB6\FRM_DIGITACAOITENS.pas' {FrmDigitacaoItens},
@@ -374,7 +356,6 @@ uses
   DM_Operadores in 'DM_Operadores.pas' {DMOperadores: TDataModule},
   Frm_Operadores in 'Frm_Operadores.pas' {FrmOperadores},
   Rpt_Promocoes in 'Relatorios\Itens\Rpt_Promocoes.pas' {RptPromocoes},
-  Dlg_EmailsNaoCadastrados in 'Geral\Dlg_EmailsNaoCadastrados.pas' {DlgEmailsNaoCadastrados},
   DM_ItensFalta in 'DM_ItensFalta.pas' {DMItensFalta: TDataModule},
   Frm_ItensFalta in 'Frm_ItensFalta.pas' {FrmItensFalta},
   Rpt_ItensFalta in 'Relatorios\Itens\Rpt_ItensFalta.pas' {RptItensFalta},
@@ -619,7 +600,6 @@ uses
   Frm_ProducoesServico in 'Saidas\Frm_ProducoesServico.pas' {FrmProducoesServico},
   Rpt_ProducoesServico in 'Saidas\Rpt_ProducoesServico.pas' {RptProducoesServico},
   Rpt_ComissoesLiquidez in 'Funcionarios\Rpt_ComissoesLiquidez.pas' {RptComissoesLiquidez},
-  Dlg_NFeExportarDados in 'NFe\Dlg_NFeExportarDados.pas' {DlgNFeExportarDados},
   rpt_ProdutosVendidosGrupoPai in 'Relatorios\Saidas\rpt_ProdutosVendidosGrupoPai.pas' {rptProdutosVendidosGrupoPai},
   Rpt_ApuracaoPisCofins in 'Relatorios\Saidas\Rpt_ApuracaoPisCofins.pas' {RptApuracaoPisCofins},
   Rpt_ComissaoMontagem in 'Funcionarios\Relatorios\Rpt_ComissaoMontagem.pas' {RptComissaoMontagem},
@@ -646,7 +626,6 @@ uses
   Dlg_AberturaCaixa in 'Financeiro\Dlg_AberturaCaixa.pas' {DlgAberturaCaixa},
   Dlg_Fechamento in 'Financeiro\Dlg_Fechamento.pas' {DlgFechamento},
   Dlg_FechamentoModeloB in 'Financeiro\Dlg_FechamentoModeloB.pas' {DlgFechamentoModeloB},
-  Dlg_ImportacaoPDV in 'Dlg_ImportacaoPDV.pas' {DlgImportacaoPDV},
   Dlg_ExportarDadosPDV in 'Dlg_ExportarDadosPDV.pas' {DlgExportarDadosPDV},
   Dlg_GerarArquivoPirelli in 'Itens\Dlg_GerarArquivoPirelli.pas' {DlgGerarArquivoPirelli},
   Rpt_MovimentacaoItens in 'Relatorios\Itens\Rpt_MovimentacaoItens.pas' {RptMovimentacaoItens},
@@ -734,7 +713,9 @@ uses
   Dlg_VendedorVMR in 'Saidas\Dlg_VendedorVMR.pas' {DlgVendedorVMR},
   Rpt_ApuracaoTabela in 'Relatorios\Saidas\Rpt_ApuracaoTabela.pas' {RptApuracaoTabela},
   Rpt_ItensMenosVendido in 'Relatorios\Itens\Rpt_ItensMenosVendido.pas' {RptItensMenosVendido},
-  Dlg_RelcaixaC in 'Financeiro\Relatorios\Dlg_RelcaixaC.pas' {DlgRelcaixaC};
+  Dlg_RelcaixaC in 'Financeiro\Relatorios\Dlg_RelcaixaC.pas' {DlgRelcaixaC},
+  Rpt_InvoicesDoc3 in 'Relatorios\Saidas\rpt_InvoicesDoc3.pas' {RptInvoicesDoc3},
+  Dlg_Expedicao in 'Saidas\Romaneio\Dlg_Expedicao.pas' {DlgExpedicao};
 
 {$R *.RES}
 
@@ -750,6 +731,5 @@ begin
   Application.CreateForm(TDMGridPrinter, DMGridPrinter);
   Application.CreateForm(TMDIProjeto, MDIProjeto);
   Application.CreateForm(TDlgVendedorVMR, DlgVendedorVMR);
-  Application.CreateForm(TDlgRelcaixaC, DlgRelcaixaC);
   Application.Run;
 end.

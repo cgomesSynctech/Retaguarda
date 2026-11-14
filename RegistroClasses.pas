@@ -11,7 +11,7 @@ uses
    DM_TiposAtividade, Dlg_EmissaoCheques, Rpt_DocGarantia, Dlg_Sobre,
    Dlg_DepositosInstantaneos, Dlg_ExtratoContas, Dlg_AutorizacoesPerfil,
    Dlg_FluxoCaixa, Dlg_GrafAReceberAPagar, Dlg_ConveterPagamentosAgendados,
-   Dlg_ChequesPendentesImpressao, DM_TimeCliente, Frm_TimeCliente,
+   DM_TimeCliente, Frm_TimeCliente,
    Dlg_LocalizarCheques, Rpt_ClientesHistoricoDevolucoes, Dlg_CriarEmpresa,
    Rpt_RecebimentosDepositos, Rpt_PagamentosRetiradas,
    Dlg_Restaurar, Dlg_RecalcularComissao, Frm_AcompanharItens,
@@ -27,7 +27,7 @@ uses
    DM_Empresa, DM_FormasPagamento, DM_Fornecedores,
    DM_Funcionarios, DM_Grupos, DM_Idiomas, Dlg_EscolherOperacao, Dlg_EscolherOperacaoEntrada,
    DM_Itens, DM_Paises, DM_Planos_Pagamento, DM_Requisicoes, Frm_Requisicoes,
-   DM_TaxAgencias, DM_Taxs, Frm_AvaliandoEstimates, Frm_EstimatesAprovadas,
+   DM_TaxAgencias, Frm_AvaliandoEstimates, Frm_EstimatesAprovadas,
    DM_TiposBusiness, DM_TiposEntrega, DM_PedidosCompra, FRM_PedidosCompra,
    DM_UFS, DM_UNIDADES, DM_Usuarios, DM_Compras, FRM_Compras,
    frm_A_Pagar, frm_a_receber, Dlg_ApresentacaoCartao,
@@ -38,7 +38,7 @@ uses
    Frm_Grupos, Frm_Idiomas, Frm_FactoryEmpresa, DM_FactoryEmpresa,
    Frm_Itens, Frm_Paises, Rpt_FactoryEmpresa, Rpt_Promocoes,
    Frm_Planos_Pagamento, Frm_TaxAgencias, 
-   Frm_Taxs, Frm_TiposBusiness, Frm_TiposEntrega,
+   Frm_TiposBusiness, Frm_TiposEntrega,
    Frm_UFS, Frm_Unidades, DM_Mensagens, Frm_Mensagens,
    Frm_Usuarios, MDI_Projeto, Dlg_AgendDespesasFixas,
    Frm_Cargos, DM_Cargos, Frm_Factory, DM_Factory,
@@ -50,13 +50,13 @@ uses
    Frm_Carteiras, DM_Carteiras,
    Dlg_SitCliente, Dlg_UltimasVendas, {Dlg_ExtratoFinanceiro,}
    Dlg_RepasseEntreEmpresas, Rpt_ParcelasChequesAReceber,
-   Frm_Compromissos, DM_Compromissos, DM_Categorias, Frm_Categorias, DM_AgendaTelefones, Frm_AgendaTelefones,
-   Dlg_BaixaTitulosBoletoBancario,
-   DM_Recados, Frm_Recados, Dlg_Consulta, Dlg_Recados,
+   DM_Categorias, Frm_Categorias,
 
-   Dlg_DescricaoCompromissos, DM_Tarefas, Frm_Tarefas,
+   Dlg_Consulta, 
 
-   Dlg_Tarefas, Dlg_Legendas, Dlg_CalendarioMes, Dlg_Calendario,
+
+
+   Dlg_Legendas,
 
    DM_Saidas, Frm_Saidas, DM_TiposMovimento, Frm_TiposMovimento,
 
@@ -164,7 +164,7 @@ uses
    Dlg_CalculoCusto, DM_Acessorios, Frm_Acessorios, DM_ChamadoTecnico,
    Frm_ChamadoTecnico, Dlg_AlterarLocalizacao,
    DM_RomaneioCobr, Frm_RomaneioCobr, Dlg_TabelaPreco, Rpt_Vendas, Rpt_Pedidos,
-   Dlg_GerarRemessa, Dlg_LerRetorno, Rpt_EntrConsig, Rpt_DevConsig,
+   Dlg_GerarRemessa, Rpt_EntrConsig, Rpt_DevConsig,
    Rpt_VendasConsig, DM_GruposComissoes, Frm_GruposComissoes, Dlg_FormacaoCusto,
    Dlg_AtualizarPrecosCalculados, Rpt_PrecoXCusto, Rpt_ListaPrecos,
    Rpt_ComissaoSaida, Dlg_IP, Frm_FiltroFavorecidos, Rpt_ResultadosPeriodo,
@@ -182,7 +182,7 @@ uses
    Rpt_RelacaoPontos, DM_ClientesEquip, Frm_ClientesEquip, Dlg_QtdAlmoxarifado, Dlg_InformacoesFinanceiras,
    Rpt_OutrasEntradasProdutos, Rpt_ComprasProdutos,
    DM_Licitacoes, Frm_Licitacoes, Dlg_UsuariosPoderes, Rpt_ReposicaoGondolas,
-   Rpt_Autorizacoes, Dlg_ApuracaoCaixa,
+   Rpt_Autorizacoes,
    Frm_AjustesItensFiscal, DM_AjustesItensFiscal, Rpt_SaldoConsignacaoSaida,
    Dlg_ReajustePrecosMultUnidade,
    Rpt_VendaVendedor,    Rpt_VendaProdutoVendedor,
@@ -194,7 +194,6 @@ uses
    DM_ProducoesServico , Frm_ProducoesServico,
    Rpt_ProducoesServico,
    Rpt_ComissoesLiquidez,
-   Dlg_NFeExportarDados,
    rpt_ProdutosVendidosGrupoPai,
    Rpt_ApuracaoPisCofins,
    Rpt_ComissaoMontagem,
@@ -211,8 +210,6 @@ uses
    Dlg_Fechamento,
    Dlg_FechamentoModeloB,
    Rpt_ComissaoLiquidezItem,
-   Dlg_ImportacaoPDV,
-   Dlg_ExportarDadosPDV,
    Dlg_CargaDadosPDV,
    Dlg_GerarArquivoPirelli,
    Dlg_MarcasRelatorio,
@@ -244,7 +241,7 @@ uses
    DM_AjustesVolumesItens, Frm_AjustesVolumesItens, DM_Indicacao, Frm_Indicacao, Rpt_ReposicaoAvulsa, Rpt_InventarioEstoqueNovo, Rpt_EstoqueFisicoFiscal, Rpt_EntradaItem,
    Rpt_ProdutosOrcamentos, dlg_AcompanhamentoMecanica, DM_MarcaModelo, Frm_MarcaModelo, Frm_EntradasMecanica, 
    DM_EntradasMecanica, rpt_ProdutosComprasGrupoPai, Frm_TransfereReposicao, dlg_ValoresFechaCaixa, Rpt_InvoicesDoc2, Rpt_GerencialSaidas, Dlg_VipShop, Rpt_VendasItensSimples,
-   Rpt_VendasCartoesDocs, Rpt_ApuracaoTabela, Rpt_ItensMenosVendido, Dlg_RelcaixaC;
+   Rpt_VendasCartoesDocs, Rpt_ApuracaoTabela, Rpt_ItensMenosVendido, Dlg_RelcaixaC, Rpt_InvoicesDoc3,Dlg_Expedicao ;
 
 
 implementation
@@ -386,7 +383,6 @@ initialization
    RegisterClass(TDMConsultas);
    RegisterClass(TDlgDepositosInstantaneos);
    RegisterClass(TDlgChequesEmitidos);
-   RegisterClass(TDlgChequesPendentesImpressao);
    RegisterClass(TDlgData);
    RegisterClass(TDlgDepositos);
    RegisterClass(TDlgEmissaoCheques);
@@ -416,7 +412,6 @@ initialization
    RegisterClass(TDMPaises);
    RegisterClass(TDMPlanos_Pagamento);
    RegisterClass(TDMTaxAgencias);
-   RegisterClass(TDMTaxs);
    RegisterClass(TDMTiposBusiness);
    RegisterClass(TDMTiposEntrega);
    RegisterClass(TDMUFS);
@@ -439,7 +434,6 @@ initialization
    RegisterClass(TFrmPaises);
    RegisterClass(TFrmPlanos_Pagamento);
    RegisterClass(TFrmTaxAgencias);
-   RegisterClass(TFrmTaxs);
    RegisterClass(TFrmTiposBusiness);
    RegisterClass(TFrmTiposEntrega);
    RegisterClass(TFrmUFS);
@@ -453,23 +447,11 @@ initialization
    RegisterClass(TDlgAgendDespesasFixas);
    RegisterClass(TDlgSitCliente);
    RegisterClass(TDlgUltimasVendas);
-   RegisterClass(TDMCompromissos);
-   RegisterClass(TFRMCompromissos);
    RegisterClass(TDMCategorias);
    RegisterClass(TFRMCategorias);
-   RegisterClass(TDMAgendaTelefones);
-   RegisterClass(TFRMAgendaTelefones);
-   RegisterClass(TDMRecados);
-   RegisterClass(TFRMRecados);
    RegisterClass(TDlgConsulta);
-   RegisterClass(TDlgRecados);
-   RegisterClass(TDMTarefas);
-   RegisterClass(TFRMTarefas);
-   RegisterClass(TDlgDescricaoCompromissos);
-   RegisterClass(TDlgTarefas);
+
    RegisterClass(TDlgLegendas);
-   RegisterClass(TDlgCalendario);
-   RegisterClass(TDlgCalendarioMes);
    RegisterClass(TDMSaidas);
    RegisterClass(TFrmSaidas);
 	 RegisterClass(TDlgRepasseEntreEmpresas);
@@ -635,7 +617,7 @@ initialization
 
    RegisterClass(TDMMedicos);
    RegisterClass(TFrmMedicos);
-   RegisterClass(TDlgBaixaTitulosBoletoBancario);
+
    RegisterClass(TDMChecks);
    RegisterClass(TFrmChecks);
    RegisterClass(TDlgMescSaidConsig);
@@ -695,7 +677,6 @@ initialization
    RegisterClass(TRptVendas);
    RegisterClass(TRptPedidos);
    RegisterClass(TDlgGerarRemessa);
-   RegisterClass(TDlgLerRetorno);
    RegisterClass(TRptEntrConsig);
    RegisterClass(TRptDevConsig);
    RegisterClass(TRptVendasConsig);
@@ -764,7 +745,6 @@ initialization
    RegisterClass(TDlgUsuariosPoderes);
    RegisterClass(TRptReposicaoGondolas);
    RegisterClass(TRptAutorizacoes);
-   RegisterClass(TDlgApuracaoCaixa);
    RegisterClass(TFrmAjustesItensFiscal);
    RegisterClass(TDMAjustesItensFiscal);
    RegisterClass(TRptSaldoConsignacaoSaida);
@@ -779,7 +759,6 @@ initialization
    RegisterClass(TFrmProducoesServico);
    RegisterClass(TRptProducoesServico);
    RegisterClass(TRptComissoesLiquidez);
-   RegisterClass(TDlgNFeExportarDados);
    RegisterClass(TDMRomaneioSeparacao);
    RegisterClass(TFRMRomaneioSeparacao);
    RegisterClass(TDMPrincipioAtivo);
@@ -791,8 +770,6 @@ initialization
    RegisterClass(TDlgAberturaCaixa);
    RegisterClass(TDlgFechamento);
    RegisterClass(TDlgFechamentoModeloB);
-   RegisterClass(TDlgExportarDadosPDV);
-   RegisterClass(TDlgImportacaoPDV);
    RegisterClass(TDlgGerarArquivoPirelli);
    RegisterClass(TDlgMarcasRelatorio);
    RegisterClass(TDlgPesquisaLocalizacao);
@@ -871,8 +848,14 @@ initialization
    RegisterClass(TRptApuracaoTabela);
    RegisterClass(TRptItensMenosVendido);
    RegisterClass(TDlgRelCaixaC);
+   RegisterClass(TRptInvoicesDoc3);
+   RegisterClass(TDlgExpedicao);
+
+
 
    finalization
+   unRegisterClass(TDlgExpedicao);
+   unRegisterClass(TRptInvoicesDoc3);
    unRegisterClass(TDlgRelCaixaC);
    unRegisterClass(TRptItensMenosVendido);
    unRegisterClass(TRptApuracaoTabela);
@@ -1033,7 +1016,6 @@ initialization
    unRegisterClass(TDlgCaixaPrincipal);
    unRegisterClass(TDlgPosicaoCaixas);
    unRegisterClass(TDlgAlterarConta);
-   unRegisterClass(TDlgChequesPendentesImpressao);
    unRegisterClass(TDlgRelatoriosImpressoras);
    unRegisterClass(TDlgLocalizarCheques);
    unRegisterClass(TDlgMarcarDevolvido);
@@ -1060,7 +1042,6 @@ initialization
    unRegisterClass(TRptVendasNoPeriodo);
    unRegisterClass(TRptVendasProdutos);
    unRegisterClass(TDMTaxAgencias);
-   unRegisterClass(TDMTaxs);
    unRegisterClass(TDMTiposBusiness);
    unRegisterClass(TDMTiposEntrega);
    unRegisterClass(TDMUFS);
@@ -1083,7 +1064,6 @@ initialization
    unRegisterClass(TFrmPaises);
    unRegisterClass(TFrmPlanos_Pagamento);
    unRegisterClass(TFrmTaxAgencias);
-   unRegisterClass(TFrmTaxs);
    unRegisterClass(TRptOcorrencias);
    unRegisterClass(TFrmTiposBusiness);
    unRegisterClass(TFrmTiposEntrega);
@@ -1100,23 +1080,11 @@ initialization
    unRegisterClass(TDlgSitCliente);
    unRegisterClass(TDlgUltimasVendas);
 //   unRegisterClass(TDlgExtratoFinanceiro);
-   unRegisterClass(TDMCompromissos);
-   unRegisterClass(TFRMCompromissos);
+
    unRegisterClass(TDMCategorias);
    unRegisterClass(TFRMCategorias);
-   unRegisterClass(TDMAgendaTelefones);
-   unRegisterClass(TFRMAgendaTelefones);
-   unRegisterClass(TDMRecados);
-   unRegisterClass(TFRMRecados);
    unRegisterClass(TDlgConsulta);
-   unRegisterClass(TDlgRecados);
-   unRegisterClass(TDMTarefas);
-   unRegisterClass(TFRMTarefas);
-   unRegisterClass(TDlgDescricaoCompromissos);
-   unRegisterClass(TDlgTarefas);
    unRegisterClass(TDlgLegendas);
-   unRegisterClass(TDlgCalendario);
-   unRegisterClass(TDlgCalendarioMes);
    unRegisterClass(TDlgEtiquetas);
    unRegisterClass(TDMSaidas);
    unRegisterClass(TFrmSaidas);
@@ -1306,7 +1274,6 @@ initialization
 
    unRegisterClass(TDMMedicos);
    unRegisterClass(TFrmMedicos);
-   unRegisterClass(TDlgBaixaTitulosBoletoBancario);
    unRegisterClass(TDMChecks);
    unRegisterClass(TFrmChecks);
    unRegisterClass(TDlgMescSaidConsig);
@@ -1366,7 +1333,6 @@ initialization
    unRegisterClass(TRptVendas);
    unRegisterClass(TRptPedidos);
    unRegisterClass(TDlgGerarRemessa);
-   unRegisterClass(TDlgLerRetorno);
    unRegisterClass(TRptEntrConsig);
    unRegisterClass(TRptDevConsig);
    unRegisterClass(TRptVendasConsig);
@@ -1435,7 +1401,6 @@ initialization
    unRegisterClass(TDlgUsuariosPoderes);
    unRegisterClass(TRptReposicaoGondolas);
    unRegisterClass(TRptAutorizacoes);
-   unRegisterClass(TDlgApuracaoCaixa);
    unRegisterClass(TFrmAjustesItensFiscal);
    unRegisterClass(TDMAjustesItensFiscal);
    unRegisterClass(TRptSaldoConsignacaoSaida);
@@ -1450,12 +1415,9 @@ initialization
    unRegisterClass(TFrmProducoesServico);
    unRegisterClass(TRptProducoesServico);
    unRegisterClass(TRptComissoesLiquidez);
-   unRegisterClass(TDlgNFeExportarDados);
    unRegisterClass(TDlgAberturaCaixa);
    unRegisterClass(TDlgFechamento);
    unRegisterClass(TDlgFechamentoModeloB);
-   unRegisterClass(TDlgExportarDadosPDV);
-   unRegisterClass(TDlgImportacaoPDV);
    unRegisterClass(TDlgGerarArquivoPirelli);
    unRegisterClass(TDlgMarcasRelatorio);
    unRegisterClass(TDlgPesquisaLocalizacao);

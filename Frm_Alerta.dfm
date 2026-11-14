@@ -8,17 +8,17 @@ inherited FrmAlerta: TFrmAlerta
   TextHeight = 13
   inherited pnNavigator: TTS_Panel
     Left = 422
-    Height = 281
+    Height = 287
     inherited btFecharCadastro: TTS_SpeedButton
-      Top = 247
+      Top = 253
     end
   end
   inherited pnDados: TTS_Panel
     Width = 422
-    Height = 281
+    Height = 287
     inherited Grid: TTS_QDBGrid
       Width = 420
-      Height = 279
+      Height = 285
       KeyField = 'ALERTA'
       Filter.Criteria = {00000000}
       TS_SelectedColumn = 'APLICAR'
@@ -151,24 +151,24 @@ inherited FrmAlerta: TFrmAlerta
     end
     inherited dxTreeListCampos: TdxTreeList
       Width = 420
-      Height = 279
+      Height = 285
     end
     inherited sbDados: TTS_Panel
       Width = 420
-      Height = 279
-      Color = 13359603
+      Height = 285
+      Color = 14542583
       object pnAvisarPara: TTS_Panel
         Left = 0
         Top = 104
         Width = 420
-        Height = 175
+        Height = 181
         Align = alClient
         BevelOuter = bvNone
         Color = 13359603
         TabOrder = 2
         DesignSize = (
           420
-          175)
+          181)
         object lbDescGrid: TTS_Label
           Left = 5
           Top = 56
@@ -192,7 +192,7 @@ inherited FrmAlerta: TFrmAlerta
         end
         object dbgFavorecidos: TTS_QDBGrid
           Left = 0
-          Top = 73
+          Top = 79
           Width = 420
           Height = 102
           Bands = <
@@ -219,8 +219,8 @@ inherited FrmAlerta: TFrmAlerta
           BandFont.Height = -11
           BandFont.Name = 'MS Sans Serif'
           BandFont.Style = []
-          DataSource = DMAlerta.C_ClienteDS
           Filter.Criteria = {00000000}
+          GroupPanelColor = 15461355
           HeaderColor = 15461355
           HeaderFont.Charset = DEFAULT_CHARSET
           HeaderFont.Color = clWindowText
@@ -238,6 +238,7 @@ inherited FrmAlerta: TFrmAlerta
           PreviewFont.Name = 'MS Sans Serif'
           PreviewFont.Style = []
           OnChangeNode = dbgFavorecidosChangeNode
+          TS_PermitirQuantidade = False
           TS_DescriptionCanChange = False
           TS_GridMenuOptions = [gmDados]
           TS_AppendOnEnter = False
@@ -357,7 +358,6 @@ inherited FrmAlerta: TFrmAlerta
           Width = 320
           TabOrder = 0
           DataField = 'DESCRICAO'
-          DataSource = DMAlerta.C_TabelaDS
           StyleController = DMProjeto.esGeral
           Height = 47
         end
@@ -395,7 +395,6 @@ inherited FrmAlerta: TFrmAlerta
           Width = 211
           TabOrder = 0
           DataField = 'CONDICAO'
-          DataSource = DMAlerta.C_TabelaDS
           StyleController = DMProjeto.esGeral
           Descriptions.Strings = (
             'Igual a'
@@ -423,7 +422,6 @@ inherited FrmAlerta: TFrmAlerta
           Width = 82
           TabOrder = 1
           DataField = 'VALOR'
-          DataSource = DMAlerta.C_TabelaDS
           StyleController = DMProjeto.esGeral
           ButtonGlyph.Data = {
             AE040000424DAE0400000000000036040000280000000A0000000A0000000100
@@ -522,7 +520,6 @@ inherited FrmAlerta: TFrmAlerta
           Width = 121
           TabOrder = 0
           DataField = 'APLICAR'
-          DataSource = DMAlerta.C_TabelaDS
           StyleController = DMProjeto.esGeral
           OnChange = DbLookAplicarChange
           Descriptions.Strings = (
@@ -557,6 +554,7 @@ inherited FrmAlerta: TFrmAlerta
           Left = 216
           Top = 13
           Width = 121
+          Hint = 'Click na seta de escolha para restrin'#231#227'o de registros'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -574,8 +572,9 @@ inherited FrmAlerta: TFrmAlerta
           PopupClientEdge = True
           LookupKeyValue = 0
           TS_DB_Projeto = DMProjeto.DB_Projeto
+          TS_TipoEstoque = 0
           TS_FornecedorSelecionado = 0
-          TS_PossuiEstoque = False
+          TS_FornPrefSelecionado = 0
           TS_NaoPossuiEstoque = False
           TS_EstoqueMinimo = False
           TS_EstoqueMaximo = False
@@ -584,20 +583,26 @@ inherited FrmAlerta: TFrmAlerta
           TS_ItensDesativado = False
           TS_C_LocalizarItem = DMProjeto.C_LocalizarItens
           TS_C_LocalizarFav = DMProjeto.C_LocalizarFav
+          TS_PossuiEstoque = False
+          TS_TipoItem = 0
           TS_AliasItens = 'i'
+          TS_ItemAlterado = False
           OnSelecionou = popupFiltroItensSelecionou
           Height = 19
         end
       end
     end
+    inherited dxF9Bar: TdxfProgressBar
+      Width = 420
+    end
   end
   inherited pnTitulo: TTS_MaxPanel
     Width = 537
-    Gradient.ColorStart = 9741530
+    Gradient.ColorStart = 11911142
     inherited lbCaption: TdxfLabel
       Width = 67
       Caption = 'Alertas'
-      Effect3D.ShadowedColor = 9741530
+      Effect3D.ShadowedColor = 11911142
     end
     inherited btHelp: TTS_SpeedButton
       Left = 515
@@ -608,7 +613,6 @@ inherited FrmAlerta: TFrmAlerta
     Top = 274
   end
   inherited LastDataObject: TTS_LastDataObject
-    Left = 210
     Top = 251
   end
   inherited ppmPadrao: TTS_PopupMenu
@@ -623,9 +627,9 @@ inherited FrmAlerta: TFrmAlerta
     BeforeLoadKey = FormComponentBeforeLoadKey
     BeforeClearParams = FormComponentBeforeClearParams
     ModuloStyle = DMProjeto.msGeral
-    BarEndColor = 9741530
-    CaptionShadow = 9741530
-    FormColor = 13359603
+    BarEndColor = 11911142
+    CaptionShadow = 11911142
+    FormColor = 14542583
     Modulo = 'Cadastros Gerais'
     Caption = 'Alertas'
     OnInclusao = FormComponentInclusao

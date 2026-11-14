@@ -13,7 +13,7 @@ uses
   dxCntner, dxEditor, dxDBEdtr, dxfLabel, dxTL, dxDBCtrl, dxDBGrid,
   TS_QDBGrid, dxDBTLCl, dxGrClms, IBCustomDataSet,
   IBQuery, teCtrls, TS_EffectsPanel, dxTLClms, TS_PopupMenu, Placemnt,
-  BTOdeum;
+  BTOdeum, dxfProgressBar;
 
 type
   TFrmRecados = class(TFrmPadrao)
